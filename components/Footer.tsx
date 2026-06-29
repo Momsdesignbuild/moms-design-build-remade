@@ -108,7 +108,7 @@ export default function Footer() {
           </nav>
           <Link href="/" aria-label="Mom's Design Build — Home">
             <Image
-              src="https://momsdesignbuild.com/wp-content/uploads/2025/02/Moms-Logo-White.png"
+              src="https://cdn.sanity.io/images/wavk40jo/production/d3036e0363c0c79d395ebe0bd644402afc7e3aa6-260x260.png"
               alt="Mom's Design Build"
               width={180}
               height={44}

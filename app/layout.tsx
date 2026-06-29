@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     siteName: "Mom's Design Build",
     images: [
       {
-        url: "https://momsdesignbuild.com/wp-content/uploads/2023/11/CoastalCottage-1-1.webp",
+        url: "https://cdn.sanity.io/images/wavk40jo/production/4b14ddb15bc917daf03fa928df8f5fd6553bfbb6-500x500.webp",
         width: 1200,
         height: 630,
         alt: "Mom's Design Build — Landscape & Interior Design in Minnesota",

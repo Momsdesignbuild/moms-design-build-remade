@@ -15,51 +15,51 @@ const SERVICES = [
     title: "Landscape Architecture",
     href: "/services/landscape-architecture",
     image:
-      "https://momsdesignbuild.com/wp-content/uploads/2026/04/Moms-Design-Build_Garden-Grandeur-Project-002-768x431.jpg",
+      "https://cdn.sanity.io/images/wavk40jo/production/04e8d131adca65ec9a98361a52ab66ed44f4e409-768x431.jpg",
     alt: "Mom's Design Build Landscape Architecture — award-winning outdoor design in Minnesota",
   },
   {
     title: "Interior Design and Remodeling",
     href: "/services/interior-design-and-remodeling",
     image:
-      "https://momsdesignbuild.com/wp-content/uploads/2023/11/16918-Stratus-Ct_006-768x512.jpg",
+      "https://cdn.sanity.io/images/wavk40jo/production/91c34d378586d02a69723e86369183298f13df30-768x512.jpg",
     alt: "Mom's Design Build Interior Design and Remodeling — custom spaces in Minnesota",
   },
   {
     title: "Residential Fine Gardening",
     href: "/services/garden-management",
     image:
-      "https://momsdesignbuild.com/wp-content/uploads/2023/11/6718-Cove-Point-Rd_090-768x512.jpg",
+      "https://cdn.sanity.io/images/wavk40jo/production/955df2aa9dba1df55b7259322038aca03f43ef6d-768x512.jpg",
     alt: "Mom's Fine Gardening — residential garden maintenance in Minnesota",
   },
   {
     title: "Commercial Maintenance",
     href: "/services/commercial-maintenance",
     image:
-      "https://momsdesignbuild.com/wp-content/uploads/2026/04/COV_3155-Galleria_005-768x512.jpg",
+      "https://cdn.sanity.io/images/wavk40jo/production/76b6e92d3cbfa29d0db6230a4f610adec8971951-768x512.jpg",
     alt: "Mom's Commercial Maintenance — professional grounds maintenance in Minnesota",
   },
 ];
 
 const AWARDS = [
   {
-    src: "https://momsdesignbuild.com/wp-content/uploads/2026/04/Best-of-Twin-Cities-Readers-Choice-Award-2026-Moms-Design-Build-1024x986.jpg",
+    src: "https://cdn.sanity.io/images/wavk40jo/production/9192ddc536a686c836b89ab2f815d00be444d919-1024x986.jpg",
     alt: "Best of Twin Cities Readers Choice Award 2026 — Mom's Design Build",
   },
   {
-    src: "https://momsdesignbuild.com/wp-content/uploads/2026/04/Best-of-2026-Award-Winner-Business-Rate-Moms-Design-Build-1024x885.jpg",
+    src: "https://cdn.sanity.io/images/wavk40jo/production/87a0243f7b2a2f5312cb8fb2477c4c4b8bb9c750-1024x885.jpg",
     alt: "Best of 2026 Award Winner — Mom's Design Build",
   },
   {
-    src: "https://momsdesignbuild.com/wp-content/uploads/2026/04/Midwest-Design-Awards-2025-1st-Place-1024x733.png",
+    src: "https://cdn.sanity.io/images/wavk40jo/production/45aa3f7afb73803d332d6ec45b1c64dfa20abb87-1024x733.png",
     alt: "Midwest Design Awards 2025 — 1st Place",
   },
   {
-    src: "https://momsdesignbuild.com/wp-content/uploads/2026/04/PNG2025-NARI_RotY-MINNESOTA-WinnerMultipleAwards_CLR.png",
+    src: "https://cdn.sanity.io/images/wavk40jo/production/7a35619e845fb0b39d9c56eef931fed94baf248a-600x513.png",
     alt: "NARI Remodeler of the Year Minnesota — Mom's Design Build, Multiple Award Winner",
   },
   {
-    src: "https://momsdesignbuild.com/wp-content/uploads/2026/04/MNLA-Industry-Award-Winner-Moms-Design-Build-e1775482345107.png",
+    src: "https://cdn.sanity.io/images/wavk40jo/production/a607f7a1a0ec6aa83084f29b212a3f4a353a8187-218x223.png",
     alt: "MNLA Industry Award Winner — Mom's Design Build",
   },
 ];
@@ -67,27 +67,27 @@ const AWARDS = [
 const CHARITIES = [
   {
     href: "https://www.bellagoosecoffee.com/freedomcoffee",
-    src: "https://momsdesignbuild.com/wp-content/uploads/2024/11/Bella-Goose-N.jpg",
+    src: "https://cdn.sanity.io/images/wavk40jo/production/ed53609b06c15089bd692409c7414f31b1a10be8-160x160.jpg",
     alt: "Bella Goose Coffee — Freedom Coffee",
   },
   {
     href: "https://connectedfamilies.org/about/",
-    src: "https://momsdesignbuild.com/wp-content/uploads/2024/11/450.jpg",
+    src: "https://cdn.sanity.io/images/wavk40jo/production/8ec666d507534feaef21ad0e92a33582ea7ce308-160x160.jpg",
     alt: "Connected Families",
   },
   {
     href: "https://foldsofhonor.org/about-us/",
-    src: "https://momsdesignbuild.com/wp-content/uploads/2024/11/star-50.jpg",
+    src: "https://cdn.sanity.io/images/wavk40jo/production/1a2cf0c161520cc0471523ccb6581ad768fa4ee0-284x148.jpg",
     alt: "Folds of Honor",
   },
   {
     href: "https://faithslodge.org/",
-    src: "https://momsdesignbuild.com/wp-content/uploads/2024/11/Faiths-Lodge-N.jpg",
+    src: "https://cdn.sanity.io/images/wavk40jo/production/64a2c94db83818c744ef4d9267962a8a04e4e022-142x160.jpg",
     alt: "Faith's Lodge",
   },
   {
     href: "https://griefclubmn.org/",
-    src: "https://momsdesignbuild.com/wp-content/uploads/2024/11/Grief-Club-of-MN-N.jpg",
+    src: "https://cdn.sanity.io/images/wavk40jo/production/9e878b9aeaa1f5bf4956a21eac792da2a419f367-102x160.jpg",
     alt: "Grief Club of Minnesota",
   },
 ];

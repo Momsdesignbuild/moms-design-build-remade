@@ -9,62 +9,62 @@ export const metadata: Metadata = {
 // Portfolio images pulled from the actual site's project gallery
 const PORTFOLIO_IMAGES = [
   {
-    src: "https://momsdesignbuild.com/wp-content/uploads/2024/09/21420-Excelsior-Blvd_083.jpg",
+    src: "https://cdn.sanity.io/images/wavk40jo/production/c47bdf0b295511950d170dec4e3f65b7beb0e131-2400x1602.jpg",
     alt: "Landscape design project — Excelsior Blvd, Minnesota",
     category: "Landscape",
   },
   {
-    src: "https://momsdesignbuild.com/wp-content/uploads/2024/09/16918-Stratus-Ct_006.jpg",
+    src: "https://cdn.sanity.io/images/wavk40jo/production/c7f944134634480eae2b0dd964e16d8641465a16-2400x1601.jpg",
     alt: "Exterior and landscape design — Stratus Court, Minnesota",
     category: "Landscape",
   },
   {
-    src: "https://momsdesignbuild.com/wp-content/uploads/2024/07/Moms-Design-Build_Warwick-St_002-1.jpg",
+    src: "https://cdn.sanity.io/images/wavk40jo/production/c27dd3a0910d5cadd075b3d2b1d8d8becbb69cf3-2400x1600.jpg",
     alt: "Landscape architecture project — Warwick St, Minnesota",
     category: "Landscape",
   },
   {
-    src: "https://momsdesignbuild.com/wp-content/uploads/2024/09/Moms-Design-Build_W-Lake-St_Twilight_002.jpg",
+    src: "https://cdn.sanity.io/images/wavk40jo/production/7e1fde5d29ed59456a5699031caf27ea44b851c5-2400x1601.jpg",
     alt: "Outdoor living design — West Lake St twilight, Minnesota",
     category: "Landscape",
   },
   {
-    src: "https://momsdesignbuild.com/wp-content/uploads/2023/11/400_Dakota_Ave_S_010-1.webp",
+    src: "https://cdn.sanity.io/images/wavk40jo/production/a3f6b6db85ad504043d2c6330ac768afb13f124d-1500x1000.webp",
     alt: "Landscape design — Dakota Ave project, Minnesota",
     category: "Landscape",
   },
   {
-    src: "https://momsdesignbuild.com/wp-content/uploads/2024/09/Photographer-Spacecrafting.jpg",
+    src: "https://cdn.sanity.io/images/wavk40jo/production/9d782a2b5e80a589a0f3f362a940555db07f7980-2400x1600.jpg",
     alt: "Interior design project by Mom's Design Build, Minnesota",
     category: "Interior",
   },
   {
-    src: "https://momsdesignbuild.com/wp-content/uploads/2026/04/Moms-Design-Build_Garden-Grandeur-Project-002-768x431.jpg",
+    src: "https://cdn.sanity.io/images/wavk40jo/production/04e8d131adca65ec9a98361a52ab66ed44f4e409-768x431.jpg",
     alt: "Garden Grandeur landscape design project, Minnesota",
     category: "Landscape",
   },
   {
-    src: "https://momsdesignbuild.com/wp-content/uploads/2023/11/16918-Stratus-Ct_006-768x512.jpg",
+    src: "https://cdn.sanity.io/images/wavk40jo/production/91c34d378586d02a69723e86369183298f13df30-768x512.jpg",
     alt: "Landscape and exterior design — Stratus Court project",
     category: "Landscape",
   },
   {
-    src: "https://momsdesignbuild.com/wp-content/uploads/2023/11/6718-Cove-Point-Rd_090-768x512.jpg",
+    src: "https://cdn.sanity.io/images/wavk40jo/production/955df2aa9dba1df55b7259322038aca03f43ef6d-768x512.jpg",
     alt: "Residential fine gardening — Cove Point Rd project",
     category: "Gardening",
   },
   {
-    src: "https://momsdesignbuild.com/wp-content/uploads/2026/04/COV_3155-Galleria_005-768x512.jpg",
+    src: "https://cdn.sanity.io/images/wavk40jo/production/76b6e92d3cbfa29d0db6230a4f610adec8971951-768x512.jpg",
     alt: "Commercial maintenance — Galleria property, Minnesota",
     category: "Commercial",
   },
   {
-    src: "https://momsdesignbuild.com/wp-content/uploads/2025/10/Moms-Design-Build-Cool-California-Project-05-1024x683.jpg",
+    src: "https://cdn.sanity.io/images/wavk40jo/production/e08993ae127ec9541b11c1c447806949ba30298e-1024x683.jpg",
     alt: "Award-winning design project by Mom's Design Build",
     category: "Interior",
   },
   {
-    src: "https://momsdesignbuild.com/wp-content/uploads/2023/11/CoastalCottage-1-1.webp",
+    src: "https://cdn.sanity.io/images/wavk40jo/production/4b14ddb15bc917daf03fa928df8f5fd6553bfbb6-500x500.webp",
     alt: "Coastal cottage landscape design project, Minnesota",
     category: "Landscape",
   },

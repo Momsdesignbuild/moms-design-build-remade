@@ -12,7 +12,7 @@ const SERVICES = [
     title: "Landscape Architecture",
     href: "/services/landscape-architecture",
     image:
-      "https://momsdesignbuild.com/wp-content/uploads/2026/04/Moms-Design-Build_Garden-Grandeur-Project-002-768x431.jpg",
+      "https://cdn.sanity.io/images/wavk40jo/production/04e8d131adca65ec9a98361a52ab66ed44f4e409-768x431.jpg",
     alt: "Mom's Design Build Landscape Architecture — outdoor living design in Minnesota",
     description:
       "We tailor each outdoor living space to suit your lifestyle: from colorful gardens, cozy fire pits, peaceful water features and patios to outdoor kitchens, pavilions, and pool houses. We will help you dream and create your ideal outdoor living environment.",
@@ -21,7 +21,7 @@ const SERVICES = [
     title: "Interior Design and Remodeling",
     href: "/services/interior-design-and-remodeling",
     image:
-      "https://momsdesignbuild.com/wp-content/uploads/2023/11/16918-Stratus-Ct_006-768x512.jpg",
+      "https://cdn.sanity.io/images/wavk40jo/production/91c34d378586d02a69723e86369183298f13df30-768x512.jpg",
     alt: "Mom's Design Build Interior Design and Remodeling — custom spaces in Minnesota",
     description:
       "Whether your project is new construction, remodeling, or an addition, we combine beauty and function to create custom spaces to fit your lifestyle. From beginning to end — the design, selections, ordering, and building are handled seamlessly by our team.",
@@ -30,7 +30,7 @@ const SERVICES = [
     title: "Residential Fine Gardening",
     href: "/services/garden-management",
     image:
-      "https://momsdesignbuild.com/wp-content/uploads/2023/11/6718-Cove-Point-Rd_090-768x512.jpg",
+      "https://cdn.sanity.io/images/wavk40jo/production/955df2aa9dba1df55b7259322038aca03f43ef6d-768x512.jpg",
     alt: "Mom's Fine Gardening — residential garden maintenance in Minnesota",
     description:
       "Our team of horticulturists and gardeners deliver a comprehensive offering of landscape management services including annual container design, bi-weekly maintenance packages, disease and pest control, pond and spa treatments, and seasonal decorating.",
@@ -39,7 +39,7 @@ const SERVICES = [
     title: "Commercial Maintenance",
     href: "/services/commercial-maintenance",
     image:
-      "https://momsdesignbuild.com/wp-content/uploads/2026/04/COV_3155-Galleria_005-768x512.jpg",
+      "https://cdn.sanity.io/images/wavk40jo/production/76b6e92d3cbfa29d0db6230a4f610adec8971951-768x512.jpg",
     alt: "Mom's Commercial Maintenance — professional grounds care in Minnesota",
     description:
       "Your property is often the first impression your business makes, and we ensure it's stunning. Mom's Commercial Maintenance delivers customized plans, luxury-level service, and responsive support to keep your grounds clean, professional, and disruption-free year-round.",

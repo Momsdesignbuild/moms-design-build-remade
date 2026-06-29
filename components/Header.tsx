@@ -73,7 +73,7 @@ export default function Header() {
         {/* Logo */}
         <Link href="/" className="flex-shrink-0" aria-label="Mom's Design Build — Home">
           <Image
-            src="https://momsdesignbuild.com/wp-content/uploads/2023/05/MDB-logo-horizontal-color_RGB_20-220x53.png"
+            src="https://cdn.sanity.io/images/wavk40jo/production/97ace4cc39b91a89ff41889263269dd8b690ad4e-220x53.png"
             alt="Mom's Design Build"
             width={176}
             height={43}
@@ -171,7 +171,7 @@ export default function Header() {
                 aria-label="Mom's Design Build — Home"
               >
                 <Image
-                  src="https://momsdesignbuild.com/wp-content/uploads/2023/05/MDB-logo-horizontal-color_RGB_20-220x53.png"
+                  src="https://cdn.sanity.io/images/wavk40jo/production/97ace4cc39b91a89ff41889263269dd8b690ad4e-220x53.png"
                   alt="Mom's Design Build"
                   width={158}
                   height={38}

@@ -5,8 +5,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "momsdesignbuild.com",
-        pathname: "/wp-content/uploads/**",
+        hostname: "cdn.sanity.io",
       },
     ],
   },
