@@ -11,6 +11,7 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://momsdesignbuild.com"),
+  robots: process.env.SITE_LIVE === "true" ? "index, follow" : "noindex, nofollow",
   title: {
     default:
       "Mom's Design Build - Landscape & Interior Designers In Minnesota",
