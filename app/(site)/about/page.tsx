@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About Mom's Design Build - Landscape & Remodeling Design",
+  title: { absolute: "About Mom's Design Build - Landscape & Remodeling Design" },
   description:
-    "Meet the award-winning team behind Mom's Design Build — Minnesota's most recognized landscape architecture and interior design-build firm. Founded by Jim Sweeney in 1993.",
+    "Discover the talented team behind Mom's Design Build, an award-winning landscape and interior remodel design firm based in Minnesota.",
 };
 
 const TEAM = [

@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Landscaping & Home Remodeling Services in Minnesota",
+  title: { absolute: "Landscaping & Home Remodeling in Minnesota - Mom's Design Build Services" },
   description:
-    "Mom's Design Build offers landscape architecture, interior design and remodeling, residential fine gardening, and commercial maintenance in Minnesota. Award-winning since 1993.",
+    "Mom's Design Build offers luxury landscape architecture and design, interior design and remodeling, & Fine Gardening in MN. Contact us today!",
 };
 
 const SERVICES = [

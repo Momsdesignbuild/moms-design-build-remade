@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Home & Landscape Design Process -- The Mom's Way | Mom's Design Build",
+  title: { absolute: "Home & Landscape Design Process - Mom's Design Build Company" },
   description:
-    "Learn about Mom's Design Build's proven design-build process -- from initial consultation and concept design through construction and warranty. The Mom's Way.",
+    "Mom's Design Build is with you throughout the whole design build process from consultation to a tour of your new space. Let's make your project a reality.",
 };
 
 const STEPS = [

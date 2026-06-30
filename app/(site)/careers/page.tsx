@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Careers at Mom's Design Build — Explore Job Opportunities in Minnesota",
+  title: { absolute: "Careers At Mom's Design Build - Explore Job Opportunities" },
   description:
-    "Join Minnesota's most award-winning landscape architecture and interior design-build firm. View open positions at Mom's Design Build — Shakopee, MN.",
+    "Mom's Design Build is looking for talented applicants from designers to builders in MN. Explore our job openings and submit your application today!",
 };
 
 const POSITIONS = [

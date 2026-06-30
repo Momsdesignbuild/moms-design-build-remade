@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact Mom's Design Build — Landscape & Interior Design in Minnesota",
+  title: { absolute: "Contact Mom's Design Build - Landscape & Interior Design" },
   description:
-    "Get in touch with Mom's Design Build to start your landscape architecture, interior design, or remodeling project in Minnesota. Call 952.277.6667 or email us today.",
+    "Mom's Design Build offers custom luxury landscaping, remodeling & gardening services to the Twin Cities, MN and surrounding areas. Let's chat!",
 };
 
 export default function ContactPage() {

@@ -6,9 +6,9 @@ import type { SanityImageSource } from "@sanity/image-url";
 import { client } from "@/sanity/lib/client";
 
 export const metadata: Metadata = {
-  title: "Landscape & Interior Design Build Portfolio | Mom's Design Build",
+  title: { absolute: "Landscape & Interior Design Build Portfolio - Mom's Design Build" },
   description:
-    "Browse Mom's Design Build portfolio — award-winning landscape architecture, outdoor living spaces, and interior design projects across Minnesota.",
+    "Mom's Design Build has completed a variety of custom luxury interior and landscape projects for our clients in Minnesota. Explore our design-build portfolio today!",
 };
 
 // Revalidate every hour

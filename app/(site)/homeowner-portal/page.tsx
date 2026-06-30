@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Homeowner Project Portal Access & Set-Up | Mom's Design Build",
+  title: { absolute: "Homeowner Project Portal Access & Set-Up - Mom's Design Build" },
   description:
-    "Access your Mom's Design Build homeowner portal powered by Buildertrend. View designs, selections, schedules, invoices, and communicate with your project team.",
+    "Mom's Design Build uses Buildertrend to help communicate important information about your project and more. Set up & access your project portal today.",
 };
 
 export default function HomeownerPortalPage() {

@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Blog — Design Inspiration & Home Tips",
+  title: { absolute: "Mom's Design Build Blog - Explore Home & Landscape Design" },
   description:
-    "Read Mom's Design Build blog for landscape design tips, interior design inspiration, and home remodeling ideas from Minnesota's most award-winning design-build firm.",
+    "The Mom's Design Build Blog is composed of various current trends and home design ideas that are sure to inspire your next project.",
 };
 
 export default function BlogPage() {

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     absolute: "Mom's Design Build - Landscape & Interior Designers In Minnesota",
   },
   description:
-    "At Mom's Design Build, we believe in creating spaces that inspire the human spirit to live fully present. Award-winning landscape architecture, interior design, and remodeling in Minnesota.",
+    "Mom's Design Build is a MN based custom luxury remodeling & landscaping firm. Learn why we are Minnesota's most awarded design build company.",
 };
 
 const SERVICES = [
