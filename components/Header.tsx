@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { List, X, CaretDown } from "@phosphor-icons/react";
 
@@ -47,9 +48,11 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const pathname = usePathname();
+  const transparent = pathname === "/" && !scrolled;
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = () => setScrolled(window.scrollY > 80);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -64,10 +67,14 @@ export default function Header() {
   }, []);
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 bg-white transition-shadow duration-300 ${
-        scrolled ? "shadow-sm" : ""
+    <motion.header
+      initial={{ y: -80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        transparent ? "bg-transparent" : "bg-white shadow-sm"
       }`}
+      style={{ paddingTop: "env(safe-area-inset-top)" }}
     >
       <div className="max-w-[1400px] mx-auto px-6 h-[72px] flex items-center justify-between gap-8">
         {/* Logo */}
@@ -78,6 +85,7 @@ export default function Header() {
             width={176}
             height={43}
             priority
+            style={{ filter: transparent ? "brightness(0) invert(1)" : "none", transition: "filter 0.5s" }}
           />
         </Link>
 
@@ -95,7 +103,11 @@ export default function Header() {
             >
               <Link
                 href={item.href}
-                className="flex items-center gap-1 text-[11.5px] font-[500] tracking-[0.12em] uppercase text-ink hover:text-brand transition-colors duration-200"
+                className={`flex items-center gap-1 text-[11.5px] font-[500] tracking-[0.12em] uppercase transition-colors duration-300 ${
+                  transparent
+                    ? "text-white/80 hover:text-white"
+                    : "text-ink hover:text-brand"
+                }`}
               >
                 {item.label}
                 {item.children && (
@@ -135,13 +147,17 @@ export default function Header() {
         <div className="flex items-center gap-4">
           <Link
             href="/contact"
-            className="hidden lg:inline-flex items-center justify-center bg-brand text-white text-[11px] font-[600] tracking-[0.18em] uppercase px-6 py-3 hover:bg-brand-dark transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+            className={`hidden lg:inline-flex items-center justify-center text-[11px] font-[600] tracking-[0.18em] uppercase px-6 py-3 transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand ${
+              transparent
+                ? "border border-white/50 text-white hover:bg-white/10"
+                : "bg-brand text-white hover:bg-brand-dark"
+            }`}
           >
             Contact
           </Link>
 
           <button
-            className="lg:hidden p-2 text-ink hover:text-brand transition-colors"
+            className={`lg:hidden p-2 transition-colors ${transparent ? "text-white hover:text-white/70" : "text-ink hover:text-brand"}`}
             onClick={() => setMobileOpen(true)}
             aria-label="Open navigation menu"
             aria-expanded={mobileOpen}
@@ -228,6 +244,6 @@ export default function Header() {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </motion.header>
   );
 }

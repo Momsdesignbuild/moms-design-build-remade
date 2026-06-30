@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import MainContent from "@/components/MainContent";
 
 export default function SiteLayout({
   children,
@@ -15,9 +16,7 @@ export default function SiteLayout({
         Skip to main content
       </a>
       <Header />
-      <main id="main-content" className="pt-[72px]">
-        {children}
-      </main>
+      <MainContent>{children}</MainContent>
       <Footer />
     </>
   );
