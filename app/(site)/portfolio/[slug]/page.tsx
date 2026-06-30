@@ -23,13 +23,17 @@ type PortfolioProject = {
   gallery?: SanityImageSource[];
   categories?: string[];
   description?: Array<{ _type: string; children?: Array<{ text: string }> }>;
+  videoUrl?: string;
+  designerName?: string;
+  designerSlug?: string;
 };
 
 async function getProject(slug: string): Promise<PortfolioProject | null> {
   return client.fetch(
     `*[_type == "portfolioProject" && slug.current == $slug][0] {
       _id, title, slug, metaTitle, metaDescription,
-      heroImage, gallery, categories, description
+      heroImage, gallery, categories, description,
+      videoUrl, designerName, designerSlug
     }`,
     { slug }
   );
@@ -151,6 +155,23 @@ export default async function PortfolioProjectPage({
         )}
       </section>
 
+      {/* ── Video ── */}
+      {project.videoUrl && (
+        <section className="px-4 md:px-6 pb-10 bg-white">
+          <div className="max-w-[1100px] mx-auto">
+            <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+              <iframe
+                src={project.videoUrl}
+                className="absolute inset-0 w-full h-full"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowFullScreen
+                title={`${project.title} — project video`}
+              />
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ── Gallery ── */}
       {project.gallery && project.gallery.length > 0 && (
         <section className="px-4 md:px-6 pb-20 bg-white">
@@ -171,6 +192,28 @@ export default async function PortfolioProjectPage({
                 </div>
               );
             })}
+          </div>
+        </section>
+      )}
+
+      {/* ── Designer Attribution ── */}
+      {project.designerName && project.designerName !== "Mom's Design Build" && (
+        <section className="px-6 py-8 bg-white border-t border-gray-100">
+          <div className="max-w-[1400px] mx-auto">
+            <p className="text-[12px] font-[300] tracking-[0.1em] text-muted">
+              Designed by{" "}
+              {project.designerSlug ? (
+                <Link
+                  href={`/team/${project.designerSlug}`}
+                  className="text-ink hover:underline"
+                >
+                  {project.designerName}
+                </Link>
+              ) : (
+                <span className="text-ink">{project.designerName}</span>
+              )}{" "}
+              of Mom&apos;s Design Build
+            </p>
           </div>
         </section>
       )}
