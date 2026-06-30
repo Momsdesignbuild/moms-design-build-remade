@@ -9,6 +9,25 @@
   --color-brand-dark: #008FAA;
   --color-ink: #1C1C1C;
   --color-muted: #686868;
+
+  /* Extended brand palette (shared with v1 components) */
+  --color-brand-coral: #00AEC7;
+  --color-brand-teal: #00AEC7;
+  --color-brand-mid: #53565A;
+  --color-brand-stone: #808285;
+  --color-brand-light: #F7F5F2;
+  --color-brand-extra-dark: #1C1C1A;
+
+  /* Font weights */
+  --font-weight-300: 300;
+  --font-weight-400: 400;
+  --font-weight-500: 500;
+  --font-weight-600: 600;
+  --font-weight-700: 700;
+  --font-weight-800: 800;
+
+  /* Letter spacing */
+  --tracking-brand: 0.15em;
 }
 
 html,
