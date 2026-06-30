@@ -47,7 +47,7 @@ export default function Hero() {
         playsInline
         preload="auto"
         onPlaying={() => setSdPlaying(true)}
-        className="absolute inset-0 w-full h-full object-cover object-left-bottom"
+        className="absolute inset-0 w-full h-full object-cover object-center"
       >
         <source src="/video/hero-480p.mp4" type="video/mp4" />
       </video>
@@ -61,7 +61,7 @@ export default function Hero() {
         preload="none"
         onCanPlay={onHdCanPlay}
         onPlaying={() => setHdPlaying(true)}
-        className={`absolute inset-0 w-full h-full object-cover object-left-bottom transition-opacity duration-1000 ${hdPlaying ? 'opacity-100' : 'opacity-0'}`}
+        className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000 ${hdPlaying ? 'opacity-100' : 'opacity-0'}`}
       >
         <source src="/video/hero.mp4" type="video/mp4" />
       </video>
