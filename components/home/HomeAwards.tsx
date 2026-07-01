@@ -6,23 +6,23 @@ import Image from 'next/image'
 const awards = [
   {
     src: 'https://cdn.sanity.io/images/wavk40jo/production/9192ddc536a686c836b89ab2f815d00be444d919-1024x986.jpg',
-    alt: 'Best of Twin Cities Readers Choice Award 2026',
+    alt: "Best of Twin Cities Readers Choice Award 2026 - Mom's Design Build",
   },
   {
     src: 'https://cdn.sanity.io/images/wavk40jo/production/87a0243f7b2a2f5312cb8fb2477c4c4b8bb9c750-1024x885.jpg',
-    alt: 'Best of 2026 Award Winner',
+    alt: "Best of 2026 Award Winner - Mom's Design Build",
   },
   {
     src: 'https://cdn.sanity.io/images/wavk40jo/production/45aa3f7afb73803d332d6ec45b1c64dfa20abb87-1024x733.png',
-    alt: 'Midwest Design Awards 2025 - 1st Place',
+    alt: "Midwest Design Awards 2025 - 1st Place - Mom's Design Build",
   },
   {
     src: 'https://cdn.sanity.io/images/wavk40jo/production/7a35619e845fb0b39d9c56eef931fed94baf248a-600x513.png',
-    alt: 'NARI Remodeler of the Year Minnesota 2025',
+    alt: "NARI Remodeler of the Year Minnesota 2025 - Mom's Design Build",
   },
   {
     src: 'https://cdn.sanity.io/images/wavk40jo/production/a607f7a1a0ec6aa83084f29b212a3f4a353a8187-218x223.png',
-    alt: 'MNLA Industry Award Winner',
+    alt: "MNLA Industry Award Winner - Mom's Design Build",
   },
 ]
 
