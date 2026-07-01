@@ -17,6 +17,12 @@ export const metadata: Metadata = {
   },
   description:
     "Mom's Design Build is a MN based custom luxury remodeling & landscaping firm. Learn why we are Minnesota's most awarded design build company.",
+  alternates: {
+    canonical: "https://momsdesignbuild.com/",
+  },
+  openGraph: {
+    url: "https://momsdesignbuild.com/",
+  },
 };
 
 const builder = createImageUrlBuilder(client);
