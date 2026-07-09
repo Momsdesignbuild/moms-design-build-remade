@@ -1,21 +1,46 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { JsonLd } from "@/components/PortableBody";
+import BuilderTrendForm from "@/components/BuilderTrendForm";
+import { PAGE_JSONLD } from "./jsonld";
 
 export const metadata: Metadata = {
   title: { absolute: "Contact Mom's Design Build - Landscape & Interior Design" },
   description:
     "Mom's Design Build offers custom luxury landscaping, remodeling & gardening services to the Twin Cities, MN and surrounding areas. Let's chat!",
+  alternates: { canonical: "https://momsdesignbuild.com/contact/" },
+  openGraph: {
+    title: "Contact Mom's Design Build - Landscape & Interior Design",
+    description:
+      "Mom's Design Build offers custom luxury landscaping, remodeling & gardening services to the Twin Cities, MN and surrounding areas. Let's chat!",
+    url: "https://momsdesignbuild.com/contact/",
+    siteName: "Mom's Design Build",
+    locale: "en_US",
+    type: "article",
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function ContactPage() {
   return (
     <>
+      <JsonLd raw={PAGE_JSONLD} />
+
       {/* ── Page Header ── */}
       <section className="py-16 md:py-20 px-6 text-center bg-white">
         <h1 className="text-[22px] md:text-[28px] font-[300] tracking-[0.25em] uppercase text-ink">
-          Contact Us
+          Let&rsquo;s Talk
         </h1>
         <p className="mt-4 text-[14px] font-[300] leading-relaxed text-muted max-w-md mx-auto">
           Ready to start your project? We&apos;d love to hear from you.
+        </p>
+        {/* verbatim from their live contact page */}
+        <p className="mt-3 text-[13px] font-[300] leading-relaxed text-muted max-w-lg mx-auto">
+          Help us build a better tomorrow by joining our team today! A variety of full-time and
+          part-time positions are available!{" "}
+          <Link href="/careers" className="underline underline-offset-4 decoration-brand/40 hover:decoration-brand text-ink transition-colors">
+            Careers at Mom&rsquo;s
+          </Link>
         </p>
       </section>
 
@@ -108,122 +133,15 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Contact Form */}
+          {/* Contact Form — the SAME BuilderTrend lead form their live site
+              embeds (builderID 19370). Submissions become "BuilderTrend new
+              leads" emails to Cherilyn, which feed the intake automation +
+              QuickBooks pipeline. Do NOT replace with a generic form. */}
           <div>
             <h2 className="text-[14px] font-[300] tracking-[0.2em] uppercase text-ink mb-8">
               Send a Message
             </h2>
-            <form
-              action="https://formspree.io/f/hello@momsdesignbuild.com"
-              method="POST"
-              className="flex flex-col gap-5"
-            >
-              <div className="flex flex-col gap-1.5">
-                <label
-                  htmlFor="name"
-                  className="text-[10.5px] font-[500] tracking-[0.15em] uppercase text-ink"
-                >
-                  Name <span aria-hidden="true">*</span>
-                </label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  required
-                  autoComplete="name"
-                  className="border border-gray-200 px-4 py-3 text-[14px] font-[300] text-ink placeholder:text-gray-300 focus:outline-none focus:border-brand transition-colors"
-                  placeholder="Your full name"
-                />
-              </div>
-
-              <div className="flex flex-col gap-1.5">
-                <label
-                  htmlFor="email"
-                  className="text-[10.5px] font-[500] tracking-[0.15em] uppercase text-ink"
-                >
-                  Email <span aria-hidden="true">*</span>
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  autoComplete="email"
-                  className="border border-gray-200 px-4 py-3 text-[14px] font-[300] text-ink placeholder:text-gray-300 focus:outline-none focus:border-brand transition-colors"
-                  placeholder="you@example.com"
-                />
-              </div>
-
-              <div className="flex flex-col gap-1.5">
-                <label
-                  htmlFor="phone"
-                  className="text-[10.5px] font-[500] tracking-[0.15em] uppercase text-ink"
-                >
-                  Phone
-                </label>
-                <input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  autoComplete="tel"
-                  className="border border-gray-200 px-4 py-3 text-[14px] font-[300] text-ink placeholder:text-gray-300 focus:outline-none focus:border-brand transition-colors"
-                  placeholder="(952) 555-0000"
-                />
-              </div>
-
-              <div className="flex flex-col gap-1.5">
-                <label
-                  htmlFor="service"
-                  className="text-[10.5px] font-[500] tracking-[0.15em] uppercase text-ink"
-                >
-                  Service of Interest
-                </label>
-                <select
-                  id="service"
-                  name="service"
-                  className="border border-gray-200 px-4 py-3 text-[14px] font-[300] text-ink bg-white focus:outline-none focus:border-brand transition-colors appearance-none"
-                >
-                  <option value="">Select a service</option>
-                  <option value="landscape-architecture">
-                    Landscape Architecture
-                  </option>
-                  <option value="interior-design-remodeling">
-                    Interior Design &amp; Remodeling
-                  </option>
-                  <option value="fine-gardening">
-                    Residential Fine Gardening
-                  </option>
-                  <option value="commercial-maintenance">
-                    Commercial Maintenance
-                  </option>
-                  <option value="general">General Inquiry</option>
-                </select>
-              </div>
-
-              <div className="flex flex-col gap-1.5">
-                <label
-                  htmlFor="message"
-                  className="text-[10.5px] font-[500] tracking-[0.15em] uppercase text-ink"
-                >
-                  Message <span aria-hidden="true">*</span>
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  rows={5}
-                  className="border border-gray-200 px-4 py-3 text-[14px] font-[300] text-ink placeholder:text-gray-300 focus:outline-none focus:border-brand transition-colors resize-none"
-                  placeholder="Tell us about your project..."
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="self-start bg-brand text-white text-[11.5px] font-[600] tracking-[0.22em] uppercase px-9 py-4 hover:bg-brand-dark transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
-              >
-                Send Message
-              </button>
-            </form>
+            <BuilderTrendForm />
           </div>
         </div>
       </section>

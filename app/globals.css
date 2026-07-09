@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-sans: var(--font-outfit);
+  --font-sans: var(--font-body);
 }
 
 @theme {
@@ -39,7 +39,15 @@ body {
 body {
   background-color: #ffffff;
   color: #1c1c1c;
-  font-family: var(--font-sans, "Outfit", sans-serif);
+  font-family: var(--font-body, "Proxima Nova", Helvetica, Arial, sans-serif);
+}
+
+html {
+  font-synthesis: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading, "Futura PT", sans-serif);
 }
 
 /* Kill Next.js Image double-fade inside animated containers */

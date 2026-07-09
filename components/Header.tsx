@@ -36,7 +36,8 @@ const NAV_ITEMS = [
       },
       {
         label: "Commercial Maintenance",
-        href: "/services/commercial-maintenance",
+        // yes, "commerical" — THEIR live slug carries this typo; keeping it preserves the URL 1:1
+        href: "/services/commerical-maintenance",
       },
     ],
   },
@@ -48,6 +49,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [mobileDropdown, setMobileDropdown] = useState<string | null>(null);
   const pathname = usePathname();
   const transparent = pathname === "/" && !scrolled;
 
@@ -80,7 +82,7 @@ export default function Header() {
         {/* Logo */}
         <Link href="/" className="flex-shrink-0" aria-label="Mom's Design Build — Home">
           <Image
-            src="https://cdn.sanity.io/images/wavk40jo/production/97ace4cc39b91a89ff41889263269dd8b690ad4e-220x53.png"
+            src="https://cdn.sanity.io/images/wavk40jo/production/8c90cd8a507f30403ce2194fa8a1a5eee1eaf1c1-1000x242.png"
             alt="Mom's Design Build"
             width={176}
             height={43}
@@ -187,7 +189,7 @@ export default function Header() {
                 aria-label="Mom's Design Build — Home"
               >
                 <Image
-                  src="https://cdn.sanity.io/images/wavk40jo/production/97ace4cc39b91a89ff41889263269dd8b690ad4e-220x53.png"
+                  src="https://cdn.sanity.io/images/wavk40jo/production/8c90cd8a507f30403ce2194fa8a1a5eee1eaf1c1-1000x242.png"
                   alt="Mom's Design Build"
                   width={158}
                   height={38}
@@ -207,29 +209,65 @@ export default function Header() {
               className="flex-1 overflow-y-auto px-6 py-8 flex flex-col"
               aria-label="Mobile navigation"
             >
+              {/* Parents with children are tap-to-expand accordions (collapsed by
+                  default) so the menu stays short and Contact Us is always
+                  visible without scrolling (Josh, July 8). The label itself
+                  still navigates; only the chevron toggles. */}
               {NAV_ITEMS.map((item) => (
                 <div key={item.label} className="border-b border-gray-100">
-                  <Link
-                    href={item.href}
-                    className="flex items-center justify-between py-4 text-[12px] font-[500] tracking-[0.14em] uppercase text-ink hover:text-brand transition-colors"
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                  {item.children && (
-                    <div className="pl-4 pb-3 flex flex-col gap-1">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.label}
-                          href={child.href}
-                          className="py-2 text-[11px] tracking-[0.1em] uppercase text-muted hover:text-brand transition-colors block"
-                          onClick={() => setMobileOpen(false)}
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
+                  <div className="flex items-center justify-between">
+                    <Link
+                      href={item.href}
+                      className="flex-1 py-4 text-[12px] font-[500] tracking-[0.14em] uppercase text-ink hover:text-brand transition-colors"
+                      onClick={() => setMobileOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                    {item.children && (
+                      <button
+                        type="button"
+                        aria-label={`Toggle ${item.label} submenu`}
+                        aria-expanded={mobileDropdown === item.label}
+                        onClick={() =>
+                          setMobileDropdown(
+                            mobileDropdown === item.label ? null : item.label
+                          )
+                        }
+                        className="p-3 -mr-3 text-ink hover:text-brand transition-colors"
+                      >
+                        <CaretDown
+                          size={16}
+                          className={`transition-transform duration-200 ${
+                            mobileDropdown === item.label ? "rotate-180" : ""
+                          }`}
+                        />
+                      </button>
+                    )}
+                  </div>
+                  <AnimatePresence initial={false}>
+                    {item.children && mobileDropdown === item.label && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="pl-4 pb-3 flex flex-col gap-1">
+                          {item.children.map((child) => (
+                            <Link
+                              key={child.label}
+                              href={child.href}
+                              className="py-2 text-[11px] tracking-[0.1em] uppercase text-muted hover:text-brand transition-colors block"
+                              onClick={() => setMobileOpen(false)}
+                            >
+                              {child.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               ))}
 

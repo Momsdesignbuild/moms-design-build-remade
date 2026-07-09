@@ -1,10 +1,23 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { JsonLd } from "@/components/PortableBody";
+import { PAGE_JSONLD } from "./jsonld";
 
 export const metadata: Metadata = {
   title: { absolute: "Landscaping & Home Remodeling in Minnesota - Mom's Design Build Services" },
   description:
     "Mom's Design Build offers luxury landscape architecture and design, interior design and remodeling, & Fine Gardening in MN. Contact us today!",
+  alternates: { canonical: "https://momsdesignbuild.com/services/" },
+  openGraph: {
+    title: "Landscaping & Home Remodeling in Minnesota - Mom's Design Build Services",
+    description:
+      "Mom's Design Build offers luxury landscape architecture and design, interior design and remodeling, & Fine Gardening in MN. Contact us today!",
+    url: "https://momsdesignbuild.com/services/",
+    siteName: "Mom's Design Build",
+    locale: "en_US",
+    type: "article",
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 const SERVICES = [
@@ -15,7 +28,7 @@ const SERVICES = [
       "https://cdn.sanity.io/images/wavk40jo/production/04e8d131adca65ec9a98361a52ab66ed44f4e409-768x431.jpg",
     alt: "Mom's Design Build Landscape Architecture — outdoor living design in Minnesota",
     description:
-      "We tailor each outdoor living space to suit your lifestyle: from colorful gardens, cozy fire pits, peaceful water features and patios to outdoor kitchens, pavilions, and pool houses. We will help you dream and create your ideal outdoor living environment.",
+      "We tailor each outdoor living space to suit your lifestyle: from colorful gardens, cozy fire pits, peaceful water features and patios to outdoor kitchens, pavilions, and pool houses. We will help you dream and create your ideal outdoor living environment!",
   },
   {
     title: "Interior Design and Remodeling",
@@ -24,7 +37,7 @@ const SERVICES = [
       "https://cdn.sanity.io/images/wavk40jo/production/91c34d378586d02a69723e86369183298f13df30-768x512.jpg",
     alt: "Mom's Design Build Interior Design and Remodeling — custom spaces in Minnesota",
     description:
-      "Whether your project is new construction, remodeling, or an addition, we combine beauty and function to create custom spaces to fit your lifestyle. From beginning to end — the design, selections, ordering, and building are handled seamlessly by our team.",
+      "Whether your project is new construction, remodeling, or an addition, we combine beauty and function to create custom spaces to fit your lifestyle. From beginning to end– the design, selections, ordering, and building are handled seamlessly by our team.",
   },
   {
     title: "Residential Fine Gardening",
@@ -37,7 +50,7 @@ const SERVICES = [
   },
   {
     title: "Commercial Maintenance",
-    href: "/services/commercial-maintenance",
+    href: "/services/commerical-maintenance",
     image:
       "https://cdn.sanity.io/images/wavk40jo/production/76b6e92d3cbfa29d0db6230a4f610adec8971951-768x512.jpg",
     alt: "Mom's Commercial Maintenance — professional grounds care in Minnesota",
@@ -49,6 +62,8 @@ const SERVICES = [
 export default function ServicesPage() {
   return (
     <>
+      <JsonLd raw={PAGE_JSONLD} />
+
       {/* ── Page Header ── */}
       <section className="py-16 md:py-20 px-6 text-center bg-white">
         <h1 className="text-[22px] md:text-[28px] font-[300] tracking-[0.25em] uppercase text-ink">

@@ -19,7 +19,9 @@ MAP_FILE  = os.path.expanduser(
 PROJECT_ID  = "wavk40jo"
 DATASET     = "production"
 API_VERSION = "2024-01-01"
-TOKEN       = "skxIv5hyK1aDTVxeSLAQMiCsSeobVNvaF1MNMZ3eCjQ2NHNEAYgIL3aS2dqwwSILPxWN14M41kcn1Ydgva80TbXrNOtBTBGNaEEyOD7P0zhISw2MnVjnI1X4jhGMnDj4lzpeN5I3kIkNQ4cY4ixMZ3bzVsa9nks6dyigfAwoJcdKR8KEOXhE"
+TOKEN       = os.environ.get("SANITY_API_TOKEN") or open(
+    os.path.expanduser("~/repos/Steady-Scaling-LLC/clients/client-work/moms-design-build-remade/.env.local")
+).read().split("SANITY_API_TOKEN=")[1].split("\n")[0].strip()
 
 # Known title overrides where slug-to-title isn't enough
 TITLE_OVERRIDES = {

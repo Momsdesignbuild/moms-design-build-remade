@@ -5,6 +5,10 @@ import { notFound } from "next/navigation";
 import { createImageUrlBuilder } from "@sanity/image-url";
 import type { SanityImageSource } from "@sanity/image-url";
 import { client } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/live";
+import { JsonLd } from "@/components/PortableBody";
+import BeforeAfterSlider from "@/components/portfolio/BeforeAfterSlider";
+import LightboxGallery from "@/components/portfolio/LightboxGallery";
 
 export const revalidate = 3600;
 
@@ -13,6 +17,47 @@ function urlFor(source: SanityImageSource) {
   return builder.image(source);
 }
 
+type Dim = { width: number; height: number };
+
+type Block = {
+  _type: string;
+  _key: string;
+  children?: Array<{ text: string; marks?: string[] }>;
+  markDefs?: Array<{ _key: string; _type: string; href?: string }>;
+  alt?: string;
+  galleryGroup?: number;
+  dim?: Dim;
+} & SanityImageSource;
+
+// spans → JSX, honoring link annotations (Martha Stewart blog, service links…)
+function rich(block: Block | undefined, fallback: string) {
+  if (!block?.children?.length) return fallback;
+  return block.children.map((c, j) => {
+    const def = c.marks?.map((m) => block.markDefs?.find((d) => d._key === m)).find((d) => d?._type === "link");
+    return def?.href ? (
+      <a
+        key={j}
+        href={def.href}
+        className="underline underline-offset-4 decoration-ink/30 hover:decoration-ink transition-colors"
+        {...(def.href.startsWith("http") && !def.href.includes("momsdesignbuild.com")
+          ? { target: "_blank", rel: "noopener" }
+          : {})}
+      >
+        {c.text}
+      </a>
+    ) : (
+      <span key={j}>{c.text}</span>
+    );
+  });
+}
+
+// real rendered dimensions at a target width — the browser reserves the TRUE
+// aspect ratio from first paint, so nothing jumps or reflows as photos load
+const sized = (dim: Dim | undefined, w: number) => ({
+  width: w,
+  height: dim ? Math.round((w * dim.height) / dim.width) : Math.round(w * 0.66),
+});
+
 type PortfolioProject = {
   _id: string;
   title: string;
@@ -20,36 +65,45 @@ type PortfolioProject = {
   metaTitle?: string;
   metaDescription?: string;
   heroImage?: SanityImageSource;
-  gallery?: SanityImageSource[];
+  leadImage?: SanityImageSource & { alt?: string };
+  gallery?: Array<SanityImageSource & { alt?: string; caption?: string; dim?: Dim }>;
+  galleryBadges?: Array<SanityImageSource & { alt?: string }>;
   categories?: string[];
-  description?: Array<{ _type: string; children?: Array<{ text: string }> }>;
+  description?: Block[];
   videoUrl?: string;
   designerName?: string;
   designerSlug?: string;
+  location?: string;
+  jsonLd?: string;
+  sourceUrl?: string;
 };
 
 async function getProject(slug: string): Promise<PortfolioProject | null> {
-  return client.fetch(
-    `*[_type == "portfolioProject" && slug.current == $slug][0] {
+  const { data } = await sanityFetch({
+    query: `*[_type == "portfolioProject" && slug.current == $slug][0] {
       _id, title, slug, metaTitle, metaDescription,
-      heroImage, gallery, categories, description,
-      videoUrl, designerName, designerSlug
+      heroImage, leadImage,
+      gallery[]{ ..., asset, "dim": asset->metadata.dimensions{ width, height } },
+      galleryBadges[]{ ..., asset },
+      categories,
+      description[]{ ..., _type == "image" => { "dim": asset->metadata.dimensions{ width, height } } },
+      videoUrl, designerName, designerSlug, location, completedYear, jsonLd, sourceUrl
     }`,
-    { slug }
-  );
+    params: { slug },
+  });
+  return data as PortfolioProject | null;
 }
 
-async function getAdjacentProjects(slug: string) {
-  const all = await client.fetch<Array<{ title: string; slug: { current: string }; heroImage?: SanityImageSource }>>(
-    `*[_type == "portfolioProject"] | order(order asc, _createdAt asc) {
-      title, slug, heroImage
-    }`
-  );
+// following projects in THEIR grid order (wrapping) fill the More Projects grid
+// (their site ends every project page with a grid of other projects — ours shows
+// the next 8 + View All)
+async function getFollowingProjects(slug: string, count: number) {
+  const { data: all } = (await sanityFetch({
+    query: `*[_type == "portfolioProject"] | order(orderRank, _createdAt asc) { title, slug, heroImage }`,
+  })) as { data: Array<{ title: string; slug: { current: string }; heroImage?: SanityImageSource }> };
   const idx = all.findIndex((p) => p.slug.current === slug);
-  return {
-    prev: idx > 0 ? all[idx - 1] : null,
-    next: idx < all.length - 1 ? all[idx + 1] : null,
-  };
+  if (idx === -1 || all.length < 2) return [];
+  return Array.from({ length: Math.min(count, all.length - 1) }, (_, k) => all[(idx + 1 + k) % all.length]);
 }
 
 export async function generateMetadata({
@@ -61,10 +115,14 @@ export async function generateMetadata({
   const project = await getProject(slug);
   if (!project) return {};
   return {
-    title: project.metaTitle || `${project.title} | Mom's Design Build`,
+    title: project.metaTitle ? { absolute: project.metaTitle } : `${project.title} | Mom's Design Build`,
     description:
       project.metaDescription ||
       `View the ${project.title} project by Mom's Design Build — landscape architecture and outdoor living design in Minnesota.`,
+    // canonical copied from WP verbatim (absolute, trailing slash)
+    alternates: project.sourceUrl
+      ? { canonical: `https://momsdesignbuild.com${project.sourceUrl}` }
+      : undefined,
     openGraph: project.heroImage
       ? {
           images: [
@@ -86,77 +144,341 @@ export async function generateStaticParams() {
   return slugs.map((p) => ({ slug: p.slug.current }));
 }
 
+/* ── description analysis ────────────────────────────────────────────────────
+ * The blocks are THEIR page content in THEIR order (SEO layer — untouched).
+ * This only decides how each block is STAGED: dossier facts, award badges,
+ * pull-quote, before/after slider, section labels, story prose, inline photos.
+ */
+type Staged =
+  | { kind: "story" | "label" | "tada"; text: string; block?: Block }
+  | { kind: "quote"; text: string; block?: Block }
+  | { kind: "image"; block: Block }
+  | { kind: "imageRow"; label?: string; images: Block[] }
+  | { kind: "galleryGrid"; images: Block[] }
+  | { kind: "slider"; label: string; before: Block; after: Block; afterLabel: string };
+
+function analyze(blocks: Block[]) {
+  const textOf = (b: Block) => (b.children ?? []).map((c) => c.text).join("").trim();
+  const isBadge = (b: Block) => /nari|award|winner|best.?of|remodeler|midwest design|houzz/i.test(b.alt ?? "");
+
+  let subtitle: string | undefined;
+  let completed: string | undefined;
+  const badges: Block[] = [];
+  const staged: Staged[] = [];
+
+  for (let i = 0; i < blocks.length; i++) {
+    const b = blocks[i];
+    if (b._type === "image") {
+      if (isBadge(b)) { badges.push(b); continue; }
+      // inline gallery (multi-gallery pages): same group → one lightbox grid in flow
+      if (b.galleryGroup) {
+        const run: Block[] = [b];
+        let j = i + 1;
+        while (j < blocks.length && blocks[j].galleryGroup === b.galleryGroup) { run.push(blocks[j]); j++; }
+        staged.push({ kind: "galleryGrid", images: run });
+        i = j - 1;
+        continue;
+      }
+      // 3+ consecutive body photos → one desktop row instead of a tall stack
+      const run: Block[] = [b];
+      let j = i + 1;
+      while (j < blocks.length && blocks[j]._type === "image" && !isBadge(blocks[j]) && !blocks[j].galleryGroup) { run.push(blocks[j]); j++; }
+      if (run.length >= 3) { staged.push({ kind: "imageRow", images: run }); i = j - 1; }
+      else staged.push({ kind: "image", block: b });
+      continue;
+    }
+    const t = textOf(b);
+    if (!t) continue;
+    const completedMatch = t.match(/^Completed\s+(\d{4})$/i);
+    if (completedMatch) { completed = completedMatch[1]; continue; }
+    if (/^[“"]/.test(t)) { staged.push({ kind: "quote", text: t, block: b }); continue; }
+    if (/^ta[\s-]?da/i.test(t)) { staged.push({ kind: "tada", text: t, block: b }); continue; }
+    if (/before/i.test(t) && t.length < 60) {
+      // label + exactly two images → drag slider; + three or more → desktop row
+      const imgs: Block[] = [];
+      let j = i + 1;
+      while (j < blocks.length && blocks[j]._type === "image" && !isBadge(blocks[j])) { imgs.push(blocks[j]); j++; }
+      // slider ONLY for a real before→after pair: the second image must not be
+      // another "before" (some pages show two before shots under one label)
+      const secondAlt = imgs[1]?.alt ?? "";
+      const isRealPair =
+        imgs.length === 2 &&
+        !/before/i.test(secondAlt) &&
+        (/after|rendering|ta-?da|final|complete/i.test(secondAlt) || /before/i.test(imgs[0]?.alt ?? ""));
+      if (isRealPair) {
+        const afterLabel = /rendering/i.test(secondAlt) || /rendering/i.test(t) ? "3D Rendering" : "After";
+        staged.push({ kind: "slider", label: t, before: imgs[0], after: imgs[1], afterLabel });
+        i = j - 1;
+        continue;
+      }
+      if (imgs.length >= 2) {
+        // same-era photos (e.g. two befores) → labeled row/stack, never a slider
+        staged.push({ kind: "imageRow", label: t, images: imgs });
+        i = j - 1;
+        continue;
+      }
+    }
+    // subtitle = the page's short descriptor — never a linked/promo line
+    if (t.length < 80 && !subtitle && !staged.some((s) => s.kind === "story")
+        && !b.markDefs?.length && !/read about|check out/i.test(t)) { subtitle = t; continue; }
+    if (t.length < 60) { staged.push({ kind: "label", text: t, block: b }); continue; }
+    staged.push({ kind: "story", text: t, block: b });
+  }
+  return { subtitle, completed, badges, staged };
+}
+
 export default async function PortfolioProjectPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const [project, adjacent] = await Promise.all([
-    getProject(slug),
-    getAdjacentProjects(slug),
-  ]);
-
+  const [project, related] = await Promise.all([getProject(slug), getFollowingProjects(slug, 8)]);
   if (!project) notFound();
 
-  const heroUrl = project.heroImage
-    ? urlFor(project.heroImage).width(1600).auto("format").url()
-    : null;
+  const { subtitle, completed, badges, staged } = analyze(project.description ?? []);
 
-  const category = project.categories?.[0] ?? "";
+  // lightbox counters span the page's full photo count, across inline gallery groups
+  const grids = staged.filter((s) => s.kind === "galleryGrid") as Array<{ kind: "galleryGrid"; images: Block[] }>;
+  const gridOffsets = new Map<object, number>();
+  let photoAcc = 0;
+  for (const g of grids) { gridOffsets.set(g, photoAcc); photoAcc += g.images.length; }
+
+  const isMp4 = !!project.videoUrl?.endsWith(".mp4");
+  const heroSource = project.leadImage ?? project.heroImage;
+  const heroAlt = project.leadImage?.alt || project.title;
+  const heroImgUrl = heroSource ? urlFor(heroSource).width(2000).auto("format").url() : null;
+
+  // award graphics found inside the WP gallery (pixel-detected at enrich time)
+  // render with the dossier badges, not among project photos
+  const galleryImages = (project.gallery ?? [])
+    .map((img, i) => ({
+      thumbUrl: urlFor(img).width(900).auto("format").url(),
+      fullUrl: urlFor(img).width(2000).auto("format").url(),
+      alt: img.alt || `${project.title} — photo ${i + 1}`,
+      caption: img.caption,
+      ...sized(img.dim, 900),
+    }));
+
+  // Founders' rule: designers are never mentioned on the public site
+  // (clients would start requesting specific designers). designerName stays
+  // in Sanity as internal data only.
+  const dossier = [
+    project.location && { label: "Location", value: project.location },
+    (completed || (project as PortfolioProject & { completedYear?: string }).completedYear) && {
+      label: "Completed",
+      value: completed || (project as PortfolioProject & { completedYear?: string }).completedYear,
+    },
+  ].filter(Boolean) as Array<{ label: string; value: string }>;
+  const allBadges = [...badges, ...(project.galleryBadges ?? [])];
 
   return (
     <>
-      {/* ── Hero ── */}
-      {heroUrl && (
-        <section className="relative w-full h-[50vh] md:h-[65vh] overflow-hidden bg-gray-100">
-          <Image
-            src={heroUrl}
-            alt={project.title}
-            fill
-            priority
-            className="object-cover"
-            sizes="100vw"
+      <JsonLd raw={project.jsonLd} />
+
+      {/* ── Cinematic hero: project video when it exists, else the WP lead photo ── */}
+      <section className="relative w-full h-[62vh] md:h-[78vh] overflow-hidden bg-ink">
+        {isMp4 ? (
+          // poster = lead photo (no black flash on load); preload=auto fully buffers
+          // the compressed clip so the loop restart is seamless
+          <video
+            src={project.videoUrl}
+            poster={heroImgUrl ?? undefined}
+            className="absolute inset-0 w-full h-full object-cover"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            controlsList="nodownload"
           />
-          <div className="absolute inset-0 bg-black/30" />
-          <div className="absolute inset-0 flex items-end p-8 md:p-16">
-            <div>
-              {category && (
-                <p className="text-white/70 text-[10px] font-[500] tracking-[0.25em] uppercase mb-2">
-                  {category}
-                </p>
-              )}
-              <h1 className="text-white text-[24px] md:text-[40px] font-[300] tracking-[0.15em] uppercase">
-                {project.title}
-              </h1>
-            </div>
+        ) : (
+          heroImgUrl && (
+            <Image src={heroImgUrl} alt={heroAlt} fill priority className="object-cover" sizes="100vw" />
+          )
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-black/20" />
+        <div className="absolute inset-0 flex items-end justify-center pb-14 md:pb-20 px-6">
+          <div className="text-center">
+            {project.categories?.[0] && (
+              <p className="text-white/60 text-[10px] font-[500] tracking-[0.3em] uppercase mb-3">
+                {project.categories[0]}
+              </p>
+            )}
+            <h1 className="text-white text-[28px] md:text-[52px] font-[300] tracking-[0.18em] uppercase leading-tight">
+              {project.title}
+            </h1>
+            {project.location && (
+              <p className="text-white/75 text-[11px] md:text-[13px] font-[400] tracking-[0.3em] uppercase mt-3">
+                {project.location}
+              </p>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Dossier bar ── */}
+      {(dossier.length > 0 || subtitle || allBadges.length > 0) && (
+        <section className="border-b border-gray-100 bg-white">
+          <div className="max-w-5xl mx-auto px-6 py-6 flex flex-col items-center gap-3">
+            {subtitle && (
+              <p className="text-[12px] font-[400] tracking-[0.22em] uppercase text-ink text-center">{subtitle}</p>
+            )}
+            {dossier.length > 0 && (
+              <div className="flex flex-wrap justify-center gap-x-10 gap-y-2">
+                {dossier.map((d) => (
+                  <p key={d.label} className="text-[11px] font-[300] tracking-[0.15em] uppercase text-muted">
+                    <span className="text-ink/50 mr-2">{d.label}</span>
+                    <span className="text-ink">{d.value}</span>
+                  </p>
+                ))}
+              </div>
+            )}
+            {allBadges.length > 0 && (
+              <div className="flex flex-wrap justify-center items-center gap-6 pt-2">
+                {allBadges.map((b, i) => (
+                  <Image
+                    key={i}
+                    src={urlFor(b).width(300).auto("format").url()}
+                    alt={b.alt || "Award"}
+                    width={150}
+                    height={130}
+                    className="h-16 w-auto object-contain opacity-90"
+                  />
+                ))}
+              </div>
+            )}
           </div>
         </section>
       )}
 
-      {/* ── Content ── */}
-      <section className="px-6 py-16 max-w-3xl mx-auto">
-        {!heroUrl && (
-          <h1 className="text-[24px] md:text-[36px] font-[300] tracking-[0.15em] uppercase text-ink mb-8">
-            {project.title}
-          </h1>
-        )}
+      {/* ── Editorial body: story, pull-quote, before/after slider, inline photos ── */}
+      <section className="px-6 py-16 md:py-20 bg-white">
+        <div className="max-w-3xl mx-auto">
+          {/* when the video takes the hero, the WP lead photo opens the body (same img, same alt) */}
+          {isMp4 && heroImgUrl && (
+            <Image
+              src={heroImgUrl}
+              alt={heroAlt}
+              width={1400}
+              height={930}
+              priority
+              className="w-full h-auto mb-12"
+              sizes="(max-width: 768px) 100vw, 768px"
+            />
+          )}
 
-        {project.description && project.description.length > 0 && (
-          <div className="prose prose-sm max-w-none text-muted font-[300] tracking-[0.05em] leading-relaxed">
-            {project.description.map((block, i) => {
-              if (block._type === "block" && block.children) {
-                const text = block.children.map((c) => c.text).join("");
-                return text ? <p key={i}>{text}</p> : null;
-              }
-              return null;
-            })}
-          </div>
-        )}
+          {staged.map((s, i) => {
+            switch (s.kind) {
+              case "story":
+                return (
+                  <p key={i} className="text-[15px] leading-[2] font-[300] tracking-[0.03em] text-muted my-6">
+                    {rich(s.block, s.text)}
+                  </p>
+                );
+              case "quote":
+                return (
+                  <blockquote key={i} className="my-14 text-center">
+                    <p className="text-[20px] md:text-[26px] font-[300] italic leading-relaxed tracking-[0.04em] text-ink max-w-2xl mx-auto">
+                      {rich(s.block, s.text)}
+                    </p>
+                    <div className="w-10 h-px bg-ink/30 mx-auto mt-8" />
+                  </blockquote>
+                );
+              case "slider":
+                return (
+                  <div key={i} className="my-14 -mx-6 md:mx-0">
+                    <p className="text-center text-[12px] font-[500] tracking-[0.28em] uppercase text-ink mb-6">
+                      {s.label}
+                    </p>
+                    <BeforeAfterSlider
+                      beforeUrl={urlFor(s.before).width(1600).auto("format").url()}
+                      afterUrl={urlFor(s.after).width(1600).auto("format").url()}
+                      beforeAlt={s.before.alt || `${project.title} — before`}
+                      afterAlt={s.after.alt || `${project.title} — after`}
+                      afterLabel={s.afterLabel}
+                    />
+                    <p className="text-center text-[10px] font-[300] tracking-[0.2em] uppercase text-muted mt-4">
+                      Drag to compare
+                    </p>
+                  </div>
+                );
+              case "tada":
+                return (
+                  <div key={i} className="my-14 flex items-center justify-center gap-6">
+                    <div className="h-px flex-1 bg-ink/10" />
+                    <p className="text-[16px] md:text-[20px] font-[300] tracking-[0.4em] uppercase text-ink">
+                      {s.text}
+                    </p>
+                    <div className="h-px flex-1 bg-ink/10" />
+                  </div>
+                );
+              case "label":
+                return (
+                  <p key={i} className="text-center text-[12px] font-[500] tracking-[0.28em] uppercase text-ink my-10">
+                    {rich(s.block, s.text)}
+                  </p>
+                );
+              case "galleryGrid":
+                // inline gallery under its own label (e.g. Neighbor A / neighbor b)
+                return (
+                  <div key={i} className="my-10">
+                    <LightboxGallery
+                      compact
+                      title={project.title}
+                      offset={gridOffsets.get(s) ?? 0}
+                      total={photoAcc}
+                      images={s.images.map((img, k) => ({
+                        thumbUrl: urlFor(img).width(900).auto("format").url(),
+                        fullUrl: urlFor(img).width(2000).auto("format").url(),
+                        alt: img.alt || `${project.title} — photo ${k + 1}`,
+                        ...sized(img.dim, 900),
+                      }))}
+                    />
+                  </div>
+                );
+              case "imageRow":
+                // desktop: one row; phone: stacked
+                return (
+                  <div key={i} className="my-12 -mx-6 md:mx-0">
+                    {s.label && (
+                      <p className="text-center text-[12px] font-[500] tracking-[0.28em] uppercase text-ink mb-6">
+                        {s.label}
+                      </p>
+                    )}
+                    <div className={`grid grid-cols-1 gap-3 px-6 md:px-0 ${s.images.length === 2 ? "md:grid-cols-2" : "md:grid-cols-3"}`}>
+                      {s.images.map((img, k) => (
+                        <Image
+                          key={k}
+                          src={urlFor(img).width(800).auto("format").url()}
+                          alt={img.alt || project.title}
+                          width={800}
+                          height={533}
+                          className="w-full h-full object-cover"
+                          sizes="(max-width: 768px) 100vw, 33vw"
+                        />
+                      ))}
+                    </div>
+                  </div>
+                );
+              case "image":
+                return (
+                  <Image
+                    key={i}
+                    src={urlFor(s.block).width(1400).auto("format").url()}
+                    alt={s.block.alt || project.title}
+                    {...sized(s.block.dim, 1400)}
+                    className="w-full h-auto my-10"
+                    sizes="(max-width: 768px) 100vw, 768px"
+                  />
+                );
+            }
+          })}
+        </div>
       </section>
 
-      {/* ── Video ── */}
-      {project.videoUrl && (
+      {/* ── Non-mp4 video embeds (Vimeo/YouTube) keep their section ── */}
+      {project.videoUrl && !isMp4 && (
         <section className="px-4 md:px-6 pb-10 bg-white">
           <div className="max-w-[1100px] mx-auto">
             <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
@@ -172,87 +494,56 @@ export default async function PortfolioProjectPage({
         </section>
       )}
 
-      {/* ── Gallery ── */}
-      {project.gallery && project.gallery.length > 0 && (
-        <section className="px-4 md:px-6 pb-20 bg-white">
-          <div className="max-w-[1400px] mx-auto columns-1 md:columns-2 lg:columns-3 gap-3 space-y-3">
-            {project.gallery.map((img, i) => {
-              const url = urlFor(img).width(900).auto("format").url();
-              return (
-                <div key={i} className="break-inside-avoid overflow-hidden">
-                  <Image
-                    src={url}
-                    alt={`${project.title} — photo ${i + 1}`}
-                    width={900}
-                    height={600}
-                    loading={i < 3 ? "eager" : "lazy"}
-                    className="w-full h-auto object-cover"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                  />
-                </div>
-              );
-            })}
-          </div>
+      {/* ── Gallery: same photos, same order, same alts — now with lightbox ── */}
+      {galleryImages.length > 0 && (
+        <section className="px-4 md:px-6 pb-16 bg-white">
+          <LightboxGallery images={galleryImages} title={project.title} />
         </section>
       )}
 
-      {/* ── Designer Attribution ── */}
-      {project.designerName && project.designerName !== "Mom's Design Build" && (
-        <section className="px-6 py-8 bg-white border-t border-gray-100">
+      {/* ── More Projects — their site ends every project with a grid of others ── */}
+      {related.length > 0 && (
+        <section className="px-4 md:px-6 py-16 bg-white border-t border-gray-100">
           <div className="max-w-[1400px] mx-auto">
-            <p className="text-[12px] font-[300] tracking-[0.1em] text-muted">
-              Designed by{" "}
-              {project.designerSlug ? (
+            <div className="flex items-end justify-between mb-8 px-2">
+              <h2 className="text-[14px] md:text-[16px] font-[400] tracking-[0.25em] uppercase text-ink">
+                More Projects
+              </h2>
+              <Link
+                href="/portfolio"
+                className="text-[10px] font-[500] tracking-[0.2em] uppercase text-muted hover:text-ink transition-colors"
+              >
+                View All →
+              </Link>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              {related.map((p) => (
                 <Link
-                  href={`/team/${project.designerSlug}`}
-                  className="text-ink hover:underline"
+                  key={p.slug.current}
+                  href={`/portfolio/${p.slug.current}`}
+                  className="group relative block aspect-[4/3] overflow-hidden bg-gray-100"
                 >
-                  {project.designerName}
+                  {p.heroImage && (
+                    <Image
+                      src={urlFor(p.heroImage).width(600).height(450).auto("format").url()}
+                      alt={p.title}
+                      fill
+                      loading="lazy"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-width: 768px) 50vw, 25vw"
+                    />
+                  )}
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-3">
+                    <p className="text-white text-[11px] font-[400] tracking-[0.18em] uppercase text-center">
+                      {p.title}
+                    </p>
+                  </div>
                 </Link>
-              ) : (
-                <span className="text-ink">{project.designerName}</span>
-              )}{" "}
-              of Mom&apos;s Design Build
-            </p>
+              ))}
+            </div>
           </div>
         </section>
       )}
-
-      {/* ── Navigation ── */}
-      <nav className="border-t border-gray-100 px-6 py-10">
-        <div className="max-w-[1400px] mx-auto flex items-center justify-between gap-4">
-          {adjacent.prev ? (
-            <Link
-              href={`/portfolio/${adjacent.prev.slug.current}`}
-              className="group flex items-center gap-3 text-[11px] font-[400] tracking-[0.15em] uppercase text-muted hover:text-ink transition-colors"
-            >
-              <span className="text-[16px] transition-transform group-hover:-translate-x-1">←</span>
-              <span className="max-w-[180px] truncate">{adjacent.prev.title}</span>
-            </Link>
-          ) : (
-            <span />
-          )}
-
-          <Link
-            href="/portfolio"
-            className="text-[10px] font-[500] tracking-[0.2em] uppercase text-muted hover:text-ink transition-colors"
-          >
-            All Projects
-          </Link>
-
-          {adjacent.next ? (
-            <Link
-              href={`/portfolio/${adjacent.next.slug.current}`}
-              className="group flex items-center gap-3 text-[11px] font-[400] tracking-[0.15em] uppercase text-muted hover:text-ink transition-colors"
-            >
-              <span className="max-w-[180px] truncate text-right">{adjacent.next.title}</span>
-              <span className="text-[16px] transition-transform group-hover:translate-x-1">→</span>
-            </Link>
-          ) : (
-            <span />
-          )}
-        </div>
-      </nav>
 
       {/* ── CTA ── */}
       <section className="bg-[#f7f4ef] py-16 px-6 text-center">
@@ -260,7 +551,7 @@ export default async function PortfolioProjectPage({
           Start Your Project
         </h2>
         <p className="text-[13px] font-[300] tracking-[0.08em] text-muted mb-8 max-w-md mx-auto">
-          Ready to transform your outdoor or interior space? Let's talk.
+          Ready to transform your outdoor or interior space? Let&apos;s talk.
         </p>
         <Link
           href="/contact"
@@ -269,6 +560,7 @@ export default async function PortfolioProjectPage({
           Get in Touch
         </Link>
       </section>
+
     </>
   );
 }

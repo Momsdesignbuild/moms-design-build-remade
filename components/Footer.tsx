@@ -13,12 +13,11 @@ function HouzzIcon() {
     <svg
       width="18"
       height="18"
-      viewBox="0 0 64 64"
+      viewBox="0 0 24 24"
       fill="currentColor"
       aria-hidden="true"
     >
-      <path d="M48.1 34.4L32 26.6 15.9 34.4V64h14.3V48.4h3.6V64h14.3V34.4z" />
-      <path d="M15.9 0v27.1L48.1 11V0z" />
+      <path d="M1.27 0v24h8.244v-7.148h4.972V24h8.244V9.492L12.483 6.24V0H1.27z" />
     </svg>
   );
 }

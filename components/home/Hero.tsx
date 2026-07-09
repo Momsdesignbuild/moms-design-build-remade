@@ -103,7 +103,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.0, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="text-[2.75rem] sm:text-6xl md:text-7xl lg:text-[7rem] font-extrabold tracking-tight leading-none text-white uppercase"
+          className="text-[2.75rem] sm:text-6xl md:text-7xl lg:text-[7rem] font-[300] tracking-[0.02em] leading-none text-white uppercase"
         >
           Build Your Legacy
         </motion.h1>
@@ -115,17 +115,20 @@ export default function Hero() {
           transition={{ duration: 1.0, delay: 1.4, ease: 'easeOut' }}
           className="mt-10 md:mt-12 flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <Link
-            href="/portfolio"
-            className="w-full sm:w-auto px-8 py-4 bg-brand text-white text-xs font-bold tracking-widest uppercase hover:bg-brand-dark transition-all duration-200 active:scale-[0.98] text-center"
-          >
-            View Our Work
-          </Link>
+          {/* Owen (July 8 meeting): "we want people to start a project more
+              than view our work" — Start a Project is the primary (brand) CTA,
+              View Our Work is secondary. */}
           <Link
             href="/contact"
-            className="w-full sm:w-auto px-8 py-4 border border-white/40 text-white/80 text-xs font-semibold tracking-widest uppercase hover:border-white hover:text-white transition-all duration-200 active:scale-[0.98] text-center"
+            className="w-full sm:w-auto px-8 py-4 bg-brand text-white text-xs font-bold tracking-widest uppercase hover:bg-brand-dark transition-all duration-200 active:scale-[0.98] text-center"
           >
             Start a Project
+          </Link>
+          <Link
+            href="/portfolio"
+            className="w-full sm:w-auto px-8 py-4 bg-white text-ink text-xs font-semibold tracking-widest uppercase hover:bg-white/90 transition-all duration-200 active:scale-[0.98] text-center"
+          >
+            View Our Work
           </Link>
         </motion.div>
       </div>

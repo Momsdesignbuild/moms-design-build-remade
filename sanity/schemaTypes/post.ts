@@ -15,6 +15,8 @@ export default defineType({
     defineField({ name: 'publishedAt', title: 'Published At', type: 'datetime' }),
     defineField({ name: 'categories', title: 'Categories', type: 'array', of: [{ type: 'string' }] }),
     defineField({ name: 'author', title: 'Author', type: 'reference', to: [{ type: 'teamMember' }] }),
+    defineField({ name: 'sourceUrl', title: 'Original WP URL', type: 'string', readOnly: true }),
+    defineField({ name: 'jsonLd', title: 'Yoast JSON-LD (verbatim from WP)', type: 'text', rows: 4, readOnly: true }),
   ],
   preview: {
     select: { title: 'title', media: 'heroImage' },

@@ -1,11 +1,23 @@
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
+import localFont from "next/font/local";
+import { draftMode } from "next/headers";
+import { VisualEditing } from "next-sanity/visual-editing";
+import { SanityLive } from "@/sanity/lib/live";
 import "./globals.css";
 
-const outfit = Outfit({
-  variable: "--font-outfit",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+// MDB style guide (Jim, July 8 meeting): Futura PT for headings, Proxima Nova
+// for body — the EXACT self-hosted files their WP site serves (from the mirror).
+const proximaNova = localFont({
+  src: [
+    { path: "../public/fonts/proxima-nova_light.woff2", weight: "300", style: "normal" },
+    { path: "../public/fonts/ProximaNova-Semibold.woff2", weight: "600", style: "normal" },
+  ],
+  variable: "--font-body",
+  display: "swap",
+});
+const futuraPT = localFont({
+  src: [{ path: "../public/fonts/futura-pt_light.woff2", weight: "300", style: "normal" }],
+  variable: "--font-heading",
   display: "swap",
 });
 
@@ -64,7 +76,7 @@ const schema = {
       url: "https://momsdesignbuild.com",
       description:
         "Minnesota's most award-winning design-build firm specializing in landscape architecture, interior design & remodeling, fine gardening, and commercial maintenance.",
-      telephone: "952-377-6667",
+      telephone: "952-277-6667",
       email: "hello@momsdesignbuild.com",
       address: {
         "@type": "PostalAddress",
@@ -89,7 +101,7 @@ const schema = {
       ],
       priceRange: "$$$",
       image: OG_IMAGE,
-      logo: "https://cdn.sanity.io/images/wavk40jo/production/97ace4cc39b91a89ff41889263269dd8b690ad4e-220x53.png",
+      logo: "https://cdn.sanity.io/images/wavk40jo/production/8c90cd8a507f30403ce2194fa8a1a5eee1eaf1c1-1000x242.png",
       sameAs: [
         "https://www.instagram.com/momsdesignbuild",
         "https://www.facebook.com/momsdesignbuild",
@@ -108,20 +120,24 @@ const schema = {
   ],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={outfit.variable}>
+    <html lang="en" className={`${proximaNova.variable} ${futuraPT.variable}`}>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
       </head>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        {children}
+        <SanityLive />
+        {(await draftMode()).isEnabled && <VisualEditing />}
+      </body>
     </html>
   );
 }
