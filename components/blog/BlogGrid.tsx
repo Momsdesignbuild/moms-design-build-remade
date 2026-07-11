@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { stegaClean } from '@sanity/client/stega'
 import { motion, type Variants } from 'framer-motion'
 
 export interface BlogCard {
@@ -23,10 +24,15 @@ const itemVariants: Variants = {
 const PAGE = 24
 
 /** editorial card grid with incremental Load More (205 posts — DOM stays sane) */
-export default function BlogGrid({ cards }: { cards: BlogCard[] }) {
+export default function BlogGrid({ cards: cardsRaw }: { cards: BlogCard[] }) {
   const [shown, setShown] = useState(PAGE)
   const [query, setQuery] = useState('')
   const [cat, setCat] = useState<string | null>(null)
+
+  // In draft mode (Studio preview) stega watermarks every string PER SOURCE
+  // DOCUMENT — 205 posts' identical category names become 205 distinct keys
+  // and the pill dedupe explodes (July 11). Clean categories before counting.
+  const cards = cardsRaw.map((c) => ({ ...c, categories: (c.categories ?? []).map((k) => stegaClean(k)) }))
 
   // category pills, largest first (their real Yoast categories)
   const counts = new Map<string, number>()

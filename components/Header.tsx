@@ -51,7 +51,8 @@ export default function Header() {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileDropdown, setMobileDropdown] = useState<string | null>(null);
   const pathname = usePathname();
-  const transparent = pathname === "/" && !scrolled;
+  const isHome = pathname === "/";
+  const transparent = isHome && !scrolled;
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 80);
@@ -70,7 +71,10 @@ export default function Header() {
 
   return (
     <motion.header
-      initial={{ y: -80, opacity: 0 }}
+      // Homepage: NO entrance swing (Josh, July 11) — the slide-in read as a
+      // black bar settling over the hero. Transparent nav is simply present
+      // from first paint; scroll flips it to the normal white header.
+      initial={isHome ? false : { y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${

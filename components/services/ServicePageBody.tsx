@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { stegaClean } from "next-sanity";
 import { CARD_SETS } from "./serviceCards";
 
 /* Renders a servicePage doc's portable-text body with one of the FOUR
@@ -452,16 +453,22 @@ function PortalBody({ blocks }: { blocks: BodyBlock[] }) {
 }
 
 export default function ServicePageBody({
-  template,
+  template: templateRaw,
   body,
-  cardsSet,
-  divisionLogoUrl,
+  cardsSet: cardsSetRaw,
+  divisionLogoUrl: divisionLogoUrlRaw,
 }: {
   template: ServiceTemplate;
   body: BodyBlock[];
   cardsSet?: string;
   divisionLogoUrl?: string;
 }) {
+  // In draft mode (Studio Presentation), stega watermarks string values with
+  // invisible characters — clean anything used as a comparison/lookup key or
+  // a URL, or the card grids vanish for logged-in editors.
+  const template = stegaClean(templateRaw) as ServiceTemplate;
+  const cardsSet = stegaClean(cardsSetRaw);
+  const divisionLogoUrl = stegaClean(divisionLogoUrlRaw);
   if (template === "portal") return <PortalBody blocks={body} />;
   if (template === "hub")
     return <HubBody blocks={body} cardsSet={cardsSet} cardsLayout="flex" />;

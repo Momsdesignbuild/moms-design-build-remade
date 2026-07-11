@@ -12,10 +12,17 @@ export const { sanityFetch, SanityLive } = defineLive({
     stega: {
       studioUrl: '/studio',
       filter: (props) => {
-        // SEO clone payloads are rendered raw into <script>/<link> tags —
-        // stega's invisible characters must never touch them.
-        const last = props.sourcePath.at(-1)
-        if (last === 'jsonLd' || last === 'sourceUrl' || last === 'canonical') return false
+        // Never stega-tag mechanical fields: SEO clone payloads rendered raw
+        // into <script>/<link> tags, and values the code COMPARES or uses as
+        // lookup keys (template/cardsSet — invisible chars broke the service
+        // card grids in draft mode, July 11).
+        const MECHANICAL = new Set([
+          'jsonLd', 'sourceUrl', 'canonical', 'template', 'cardsSet',
+          'divisionLogoUrl', 'href', 'style', 'listItem', 'ogImageUrl',
+          'ogImageType', 'slug', 'current', 'url',
+        ])
+        const last = String(props.sourcePath.at(-1))
+        if (MECHANICAL.has(last)) return false
         return props.filterDefault(props)
       },
     },
