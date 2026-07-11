@@ -2,6 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
+    // 90 is the portfolio hero tier — full-bleed photography; 75 everywhere else
+    qualities: [75, 90],
     remotePatterns: [
       {
         protocol: "https",

@@ -247,7 +247,12 @@ export default async function PortfolioProjectPage({
   const isMp4 = !!project.videoUrl?.endsWith(".mp4");
   const heroSource = project.leadImage ?? project.heroImage;
   const heroAlt = project.leadImage?.alt || project.title;
+  // hero ships through ONE encoder, not two: next/image gets the untouched
+  // original (Sanity would pre-compress at q75, then Vercel re-encodes — two
+  // lossy generations made every hero soft). Poster keeps the baked CDN URL
+  // since <video poster> bypasses next/image.
   const heroImgUrl = heroSource ? urlFor(heroSource).width(2000).auto("format").url() : null;
+  const heroRawUrl = heroSource ? urlFor(heroSource).url() : null;
 
   // award graphics found inside the WP gallery (pixel-detected at enrich time)
   // render with the dossier badges, not among project photos
@@ -293,8 +298,8 @@ export default async function PortfolioProjectPage({
             controlsList="nodownload"
           />
         ) : (
-          heroImgUrl && (
-            <Image src={heroImgUrl} alt={heroAlt} fill priority className="object-cover" sizes="100vw" />
+          heroRawUrl && (
+            <Image src={heroRawUrl!} alt={heroAlt} fill priority quality={90} className="object-cover" sizes="100vw" />
           )
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-black/20" />
