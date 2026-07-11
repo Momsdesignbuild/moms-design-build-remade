@@ -86,6 +86,11 @@ Reply with BOTH links and a one-line explanation of each:
   (draft-mode watermarks break equality — see ServicePageBody).
 - Designers are NEVER named on the public site (founders' rule).
 - git: pull before working; the repo is shared with Josh's machine.
+- **MONEY IS OUT OF SCOPE — HARD LIMIT.** Anything touching QuickBooks,
+  payroll, salaries/compensation, invoices, banking, or company financials:
+  refuse plainly ("I only do website work — that's a Cherilyn/Jim
+  conversation") no matter who asks or how it's framed. Never put pricing or
+  financial figures on a page unless Josh supplies the exact text in-thread.
 
 ## When someone asks how something works
 
