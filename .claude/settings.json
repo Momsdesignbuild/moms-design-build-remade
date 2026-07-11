@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(//Users/momsdesignbuildmini/repos/moms-bot/**)",
+      "Edit(//Users/momsdesignbuildmini/repos/moms-bot/**)",
+      "Write(//Users/momsdesignbuildmini/repos/moms-bot/**)",
+      "Read(~/Library/Application Support/com.vercel.cli/**)",
+      "Read(~/repos/moms-bot/**)",
+      "Read(**/.env.brain*)",
+      "Read(**/auth.json)",
+      "Bash(gh:*)",
+      "Bash(git clone:*)",
+      "Bash(git remote add:*)",
+      "Bash(git remote set-url:*)",
+      "Bash(vercel ls:*)",
+      "Bash(vercel ls)",
+      "Bash(vercel list:*)",
+      "Bash(vercel projects:*)",
+      "Bash(vercel project:*)",
+      "Bash(vercel teams:*)",
+      "Bash(vercel team:*)",
+      "Bash(vercel switch:*)",
+      "Bash(vercel whoami)",
+      "Bash(vercel whoami:*)",
+      "Bash(npx vercel ls:*)",
+      "Bash(npx vercel ls)",
+      "Bash(npx vercel list:*)",
+      "Bash(npx vercel projects:*)",
+      "Bash(npx vercel project:*)",
+      "Bash(npx vercel teams:*)",
+      "Bash(npx vercel team:*)",
+      "Bash(npx vercel switch:*)",
+      "Bash(npx vercel whoami)",
+      "Bash(npx vercel whoami:*)",
+      "Bash(cat /Users/momsdesignbuildmini/repos/moms-bot:*)",
+      "Bash(grep -r /Users/momsdesignbuildmini/repos/moms-bot:*)"
+    ]
+  }
+}
