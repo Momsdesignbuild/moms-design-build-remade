@@ -1,7 +1,7 @@
 ---
 title: "Services"
 type: page
-status: live-unaudited
+status: live-verified
 wp_url: https://momsdesignbuild.com/services/
 canonical: https://momsdesignbuild.com/services/
 photos: 4
@@ -10,7 +10,7 @@ words: 638
 ---
 # Services
 
-**Status:** `live-unaudited` — June-era root services hub renders content; not part of the 45/45 services migration receipts. SEO head not yet byte-audited.
+**Status:** `live-verified` — SEO head audited vs LIVE July 13: title/meta-desc/canonical decoded-equal + page JSON-LD byte-identical, 6/6 images 200. June-era hub design kept.
 
 **Meta title:** Landscaping & Home Remodeling in Minnesota - Mom's Design Build Services
 **Meta description:** Mom's Design Build offers luxury landscape architecture and design, interior design and remodeling, & Fine Gardening in MN. Contact us today!
