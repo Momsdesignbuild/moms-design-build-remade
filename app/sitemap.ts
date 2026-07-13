@@ -32,7 +32,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: Date,
     changeFrequency: "weekly" | "monthly",
     priority: number
-  ) => ({ url: BASE_URL + path, lastModified, changeFrequency, priority });
+    // trailing slash matches every page's canonical (copied from WP) — GSC
+    // treats /x and /x/ as distinct URLs, so the sitemap must advertise the
+    // canonical form
+  ) => ({ url: BASE_URL + (path.endsWith("/") ? path : path + "/"), lastModified, changeFrequency, priority });
 
   const now = new Date();
   const statics: MetadataRoute.Sitemap = [
