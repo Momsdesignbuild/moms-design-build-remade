@@ -15,8 +15,13 @@ words: 1351
 **Meta title:** Design Spotlight: Outdoor Escape - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/design-spotlight-outdoor-escape
-**Theirs:** https://momsdesignbuild.com/design-spotlight-outdoor-escape/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/design-spotlight-outdoor-escape/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/design-spotlight-outdoor-escape |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/design-spotlight-outdoor-escape |
 
 Section: [[Blog]]
 

@@ -8,6 +8,7 @@ photos: 29
 inline_images: 0
 words: 501
 grid_order: 25
+remastered_notes: deck-backed
 ---
 # Mediterranean Meets Minnesota
 
@@ -16,8 +17,15 @@ grid_order: 25
 **Meta title:** Mom's Design Build-Prior Lake triple-deck pergola system renovation with patio, porch, and deck
 **Meta description:** Minnesota deck, porch, and patio renovation with glass panel railings, a cedar pergola, swings, fireplace, mounted lights, exterior seating, natural stone, glass garage, metal railings, ipe, limestone retaining wall
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/mediterranean-meets-minnesota
-**Theirs:** https://momsdesignbuild.com/portfolio/mediterranean-meets-minnesota/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/mediterranean-meets-minnesota/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/mediterranean-meets-minnesota |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/mediterranean-meets-minnesota |
+
+**Remastered Design Notes:** ✅ 📁 deck-backed (designer award narrative) · 📖 story
 
 Section: [[Portfolio]]
 

@@ -15,8 +15,13 @@ words: 737
 **Meta title:** Award-Winning Landscape Design & Architecture For Minnetonka Area Homes
 **Meta description:** (952) 277-6667 - The award-winning designers at Mom's Design Build is pleased to provide its landscape architecture service to homes in the Minnetonka area.
 
-**Ours:** https://moms-design-build-remade.vercel.app/services/landscape-architecture/minnetonka
-**Theirs:** https://momsdesignbuild.com/services/landscape-architecture/minnetonka/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/services/landscape-architecture/minnetonka/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/services/landscape-architecture/minnetonka |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/services/landscape-architecture/minnetonka |
 
 Section: [[Pages]]
 

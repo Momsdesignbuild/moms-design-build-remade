@@ -15,7 +15,12 @@ words: 1506
 **Meta title:** Why You Need Sculptures In Your MN Yard - Mom's Design Build
 **Meta description:** Mom's Design Build knows that yard sculpture can tie everything together and give your space an artistic touch. Learn more adding yard sculptures today
 
-**Ours:** https://moms-design-build-remade.vercel.app/how-sculptures-bring-your-landscape-to-life
-**Theirs:** https://momsdesignbuild.com/how-sculptures-bring-your-landscape-to-life/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/how-sculptures-bring-your-landscape-to-life/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/how-sculptures-bring-your-landscape-to-life |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/how-sculptures-bring-your-landscape-to-life |
 
 Section: [[Blog]]

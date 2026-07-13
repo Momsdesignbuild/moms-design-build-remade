@@ -15,7 +15,12 @@ words: 593
 **Meta title:** Techny Relief - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/techny-relief
-**Theirs:** https://momsdesignbuild.com/techny-relief/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/techny-relief/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/techny-relief |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/techny-relief |
 
 Section: [[Blog]]

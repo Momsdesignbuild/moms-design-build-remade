@@ -8,6 +8,7 @@ photos: 11
 inline_images: 0
 words: 624
 grid_order: 49
+remastered_notes: deck-backed
 ---
 # Lakeside Living
 
@@ -16,8 +17,15 @@ grid_order: 49
 **Meta title:** Mom's Design Build - Four-Season Lakeside Lounging and Dining
 **Meta description:** A four-season patio with a view of Lake Minnetonka in Orono, MN. The renovation features exterior lounging and dining with a gas fire pit and appliances.
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/lakeside-living
-**Theirs:** https://momsdesignbuild.com/portfolio/lakeside-living/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/lakeside-living/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/lakeside-living |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/lakeside-living |
+
+**Remastered Design Notes:** ✅ 📁 deck-backed (designer award narrative) · 📖 story
 
 Section: [[Portfolio]]
 

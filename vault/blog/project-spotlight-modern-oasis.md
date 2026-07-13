@@ -15,8 +15,13 @@ words: 1243
 **Meta title:** Backyard Modern Oasis Makeover With Moms Design & Build Team
 **Meta description:** Learn how we helped our client create a beautiful, functional & low maintenance space in their backyard. Read more about our design and landscaping process here.
 
-**Ours:** https://moms-design-build-remade.vercel.app/project-spotlight-modern-oasis
-**Theirs:** https://momsdesignbuild.com/project-spotlight-modern-oasis/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/project-spotlight-modern-oasis/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/project-spotlight-modern-oasis |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/project-spotlight-modern-oasis |
 
 Section: [[Blog]]
 

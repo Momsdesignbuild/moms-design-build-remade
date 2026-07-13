@@ -15,8 +15,13 @@ words: 1105
 **Meta title:** Outdoor Modern Durable Pergola For Outdoor Home Design
 **Meta description:** Built to withhold the power of a hurricane or the heavy, Minnesota snow, StruXure Outdoor Pergolas are the perfect edition to your backyard. Learn more!
 
-**Ours:** https://moms-design-build-remade.vercel.app/bring-the-indoors-out-with-this-product-we-love-struxure-outdoor
-**Theirs:** https://momsdesignbuild.com/bring-the-indoors-out-with-this-product-we-love-struxure-outdoor/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/bring-the-indoors-out-with-this-product-we-love-struxure-outdoor/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/bring-the-indoors-out-with-this-product-we-love-struxure-outdoor |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/bring-the-indoors-out-with-this-product-we-love-struxure-outdoor |
 
 Section: [[Blog]]
 

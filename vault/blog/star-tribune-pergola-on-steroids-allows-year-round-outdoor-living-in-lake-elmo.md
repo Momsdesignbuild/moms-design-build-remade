@@ -15,7 +15,12 @@ words: 735
 **Meta title:** Star Tribune: Pergola on steroids allows year-round outdoor living in Lake Elmo - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/star-tribune-pergola-on-steroids-allows-year-round-outdoor-living-in-lake-elmo
-**Theirs:** https://momsdesignbuild.com/star-tribune-pergola-on-steroids-allows-year-round-outdoor-living-in-lake-elmo/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/star-tribune-pergola-on-steroids-allows-year-round-outdoor-living-in-lake-elmo/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/star-tribune-pergola-on-steroids-allows-year-round-outdoor-living-in-lake-elmo |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/star-tribune-pergola-on-steroids-allows-year-round-outdoor-living-in-lake-elmo |
 
 Section: [[Blog]]

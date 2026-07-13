@@ -15,7 +15,12 @@ words: 1416
 **Meta title:** It's Alive! - Planting a Living Privacy Fence - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/its-alive-planting-a-living-privacy-fence
-**Theirs:** https://momsdesignbuild.com/its-alive-planting-a-living-privacy-fence/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/its-alive-planting-a-living-privacy-fence/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/its-alive-planting-a-living-privacy-fence |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/its-alive-planting-a-living-privacy-fence |
 
 Section: [[Blog]]

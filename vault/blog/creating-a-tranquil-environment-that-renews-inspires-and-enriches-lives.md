@@ -15,8 +15,13 @@ words: 1266
 **Meta title:** Creating a Tranquil Environment that Renews, Inspires and Enriches Lives - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/creating-a-tranquil-environment-that-renews-inspires-and-enriches-lives
-**Theirs:** https://momsdesignbuild.com/creating-a-tranquil-environment-that-renews-inspires-and-enriches-lives/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/creating-a-tranquil-environment-that-renews-inspires-and-enriches-lives/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/creating-a-tranquil-environment-that-renews-inspires-and-enriches-lives |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/creating-a-tranquil-environment-that-renews-inspires-and-enriches-lives |
 
 Section: [[Blog]]
 

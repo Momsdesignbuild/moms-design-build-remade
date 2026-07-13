@@ -15,8 +15,13 @@ words: 1267
 **Meta title:** Experience Outdoor Living In A Lakeside Kitchen & Patio In MN
 **Meta description:** Have you dreamed of connecting your home’s interior & exterior living spaces? Contact Moms Design Build today for expert landscaping and remodeling in MN!
 
-**Ours:** https://moms-design-build-remade.vercel.app/project-spotlight-lakeside-living
-**Theirs:** https://momsdesignbuild.com/project-spotlight-lakeside-living/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/project-spotlight-lakeside-living/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/project-spotlight-lakeside-living |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/project-spotlight-lakeside-living |
 
 Section: [[Blog]]
 

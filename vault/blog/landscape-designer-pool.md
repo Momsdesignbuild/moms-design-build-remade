@@ -15,8 +15,13 @@ words: 2805
 **Meta title:** Why You NEED a Landscape Designer Before You Build That Pool - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/landscape-designer-pool
-**Theirs:** https://momsdesignbuild.com/landscape-designer-pool/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/landscape-designer-pool/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/landscape-designer-pool |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/landscape-designer-pool |
 
 Section: [[Blog]]
 

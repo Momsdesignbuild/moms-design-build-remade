@@ -15,7 +15,12 @@ words: 584
 **Meta title:** Turf Magazine: Minnesota Lakefront Resort - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/turf-magazine-minnesota-lakefront-resort
-**Theirs:** https://momsdesignbuild.com/turf-magazine-minnesota-lakefront-resort/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/turf-magazine-minnesota-lakefront-resort/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/turf-magazine-minnesota-lakefront-resort |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/turf-magazine-minnesota-lakefront-resort |
 
 Section: [[Blog]]

@@ -15,7 +15,12 @@ words: 605
 **Meta title:** HGTV: Warm, Coastal-Inspired Yard Draws Minnesota Family and Community Together - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/hgtv-warm-coastal-inspired-yard-draws-minnesota-family-and-community-together
-**Theirs:** https://momsdesignbuild.com/hgtv-warm-coastal-inspired-yard-draws-minnesota-family-and-community-together/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/hgtv-warm-coastal-inspired-yard-draws-minnesota-family-and-community-together/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/hgtv-warm-coastal-inspired-yard-draws-minnesota-family-and-community-together |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/hgtv-warm-coastal-inspired-yard-draws-minnesota-family-and-community-together |
 
 Section: [[Blog]]

@@ -8,6 +8,7 @@ photos: 13
 inline_images: 0
 words: 500
 grid_order: 48
+remastered_notes: none
 ---
 # Infinity & Beyond
 
@@ -16,8 +17,15 @@ grid_order: 48
 **Meta title:** Mom's Design Build-Lake Minnetonka Infinity Pool With Landscape Design and Architecture
 **Meta description:** "An outstanding landscape project on Lake Minnetonka featuring an infinity pool with water features, deck and patio renovation, paved walkways, landscape architecture, and the finest gardening"
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/infinity-beyond
-**Theirs:** https://momsdesignbuild.com/portfolio/infinity-beyond/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/infinity-beyond/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/infinity-beyond |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/infinity-beyond |
+
+**Remastered Design Notes:** ⬜ none yet (source too thin — needs a OneDrive dive)
 
 Section: [[Portfolio]]
 

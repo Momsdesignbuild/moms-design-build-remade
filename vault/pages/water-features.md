@@ -15,8 +15,13 @@ words: 1705
 **Meta title:** Custom Water Feature Design & Installation in Minnesota - Mom's Design Build
 **Meta description:** Mom's Design Build offers luxury design build services including custom outdoor water features for your home in Minnesota! Contact us today!
 
-**Ours:** https://moms-design-build-remade.vercel.app/services/landscape-architecture/water-features
-**Theirs:** https://momsdesignbuild.com/services/landscape-architecture/water-features/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/services/landscape-architecture/water-features/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/services/landscape-architecture/water-features |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/services/landscape-architecture/water-features |
 
 Section: [[Pages]]
 

@@ -15,7 +15,12 @@ words: 1581
 **Meta title:** Summer Food & Drink Pairings - Mom's Design Build
 **Meta description:** Mom's Design Build knows that as the long, sunny, summer days, high temps, and humidity roll in so do many seasonal foods. Explore seasonal food duos.
 
-**Ours:** https://moms-design-build-remade.vercel.app/summer-food-and-drink-pairings-5-in-season-food-and-drink-duos
-**Theirs:** https://momsdesignbuild.com/summer-food-and-drink-pairings-5-in-season-food-and-drink-duos/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/summer-food-and-drink-pairings-5-in-season-food-and-drink-duos/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/summer-food-and-drink-pairings-5-in-season-food-and-drink-duos |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/summer-food-and-drink-pairings-5-in-season-food-and-drink-duos |
 
 Section: [[Blog]]

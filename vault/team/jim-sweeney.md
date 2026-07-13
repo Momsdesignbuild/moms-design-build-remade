@@ -15,7 +15,12 @@ words: 574
 **Meta title:** JIM SWEENEY - Mom's Design Build
 **Meta description:** Jim Sweeney - Founder and CEO of Mom's Design Build, the most awarded Firm in MN - Landscape, Remodel, and Gardening in the Metro Area, MN
 
-**Ours:** https://moms-design-build-remade.vercel.app/team/jim-sweeney
-**Theirs:** https://momsdesignbuild.com/team/jim-sweeney/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/team/jim-sweeney/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/team/jim-sweeney |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/team/jim-sweeney |
 
 Section: [[Team]]

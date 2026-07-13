@@ -15,7 +15,12 @@ words: 661
 **Meta title:** Silver Fox - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/silver-fox
-**Theirs:** https://momsdesignbuild.com/silver-fox/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/silver-fox/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/silver-fox |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/silver-fox |
 
 Section: [[Blog]]

@@ -15,8 +15,13 @@ words: 1745
 **Meta title:** A Minnesota Home Brings the Infinity Pool Envy - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/a-minnesota-home-brings-the-infinity-pool-envy
-**Theirs:** https://momsdesignbuild.com/a-minnesota-home-brings-the-infinity-pool-envy/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/a-minnesota-home-brings-the-infinity-pool-envy/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/a-minnesota-home-brings-the-infinity-pool-envy |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/a-minnesota-home-brings-the-infinity-pool-envy |
 
 Section: [[Blog]]
 

@@ -15,7 +15,12 @@ words: 647
 **Meta title:** The rugged grass of the north - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/the-rugged-grass-of-the-north
-**Theirs:** https://momsdesignbuild.com/the-rugged-grass-of-the-north/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/the-rugged-grass-of-the-north/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/the-rugged-grass-of-the-north |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/the-rugged-grass-of-the-north |
 
 Section: [[Blog]]

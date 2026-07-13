@@ -15,7 +15,12 @@ words: 1149
 **Meta title:** A Designer Unlocks Luxury - And You Can Live There! - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/a-designer-unlocks-luxury-and-you-can-live-there
-**Theirs:** https://momsdesignbuild.com/a-designer-unlocks-luxury-and-you-can-live-there/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/a-designer-unlocks-luxury-and-you-can-live-there/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/a-designer-unlocks-luxury-and-you-can-live-there |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/a-designer-unlocks-luxury-and-you-can-live-there |
 
 Section: [[Blog]]

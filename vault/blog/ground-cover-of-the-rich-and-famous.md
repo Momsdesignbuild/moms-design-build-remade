@@ -15,7 +15,12 @@ words: 691
 **Meta title:** Ground Cover of the Rich and Famous - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/ground-cover-of-the-rich-and-famous
-**Theirs:** https://momsdesignbuild.com/ground-cover-of-the-rich-and-famous/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/ground-cover-of-the-rich-and-famous/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/ground-cover-of-the-rich-and-famous |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/ground-cover-of-the-rich-and-famous |
 
 Section: [[Blog]]

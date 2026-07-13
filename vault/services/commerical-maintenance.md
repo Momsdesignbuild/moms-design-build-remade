@@ -15,8 +15,13 @@ words: 1031
 **Meta title:** Mom's Commercial Maintenance - A Division of Mom's Design Build in Minnesota
 **Meta description:** Make a lasting first impression with proactive commercial property maintenance. Mom's Commercial Maintenance delivers customized plans, luxury-level service, and responsive support to keep your grounds clean, professional, and disruption-free year-round.
 
-**Ours:** https://moms-design-build-remade.vercel.app/services/commerical-maintenance
-**Theirs:** https://momsdesignbuild.com/services/commerical-maintenance/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/services/commerical-maintenance/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/services/commerical-maintenance |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/services/commerical-maintenance |
 
 Section: [[Services]]
 

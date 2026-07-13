@@ -15,8 +15,13 @@ words: 803
 **Meta title:** Turning Vision Into Award-Winning Design: Our National Remodeler of the Year Wins - Mom's Design Build
 **Meta description:** From state to national recognition, our Cedar & Stone and Cool California projects earned NARI National awards for standout landscape design.
 
-**Ours:** https://moms-design-build-remade.vercel.app/award-winning-designs
-**Theirs:** https://momsdesignbuild.com/award-winning-designs/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/award-winning-designs/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/award-winning-designs |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/award-winning-designs |
 
 Section: [[Blog]]
 

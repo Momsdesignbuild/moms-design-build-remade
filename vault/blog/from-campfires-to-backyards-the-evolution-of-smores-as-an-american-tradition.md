@@ -15,7 +15,12 @@ words: 1012
 **Meta title:** 3 Fun S'more Ideas To Try In Your Dream Backyard Fire Pit
 **Meta description:** We specialize in building fire pits for families to gather around & enjoy s’mores - tastefully. Read more for 3 fun s’more recipes & backyard fire pit ideas!
 
-**Ours:** https://moms-design-build-remade.vercel.app/from-campfires-to-backyards-the-evolution-of-smores-as-an-american-tradition
-**Theirs:** https://momsdesignbuild.com/from-campfires-to-backyards-the-evolution-of-smores-as-an-american-tradition/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/from-campfires-to-backyards-the-evolution-of-smores-as-an-american-tradition/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/from-campfires-to-backyards-the-evolution-of-smores-as-an-american-tradition |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/from-campfires-to-backyards-the-evolution-of-smores-as-an-american-tradition |
 
 Section: [[Blog]]

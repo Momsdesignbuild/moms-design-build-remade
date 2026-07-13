@@ -15,8 +15,13 @@ words: 1012
 **Meta title:** CONTROLLER & ADMINISTRATIVE DIRECTOR - Mom's Design Build
 **Meta description:** Join the team at Mom's Design Build as a Controller and Administrative Director today! Job opportunity in Shakopee, MN
 
-**Ours:** https://moms-design-build-remade.vercel.app/careers/controller-administrative-director-hiring-minnesota
-**Theirs:** https://momsdesignbuild.com/careers/controller-administrative-director-hiring-minnesota/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/careers/controller-administrative-director-hiring-minnesota/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/careers/controller-administrative-director-hiring-minnesota |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/careers/controller-administrative-director-hiring-minnesota |
 
 Section: [[Careers]]
 

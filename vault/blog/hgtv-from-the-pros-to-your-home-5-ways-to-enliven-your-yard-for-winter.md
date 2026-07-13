@@ -15,7 +15,12 @@ words: 662
 **Meta title:** HGTV: From the Pros to Your Home: 5 Ways to Enliven Your Yard for Winter - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/hgtv-from-the-pros-to-your-home-5-ways-to-enliven-your-yard-for-winter
-**Theirs:** https://momsdesignbuild.com/hgtv-from-the-pros-to-your-home-5-ways-to-enliven-your-yard-for-winter/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/hgtv-from-the-pros-to-your-home-5-ways-to-enliven-your-yard-for-winter/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/hgtv-from-the-pros-to-your-home-5-ways-to-enliven-your-yard-for-winter |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/hgtv-from-the-pros-to-your-home-5-ways-to-enliven-your-yard-for-winter |
 
 Section: [[Blog]]

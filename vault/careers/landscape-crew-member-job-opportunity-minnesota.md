@@ -15,8 +15,13 @@ words: 839
 **Meta title:** LANDSCAPE CREW MEMBER - Mom's Design Build
 **Meta description:** Join Mom’s Design Build as a Landscape Crew Member and help bring stunning outdoor spaces to life! Work alongside a skilled team installing beautiful hardscapes and plantings, grow your skills in a fast-paced environment, and build a career with a company that values craftsmanship, teamwork, and pride in every project.
 
-**Ours:** https://moms-design-build-remade.vercel.app/careers/landscape-crew-member-job-opportunity-minnesota
-**Theirs:** https://momsdesignbuild.com/careers/landscape-crew-member-job-opportunity-minnesota/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/careers/landscape-crew-member-job-opportunity-minnesota/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/careers/landscape-crew-member-job-opportunity-minnesota |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/careers/landscape-crew-member-job-opportunity-minnesota |
 
 Section: [[Careers]]
 

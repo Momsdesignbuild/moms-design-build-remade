@@ -15,7 +15,12 @@ words: 593
 **Meta title:** Evergold - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/evergold
-**Theirs:** https://momsdesignbuild.com/evergold/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/evergold/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/evergold |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/evergold |
 
 Section: [[Blog]]

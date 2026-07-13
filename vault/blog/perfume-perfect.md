@@ -15,7 +15,12 @@ words: 657
 **Meta title:** Perfume Perfect - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/perfume-perfect
-**Theirs:** https://momsdesignbuild.com/perfume-perfect/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/perfume-perfect/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/perfume-perfect |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/perfume-perfect |
 
 Section: [[Blog]]

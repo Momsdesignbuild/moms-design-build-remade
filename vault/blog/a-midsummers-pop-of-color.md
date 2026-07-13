@@ -15,7 +15,12 @@ words: 609
 **Meta title:** A Midsummer's Pop of Color - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/a-midsummers-pop-of-color
-**Theirs:** https://momsdesignbuild.com/a-midsummers-pop-of-color/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/a-midsummers-pop-of-color/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/a-midsummers-pop-of-color |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/a-midsummers-pop-of-color |
 
 Section: [[Blog]]

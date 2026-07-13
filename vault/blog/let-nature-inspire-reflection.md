@@ -15,7 +15,12 @@ words: 1399
 **Meta title:** Inspiration & Reflection From Nature - Mom's Design Build
 **Meta description:** Mom's Design Build reflects on how this water feature project not only added beauty to the landscape but also combine wonderful memories. Learn more today!
 
-**Ours:** https://moms-design-build-remade.vercel.app/let-nature-inspire-reflection
-**Theirs:** https://momsdesignbuild.com/let-nature-inspire-reflection/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/let-nature-inspire-reflection/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/let-nature-inspire-reflection |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/let-nature-inspire-reflection |
 
 Section: [[Blog]]

@@ -8,6 +8,7 @@ photos: 21
 inline_images: 0
 words: 679
 grid_order: 14
+remastered_notes: wp-copy
 ---
 # Serene Shores
 
@@ -16,8 +17,15 @@ grid_order: 14
 **Meta title:** Mom's Design Build-Award Winning Louvered Roof Landscape
 **Meta description:** "Lake Elmo, Minnesota award-winning roof landscaping project with contemporary landscape design. Professional landscape architecture, flower beds, modern fire pit, paved patio, garden bed, exterior dining"
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/serene-shores
-**Theirs:** https://momsdesignbuild.com/portfolio/serene-shores/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/serene-shores/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/serene-shores |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/serene-shores |
+
+**Remastered Design Notes:** ✅ 📰 grounded in WP published copy · 📖 story
 
 Section: [[Portfolio]]
 

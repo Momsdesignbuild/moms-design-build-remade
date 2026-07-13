@@ -15,8 +15,13 @@ words: 634
 **Meta title:** GENERAL APPLICATION - Mom's Design Build
 **Meta description:** Submit a General Application to Mom’s Design Build and explore career opportunities with a team passionate about craftsmanship, teamwork, and building exceptional outdoor spaces. Grow your skills and build your future with us!
 
-**Ours:** https://moms-design-build-remade.vercel.app/careers/general-application
-**Theirs:** https://momsdesignbuild.com/careers/general-application/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/careers/general-application/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/careers/general-application |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/careers/general-application |
 
 Section: [[Careers]]
 

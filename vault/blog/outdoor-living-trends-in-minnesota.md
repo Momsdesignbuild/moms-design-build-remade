@@ -15,8 +15,13 @@ words: 2046
 **Meta title:** Outdoor Living Trends: Transform Your Backyard into a Dream Escape - Mom's Design Build
 **Meta description:** Outdoor landscape design trends are always changing, but Heather Sweeney, Senior Landscape Designer at Mom's Design Build knows what trends are here to stay. Read more in our blog!
 
-**Ours:** https://moms-design-build-remade.vercel.app/outdoor-living-trends-in-minnesota
-**Theirs:** https://momsdesignbuild.com/outdoor-living-trends-in-minnesota/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/outdoor-living-trends-in-minnesota/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/outdoor-living-trends-in-minnesota |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/outdoor-living-trends-in-minnesota |
 
 Section: [[Blog]]
 

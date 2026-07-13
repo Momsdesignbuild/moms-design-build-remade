@@ -15,8 +15,13 @@ words: 998
 **Meta title:** Mom’s Takes 2017 National Contractor of the Year Triple Crown - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/moms-takes-2017-national-contractor-of-the-year-triple-crown
-**Theirs:** https://momsdesignbuild.com/moms-takes-2017-national-contractor-of-the-year-triple-crown/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/moms-takes-2017-national-contractor-of-the-year-triple-crown/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/moms-takes-2017-national-contractor-of-the-year-triple-crown |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/moms-takes-2017-national-contractor-of-the-year-triple-crown |
 
 Section: [[Blog]]
 

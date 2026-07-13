@@ -15,7 +15,12 @@ words: 1122
 **Meta title:** Bunny Prevention in the Garden - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/bunny-prevention-in-the-garden
-**Theirs:** https://momsdesignbuild.com/bunny-prevention-in-the-garden/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/bunny-prevention-in-the-garden/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/bunny-prevention-in-the-garden |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/bunny-prevention-in-the-garden |
 
 Section: [[Blog]]

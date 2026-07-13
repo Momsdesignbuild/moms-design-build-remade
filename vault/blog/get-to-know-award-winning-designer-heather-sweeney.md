@@ -15,8 +15,13 @@ words: 1056
 **Meta title:** Get To Know Award Winning Landscape Designer Heather Sweeney
 **Meta description:** Meet Heather Sweeney, our landscape architect & environmental designer at Mom's Design Build with a decade of expertise. Let Heather transform your dream designs into reality!
 
-**Ours:** https://moms-design-build-remade.vercel.app/get-to-know-award-winning-designer-heather-sweeney
-**Theirs:** https://momsdesignbuild.com/get-to-know-award-winning-designer-heather-sweeney/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/get-to-know-award-winning-designer-heather-sweeney/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/get-to-know-award-winning-designer-heather-sweeney |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/get-to-know-award-winning-designer-heather-sweeney |
 
 Section: [[Blog]]
 

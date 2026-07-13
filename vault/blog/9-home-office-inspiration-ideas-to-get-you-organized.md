@@ -15,8 +15,13 @@ words: 1732
 **Meta title:** 9 Home Office Inspiration Ideas to Get You Organized - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/9-home-office-inspiration-ideas-to-get-you-organized
-**Theirs:** https://momsdesignbuild.com/9-home-office-inspiration-ideas-to-get-you-organized/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/9-home-office-inspiration-ideas-to-get-you-organized/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/9-home-office-inspiration-ideas-to-get-you-organized |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/9-home-office-inspiration-ideas-to-get-you-organized |
 
 Section: [[Blog]]
 

@@ -15,8 +15,13 @@ words: 1324
 **Meta title:** Winter Planning Guide For Spring Landscape Projects In 2025
 **Meta description:** Plan your summer patio & backyard this winter and follow these four easy steps to transform your yard by the summer!
 
-**Ours:** https://moms-design-build-remade.vercel.app/winter-is-the-best-time-to-start-outdoor-projects-heres-why
-**Theirs:** https://momsdesignbuild.com/winter-is-the-best-time-to-start-outdoor-projects-heres-why/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/winter-is-the-best-time-to-start-outdoor-projects-heres-why/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/winter-is-the-best-time-to-start-outdoor-projects-heres-why |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/winter-is-the-best-time-to-start-outdoor-projects-heres-why |
 
 Section: [[Blog]]
 

@@ -15,7 +15,12 @@ words: 642
 **Meta title:** A Pine Worth Pining For - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/a-pine-worth-pining-for
-**Theirs:** https://momsdesignbuild.com/a-pine-worth-pining-for/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/a-pine-worth-pining-for/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/a-pine-worth-pining-for |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/a-pine-worth-pining-for |
 
 Section: [[Blog]]

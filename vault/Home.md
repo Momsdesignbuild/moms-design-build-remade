@@ -35,6 +35,10 @@ Custom cinematic design (deliberate departure from WP). Hero video, Service Offe
 - [[_notes/Open Questions]] — decisions parked with Josh/Jim/Owen
 - [[_notes/Studio Guide]] — plain-language editing guide for Summer (the bot teaches from it)
 
+## The remastered fork (the redesign skunkworks)
+Same SEO layer, new look — private repo `moms-design-build-remastered`, own Vercel project, robots blocked, reads the same Sanity read-only. **Live:** https://moms-design-build-remastered.vercel.app
+Homepage, portfolio grid + all 70 detail pages redesigned (Bria editorial × Apple motion). **Design Notes:** 53/70 projects (31 deck-backed from mined award submissions, 22 from WP copy). Every portfolio note in this vault shows the three sites side by side.
+
 ## Status legend
 `live-verified` = receipts passed vs their live site · `live-approved` = Josh eyeballed + signed off · `live-unaudited` = renders real content, SEO head not yet byte-checked · `todo` = not built
 

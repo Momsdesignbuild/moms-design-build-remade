@@ -15,7 +15,12 @@ words: 1326
 **Meta title:** Home & Landscape Design Process - Mom's Design Build Company
 **Meta description:** Mom's Design Build is with you throughout the whole design build process from consultation to a tour of your new space. Let's make your project a reality.
 
-**Ours:** https://moms-design-build-remade.vercel.app/process
-**Theirs:** https://momsdesignbuild.com/process/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/process/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/process |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/process |
 
 Section: [[Pages]]

@@ -15,7 +15,12 @@ words: 628
 **Meta title:** Yet Another Hosta? - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/yet-another-hosta
-**Theirs:** https://momsdesignbuild.com/yet-another-hosta/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/yet-another-hosta/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/yet-another-hosta |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/yet-another-hosta |
 
 Section: [[Blog]]

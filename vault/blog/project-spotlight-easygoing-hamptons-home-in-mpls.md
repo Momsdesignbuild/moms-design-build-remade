@@ -15,7 +15,12 @@ words: 1025
 **Meta title:** Project Spotlight: Easygoing Hamptons Home in MPLS - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/project-spotlight-easygoing-hamptons-home-in-mpls
-**Theirs:** https://momsdesignbuild.com/project-spotlight-easygoing-hamptons-home-in-mpls/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/project-spotlight-easygoing-hamptons-home-in-mpls/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/project-spotlight-easygoing-hamptons-home-in-mpls |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/project-spotlight-easygoing-hamptons-home-in-mpls |
 
 Section: [[Blog]]

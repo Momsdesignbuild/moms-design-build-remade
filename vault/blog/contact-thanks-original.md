@@ -15,4 +15,11 @@ words: 457
 **Meta title:** Contact - Thanks (Original) - Mom's Design Build
 **Meta description:** (none)
 
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/contact-thanks-original/ |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/contact-thanks-original |
+
 Section: [[Blog]]

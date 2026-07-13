@@ -15,7 +15,12 @@ words: 720
 **Meta title:** Pass the Mustard - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/pass-the-mustard
-**Theirs:** https://momsdesignbuild.com/pass-the-mustard/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/pass-the-mustard/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/pass-the-mustard |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/pass-the-mustard |
 
 Section: [[Blog]]

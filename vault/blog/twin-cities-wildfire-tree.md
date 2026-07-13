@@ -15,7 +15,12 @@ words: 652
 **Meta title:** Twin Cities Wildfire Tree - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/twin-cities-wildfire-tree
-**Theirs:** https://momsdesignbuild.com/twin-cities-wildfire-tree/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/twin-cities-wildfire-tree/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/twin-cities-wildfire-tree |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/twin-cities-wildfire-tree |
 
 Section: [[Blog]]

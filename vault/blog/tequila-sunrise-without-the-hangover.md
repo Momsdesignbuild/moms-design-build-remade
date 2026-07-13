@@ -15,7 +15,12 @@ words: 616
 **Meta title:** Tequila Sunrise without the Hangover - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/tequila-sunrise-without-the-hangover
-**Theirs:** https://momsdesignbuild.com/tequila-sunrise-without-the-hangover/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/tequila-sunrise-without-the-hangover/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/tequila-sunrise-without-the-hangover |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/tequila-sunrise-without-the-hangover |
 
 Section: [[Blog]]

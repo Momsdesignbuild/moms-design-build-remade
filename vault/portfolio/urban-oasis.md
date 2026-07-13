@@ -8,6 +8,7 @@ photos: 29
 inline_images: 0
 words: 706
 grid_order: 13
+remastered_notes: deck-backed
 ---
 # Urban Oasis
 
@@ -16,8 +17,15 @@ grid_order: 13
 **Meta title:** Mom's Design Build-Award Winning Louvered Roof Landscape
 **Meta description:** "Lake Elmo, Minnesota award-winning roof landscaping project with contemporary landscape design. Professional landscape architecture, flower beds, modern fire pit, paved patio, garden bed, exterior dining"
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/urban-oasis
-**Theirs:** https://momsdesignbuild.com/portfolio/urban-oasis/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/urban-oasis/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/urban-oasis |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/urban-oasis |
+
+**Remastered Design Notes:** ✅ 📁 deck-backed (designer award narrative) · 📖 story
 
 Section: [[Portfolio]]
 

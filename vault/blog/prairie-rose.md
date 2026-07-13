@@ -15,7 +15,12 @@ words: 645
 **Meta title:** Prairie Rose - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/prairie-rose
-**Theirs:** https://momsdesignbuild.com/prairie-rose/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/prairie-rose/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/prairie-rose |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/prairie-rose |
 
 Section: [[Blog]]

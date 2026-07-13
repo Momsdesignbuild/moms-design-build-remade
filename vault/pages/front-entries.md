@@ -15,8 +15,13 @@ words: 1181
 **Meta title:** Expert Front Entry Design & Build in Minnesota - Mom's Design Build
 **Meta description:** Mom's Design Build offers luxury design build services including custom home entryway landscape architecture & design for your home in MN
 
-**Ours:** https://moms-design-build-remade.vercel.app/services/landscape-architecture/front-entries
-**Theirs:** https://momsdesignbuild.com/services/landscape-architecture/front-entries/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/services/landscape-architecture/front-entries/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/services/landscape-architecture/front-entries |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/services/landscape-architecture/front-entries |
 
 Section: [[Pages]]
 

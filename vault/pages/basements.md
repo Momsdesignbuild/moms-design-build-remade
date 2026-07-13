@@ -15,7 +15,12 @@ words: 483
 **Meta title:** Basements - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/services/interior-design-and-remodeling/basements
-**Theirs:** https://momsdesignbuild.com/services/interior-design-and-remodeling/basements/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/services/interior-design-and-remodeling/basements/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/services/interior-design-and-remodeling/basements |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/services/interior-design-and-remodeling/basements |
 
 Section: [[Pages]]

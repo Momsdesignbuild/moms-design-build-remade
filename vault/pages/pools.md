@@ -15,8 +15,13 @@ words: 1678
 **Meta title:** Custom Pool Design & Installation in Minnesota - Mom's Design Build
 **Meta description:** Mom's Design Build offers luxury design build services including custom swimming pool design & installation home in Minnesota. Contact us today!
 
-**Ours:** https://moms-design-build-remade.vercel.app/services/landscape-architecture/pools
-**Theirs:** https://momsdesignbuild.com/services/landscape-architecture/pools/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/services/landscape-architecture/pools/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/services/landscape-architecture/pools |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/services/landscape-architecture/pools |
 
 Section: [[Pages]]
 

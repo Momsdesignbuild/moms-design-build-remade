@@ -15,7 +15,12 @@ words: 648
 **Meta title:** BRITTNEY UDENBERG - Mom's Design Build
 **Meta description:** Brittney Udenberg - Mom's Design Build Landscape Designer
 
-**Ours:** https://moms-design-build-remade.vercel.app/team/brittney-udenberg
-**Theirs:** https://momsdesignbuild.com/team/brittney-udenberg/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/team/brittney-udenberg/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/team/brittney-udenberg |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/team/brittney-udenberg |
 
 Section: [[Team]]

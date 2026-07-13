@@ -15,8 +15,13 @@ words: 1752
 **Meta title:** Creating The Ultimate Spacious MN Backyard With Mom's Design Build
 **Meta description:** Explore Mom's Design Build's transformation of a client's backyard into a purposeful space with a pool, game area, scenic fire pit, & lounging spots. Read more here.
 
-**Ours:** https://moms-design-build-remade.vercel.app/project-spotlight-terraced-paradise
-**Theirs:** https://momsdesignbuild.com/project-spotlight-terraced-paradise/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/project-spotlight-terraced-paradise/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/project-spotlight-terraced-paradise |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/project-spotlight-terraced-paradise |
 
 Section: [[Blog]]
 

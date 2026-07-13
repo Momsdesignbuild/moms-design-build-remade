@@ -8,6 +8,7 @@ photos: 25
 inline_images: 0
 words: 533
 grid_order: 45
+remastered_notes: deck-backed
 ---
 # COSTAL VIBE
 
@@ -16,8 +17,15 @@ grid_order: 45
 **Meta title:** COSTAL VIBE - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/cov-restaurant
-**Theirs:** https://momsdesignbuild.com/portfolio/cov-restaurant/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/cov-restaurant/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/cov-restaurant |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/cov-restaurant |
+
+**Remastered Design Notes:** ✅ 📁 deck-backed (designer award narrative) · 📖 story
 
 Section: [[Portfolio]]
 

@@ -8,6 +8,7 @@ photos: 19
 inline_images: 0
 words: 484
 grid_order: 35
+remastered_notes: none
 ---
 # Balanced Bathing
 
@@ -16,8 +17,15 @@ grid_order: 35
 **Meta title:** Mom's Design Build-Modern MN Full Bathroom Renovation
 **Meta description:** "Minnesota modern bathroom renovation with standing bathtub, walk-in shower, side table, plants, remodel"
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/balanced-bathing
-**Theirs:** https://momsdesignbuild.com/portfolio/balanced-bathing/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/balanced-bathing/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/balanced-bathing |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/balanced-bathing |
+
+**Remastered Design Notes:** ⬜ none yet (source too thin — needs a OneDrive dive)
 
 Section: [[Portfolio]]
 

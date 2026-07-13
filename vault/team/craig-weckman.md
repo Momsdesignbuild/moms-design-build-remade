@@ -15,7 +15,12 @@ words: 564
 **Meta title:** CRAIG WECKMAN - Mom's Design Build
 **Meta description:** Craig Weckman - Mom's Design Build COO - Most Awarded Design Build Firm in the Midwest
 
-**Ours:** https://moms-design-build-remade.vercel.app/team/craig-weckman
-**Theirs:** https://momsdesignbuild.com/team/craig-weckman/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/team/craig-weckman/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/team/craig-weckman |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/team/craig-weckman |
 
 Section: [[Team]]

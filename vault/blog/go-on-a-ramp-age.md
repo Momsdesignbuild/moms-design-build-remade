@@ -15,7 +15,12 @@ words: 647
 **Meta title:** Go on a Ramp-age - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/go-on-a-ramp-age
-**Theirs:** https://momsdesignbuild.com/go-on-a-ramp-age/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/go-on-a-ramp-age/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/go-on-a-ramp-age |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/go-on-a-ramp-age |
 
 Section: [[Blog]]

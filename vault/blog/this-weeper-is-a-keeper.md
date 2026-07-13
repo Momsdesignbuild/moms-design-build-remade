@@ -15,7 +15,12 @@ words: 654
 **Meta title:** This weeper is a keeper - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/this-weeper-is-a-keeper
-**Theirs:** https://momsdesignbuild.com/this-weeper-is-a-keeper/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/this-weeper-is-a-keeper/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/this-weeper-is-a-keeper |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/this-weeper-is-a-keeper |
 
 Section: [[Blog]]

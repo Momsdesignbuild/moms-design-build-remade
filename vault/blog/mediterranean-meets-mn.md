@@ -15,4 +15,11 @@ words: 440
 **Meta title:** Mediterranean Meets MN - Mom's Design Build
 **Meta description:** (none)
 
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/mediterranean-meets-mn/ |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/mediterranean-meets-mn |
+
 Section: [[Blog]]

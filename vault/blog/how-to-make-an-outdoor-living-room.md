@@ -15,7 +15,12 @@ words: 806
 **Meta title:** How to make an Outdoor Living Room - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/how-to-make-an-outdoor-living-room
-**Theirs:** https://momsdesignbuild.com/how-to-make-an-outdoor-living-room/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/how-to-make-an-outdoor-living-room/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/how-to-make-an-outdoor-living-room |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/how-to-make-an-outdoor-living-room |
 
 Section: [[Blog]]

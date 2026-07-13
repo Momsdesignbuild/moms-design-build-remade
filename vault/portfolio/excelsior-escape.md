@@ -8,6 +8,7 @@ photos: 16
 inline_images: 0
 words: 483
 grid_order: 34
+remastered_notes: deck-backed
 ---
 # Excelsior Escape
 
@@ -16,8 +17,15 @@ grid_order: 34
 **Meta title:** Mom's Design Build-Excelsior Modern Deck
 **Meta description:** Excelsior, MN Landscape with deck and water features
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/excelsior-escape
-**Theirs:** https://momsdesignbuild.com/portfolio/excelsior-escape/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/excelsior-escape/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/excelsior-escape |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/excelsior-escape |
+
+**Remastered Design Notes:** ✅ 📁 deck-backed (designer award narrative) · 📖 story · 🏆 award line
 
 Section: [[Portfolio]]
 

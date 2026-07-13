@@ -15,8 +15,13 @@ words: 1292
 **Meta title:** Automated Motorized Screen Installation & Landscape Design in Minnesota - Mom's Design Build
 **Meta description:** Mom's Design Build offers luxury automated motorized screen installation and landscape design in Minnesota. Experience the most awarded design-build firm in the Midwest.
 
-**Ours:** https://moms-design-build-remade.vercel.app/services/landscape-architecture/automated-motorized-screens
-**Theirs:** https://momsdesignbuild.com/services/landscape-architecture/automated-motorized-screens/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/services/landscape-architecture/automated-motorized-screens/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/services/landscape-architecture/automated-motorized-screens |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/services/landscape-architecture/automated-motorized-screens |
 
 Section: [[Pages]]
 

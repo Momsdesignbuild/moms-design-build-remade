@@ -15,8 +15,13 @@ words: 1217
 **Meta title:** How To Choose A Design Build Contractor For Your Home Renovation
 **Meta description:** Looking for the perfect designer or general contractor? Read our guide on how to pick the best designer or contractor for your home project here.
 
-**Ours:** https://moms-design-build-remade.vercel.app/meet-your-perfect-designer-3-ways-to-find-them
-**Theirs:** https://momsdesignbuild.com/meet-your-perfect-designer-3-ways-to-find-them/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/meet-your-perfect-designer-3-ways-to-find-them/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/meet-your-perfect-designer-3-ways-to-find-them |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/meet-your-perfect-designer-3-ways-to-find-them |
 
 Section: [[Blog]]
 

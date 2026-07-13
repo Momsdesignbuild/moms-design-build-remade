@@ -15,7 +15,12 @@ words: 618
 **Meta title:** Mint Condition - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/mint-condition
-**Theirs:** https://momsdesignbuild.com/mint-condition/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/mint-condition/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/mint-condition |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/mint-condition |
 
 Section: [[Blog]]

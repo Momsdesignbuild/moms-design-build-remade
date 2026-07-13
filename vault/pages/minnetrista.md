@@ -15,8 +15,13 @@ words: 727
 **Meta title:** Landscape Design & Architecture For Homes In Minnetrista MN
 **Meta description:** (952) 277-6667 - The award-winning designers at Mom's Design Build is pleased to provide its landscape architecture service to homes in the Minnetrista area.
 
-**Ours:** https://moms-design-build-remade.vercel.app/services/landscape-architecture/minnetrista
-**Theirs:** https://momsdesignbuild.com/services/landscape-architecture/minnetrista/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/services/landscape-architecture/minnetrista/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/services/landscape-architecture/minnetrista |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/services/landscape-architecture/minnetrista |
 
 Section: [[Pages]]
 

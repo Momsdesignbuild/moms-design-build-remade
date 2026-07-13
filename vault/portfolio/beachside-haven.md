@@ -8,6 +8,7 @@ photos: 15
 inline_images: 0
 words: 665
 grid_order: 41
+remastered_notes: wp-copy
 ---
 # Beachside Haven
 
@@ -16,8 +17,15 @@ grid_order: 41
 **Meta title:** Mom's Design Build-Beachside Haven: patio/beach/ gardening
 **Meta description:** "Lakeside landscaping with an outdoor kitchen, grill, beach, exterior lounging, and fine gardening"
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/beachside-haven
-**Theirs:** https://momsdesignbuild.com/portfolio/beachside-haven/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/beachside-haven/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/beachside-haven |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/beachside-haven |
+
+**Remastered Design Notes:** ✅ 📰 grounded in WP published copy · 📖 story · 🏆 award line
 
 Section: [[Portfolio]]
 

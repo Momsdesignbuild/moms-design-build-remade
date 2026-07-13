@@ -15,7 +15,12 @@ words: 610
 **Meta title:** HGTV: 8 Winter-Proof Patio Designs We Love - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/hgtv-8-winter-proof-patio-designs-we-love
-**Theirs:** https://momsdesignbuild.com/hgtv-8-winter-proof-patio-designs-we-love/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/hgtv-8-winter-proof-patio-designs-we-love/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/hgtv-8-winter-proof-patio-designs-we-love |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/hgtv-8-winter-proof-patio-designs-we-love |
 
 Section: [[Blog]]

@@ -15,7 +15,12 @@ words: 682
 **Meta title:** Lettuce be Sneaky - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/lettuce-be-sneaky
-**Theirs:** https://momsdesignbuild.com/lettuce-be-sneaky/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/lettuce-be-sneaky/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/lettuce-be-sneaky |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/lettuce-be-sneaky |
 
 Section: [[Blog]]

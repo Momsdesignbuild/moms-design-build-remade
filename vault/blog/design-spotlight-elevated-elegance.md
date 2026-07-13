@@ -15,8 +15,13 @@ words: 1152
 **Meta title:** Design Spotlight: Elevated Elegance - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/design-spotlight-elevated-elegance
-**Theirs:** https://momsdesignbuild.com/design-spotlight-elevated-elegance/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/design-spotlight-elevated-elegance/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/design-spotlight-elevated-elegance |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/design-spotlight-elevated-elegance |
 
 Section: [[Blog]]
 

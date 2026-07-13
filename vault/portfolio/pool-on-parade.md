@@ -8,6 +8,7 @@ photos: 12
 inline_images: 1
 words: 541
 grid_order: 62
+remastered_notes: wp-copy
 ---
 # Pool On Parade
 
@@ -16,8 +17,15 @@ grid_order: 62
 **Meta title:** Mom's Design Build-Luxury Pool with Pool House and Outdoor Kitchen
 **Meta description:** "Minnesota Residential indoor pool, pool house, pergola, patio, gardening, exterior design, deck, retaining wall, fire pit, landscape, In Corcoran, MN"
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/pool-on-parade
-**Theirs:** https://momsdesignbuild.com/portfolio/pool-on-parade/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/pool-on-parade/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/pool-on-parade |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/pool-on-parade |
+
+**Remastered Design Notes:** ✅ 📰 grounded in WP published copy · 📖 story
 
 Section: [[Portfolio]]
 

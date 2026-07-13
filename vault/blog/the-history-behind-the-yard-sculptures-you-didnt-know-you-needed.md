@@ -15,7 +15,12 @@ words: 1420
 **Meta title:** Minnesota Front Yard Sculptures - Paul Granlund MN Collection
 **Meta description:** Minnesota’s nationally renowned sculptor, Paul Granlund, crafted bronze yard sculptures seen worldwide. Read Mom's Design Build blog today to learn more!
 
-**Ours:** https://moms-design-build-remade.vercel.app/the-history-behind-the-yard-sculptures-you-didnt-know-you-needed
-**Theirs:** https://momsdesignbuild.com/the-history-behind-the-yard-sculptures-you-didnt-know-you-needed/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/the-history-behind-the-yard-sculptures-you-didnt-know-you-needed/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/the-history-behind-the-yard-sculptures-you-didnt-know-you-needed |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/the-history-behind-the-yard-sculptures-you-didnt-know-you-needed |
 
 Section: [[Blog]]

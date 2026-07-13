@@ -15,7 +15,12 @@ words: 1472
 **Meta title:** Outdoor Landscape Lighting Trends For Your Twin Cities MN Home
 **Meta description:** Mom's Design Build knows that it's outdoor lighting services add flair to the front yard and completely change the backyard aesthetic. Learn more today!
 
-**Ours:** https://moms-design-build-remade.vercel.app/outdoor-lighting-trends
-**Theirs:** https://momsdesignbuild.com/outdoor-lighting-trends/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/outdoor-lighting-trends/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/outdoor-lighting-trends |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/outdoor-lighting-trends |
 
 Section: [[Blog]]

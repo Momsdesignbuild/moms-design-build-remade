@@ -15,7 +15,12 @@ words: 885
 **Meta title:** Finishing touches - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/finishing-touches
-**Theirs:** https://momsdesignbuild.com/finishing-touches/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/finishing-touches/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/finishing-touches |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/finishing-touches |
 
 Section: [[Blog]]

@@ -15,8 +15,13 @@ words: 1477
 **Meta title:** 5 Warm & Elegant Christmas Decoration ideas For the Holidays
 **Meta description:** Whether you like to keep the yuletide more neutral, warm, rustic or fancy – we have all of the holiday design tips to decorate your home. Get inspiration here!
 
-**Ours:** https://moms-design-build-remade.vercel.app/holiday-decor-galore-make-it-classic-and-festive
-**Theirs:** https://momsdesignbuild.com/holiday-decor-galore-make-it-classic-and-festive/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/holiday-decor-galore-make-it-classic-and-festive/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/holiday-decor-galore-make-it-classic-and-festive |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/holiday-decor-galore-make-it-classic-and-festive |
 
 Section: [[Blog]]
 

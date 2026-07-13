@@ -15,8 +15,13 @@ words: 843
 **Meta title:** Minnesota Luxury Living and Common Area Interior Remodeling
 **Meta description:** Mom's Design Build offers luxury interior design and remodeling services throughout the Twin Cities MN area. Contact our team today!
 
-**Ours:** https://moms-design-build-remade.vercel.app/services/interior-design-and-remodeling/living-and-common-area-remodeling
-**Theirs:** https://momsdesignbuild.com/services/interior-design-and-remodeling/living-and-common-area-remodeling/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/services/interior-design-and-remodeling/living-and-common-area-remodeling/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/services/interior-design-and-remodeling/living-and-common-area-remodeling |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/services/interior-design-and-remodeling/living-and-common-area-remodeling |
 
 Section: [[Pages]]
 

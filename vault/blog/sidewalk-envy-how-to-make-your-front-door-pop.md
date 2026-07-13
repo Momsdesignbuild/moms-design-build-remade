@@ -15,8 +15,13 @@ words: 1445
 **Meta title:** Improving Your Front Entry Area - Landscaping In Twin Cities
 **Meta description:** Learn how our team helped transform our clients yard to an entertainment & dining space to create a traditional outdoor living environment with a modern touch.
 
-**Ours:** https://moms-design-build-remade.vercel.app/sidewalk-envy-how-to-make-your-front-door-pop
-**Theirs:** https://momsdesignbuild.com/sidewalk-envy-how-to-make-your-front-door-pop/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/sidewalk-envy-how-to-make-your-front-door-pop/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/sidewalk-envy-how-to-make-your-front-door-pop |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/sidewalk-envy-how-to-make-your-front-door-pop |
 
 Section: [[Blog]]
 

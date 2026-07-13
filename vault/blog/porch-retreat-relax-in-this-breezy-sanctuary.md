@@ -15,8 +15,13 @@ words: 1166
 **Meta title:** Porch Retreat: Relax in This Breezy Sanctuary - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/porch-retreat-relax-in-this-breezy-sanctuary
-**Theirs:** https://momsdesignbuild.com/porch-retreat-relax-in-this-breezy-sanctuary/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/porch-retreat-relax-in-this-breezy-sanctuary/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/porch-retreat-relax-in-this-breezy-sanctuary |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/porch-retreat-relax-in-this-breezy-sanctuary |
 
 Section: [[Blog]]
 

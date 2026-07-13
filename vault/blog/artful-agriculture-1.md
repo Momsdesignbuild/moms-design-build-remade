@@ -15,7 +15,12 @@ words: 734
 **Meta title:** Artful agriculture #1 - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/artful-agriculture-1
-**Theirs:** https://momsdesignbuild.com/artful-agriculture-1/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/artful-agriculture-1/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/artful-agriculture-1 |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/artful-agriculture-1 |
 
 Section: [[Blog]]

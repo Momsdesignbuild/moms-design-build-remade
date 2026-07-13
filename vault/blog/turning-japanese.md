@@ -15,7 +15,12 @@ words: 753
 **Meta title:** Turning Japanese - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/turning-japanese
-**Theirs:** https://momsdesignbuild.com/turning-japanese/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/turning-japanese/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/turning-japanese |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/turning-japanese |
 
 Section: [[Blog]]

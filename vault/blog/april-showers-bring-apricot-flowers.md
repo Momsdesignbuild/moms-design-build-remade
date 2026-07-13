@@ -15,7 +15,12 @@ words: 661
 **Meta title:** April Showers Bring Apricot Flowers - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/april-showers-bring-apricot-flowers
-**Theirs:** https://momsdesignbuild.com/april-showers-bring-apricot-flowers/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/april-showers-bring-apricot-flowers/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/april-showers-bring-apricot-flowers |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/april-showers-bring-apricot-flowers |
 
 Section: [[Blog]]

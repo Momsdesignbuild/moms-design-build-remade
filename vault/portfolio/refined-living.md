@@ -8,6 +8,7 @@ photos: 19
 inline_images: 0
 words: 488
 grid_order: 27
+remastered_notes: deck-backed
 ---
 # Refined Living
 
@@ -16,8 +17,15 @@ grid_order: 27
 **Meta title:** Mom's Design Build-Edina Pergola Backyard Renovation
 **Meta description:** "Minneapolis area backyard renovation with retaining wall, pergola, fire pit, porch, exterior lounging, flowers, and arbors"
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/refined-living
-**Theirs:** https://momsdesignbuild.com/portfolio/refined-living/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/refined-living/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/refined-living |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/refined-living |
+
+**Remastered Design Notes:** ✅ 📁 deck-backed (designer award narrative) · 📖 story
 
 Section: [[Portfolio]]
 

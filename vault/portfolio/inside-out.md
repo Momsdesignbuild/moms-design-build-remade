@@ -8,6 +8,7 @@ photos: 12
 inline_images: 1
 words: 518
 grid_order: 58
+remastered_notes: wp-copy
 ---
 # Inside Out
 
@@ -16,8 +17,15 @@ grid_order: 58
 **Meta title:** Mom's Design Build-| Inver Grove Inground Pool with Outside Kitchen
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/inside-out
-**Theirs:** https://momsdesignbuild.com/portfolio/inside-out/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/inside-out/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/inside-out |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/inside-out |
+
+**Remastered Design Notes:** ✅ 📰 grounded in WP published copy · 📖 story
 
 Section: [[Portfolio]]
 

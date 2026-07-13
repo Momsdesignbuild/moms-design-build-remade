@@ -15,8 +15,13 @@ words: 1090
 **Meta title:** Metalwork Design & Installation In Minnesota - Mom's Design Build
 **Meta description:** Mom's Design Build offers luxury design build services including custom metalwork and installation for you home in Minnesota!
 
-**Ours:** https://moms-design-build-remade.vercel.app/services/landscape-architecture/metalwork
-**Theirs:** https://momsdesignbuild.com/services/landscape-architecture/metalwork/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/services/landscape-architecture/metalwork/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/services/landscape-architecture/metalwork |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/services/landscape-architecture/metalwork |
 
 Section: [[Pages]]
 

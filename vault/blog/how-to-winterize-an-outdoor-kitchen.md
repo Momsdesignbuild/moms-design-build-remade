@@ -15,7 +15,12 @@ words: 886
 **Meta title:** How to Winterize an Outdoor Kitchen - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/how-to-winterize-an-outdoor-kitchen
-**Theirs:** https://momsdesignbuild.com/how-to-winterize-an-outdoor-kitchen/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/how-to-winterize-an-outdoor-kitchen/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/how-to-winterize-an-outdoor-kitchen |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/how-to-winterize-an-outdoor-kitchen |
 
 Section: [[Blog]]

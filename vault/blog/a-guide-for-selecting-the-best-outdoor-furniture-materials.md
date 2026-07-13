@@ -15,8 +15,13 @@ words: 1175
 **Meta title:** A Guide For Selecting The Best Outdoor Furniture Materials - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/a-guide-for-selecting-the-best-outdoor-furniture-materials
-**Theirs:** https://momsdesignbuild.com/a-guide-for-selecting-the-best-outdoor-furniture-materials/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/a-guide-for-selecting-the-best-outdoor-furniture-materials/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/a-guide-for-selecting-the-best-outdoor-furniture-materials |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/a-guide-for-selecting-the-best-outdoor-furniture-materials |
 
 Section: [[Blog]]
 

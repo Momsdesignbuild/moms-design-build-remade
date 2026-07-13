@@ -15,8 +15,13 @@ words: 2027
 **Meta title:** 2026 Landscape Design Trends: Featuring Landscape Designers Becca Bastyr and Heather Sweeney - Mom's Design Build
 **Meta description:** This years landscape design trends in Minnesota featuring senior landscape designers of Mom's Design Build, Becca Bastyr and Heather Sweeney!
 
-**Ours:** https://moms-design-build-remade.vercel.app/2026-landscape-design-trends
-**Theirs:** https://momsdesignbuild.com/2026-landscape-design-trends/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/2026-landscape-design-trends/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/2026-landscape-design-trends |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/2026-landscape-design-trends |
 
 Section: [[Blog]]
 

@@ -15,7 +15,12 @@ words: 824
 **Meta title:** Modern Farmhouse Revealed - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/modern-farmhouse-revealed
-**Theirs:** https://momsdesignbuild.com/modern-farmhouse-revealed/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/modern-farmhouse-revealed/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/modern-farmhouse-revealed |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/modern-farmhouse-revealed |
 
 Section: [[Blog]]

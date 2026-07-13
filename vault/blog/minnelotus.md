@@ -15,7 +15,12 @@ words: 594
 **Meta title:** MinneLotus - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/minnelotus
-**Theirs:** https://momsdesignbuild.com/minnelotus/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/minnelotus/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/minnelotus |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/minnelotus |
 
 Section: [[Blog]]

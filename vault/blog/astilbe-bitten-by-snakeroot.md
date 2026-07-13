@@ -15,7 +15,12 @@ words: 709
 **Meta title:** Astilbe Bitten by Snakeroot - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/astilbe-bitten-by-snakeroot
-**Theirs:** https://momsdesignbuild.com/astilbe-bitten-by-snakeroot/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/astilbe-bitten-by-snakeroot/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/astilbe-bitten-by-snakeroot |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/astilbe-bitten-by-snakeroot |
 
 Section: [[Blog]]

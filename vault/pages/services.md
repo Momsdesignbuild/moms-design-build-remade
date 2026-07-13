@@ -15,8 +15,13 @@ words: 638
 **Meta title:** Landscaping & Home Remodeling in Minnesota - Mom's Design Build Services
 **Meta description:** Mom's Design Build offers luxury landscape architecture and design, interior design and remodeling, & Fine Gardening in MN. Contact us today!
 
-**Ours:** https://moms-design-build-remade.vercel.app/services
-**Theirs:** https://momsdesignbuild.com/services/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/services/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/services |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/services |
 
 Section: [[Pages]]
 

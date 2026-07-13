@@ -8,6 +8,7 @@ photos: 29
 inline_images: 0
 words: 642
 grid_order: 32
+remastered_notes: deck-backed
 ---
 # Blissful Basement
 
@@ -16,8 +17,15 @@ grid_order: 32
 **Meta title:** Mom's Design Build-Lakeville, MN Basement and bathroom renovation and remodel
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/blissful-basement
-**Theirs:** https://momsdesignbuild.com/portfolio/blissful-basement/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/blissful-basement/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/blissful-basement |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/blissful-basement |
+
+**Remastered Design Notes:** ✅ 📁 deck-backed (designer award narrative) · 📖 story
 
 Section: [[Portfolio]]
 

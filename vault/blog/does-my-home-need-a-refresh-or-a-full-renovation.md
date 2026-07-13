@@ -15,8 +15,13 @@ words: 1497
 **Meta title:** Difference Between Home Renovation & Home Refresh - Mom's Design Build
 **Meta description:** Learn if it's time for a refresh or full renovation. Dive into insights, budget-friendly tips, and the step-by-step process with Mom's Design Build Team.
 
-**Ours:** https://moms-design-build-remade.vercel.app/does-my-home-need-a-refresh-or-a-full-renovation
-**Theirs:** https://momsdesignbuild.com/does-my-home-need-a-refresh-or-a-full-renovation/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/does-my-home-need-a-refresh-or-a-full-renovation/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/does-my-home-need-a-refresh-or-a-full-renovation |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/does-my-home-need-a-refresh-or-a-full-renovation |
 
 Section: [[Blog]]
 

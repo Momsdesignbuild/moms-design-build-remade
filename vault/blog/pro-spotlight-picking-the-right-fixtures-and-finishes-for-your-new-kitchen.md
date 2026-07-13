@@ -15,8 +15,13 @@ words: 1273
 **Meta title:** Pro Spotlight: Picking the Right Fixtures and Finishes for Your New Kitchen - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/pro-spotlight-picking-the-right-fixtures-and-finishes-for-your-new-kitchen
-**Theirs:** https://momsdesignbuild.com/pro-spotlight-picking-the-right-fixtures-and-finishes-for-your-new-kitchen/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/pro-spotlight-picking-the-right-fixtures-and-finishes-for-your-new-kitchen/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/pro-spotlight-picking-the-right-fixtures-and-finishes-for-your-new-kitchen |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/pro-spotlight-picking-the-right-fixtures-and-finishes-for-your-new-kitchen |
 
 Section: [[Blog]]
 

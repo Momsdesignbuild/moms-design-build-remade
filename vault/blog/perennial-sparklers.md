@@ -15,7 +15,12 @@ words: 627
 **Meta title:** Perennial Sparklers - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/perennial-sparklers
-**Theirs:** https://momsdesignbuild.com/perennial-sparklers/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/perennial-sparklers/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/perennial-sparklers |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/perennial-sparklers |
 
 Section: [[Blog]]

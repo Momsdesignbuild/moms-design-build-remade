@@ -15,7 +15,12 @@ words: 473
 **Meta title:** Explore Our Landscape Design Build Portfolio - Mom's Design Build
 **Meta description:** Mom's Design Build has completed a variety of custom luxury projects for our clients in Minnesota. Explore our build work design portfolio today!
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio-2
-**Theirs:** https://momsdesignbuild.com/portfolio-2/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio-2/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio-2 |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio-2 |
 
 Section: [[Pages]]

@@ -15,8 +15,13 @@ words: 2061
 **Meta title:** Top Interior Design Trends of 2025 – Must-Have Colors, Textures, Materials - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/top-interior-design-trends-of-2025
-**Theirs:** https://momsdesignbuild.com/top-interior-design-trends-of-2025/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/top-interior-design-trends-of-2025/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/top-interior-design-trends-of-2025 |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/top-interior-design-trends-of-2025 |
 
 Section: [[Blog]]
 

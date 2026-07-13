@@ -15,8 +15,13 @@ words: 865
 **Meta title:** LANDSCAPE ASSISTANT CREW LEAD - Mom's Design Build
 **Meta description:** Hiring a Landscape Assistant Crew Lead: Supervise and support landscaping crews, assist with installations and maintenance, ensure safety compliance, and help deliver high-quality outdoor projects on schedule at the most awarded landscape design build firm in Minnesota.
 
-**Ours:** https://moms-design-build-remade.vercel.app/careers/landscape-assistant-crew-lead-job-opportunity-minnesota
-**Theirs:** https://momsdesignbuild.com/careers/landscape-assistant-crew-lead-job-opportunity-minnesota/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/careers/landscape-assistant-crew-lead-job-opportunity-minnesota/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/careers/landscape-assistant-crew-lead-job-opportunity-minnesota |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/careers/landscape-assistant-crew-lead-job-opportunity-minnesota |
 
 Section: [[Careers]]
 

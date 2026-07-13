@@ -15,8 +15,13 @@ words: 2090
 **Meta title:** Low Voltage Landscape Lighting Company In Minnesota
 **Meta description:** Mom's Design Build offers luxury design build services including custom low voltage landscape lighting for your home in Minnesota.
 
-**Ours:** https://moms-design-build-remade.vercel.app/services/landscape-architecture/landscape-lighting
-**Theirs:** https://momsdesignbuild.com/services/landscape-architecture/landscape-lighting/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/services/landscape-architecture/landscape-lighting/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/services/landscape-architecture/landscape-lighting |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/services/landscape-architecture/landscape-lighting |
 
 Section: [[Pages]]
 

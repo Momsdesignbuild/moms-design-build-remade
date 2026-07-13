@@ -15,8 +15,13 @@ words: 1392
 **Meta title:** The Basement You Wished You Owned - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/the-basement-you-wished-you-owned
-**Theirs:** https://momsdesignbuild.com/the-basement-you-wished-you-owned/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/the-basement-you-wished-you-owned/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/the-basement-you-wished-you-owned |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/the-basement-you-wished-you-owned |
 
 Section: [[Blog]]
 

@@ -15,6 +15,13 @@ words: 576
 **Meta title:** Test - Mom's Design Build
 **Meta description:** (none)
 
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/test/ |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/test |
+
 Section: [[Blog]]
 
 ## Links to (body links on their page)

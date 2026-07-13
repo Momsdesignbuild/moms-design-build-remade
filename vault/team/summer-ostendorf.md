@@ -15,7 +15,12 @@ words: 681
 **Meta title:** SUMMER OSTENDORF - Mom's Design Build
 **Meta description:** Summer Ostendorf - Director of Marketing at Mom's Design Build - Most Awarded Design Build Firm in the Midwest
 
-**Ours:** https://moms-design-build-remade.vercel.app/team/summer-ostendorf
-**Theirs:** https://momsdesignbuild.com/team/summer-ostendorf/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/team/summer-ostendorf/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/team/summer-ostendorf |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/team/summer-ostendorf |
 
 Section: [[Team]]

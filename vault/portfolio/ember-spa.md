@@ -8,6 +8,7 @@ photos: 8
 inline_images: 5
 words: 654
 grid_order: 6
+remastered_notes: deck-backed
 ---
 # Ember Spa
 
@@ -16,8 +17,15 @@ grid_order: 6
 **Meta title:** Mom's Design Build-Award Winning Louvered Roof Landscape
 **Meta description:** "Lake Elmo, Minnesota award-winning roof landscaping project with contemporary landscape design. Professional landscape architecture, flower beds, modern fire pit, paved patio, garden bed, exterior dining"
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/ember-spa
-**Theirs:** https://momsdesignbuild.com/portfolio/ember-spa/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/ember-spa/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/ember-spa |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/ember-spa |
+
+**Remastered Design Notes:** ✅ 📁 deck-backed (designer award narrative) · 📖 story
 
 Section: [[Portfolio]]
 

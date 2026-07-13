@@ -8,6 +8,7 @@ photos: 33
 inline_images: 0
 words: 498
 grid_order: 50
+remastered_notes: none
 ---
 # Outdoor Escape
 
@@ -16,8 +17,15 @@ grid_order: 50
 **Meta title:** Mom's Design Build-| Backyard Golf Green and Bar With a Pavilion and Masonry Oven
 **Meta description:** "A backyard landscape project and remodel with a chipping green, a putting green, pavilion, bar, exterior lounging and dining, appliances, and a stone masonry oven located in Maple Plain, Minnesota."
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/outdoor-escape
-**Theirs:** https://momsdesignbuild.com/portfolio/outdoor-escape/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/outdoor-escape/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/outdoor-escape |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/outdoor-escape |
+
+**Remastered Design Notes:** ⬜ none yet (source too thin — needs a OneDrive dive)
 
 Section: [[Portfolio]]
 

@@ -15,7 +15,12 @@ words: 580
 **Meta title:** Blue State bRed - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/blue-state-bred
-**Theirs:** https://momsdesignbuild.com/blue-state-bred/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/blue-state-bred/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/blue-state-bred |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/blue-state-bred |
 
 Section: [[Blog]]

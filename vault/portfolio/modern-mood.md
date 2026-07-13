@@ -8,6 +8,7 @@ photos: 8
 inline_images: 4
 words: 648
 grid_order: 7
+remastered_notes: deck-backed
 ---
 # Modern Mood
 
@@ -16,8 +17,15 @@ grid_order: 7
 **Meta title:** Mom's Design Build-Award Winning Interior Bathroom Design and Build
 **Meta description:** Eden Prairie, MN bathroom remodel by Mom's Design Build - From an outdated 90's primary bathroom to a Modern Mood bathroom suite!
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/modern-mood
-**Theirs:** https://momsdesignbuild.com/portfolio/modern-mood/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/modern-mood/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/modern-mood |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/modern-mood |
+
+**Remastered Design Notes:** ✅ 📁 deck-backed (designer award narrative) · 📖 story
 
 Section: [[Portfolio]]
 

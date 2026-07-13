@@ -15,7 +15,12 @@ words: 1343
 **Meta title:** Growing Cocktails - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/growing-cocktails
-**Theirs:** https://momsdesignbuild.com/growing-cocktails/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/growing-cocktails/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/growing-cocktails |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/growing-cocktails |
 
 Section: [[Blog]]

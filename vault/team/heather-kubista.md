@@ -15,7 +15,12 @@ words: 649
 **Meta title:** HEATHER KUBISTA - Mom's Design Build
 **Meta description:** Meet Heather Kubista, Project Coordinator at Mom's Design Build - The Most Awarded Landscape Design Build Firm in the Midwest.
 
-**Ours:** https://moms-design-build-remade.vercel.app/team/heather-kubista
-**Theirs:** https://momsdesignbuild.com/team/heather-kubista/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/team/heather-kubista/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/team/heather-kubista |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/team/heather-kubista |
 
 Section: [[Team]]

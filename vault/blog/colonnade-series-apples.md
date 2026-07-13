@@ -15,7 +15,12 @@ words: 591
 **Meta title:** Colonnade Series Apples - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/colonnade-series-apples
-**Theirs:** https://momsdesignbuild.com/colonnade-series-apples/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/colonnade-series-apples/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/colonnade-series-apples |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/colonnade-series-apples |
 
 Section: [[Blog]]

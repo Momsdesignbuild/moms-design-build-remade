@@ -15,7 +15,12 @@ words: 705
 **Meta title:** "Wee White" Hydrangea - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/wee-white-hydrangea
-**Theirs:** https://momsdesignbuild.com/wee-white-hydrangea/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/wee-white-hydrangea/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/wee-white-hydrangea |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/wee-white-hydrangea |
 
 Section: [[Blog]]

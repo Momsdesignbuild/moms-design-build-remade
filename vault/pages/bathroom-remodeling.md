@@ -15,8 +15,13 @@ words: 832
 **Meta title:** Twin Cities Luxury Bathroom Interior Remodeling Company
 **Meta description:** Mom's Design Build offers luxury bathroom interior remodeling services throughout the Twin Cities MN area. Contact our team of experts today.
 
-**Ours:** https://moms-design-build-remade.vercel.app/services/landscape-architecture/bathroom-remodeling
-**Theirs:** https://momsdesignbuild.com/services/landscape-architecture/bathroom-remodeling/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/services/landscape-architecture/bathroom-remodeling/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/services/landscape-architecture/bathroom-remodeling |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/services/landscape-architecture/bathroom-remodeling |
 
 Section: [[Pages]]
 

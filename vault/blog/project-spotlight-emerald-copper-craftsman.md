@@ -15,8 +15,13 @@ words: 1968
 **Meta title:** Kitchen Remodel Contractor In Twin Cities - Our Process
 **Meta description:** Functionality, aesthetics, & craftsmanship all play a part in renovating your kitchen. See how we helped our client create a new kitchen space.
 
-**Ours:** https://moms-design-build-remade.vercel.app/project-spotlight-emerald-copper-craftsman
-**Theirs:** https://momsdesignbuild.com/project-spotlight-emerald-copper-craftsman/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/project-spotlight-emerald-copper-craftsman/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/project-spotlight-emerald-copper-craftsman |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/project-spotlight-emerald-copper-craftsman |
 
 Section: [[Blog]]
 

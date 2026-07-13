@@ -15,4 +15,11 @@ words: 457
 **Meta title:** Thank You - Mom's Design Build
 **Meta description:** (none)
 
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/thank-you/ |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/thank-you |
+
 Section: [[Blog]]

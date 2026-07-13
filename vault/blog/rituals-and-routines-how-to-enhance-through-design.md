@@ -15,8 +15,13 @@ words: 1462
 **Meta title:** Designing A Home Around Your Lifestyle - Interior Design Guide
 **Meta description:** Learn about finding deep meaning behind interior decorating & designing a space to match your rituals & routines. Read more about designing around your lifestyle here.
 
-**Ours:** https://moms-design-build-remade.vercel.app/rituals-and-routines-how-to-enhance-through-design
-**Theirs:** https://momsdesignbuild.com/rituals-and-routines-how-to-enhance-through-design/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/rituals-and-routines-how-to-enhance-through-design/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/rituals-and-routines-how-to-enhance-through-design |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/rituals-and-routines-how-to-enhance-through-design |
 
 Section: [[Blog]]
 

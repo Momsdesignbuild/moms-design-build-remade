@@ -15,7 +15,12 @@ words: 590
 **Meta title:** ALEX BIRKENBEUEL - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/team/alex-birkenbeuel
-**Theirs:** https://momsdesignbuild.com/team/alex-birkenbeuel/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/team/alex-birkenbeuel/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/team/alex-birkenbeuel |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/team/alex-birkenbeuel |
 
 Section: [[Team]]

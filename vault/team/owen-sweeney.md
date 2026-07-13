@@ -15,8 +15,13 @@ words: 775
 **Meta title:** OWEN SWEENEY - Mom's Design Build
 **Meta description:** Owen Sweeney - Landscape Designer at Mom's Design Build - Most Awarded Landscape Design Build Firm in the Midwest
 
-**Ours:** https://moms-design-build-remade.vercel.app/team/owen-sweeney
-**Theirs:** https://momsdesignbuild.com/team/owen-sweeney/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/team/owen-sweeney/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/team/owen-sweeney |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/team/owen-sweeney |
 
 Section: [[Team]]
 

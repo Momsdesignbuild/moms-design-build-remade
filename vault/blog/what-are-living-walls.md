@@ -15,7 +15,12 @@ words: 1143
 **Meta title:** What are Living Walls? - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/what-are-living-walls
-**Theirs:** https://momsdesignbuild.com/what-are-living-walls/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/what-are-living-walls/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/what-are-living-walls |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/what-are-living-walls |
 
 Section: [[Blog]]

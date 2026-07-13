@@ -15,7 +15,12 @@ words: 598
 **Meta title:** The Grass Isn't Always Greener - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/the-grass-isnt-always-greener
-**Theirs:** https://momsdesignbuild.com/the-grass-isnt-always-greener/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/the-grass-isnt-always-greener/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/the-grass-isnt-always-greener |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/the-grass-isnt-always-greener |
 
 Section: [[Blog]]

@@ -15,7 +15,12 @@ words: 663
 **Meta title:** North Notables: Mom's Design Build by Bridgewater Bank in Artful Living - Mom's Design Build
 **Meta description:** Discover Mom’s stunning design-build feature in the Summer issue of Artful Living, presented by Bridgewater Bank—a showcase of inspired architecture, thoughtful craftsmanship, and elevated living.
 
-**Ours:** https://moms-design-build-remade.vercel.app/moms-design-build-in-artful-living-magazine
-**Theirs:** https://momsdesignbuild.com/moms-design-build-in-artful-living-magazine/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/moms-design-build-in-artful-living-magazine/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/moms-design-build-in-artful-living-magazine |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/moms-design-build-in-artful-living-magazine |
 
 Section: [[Blog]]

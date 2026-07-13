@@ -15,8 +15,13 @@ words: 1280
 **Meta title:** Best Spring Gardening Services Near Me For Twin Cities Yards
 **Meta description:** Transform your garden with Mom’s Design Build landscaping management services to liven up your space - so, you can sit back, relax and enjoy! Give us a call today.
 
-**Ours:** https://moms-design-build-remade.vercel.app/first-day-of-spring-fine-gardening-services
-**Theirs:** https://momsdesignbuild.com/first-day-of-spring-fine-gardening-services/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/first-day-of-spring-fine-gardening-services/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/first-day-of-spring-fine-gardening-services |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/first-day-of-spring-fine-gardening-services |
 
 Section: [[Blog]]
 

@@ -15,7 +15,12 @@ words: 627
 **Meta title:** Plant this... Fir Sure! - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/plant-this-fir-sure
-**Theirs:** https://momsdesignbuild.com/plant-this-fir-sure/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/plant-this-fir-sure/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/plant-this-fir-sure |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/plant-this-fir-sure |
 
 Section: [[Blog]]

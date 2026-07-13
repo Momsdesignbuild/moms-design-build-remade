@@ -15,7 +15,12 @@ words: 617
 **Meta title:** Sedge Advice - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/sedge-advice
-**Theirs:** https://momsdesignbuild.com/sedge-advice/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/sedge-advice/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/sedge-advice |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/sedge-advice |
 
 Section: [[Blog]]

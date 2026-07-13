@@ -15,8 +15,13 @@ words: 1738
 **Meta title:** Minnesota Landscaping: Why a Professional Landscape Designer Is Your Best Investment - Mom's Design Build
 **Meta description:** This blog explores why hiring a professional landscape designer is your best investment in Minnesota. Learn what landscape designer Owen Sweeney has to say on the topic!
 
-**Ours:** https://moms-design-build-remade.vercel.app/why-hire-landscape-designer-minnesota
-**Theirs:** https://momsdesignbuild.com/why-hire-landscape-designer-minnesota/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/why-hire-landscape-designer-minnesota/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/why-hire-landscape-designer-minnesota |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/why-hire-landscape-designer-minnesota |
 
 Section: [[Blog]]
 

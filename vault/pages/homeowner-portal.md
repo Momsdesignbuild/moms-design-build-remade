@@ -15,7 +15,12 @@ words: 1066
 **Meta title:** Homeowner Project Portal Access & Set-Up - Mom's Design Build
 **Meta description:** Mom's Design Build uses Buildertrend to help communicate important information about your project and more. Set up & access your project portal today.
 
-**Ours:** https://moms-design-build-remade.vercel.app/homeowner-portal
-**Theirs:** https://momsdesignbuild.com/homeowner-portal/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/homeowner-portal/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/homeowner-portal |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/homeowner-portal |
 
 Section: [[Pages]]

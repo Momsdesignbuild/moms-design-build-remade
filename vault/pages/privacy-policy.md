@@ -15,7 +15,12 @@ words: 4133
 **Meta title:** Privacy Policy - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/privacy-policy
-**Theirs:** https://momsdesignbuild.com/privacy-policy/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/privacy-policy/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/privacy-policy |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/privacy-policy |
 
 Section: [[Pages]]

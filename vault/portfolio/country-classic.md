@@ -8,6 +8,7 @@ photos: 5
 inline_images: 1
 words: 482
 grid_order: 59
+remastered_notes: none
 ---
 # Country Classic
 
@@ -16,8 +17,15 @@ grid_order: 59
 **Meta title:** Mom's Design Build Minnesota Kitchen Design and Remodel
 **Meta description:** Minnesota kitchen remodel and improvement with granite table tops, home and kitchen appliances, furnishing, pantry storage, home decor located in New Prague."
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/country-classic
-**Theirs:** https://momsdesignbuild.com/portfolio/country-classic/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/country-classic/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/country-classic |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/country-classic |
+
+**Remastered Design Notes:** ⬜ none yet (source too thin — needs a OneDrive dive)
 
 Section: [[Portfolio]]
 

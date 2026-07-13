@@ -15,7 +15,12 @@ words: 613
 **Meta title:** Turf Magazine: European, American Elements Highlighted in Renovation - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/turf-magazine-european-american-elements-highlighted-in-renovation
-**Theirs:** https://momsdesignbuild.com/turf-magazine-european-american-elements-highlighted-in-renovation/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/turf-magazine-european-american-elements-highlighted-in-renovation/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/turf-magazine-european-american-elements-highlighted-in-renovation |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/turf-magazine-european-american-elements-highlighted-in-renovation |
 
 Section: [[Blog]]

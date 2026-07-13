@@ -15,8 +15,13 @@ words: 1220
 **Meta title:** Best Luxury Minneapolis Rooftop Home Design Makeovers
 **Meta description:** Discover inspiring ideas for luxury rooftop remodeling projects for minneapolis homes. Ready to elevate your rooftop? Contact us today.
 
-**Ours:** https://moms-design-build-remade.vercel.app/rooftop-party-a-luxury-minneapolis-moment
-**Theirs:** https://momsdesignbuild.com/rooftop-party-a-luxury-minneapolis-moment/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/rooftop-party-a-luxury-minneapolis-moment/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/rooftop-party-a-luxury-minneapolis-moment |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/rooftop-party-a-luxury-minneapolis-moment |
 
 Section: [[Blog]]
 

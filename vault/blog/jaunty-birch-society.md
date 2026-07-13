@@ -15,7 +15,12 @@ words: 620
 **Meta title:** Jaunty Birch Society - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/jaunty-birch-society
-**Theirs:** https://momsdesignbuild.com/jaunty-birch-society/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/jaunty-birch-society/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/jaunty-birch-society |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/jaunty-birch-society |
 
 Section: [[Blog]]

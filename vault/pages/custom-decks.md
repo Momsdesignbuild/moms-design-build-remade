@@ -15,8 +15,13 @@ words: 1226
 **Meta title:** Luxury Custom Deck Design Build Contractor in Minnesota
 **Meta description:** Mom's Design Build offers luxury design build services including custom deck design and installation for your home in Minnesota.
 
-**Ours:** https://moms-design-build-remade.vercel.app/services/landscape-architecture/custom-decks
-**Theirs:** https://momsdesignbuild.com/services/landscape-architecture/custom-decks/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/services/landscape-architecture/custom-decks/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/services/landscape-architecture/custom-decks |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/services/landscape-architecture/custom-decks |
 
 Section: [[Pages]]
 

@@ -15,7 +15,12 @@ words: 621
 **Meta title:** Jolly Green Giant - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/jolly-green-giant
-**Theirs:** https://momsdesignbuild.com/jolly-green-giant/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/jolly-green-giant/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/jolly-green-giant |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/jolly-green-giant |
 
 Section: [[Blog]]

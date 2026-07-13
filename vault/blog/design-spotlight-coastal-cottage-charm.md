@@ -15,8 +15,13 @@ words: 1295
 **Meta title:** Discover Your Coastal Cottage Core Dream House in Wayzata MN
 **Meta description:** Read about how we designed & transformed our clients home Into a coastal cottage dream home. Looking to renovate your home? Connect with us today to get started.
 
-**Ours:** https://moms-design-build-remade.vercel.app/design-spotlight-coastal-cottage-charm
-**Theirs:** https://momsdesignbuild.com/design-spotlight-coastal-cottage-charm/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/design-spotlight-coastal-cottage-charm/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/design-spotlight-coastal-cottage-charm |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/design-spotlight-coastal-cottage-charm |
 
 Section: [[Blog]]
 

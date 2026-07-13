@@ -15,8 +15,13 @@ words: 904
 **Meta title:** MNLA announces 2017 awards…and we've secured two of them! - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/mnla-announces-2017-awardsand-weve-secured-two-of-them
-**Theirs:** https://momsdesignbuild.com/mnla-announces-2017-awardsand-weve-secured-two-of-them/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/mnla-announces-2017-awardsand-weve-secured-two-of-them/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/mnla-announces-2017-awardsand-weve-secured-two-of-them |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/mnla-announces-2017-awardsand-weve-secured-two-of-them |
 
 Section: [[Blog]]
 

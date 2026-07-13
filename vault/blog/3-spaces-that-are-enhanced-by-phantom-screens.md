@@ -15,8 +15,13 @@ words: 1423
 **Meta title:** Enhance Your Home With Phantom Screen Doors & Screened In Patios
 **Meta description:** Learn how you can upgrade 3 spaces in your home with phantom screen doors. These screen doors can be used for windows, patios, porches, multi-panel systems & more.
 
-**Ours:** https://moms-design-build-remade.vercel.app/3-spaces-that-are-enhanced-by-phantom-screens
-**Theirs:** https://momsdesignbuild.com/3-spaces-that-are-enhanced-by-phantom-screens/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/3-spaces-that-are-enhanced-by-phantom-screens/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/3-spaces-that-are-enhanced-by-phantom-screens |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/3-spaces-that-are-enhanced-by-phantom-screens |
 
 Section: [[Blog]]
 

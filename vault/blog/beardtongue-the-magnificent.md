@@ -15,7 +15,12 @@ words: 620
 **Meta title:** Beardtongue the Magnificent - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/beardtongue-the-magnificent
-**Theirs:** https://momsdesignbuild.com/beardtongue-the-magnificent/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/beardtongue-the-magnificent/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/beardtongue-the-magnificent |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/beardtongue-the-magnificent |
 
 Section: [[Blog]]

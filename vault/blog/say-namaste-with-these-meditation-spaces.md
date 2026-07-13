@@ -15,8 +15,13 @@ words: 1551
 **Meta title:** Meditation Room Ideas - How To Create A Meditation Space At Home
 **Meta description:** Discover meditation room inspiration for homes & learn how to create a relaxing space. Curious about your meditation space options? Mom's Design Build can help.
 
-**Ours:** https://moms-design-build-remade.vercel.app/say-namaste-with-these-meditation-spaces
-**Theirs:** https://momsdesignbuild.com/say-namaste-with-these-meditation-spaces/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/say-namaste-with-these-meditation-spaces/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/say-namaste-with-these-meditation-spaces |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/say-namaste-with-these-meditation-spaces |
 
 Section: [[Blog]]
 

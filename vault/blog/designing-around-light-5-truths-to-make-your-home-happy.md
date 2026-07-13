@@ -15,8 +15,13 @@ words: 1406
 **Meta title:** Creating A Perfect Work Space: Best Home Office Ideas
 **Meta description:** How to elevate your home through mixed lighting. Follow easy steps to make your home cozier and more relaxing. Read about different kinds of home lighting here.
 
-**Ours:** https://moms-design-build-remade.vercel.app/designing-around-light-5-truths-to-make-your-home-happy
-**Theirs:** https://momsdesignbuild.com/designing-around-light-5-truths-to-make-your-home-happy/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/designing-around-light-5-truths-to-make-your-home-happy/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/designing-around-light-5-truths-to-make-your-home-happy |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/designing-around-light-5-truths-to-make-your-home-happy |
 
 Section: [[Blog]]
 

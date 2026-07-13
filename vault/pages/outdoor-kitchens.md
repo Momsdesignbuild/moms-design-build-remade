@@ -15,8 +15,13 @@ words: 1356
 **Meta title:** Custom Outdoor Kitchen Design and Installation in Minnesota - Mom's Design Build
 **Meta description:** Mom's Design Build offers luxury design build services including custom outdoor kitchen design and installation for your home in Minnesota!
 
-**Ours:** https://moms-design-build-remade.vercel.app/services/landscape-architecture/outdoor-kitchens
-**Theirs:** https://momsdesignbuild.com/services/landscape-architecture/outdoor-kitchens/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/services/landscape-architecture/outdoor-kitchens/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/services/landscape-architecture/outdoor-kitchens |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/services/landscape-architecture/outdoor-kitchens |
 
 Section: [[Pages]]
 

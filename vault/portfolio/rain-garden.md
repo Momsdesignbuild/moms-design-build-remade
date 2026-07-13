@@ -8,6 +8,7 @@ photos: 16
 inline_images: 0
 words: 515
 grid_order: 47
+remastered_notes: none
 ---
 # Rain Garden
 
@@ -16,8 +17,15 @@ grid_order: 47
 **Meta title:** Mom's Design Build - Rain Solution Garden Project in Minnesota
 **Meta description:** "This water garden and stepped stream were engineered to replaced two problematic rain retention ponds. Innovative porous paving satisfies the stringent hardcover limitations while providing squish-free footing on the compact site. The design offers elegant solutions to regulatory requirements the original landscape had so poorly addressed." - The Minnesota DNR, Watershed Authority and City Engine
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/rain-garden
-**Theirs:** https://momsdesignbuild.com/portfolio/rain-garden/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/rain-garden/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/rain-garden |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/rain-garden |
+
+**Remastered Design Notes:** ⬜ none yet (source too thin — needs a OneDrive dive)
 
 Section: [[Portfolio]]
 

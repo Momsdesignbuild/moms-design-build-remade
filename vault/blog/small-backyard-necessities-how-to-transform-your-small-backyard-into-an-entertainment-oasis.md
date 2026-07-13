@@ -15,7 +15,12 @@ words: 1706
 **Meta title:** How to Transform Your Small Backyard Into An Entertainment Oasis
 **Meta description:** When creating an outdoor space you'll actually enjoy, it’s crucial to have comfortable furniture. Read Mom's Design Build Blog to help with ideas & tips.
 
-**Ours:** https://moms-design-build-remade.vercel.app/small-backyard-necessities-how-to-transform-your-small-backyard-into-an-entertainment-oasis
-**Theirs:** https://momsdesignbuild.com/small-backyard-necessities-how-to-transform-your-small-backyard-into-an-entertainment-oasis/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/small-backyard-necessities-how-to-transform-your-small-backyard-into-an-entertainment-oasis/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/small-backyard-necessities-how-to-transform-your-small-backyard-into-an-entertainment-oasis |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/small-backyard-necessities-how-to-transform-your-small-backyard-into-an-entertainment-oasis |
 
 Section: [[Blog]]

@@ -15,8 +15,13 @@ words: 1287
 **Meta title:** Easy Declutter & Cleaning Home Organization Checklist For 2025
 **Meta description:** Organize your home this winter while it's still cold outside. Start your home organization project today or schedule an appointment with our designers!
 
-**Ours:** https://moms-design-build-remade.vercel.app/new-years-checklist-fun-ways-to-organize-your-home-in-2020
-**Theirs:** https://momsdesignbuild.com/new-years-checklist-fun-ways-to-organize-your-home-in-2020/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/new-years-checklist-fun-ways-to-organize-your-home-in-2020/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/new-years-checklist-fun-ways-to-organize-your-home-in-2020 |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/new-years-checklist-fun-ways-to-organize-your-home-in-2020 |
 
 Section: [[Blog]]
 

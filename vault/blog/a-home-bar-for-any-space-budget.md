@@ -15,7 +15,12 @@ words: 1922
 **Meta title:** 6 Home Bar Ideas You'll Love For Any Size Space - Cocktail Lounge
 **Meta description:** Mom's Design Build highlights some of our favorite ideas for updating or installing a home bar. Read our ideas and learn about our remodeling services in Lake Minnetonka.
 
-**Ours:** https://moms-design-build-remade.vercel.app/a-home-bar-for-any-space-budget
-**Theirs:** https://momsdesignbuild.com/a-home-bar-for-any-space-budget/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/a-home-bar-for-any-space-budget/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/a-home-bar-for-any-space-budget |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/a-home-bar-for-any-space-budget |
 
 Section: [[Blog]]

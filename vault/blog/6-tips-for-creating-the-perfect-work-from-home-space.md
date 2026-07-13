@@ -15,8 +15,13 @@ words: 1580
 **Meta title:** Home Office Ideas For Creating A Perfect Work Space At Home
 **Meta description:** Easy ways to take your home office to the next level. Discover how to enhance your home workspace in 2024. Read about elevating your office here.
 
-**Ours:** https://moms-design-build-remade.vercel.app/6-tips-for-creating-the-perfect-work-from-home-space
-**Theirs:** https://momsdesignbuild.com/6-tips-for-creating-the-perfect-work-from-home-space/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/6-tips-for-creating-the-perfect-work-from-home-space/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/6-tips-for-creating-the-perfect-work-from-home-space |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/6-tips-for-creating-the-perfect-work-from-home-space |
 
 Section: [[Blog]]
 

@@ -8,6 +8,7 @@ photos: 8
 inline_images: 1
 words: 557
 grid_order: 63
+remastered_notes: wp-copy
 ---
 # Old World Charm
 
@@ -16,8 +17,15 @@ grid_order: 63
 **Meta title:** Mom's Design Build-Outside Bar and Grill With Pergola
 **Meta description:** "Wayzata, Minnesota backyard renovation with bar and grill under a pergola. Outdoor water functions, modern landscape, paved walkways, modern fireplace, stone paving"
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/old-world-charm
-**Theirs:** https://momsdesignbuild.com/portfolio/old-world-charm/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/old-world-charm/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/old-world-charm |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/old-world-charm |
+
+**Remastered Design Notes:** ✅ 📰 grounded in WP published copy · 📖 story
 
 Section: [[Portfolio]]
 

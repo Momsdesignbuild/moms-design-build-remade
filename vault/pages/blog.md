@@ -15,7 +15,12 @@ words: 477
 **Meta title:** Mom's Design Build Blog - Explore Home & Landscape Design
 **Meta description:** The Mom's Design Build Blog is composed of various current trends and home design ideas that are sure to inspire your next project.
 
-**Ours:** https://moms-design-build-remade.vercel.app/blog
-**Theirs:** https://momsdesignbuild.com/blog/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/blog/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/blog |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/blog |
 
 Section: [[Pages]]

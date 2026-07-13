@@ -15,7 +15,12 @@ words: 675
 **Meta title:** Star Tribune: A Fantasy Setting for Outdoor Fun - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/star-tribune-a-fantasy-setting-for-outdoor-fun
-**Theirs:** https://momsdesignbuild.com/star-tribune-a-fantasy-setting-for-outdoor-fun/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/star-tribune-a-fantasy-setting-for-outdoor-fun/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/star-tribune-a-fantasy-setting-for-outdoor-fun |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/star-tribune-a-fantasy-setting-for-outdoor-fun |
 
 Section: [[Blog]]

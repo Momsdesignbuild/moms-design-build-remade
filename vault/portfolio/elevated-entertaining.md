@@ -8,6 +8,7 @@ photos: 19
 inline_images: 0
 words: 625
 grid_order: 38
+remastered_notes: wp-copy
 ---
 # Elevated Entertaining
 
@@ -16,8 +17,15 @@ grid_order: 38
 **Meta title:** Mom's Design Build-Elevated Entertaining/backyard-landscape-deck
 **Meta description:** "A beautiful Minnesota backyard landscaping renovation with a modern deck and patio remodel."
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/elevated-entertaining
-**Theirs:** https://momsdesignbuild.com/portfolio/elevated-entertaining/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/elevated-entertaining/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/elevated-entertaining |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/elevated-entertaining |
+
+**Remastered Design Notes:** ✅ 📰 grounded in WP published copy · 📖 story · 🏆 award line
 
 Section: [[Portfolio]]
 

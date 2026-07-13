@@ -15,8 +15,13 @@ words: 1625
 **Meta title:** Essential Garden & Landscaping Planning Tips For Spring
 **Meta description:** Discover how to enhance your garden with landscape design and planning. Explore essential tips to transform your garden into your dream space! Read more here.
 
-**Ours:** https://moms-design-build-remade.vercel.app/garden-planning-creating-a-garden-that-fits-your-lifestyle-personality
-**Theirs:** https://momsdesignbuild.com/garden-planning-creating-a-garden-that-fits-your-lifestyle-personality/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/garden-planning-creating-a-garden-that-fits-your-lifestyle-personality/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/garden-planning-creating-a-garden-that-fits-your-lifestyle-personality |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/garden-planning-creating-a-garden-that-fits-your-lifestyle-personality |
 
 Section: [[Blog]]
 

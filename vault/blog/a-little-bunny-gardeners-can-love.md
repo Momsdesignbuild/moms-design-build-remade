@@ -15,7 +15,12 @@ words: 670
 **Meta title:** A Little Bunny Gardeners Can Love - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/a-little-bunny-gardeners-can-love
-**Theirs:** https://momsdesignbuild.com/a-little-bunny-gardeners-can-love/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/a-little-bunny-gardeners-can-love/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/a-little-bunny-gardeners-can-love |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/a-little-bunny-gardeners-can-love |
 
 Section: [[Blog]]

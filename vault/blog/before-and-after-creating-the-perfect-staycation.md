@@ -15,8 +15,13 @@ words: 1282
 **Meta title:** Before and After: Creating The Perfect Staycation - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/before-and-after-creating-the-perfect-staycation
-**Theirs:** https://momsdesignbuild.com/before-and-after-creating-the-perfect-staycation/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/before-and-after-creating-the-perfect-staycation/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/before-and-after-creating-the-perfect-staycation |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/before-and-after-creating-the-perfect-staycation |
 
 Section: [[Blog]]
 

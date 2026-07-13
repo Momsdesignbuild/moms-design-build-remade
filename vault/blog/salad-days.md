@@ -15,7 +15,12 @@ words: 753
 **Meta title:** Salad Days - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/salad-days
-**Theirs:** https://momsdesignbuild.com/salad-days/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/salad-days/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/salad-days |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/salad-days |
 
 Section: [[Blog]]

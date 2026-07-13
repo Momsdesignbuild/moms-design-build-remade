@@ -15,8 +15,13 @@ words: 617
 **Meta title:** Team Members Archive - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/team
-**Theirs:** https://momsdesignbuild.com/team/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/team/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/team |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/team |
 
 Section: [[Pages]]
 

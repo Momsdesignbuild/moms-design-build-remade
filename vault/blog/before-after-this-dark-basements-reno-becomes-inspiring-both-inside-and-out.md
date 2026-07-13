@@ -15,8 +15,13 @@ words: 1233
 **Meta title:** Before & After: This Dark Basement's Reno Becomes Inspiring Both Inside and Out. - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/before-after-this-dark-basements-reno-becomes-inspiring-both-inside-and-out
-**Theirs:** https://momsdesignbuild.com/before-after-this-dark-basements-reno-becomes-inspiring-both-inside-and-out/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/before-after-this-dark-basements-reno-becomes-inspiring-both-inside-and-out/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/before-after-this-dark-basements-reno-becomes-inspiring-both-inside-and-out |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/before-after-this-dark-basements-reno-becomes-inspiring-both-inside-and-out |
 
 Section: [[Blog]]
 

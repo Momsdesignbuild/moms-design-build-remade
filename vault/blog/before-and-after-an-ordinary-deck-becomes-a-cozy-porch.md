@@ -15,8 +15,13 @@ words: 1021
 **Meta title:** Before and After: An Ordinary Deck Becomes A Cozy Porch - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/before-and-after-an-ordinary-deck-becomes-a-cozy-porch
-**Theirs:** https://momsdesignbuild.com/before-and-after-an-ordinary-deck-becomes-a-cozy-porch/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/before-and-after-an-ordinary-deck-becomes-a-cozy-porch/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/before-and-after-an-ordinary-deck-becomes-a-cozy-porch |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/before-and-after-an-ordinary-deck-becomes-a-cozy-porch |
 
 Section: [[Blog]]
 

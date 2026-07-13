@@ -8,6 +8,7 @@ photos: 20
 inline_images: 5
 words: 677
 grid_order: 1
+remastered_notes: deck-backed
 ---
 # Cool California
 
@@ -16,8 +17,15 @@ grid_order: 1
 **Meta title:** Cool California Project - Mom's Design Build - Most Awarded Landscape Design Build Firm in the Midwest
 **Meta description:** Minnesota design and build company - Exterior addition, 4 season porch, patio, outdoor kitchen, retaining wall, fire pit and more!
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/cool-california
-**Theirs:** https://momsdesignbuild.com/portfolio/cool-california/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/cool-california/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/cool-california |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/cool-california |
+
+**Remastered Design Notes:** ✅ 📁 deck-backed (designer award narrative) · 📖 story
 
 Section: [[Portfolio]]
 

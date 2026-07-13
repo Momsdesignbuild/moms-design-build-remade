@@ -15,7 +15,12 @@ words: 1377
 **Meta title:** 10 Ways To Make Your Laundry Room Aesthetic & Functional
 **Meta description:** Learn how you can transform your laundry room into a functional and aesthetically pleasing haven. Say goodbye to boring laundry spaces – read more for inspiration!
 
-**Ours:** https://moms-design-build-remade.vercel.app/10-laundry-room-must-haves
-**Theirs:** https://momsdesignbuild.com/10-laundry-room-must-haves/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/10-laundry-room-must-haves/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/10-laundry-room-must-haves |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/10-laundry-room-must-haves |
 
 Section: [[Blog]]

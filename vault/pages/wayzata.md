@@ -15,8 +15,13 @@ words: 742
 **Meta title:** Landscape Design & Architecture For Homes In Wayzata MN
 **Meta description:** (952) 277-6667 - The award-winning designers at Mom's Design Build is pleased to provide its landscape architecture service to homes in the Wayzata area.
 
-**Ours:** https://moms-design-build-remade.vercel.app/services/landscape-architecture/wayzata
-**Theirs:** https://momsdesignbuild.com/services/landscape-architecture/wayzata/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/services/landscape-architecture/wayzata/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/services/landscape-architecture/wayzata |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/services/landscape-architecture/wayzata |
 
 Section: [[Pages]]
 

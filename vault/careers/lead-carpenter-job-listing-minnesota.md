@@ -15,8 +15,13 @@ words: 753
 **Meta title:** LEAD CARPENTER - Mom's Design Build
 **Meta description:** Join Moms Design Build as a Lead Carpenter and oversee high-quality residential remodeling and landscape architecture projects from start to finish. Lead crews, ensure craftsmanship excellence, and grow your career with an award-winning team.
 
-**Ours:** https://moms-design-build-remade.vercel.app/careers/lead-carpenter-job-listing-minnesota
-**Theirs:** https://momsdesignbuild.com/careers/lead-carpenter-job-listing-minnesota/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/careers/lead-carpenter-job-listing-minnesota/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/careers/lead-carpenter-job-listing-minnesota |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/careers/lead-carpenter-job-listing-minnesota |
 
 Section: [[Careers]]
 

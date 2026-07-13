@@ -15,8 +15,13 @@ words: 1293
 **Meta title:** Pavilion Pool Top Design & Inspiration Ideas For Your Backyard
 **Meta description:** Get expert design ideas to upgrade your backyard pool pavilion. Transform your outdoor space into a stylish entertainment hub by the pool! Learn more.
 
-**Ours:** https://moms-design-build-remade.vercel.app/a-must-see-rustic-poolside-chateau-thatll-extend-your-outdoor-living
-**Theirs:** https://momsdesignbuild.com/a-must-see-rustic-poolside-chateau-thatll-extend-your-outdoor-living/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/a-must-see-rustic-poolside-chateau-thatll-extend-your-outdoor-living/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/a-must-see-rustic-poolside-chateau-thatll-extend-your-outdoor-living |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/a-must-see-rustic-poolside-chateau-thatll-extend-your-outdoor-living |
 
 Section: [[Blog]]
 

@@ -8,6 +8,7 @@ photos: 13
 inline_images: 0
 words: 607
 grid_order: 15
+remastered_notes: deck-backed
 ---
 # Hearth Hideaway
 
@@ -16,8 +17,15 @@ grid_order: 15
 **Meta title:** Mom's Design Build-Award Winning Louvered Roof Landscape
 **Meta description:** "Lake Elmo, Minnesota award-winning roof landscaping project with contemporary landscape design. Professional landscape architecture, flower beds, modern fire pit, paved patio, garden bed, exterior dining"
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/hearth-hideaway
-**Theirs:** https://momsdesignbuild.com/portfolio/hearth-hideaway/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/hearth-hideaway/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/hearth-hideaway |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/hearth-hideaway |
+
+**Remastered Design Notes:** ✅ 📁 deck-backed (designer award narrative) · 📖 story · 🏆 award line
 
 Section: [[Portfolio]]
 

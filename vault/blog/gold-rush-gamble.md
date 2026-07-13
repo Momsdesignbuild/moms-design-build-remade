@@ -15,7 +15,12 @@ words: 698
 **Meta title:** Gold Rush Gamble - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/gold-rush-gamble
-**Theirs:** https://momsdesignbuild.com/gold-rush-gamble/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/gold-rush-gamble/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/gold-rush-gamble |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/gold-rush-gamble |
 
 Section: [[Blog]]

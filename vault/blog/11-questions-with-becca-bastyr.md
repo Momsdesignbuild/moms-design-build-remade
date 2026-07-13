@@ -15,7 +15,12 @@ words: 954
 **Meta title:** 11 Questions with Becca Bastyr - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/11-questions-with-becca-bastyr
-**Theirs:** https://momsdesignbuild.com/11-questions-with-becca-bastyr/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/11-questions-with-becca-bastyr/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/11-questions-with-becca-bastyr |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/11-questions-with-becca-bastyr |
 
 Section: [[Blog]]

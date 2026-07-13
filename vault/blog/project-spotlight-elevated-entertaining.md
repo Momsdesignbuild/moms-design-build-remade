@@ -15,8 +15,13 @@ words: 1216
 **Meta title:** Modern Luxury Pergola For Outdoor Yard & Patio Entertainment
 **Meta description:** Read about our design & building process for creating luxury pergolas for clients backyards. Elevate your outdoor entertainment center today, give us a call.
 
-**Ours:** https://moms-design-build-remade.vercel.app/project-spotlight-elevated-entertaining
-**Theirs:** https://momsdesignbuild.com/project-spotlight-elevated-entertaining/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/project-spotlight-elevated-entertaining/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/project-spotlight-elevated-entertaining |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/project-spotlight-elevated-entertaining |
 
 Section: [[Blog]]
 

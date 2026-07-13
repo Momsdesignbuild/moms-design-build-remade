@@ -15,8 +15,13 @@ words: 1536
 **Meta title:** Where Did the Name Mom's Come From? - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/where-did-the-name-moms-come-from
-**Theirs:** https://momsdesignbuild.com/where-did-the-name-moms-come-from/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/where-did-the-name-moms-come-from/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/where-did-the-name-moms-come-from |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/where-did-the-name-moms-come-from |
 
 Section: [[Blog]]
 

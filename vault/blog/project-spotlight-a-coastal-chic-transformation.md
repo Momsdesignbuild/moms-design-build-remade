@@ -15,8 +15,13 @@ words: 1068
 **Meta title:** Modern Coastal Lakefront Home Renovation Project In Minnesota
 **Meta description:** Read our Lake Minnetonka, MN home renovation project and discover how our designers created the ultimate coastal lakefront home! Find out more here.
 
-**Ours:** https://moms-design-build-remade.vercel.app/project-spotlight-a-coastal-chic-transformation
-**Theirs:** https://momsdesignbuild.com/project-spotlight-a-coastal-chic-transformation/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/project-spotlight-a-coastal-chic-transformation/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/project-spotlight-a-coastal-chic-transformation |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/project-spotlight-a-coastal-chic-transformation |
 
 Section: [[Blog]]
 

@@ -15,8 +15,13 @@ words: 1167
 **Meta title:** Bathroom Remodeling Ideas & Full Gut Renovation Guide
 **Meta description:** Bathroom remodels are manageable projects and a perfect choice for an upgrade. Check out these top-rated bathroom landscape design ideas here!
 
-**Ours:** https://moms-design-build-remade.vercel.app/ideas-to-try-for-your-next-bathroom-remodel
-**Theirs:** https://momsdesignbuild.com/ideas-to-try-for-your-next-bathroom-remodel/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/ideas-to-try-for-your-next-bathroom-remodel/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/ideas-to-try-for-your-next-bathroom-remodel |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/ideas-to-try-for-your-next-bathroom-remodel |
 
 Section: [[Blog]]
 

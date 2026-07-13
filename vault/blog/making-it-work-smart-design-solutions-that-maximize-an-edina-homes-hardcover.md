@@ -15,8 +15,13 @@ words: 1760
 **Meta title:** Making it Work: Smart Design Solutions That Maximize an Edina Home's Hardcover - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/making-it-work-smart-design-solutions-that-maximize-an-edina-homes-hardcover
-**Theirs:** https://momsdesignbuild.com/making-it-work-smart-design-solutions-that-maximize-an-edina-homes-hardcover/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/making-it-work-smart-design-solutions-that-maximize-an-edina-homes-hardcover/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/making-it-work-smart-design-solutions-that-maximize-an-edina-homes-hardcover |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/making-it-work-smart-design-solutions-that-maximize-an-edina-homes-hardcover |
 
 Section: [[Blog]]
 

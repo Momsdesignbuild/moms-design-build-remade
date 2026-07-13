@@ -15,7 +15,12 @@ words: 630
 **Meta title:** INGRID LILJENQUIST - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/team/ingrid-liljenquist
-**Theirs:** https://momsdesignbuild.com/team/ingrid-liljenquist/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/team/ingrid-liljenquist/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/team/ingrid-liljenquist |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/team/ingrid-liljenquist |
 
 Section: [[Team]]

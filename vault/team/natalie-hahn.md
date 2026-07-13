@@ -15,7 +15,12 @@ words: 454
 **Meta title:** NATALIE HAHN - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/team/natalie-hahn
-**Theirs:** https://momsdesignbuild.com/team/natalie-hahn/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/team/natalie-hahn/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/team/natalie-hahn |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/team/natalie-hahn |
 
 Section: [[Team]]

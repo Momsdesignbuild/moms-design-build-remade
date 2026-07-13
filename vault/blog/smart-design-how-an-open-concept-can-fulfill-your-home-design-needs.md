@@ -15,8 +15,13 @@ words: 1583
 **Meta title:** Tips For Creating An Aesthetic Open Concept Home In Twin Cities
 **Meta description:** Smart design is about building a space in your home that is functional, convenient, & aesthetically pleasing. Read more about how to implement this idea into your home.
 
-**Ours:** https://moms-design-build-remade.vercel.app/smart-design-how-an-open-concept-can-fulfill-your-home-design-needs
-**Theirs:** https://momsdesignbuild.com/smart-design-how-an-open-concept-can-fulfill-your-home-design-needs/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/smart-design-how-an-open-concept-can-fulfill-your-home-design-needs/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/smart-design-how-an-open-concept-can-fulfill-your-home-design-needs |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/smart-design-how-an-open-concept-can-fulfill-your-home-design-needs |
 
 Section: [[Blog]]
 

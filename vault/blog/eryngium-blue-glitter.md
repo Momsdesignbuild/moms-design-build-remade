@@ -15,7 +15,12 @@ words: 588
 **Meta title:** Eryngium "Blue Glitter" - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/eryngium-blue-glitter
-**Theirs:** https://momsdesignbuild.com/eryngium-blue-glitter/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/eryngium-blue-glitter/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/eryngium-blue-glitter |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/eryngium-blue-glitter |
 
 Section: [[Blog]]

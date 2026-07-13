@@ -15,7 +15,12 @@ words: 655
 **Meta title:** Lenten Indulgence - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/lenten-indulgence
-**Theirs:** https://momsdesignbuild.com/lenten-indulgence/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/lenten-indulgence/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/lenten-indulgence |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/lenten-indulgence |
 
 Section: [[Blog]]

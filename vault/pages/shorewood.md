@@ -15,8 +15,13 @@ words: 730
 **Meta title:** Landscape Design & Architecture Firm For Shorewood Homes
 **Meta description:** (952) 277-6667 - The award-winning designers at Mom's Design Build is pleased to provide its landscape architecture service to homes in the Shorewood area.
 
-**Ours:** https://moms-design-build-remade.vercel.app/services/landscape-architecture/shorewood
-**Theirs:** https://momsdesignbuild.com/services/landscape-architecture/shorewood/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/services/landscape-architecture/shorewood/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/services/landscape-architecture/shorewood |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/services/landscape-architecture/shorewood |
 
 Section: [[Pages]]
 

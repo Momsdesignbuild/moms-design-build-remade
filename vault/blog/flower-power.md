@@ -15,7 +15,12 @@ words: 559
 **Meta title:** Flower Power - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/flower-power
-**Theirs:** https://momsdesignbuild.com/flower-power/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/flower-power/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/flower-power |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/flower-power |
 
 Section: [[Blog]]

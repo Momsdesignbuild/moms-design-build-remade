@@ -15,8 +15,13 @@ words: 1190
 **Meta title:** Inspiring Before and After Deck Makeover - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/inspiring-before-and-after-deck-makeover
-**Theirs:** https://momsdesignbuild.com/inspiring-before-and-after-deck-makeover/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/inspiring-before-and-after-deck-makeover/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/inspiring-before-and-after-deck-makeover |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/inspiring-before-and-after-deck-makeover |
 
 Section: [[Blog]]
 

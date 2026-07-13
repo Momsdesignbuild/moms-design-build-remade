@@ -15,7 +15,12 @@ words: 665
 **Meta title:** New Years? Bring out the "Wine Cups" - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/new-years-bring-out-the-wine-cups
-**Theirs:** https://momsdesignbuild.com/new-years-bring-out-the-wine-cups/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/new-years-bring-out-the-wine-cups/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/new-years-bring-out-the-wine-cups |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/new-years-bring-out-the-wine-cups |
 
 Section: [[Blog]]

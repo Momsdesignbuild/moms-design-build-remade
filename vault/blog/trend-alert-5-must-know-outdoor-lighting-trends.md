@@ -15,8 +15,13 @@ words: 1259
 **Meta title:** 5 New Outdoor Lighting Ideas To Make Improve Your MN Yard
 **Meta description:** Check out our landscape lighting ideas & design tips to create the best outdoor living space. Enhance your garden, patio, & yard with our top lighting solutions.
 
-**Ours:** https://moms-design-build-remade.vercel.app/trend-alert-5-must-know-outdoor-lighting-trends
-**Theirs:** https://momsdesignbuild.com/trend-alert-5-must-know-outdoor-lighting-trends/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/trend-alert-5-must-know-outdoor-lighting-trends/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/trend-alert-5-must-know-outdoor-lighting-trends |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/trend-alert-5-must-know-outdoor-lighting-trends |
 
 Section: [[Blog]]
 

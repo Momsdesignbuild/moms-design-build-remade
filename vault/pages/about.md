@@ -15,7 +15,12 @@ words: 723
 **Meta title:** About Mom's Design Build - Landscape & Remodeling Design
 **Meta description:** Discover the talented team behind Mom's Design Build, an award-winning landscape and interior remodel design firm based in Minnesota.
 
-**Ours:** https://moms-design-build-remade.vercel.app/about
-**Theirs:** https://momsdesignbuild.com/about/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/about/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/about |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/about |
 
 Section: [[Pages]]

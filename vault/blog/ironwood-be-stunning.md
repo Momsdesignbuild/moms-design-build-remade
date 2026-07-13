@@ -15,7 +15,12 @@ words: 702
 **Meta title:** Ironwood Be Stunning - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/ironwood-be-stunning
-**Theirs:** https://momsdesignbuild.com/ironwood-be-stunning/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/ironwood-be-stunning/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/ironwood-be-stunning |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/ironwood-be-stunning |
 
 Section: [[Blog]]

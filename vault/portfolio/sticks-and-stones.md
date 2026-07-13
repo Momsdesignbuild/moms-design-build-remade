@@ -8,6 +8,7 @@ photos: 6
 inline_images: 0
 words: 584
 grid_order: 67
+remastered_notes: wp-copy
 ---
 # Sticks & Stones
 
@@ -16,8 +17,15 @@ grid_order: 67
 **Meta title:** Mom's Design Build Landscape Design in Minnesota - Sticks & Stones Project
 **Meta description:** Minnesota's Most Awarded Landscape Design Build Firm - Check out the Sticks & Stones Project
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/sticks-and-stones
-**Theirs:** https://momsdesignbuild.com/portfolio/sticks-and-stones/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/sticks-and-stones/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/sticks-and-stones |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/sticks-and-stones |
+
+**Remastered Design Notes:** ✅ 📰 grounded in WP published copy · 📖 story
 
 Section: [[Portfolio]]
 

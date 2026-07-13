@@ -8,6 +8,7 @@ photos: 3
 inline_images: 0
 words: 470
 grid_order: 56
+remastered_notes: none
 ---
 # Office Goals
 
@@ -16,8 +17,15 @@ grid_order: 56
 **Meta title:** Mom's Design Build-| Edina Home Office Remodel
 **Meta description:** "An office remodel located in Edina, MN. The renovation includes storage, appliances, interior design, brass handles, home decor, home improvement"
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/office-goals
-**Theirs:** https://momsdesignbuild.com/portfolio/office-goals/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/office-goals/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/office-goals |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/office-goals |
+
+**Remastered Design Notes:** ⬜ none yet (source too thin — needs a OneDrive dive)
 
 Section: [[Portfolio]]
 

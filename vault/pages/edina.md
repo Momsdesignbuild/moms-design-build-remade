@@ -15,8 +15,13 @@ words: 740
 **Meta title:** Landscape Design & Architecture For Homes In Edina MN
 **Meta description:** (952) 277-6667 - The award-winning designers at Mom's Design Build is pleased to provide its landscape architecture service to homes in the Edina area.
 
-**Ours:** https://moms-design-build-remade.vercel.app/services/landscape-architecture/edina
-**Theirs:** https://momsdesignbuild.com/services/landscape-architecture/edina/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/services/landscape-architecture/edina/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/services/landscape-architecture/edina |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/services/landscape-architecture/edina |
 
 Section: [[Pages]]
 

@@ -15,7 +15,12 @@ words: 715
 **Meta title:** Raise a Stink - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/raise-a-stink
-**Theirs:** https://momsdesignbuild.com/raise-a-stink/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/raise-a-stink/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/raise-a-stink |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/raise-a-stink |
 
 Section: [[Blog]]

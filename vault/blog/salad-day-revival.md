@@ -15,7 +15,12 @@ words: 671
 **Meta title:** Salad Day Revival - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/salad-day-revival
-**Theirs:** https://momsdesignbuild.com/salad-day-revival/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/salad-day-revival/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/salad-day-revival |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/salad-day-revival |
 
 Section: [[Blog]]

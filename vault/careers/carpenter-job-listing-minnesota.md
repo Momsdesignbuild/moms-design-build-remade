@@ -15,8 +15,13 @@ words: 731
 **Meta title:** CARPENTER - Mom's Design Build
 **Meta description:** Join Mom's Design Build in Minnesota as a skilled carpenter. Build high-quality home remodels & luxury outdoor structures with an award-winning team, steady work, and competitive pay.
 
-**Ours:** https://moms-design-build-remade.vercel.app/careers/carpenter-job-listing-minnesota
-**Theirs:** https://momsdesignbuild.com/careers/carpenter-job-listing-minnesota/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/careers/carpenter-job-listing-minnesota/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/careers/carpenter-job-listing-minnesota |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/careers/carpenter-job-listing-minnesota |
 
 Section: [[Careers]]
 

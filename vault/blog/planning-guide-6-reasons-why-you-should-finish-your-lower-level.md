@@ -15,7 +15,12 @@ words: 1266
 **Meta title:** Planning Guide: 6 Reasons Why You Should Finish Your Lower Level - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/planning-guide-6-reasons-why-you-should-finish-your-lower-level
-**Theirs:** https://momsdesignbuild.com/planning-guide-6-reasons-why-you-should-finish-your-lower-level/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/planning-guide-6-reasons-why-you-should-finish-your-lower-level/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/planning-guide-6-reasons-why-you-should-finish-your-lower-level |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/planning-guide-6-reasons-why-you-should-finish-your-lower-level |
 
 Section: [[Blog]]

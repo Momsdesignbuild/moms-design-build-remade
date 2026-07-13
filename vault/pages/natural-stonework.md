@@ -15,8 +15,13 @@ words: 1118
 **Meta title:** Masonry & Stonework Design and Installation in Minnesota - Mom's Design Build
 **Meta description:** Mom's Design Build offers luxury design build services including custom masonry & stonework for your home in Minnesota. Contact us today!
 
-**Ours:** https://moms-design-build-remade.vercel.app/services/landscape-architecture/natural-stonework
-**Theirs:** https://momsdesignbuild.com/services/landscape-architecture/natural-stonework/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/services/landscape-architecture/natural-stonework/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/services/landscape-architecture/natural-stonework |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/services/landscape-architecture/natural-stonework |
 
 Section: [[Pages]]
 

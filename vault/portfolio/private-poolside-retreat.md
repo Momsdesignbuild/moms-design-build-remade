@@ -8,6 +8,7 @@ photos: 15
 inline_images: 0
 words: 498
 grid_order: 19
+remastered_notes: none
 ---
 # Private Poolside Retreat
 
@@ -16,8 +17,15 @@ grid_order: 19
 **Meta title:** Outdoor Living Area Renovation In Lakeville MN - Private Poolside Retreat
 **Meta description:** This Private Poolside Retreat in Lakeville is an extraordinary example of a crisp and clean outdoor living area. View more images here!
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/private-poolside-retreat
-**Theirs:** https://momsdesignbuild.com/portfolio/private-poolside-retreat/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/private-poolside-retreat/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/private-poolside-retreat |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/private-poolside-retreat |
+
+**Remastered Design Notes:** ⬜ none yet (source too thin — needs a OneDrive dive)
 
 Section: [[Portfolio]]
 

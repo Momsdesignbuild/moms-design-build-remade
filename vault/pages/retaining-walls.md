@@ -15,8 +15,13 @@ words: 1686
 **Meta title:** Retaining Wall Contractor - Design & Installation in Minnesota Near Me
 **Meta description:** Mom's Design Build offers high-end retaining wall design and construction in the Twin Cities MN area. Contact our team of experts today!
 
-**Ours:** https://moms-design-build-remade.vercel.app/services/landscape-architecture/retaining-walls
-**Theirs:** https://momsdesignbuild.com/services/landscape-architecture/retaining-walls/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/services/landscape-architecture/retaining-walls/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/services/landscape-architecture/retaining-walls |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/services/landscape-architecture/retaining-walls |
 
 Section: [[Pages]]
 

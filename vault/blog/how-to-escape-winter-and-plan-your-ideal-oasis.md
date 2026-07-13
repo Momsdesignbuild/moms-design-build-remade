@@ -15,8 +15,13 @@ words: 1325
 **Meta title:** Summer Patio Ideas - How To Improve Your Outdoor Living Space
 **Meta description:** Learn easy ways you can improve your outdoor living space and patio for the summer! If you need more design tips, schedule an appointment with us today.
 
-**Ours:** https://moms-design-build-remade.vercel.app/how-to-escape-winter-and-plan-your-ideal-oasis
-**Theirs:** https://momsdesignbuild.com/how-to-escape-winter-and-plan-your-ideal-oasis/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/how-to-escape-winter-and-plan-your-ideal-oasis/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/how-to-escape-winter-and-plan-your-ideal-oasis |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/how-to-escape-winter-and-plan-your-ideal-oasis |
 
 Section: [[Blog]]
 

@@ -8,6 +8,7 @@ photos: 15
 inline_images: 7
 words: 746
 grid_order: 11
+remastered_notes: deck-backed
 ---
 # Garden Grandeur
 
@@ -16,8 +17,15 @@ grid_order: 11
 **Meta title:** Mom's Design Build's Garden Grandeur Project - Award Winning Landscape Design
 **Meta description:** Meet Garden Grandeur, a comprehensive luxury landscape design featuring a pool, firepit, longue area, outdoor kitchen, pergola, and more!
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/garden-grandeur
-**Theirs:** https://momsdesignbuild.com/portfolio/garden-grandeur/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/garden-grandeur/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/garden-grandeur |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/garden-grandeur |
+
+**Remastered Design Notes:** ✅ 📁 deck-backed (designer award narrative) · 📖 story
 
 Section: [[Portfolio]]
 

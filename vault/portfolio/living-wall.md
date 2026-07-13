@@ -8,6 +8,7 @@ photos: 2
 inline_images: 1
 words: 556
 grid_order: 69
+remastered_notes: wp-copy
 ---
 # Living Wall
 
@@ -16,8 +17,15 @@ grid_order: 69
 **Meta title:** Mom's Design Build's Living Wall Project - Landscape Design in Minnesota
 **Meta description:** Minnesota modern pool with gas fireplace and contemporary landscape design. Mn metro area professional landscapers and lawn design
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/living-wall
-**Theirs:** https://momsdesignbuild.com/portfolio/living-wall/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/living-wall/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/living-wall |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/living-wall |
+
+**Remastered Design Notes:** ✅ 📰 grounded in WP published copy · 📖 story
 
 Section: [[Portfolio]]
 

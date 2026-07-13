@@ -15,8 +15,13 @@ words: 1696
 **Meta title:** Maximizing Curb Appeal in Minnesota: Expert Tips from A Landscape Designer
 **Meta description:** Boost your home’s value and charm with expert curb appeal tips from Minnesota landscape designer Britt Udenberg. Learn how to elevate your front yard for all four seasons!
 
-**Ours:** https://moms-design-build-remade.vercel.app/maximizing-curb-appeal
-**Theirs:** https://momsdesignbuild.com/maximizing-curb-appeal/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/maximizing-curb-appeal/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/maximizing-curb-appeal |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/maximizing-curb-appeal |
 
 Section: [[Blog]]
 

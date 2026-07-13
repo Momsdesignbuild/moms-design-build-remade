@@ -15,8 +15,13 @@ words: 1357
 **Meta title:** 5 Easy & Timeless Interior Design Ideas To Elevate Any Room
 **Meta description:** We found 5 easy ways to elevate your home through sustainable & eco-friendly ways while sticking to a maximalist design. Read more on how to transform your space.
 
-**Ours:** https://moms-design-build-remade.vercel.app/stunning-interior-design-trends-to-keep-an-eye-on-in-2021
-**Theirs:** https://momsdesignbuild.com/stunning-interior-design-trends-to-keep-an-eye-on-in-2021/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/stunning-interior-design-trends-to-keep-an-eye-on-in-2021/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/stunning-interior-design-trends-to-keep-an-eye-on-in-2021 |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/stunning-interior-design-trends-to-keep-an-eye-on-in-2021 |
 
 Section: [[Blog]]
 

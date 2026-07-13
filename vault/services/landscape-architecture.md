@@ -15,8 +15,13 @@ words: 681
 **Meta title:** Landscape Design and Architecture in MN - Mom's Design Build
 **Meta description:** Mom's Design Build provides luxury landscape services to the Twin Cities MN area. Contact us today to make your landscape project a reality.
 
-**Ours:** https://moms-design-build-remade.vercel.app/services/landscape-architecture
-**Theirs:** https://momsdesignbuild.com/services/landscape-architecture/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/services/landscape-architecture/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/services/landscape-architecture |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/services/landscape-architecture |
 
 Section: [[Services]]
 

@@ -15,7 +15,12 @@ words: 1654
 **Meta title:** Tips For Hosting Labor Day Weekend - Mom's Design Build
 **Meta description:** Mom's Design Build with Labor Day coming up work is getting crazy again and school is back in session. Read our tips for planning the perfect gathering!
 
-**Ours:** https://moms-design-build-remade.vercel.app/hosting-labor-day-weekend
-**Theirs:** https://momsdesignbuild.com/hosting-labor-day-weekend/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/hosting-labor-day-weekend/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/hosting-labor-day-weekend |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/hosting-labor-day-weekend |
 
 Section: [[Blog]]

@@ -15,7 +15,12 @@ words: 588
 **Meta title:** Bulbalicious - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/bulbalicious
-**Theirs:** https://momsdesignbuild.com/bulbalicious/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/bulbalicious/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/bulbalicious |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/bulbalicious |
 
 Section: [[Blog]]

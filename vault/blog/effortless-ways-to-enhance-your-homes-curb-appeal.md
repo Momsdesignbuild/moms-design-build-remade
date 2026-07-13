@@ -15,8 +15,13 @@ words: 1254
 **Meta title:** Easy Ways To Improve Your Homes Front Entryway & Curb Appeal
 **Meta description:** Read our top-rated expert guide on how to easily enhance and refresh your front entryway to improve your homes curb appeal! Learn more here.
 
-**Ours:** https://moms-design-build-remade.vercel.app/effortless-ways-to-enhance-your-homes-curb-appeal
-**Theirs:** https://momsdesignbuild.com/effortless-ways-to-enhance-your-homes-curb-appeal/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/effortless-ways-to-enhance-your-homes-curb-appeal/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/effortless-ways-to-enhance-your-homes-curb-appeal |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/effortless-ways-to-enhance-your-homes-curb-appeal |
 
 Section: [[Blog]]
 

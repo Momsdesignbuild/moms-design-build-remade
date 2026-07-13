@@ -15,7 +15,12 @@ words: 1391
 **Meta title:** Saltwater vs Chlorine Pool: Which Pool To Choose For Your MN Home
 **Meta description:** The two common types of sanitization for pools are saltwater & chlorine systems. Learn about their pros and cons & explore our custom pool services.
 
-**Ours:** https://moms-design-build-remade.vercel.app/saltwater-vs-chlorine-choosing-the-perfect-pool-for-your-home
-**Theirs:** https://momsdesignbuild.com/saltwater-vs-chlorine-choosing-the-perfect-pool-for-your-home/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/saltwater-vs-chlorine-choosing-the-perfect-pool-for-your-home/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/saltwater-vs-chlorine-choosing-the-perfect-pool-for-your-home |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/saltwater-vs-chlorine-choosing-the-perfect-pool-for-your-home |
 
 Section: [[Blog]]

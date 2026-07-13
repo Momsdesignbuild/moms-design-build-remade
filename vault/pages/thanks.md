@@ -15,7 +15,12 @@ words: 454
 **Meta title:** Contact - Thanks - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/contact/thanks
-**Theirs:** https://momsdesignbuild.com/contact/thanks/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/contact/thanks/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/contact/thanks |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/contact/thanks |
 
 Section: [[Pages]]

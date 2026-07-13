@@ -15,8 +15,13 @@ words: 1070
 **Meta title:** Before and After: Dated Pool Now Modern and Marvelous - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/before-and-after-dated-pool-now-modern-and-marvelous
-**Theirs:** https://momsdesignbuild.com/before-and-after-dated-pool-now-modern-and-marvelous/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/before-and-after-dated-pool-now-modern-and-marvelous/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/before-and-after-dated-pool-now-modern-and-marvelous |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/before-and-after-dated-pool-now-modern-and-marvelous |
 
 Section: [[Blog]]
 

@@ -15,7 +15,12 @@ words: 626
 **Meta title:** TONY DENMAN - Mom's Design Build
 **Meta description:** Tony Denman - Project Manager at Mom's Design Build - Most Awarded Landscape Design Build Firm in the Midwest
 
-**Ours:** https://moms-design-build-remade.vercel.app/team/tony-denman
-**Theirs:** https://momsdesignbuild.com/team/tony-denman/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/team/tony-denman/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/team/tony-denman |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/team/tony-denman |
 
 Section: [[Team]]

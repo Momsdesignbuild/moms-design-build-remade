@@ -15,8 +15,13 @@ words: 726
 **Meta title:** Landscape Design & Architecture Firm For Maple Grove Homes
 **Meta description:** (952) 277-6667 - The award-winning designers at Mom's Design Build is pleased to provide its landscape architecture service to homes in the Medicine Lake area.
 
-**Ours:** https://moms-design-build-remade.vercel.app/services/landscape-architecture/maple-grove
-**Theirs:** https://momsdesignbuild.com/services/landscape-architecture/maple-grove/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/services/landscape-architecture/maple-grove/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/services/landscape-architecture/maple-grove |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/services/landscape-architecture/maple-grove |
 
 Section: [[Pages]]
 

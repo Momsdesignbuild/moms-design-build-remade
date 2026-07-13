@@ -8,6 +8,7 @@ photos: 11
 inline_images: 0
 words: 465
 grid_order: 64
+remastered_notes: none
 ---
 # Historic Courtyard
 
@@ -16,8 +17,15 @@ grid_order: 64
 **Meta title:** Mom's Design Build-Historic Courtyard Landscape
 **Meta description:** "This outdoor landscape project in Deephaven, MN was completed by Becca Bastyr of Mom's Design Build."
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/historic-courtyard
-**Theirs:** https://momsdesignbuild.com/portfolio/historic-courtyard/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/historic-courtyard/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/historic-courtyard |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/historic-courtyard |
+
+**Remastered Design Notes:** ⬜ none yet (source too thin — needs a OneDrive dive)
 
 Section: [[Portfolio]]
 

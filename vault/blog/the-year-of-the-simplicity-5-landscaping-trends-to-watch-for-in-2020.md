@@ -15,8 +15,13 @@ words: 1207
 **Meta title:** Here Are The 5 Top Landscaping Trends To Try This Year
 **Meta description:** Landscaping and garden experts share the top trends that will inspire and simplify your yard. Learn about the top landscaping trends for this year. Read more here.
 
-**Ours:** https://moms-design-build-remade.vercel.app/the-year-of-the-simplicity-5-landscaping-trends-to-watch-for-in-2020
-**Theirs:** https://momsdesignbuild.com/the-year-of-the-simplicity-5-landscaping-trends-to-watch-for-in-2020/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/the-year-of-the-simplicity-5-landscaping-trends-to-watch-for-in-2020/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/the-year-of-the-simplicity-5-landscaping-trends-to-watch-for-in-2020 |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/the-year-of-the-simplicity-5-landscaping-trends-to-watch-for-in-2020 |
 
 Section: [[Blog]]
 

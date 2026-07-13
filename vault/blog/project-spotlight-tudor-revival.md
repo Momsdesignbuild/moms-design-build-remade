@@ -15,8 +15,13 @@ words: 1177
 **Meta title:** Tudor-Style House Landscaping - Backyard Design For MN Homes
 **Meta description:** Read about our design & build process in elevating clients backyards. Read how we styled & revived a Tudor home. Learn more about the project here.
 
-**Ours:** https://moms-design-build-remade.vercel.app/project-spotlight-tudor-revival
-**Theirs:** https://momsdesignbuild.com/project-spotlight-tudor-revival/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/project-spotlight-tudor-revival/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/project-spotlight-tudor-revival |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/project-spotlight-tudor-revival |
 
 Section: [[Blog]]
 

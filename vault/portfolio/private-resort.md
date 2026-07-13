@@ -8,6 +8,7 @@ photos: 13
 inline_images: 1
 words: 606
 grid_order: 65
+remastered_notes: wp-copy
 ---
 # Private Resort
 
@@ -16,8 +17,15 @@ grid_order: 65
 **Meta title:** Mom's Design Build-| Modern MN Backyard with In-Ground Pool and Bar and Grill
 **Meta description:** "Stillwater, MN backyard professional landscape with bar and grill, pool installation, pavilion remodel. Patio, exterior dining, private landscape, design"
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/private-resort
-**Theirs:** https://momsdesignbuild.com/portfolio/private-resort/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/private-resort/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/private-resort |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/private-resort |
+
+**Remastered Design Notes:** ✅ 📰 grounded in WP published copy · 📖 story
 
 Section: [[Portfolio]]
 

@@ -8,6 +8,7 @@ photos: 24
 inline_images: 0
 words: 496
 grid_order: 29
+remastered_notes: none
 ---
 # Family Matters
 
@@ -16,8 +17,15 @@ grid_order: 29
 **Meta title:** Mom's Design Build-Maple Grove, MN Backyard putting Green and Bar+Grill
 **Meta description:** "Maple Grove, MN Back yard Landscape project with putting green, bar and grill, Lounge chairs, patio, garden"
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/family-matters
-**Theirs:** https://momsdesignbuild.com/portfolio/family-matters/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/family-matters/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/family-matters |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/family-matters |
+
+**Remastered Design Notes:** ⬜ none yet (source too thin — needs a OneDrive dive)
 
 Section: [[Portfolio]]
 

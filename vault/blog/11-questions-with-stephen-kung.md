@@ -15,7 +15,12 @@ words: 891
 **Meta title:** 11 Questions with Stephen Kung - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/11-questions-with-stephen-kung
-**Theirs:** https://momsdesignbuild.com/11-questions-with-stephen-kung/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/11-questions-with-stephen-kung/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/11-questions-with-stephen-kung |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/11-questions-with-stephen-kung |
 
 Section: [[Blog]]

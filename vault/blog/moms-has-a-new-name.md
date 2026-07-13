@@ -15,7 +15,12 @@ words: 1185
 **Meta title:** Mom's Has a New Name - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/moms-has-a-new-name
-**Theirs:** https://momsdesignbuild.com/moms-has-a-new-name/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/moms-has-a-new-name/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/moms-has-a-new-name |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/moms-has-a-new-name |
 
 Section: [[Blog]]

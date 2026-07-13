@@ -8,6 +8,7 @@ photos: 19
 inline_images: 4
 words: 686
 grid_order: 2
+remastered_notes: deck-backed
 ---
 # Cedar & Stone
 
@@ -16,8 +17,15 @@ grid_order: 2
 **Meta title:** Cedar & Stone - Mom's Design Build
 **Meta description:** Poolhouse landscape design and architecture in Minnesota - Meet Cedar & Stone by Mom's Design Build - The Most Awarded Design Build Firm in MN
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/cedar-and-stone
-**Theirs:** https://momsdesignbuild.com/portfolio/cedar-and-stone/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/cedar-and-stone/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/cedar-and-stone |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/cedar-and-stone |
+
+**Remastered Design Notes:** ✅ 📁 deck-backed (designer award narrative) · 📖 story
 
 Section: [[Portfolio]]
 

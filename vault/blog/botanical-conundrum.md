@@ -15,7 +15,12 @@ words: 739
 **Meta title:** Botanical Conundrum - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/botanical-conundrum
-**Theirs:** https://momsdesignbuild.com/botanical-conundrum/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/botanical-conundrum/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/botanical-conundrum |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/botanical-conundrum |
 
 Section: [[Blog]]

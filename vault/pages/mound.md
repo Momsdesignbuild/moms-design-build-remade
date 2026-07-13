@@ -15,8 +15,13 @@ words: 754
 **Meta title:** Award-Winning Landscape Design & Architecture For Mound Area Homes
 **Meta description:** (952) 277-6667 - The award-winning designers at Mom's Design Build is pleased to provide its landscape architecture service to homes in the Mound area.
 
-**Ours:** https://moms-design-build-remade.vercel.app/services/landscape-architecture/mound
-**Theirs:** https://momsdesignbuild.com/services/landscape-architecture/mound/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/services/landscape-architecture/mound/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/services/landscape-architecture/mound |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/services/landscape-architecture/mound |
 
 Section: [[Pages]]
 

@@ -8,6 +8,7 @@ photos: 8
 inline_images: 0
 words: 474
 grid_order: 57
+remastered_notes: none
 ---
 # Harriet Haven
 
@@ -16,8 +17,15 @@ grid_order: 57
 **Meta title:** Mom's Design Build's Harriet Haven Project - Backyard Design and Pool
 **Meta description:** Minneapolis water features, landscaping, underground pool, pergola, and exterior design on Lake Harriet
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/harriet-haven
-**Theirs:** https://momsdesignbuild.com/portfolio/harriet-haven/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/harriet-haven/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/harriet-haven |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/harriet-haven |
+
+**Remastered Design Notes:** ⬜ none yet (source too thin — needs a OneDrive dive)
 
 Section: [[Portfolio]]
 

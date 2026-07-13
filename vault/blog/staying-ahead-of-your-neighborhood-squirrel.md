@@ -15,7 +15,12 @@ words: 949
 **Meta title:** Staying ahead of your neighborhood squirrel - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/staying-ahead-of-your-neighborhood-squirrel
-**Theirs:** https://momsdesignbuild.com/staying-ahead-of-your-neighborhood-squirrel/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/staying-ahead-of-your-neighborhood-squirrel/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/staying-ahead-of-your-neighborhood-squirrel |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/staying-ahead-of-your-neighborhood-squirrel |
 
 Section: [[Blog]]

@@ -8,6 +8,7 @@ photos: 11
 inline_images: 0
 words: 482
 grid_order: 52
+remastered_notes: none
 ---
 # All Decked Out
 
@@ -16,8 +17,15 @@ grid_order: 52
 **Meta title:** Mom's Design Build-| Exterior Pool and Dining Remodel in Stillwater, MN
 **Meta description:** "A Stillwater backyard landscape design with a pool, patio, deck, fire pit, exterior appliances, retaining walls, and fine gardening"
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/all-decked-out
-**Theirs:** https://momsdesignbuild.com/portfolio/all-decked-out/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/all-decked-out/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/all-decked-out |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/all-decked-out |
+
+**Remastered Design Notes:** ⬜ none yet (source too thin — needs a OneDrive dive)
 
 Section: [[Portfolio]]
 

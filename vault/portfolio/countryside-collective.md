@@ -8,6 +8,7 @@ photos: 14
 inline_images: 3
 words: 610
 grid_order: 0
+remastered_notes: deck-backed
 ---
 # Countryside Collective
 
@@ -16,8 +17,15 @@ grid_order: 0
 **Meta title:** Countryside Collective Project - Mom's Design Build Landscape Design & Architecture
 **Meta description:** Countryside Collective Project - Landscape Design featuring a pool house, pool, sunken hot tub, pool deck, and more!
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/countryside-collective
-**Theirs:** https://momsdesignbuild.com/portfolio/countryside-collective/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/countryside-collective/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/countryside-collective |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/countryside-collective |
+
+**Remastered Design Notes:** ✅ 📁 deck-backed (designer award narrative) · 📖 story · 🏆 award line
 
 Section: [[Portfolio]]
 

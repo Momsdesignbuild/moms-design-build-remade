@@ -15,8 +15,13 @@ words: 1490
 **Meta title:** A Backyard That Will Make You Crave Summer! - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/a-backyard-that-will-make-you-crave-summer
-**Theirs:** https://momsdesignbuild.com/a-backyard-that-will-make-you-crave-summer/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/a-backyard-that-will-make-you-crave-summer/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/a-backyard-that-will-make-you-crave-summer |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/a-backyard-that-will-make-you-crave-summer |
 
 Section: [[Blog]]
 

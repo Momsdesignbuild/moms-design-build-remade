@@ -8,6 +8,7 @@ photos: 11
 inline_images: 0
 words: 614
 grid_order: 53
+remastered_notes: wp-copy
 ---
 # Whimsical Paradise
 
@@ -16,8 +17,15 @@ grid_order: 53
 **Meta title:** Mom's Design Build-| Minnesota Man-Made Pond Remodel
 **Meta description:** "An Eden Prairie landscape renovation with a man-made pond, pergola, fireplace installation, paved walkways, patio, exterior design, fine gardening, exterior lounging, and dining"
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/whimsical-paradise
-**Theirs:** https://momsdesignbuild.com/portfolio/whimsical-paradise/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/whimsical-paradise/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/whimsical-paradise |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/whimsical-paradise |
+
+**Remastered Design Notes:** ✅ 📰 grounded in WP published copy · 📖 story
 
 Section: [[Portfolio]]
 

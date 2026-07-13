@@ -8,6 +8,7 @@ photos: 23
 inline_images: 0
 words: 484
 grid_order: 31
+remastered_notes: none
 ---
 # Sunset Swim
 
@@ -16,8 +17,15 @@ grid_order: 31
 **Meta title:** Mom's Design Build-Minnetrista Pool landscape renovation near you
 **Meta description:** MN pool, fire pit, lounging, Exterior Dining, Remodel, hardscape
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/sunset-swim
-**Theirs:** https://momsdesignbuild.com/portfolio/sunset-swim/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/sunset-swim/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/sunset-swim |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/sunset-swim |
+
+**Remastered Design Notes:** ⬜ none yet (source too thin — needs a OneDrive dive)
 
 Section: [[Portfolio]]
 

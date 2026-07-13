@@ -8,6 +8,7 @@ photos: 26
 inline_images: 0
 words: 504
 grid_order: 26
+remastered_notes: deck-backed
 ---
 # Minnetrista Lake Escape
 
@@ -16,8 +17,15 @@ grid_order: 26
 **Meta title:** Mom's Design Build Minnetrsita Lake Escape Project - Landscape Design in MN
 **Meta description:** Lake Minnetrista backyard and driveway renovation with fireplace, ipe bench, glass railings, stone, cedar, exterior dining, grill
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/minnetrista-lake-escape
-**Theirs:** https://momsdesignbuild.com/portfolio/minnetrista-lake-escape/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/minnetrista-lake-escape/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/minnetrista-lake-escape |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/minnetrista-lake-escape |
+
+**Remastered Design Notes:** ✅ 📁 deck-backed (designer award narrative) · 📖 story
 
 Section: [[Portfolio]]
 

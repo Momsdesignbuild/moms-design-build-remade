@@ -15,7 +15,12 @@ words: 656
 **Meta title:** JAY FORBES - Mom's Design Build
 **Meta description:** Jay Forbes - Project Coordinator at Mom's Design Build - The Most Awarded Design Build Firm in the Midwest
 
-**Ours:** https://moms-design-build-remade.vercel.app/team/jay-forbes
-**Theirs:** https://momsdesignbuild.com/team/jay-forbes/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/team/jay-forbes/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/team/jay-forbes |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/team/jay-forbes |
 
 Section: [[Team]]

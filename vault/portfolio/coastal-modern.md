@@ -8,6 +8,7 @@ photos: 44
 inline_images: 0
 words: 494
 grid_order: 51
+remastered_notes: none
 ---
 # Coastal Modern
 
@@ -16,8 +17,15 @@ grid_order: 51
 **Meta title:** Mom's Design Build-Lake Minnetonka Pergola With a Bar and Grill
 **Meta description:** "Pergola roofing with a grill, bar, exterior dining/lounging , exterior appliances, fire pit, and a great view of Lake Minnetonka."
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/coastal-modern
-**Theirs:** https://momsdesignbuild.com/portfolio/coastal-modern/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/coastal-modern/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/coastal-modern |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/coastal-modern |
+
+**Remastered Design Notes:** ⬜ none yet (source too thin — needs a OneDrive dive)
 
 Section: [[Portfolio]]
 

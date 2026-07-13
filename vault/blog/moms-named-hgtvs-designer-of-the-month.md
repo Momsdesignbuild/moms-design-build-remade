@@ -15,7 +15,12 @@ words: 791
 **Meta title:** Mom's named HGTV's Designer of the Month! - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/moms-named-hgtvs-designer-of-the-month
-**Theirs:** https://momsdesignbuild.com/moms-named-hgtvs-designer-of-the-month/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/moms-named-hgtvs-designer-of-the-month/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/moms-named-hgtvs-designer-of-the-month |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/moms-named-hgtvs-designer-of-the-month |
 
 Section: [[Blog]]

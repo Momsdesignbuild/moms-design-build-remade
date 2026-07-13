@@ -15,8 +15,13 @@ words: 1133
 **Meta title:** Before & After: Backyard Retreat - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/before-after-backyard-retreat
-**Theirs:** https://momsdesignbuild.com/before-after-backyard-retreat/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/before-after-backyard-retreat/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/before-after-backyard-retreat |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/before-after-backyard-retreat |
 
 Section: [[Blog]]
 

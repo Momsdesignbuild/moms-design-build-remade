@@ -15,7 +15,12 @@ words: 952
 **Meta title:** 5 ways to add romance to a space - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/5-ways-to-add-romance-to-a-space
-**Theirs:** https://momsdesignbuild.com/5-ways-to-add-romance-to-a-space/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/5-ways-to-add-romance-to-a-space/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/5-ways-to-add-romance-to-a-space |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/5-ways-to-add-romance-to-a-space |
 
 Section: [[Blog]]

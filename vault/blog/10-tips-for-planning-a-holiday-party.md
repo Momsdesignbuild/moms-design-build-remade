@@ -15,8 +15,13 @@ words: 1463
 **Meta title:** 10 Tips For Planning a Holiday Party - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/10-tips-for-planning-a-holiday-party
-**Theirs:** https://momsdesignbuild.com/10-tips-for-planning-a-holiday-party/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/10-tips-for-planning-a-holiday-party/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/10-tips-for-planning-a-holiday-party |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/10-tips-for-planning-a-holiday-party |
 
 Section: [[Blog]]
 

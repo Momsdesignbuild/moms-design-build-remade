@@ -15,8 +15,13 @@ words: 888
 **Meta title:** Mom's Fine Gardening Services In Minnesota - Mom's Design Build
 **Meta description:** Mom's Design Build provides luxury fine gardening services in Minnesota. Contact us today to bring your outdoor garden dreams to life!
 
-**Ours:** https://moms-design-build-remade.vercel.app/services/garden-management
-**Theirs:** https://momsdesignbuild.com/services/garden-management/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/services/garden-management/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/services/garden-management |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/services/garden-management |
 
 Section: [[Services]]
 

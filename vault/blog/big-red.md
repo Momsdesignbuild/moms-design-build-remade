@@ -15,7 +15,12 @@ words: 602
 **Meta title:** Big Red - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/big-red
-**Theirs:** https://momsdesignbuild.com/big-red/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/big-red/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/big-red |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/big-red |
 
 Section: [[Blog]]

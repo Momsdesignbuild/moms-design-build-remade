@@ -15,8 +15,13 @@ words: 1415
 **Meta title:** Achieve Your 2025 Kitchen Goals With These 5 Inspiring Ideas
 **Meta description:** Looking to renovate your kitchen? Here are five design ideas that can be game-changing. Read here for essential first steps to get a kitchen remodeling plan started.
 
-**Ours:** https://moms-design-build-remade.vercel.app/5-simple-steps-to-tackle-your-2020-kitchen-goals-2
-**Theirs:** https://momsdesignbuild.com/5-simple-steps-to-tackle-your-2020-kitchen-goals-2/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/5-simple-steps-to-tackle-your-2020-kitchen-goals-2/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/5-simple-steps-to-tackle-your-2020-kitchen-goals-2 |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/5-simple-steps-to-tackle-your-2020-kitchen-goals-2 |
 
 Section: [[Blog]]
 

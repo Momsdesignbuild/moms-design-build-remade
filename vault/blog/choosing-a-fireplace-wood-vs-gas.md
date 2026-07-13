@@ -15,8 +15,13 @@ words: 1393
 **Meta title:** Gas Vs Wood Fireplace - Which Is Better For Outdoor Spaces
 **Meta description:** Learn the pros and cons of natural gas and wood-burning fireplaces with our expert guide by our design team. Learn which option best suits you here!
 
-**Ours:** https://moms-design-build-remade.vercel.app/choosing-a-fireplace-wood-vs-gas
-**Theirs:** https://momsdesignbuild.com/choosing-a-fireplace-wood-vs-gas/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/choosing-a-fireplace-wood-vs-gas/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/choosing-a-fireplace-wood-vs-gas |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/choosing-a-fireplace-wood-vs-gas |
 
 Section: [[Blog]]
 

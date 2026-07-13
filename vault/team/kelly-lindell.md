@@ -15,7 +15,12 @@ words: 473
 **Meta title:** KELLY LINDELL - Mom's Design Build
 **Meta description:** Meet the Mom's Design Build Team! Kelly Lindell - Director of Operations at the most awarded design build firm in Minnesota!
 
-**Ours:** https://moms-design-build-remade.vercel.app/team/kelly-lindell
-**Theirs:** https://momsdesignbuild.com/team/kelly-lindell/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/team/kelly-lindell/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/team/kelly-lindell |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/team/kelly-lindell |
 
 Section: [[Team]]

@@ -15,8 +15,13 @@ words: 1335
 **Meta title:** Natural Stone Home Improvements - Benefits Of Using Cambria Stone
 **Meta description:** Cambria® natural stone surfaces combine beauty with high quality. Discover why Cambria natural stone is an excellent choice for any home remodeling project.
 
-**Ours:** https://moms-design-build-remade.vercel.app/design-product-we-cant-get-enough-of-cambria-natural-stone
-**Theirs:** https://momsdesignbuild.com/design-product-we-cant-get-enough-of-cambria-natural-stone/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/design-product-we-cant-get-enough-of-cambria-natural-stone/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/design-product-we-cant-get-enough-of-cambria-natural-stone |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/design-product-we-cant-get-enough-of-cambria-natural-stone |
 
 Section: [[Blog]]
 

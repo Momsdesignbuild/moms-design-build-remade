@@ -15,7 +15,12 @@ words: 735
 **Meta title:** CARA ANDERSON - Mom's Design Build
 **Meta description:** Cara Anderson - Project Coordinator at Mom's Design Build - The Most Awarded Design Build Firm in the Midwest
 
-**Ours:** https://moms-design-build-remade.vercel.app/team/cara-anderson
-**Theirs:** https://momsdesignbuild.com/team/cara-anderson/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/team/cara-anderson/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/team/cara-anderson |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/team/cara-anderson |
 
 Section: [[Team]]

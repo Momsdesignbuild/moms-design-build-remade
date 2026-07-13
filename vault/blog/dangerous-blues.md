@@ -15,7 +15,12 @@ words: 724
 **Meta title:** Dangerous Blues - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/dangerous-blues
-**Theirs:** https://momsdesignbuild.com/dangerous-blues/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/dangerous-blues/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/dangerous-blues |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/dangerous-blues |
 
 Section: [[Blog]]

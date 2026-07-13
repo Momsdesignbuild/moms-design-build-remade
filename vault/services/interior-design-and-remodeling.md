@@ -15,8 +15,13 @@ words: 685
 **Meta title:** Interior Design & Construction In Metro Area - Mom's Design Build
 **Meta description:** Mom's Design Build provides luxury interior design and construction services to the Twin Cities, MN area. Contact us today!
 
-**Ours:** https://moms-design-build-remade.vercel.app/services/interior-design-and-remodeling
-**Theirs:** https://momsdesignbuild.com/services/interior-design-and-remodeling/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/services/interior-design-and-remodeling/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/services/interior-design-and-remodeling |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/services/interior-design-and-remodeling |
 
 Section: [[Services]]
 

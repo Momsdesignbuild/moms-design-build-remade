@@ -15,8 +15,13 @@ words: 878
 **Meta title:** Turn Your Home Into The Envy of Your Neighborhood - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/turn-your-home-into-the-envy-of-your-neighborhood
-**Theirs:** https://momsdesignbuild.com/turn-your-home-into-the-envy-of-your-neighborhood/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/turn-your-home-into-the-envy-of-your-neighborhood/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/turn-your-home-into-the-envy-of-your-neighborhood |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/turn-your-home-into-the-envy-of-your-neighborhood |
 
 Section: [[Blog]]
 

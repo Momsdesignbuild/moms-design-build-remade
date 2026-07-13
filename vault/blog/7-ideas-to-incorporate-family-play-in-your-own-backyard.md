@@ -15,8 +15,13 @@ words: 1360
 **Meta title:** 7 Ideas to Incorporate Family Play in Your Own Backyard - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/7-ideas-to-incorporate-family-play-in-your-own-backyard
-**Theirs:** https://momsdesignbuild.com/7-ideas-to-incorporate-family-play-in-your-own-backyard/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/7-ideas-to-incorporate-family-play-in-your-own-backyard/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/7-ideas-to-incorporate-family-play-in-your-own-backyard |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/7-ideas-to-incorporate-family-play-in-your-own-backyard |
 
 Section: [[Blog]]
 

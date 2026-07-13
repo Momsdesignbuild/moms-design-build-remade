@@ -15,8 +15,13 @@ words: 1107
 **Meta title:** BECCA BASTYR - Mom's Design Build
 **Meta description:** Becca Bastyr - Senior Landscape Designer at the Most Awarded Design Build Firm in the Midwest - Mom's Design Build, Minnesota
 
-**Ours:** https://moms-design-build-remade.vercel.app/team/becca-bastyr
-**Theirs:** https://momsdesignbuild.com/team/becca-bastyr/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/team/becca-bastyr/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/team/becca-bastyr |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/team/becca-bastyr |
 
 Section: [[Team]]
 

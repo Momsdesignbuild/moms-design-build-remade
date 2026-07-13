@@ -15,7 +15,12 @@ words: 907
 **Meta title:** Tips for Seeding Your Lawn in the Fall - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/tips-for-seeding-your-lawn-in-the-fall
-**Theirs:** https://momsdesignbuild.com/tips-for-seeding-your-lawn-in-the-fall/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/tips-for-seeding-your-lawn-in-the-fall/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/tips-for-seeding-your-lawn-in-the-fall |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/tips-for-seeding-your-lawn-in-the-fall |
 
 Section: [[Blog]]

@@ -15,8 +15,13 @@ words: 1626
 **Meta title:** Patio Design and Build in Minnesota - Mom's Design Build
 **Meta description:** Mom's Design Build offers luxury patios throughout Minnesota. Contact us today for a stunning landscape design and installation!
 
-**Ours:** https://moms-design-build-remade.vercel.app/services/landscape-architecture/patios
-**Theirs:** https://momsdesignbuild.com/services/landscape-architecture/patios/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/services/landscape-architecture/patios/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/services/landscape-architecture/patios |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/services/landscape-architecture/patios |
 
 Section: [[Pages]]
 

@@ -15,8 +15,13 @@ words: 909
 **Meta title:** Mom’s Does Minnesota Proud in National CotY Awards Competition - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/moms-does-minnesota-proud-in-national-coty-awards-competition
-**Theirs:** https://momsdesignbuild.com/moms-does-minnesota-proud-in-national-coty-awards-competition/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/moms-does-minnesota-proud-in-national-coty-awards-competition/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/moms-does-minnesota-proud-in-national-coty-awards-competition |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/moms-does-minnesota-proud-in-national-coty-awards-competition |
 
 Section: [[Blog]]
 

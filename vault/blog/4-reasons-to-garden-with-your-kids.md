@@ -15,7 +15,12 @@ words: 956
 **Meta title:** 4 Reasons to Garden with your Kids - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/4-reasons-to-garden-with-your-kids
-**Theirs:** https://momsdesignbuild.com/4-reasons-to-garden-with-your-kids/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/4-reasons-to-garden-with-your-kids/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/4-reasons-to-garden-with-your-kids |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/4-reasons-to-garden-with-your-kids |
 
 Section: [[Blog]]

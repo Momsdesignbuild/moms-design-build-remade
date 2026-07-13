@@ -15,8 +15,13 @@ words: 1513
 **Meta title:** Trendy Backyard Landscape Ideas To Upgrade Your Twin Cities Yard
 **Meta description:** Explore fresh backyard landscaping ideas and transform your outdoor living space with our award winning designers. Schedule your consultation with us today!
 
-**Ours:** https://moms-design-build-remade.vercel.app/how-intentional-design-creates-comfortable-outdoor-space-for-all
-**Theirs:** https://momsdesignbuild.com/how-intentional-design-creates-comfortable-outdoor-space-for-all/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/how-intentional-design-creates-comfortable-outdoor-space-for-all/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/how-intentional-design-creates-comfortable-outdoor-space-for-all |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/how-intentional-design-creates-comfortable-outdoor-space-for-all |
 
 Section: [[Blog]]
 

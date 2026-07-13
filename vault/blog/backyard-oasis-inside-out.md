@@ -15,8 +15,13 @@ words: 1056
 **Meta title:** Backyard Oasis Inside & Out - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/backyard-oasis-inside-out
-**Theirs:** https://momsdesignbuild.com/backyard-oasis-inside-out/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/backyard-oasis-inside-out/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/backyard-oasis-inside-out |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/backyard-oasis-inside-out |
 
 Section: [[Blog]]
 

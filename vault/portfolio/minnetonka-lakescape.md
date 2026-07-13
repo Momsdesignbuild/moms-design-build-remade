@@ -8,6 +8,7 @@ photos: 28
 inline_images: 0
 words: 480
 grid_order: 23
+remastered_notes: deck-backed
 ---
 # Minnetonka Lakescape
 
@@ -16,8 +17,15 @@ grid_order: 23
 **Meta title:** Mom's Design Build Minnetonka Lakescape Project
 **Meta description:** Lake Minnetonka residential landscaping architecture with modern fireplace, gardening service, retaining walls, patio, deck, stone walkway
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/minnetonka-lakescape
-**Theirs:** https://momsdesignbuild.com/portfolio/minnetonka-lakescape/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/minnetonka-lakescape/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/minnetonka-lakescape |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/minnetonka-lakescape |
+
+**Remastered Design Notes:** ✅ 📁 deck-backed (designer award narrative) · 📖 story
 
 Section: [[Portfolio]]
 

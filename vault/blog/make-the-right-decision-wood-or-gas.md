@@ -15,8 +15,13 @@ words: 1076
 **Meta title:** Make the right decision. Wood or Gas?? - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/make-the-right-decision-wood-or-gas
-**Theirs:** https://momsdesignbuild.com/make-the-right-decision-wood-or-gas/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/make-the-right-decision-wood-or-gas/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/make-the-right-decision-wood-or-gas |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/make-the-right-decision-wood-or-gas |
 
 Section: [[Blog]]
 

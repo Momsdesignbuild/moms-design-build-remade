@@ -8,6 +8,7 @@ photos: 13
 inline_images: 4
 words: 708
 grid_order: 8
+remastered_notes: deck-backed
 ---
 # Azure Grand
 
@@ -16,8 +17,15 @@ grid_order: 8
 **Meta title:** Mom's Design Build - Most Awarded Landscape Design Firm in the Midwest
 **Meta description:** Azure Grand is a luxury backyard renovation landscape design featuring a swimming pool, outdoor kitchen, lounging area, hot tub and more! Check it out!
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/azure-grand
-**Theirs:** https://momsdesignbuild.com/portfolio/azure-grand/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/azure-grand/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/azure-grand |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/azure-grand |
+
+**Remastered Design Notes:** ✅ 📁 deck-backed (designer award narrative) · 📖 story
 
 Section: [[Portfolio]]
 

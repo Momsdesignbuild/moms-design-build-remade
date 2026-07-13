@@ -8,6 +8,7 @@ photos: 18
 inline_images: 0
 words: 638
 grid_order: 36
+remastered_notes: wp-copy
 ---
 # Modern Oasis
 
@@ -16,8 +17,15 @@ grid_order: 36
 **Meta title:** Mom's Design Build-Modern Oasis: Backyard/pool landscape
 **Meta description:** A professional landscape renovation in Edina with water Features, a fire pit, a lower terrace, exterior lounging, and pool construction
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/modern-oasis
-**Theirs:** https://momsdesignbuild.com/portfolio/modern-oasis/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/modern-oasis/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/modern-oasis |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/modern-oasis |
+
+**Remastered Design Notes:** ✅ 📰 grounded in WP published copy · 📖 story · 🏆 award line
 
 Section: [[Portfolio]]
 

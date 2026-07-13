@@ -8,6 +8,7 @@ photos: 7
 inline_images: 0
 words: 471
 grid_order: 37
+remastered_notes: deck-backed
 ---
 # Lake House Lavatory
 
@@ -16,8 +17,15 @@ grid_order: 37
 **Meta title:** Mom's Design Build-MN Farmhouse-Styled Bathroom
 **Meta description:** MN brass and pink wallpaper with marble, wood, chandelier, sink, flooring
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/lake-house-lavatory
-**Theirs:** https://momsdesignbuild.com/portfolio/lake-house-lavatory/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/lake-house-lavatory/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/lake-house-lavatory |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/lake-house-lavatory |
+
+**Remastered Design Notes:** ✅ 📁 deck-backed (designer award narrative) · 📖 story
 
 Section: [[Portfolio]]
 

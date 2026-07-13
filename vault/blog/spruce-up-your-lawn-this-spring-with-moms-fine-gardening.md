@@ -15,8 +15,13 @@ words: 1069
 **Meta title:** Spruce Up Your Lawn This Spring with Mom's Fine Gardening - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/spruce-up-your-lawn-this-spring-with-moms-fine-gardening
-**Theirs:** https://momsdesignbuild.com/spruce-up-your-lawn-this-spring-with-moms-fine-gardening/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/spruce-up-your-lawn-this-spring-with-moms-fine-gardening/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/spruce-up-your-lawn-this-spring-with-moms-fine-gardening |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/spruce-up-your-lawn-this-spring-with-moms-fine-gardening |
 
 Section: [[Blog]]
 

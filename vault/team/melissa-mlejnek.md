@@ -15,8 +15,13 @@ words: 790
 **Meta title:** MELISSA MLEJNEK - Mom's Design Build
 **Meta description:** Melissa Mlejnek - Senior Interior Designer at Mom's Design Build - The Most Awarded Design Build Firm in the Midwest
 
-**Ours:** https://moms-design-build-remade.vercel.app/team/melissa-mlejnek
-**Theirs:** https://momsdesignbuild.com/team/melissa-mlejnek/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/team/melissa-mlejnek/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/team/melissa-mlejnek |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/team/melissa-mlejnek |
 
 Section: [[Team]]
 

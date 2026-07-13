@@ -15,8 +15,13 @@ words: 733
 **Meta title:** Landscape Design & Architecture For Homes In Eden Prairie MN
 **Meta description:** (952) 277-6667 - The award-winning designers at Mom's Design Build is pleased to provide its landscape architecture service to homes in the Eden Prairie area.
 
-**Ours:** https://moms-design-build-remade.vercel.app/services/landscape-architecture/eden-prairie
-**Theirs:** https://momsdesignbuild.com/services/landscape-architecture/eden-prairie/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/services/landscape-architecture/eden-prairie/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/services/landscape-architecture/eden-prairie |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/services/landscape-architecture/eden-prairie |
 
 Section: [[Pages]]
 

@@ -15,7 +15,12 @@ words: 1435
 **Meta title:** Our favorite types of Pizza Ovens - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/our-favorite-types-of-pizza-ovens
-**Theirs:** https://momsdesignbuild.com/our-favorite-types-of-pizza-ovens/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/our-favorite-types-of-pizza-ovens/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/our-favorite-types-of-pizza-ovens |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/our-favorite-types-of-pizza-ovens |
 
 Section: [[Blog]]

@@ -15,7 +15,12 @@ words: 1248
 **Meta title:** Mom’s Extends NARI CotY Award Winning Streak - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/moms-extends-nari-coty-award-winning-streak
-**Theirs:** https://momsdesignbuild.com/moms-extends-nari-coty-award-winning-streak/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/moms-extends-nari-coty-award-winning-streak/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/moms-extends-nari-coty-award-winning-streak |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/moms-extends-nari-coty-award-winning-streak |
 
 Section: [[Blog]]

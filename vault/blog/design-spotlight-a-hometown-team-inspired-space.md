@@ -15,8 +15,13 @@ words: 844
 **Meta title:** Design Spotlight: A Hometown Team Inspired Space - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/design-spotlight-a-hometown-team-inspired-space
-**Theirs:** https://momsdesignbuild.com/design-spotlight-a-hometown-team-inspired-space/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/design-spotlight-a-hometown-team-inspired-space/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/design-spotlight-a-hometown-team-inspired-space |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/design-spotlight-a-hometown-team-inspired-space |
 
 Section: [[Blog]]
 

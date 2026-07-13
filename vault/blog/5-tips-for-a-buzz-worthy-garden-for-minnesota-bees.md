@@ -15,8 +15,13 @@ words: 1254
 **Meta title:** 5 Tips For A Buzz-Worthy Garden for Minnesota Bees - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/5-tips-for-a-buzz-worthy-garden-for-minnesota-bees
-**Theirs:** https://momsdesignbuild.com/5-tips-for-a-buzz-worthy-garden-for-minnesota-bees/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/5-tips-for-a-buzz-worthy-garden-for-minnesota-bees/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/5-tips-for-a-buzz-worthy-garden-for-minnesota-bees |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/5-tips-for-a-buzz-worthy-garden-for-minnesota-bees |
 
 Section: [[Blog]]
 

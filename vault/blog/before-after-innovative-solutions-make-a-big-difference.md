@@ -15,8 +15,13 @@ words: 1231
 **Meta title:** Before & After: Innovative Solutions Make a Big Difference - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/before-after-innovative-solutions-make-a-big-difference
-**Theirs:** https://momsdesignbuild.com/before-after-innovative-solutions-make-a-big-difference/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/before-after-innovative-solutions-make-a-big-difference/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/before-after-innovative-solutions-make-a-big-difference |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/before-after-innovative-solutions-make-a-big-difference |
 
 Section: [[Blog]]
 

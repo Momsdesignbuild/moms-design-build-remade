@@ -15,8 +15,13 @@ words: 1218
 **Meta title:** Mudroom Interior Design Ideas You'll Love With Practical Storage
 **Meta description:** With these mudroom ideas, you can make a cluttered entryway one of the most stylish spots in your home. Flip through our easy design ideas here!
 
-**Ours:** https://moms-design-build-remade.vercel.app/7-creative-ways-to-organize-your-mudroom
-**Theirs:** https://momsdesignbuild.com/7-creative-ways-to-organize-your-mudroom/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/7-creative-ways-to-organize-your-mudroom/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/7-creative-ways-to-organize-your-mudroom |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/7-creative-ways-to-organize-your-mudroom |
 
 Section: [[Blog]]
 

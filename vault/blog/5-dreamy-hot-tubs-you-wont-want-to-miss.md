@@ -15,8 +15,13 @@ words: 1527
 **Meta title:** 5 Dreamy Hot Tubs You Won’t Want to Miss - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/5-dreamy-hot-tubs-you-wont-want-to-miss
-**Theirs:** https://momsdesignbuild.com/5-dreamy-hot-tubs-you-wont-want-to-miss/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/5-dreamy-hot-tubs-you-wont-want-to-miss/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/5-dreamy-hot-tubs-you-wont-want-to-miss |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/5-dreamy-hot-tubs-you-wont-want-to-miss |
 
 Section: [[Blog]]
 

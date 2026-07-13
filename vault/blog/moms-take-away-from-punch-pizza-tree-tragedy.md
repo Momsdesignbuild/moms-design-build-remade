@@ -15,7 +15,12 @@ words: 977
 **Meta title:** Mom’s Take-Away from Punch Pizza Tree Tragedy - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/moms-take-away-from-punch-pizza-tree-tragedy
-**Theirs:** https://momsdesignbuild.com/moms-take-away-from-punch-pizza-tree-tragedy/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/moms-take-away-from-punch-pizza-tree-tragedy/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/moms-take-away-from-punch-pizza-tree-tragedy |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/moms-take-away-from-punch-pizza-tree-tragedy |
 
 Section: [[Blog]]

@@ -15,8 +15,13 @@ words: 1161
 **Meta title:** Irish Thatched Roofs, a Mom’s Exclusive - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/irish-thatched-roofs-a-moms-exclusive
-**Theirs:** https://momsdesignbuild.com/irish-thatched-roofs-a-moms-exclusive/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/irish-thatched-roofs-a-moms-exclusive/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/irish-thatched-roofs-a-moms-exclusive |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/irish-thatched-roofs-a-moms-exclusive |
 
 Section: [[Blog]]
 

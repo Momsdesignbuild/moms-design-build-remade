@@ -15,7 +15,12 @@ words: 780
 **Meta title:** Houzz Homepage Article Written on Mom's Design Build - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/houzz-homepage-article-written-on-moms-design-build
-**Theirs:** https://momsdesignbuild.com/houzz-homepage-article-written-on-moms-design-build/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/houzz-homepage-article-written-on-moms-design-build/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/houzz-homepage-article-written-on-moms-design-build |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/houzz-homepage-article-written-on-moms-design-build |
 
 Section: [[Blog]]

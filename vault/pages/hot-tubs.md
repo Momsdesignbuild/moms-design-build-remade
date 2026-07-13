@@ -15,8 +15,13 @@ words: 1648
 **Meta title:** Hot Tub Landscape Design and Installation in Minnesota - Mom's Design Build
 **Meta description:** Mom's Design Build offers luxury design build services including custom hot tub design and installation for your home in Minnesota.
 
-**Ours:** https://moms-design-build-remade.vercel.app/services/landscape-architecture/hot-tubs
-**Theirs:** https://momsdesignbuild.com/services/landscape-architecture/hot-tubs/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/services/landscape-architecture/hot-tubs/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/services/landscape-architecture/hot-tubs |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/services/landscape-architecture/hot-tubs |
 
 Section: [[Pages]]
 

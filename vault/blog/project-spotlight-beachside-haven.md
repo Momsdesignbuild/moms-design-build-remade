@@ -15,7 +15,12 @@ words: 1724
 **Meta title:** Backyard Beachside Landscaping For MN Yard With Mom's Design Build
 **Meta description:** Read about how Mom's Design Build crafted a beautiful outdoor retreat for a forever home with lake views in Minnesota. learn more about our landscaping services here!
 
-**Ours:** https://moms-design-build-remade.vercel.app/project-spotlight-beachside-haven
-**Theirs:** https://momsdesignbuild.com/project-spotlight-beachside-haven/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/project-spotlight-beachside-haven/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/project-spotlight-beachside-haven |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/project-spotlight-beachside-haven |
 
 Section: [[Blog]]

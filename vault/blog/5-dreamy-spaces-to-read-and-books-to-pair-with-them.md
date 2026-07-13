@@ -15,8 +15,13 @@ words: 1182
 **Meta title:** Reading Nook Ideas - 5 Easy Ways To Create A Cozy Reading Corner
 **Meta description:** Discover 5 simple ways to integrate books into your space for the perfect reading areas. Contact Mom’s Design Build today to bring your dream reading nook to life!
 
-**Ours:** https://moms-design-build-remade.vercel.app/5-dreamy-spaces-to-read-and-books-to-pair-with-them
-**Theirs:** https://momsdesignbuild.com/5-dreamy-spaces-to-read-and-books-to-pair-with-them/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/5-dreamy-spaces-to-read-and-books-to-pair-with-them/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/5-dreamy-spaces-to-read-and-books-to-pair-with-them |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/5-dreamy-spaces-to-read-and-books-to-pair-with-them |
 
 Section: [[Blog]]
 

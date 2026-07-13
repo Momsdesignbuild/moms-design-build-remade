@@ -15,7 +15,12 @@ words: 464
 **Meta title:** Careers At Mom's Design Build - Explore Job Opportunities
 **Meta description:** Mom's Design Build is looking for talented applicants from designers to builders in MN. Explore our job openings and submit your application today!
 
-**Ours:** https://moms-design-build-remade.vercel.app/careers
-**Theirs:** https://momsdesignbuild.com/careers/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/careers/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/careers |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/careers |
 
 Section: [[Pages]]

@@ -15,8 +15,13 @@ words: 2260
 **Meta title:** Prepare Your Yard and Garden For Spring – Minnesota Landscaping Checklist - Mom's Design Build
 **Meta description:** Discover expert tips and organic solutions to keep your yard thriving! Join the Director of Fine Gardening at Mom's Design Build for a seasonal guide to a lush, healthy landscape.
 
-**Ours:** https://moms-design-build-remade.vercel.app/how-to-prepare-my-minnesota-yard-for-spring
-**Theirs:** https://momsdesignbuild.com/how-to-prepare-my-minnesota-yard-for-spring/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/how-to-prepare-my-minnesota-yard-for-spring/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/how-to-prepare-my-minnesota-yard-for-spring |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/how-to-prepare-my-minnesota-yard-for-spring |
 
 Section: [[Blog]]
 

@@ -8,6 +8,7 @@ photos: 21
 inline_images: 0
 words: 462
 grid_order: 24
+remastered_notes: none
 ---
 # The Majestic Mississippi
 
@@ -16,8 +17,15 @@ grid_order: 24
 **Meta title:** Mom's Design Build-The Majestic Mississippi
 **Meta description:** St croix landscape renovation
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/the-majestic-mississippi
-**Theirs:** https://momsdesignbuild.com/portfolio/the-majestic-mississippi/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/the-majestic-mississippi/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/the-majestic-mississippi |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/the-majestic-mississippi |
+
+**Remastered Design Notes:** ⬜ none yet (source too thin — needs a OneDrive dive)
 
 Section: [[Portfolio]]
 

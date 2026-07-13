@@ -15,7 +15,12 @@ words: 680
 **Meta title:** Magnified Magnolia - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/magnified-magnolia
-**Theirs:** https://momsdesignbuild.com/magnified-magnolia/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/magnified-magnolia/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/magnified-magnolia |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/magnified-magnolia |
 
 Section: [[Blog]]

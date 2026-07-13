@@ -15,8 +15,13 @@ words: 1304
 **Meta title:** Luxury Outdoor Entertainment Space & Outdoor MN Living Space
 **Meta description:** Read how we created a luxury outdoor entertainment space for a MN home. Have a vision for a family-friendly area? Let's chat about the possibilities. Contact us today!
 
-**Ours:** https://moms-design-build-remade.vercel.app/project-spotlight-sky-lane
-**Theirs:** https://momsdesignbuild.com/project-spotlight-sky-lane/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/project-spotlight-sky-lane/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/project-spotlight-sky-lane |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/project-spotlight-sky-lane |
 
 Section: [[Blog]]
 

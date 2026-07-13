@@ -8,6 +8,7 @@ photos: 14
 inline_images: 0
 words: 545
 grid_order: 30
+remastered_notes: wp-copy
 ---
 # Coastal Cottage
 
@@ -16,8 +17,15 @@ grid_order: 30
 **Meta title:** Mom's Design Build-CoastalCottage/Residential-landscape
 **Meta description:** "This redesigned front and backyard has transformed into the homeowners own “private oasis”. Often gathering with friends to relax and unwind while her son is in the backyard able to practice lacrosse for hours on end. “The landscape is simply gorgeous and tranquil”"
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/coastal-cottage
-**Theirs:** https://momsdesignbuild.com/portfolio/coastal-cottage/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/coastal-cottage/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/coastal-cottage |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/coastal-cottage |
+
+**Remastered Design Notes:** ✅ 📰 grounded in WP published copy · 📖 story
 
 Section: [[Portfolio]]
 

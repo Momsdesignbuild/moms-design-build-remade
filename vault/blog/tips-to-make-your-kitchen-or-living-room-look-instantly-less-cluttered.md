@@ -15,8 +15,13 @@ words: 1562
 **Meta title:** How to Declutter Your Space In 7 Easy & Essential Steps
 **Meta description:** Make any room in your house less chaotic by following these 7 easy steps on how to actually start the decluttering process. Read these 7 decluttering ideas.
 
-**Ours:** https://moms-design-build-remade.vercel.app/tips-to-make-your-kitchen-or-living-room-look-instantly-less-cluttered
-**Theirs:** https://momsdesignbuild.com/tips-to-make-your-kitchen-or-living-room-look-instantly-less-cluttered/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/tips-to-make-your-kitchen-or-living-room-look-instantly-less-cluttered/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/tips-to-make-your-kitchen-or-living-room-look-instantly-less-cluttered |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/tips-to-make-your-kitchen-or-living-room-look-instantly-less-cluttered |
 
 Section: [[Blog]]
 

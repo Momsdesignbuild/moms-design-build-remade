@@ -15,7 +15,12 @@ words: 571
 **Meta title:** Contact Mom's Design Build - Landscape & Interior Design
 **Meta description:** Mom's Design Build offers custom luxury landscaping, remodeling & gardening services to the Twin Cities, MN and surrounding areas. Let's chat!
 
-**Ours:** https://moms-design-build-remade.vercel.app/contact
-**Theirs:** https://momsdesignbuild.com/contact/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/contact/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/contact |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/contact |
 
 Section: [[Pages]]

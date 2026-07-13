@@ -8,6 +8,7 @@ photos: 13
 inline_images: 0
 words: 565
 grid_order: 43
+remastered_notes: deck-backed
 ---
 # Sky Lane
 
@@ -16,8 +17,15 @@ grid_order: 43
 **Meta title:** Mom's Design Build-Sky Lane:Patio/Deck/Four-season
 **Meta description:** A Tuscany-style backyard with a patio, deck, and four-season porch.
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/sky-lane
-**Theirs:** https://momsdesignbuild.com/portfolio/sky-lane/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/sky-lane/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/sky-lane |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/sky-lane |
+
+**Remastered Design Notes:** ✅ 📁 deck-backed (designer award narrative) · 📖 story
 
 Section: [[Portfolio]]
 

@@ -8,6 +8,7 @@ photos: 7
 inline_images: 4
 words: 630
 grid_order: 9
+remastered_notes: deck-backed
 ---
 # Magnolia Vista
 
@@ -16,8 +17,15 @@ grid_order: 9
 **Meta title:** Mom's Design Build - Most Awarded Landscape Design Build Firm in Minnesota
 **Meta description:** Lake Elmo, Minnesota award-winning landscape project featuring a stone wall, pergola, and exterior additon - Landscaper in Minnesota
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/magnolia-vista
-**Theirs:** https://momsdesignbuild.com/portfolio/magnolia-vista/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/magnolia-vista/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/magnolia-vista |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/magnolia-vista |
+
+**Remastered Design Notes:** ✅ 📁 deck-backed (designer award narrative) · 📖 story
 
 Section: [[Portfolio]]
 

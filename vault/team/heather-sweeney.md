@@ -15,8 +15,13 @@ words: 1163
 **Meta title:** HEATHER SWEENEY - Mom's Design Build
 **Meta description:** Heather Sweeney - Senior Landscape Designer at Mom's Design Build - Most Awarded Design Build Firm in the Midwest
 
-**Ours:** https://moms-design-build-remade.vercel.app/team/heather-sweeney
-**Theirs:** https://momsdesignbuild.com/team/heather-sweeney/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/team/heather-sweeney/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/team/heather-sweeney |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/team/heather-sweeney |
 
 Section: [[Team]]
 

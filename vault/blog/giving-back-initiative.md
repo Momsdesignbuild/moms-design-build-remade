@@ -15,7 +15,12 @@ words: 734
 **Meta title:** Giving Back Initiative - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/giving-back-initiative
-**Theirs:** https://momsdesignbuild.com/giving-back-initiative/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/giving-back-initiative/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/giving-back-initiative |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/giving-back-initiative |
 
 Section: [[Blog]]

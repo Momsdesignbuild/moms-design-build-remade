@@ -15,8 +15,13 @@ words: 1213
 **Meta title:** Prepare Your Outdoor Kitchen For The Winter In 5 Essential Steps
 **Meta description:** Winterizing your outdoor kitchen is one of the most important steps you can take to protect your home. Learn how to keep your kitchen safe during Minnesota's harsh winters.
 
-**Ours:** https://moms-design-build-remade.vercel.app/a-step-by-step-checklist-for-winterizing-your-kitchen
-**Theirs:** https://momsdesignbuild.com/a-step-by-step-checklist-for-winterizing-your-kitchen/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/a-step-by-step-checklist-for-winterizing-your-kitchen/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/a-step-by-step-checklist-for-winterizing-your-kitchen |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/a-step-by-step-checklist-for-winterizing-your-kitchen |
 
 Section: [[Blog]]
 

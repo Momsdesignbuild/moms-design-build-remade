@@ -8,6 +8,7 @@ photos: 22
 inline_images: 0
 words: 743
 grid_order: 17
+remastered_notes: deck-backed
 ---
 # Orono Overlook
 
@@ -16,8 +17,15 @@ grid_order: 17
 **Meta title:** Backyard Landscape & Outdoor Living Area Renovation In Orono MN
 **Meta description:** After building a new home on Lake Minnetonka this family hoped for a relaxing space - Mom's Design Build delivered. View more here!
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/orono-overlook
-**Theirs:** https://momsdesignbuild.com/portfolio/orono-overlook/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/orono-overlook/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/orono-overlook |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/orono-overlook |
+
+**Remastered Design Notes:** ✅ 📁 deck-backed (designer award narrative) · 📖 story
 
 Section: [[Portfolio]]
 

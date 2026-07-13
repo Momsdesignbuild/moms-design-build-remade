@@ -15,8 +15,13 @@ words: 1163
 **Meta title:** Home Kitchen Renovation Guide - New Kitchen Design Trends
 **Meta description:** A fully functional kitchen can transform your home! Find inspiration and the latest design trends in our expert kitchen renovation guide.
 
-**Ours:** https://moms-design-build-remade.vercel.app/your-go-to-guide-to-kitchen-renovation
-**Theirs:** https://momsdesignbuild.com/your-go-to-guide-to-kitchen-renovation/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/your-go-to-guide-to-kitchen-renovation/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/your-go-to-guide-to-kitchen-renovation |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/your-go-to-guide-to-kitchen-renovation |
 
 Section: [[Blog]]
 

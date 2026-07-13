@@ -15,8 +15,13 @@ words: 1739
 **Meta title:** A Landscape Designer’s Dream Trip: Becca Bastyr at the Chelsea Flower Show - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/chelsea-flower-show
-**Theirs:** https://momsdesignbuild.com/chelsea-flower-show/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/chelsea-flower-show/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/chelsea-flower-show |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/chelsea-flower-show |
 
 Section: [[Blog]]
 

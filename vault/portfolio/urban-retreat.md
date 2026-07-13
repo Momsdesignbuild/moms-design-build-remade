@@ -8,6 +8,7 @@ photos: 7
 inline_images: 1
 words: 546
 grid_order: 68
+remastered_notes: wp-copy
 ---
 # Urban Retreat
 
@@ -16,8 +17,15 @@ grid_order: 68
 **Meta title:** Mom's Design Build - Minnesota Courtyard Landscape Design
 **Meta description:** Minneapolis, MN patio with pergola and courtyard architecture. Includes a fireplace, appliances, gardening service, professional landscape!
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/urban-retreat
-**Theirs:** https://momsdesignbuild.com/portfolio/urban-retreat/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/urban-retreat/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/urban-retreat |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/urban-retreat |
+
+**Remastered Design Notes:** ✅ 📰 grounded in WP published copy · 📖 story
 
 Section: [[Portfolio]]
 

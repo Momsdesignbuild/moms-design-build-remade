@@ -15,7 +15,12 @@ words: 694
 **Meta title:** Midwest Home: Luxury in the Twin Cities - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/midwest-home-luxury-in-the-twin-cities
-**Theirs:** https://momsdesignbuild.com/midwest-home-luxury-in-the-twin-cities/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/midwest-home-luxury-in-the-twin-cities/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/midwest-home-luxury-in-the-twin-cities |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/midwest-home-luxury-in-the-twin-cities |
 
 Section: [[Blog]]

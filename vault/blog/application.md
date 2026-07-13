@@ -15,7 +15,12 @@ words: 1132
 **Meta title:** Job Application - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/application
-**Theirs:** https://momsdesignbuild.com/application/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/application/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/application |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/application |
 
 Section: [[Blog]]

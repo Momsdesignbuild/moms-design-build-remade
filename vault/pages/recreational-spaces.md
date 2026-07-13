@@ -15,8 +15,13 @@ words: 1584
 **Meta title:** Outdoor Sports & Recreation Contractor Minnesota - Mom's Design Build
 **Meta description:** Contact Mom’s Design Build if you’re looking to install your very own sport court, putting green or outdoor recreation area in Minnesota!
 
-**Ours:** https://moms-design-build-remade.vercel.app/services/landscape-architecture/recreational-spaces
-**Theirs:** https://momsdesignbuild.com/services/landscape-architecture/recreational-spaces/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/services/landscape-architecture/recreational-spaces/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/services/landscape-architecture/recreational-spaces |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/services/landscape-architecture/recreational-spaces |
 
 Section: [[Pages]]
 

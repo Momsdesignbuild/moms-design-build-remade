@@ -15,7 +15,12 @@ words: 528
 **Meta title:** MIKE WECKMAN - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/team/mike-weckman
-**Theirs:** https://momsdesignbuild.com/team/mike-weckman/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/team/mike-weckman/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/team/mike-weckman |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/team/mike-weckman |
 
 Section: [[Team]]

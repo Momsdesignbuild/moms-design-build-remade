@@ -8,6 +8,7 @@ photos: 24
 inline_images: 0
 words: 586
 grid_order: 54
+remastered_notes: wp-copy
 ---
 # Over The Top
 
@@ -16,8 +17,15 @@ grid_order: 54
 **Meta title:** Mom's Design Build-Pergola With Automatic Screens
 **Meta description:** "An outdoor pergola in Eden Prairie with a dining table, automatic screens, grill, stove, bar, cable railings, and wood flooring located on Lake Riley."
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/over-the-top
-**Theirs:** https://momsdesignbuild.com/portfolio/over-the-top/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/over-the-top/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/over-the-top |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/over-the-top |
+
+**Remastered Design Notes:** ✅ 📰 grounded in WP published copy · 📖 story
 
 Section: [[Portfolio]]
 

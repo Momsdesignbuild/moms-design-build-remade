@@ -15,8 +15,13 @@ words: 763
 **Meta title:** Holiday Decorating With Mom's - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/holiday-decorating-with-moms
-**Theirs:** https://momsdesignbuild.com/holiday-decorating-with-moms/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/holiday-decorating-with-moms/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/holiday-decorating-with-moms |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/holiday-decorating-with-moms |
 
 Section: [[Blog]]
 

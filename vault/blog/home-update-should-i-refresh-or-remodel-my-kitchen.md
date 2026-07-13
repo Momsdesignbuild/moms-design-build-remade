@@ -15,8 +15,13 @@ words: 1967
 **Meta title:** Kitchen Remodeling Vs Kitchen Renovation - What's The Difference
 **Meta description:** Discover if your kitchen needs a refresh or a full remodel. Mom's Design Build offers expert advice on upgrading your kitchen space. Read more here or contact Us today!
 
-**Ours:** https://moms-design-build-remade.vercel.app/home-update-should-i-refresh-or-remodel-my-kitchen
-**Theirs:** https://momsdesignbuild.com/home-update-should-i-refresh-or-remodel-my-kitchen/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/home-update-should-i-refresh-or-remodel-my-kitchen/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/home-update-should-i-refresh-or-remodel-my-kitchen |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/home-update-should-i-refresh-or-remodel-my-kitchen |
 
 Section: [[Blog]]
 

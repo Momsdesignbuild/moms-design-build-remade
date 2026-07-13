@@ -15,7 +15,12 @@ words: 997
 **Meta title:** Being in your backyard in the buff - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/being-in-your-backyard-in-the-buff
-**Theirs:** https://momsdesignbuild.com/being-in-your-backyard-in-the-buff/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/being-in-your-backyard-in-the-buff/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/being-in-your-backyard-in-the-buff |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/being-in-your-backyard-in-the-buff |
 
 Section: [[Blog]]

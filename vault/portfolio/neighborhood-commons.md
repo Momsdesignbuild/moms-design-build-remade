@@ -8,6 +8,7 @@ photos: 12
 inline_images: 2
 words: 704
 grid_order: 3
+remastered_notes: deck-backed
 ---
 # Neighborhood Commons
 
@@ -16,8 +17,15 @@ grid_order: 3
 **Meta title:** Neighborhood Commons - Mom's Design Build
 **Meta description:** Discover stunning landscape designs as two neighbors transform their dream backyards into reality with Mom's Design Build. Explore creativity, craftsmanship, and outdoor living inspiration
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/neighborhood-commons
-**Theirs:** https://momsdesignbuild.com/portfolio/neighborhood-commons/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/neighborhood-commons/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/neighborhood-commons |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/neighborhood-commons |
+
+**Remastered Design Notes:** ✅ 📁 deck-backed (designer award narrative) · 📖 story
 
 Section: [[Portfolio]]
 

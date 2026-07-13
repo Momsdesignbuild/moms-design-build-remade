@@ -15,8 +15,13 @@ words: 742
 **Meta title:** Award-Winning Landscape Design & Architecture For Orono Area Homes
 **Meta description:** (952) 277-6667 - The award-winning designers at Mom's Design Build is pleased to provide its landscape architecture service to homes in the Orono area.
 
-**Ours:** https://moms-design-build-remade.vercel.app/services/landscape-architecture/orono
-**Theirs:** https://momsdesignbuild.com/services/landscape-architecture/orono/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/services/landscape-architecture/orono/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/services/landscape-architecture/orono |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/services/landscape-architecture/orono |
 
 Section: [[Pages]]
 

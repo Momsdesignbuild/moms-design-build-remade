@@ -8,6 +8,7 @@ photos: 11
 inline_images: 2
 words: 723
 grid_order: 5
+remastered_notes: deck-backed
 ---
 # Starry Sips & Scenes
 
@@ -16,8 +17,15 @@ grid_order: 5
 **Meta title:** Starry Sips & Scenes - Mom's Design Build
 **Meta description:** Luxury Basement Remodel in Minnesota - Sauna, speakeasy style bar, and movie theater - Interior Design in Minnesota
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/starry-sips-scenes
-**Theirs:** https://momsdesignbuild.com/portfolio/starry-sips-scenes/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/starry-sips-scenes/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/starry-sips-scenes |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/starry-sips-scenes |
+
+**Remastered Design Notes:** ✅ 📁 deck-backed (designer award narrative) · 📖 story
 
 Section: [[Portfolio]]
 

@@ -15,8 +15,13 @@ words: 681
 **Meta title:** KELLEY WOODHEAD - Mom's Design Build
 **Meta description:** Kelley Woodhead - Project Manager at Mom's Design Build - Most Awarded Design Build Firm in the Midwest
 
-**Ours:** https://moms-design-build-remade.vercel.app/team/kelley-woodhead
-**Theirs:** https://momsdesignbuild.com/team/kelley-woodhead/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/team/kelley-woodhead/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/team/kelley-woodhead |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/team/kelley-woodhead |
 
 Section: [[Team]]
 

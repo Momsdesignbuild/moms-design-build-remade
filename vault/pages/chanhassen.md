@@ -15,8 +15,13 @@ words: 728
 **Meta title:** Award-Winning Landscape Design & Architecture For Chanhassen Area Homes
 **Meta description:** (952) 277-6667 - The award-winning designers at Mom's Design Build is pleased to provide its landscape architecture service to homes in the Chanhassen area.
 
-**Ours:** https://moms-design-build-remade.vercel.app/services/landscape-architecture/chanhassen
-**Theirs:** https://momsdesignbuild.com/services/landscape-architecture/chanhassen/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/services/landscape-architecture/chanhassen/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/services/landscape-architecture/chanhassen |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/services/landscape-architecture/chanhassen |
 
 Section: [[Pages]]
 

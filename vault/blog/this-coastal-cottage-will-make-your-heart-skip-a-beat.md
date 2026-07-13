@@ -15,8 +15,13 @@ words: 1433
 **Meta title:** Coastal Cottage Custom Home Ideas & Builders In Wayzata MN
 **Meta description:** Discover our coastal cottage design ideas & tips to create your dream home. Enhance your living space with top-rated solutions a coastal cottage ambiance.
 
-**Ours:** https://moms-design-build-remade.vercel.app/this-coastal-cottage-will-make-your-heart-skip-a-beat
-**Theirs:** https://momsdesignbuild.com/this-coastal-cottage-will-make-your-heart-skip-a-beat/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/this-coastal-cottage-will-make-your-heart-skip-a-beat/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/this-coastal-cottage-will-make-your-heart-skip-a-beat |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/this-coastal-cottage-will-make-your-heart-skip-a-beat |
 
 Section: [[Blog]]
 

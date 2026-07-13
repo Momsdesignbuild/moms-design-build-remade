@@ -15,8 +15,13 @@ words: 1906
 **Meta title:** The Art of Timeless Landscape Design: Balance, Intention, and Adaptability - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/timeless-landscape-design
-**Theirs:** https://momsdesignbuild.com/timeless-landscape-design/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/timeless-landscape-design/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/timeless-landscape-design |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/timeless-landscape-design |
 
 Section: [[Blog]]
 

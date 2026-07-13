@@ -15,7 +15,12 @@ words: 603
 **Meta title:** CHRIS MOLLER - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/team/chris-moller
-**Theirs:** https://momsdesignbuild.com/team/chris-moller/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/team/chris-moller/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/team/chris-moller |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/team/chris-moller |
 
 Section: [[Team]]

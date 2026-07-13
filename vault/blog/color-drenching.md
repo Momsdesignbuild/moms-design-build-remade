@@ -15,8 +15,13 @@ words: 1244
 **Meta title:** Color Drenching - Interior Design How-To & Pro-Tips! - Mom's Design Build
 **Meta description:** The Ultimate Guide to Color Drenching: How to Choose Colors, Paints & Rooms - Featuring Senior Interior Designer Melissa Mlejnek of Mom's Design Build
 
-**Ours:** https://moms-design-build-remade.vercel.app/color-drenching
-**Theirs:** https://momsdesignbuild.com/color-drenching/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/color-drenching/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/color-drenching |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/color-drenching |
 
 Section: [[Blog]]
 

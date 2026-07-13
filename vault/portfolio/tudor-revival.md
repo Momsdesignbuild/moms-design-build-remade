@@ -8,6 +8,7 @@ photos: 15
 inline_images: 0
 words: 585
 grid_order: 40
+remastered_notes: wp-copy
 ---
 # Tudor Revival
 
@@ -16,8 +17,15 @@ grid_order: 40
 **Meta title:** Mom's Design Build-Tudor Revival: Landscape design/Patio
 **Meta description:** "Minneapolis Tudor-styled patio renovation with fine gardening and landscaping"
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/tudor-revival
-**Theirs:** https://momsdesignbuild.com/portfolio/tudor-revival/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/tudor-revival/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/tudor-revival |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/tudor-revival |
+
+**Remastered Design Notes:** ✅ 📰 grounded in WP published copy · 📖 story
 
 Section: [[Portfolio]]
 

@@ -15,8 +15,13 @@ words: 1155
 **Meta title:** Planning Guide: 6 Fan Cave Must-Haves - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/planning-guide-6-fan-cave-must-haves
-**Theirs:** https://momsdesignbuild.com/planning-guide-6-fan-cave-must-haves/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/planning-guide-6-fan-cave-must-haves/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/planning-guide-6-fan-cave-must-haves |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/planning-guide-6-fan-cave-must-haves |
 
 Section: [[Blog]]
 

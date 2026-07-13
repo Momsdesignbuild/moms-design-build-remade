@@ -8,6 +8,7 @@ photos: 15
 inline_images: 0
 words: 586
 grid_order: 21
+remastered_notes: deck-backed
 ---
 # Old World English Manor
 
@@ -16,8 +17,15 @@ grid_order: 21
 **Meta title:** Old World English Manor - Outdoor Living Renovation In Minnetrista MN
 **Meta description:** Check out this lakeside outdoor living area renovation. Featuring an outdoor kitchen, fire pit and sitting area, this Minnetrista lakefront received an incredible transformation.
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/old-world-english-manor
-**Theirs:** https://momsdesignbuild.com/portfolio/old-world-english-manor/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/old-world-english-manor/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/old-world-english-manor |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/old-world-english-manor |
+
+**Remastered Design Notes:** ✅ 📁 deck-backed (designer award narrative) · 📖 story
 
 Section: [[Portfolio]]
 

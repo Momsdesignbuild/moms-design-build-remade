@@ -15,8 +15,13 @@ words: 1372
 **Meta title:** Tips For Organizing Your Garage: Minnetonka Garage Remodeling Services
 **Meta description:** Garages should be cleaned at least once a year, read our tips to get started. Do you want Mom's Design Build to update your garage? Contact us today!
 
-**Ours:** https://moms-design-build-remade.vercel.app/5-tips-for-organizing-your-garage
-**Theirs:** https://momsdesignbuild.com/5-tips-for-organizing-your-garage/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/5-tips-for-organizing-your-garage/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/5-tips-for-organizing-your-garage |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/5-tips-for-organizing-your-garage |
 
 Section: [[Blog]]
 

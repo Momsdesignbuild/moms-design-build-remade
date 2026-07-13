@@ -15,8 +15,13 @@ words: 896
 **Meta title:** GARDENER - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/careers/professional-gardener-job-listing-minnesota
-**Theirs:** https://momsdesignbuild.com/careers/professional-gardener-job-listing-minnesota/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/careers/professional-gardener-job-listing-minnesota/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/careers/professional-gardener-job-listing-minnesota |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/careers/professional-gardener-job-listing-minnesota |
 
 Section: [[Careers]]
 

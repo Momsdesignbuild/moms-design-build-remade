@@ -15,8 +15,13 @@ words: 1382
 **Meta title:** 5 Man Cave Ideas & Must Haves To Upgrade Your Home
 **Meta description:** Discover 5 simple ways to upgrade your man cave for this year's Super Bowl party! Explore must have items for your creative home space. Read more here.
 
-**Ours:** https://moms-design-build-remade.vercel.app/man-cave-roundup-5-must-haves
-**Theirs:** https://momsdesignbuild.com/man-cave-roundup-5-must-haves/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/man-cave-roundup-5-must-haves/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/man-cave-roundup-5-must-haves |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/man-cave-roundup-5-must-haves |
 
 Section: [[Blog]]
 

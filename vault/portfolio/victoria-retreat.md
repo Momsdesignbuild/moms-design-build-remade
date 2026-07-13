@@ -8,6 +8,7 @@ photos: 13
 inline_images: 0
 words: 675
 grid_order: 44
+remastered_notes: deck-backed
 ---
 # Victoria Retreat
 
@@ -16,8 +17,15 @@ grid_order: 44
 **Meta title:** Mom's Design Build-Victoria Retreat: Victoria Landscape
 **Meta description:** "A professional landscape renovation with sculptural architecture, outdoor lounging, above-ground ponds, stone stairs, fine gardening, and a patio. This landscape design is located in Victoria, MN"
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/victoria-retreat
-**Theirs:** https://momsdesignbuild.com/portfolio/victoria-retreat/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/victoria-retreat/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/victoria-retreat |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/victoria-retreat |
+
+**Remastered Design Notes:** ✅ 📁 deck-backed (designer award narrative) · 📖 story
 
 Section: [[Portfolio]]
 

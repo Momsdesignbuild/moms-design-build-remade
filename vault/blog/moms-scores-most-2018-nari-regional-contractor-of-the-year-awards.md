@@ -15,7 +15,12 @@ words: 910
 **Meta title:** Mom's Scores Most 2018 NARI Regional Contractor of the Year Awards - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/moms-scores-most-2018-nari-regional-contractor-of-the-year-awards
-**Theirs:** https://momsdesignbuild.com/moms-scores-most-2018-nari-regional-contractor-of-the-year-awards/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/moms-scores-most-2018-nari-regional-contractor-of-the-year-awards/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/moms-scores-most-2018-nari-regional-contractor-of-the-year-awards |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/moms-scores-most-2018-nari-regional-contractor-of-the-year-awards |
 
 Section: [[Blog]]

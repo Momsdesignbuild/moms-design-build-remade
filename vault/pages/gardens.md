@@ -15,8 +15,13 @@ words: 1261
 **Meta title:** High End Garden Design, Install, and Maintenance in Minnesota
 **Meta description:** Mom's Design Build offers luxury design build services including high end garden design & installation for your Minnesota home.
 
-**Ours:** https://moms-design-build-remade.vercel.app/services/landscape-architecture/gardens
-**Theirs:** https://momsdesignbuild.com/services/landscape-architecture/gardens/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/services/landscape-architecture/gardens/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/services/landscape-architecture/gardens |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/services/landscape-architecture/gardens |
 
 Section: [[Pages]]
 

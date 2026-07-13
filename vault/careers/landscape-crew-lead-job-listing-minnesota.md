@@ -15,8 +15,13 @@ words: 907
 **Meta title:** LANDSCAPE CREW LEAD - Mom's Design Build
 **Meta description:** Lead and inspire a landscape crew at Mom’s Design Build in Minnesota — oversee outdoor construction projects, mentor skilled crews, ensure quality and safety, and deliver exceptional client experiences with a top-rated design-build team.
 
-**Ours:** https://moms-design-build-remade.vercel.app/careers/landscape-crew-lead-job-listing-minnesota
-**Theirs:** https://momsdesignbuild.com/careers/landscape-crew-lead-job-listing-minnesota/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/careers/landscape-crew-lead-job-listing-minnesota/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/careers/landscape-crew-lead-job-listing-minnesota |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/careers/landscape-crew-lead-job-listing-minnesota |
 
 Section: [[Careers]]
 

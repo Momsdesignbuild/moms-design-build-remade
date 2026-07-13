@@ -15,8 +15,13 @@ words: 822
 **Meta title:** PROJECT MANAGER - Mom's Design Build
 **Meta description:** Explore a rewarding career with Mom's Design Build in Minnesota as a Landscape & Interior Design Project Manager, leading creative residential projects from concept to completion.
 
-**Ours:** https://moms-design-build-remade.vercel.app/careers/landscape-project-manager-job-opportunity-minnesota
-**Theirs:** https://momsdesignbuild.com/careers/landscape-project-manager-job-opportunity-minnesota/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/careers/landscape-project-manager-job-opportunity-minnesota/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/careers/landscape-project-manager-job-opportunity-minnesota |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/careers/landscape-project-manager-job-opportunity-minnesota |
 
 Section: [[Careers]]
 

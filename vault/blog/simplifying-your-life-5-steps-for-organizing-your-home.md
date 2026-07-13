@@ -15,8 +15,13 @@ words: 1542
 **Meta title:** 5 Essential Steps For Organizing & Tidying Up Your Home
 **Meta description:** Essential tips to follow during a home cleanout project. Try out these top organizing tips to make your home tidier & tackle clutter in every part of your home.
 
-**Ours:** https://moms-design-build-remade.vercel.app/simplifying-your-life-5-steps-for-organizing-your-home
-**Theirs:** https://momsdesignbuild.com/simplifying-your-life-5-steps-for-organizing-your-home/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/simplifying-your-life-5-steps-for-organizing-your-home/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/simplifying-your-life-5-steps-for-organizing-your-home |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/simplifying-your-life-5-steps-for-organizing-your-home |
 
 Section: [[Blog]]
 

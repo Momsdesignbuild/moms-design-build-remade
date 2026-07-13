@@ -8,6 +8,7 @@ photos: 11
 inline_images: 5
 words: 660
 grid_order: 4
+remastered_notes: deck-backed
 ---
 # Heart of Home
 
@@ -16,8 +17,15 @@ grid_order: 4
 **Meta title:** Heart of Home - Mom's Design Build
 **Meta description:** Transform your home with our expert kitchen and living room remodels. From custom cabinetry to open-concept designs, we do interior design best
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/heart-of-home
-**Theirs:** https://momsdesignbuild.com/portfolio/heart-of-home/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/heart-of-home/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/heart-of-home |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/heart-of-home |
+
+**Remastered Design Notes:** ✅ 📁 deck-backed (designer award narrative) · 📖 story
 
 Section: [[Portfolio]]
 

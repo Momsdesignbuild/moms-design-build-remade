@@ -15,7 +15,12 @@ words: 934
 **Meta title:** Winter is a four-letter-word? - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/winter-is-a-four-letter-word
-**Theirs:** https://momsdesignbuild.com/winter-is-a-four-letter-word/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/winter-is-a-four-letter-word/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/winter-is-a-four-letter-word |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/winter-is-a-four-letter-word |
 
 Section: [[Blog]]

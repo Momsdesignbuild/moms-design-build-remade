@@ -15,8 +15,13 @@ words: 1972
 **Meta title:** Go Big with Your Backyard – Maximalism in Landscape Design - Mom's Design Build
 **Meta description:** Looking for a bold, luxurious, and uniquely personal outdoor space? If you're ready to go beyond the basics and create a one-of-a-kind backyard that tells a story—this is for you. In this article, you’ll discover what maximalism in landscape design really means.
 
-**Ours:** https://moms-design-build-remade.vercel.app/maximalism-in-landscape-design
-**Theirs:** https://momsdesignbuild.com/maximalism-in-landscape-design/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/maximalism-in-landscape-design/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/maximalism-in-landscape-design |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/maximalism-in-landscape-design |
 
 Section: [[Blog]]
 

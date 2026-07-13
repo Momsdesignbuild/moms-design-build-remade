@@ -15,8 +15,13 @@ words: 1072
 **Meta title:** Enclosed Porch Addition On Minnesota Home - Four Season Porch
 **Meta description:** Minnesota experiences strong seasonal changes, especially in winter. That's why we built an enclosed porch for our clients to enjoy the outdoors year-round. Read more!
 
-**Ours:** https://moms-design-build-remade.vercel.app/transform-your-backyard-for-year-round-outdoor-living
-**Theirs:** https://momsdesignbuild.com/transform-your-backyard-for-year-round-outdoor-living/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/transform-your-backyard-for-year-round-outdoor-living/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/transform-your-backyard-for-year-round-outdoor-living |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/transform-your-backyard-for-year-round-outdoor-living |
 
 Section: [[Blog]]
 

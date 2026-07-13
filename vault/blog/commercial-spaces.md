@@ -15,8 +15,13 @@ words: 1600
 **Meta title:** Hospitality and Commerical Spaces Design and Build in Minnesota - Mom's Design Build
 **Meta description:** We provide custom design build services in Minnesota, including hospitality and commercial spaces. Take your business to the next level!
 
-**Ours:** https://moms-design-build-remade.vercel.app/commercial-spaces
-**Theirs:** https://momsdesignbuild.com/commercial-spaces/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/commercial-spaces/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/commercial-spaces |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/commercial-spaces |
 
 Section: [[Blog]]
 

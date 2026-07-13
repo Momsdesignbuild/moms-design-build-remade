@@ -15,8 +15,13 @@ words: 1211
 **Meta title:** Twin Cities Luxury Kitchen Interior Remodeling Company
 **Meta description:** Mom's Design Build offers luxury kitchen interior remodeling services throughout the Twin Cities MN area. Contact our team of experts today.
 
-**Ours:** https://moms-design-build-remade.vercel.app/services/landscape-architecture/kitchen-interior-remodeling
-**Theirs:** https://momsdesignbuild.com/services/landscape-architecture/kitchen-interior-remodeling/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/services/landscape-architecture/kitchen-interior-remodeling/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/services/landscape-architecture/kitchen-interior-remodeling |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/services/landscape-architecture/kitchen-interior-remodeling |
 
 Section: [[Pages]]
 

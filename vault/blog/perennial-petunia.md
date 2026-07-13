@@ -15,7 +15,12 @@ words: 624
 **Meta title:** Perennial Petunia - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/perennial-petunia
-**Theirs:** https://momsdesignbuild.com/perennial-petunia/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/perennial-petunia/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/perennial-petunia |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/perennial-petunia |
 
 Section: [[Blog]]

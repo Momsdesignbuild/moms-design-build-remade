@@ -15,7 +15,12 @@ words: 682
 **Meta title:** CHERILYN TANGEN - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/team/cherilyn-tangen
-**Theirs:** https://momsdesignbuild.com/team/cherilyn-tangen/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/team/cherilyn-tangen/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/team/cherilyn-tangen |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/team/cherilyn-tangen |
 
 Section: [[Team]]

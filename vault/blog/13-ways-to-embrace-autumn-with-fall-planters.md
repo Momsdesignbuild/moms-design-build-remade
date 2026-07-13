@@ -15,8 +15,13 @@ words: 1226
 **Meta title:** 13 Ways to Embrace Autumn with Fall Planters - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/13-ways-to-embrace-autumn-with-fall-planters
-**Theirs:** https://momsdesignbuild.com/13-ways-to-embrace-autumn-with-fall-planters/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/13-ways-to-embrace-autumn-with-fall-planters/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/13-ways-to-embrace-autumn-with-fall-planters |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/13-ways-to-embrace-autumn-with-fall-planters |
 
 Section: [[Blog]]
 

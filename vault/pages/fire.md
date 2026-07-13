@@ -15,8 +15,13 @@ words: 1137
 **Meta title:** Outdoor Firepit and Fireplace Design & Installation In Minnesota
 **Meta description:** Mom's Design Build offers luxury design build services including outdoor fire features for your home in Minnesota. Contact us today!
 
-**Ours:** https://moms-design-build-remade.vercel.app/services/landscape-architecture/fire
-**Theirs:** https://momsdesignbuild.com/services/landscape-architecture/fire/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/services/landscape-architecture/fire/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/services/landscape-architecture/fire |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/services/landscape-architecture/fire |
 
 Section: [[Pages]]
 

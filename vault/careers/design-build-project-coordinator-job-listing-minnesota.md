@@ -15,8 +15,13 @@ words: 783
 **Meta title:** PROJECT COORDINATOR - Mom's Design Build
 **Meta description:** Join the Mom's Design Build team as a Project Coordinator in Minnesota, leading timelines, budgets, and cross-functional collaboration to deliver projects on time and on target. The Most Awarded Landscape Design Company in the Midwest!
 
-**Ours:** https://moms-design-build-remade.vercel.app/careers/design-build-project-coordinator-job-listing-minnesota
-**Theirs:** https://momsdesignbuild.com/careers/design-build-project-coordinator-job-listing-minnesota/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/careers/design-build-project-coordinator-job-listing-minnesota/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/careers/design-build-project-coordinator-job-listing-minnesota |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/careers/design-build-project-coordinator-job-listing-minnesota |
 
 Section: [[Careers]]
 

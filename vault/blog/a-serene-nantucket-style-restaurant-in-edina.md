@@ -15,8 +15,13 @@ words: 1250
 **Meta title:** A Serene, Nantucket-Style Restaurant in Edina - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/a-serene-nantucket-style-restaurant-in-edina
-**Theirs:** https://momsdesignbuild.com/a-serene-nantucket-style-restaurant-in-edina/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/a-serene-nantucket-style-restaurant-in-edina/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/a-serene-nantucket-style-restaurant-in-edina |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/a-serene-nantucket-style-restaurant-in-edina |
 
 Section: [[Blog]]
 

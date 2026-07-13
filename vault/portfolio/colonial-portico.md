@@ -8,6 +8,7 @@ photos: 11
 inline_images: 0
 words: 589
 grid_order: 16
+remastered_notes: deck-backed
 ---
 # Colonial Portico
 
@@ -16,8 +17,15 @@ grid_order: 16
 **Meta title:** Backyard Portico & Landscaping Renovation In Edina MN Home
 **Meta description:** Check out this portico & backyard landscaping project in Edina completed by Mom's Design & Build. Learn about how we helped transform our clients' yard.
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/colonial-portico
-**Theirs:** https://momsdesignbuild.com/portfolio/colonial-portico/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/colonial-portico/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/colonial-portico |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/colonial-portico |
+
+**Remastered Design Notes:** ✅ 📁 deck-backed (designer award narrative) · 📖 story
 
 Section: [[Portfolio]]
 

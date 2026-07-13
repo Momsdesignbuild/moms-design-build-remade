@@ -8,6 +8,7 @@ photos: 5
 inline_images: 1
 words: 522
 grid_order: 61
+remastered_notes: wp-copy
 ---
 # Rustic Farmhouse
 
@@ -16,8 +17,15 @@ grid_order: 61
 **Meta title:** Mom's Design Build-Modern Rustic Kitchen
 **Meta description:** "Rustic and farmhouse-themed kitchen remodel. Interior furnished cabinets with electric stove, granite counter, rustic wood, appliances, dining table,"
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/rustic-farmhouse
-**Theirs:** https://momsdesignbuild.com/portfolio/rustic-farmhouse/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/rustic-farmhouse/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/rustic-farmhouse |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/rustic-farmhouse |
+
+**Remastered Design Notes:** ✅ 📰 grounded in WP published copy · 📖 story
 
 Section: [[Portfolio]]
 

@@ -15,7 +15,12 @@ words: 629
 **Meta title:** Plan(t) ahead! - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/plant-ahead
-**Theirs:** https://momsdesignbuild.com/plant-ahead/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/plant-ahead/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/plant-ahead |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/plant-ahead |
 
 Section: [[Blog]]

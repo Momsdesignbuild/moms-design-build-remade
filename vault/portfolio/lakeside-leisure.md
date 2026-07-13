@@ -8,6 +8,7 @@ photos: 29
 inline_images: 0
 words: 779
 grid_order: 12
+remastered_notes: deck-backed
 ---
 # Lakeside Leisure
 
@@ -16,8 +17,15 @@ grid_order: 12
 **Meta title:** Mom's Design Build's Lakeside Leisure Project - Exterior Additon Design and Installation
 **Meta description:** Minnesota exterior additon design and construction - Most awarded design build firm in the Midwest - Backyard renovation
 
-**Ours:** https://moms-design-build-remade.vercel.app/portfolio/lakeside-leisure
-**Theirs:** https://momsdesignbuild.com/portfolio/lakeside-leisure/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/portfolio/lakeside-leisure/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/portfolio/lakeside-leisure |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/portfolio/lakeside-leisure |
+
+**Remastered Design Notes:** ✅ 📁 deck-backed (designer award narrative) · 📖 story
 
 Section: [[Portfolio]]
 

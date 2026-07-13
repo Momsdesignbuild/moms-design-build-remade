@@ -15,7 +15,12 @@ words: 824
 **Meta title:** Soaring in the Garden - Mom's Design Build
 **Meta description:** (none)
 
-**Ours:** https://moms-design-build-remade.vercel.app/soaring-in-the-garden
-**Theirs:** https://momsdesignbuild.com/soaring-in-the-garden/
+## The three sites
+
+| Site | URL |
+|---|---|
+| Theirs (WordPress) | https://momsdesignbuild.com/soaring-in-the-garden/ |
+| Remade (carbon copy) | https://moms-design-build-remade.vercel.app/soaring-in-the-garden |
+| Remastered (redesign) | https://moms-design-build-remastered.vercel.app/soaring-in-the-garden |
 
 Section: [[Blog]]
