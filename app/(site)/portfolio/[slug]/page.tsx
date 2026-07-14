@@ -285,12 +285,21 @@ export default async function PortfolioProjectPage({
   const hiddenSubtitle = !!subtitle && /\bin (minnesota|mn)\.?\s*$/i.test(subtitle.trim());
 
   // ── Summer's reading order (7/14): body text BEFORE the photo download ──
-  // Text blocks (story/quote) rise to the top in their own order; labels stay
-  // glued to their image groups. Before+3D pairs STACK (never slide); the real
-  // before/after slider opens the Ta-Da section.
-  const textPhase = staged.filter((s) => s.kind === "story" || s.kind === "quote");
+  // Text blocks (story/quote) rise to the top in their own order. A label
+  // stays glued to its IMAGE group only when images actually follow it —
+  // labels inside prose (e.g. "Check out this article!" before a linked
+  // paragraph) travel with the text, keeping their WP-contiguous order
+  // (splitting them broke story-text parity on coastal-cottage/over-the-top).
+  // Before+3D pairs STACK (never slide); the real slider opens the Ta-Da.
+  const isMedia = (s: Staged, next?: Staged): boolean => {
+    if (s.kind === "story" || s.kind === "quote") return false;
+    if (s.kind === "label")
+      return !!next && ["image", "imageRow", "galleryGrid", "slider", "tada"].includes(next.kind);
+    return true;
+  };
+  const textPhase = staged.filter((s, i) => !isMedia(s, staged[i + 1]));
   let media: Staged[] = staged
-    .filter((s) => !(s.kind === "story" || s.kind === "quote"))
+    .filter((s, i) => isMedia(s, staged[i + 1]))
     .map((s) =>
       s.kind === "slider" && s.afterLabel === "3D Rendering"
         ? ({ kind: "imageRow", label: s.label, images: [s.before, s.after] } as Staged)
