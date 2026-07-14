@@ -311,8 +311,11 @@ export default async function PortfolioProjectPage({
         ? ({ kind: "imageRow", label: s.label, images: [s.before, s.after] } as Staged)
         : s
     );
-  // the FG credit sits at the very end of the flow, whatever their block order
-  media = [...media.filter((s) => !isFgCredit(s)), ...media.filter(isFgCredit)];
+  // the FG credit leaves the body flow entirely — it renders BELOW the photo
+  // gallery (visual sweep 7/14: on gallery-only pages "end of body" was still
+  // the top of the page). Rendered after LightboxGallery, before Design Notes.
+  const fgCredit = media.find(isFgCredit) as { kind: "label"; text: string; block?: Block } | undefined;
+  media = media.filter((s) => !isFgCredit(s));
   const tadaAt = media.findIndex((s) => s.kind === "tada");
   const sliderAt = media.findIndex((s) => s.kind === "slider");
   if (tadaAt !== -1 && sliderAt !== -1 && sliderAt < tadaAt) {
@@ -477,18 +480,6 @@ export default async function PortfolioProjectPage({
                   </div>
                 );
               case "label":
-                // division credit: Fine Gardening coral, links through, closes the page
-                if (isFgCredit(s)) {
-                  return (
-                    <p
-                      key={i}
-                      className="text-center text-[15px] md:text-[16px] font-[400] tracking-[0.24em] uppercase mt-16 [&_a]:decoration-[#FF6D6A]/50 [&_a]:hover:decoration-[#FF6D6A]"
-                      style={{ color: "#FF6D6A" }}
-                    >
-                      {rich(s.block, s.text)}
-                    </p>
-                  );
-                }
                 return (
                   <p key={i} className="text-center text-[16px] md:text-[18px] font-[300] tracking-[0.28em] uppercase text-brand my-10">
                     {rich(s.block, s.text)}
@@ -573,6 +564,19 @@ export default async function PortfolioProjectPage({
       {galleryImages.length > 0 && (
         <section className="px-4 md:px-6 pb-16 bg-white">
           <LightboxGallery images={galleryImages} title={project.title} />
+        </section>
+      )}
+
+      {/* ── Division credit: Fine Gardening coral, links through — always the
+             bottom of the photo story, never up top (Josh, 7/14 pm) ── */}
+      {fgCredit && (
+        <section className="bg-white px-6 pb-16">
+          <p
+            className="text-center text-[15px] md:text-[16px] font-[400] tracking-[0.24em] uppercase [&_a]:decoration-[#FF6D6A]/50 [&_a]:hover:decoration-[#FF6D6A]"
+            style={{ color: "#FF6D6A" }}
+          >
+            {rich(fgCredit.block, fgCredit.text)}
+          </p>
         </section>
       )}
 

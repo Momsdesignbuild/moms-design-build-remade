@@ -41,9 +41,12 @@ function renderSpans(block: BodyBlock) {
 
 type ListGroup = { _type: "list"; _key: string; ordered: boolean; items: BodyBlock[] };
 
-/** Renders the portable-text body arrays produced by the WP migration (blocks, lists, links, inline images). */
-export default function PortableBody({ body }: { body?: BodyBlock[] }) {
+/** Renders the portable-text body arrays produced by the WP migration (blocks, lists, links, inline images).
+ * `editorial` (blog posts): matted images, brand list markers, double-rule
+ * kickers above H2s — the "beautiful, not a word blob" treatment (Josh 7/14). */
+export default function PortableBody({ body, editorial = false }: { body?: BodyBlock[]; editorial?: boolean }) {
   if (!body?.length) return null;
+  let h2Seen = 0;
   // group consecutive list items into a single <ul>/<ol>
   const groups: Array<BodyBlock | ListGroup> = [];
   for (const block of body) {
@@ -66,9 +69,9 @@ export default function PortableBody({ body }: { body?: BodyBlock[] }) {
           // explicit list styling — Tailwind preflight strips list-style and the
           // typography plugin isn't installed, so bare ul/ol render without markers
           return list.ordered ? (
-            <ol key={list._key} className="list-decimal pl-6 my-5 space-y-2.5">{items}</ol>
+            <ol key={list._key} className={editorial ? "list-none pl-1 my-6 space-y-3 [counter-reset:ed] [&>li]:relative [&>li]:pl-9 [&>li]:[counter-increment:ed] [&>li:before]:content-[counter(ed,decimal-leading-zero)] [&>li:before]:absolute [&>li:before]:left-0 [&>li:before]:top-[3px] [&>li:before]:text-[13px] [&>li:before]:font-semibold [&>li:before]:tracking-wide [&>li:before]:text-brand" : "list-decimal pl-6 my-5 space-y-2.5"}>{items}</ol>
           ) : (
-            <ul key={list._key} className="list-disc pl-6 my-5 space-y-2.5">{items}</ul>
+            <ul key={list._key} className={editorial ? "list-none pl-1 my-6 space-y-3 [&>li]:relative [&>li]:pl-7 [&>li:before]:content-['—'] [&>li:before]:absolute [&>li:before]:left-0 [&>li:before]:text-brand" : "list-disc pl-6 my-5 space-y-2.5"}>{items}</ul>
           );
         }
         const block = g as BodyBlock;
@@ -80,22 +83,47 @@ export default function PortableBody({ body }: { body?: BodyBlock[] }) {
             const cls = H === "h2"
               ? "text-[1.55em] md:text-[1.7em] font-[300] tracking-[1.8px] leading-[1.2] text-brand mt-10 mb-4"
               : "text-[1.2em] md:text-[1.3em] font-[300] tracking-[1.5px] leading-[1.2] text-brand mt-8 mb-3";
+            if (editorial && H === "h2") {
+              h2Seen += 1;
+              return (
+                <div key={block._key} className="mt-14 mb-5">
+                  {/* section kicker: the site's double-rule + a running number */}
+                  <div className="flex items-center gap-4 mb-5">
+                    <span className="double-rule-brand w-10 shrink-0" />
+                    <span className="text-[12px] font-semibold tracking-[0.3em] text-brand/60">
+                      {String(h2Seen).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <H className="text-[1.55em] md:text-[1.7em] font-[300] tracking-[1.8px] leading-[1.2] text-brand">
+                    {renderSpans(block)}
+                  </H>
+                </div>
+              );
+            }
             return <H key={block._key} className={cls}>{renderSpans(block)}</H>;
           }
           return <p key={block._key}>{renderSpans(block)}</p>;
         }
         if (block._type === "image" && block.asset) {
-          return (
+          const img = (
             <Image
-              key={block._key}
+              key={editorial ? undefined : block._key}
               src={builder.image(block as SanityImageSource).width(1200).auto("format").url()}
               alt={block.alt || ""}
               width={1200}
               height={800}
               loading="lazy"
-              className="w-full h-auto object-cover my-6"
+              className={editorial ? "w-full h-auto object-cover" : "w-full h-auto object-cover my-6"}
               sizes="(max-width: 768px) 100vw, 768px"
             />
+          );
+          // editorial: photos ride a white mat with a soft shadow, like prints
+          return editorial ? (
+            <div key={block._key} className="my-10 bg-white p-2.5 shadow-[0_26px_55px_-30px_rgba(28,28,26,0.35)]">
+              {img}
+            </div>
+          ) : (
+            img
           );
         }
         return null;

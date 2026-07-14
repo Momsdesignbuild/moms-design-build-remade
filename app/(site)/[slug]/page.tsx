@@ -7,6 +7,8 @@ import type { SanityImageSource } from "@sanity/image-url";
 import { client } from "@/sanity/lib/client";
 import { sanityFetch } from "@/sanity/lib/live";
 import PortableBody, { JsonLd, type BodyBlock } from "@/components/PortableBody";
+import ReadingProgress from "@/components/blog/ReadingProgress";
+import NewsletterSignup from "@/components/blog/NewsletterSignup";
 
 export const revalidate = 3600;
 
@@ -17,11 +19,13 @@ type Post = {
   slug: { current: string };
   metaTitle?: string;
   metaDescription?: string;
-  heroImage?: SanityImageSource;
+  heroImage?: SanityImageSource & { alt?: string };
   body?: BodyBlock[];
   publishedAt?: string;
+  categories?: string[];
   jsonLd?: string;
   sourceUrl?: string;
+  _type?: string;
 };
 
 async function getPost(slug: string): Promise<Post | null> {
@@ -31,12 +35,29 @@ async function getPost(slug: string): Promise<Post | null> {
       *[_type == "post" && slug.current == $slug][0],
       *[_type == "page" && slug.current == $slug][0]
     ) {
-      title, slug, metaTitle, metaDescription, heroImage,
-      body[]{ ..., asset }, publishedAt, jsonLd, sourceUrl
+      _type, title, slug, metaTitle, metaDescription, heroImage,
+      body[]{ ..., asset }, publishedAt, categories, jsonLd, sourceUrl
     }`,
     params: { slug },
   });
   return data as Post | null;
+}
+
+type Related = { title: string; slug: { current: string }; publishedAt?: string; cat?: string; img?: string };
+
+async function getRelated(slug: string, category?: string): Promise<Related[]> {
+  // same-category first, latest-first backfill; designer-titled posts never
+  // surface in recirculation modules (founders' rule)
+  const { data } = await sanityFetch({
+    query: `*[_type == "post" && slug.current != $slug && defined(heroImage)
+        && !(slug.current in ["test", "thank-you", "contact-thanks-original", "mediterranean-meets-mn", "application"])]
+      | order(select($cat != "" && $cat in categories => 0, 1) asc, coalesce(publishedAt, "1970-01-01") desc) [0...8] {
+        title, slug, publishedAt, "cat": categories[0], "img": heroImage.asset->url
+      }`,
+    params: { slug, cat: category ?? "" },
+  });
+  const DESIGNER_RE = /bastyr|sweeney|mlejnek|udenberg|birkenbeuel|wiebusch|woodhead|denman/i;
+  return (data as Related[]).filter((p) => !DESIGNER_RE.test(p.title)).slice(0, 3);
 }
 
 export async function generateMetadata({
@@ -75,6 +96,23 @@ export async function generateStaticParams() {
   return slugs.map((p) => ({ slug: p.slug.current }));
 }
 
+const fmtDate = (iso?: string) =>
+  iso
+    ? new Date(iso).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })
+    : null;
+
+// honest reading time from the actual body text
+function readingMinutes(body?: BodyBlock[]): number | null {
+  if (!body) return null;
+  const words = body
+    .filter((b) => b._type === "block")
+    .flatMap((b) => (b.children ?? []).map((c) => c.text ?? ""))
+    .join(" ")
+    .split(/\s+/)
+    .filter(Boolean).length;
+  return words > 120 ? Math.max(1, Math.round(words / 220)) : null;
+}
+
 export default async function BlogPostPage({
   params,
 }: {
@@ -84,52 +122,114 @@ export default async function BlogPostPage({
   const post = await getPost(slug);
   if (!post) notFound();
 
+  const isPost = post._type !== "page";
+  const minutes = readingMinutes(post.body);
+  const category = post.categories?.[0];
+  const related = isPost ? await getRelated(slug, category) : [];
+
   return (
     <>
       <JsonLd raw={post.jsonLd} />
+      {isPost && <ReadingProgress />}
 
-      <article className="bg-white">
-        <header className="pt-16 md:pt-24 pb-8 px-6 text-center max-w-3xl mx-auto">
-          {post.publishedAt && (
-            <p className="text-[13px] font-[500] tracking-[0.2em] uppercase text-muted mb-4">
-              {new Date(post.publishedAt).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
+      <article>
+        {/* ── Editorial masthead on cream ── */}
+        <header className="bg-[#F7F5F2] pt-20 md:pt-28 pb-16 md:pb-20 px-6 text-center">
+          <div className="max-w-3xl mx-auto">
+            <p className="text-[10px] md:text-[11px] font-semibold tracking-[0.28em] uppercase text-brand mb-6">
+              {[category ?? (isPost ? "The Journal" : null), fmtDate(post.publishedAt), minutes ? `${minutes} min read` : null]
+                .filter(Boolean)
+                .join("  ·  ")}
             </p>
-          )}
-          <h1 className="text-[26px] md:text-[38px] font-[300] tracking-[0.15em] uppercase text-ink">
-            {post.title}
-          </h1>
+            <h1 className="text-[26px] md:text-[40px] font-[300] tracking-[0.04em] leading-[1.25] text-ink">
+              {post.title}
+            </h1>
+          </div>
         </header>
 
+        {/* ── Hero as a matted print riding the masthead's edge ── */}
         {post.heroImage && (
-          <div className="max-w-[1100px] mx-auto px-4 md:px-6 mb-10">
-            <Image
-              src={builder.image(post.heroImage).width(1600).auto("format").url()}
-              alt={post.title}
-              width={1600}
-              height={900}
-              priority
-              className="w-full h-auto object-cover"
-              sizes="(max-width: 1100px) 100vw, 1100px"
-            />
+          <div className="px-4 md:px-6 -mt-8 md:-mt-10 mb-12 md:mb-16">
+            <div className="max-w-[1000px] mx-auto bg-white p-3 shadow-[0_34px_70px_-36px_rgba(28,28,26,0.4)]">
+              <Image
+                src={builder.image(post.heroImage).width(1600).auto("format").url()}
+                alt={post.heroImage.alt || post.title}
+                width={1600}
+                height={900}
+                priority
+                className="w-full h-auto object-cover"
+                sizes="(max-width: 1000px) 100vw, 1000px"
+              />
+            </div>
           </div>
         )}
 
-        <div className="px-6 pb-16 max-w-3xl mx-auto">
-          <PortableBody body={post.body} />
+        {/* ── The read: measured column, teal drop cap on the opening ── */}
+        <div
+          className="px-6 pb-16 max-w-[680px] mx-auto
+            [&_p]:text-[15px] md:[&_p]:text-[15.5px] [&_p]:leading-[1.95]
+            [&_p:first-of-type]:first-letter:float-left
+            [&_p:first-of-type]:first-letter:text-[54px]
+            [&_p:first-of-type]:first-letter:leading-[0.85]
+            [&_p:first-of-type]:first-letter:pr-2.5
+            [&_p:first-of-type]:first-letter:mt-1
+            [&_p:first-of-type]:first-letter:text-brand
+            [&_p:first-of-type]:first-letter:[font-family:var(--font-heading)]"
+        >
+          <PortableBody body={post.body} editorial={isPost} />
+
+          {/* sign-off */}
+          <div className="mt-14 pt-8 border-t border-ink/10 flex items-center justify-between gap-4 flex-wrap">
+            <p className="text-[10px] font-semibold tracking-[0.26em] uppercase text-muted">
+              Mom&rsquo;s Design Build · Minneapolis, MN
+            </p>
+            <Link
+              href="/blog"
+              className="text-[10px] font-semibold tracking-[0.24em] uppercase text-ink border-b border-ink/25 pb-0.5 hover:border-ink transition-colors"
+            >
+              All Stories
+            </Link>
+          </div>
         </div>
 
-        <nav className="border-t border-gray-100 px-6 py-10 text-center">
-          <Link
-            href="/blog"
-            className="text-[13px] font-[500] tracking-[0.2em] uppercase text-muted hover:text-ink transition-colors"
-          >
-            ← All Posts
-          </Link>
-        </nav>
+        {/* ── Keep Reading ── */}
+        {related.length === 3 && (
+          <section className="bg-[#F7F5F2] py-20 lg:py-24 px-6 lg:px-10">
+            <div className="max-w-[1400px] mx-auto">
+              <div className="mb-12">
+                <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-brand mb-4">Keep Reading</p>
+                <h2 className="text-2xl md:text-4xl font-[300] tracking-[0.06em] uppercase text-ink">
+                  More from the Journal
+                </h2>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
+                {related.map((p) => (
+                  <Link key={p.slug.current} href={`/${p.slug.current}`} className="group block">
+                    <div className="relative aspect-[4/3] overflow-hidden mb-5 bg-white">
+                      {p.img && (
+                        <Image
+                          src={p.img}
+                          alt={p.title}
+                          fill
+                          sizes="(max-width: 768px) 92vw, 430px"
+                          className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
+                        />
+                      )}
+                    </div>
+                    <p className="text-[10px] font-semibold tracking-[0.24em] uppercase text-muted mb-2.5">
+                      {p.cat ?? "Journal"}{p.publishedAt ? ` · ${fmtDate(p.publishedAt)}` : ""}
+                    </p>
+                    <h3 className="text-[16px] md:text-[17px] font-[300] tracking-[0.05em] leading-snug text-ink group-hover:text-brand transition-colors duration-300">
+                      {p.title}
+                    </h3>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {isPost && <NewsletterSignup />}
       </article>
     </>
   );
