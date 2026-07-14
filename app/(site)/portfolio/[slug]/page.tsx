@@ -282,7 +282,8 @@ export default async function PortfolioProjectPage({
   // computed rgb(255,255,255) on live 7/14) — crawlable, invisible. Summer
   // wants the same here instead of rendering it as a visible tagline. Service
   // pages' "...IN MINNESOTA" H2s are VISIBLE gray on live — never hide those.
-  const hiddenSubtitle = !!subtitle && /\bin (minnesota|mn)\.?\s*$/i.test(subtitle.trim());
+  const isHiddenSeoLine = (t: string) => t.trim().length < 80 && /\bin (minnesota|mn)\.?\s*$/i.test(t.trim());
+  const hiddenSubtitle = !!subtitle && isHiddenSeoLine(subtitle);
 
   // ── Summer's reading order (7/14): body text BEFORE the photo download ──
   // Text blocks (story/quote) rise to the top in their own order. A label
@@ -415,6 +416,15 @@ export default async function PortfolioProjectPage({
           )}
 
           {flow.map((s, i) => {
+            // the keyword line hides white-on-white like live NO MATTER which
+            // staging bucket it landed in (subtitle catches only page-openers)
+            if ((s.kind === "story" || s.kind === "label") && isHiddenSeoLine(s.text)) {
+              return (
+                <p key={i} className="text-white text-[18px] font-[300] select-none">
+                  <span>{s.text}</span>
+                </p>
+              );
+            }
             switch (s.kind) {
               case "story":
                 return (

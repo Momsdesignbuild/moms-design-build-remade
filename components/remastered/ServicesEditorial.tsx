@@ -58,28 +58,27 @@ export default function ServicesEditorial() {
               transition={{ duration: 0.6, delay: i * 0.09, ease: 'easeOut' }}
             >
               <Link href={s.href} className="group block">
-                <div className="relative aspect-[4/5] overflow-hidden">
+                {/* the PORTFOLIO tile treatment — no caption box (Josh 7/14 pm):
+                    grayed photo, centered title, hover clears text + reveals */}
+                <div className="relative aspect-[4/5] overflow-hidden bg-brand-mid">
                   <Image
                     src={s.image}
                     alt={s.alt}
                     fill
                     quality={90}
                     sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 330px"
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
+                    className="object-cover opacity-60 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-[1.03]"
                   />
-                  {/* Bria caption card at the photo's foot */}
-                  <div className="absolute left-0 bottom-0 bg-white pr-6 pt-4 pb-3.5 max-w-[92%]">
-                    <div className="pl-5 border-l-2 border-brand">
-                      <h3 className="text-[14px] lg:text-[15px] font-[300] tracking-[0.1em] uppercase text-ink leading-snug">
-                        {s.title}
-                      </h3>
-                    </div>
+                  <div className="absolute inset-0 flex items-center justify-center p-4 text-center transition-opacity duration-300 group-hover:opacity-0">
+                    <h3 className="text-white text-[19px] lg:text-[21px] font-[300] tracking-[0.14em] uppercase leading-snug [text-shadow:0_1px_10px_rgba(0,0,0,0.45)]">
+                      {s.title}
+                    </h3>
                   </div>
                 </div>
-                <p className="mt-4 text-[12.5px] font-[300] leading-relaxed text-muted pr-4">
+                <p className="mt-4 text-[15px] font-[300] leading-relaxed text-brand-mid pr-4">
                   {s.description}
                 </p>
-                <span className="mt-3 inline-block text-[10px] font-semibold tracking-[0.24em] uppercase text-ink border-b border-ink/20 pb-0.5 group-hover:border-ink transition-colors">
+                <span className="mt-3 inline-block text-[13px] font-semibold tracking-[0.24em] uppercase text-ink border-b border-ink/20 pb-0.5 group-hover:border-ink transition-colors">
                   Explore
                 </span>
               </Link>

@@ -105,29 +105,27 @@ export default function WorkCarouselClient({ projects }: { projects: WorkCard[] 
             <Link
               href={`/portfolio/${p.slug}`}
               data-wheel-card
-              className="group relative block w-[72vw] sm:w-[420px] aspect-[3/4] overflow-hidden bg-brand-light transition-[transform,opacity] duration-200 ease-out"
+              className="group relative block w-[72vw] sm:w-[420px] aspect-[3/4] overflow-hidden bg-brand-mid transition-[transform,opacity] duration-200 ease-out"
             >
+              {/* the PORTFOLIO tile treatment, not the Bria box (Josh 7/14 pm):
+                  grayed photo, centered title, hover clears text + reveals */}
               <Image
                 src={p.image}
                 alt={p.title}
                 fill
                 quality={90}
                 sizes="(max-width: 640px) 72vw, 420px"
-                className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.045]"
+                className="object-cover opacity-60 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-[1.03]"
               />
-              <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/25 to-transparent" />
-              {/* Bria caption card, overlapping the photo's foot */}
-              <div className="absolute left-0 bottom-0 bg-white pr-8 pt-5 pb-4 pl-0 max-w-[85%]">
-                <div className="pl-6 border-l-2 border-brand">
-                  {p.location && (
-                    <p className="text-[10px] font-semibold tracking-[0.24em] uppercase text-muted mb-1.5">
-                      {p.location}
-                    </p>
-                  )}
-                  <h3 className="text-[17px] md:text-[19px] font-[300] tracking-[0.1em] uppercase text-ink">
-                    {p.title}
-                  </h3>
-                </div>
+              <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center transition-opacity duration-300 group-hover:opacity-0">
+                <h3 className="text-white text-[22px] md:text-[26px] font-[300] tracking-[0.2em] uppercase [text-shadow:0_1px_10px_rgba(0,0,0,0.45)]">
+                  {p.title}
+                </h3>
+                {p.location && (
+                  <p className="mt-2 text-white/85 text-[15px] md:text-[16px] font-[300] tracking-[0.18em] uppercase [text-shadow:0_1px_8px_rgba(0,0,0,0.45)]">
+                    {p.location}
+                  </p>
+                )}
               </div>
             </Link>
           </motion.div>
