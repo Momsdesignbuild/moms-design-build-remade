@@ -88,10 +88,10 @@ function CardTile({ href, bg, title, cell }: { href: string; bg: string; title: 
         src={bg + "?w=600&auto=format"}
         alt=""
         loading="lazy"
-        className="absolute inset-0 w-full h-full object-cover opacity-75 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-[1.03]"
+        className="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-[1.03]"
       />
       <span className="absolute inset-0 flex items-center justify-center p-3 text-center transition-opacity duration-300 group-hover:opacity-0">
-        <span className="text-white text-[15px] md:text-[16px] font-[300] tracking-[0.18em] uppercase [text-shadow:0_1px_10px_rgba(0,0,0,0.45)]">
+        <span className="text-white text-[19px] md:text-[21px] font-[300] tracking-[0.18em] uppercase [text-shadow:0_1px_10px_rgba(0,0,0,0.45)]">
           {title}
         </span>
       </span>

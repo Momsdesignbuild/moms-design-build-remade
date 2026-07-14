@@ -46,8 +46,10 @@ export default function GivingBackEditorial() {
               share the story of our partners.
             </p>
 
-            {/* the organizations we give to — each links to their site */}
-            <div className="flex flex-wrap items-center gap-6 mb-10">
+            {/* the organizations we give to — each links to their site.
+                White cards, object-contain: no circle mask, nothing cropped
+                (Josh 7/14: forced circles were clipping several logos) */}
+            <div className="flex flex-wrap items-center gap-4 mb-10">
               {PARTNERS.map((p) => (
                 <a
                   key={p.href}
@@ -55,9 +57,9 @@ export default function GivingBackEditorial() {
                   target="_blank"
                   rel="noopener"
                   title={p.name}
-                  className="relative h-14 w-14 md:h-16 md:w-16 rounded-full overflow-hidden opacity-80 hover:opacity-100 transition-opacity duration-300"
+                  className="relative h-16 w-16 md:h-20 md:w-20 bg-white p-2 opacity-85 hover:opacity-100 transition-opacity duration-300"
                 >
-                  <Image src={p.logo} alt={p.name} fill sizes="64px" className="object-cover" />
+                  <Image src={p.logo} alt={p.name} fill sizes="80px" className="object-contain p-1.5" />
                 </a>
               ))}
             </div>

@@ -46,16 +46,16 @@ export default function OverlayTile({
             alt={alt || title}
             fill
             loading={eager ? 'eager' : 'lazy'}
-            className="object-cover opacity-75 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-[1.03]"
+            className="object-cover opacity-60 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-[1.03]"
             sizes={sizes || '(max-width: 1024px) 100vw, 50vw'}
           />
         )}
         <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center transition-opacity duration-300 group-hover:opacity-0">
-          <p className="text-white text-[17px] md:text-[20px] font-[300] tracking-[0.2em] uppercase [text-shadow:0_1px_10px_rgba(0,0,0,0.45)]">
+          <p className="text-white text-[22px] md:text-[26px] font-[300] tracking-[0.2em] uppercase [text-shadow:0_1px_10px_rgba(0,0,0,0.45)]">
             {title}
           </p>
           {subtitle && (
-            <p className="mt-2 text-white/85 text-[12px] md:text-[13px] font-[300] tracking-[0.18em] uppercase [text-shadow:0_1px_8px_rgba(0,0,0,0.45)]">
+            <p className="mt-2 text-white/85 text-[15px] md:text-[16px] font-[300] tracking-[0.18em] uppercase [text-shadow:0_1px_8px_rgba(0,0,0,0.45)]">
               {subtitle}
             </p>
           )}
