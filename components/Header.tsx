@@ -109,7 +109,7 @@ export default function Header() {
             >
               <Link
                 href={item.href}
-                className={`flex items-center gap-1 text-[11.5px] font-[500] tracking-[0.12em] uppercase transition-colors duration-300 ${
+                className={`flex items-center gap-1 text-[17px] font-[500] tracking-[0.12em] uppercase transition-colors duration-300 ${
                   transparent
                     ? "text-white/80 hover:text-white"
                     : "text-ink hover:text-brand"
@@ -136,7 +136,7 @@ export default function Header() {
                         <Link
                           href={child.href}
                           role="menuitem"
-                          className="block px-5 py-3 text-[11px] tracking-[0.1em] uppercase text-ink hover:text-brand hover:bg-gray-50 transition-colors"
+                          className="block px-5 py-3 text-[15px] tracking-[0.1em] uppercase text-ink hover:text-brand hover:bg-gray-50 transition-colors"
                         >
                           {child.label}
                         </Link>
@@ -153,7 +153,7 @@ export default function Header() {
         <div className="flex items-center gap-4">
           <Link
             href="/contact"
-            className={`hidden lg:inline-flex items-center justify-center text-[11px] font-[600] tracking-[0.18em] uppercase px-6 py-3 transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand ${
+            className={`hidden lg:inline-flex items-center justify-center text-[15px] font-[600] tracking-[0.18em] uppercase px-6 py-3 transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand ${
               transparent
                 ? "border border-white/50 text-white hover:bg-white/10"
                 : "bg-brand text-white hover:bg-brand-dark"
@@ -222,7 +222,7 @@ export default function Header() {
                   <div className="flex items-center justify-between">
                     <Link
                       href={item.href}
-                      className="flex-1 py-4 text-[12px] font-[500] tracking-[0.14em] uppercase text-ink hover:text-brand transition-colors"
+                      className="flex-1 py-4 text-[17px] font-[500] tracking-[0.14em] uppercase text-ink hover:text-brand transition-colors"
                       onClick={() => setMobileOpen(false)}
                     >
                       {item.label}
@@ -262,7 +262,7 @@ export default function Header() {
                             <Link
                               key={child.label}
                               href={child.href}
-                              className="py-2 text-[11px] tracking-[0.1em] uppercase text-muted hover:text-brand transition-colors block"
+                              className="py-2 text-[15px] tracking-[0.1em] uppercase text-muted hover:text-brand transition-colors block"
                               onClick={() => setMobileOpen(false)}
                             >
                               {child.label}
@@ -277,7 +277,7 @@ export default function Header() {
 
               <Link
                 href="/contact"
-                className="mt-8 bg-brand text-white text-[12px] font-[600] tracking-[0.18em] uppercase px-6 py-4 text-center hover:bg-brand-dark transition-colors"
+                className="mt-8 bg-brand text-white text-[15px] font-[600] tracking-[0.18em] uppercase px-6 py-4 text-center hover:bg-brand-dark transition-colors"
                 onClick={() => setMobileOpen(false)}
               >
                 Contact Us

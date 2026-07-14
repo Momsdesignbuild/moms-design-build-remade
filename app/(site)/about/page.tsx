@@ -254,7 +254,7 @@ export default function AboutPage() {
           >
             The Story Behind the Name
           </h1>
-          <div className="space-y-5 text-[14.5px] font-[300] leading-[1.85] text-muted text-left md:text-center">
+          <div className="space-y-5 text-[17px] md:text-[18px] font-[300] leading-[1.8] text-brand-mid text-left md:text-center">
             {/* verbatim from their live page — curly apostrophes + unspaced em-dashes are THEIRS */}
             <p>
               Simple as it may seem,{" "}
@@ -291,13 +291,13 @@ export default function AboutPage() {
 
       {/* ── Team ── */}
       <section
-        className="py-16 px-6 bg-white border-t border-gray-100"
+        className="py-16 px-6 bg-white double-rule"
         aria-labelledby="team-heading"
       >
         <div className="max-w-[1200px] mx-auto">
           <h2
             id="team-heading"
-            className="text-center text-[22px] font-[300] tracking-[0.22em] uppercase text-ink mb-12"
+            className="text-center text-[24px] md:text-[28px] font-[300] tracking-[0.22em] uppercase text-brand mb-12"
           >
             Meet Our Award-Winning Team
           </h2>
@@ -329,13 +329,13 @@ export default function AboutPage() {
 
       {/* ── Mission ── */}
       <section
-        className="py-16 md:py-20 px-6 bg-white border-t border-gray-100"
+        className="py-16 md:py-20 px-6 bg-white double-rule"
         aria-labelledby="mission-heading"
       >
         <div className="max-w-2xl mx-auto text-center">
           <h2
             id="mission-heading"
-            className="text-[22px] font-[300] tracking-[0.22em] uppercase text-ink mb-6"
+            className="text-[24px] md:text-[28px] font-[300] tracking-[0.22em] uppercase text-brand mb-6"
           >
             Our Mission
           </h2>
@@ -349,13 +349,13 @@ export default function AboutPage() {
 
       {/* ── Core Values ── */}
       <section
-        className="py-16 md:py-20 px-6 bg-white border-t border-gray-100"
+        className="py-16 md:py-20 px-6 bg-white double-rule"
         aria-labelledby="values-heading"
       >
         <div className="max-w-xl mx-auto text-center">
           <h2
             id="values-heading"
-            className="text-[22px] font-[300] tracking-[0.22em] uppercase text-ink mb-10"
+            className="text-[24px] md:text-[28px] font-[300] tracking-[0.22em] uppercase text-brand mb-10"
           >
             Core Values
           </h2>

@@ -17,7 +17,7 @@ export default async function Page() {
   return (
     <>
       {doc.jsonLd && <JsonLd raw={doc.jsonLd} />}
-      <ServicePageBody template={doc.template} body={doc.body} cardsSet={doc.cardsSet} divisionLogoUrl={doc.divisionLogoUrl} />
+      <ServicePageBody template={doc.template} body={doc.body} cardsSet={doc.cardsSet} divisionLogoUrl={doc.divisionLogoUrl} accent="#5EAD4F" />
     </>
   );
 }

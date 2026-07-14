@@ -120,33 +120,34 @@ export default function ProcessPage() {
       <JsonLd raw={PROCESS_JSONLD} />
 
       {/* ── Header ── */}
-      <section className="pt-16 md:pt-24 pb-6 px-6 text-center bg-white">
-        <h1 className="text-[22px] md:text-[28px] font-[300] tracking-[0.25em] uppercase text-ink mb-4">
+      <section className="pt-20 md:pt-28 pb-14 md:pb-16 px-6 text-center bg-[#F7F5F2]">
+        <p className="text-[14px] font-semibold tracking-[0.3em] uppercase text-brand mb-5">The Process</p>
+        <h1 className="text-4xl md:text-6xl font-[300] tracking-[0.08em] uppercase text-ink mb-6">
           The Mom&rsquo;s Way
         </h1>
-        <p className="text-[13px] font-[300] tracking-[0.08em] text-muted max-w-md mx-auto">
+        <p className="text-[16px] md:text-[17px] font-[300] tracking-[0.06em] text-brand-mid max-w-md mx-auto">
           From first conversation to happily ever after.
         </p>
       </section>
 
       {/* ── Steps: numbered, photo alternates sides; small WP sources never upscaled ── */}
-      <section className="px-6 pb-10 bg-white">
-        <div className="max-w-[1000px] mx-auto flex flex-col">
+      <section className="px-6 pb-16 pt-6 bg-white">
+        <div className="max-w-[1060px] mx-auto flex flex-col">
           {STEPS.map((step, i) => (
             <div
               key={step.title}
-              className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14 items-center py-12 border-b border-gray-100 last:border-0"
+              className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center py-14"
             >
               <div className={step.photo && i % 2 === 1 ? "md:order-2" : ""}>
-                <p className="text-[26px] font-[200] text-brand/30 leading-none mb-4">
-                  {String(i + 1).padStart(2, "0")}
+                <p className="text-[14px] font-semibold tracking-[0.26em] uppercase text-brand mb-3">
+                  Step {String(i + 1).padStart(2, "0")}
                 </p>
-                <h2 className="text-[14px] font-[500] tracking-[0.18em] uppercase text-ink mb-4">
+                <h2 className="text-[22px] md:text-[26px] font-[300] tracking-[0.1em] uppercase text-brand mb-5">
                   {step.title}
                 </h2>
                 <div className="space-y-4">
                   {step.paras.map((p, j) => (
-                    <p key={j} className="text-[14px] font-[300] leading-[1.9] text-muted">
+                    <p key={j} className="text-[17px] md:text-[18px] font-[300] leading-[1.8] text-brand-mid">
                       {p}
                     </p>
                   ))}
@@ -157,7 +158,7 @@ export default function ProcessPage() {
                       href={WARRANTY_PDF}
                       target="_blank"
                       rel="noopener"
-                      className="inline-block bg-brand text-white text-[10.5px] font-[600] tracking-[0.2em] uppercase px-8 py-3 hover:bg-brand-dark transition-colors duration-200"
+                      className="inline-block bg-ink border border-ink text-white text-[10.5px] font-[600] tracking-[0.2em] uppercase px-8 py-3.5 hover:bg-white hover:text-ink transition-colors duration-300"
                     >
                       Best in Class Warranty
                     </a>
@@ -174,16 +175,19 @@ export default function ProcessPage() {
               </div>
               {step.photo && (
                 <div className={i % 2 === 1 ? "md:order-1" : ""}>
-                  <Image
-                    src={step.photo.url}
-                    alt=""
-                    width={step.photo.width}
-                    height={step.photo.height}
-                    priority={i === 0}
-                    className="w-full h-auto"
-                    style={{ maxWidth: Math.min(step.photo.width, 640) }}
-                    sizes="(max-width: 768px) 100vw, 480px"
-                  />
+                  {/* uniform frame for every step, whatever the source size (Summer, 7/14) */}
+                  <div className="bg-white p-3 shadow-[0_30px_60px_-32px_rgba(28,28,26,0.35)] w-full max-w-[520px]">
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      <Image
+                        src={step.photo.url}
+                        alt=""
+                        fill
+                        priority={i === 0}
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 520px"
+                      />
+                    </div>
+                  </div>
                 </div>
               )}
             </div>
@@ -192,16 +196,17 @@ export default function ProcessPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="bg-[#f7f4ef] py-16 px-6 text-center">
-        <h2 className="text-[18px] md:text-[22px] font-[300] tracking-[0.2em] uppercase text-ink mb-4">
-          Start Your Project
+      <section className="bg-[#F7F5F2] py-20 lg:py-24 px-6 text-center">
+        <p className="text-[13px] font-semibold tracking-[0.3em] uppercase text-brand mb-4">Your Turn</p>
+        <h2 className="text-2xl md:text-4xl font-[300] tracking-[0.08em] uppercase text-brand mb-5">
+          Build Your Legacy
         </h2>
-        <p className="text-[13px] font-[300] tracking-[0.08em] text-muted mb-8 max-w-md mx-auto">
+        <p className="text-[16px] font-[300] tracking-[0.06em] text-brand-mid mb-9 max-w-md mx-auto">
           Ready to begin the Mom&rsquo;s Way? Let&rsquo;s talk.
         </p>
         <Link
           href="/contact"
-          className="inline-block bg-brand text-white text-[11px] font-[600] tracking-[0.2em] uppercase px-8 py-4 hover:bg-brand-dark transition-colors duration-200"
+          className="inline-block border border-ink text-ink text-[11px] font-[600] tracking-[0.22em] uppercase px-10 py-4 hover:bg-ink hover:text-white transition-colors duration-300"
         >
           Get in Touch
         </Link>

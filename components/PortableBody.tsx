@@ -57,7 +57,8 @@ export default function PortableBody({ body }: { body?: BodyBlock[] }) {
     } else groups.push(block);
   }
   return (
-    <div className="prose prose-sm max-w-none text-muted font-[300] tracking-[0.05em] leading-relaxed">
+    // live-WP body copy: 18px / 1.8 Proxima 300, Astra gray #53565A (Summer: fonts ~1.5×)
+    <div className="max-w-none text-[17px] md:text-[18px] leading-[1.8] text-brand-mid font-[300] space-y-5">
       {groups.map((g) => {
         if (g._type === "list") {
           const list = g as ListGroup;
@@ -75,9 +76,10 @@ export default function PortableBody({ body }: { body?: BodyBlock[] }) {
           if (!block.children.some((c) => c.text.trim())) return null;
           if (/^h[2-6]$/.test(block.style ?? "")) {
             const H = block.style as "h2" | "h3" | "h4" | "h5" | "h6";
+            // live-WP heading scale, Mom's blue per Summer (H2 1.7em / H3 1.3em, Futura 300)
             const cls = H === "h2"
-              ? "text-[17px] md:text-[19px] font-[500] tracking-[0.12em] uppercase text-ink mt-10 mb-3"
-              : "text-[15px] md:text-[16px] font-[500] tracking-[0.1em] uppercase text-ink mt-8 mb-2";
+              ? "text-[1.55em] md:text-[1.7em] font-[300] tracking-[1.8px] leading-[1.2] text-brand mt-10 mb-4"
+              : "text-[1.2em] md:text-[1.3em] font-[300] tracking-[1.5px] leading-[1.2] text-brand mt-8 mb-3";
             return <H key={block._key} className={cls}>{renderSpans(block)}</H>;
           }
           return <p key={block._key}>{renderSpans(block)}</p>;

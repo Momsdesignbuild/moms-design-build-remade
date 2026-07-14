@@ -9,6 +9,9 @@ import { sanityFetch } from "@/sanity/lib/live";
 import { JsonLd } from "@/components/PortableBody";
 import BeforeAfterSlider from "@/components/portfolio/BeforeAfterSlider";
 import LightboxGallery from "@/components/portfolio/LightboxGallery";
+import DesignNotes from "@/components/portfolio/DesignNotes";
+import OverlayTile from "@/components/OverlayTile";
+import { PROJECT_NOTES } from "@/content/project-notes";
 
 export const revalidate = 3600;
 
@@ -268,14 +271,38 @@ export default async function PortfolioProjectPage({
   // Founders' rule: designers are never mentioned on the public site
   // (clients would start requesting specific designers). designerName stays
   // in Sanity as internal data only.
-  const dossier = [
-    project.location && { label: "Location", value: project.location },
-    (completed || (project as PortfolioProject & { completedYear?: string }).completedYear) && {
-      label: "Completed",
-      value: completed || (project as PortfolioProject & { completedYear?: string }).completedYear,
-    },
-  ].filter(Boolean) as Array<{ label: string; value: string }>;
+  // Summer (7/14): the hero already shows the city under the title — the bar
+  // below carries just "Completed <year>", no "Location" label, no duplicate.
+  const completedYear =
+    completed || (project as PortfolioProject & { completedYear?: string }).completedYear;
   const allBadges = [...badges, ...(project.galleryBadges ?? [])];
+
+  // Live-WP parity: their portfolio pages carry the keyword line as a WHITE
+  // 18px span on the white page ("Pool house and pool design in MN" — verified
+  // computed rgb(255,255,255) on live 7/14) — crawlable, invisible. Summer
+  // wants the same here instead of rendering it as a visible tagline. Service
+  // pages' "...IN MINNESOTA" H2s are VISIBLE gray on live — never hide those.
+  const hiddenSubtitle = !!subtitle && /\bin (minnesota|mn)\.?\s*$/i.test(subtitle.trim());
+
+  // ── Summer's reading order (7/14): body text BEFORE the photo download ──
+  // Text blocks (story/quote) rise to the top in their own order; labels stay
+  // glued to their image groups. Before+3D pairs STACK (never slide); the real
+  // before/after slider opens the Ta-Da section.
+  const textPhase = staged.filter((s) => s.kind === "story" || s.kind === "quote");
+  let media: Staged[] = staged
+    .filter((s) => !(s.kind === "story" || s.kind === "quote"))
+    .map((s) =>
+      s.kind === "slider" && s.afterLabel === "3D Rendering"
+        ? ({ kind: "imageRow", label: s.label, images: [s.before, s.after] } as Staged)
+        : s
+    );
+  const tadaAt = media.findIndex((s) => s.kind === "tada");
+  const sliderAt = media.findIndex((s) => s.kind === "slider");
+  if (tadaAt !== -1 && sliderAt !== -1 && sliderAt < tadaAt) {
+    const [sl] = media.splice(sliderAt, 1);
+    media.splice(media.findIndex((s) => s.kind === "tada") + 1, 0, sl);
+  }
+  const flow = [...textPhase, ...media];
 
   return (
     <>
@@ -322,22 +349,27 @@ export default async function PortfolioProjectPage({
         </div>
       </section>
 
-      {/* ── Dossier bar ── */}
-      {(dossier.length > 0 || subtitle || allBadges.length > 0) && (
+      {/* ── Meta bar: completed year + award badges. City lives under the H1 in
+             the hero — never repeated here (Summer, 7/14). Hidden keyword H2s
+             stay white-on-white exactly like the live WP pages. ── */}
+      {(completedYear || subtitle || allBadges.length > 0) && (
         <section className="border-b border-gray-100 bg-white">
           <div className="max-w-5xl mx-auto px-6 py-6 flex flex-col items-center gap-3">
-            {subtitle && (
-              <p className="text-[12px] font-[400] tracking-[0.22em] uppercase text-ink text-center">{subtitle}</p>
-            )}
-            {dossier.length > 0 && (
-              <div className="flex flex-wrap justify-center gap-x-10 gap-y-2">
-                {dossier.map((d) => (
-                  <p key={d.label} className="text-[11px] font-[300] tracking-[0.15em] uppercase text-muted">
-                    <span className="text-ink/50 mr-2">{d.label}</span>
-                    <span className="text-ink">{d.value}</span>
-                  </p>
-                ))}
-              </div>
+            {subtitle &&
+              (hiddenSubtitle ? (
+                // live renders this as an 18px white span — mirrored exactly
+                <p className="text-white text-[18px] font-[300] select-none" aria-hidden="false">
+                  <span>{subtitle}</span>
+                </p>
+              ) : (
+                <h2 className="text-[15px] md:text-[17px] font-[300] tracking-[0.22em] uppercase text-brand text-center">
+                  {subtitle}
+                </h2>
+              ))}
+            {completedYear && (
+              <p className="text-[13px] md:text-[14px] font-[300] tracking-[0.18em] uppercase text-brand-mid">
+                Completed {completedYear}
+              </p>
             )}
             {allBadges.length > 0 && (
               <div className="flex flex-wrap justify-center items-center gap-6 pt-2">
@@ -373,11 +405,11 @@ export default async function PortfolioProjectPage({
             />
           )}
 
-          {staged.map((s, i) => {
+          {flow.map((s, i) => {
             switch (s.kind) {
               case "story":
                 return (
-                  <p key={i} className="text-[15px] leading-[2] font-[300] tracking-[0.03em] text-muted my-6">
+                  <p key={i} className="text-[17px] md:text-[18px] leading-[1.8] font-[300] text-brand-mid my-6">
                     {rich(s.block, s.text)}
                   </p>
                 );
@@ -420,7 +452,7 @@ export default async function PortfolioProjectPage({
                 );
               case "label":
                 return (
-                  <p key={i} className="text-center text-[12px] font-[500] tracking-[0.28em] uppercase text-ink my-10">
+                  <p key={i} className="text-center text-[16px] md:text-[18px] font-[300] tracking-[0.28em] uppercase text-brand my-10">
                     {rich(s.block, s.text)}
                   </p>
                 );
@@ -506,44 +538,33 @@ export default async function PortfolioProjectPage({
         </section>
       )}
 
+      {/* ── Design Notes: the researched story, below the project (Summer, 7/14) ── */}
+      {PROJECT_NOTES[slug] && <DesignNotes notes={PROJECT_NOTES[slug]} />}
+
       {/* ── More Projects — their site ends every project with a grid of others ── */}
       {related.length > 0 && (
         <section className="px-4 md:px-6 py-16 bg-white border-t border-gray-100">
           <div className="max-w-[1400px] mx-auto">
             <div className="flex items-end justify-between mb-8 px-2">
-              <h2 className="text-[14px] md:text-[16px] font-[400] tracking-[0.25em] uppercase text-ink">
+              <h2 className="text-[18px] md:text-[22px] font-[300] tracking-[0.25em] uppercase text-brand">
                 More Projects
               </h2>
               <Link
                 href="/portfolio"
-                className="text-[10px] font-[500] tracking-[0.2em] uppercase text-muted hover:text-ink transition-colors"
+                className="text-[13px] font-[500] tracking-[0.2em] uppercase text-muted hover:text-ink transition-colors"
               >
                 View All →
               </Link>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               {related.map((p) => (
-                <Link
+                <OverlayTile
                   key={p.slug.current}
                   href={`/portfolio/${p.slug.current}`}
-                  className="group relative block aspect-[4/3] overflow-hidden bg-gray-100"
-                >
-                  {p.heroImage && (
-                    <Image
-                      src={urlFor(p.heroImage).width(600).height(450).auto("format").url()}
-                      alt={p.title}
-                      fill
-                      loading="lazy"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      sizes="(max-width: 768px) 50vw, 25vw"
-                    />
-                  )}
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-3">
-                    <p className="text-white text-[11px] font-[400] tracking-[0.18em] uppercase text-center">
-                      {p.title}
-                    </p>
-                  </div>
-                </Link>
+                  img={p.heroImage ? urlFor(p.heroImage).width(600).height(450).auto("format").url() : null}
+                  title={p.title}
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                />
               ))}
             </div>
           </div>
@@ -552,10 +573,10 @@ export default async function PortfolioProjectPage({
 
       {/* ── CTA ── */}
       <section className="bg-[#f7f4ef] py-16 px-6 text-center">
-        <h2 className="text-[18px] md:text-[22px] font-[300] tracking-[0.2em] uppercase text-ink mb-4">
+        <h2 className="text-[20px] md:text-[26px] font-[300] tracking-[0.2em] uppercase text-brand mb-4">
           Start Your Project
         </h2>
-        <p className="text-[13px] font-[300] tracking-[0.08em] text-muted mb-8 max-w-md mx-auto">
+        <p className="text-[16px] font-[300] tracking-[0.04em] text-brand-mid mb-8 max-w-md mx-auto">
           Ready to transform your outdoor or interior space? Let&apos;s talk.
         </p>
         <Link

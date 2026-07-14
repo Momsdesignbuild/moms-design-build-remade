@@ -35,7 +35,7 @@ async function getHubJsonLd(): Promise<string | undefined> {
 
 async function getTiles(): Promise<CareerTile[]> {
   const { data } = await sanityFetch({
-    query: `*[_type == "careerPage" && order >= 0] | order(order asc) { title, slug, order, photo{ ..., asset } }`,
+    query: `*[_type == "careerPage" && order >= 0 && published != false] | order(order asc) { title, slug, order, photo{ ..., asset } }`,
   });
   return data as CareerTile[];
 }

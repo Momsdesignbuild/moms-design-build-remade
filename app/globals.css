@@ -32,8 +32,9 @@
 
 html,
 body {
-  overflow-x: hidden;
-  max-width: 100vw;
+  /* clip, not hidden: hidden makes <body> a scroll container and silently
+     kills every position:sticky on the page (FramedHero, Anatomy pin) */
+  overflow-x: clip;
 }
 
 body {
@@ -48,6 +49,34 @@ html {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading, "Futura PT", sans-serif);
+}
+
+/* Live-WP type scale (Astra dynamic CSS, post-199): body 18px/1.8 Proxima 300;
+   H1 2.4em ls 2.592px; H2 1.7em ls 1.836px; H3 1.3em ls 1.56px — all Futura 300.
+   Summer (draft-1 audit, 7/14): H2/H3 in Mom's blue, H1 stays gray. Utilities on
+   components still win over this base layer, so explicit sizes elsewhere hold. */
+@layer base {
+  h2 {
+    color: var(--color-brand);
+    font-weight: 300;
+    letter-spacing: 1.836px;
+    line-height: 1.2;
+  }
+  h3 {
+    color: var(--color-brand);
+    font-weight: 300;
+    letter-spacing: 1.56px;
+    line-height: 1.2;
+  }
+}
+
+/* The site-wide divider detail Summer wants "sprinkled throughout" — exact spec
+   from live /about/: border-style double, 4.3px, Astra global color 7. */
+.double-rule {
+  border-top: 4.3px double #cbd5e1;
+}
+.double-rule-brand {
+  border-top: 4.3px double var(--color-brand);
 }
 
 /* Kill Next.js Image double-fade inside animated containers */

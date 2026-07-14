@@ -1,11 +1,19 @@
 import type { Metadata, Viewport } from "next";
-import Hero from "@/components/home/Hero";
-import HomeServices from "@/components/home/HomeServices";
-import HomeOurWork from "@/components/home/HomeOurWork";
-import HomeGivingBack from "@/components/home/HomeGivingBack";
+import FramedHero from "@/components/remastered/FramedHero";
+import Statement from "@/components/remastered/Statement";
+import AwardsStrip from "@/components/remastered/AwardsStrip";
+import WorkCarousel from "@/components/remastered/WorkCarousel";
+import Anatomy from "@/components/remastered/Anatomy";
+import TransformationSlider from "@/components/remastered/TransformationSlider";
+import ServicesEditorial from "@/components/remastered/ServicesEditorial";
+import Testimonial from "@/components/remastered/Testimonial";
+import Journal from "@/components/remastered/Journal";
+import GivingBackEditorial from "@/components/remastered/GivingBackEditorial";
+import ClosingCTA from "@/components/remastered/ClosingCTA";
 
 export const revalidate = 3600;
 
+// SEO head identical to live WP — Yoast values verbatim.
 export const metadata: Metadata = {
   title: {
     absolute: "Mom's Design Build - Landscape & Interior Designers In Minnesota",
@@ -32,16 +40,26 @@ export const viewport: Viewport = {
   ],
 };
 
+// Homepage draft-2 (Summer's audit, 7/14): she approved the remastered
+// homepage design — ported here with her fixes: awards H2 = live's
+// "Most Award-Winning in the Midwest" + the five real multi-org badges,
+// Cedar & Stone night drone closes the page, giving-back partners link out,
+// no Buildertrend section, larger nav. H1/meta/canonical unchanged from live.
 export default function HomePage() {
   return (
     <>
       <style>{`@media (max-width: 1023px) { html, body { background-color: #000; } }`}</style>
-      <Hero />
-      <HomeServices />
-
-      <HomeOurWork />
-
-      <HomeGivingBack />
+      <FramedHero />
+      <Statement />
+      <AwardsStrip />
+      <WorkCarousel />
+      <Anatomy />
+      <TransformationSlider />
+      <ServicesEditorial />
+      <Testimonial />
+      <Journal />
+      <GivingBackEditorial />
+      <ClosingCTA />
     </>
   );
 }

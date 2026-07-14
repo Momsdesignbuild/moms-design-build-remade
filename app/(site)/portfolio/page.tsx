@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
 import { createImageUrlBuilder } from "@sanity/image-url";
 import type { SanityImageSource } from "@sanity/image-url";
 import { client } from "@/sanity/lib/client";
 import { sanityFetch } from "@/sanity/lib/live";
 import { JsonLd } from "@/components/PortableBody";
+import OverlayTile from "@/components/OverlayTile";
 import { PORTFOLIO_JSONLD } from "./jsonld";
 
 // Head matches THEIR /portfolio/ exactly (Yoast values from the WP mirror).
@@ -67,36 +66,23 @@ export default async function PortfolioPage() {
         </h1>
       </section>
 
+      {/* two columns on desktop, one on mobile/tablet (Summer, 7/14) */}
       <section className="px-4 md:px-6 pb-20 bg-white">
-        <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-          {cards.map((card, i) => {
-            const imgUrl = card.heroImage
-              ? urlFor(card.heroImage).width(900).height(675).auto("format").url()
-              : null;
-            return (
-              <Link
-                key={card._id}
-                href={`/portfolio/${card.slug.current}`}
-                className="group relative block aspect-[4/3] overflow-hidden bg-gray-100"
-              >
-                {imgUrl && (
-                  <Image
-                    src={imgUrl}
-                    alt={card.title}
-                    fill
-                    loading={i < 6 ? "eager" : "lazy"}
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                  />
-                )}
-                <div className="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
-                  <p className="text-white text-[13px] font-[400] tracking-[0.2em] uppercase text-center">
-                    {card.title}
-                  </p>
-                </div>
-              </Link>
-            );
-          })}
+        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
+          {cards.map((card, i) => (
+            <OverlayTile
+              key={card._id}
+              href={`/portfolio/${card.slug.current}`}
+              img={
+                card.heroImage
+                  ? urlFor(card.heroImage).width(1200).height(900).auto("format").url()
+                  : null
+              }
+              title={card.title}
+              eager={i < 4}
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+          ))}
         </div>
       </section>
     </>

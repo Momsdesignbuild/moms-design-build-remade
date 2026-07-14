@@ -91,7 +91,7 @@ export default async function BlogPostPage({
       <article className="bg-white">
         <header className="pt-16 md:pt-24 pb-8 px-6 text-center max-w-3xl mx-auto">
           {post.publishedAt && (
-            <p className="text-[10px] font-[500] tracking-[0.2em] uppercase text-muted mb-4">
+            <p className="text-[13px] font-[500] tracking-[0.2em] uppercase text-muted mb-4">
               {new Date(post.publishedAt).toLocaleDateString("en-US", {
                 year: "numeric",
                 month: "long",
@@ -99,7 +99,7 @@ export default async function BlogPostPage({
               })}
             </p>
           )}
-          <h1 className="text-[22px] md:text-[32px] font-[300] tracking-[0.15em] uppercase text-ink">
+          <h1 className="text-[26px] md:text-[38px] font-[300] tracking-[0.15em] uppercase text-ink">
             {post.title}
           </h1>
         </header>
@@ -125,7 +125,7 @@ export default async function BlogPostPage({
         <nav className="border-t border-gray-100 px-6 py-10 text-center">
           <Link
             href="/blog"
-            className="text-[10px] font-[500] tracking-[0.2em] uppercase text-muted hover:text-ink transition-colors"
+            className="text-[13px] font-[500] tracking-[0.2em] uppercase text-muted hover:text-ink transition-colors"
           >
             ← All Posts
           </Link>

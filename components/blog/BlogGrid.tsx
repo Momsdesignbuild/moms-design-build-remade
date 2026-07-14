@@ -57,7 +57,7 @@ export default function BlogGrid({ cards: cardsRaw }: { cards: BlogCard[] }) {
                 key={c ?? 'all'}
                 type="button"
                 onClick={() => { setCat(c); setShown(PAGE) }}
-                className={`text-[10px] font-[500] tracking-[0.18em] uppercase px-4 py-2 border transition-colors duration-200 ${
+                className={`text-[13px] font-[500] tracking-[0.18em] uppercase px-4 py-2 border transition-colors duration-200 ${
                   cat === c ? 'bg-ink text-white border-ink' : 'border-ink/20 text-muted hover:border-ink hover:text-ink'
                 }`}
               >
@@ -70,12 +70,12 @@ export default function BlogGrid({ cards: cardsRaw }: { cards: BlogCard[] }) {
             value={query}
             onChange={(e) => { setQuery(e.target.value); setShown(PAGE) }}
             placeholder="Search the blog…"
-            className="w-full md:w-72 border-b border-ink/20 bg-transparent px-1 py-2 text-[13px] font-[300] tracking-[0.04em] text-ink placeholder:text-muted/60 focus:outline-none focus:border-ink"
+            className="w-full md:w-72 border-b border-ink/20 bg-transparent px-1 py-2 text-[16px] font-[300] tracking-[0.04em] text-ink placeholder:text-muted/60 focus:outline-none focus:border-ink"
             aria-label="Search blog posts"
           />
         </div>
         {(q || cat) && (
-          <p className="mt-4 text-[11px] font-[300] tracking-[0.15em] uppercase text-muted">
+          <p className="mt-4 text-[14px] font-[300] tracking-[0.15em] uppercase text-muted">
             {filtered.length} {filtered.length === 1 ? 'story' : 'stories'}{cat ? ` in ${cat}` : ''}{q ? ` matching “${query}”` : ''}
           </p>
         )}
@@ -104,13 +104,13 @@ export default function BlogGrid({ cards: cardsRaw }: { cards: BlogCard[] }) {
                 )}
               </div>
               {post.date && (
-                <p className="text-[10px] font-[500] tracking-[0.25em] uppercase text-muted mb-2">{post.date}</p>
+                <p className="text-[13px] font-[500] tracking-[0.25em] uppercase text-muted mb-2">{post.date}</p>
               )}
-              <h2 className="text-[16px] md:text-[17px] font-[400] tracking-[0.04em] leading-snug text-ink group-hover:underline underline-offset-4 decoration-ink/30">
+              <h2 className="text-[20px] md:text-[22px] font-[300] tracking-[0.04em] leading-snug text-ink group-hover:underline underline-offset-4 decoration-ink/30">
                 {post.title}
               </h2>
               {post.excerpt && (
-                <p className="mt-2 text-[13px] font-[300] leading-relaxed text-muted line-clamp-2">{post.excerpt}</p>
+                <p className="mt-2 text-[16px] font-[300] leading-relaxed text-brand-mid line-clamp-2">{post.excerpt}</p>
               )}
             </Link>
           </motion.div>
@@ -122,7 +122,7 @@ export default function BlogGrid({ cards: cardsRaw }: { cards: BlogCard[] }) {
           <button
             type="button"
             onClick={() => setShown((n) => n + PAGE)}
-            className="inline-block border border-ink text-ink text-[10px] font-[500] tracking-[0.2em] uppercase px-8 py-3 hover:bg-ink hover:text-white transition-colors duration-300"
+            className="inline-block border border-ink text-ink text-[13px] font-[500] tracking-[0.2em] uppercase px-8 py-3 hover:bg-ink hover:text-white transition-colors duration-300"
           >
             Load More ({filtered.length - shown} more)
           </button>

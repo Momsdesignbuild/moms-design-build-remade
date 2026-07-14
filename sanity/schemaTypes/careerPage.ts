@@ -9,6 +9,12 @@ export default defineType({
     defineField({ name: 'slug', title: 'Slug (WP path segment)', type: 'slug', options: { source: 'title' } }),
     defineField({ name: 'order', title: 'Tile order (their careers-grid DOM order)', type: 'number' }),
     defineField({
+      name: 'published',
+      title: 'Live on the careers page? (off = draft, like WP drafts — Summer toggles roles on/off as MDB hires)',
+      type: 'boolean',
+      initialValue: true,
+    }),
+    defineField({
       name: 'photo', title: 'Culture photo (their loop-grid tile background — no alt on WP, CSS background)',
       type: 'image', options: { hotspot: true }, fields: [{ name: 'alt', type: 'string', title: 'Alt text' }],
     }),

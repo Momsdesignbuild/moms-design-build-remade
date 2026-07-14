@@ -69,10 +69,10 @@ export default async function BlogPage() {
 
       {/* ── header ── */}
       <section className="pt-16 md:pt-20 pb-12 px-6 text-center bg-white">
-        <h1 className="text-[22px] md:text-[28px] font-[300] tracking-[0.25em] uppercase text-ink mb-4">
+        <h1 className="text-[26px] md:text-[34px] font-[300] tracking-[0.25em] uppercase text-ink mb-4">
           The Blog
         </h1>
-        <p className="text-[13px] font-[300] tracking-[0.08em] leading-relaxed text-muted max-w-md mx-auto">
+        <p className="text-[16px] font-[300] tracking-[0.06em] leading-relaxed text-brand-mid max-w-lg mx-auto">
           Current trends, project stories, and home &amp; landscape design ideas.
         </p>
       </section>
@@ -96,18 +96,18 @@ export default async function BlogPage() {
             )}
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
             <div className="absolute inset-x-0 bottom-0 p-8 md:p-14 max-w-3xl">
-              <p className="text-white/60 text-[10px] font-[500] tracking-[0.3em] uppercase mb-3">
+              <p className="text-white/60 text-[13px] font-[500] tracking-[0.3em] uppercase mb-3">
                 Latest{featured.publishedAt ? ` — ${fmtDate(featured.publishedAt)}` : ""}
               </p>
               <h2 className="text-white text-[24px] md:text-[38px] font-[300] tracking-[0.06em] leading-tight">
                 {featured.title}
               </h2>
               {featured.excerpt && (
-                <p className="mt-4 text-white/75 text-[13px] md:text-[14px] font-[300] leading-relaxed line-clamp-2 max-w-xl">
+                <p className="mt-4 text-white/75 text-[15px] md:text-[16px] font-[300] leading-relaxed line-clamp-2 max-w-xl">
                   {featured.excerpt}
                 </p>
               )}
-              <span className="mt-6 inline-block text-white text-[10px] font-[500] tracking-[0.25em] uppercase border-b border-white/40 pb-1 group-hover:border-white transition-colors">
+              <span className="mt-6 inline-block text-white text-[13px] font-[500] tracking-[0.25em] uppercase border-b border-white/40 pb-1 group-hover:border-white transition-colors">
                 Read the Story →
               </span>
             </div>
