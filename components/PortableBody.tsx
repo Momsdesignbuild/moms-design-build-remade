@@ -59,10 +59,36 @@ export default function PortableBody({ body, editorial = false }: { body?: BodyB
       }
     } else groups.push(block);
   }
+
+  // A short unpunctuated line directly after an image is that image's CAPTION
+  // on their WP pages ("Cedar & Stone" under the Cedar & Stone photo). Bind it
+  // to the photo's mat so it can't read as a heading for the NEXT photo
+  // (Josh 7/14: award-winning-designs cross-reference).
+  const plain = (b: BodyBlock) => (b.children ?? []).map((c) => c.text).join("").trim();
+  const isCaption = (g: BodyBlock | ListGroup | undefined): g is BodyBlock => {
+    if (!g || g._type !== "block") return false;
+    const b = g as BodyBlock;
+    if (b.listItem || /^h[1-6]$/.test(b.style ?? "")) return false;
+    const t = plain(b);
+    return t.length > 0 && t.length < 60 && !/[.!?:]$/.test(t);
+  };
+  const captionFor = new Map<string, BodyBlock>();
+  const consumed = new Set<string>();
+  if (editorial) {
+    for (let i = 0; i < groups.length - 1; i++) {
+      const g = groups[i];
+      if ((g as BodyBlock)._type === "image" && isCaption(groups[i + 1])) {
+        captionFor.set((g as BodyBlock)._key, groups[i + 1] as BodyBlock);
+        consumed.add((groups[i + 1] as BodyBlock)._key);
+      }
+    }
+  }
+
   return (
     // live-WP body copy: 18px / 1.8 Proxima 300, Astra gray #53565A (Summer: fonts ~1.5×)
     <div className="max-w-none text-[17px] md:text-[18px] leading-[1.8] text-brand-mid font-[300] space-y-5">
       {groups.map((g) => {
+        if ((g as BodyBlock)._key && consumed.has((g as BodyBlock)._key)) return null;
         if (g._type === "list") {
           const list = g as ListGroup;
           const items = list.items.map((b) => <li key={b._key}>{renderSpans(b)}</li>);
@@ -117,11 +143,18 @@ export default function PortableBody({ body, editorial = false }: { body?: BodyB
               sizes="(max-width: 768px) 100vw, 768px"
             />
           );
-          // editorial: photos ride a white mat with a soft shadow, like prints
+          // editorial: photos ride a white mat with a soft shadow, like prints;
+          // a caption line binds INSIDE the mat, under its photo — like theirs
+          const cap = editorial ? captionFor.get(block._key) : undefined;
           return editorial ? (
-            <div key={block._key} className="my-10 bg-white p-2.5 shadow-[0_26px_55px_-30px_rgba(28,28,26,0.35)]">
+            <figure key={block._key} className="my-10 bg-white p-2.5 shadow-[0_26px_55px_-30px_rgba(28,28,26,0.35)]">
               {img}
-            </div>
+              {cap && (
+                <figcaption className="pt-3 pb-1 text-center text-[13px] font-[400] tracking-[0.22em] uppercase text-brand-mid">
+                  {renderSpans(cap)}
+                </figcaption>
+              )}
+            </figure>
           ) : (
             img
           );

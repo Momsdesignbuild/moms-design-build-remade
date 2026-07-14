@@ -127,6 +127,35 @@ export default async function BlogPostPage({
   const category = post.categories?.[0];
   const related = isPost ? await getRelated(slug, category) : [];
 
+  // Their WP convention: a short unpunctuated line is a photo CAPTION sitting
+  // BELOW its photo. One appearing before any body image captions the HERO
+  // (award-winning-designs: "Cedar & Stone" renders under the featured image
+  // on live, but the migration placed it mid-body) — bind it under the hero
+  // mat instead of letting it float above the NEXT photo (Josh 7/14).
+  const captionText = (b?: BodyBlock): string | null => {
+    if (!b || b._type !== "block" || b.listItem || /^h[1-6]$/.test(b.style ?? "")) return null;
+    const t = (b.children ?? []).map((c) => c.text).join("").trim();
+    return t && t.length < 60 && !/[.!?:]$/.test(t) ? t : null;
+  };
+  let heroCaption: string | null = null;
+  let heroCaptionKey: string | null = null;
+  if (isPost && post.heroImage) {
+    // only the OPENING of the post can caption the hero — an unbounded scan
+    // glued far-away CTA lines under the hero (why-hire, "SCHEDULE YOUR…")
+    for (const b of (post.body ?? []).slice(0, 4)) {
+      if (b._type === "image") break; // body images own their own captions
+      if ((b as { markDefs?: unknown[] }).markDefs?.length) continue; // linked lines are CTAs, not captions
+      const t = captionText(b);
+      if (t) {
+        heroCaption = t;
+        heroCaptionKey = b._key;
+      }
+    }
+  }
+  const bodyBlocks = heroCaptionKey
+    ? post.body!.filter((b) => b._key !== heroCaptionKey)
+    : post.body;
+
   return (
     <>
       <JsonLd raw={post.jsonLd} />
@@ -150,7 +179,7 @@ export default async function BlogPostPage({
         {/* ── Hero as a matted print riding the masthead's edge ── */}
         {post.heroImage && (
           <div className="px-4 md:px-6 -mt-8 md:-mt-10 mb-12 md:mb-16">
-            <div className="max-w-[1000px] mx-auto bg-white p-3 shadow-[0_34px_70px_-36px_rgba(28,28,26,0.4)]">
+            <figure className="max-w-[1000px] mx-auto bg-white p-3 shadow-[0_34px_70px_-36px_rgba(28,28,26,0.4)]">
               <Image
                 src={builder.image(post.heroImage).width(1600).auto("format").url()}
                 alt={post.heroImage.alt || post.title}
@@ -160,7 +189,12 @@ export default async function BlogPostPage({
                 className="w-full h-auto object-cover"
                 sizes="(max-width: 1000px) 100vw, 1000px"
               />
-            </div>
+              {heroCaption && (
+                <figcaption className="pt-3.5 pb-1.5 text-center text-[13px] font-[400] tracking-[0.22em] uppercase text-brand-mid">
+                  {heroCaption}
+                </figcaption>
+              )}
+            </figure>
           </div>
         )}
 
@@ -176,7 +210,7 @@ export default async function BlogPostPage({
             [&_p:first-of-type]:first-letter:text-brand
             [&_p:first-of-type]:first-letter:[font-family:var(--font-heading)]"
         >
-          <PortableBody body={post.body} editorial={isPost} />
+          <PortableBody body={bodyBlocks} editorial={isPost} />
 
           {/* sign-off */}
           <div className="mt-14 pt-8 border-t border-ink/10 flex items-center justify-between gap-4 flex-wrap">
