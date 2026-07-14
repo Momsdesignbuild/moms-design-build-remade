@@ -292,10 +292,15 @@ export default async function PortfolioProjectPage({
   // paragraph) travel with the text, keeping their WP-contiguous order
   // (splitting them broke story-text parity on coastal-cottage/over-the-top).
   // Before+3D pairs STACK (never slide); the real slider opens the Ta-Da.
+  // "Property Serviced by Mom's Fine Gardening" is a division credit — it
+  // ALWAYS closes the page (Josh 7/14 pm: never up top) in Fine Gardening
+  // coral, linking through like it does on their site.
+  const isFgCredit = (s: Staged) => s.kind === "label" && /property serviced by/i.test(s.text);
   const isMedia = (s: Staged, next?: Staged): boolean => {
     if (s.kind === "story" || s.kind === "quote") return false;
+    if (isFgCredit(s)) return true;
     if (s.kind === "label")
-      return !!next && ["image", "imageRow", "galleryGrid", "slider", "tada"].includes(next.kind);
+      return !next || ["image", "imageRow", "galleryGrid", "slider", "tada"].includes(next.kind);
     return true;
   };
   const textPhase = staged.filter((s, i) => !isMedia(s, staged[i + 1]));
@@ -306,6 +311,8 @@ export default async function PortfolioProjectPage({
         ? ({ kind: "imageRow", label: s.label, images: [s.before, s.after] } as Staged)
         : s
     );
+  // the FG credit sits at the very end of the flow, whatever their block order
+  media = [...media.filter((s) => !isFgCredit(s)), ...media.filter(isFgCredit)];
   const tadaAt = media.findIndex((s) => s.kind === "tada");
   const sliderAt = media.findIndex((s) => s.kind === "slider");
   if (tadaAt !== -1 && sliderAt !== -1 && sliderAt < tadaAt) {
@@ -470,6 +477,18 @@ export default async function PortfolioProjectPage({
                   </div>
                 );
               case "label":
+                // division credit: Fine Gardening coral, links through, closes the page
+                if (isFgCredit(s)) {
+                  return (
+                    <p
+                      key={i}
+                      className="text-center text-[15px] md:text-[16px] font-[400] tracking-[0.24em] uppercase mt-16 [&_a]:decoration-[#FF6D6A]/50 [&_a]:hover:decoration-[#FF6D6A]"
+                      style={{ color: "#FF6D6A" }}
+                    >
+                      {rich(s.block, s.text)}
+                    </p>
+                  );
+                }
                 return (
                   <p key={i} className="text-center text-[16px] md:text-[18px] font-[300] tracking-[0.28em] uppercase text-brand my-10">
                     {rich(s.block, s.text)}
