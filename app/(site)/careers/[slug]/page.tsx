@@ -48,6 +48,8 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
+  // the internal hub-holder doc is not a page — their live site 404s it
+  if (slug === "__hub") notFound();
   const c = await getCareer(slug);
   if (!c) return {};
   const title = c.metaTitle ?? `${c.title} - Mom's Design Build`;
@@ -88,6 +90,8 @@ export default async function CareerPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  // the internal hub-holder doc is not a page — their live site 404s it
+  if (slug === "__hub") notFound();
   const c = await getCareer(slug);
   if (!c) notFound();
   const tiles = await getTiles();

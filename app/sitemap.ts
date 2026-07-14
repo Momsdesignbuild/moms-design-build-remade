@@ -20,7 +20,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     client.fetch<Array<{ slug: { current: string }; _updatedAt: string }>>(
       `*[_type == "servicePage"] { slug, _updatedAt }`),
     client.fetch<Array<{ slug: { current: string }; _updatedAt: string }>>(
-      `*[_type == "careerPage" && defined(slug.current)] { slug, _updatedAt }`),
+      `*[_type == "careerPage" && defined(slug.current) && slug.current != "__hub"] { slug, _updatedAt }`),
     client.fetch<Array<{ slug: { current: string }; _updatedAt: string }>>(
       `*[_type == "teamMember"] { slug, _updatedAt }`),
     client.fetch<Array<{ slug: { current: string }; _updatedAt: string }>>(
