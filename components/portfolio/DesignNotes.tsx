@@ -10,7 +10,7 @@ import type { ProjectNotes } from '@/content/project-notes'
  */
 export default function DesignNotes({ notes }: { notes: ProjectNotes }) {
   return (
-    <section className="bg-[#F7F5F2] py-20 lg:py-28 px-6 lg:px-10">
+    <section data-addition="design-notes" className="bg-[#F7F5F2] py-20 lg:py-28 px-6 lg:px-10">
       <div className="max-w-[1400px] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 24 }}

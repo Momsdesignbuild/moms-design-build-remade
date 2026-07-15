@@ -12,6 +12,7 @@ import LightboxGallery from "@/components/portfolio/LightboxGallery";
 import DesignNotes from "@/components/portfolio/DesignNotes";
 import OverlayTile from "@/components/OverlayTile";
 import { PROJECT_NOTES } from "@/content/project-notes";
+import LIVE_SEO from "@/content/live-seo-map.json";
 
 export const revalidate = 3600;
 
@@ -221,9 +222,11 @@ function analyze(blocks: Block[]) {
         continue;
       }
     }
-    // subtitle = the page's short descriptor — never a linked/promo line
+    // subtitle = the page's short descriptor — never a linked/promo line,
+    // a quote attribution ("-David Wessner"), or the FG division credit
     if (t.length < 80 && !subtitle && !staged.some((s) => s.kind === "story")
-        && !b.markDefs?.length && !/read about|check out/i.test(t)) { subtitle = t; continue; }
+        && !b.markDefs?.length && !/read about|check out/i.test(t)
+        && !/^\s*[-–—]/.test(t) && !/property serviced by/i.test(t)) { subtitle = t; continue; }
     if (t.length < 60) { staged.push({ kind: "label", text: t, block: b }); continue; }
     staged.push({ kind: "story", text: t, block: b });
   }
@@ -282,7 +285,21 @@ export default async function PortfolioProjectPage({
   // computed rgb(255,255,255) on live 7/14) — crawlable, invisible. Summer
   // wants the same here instead of rendering it as a visible tagline. Service
   // pages' "...IN MINNESOTA" H2s are VISIBLE gray on live — never hide those.
-  const isHiddenSeoLine = (t: string) => t.trim().length < 80 && /\bin (minnesota|mn)\.?\s*$/i.test(t.trim());
+  // Ground truth per slug lives in content/live-seo-map.json (built by
+  // scripts/build-live-seo-map.mjs from live computed styles — heuristics
+  // kept missing variants like "…– Mom's Design Build"). Heuristic kept as
+  // fallback: short keyword line ending in MN/Minnesota, never location
+  // lines ("Carver, MN") or anything with digits (addresses).
+  const liveSeo = (LIVE_SEO as Record<string, { hidden: string[]; h2: string[]; hasBox?: boolean }>)[slug];
+  const isHiddenSeoLine = (t: string) => {
+    const s = t.trim();
+    if (liveSeo?.hidden.some((h) => h.trim() === s)) return true;
+    if (s.length >= 80 || /\d/.test(s)) return false;
+    if (/,\s*(minnesota|mn)\.?$/i.test(s)) return false;
+    return /\b(minnesota|mn)\.?$/i.test(s);
+  };
+  // labels that live marks up as real <h2>s (e.g. "Neighbor A") keep the tag
+  const isLiveH2 = (t: string) => !!liveSeo?.h2.some((h) => h.trim().toLowerCase() === t.trim().toLowerCase());
   const hiddenSubtitle = !!subtitle && isHiddenSeoLine(subtitle);
 
   // ── Summer's reading order (7/14): body text BEFORE the photo download ──
@@ -323,6 +340,19 @@ export default async function PortfolioProjectPage({
     media.splice(media.findIndex((s) => s.kind === "tada") + 1, 0, sl);
   }
   const flow = [...textPhase, ...media];
+  // Live-WP parity (Josh 7/15): body text sits in the classic double-line box
+  // — computed on live cedar-and-stone: 4px double #53565A on #f9fafb, 20px
+  // pad. Hidden keyword lines render OUTSIDE the box (they're separate
+  // widgets on live); pages with no visible body text get no box.
+  const isHiddenStaged = (s: Staged) =>
+    (s.kind === "story" || s.kind === "label") && isHiddenSeoLine((s as { text: string }).text);
+  // live boxes body text on 21 of 70 pages (their newer treatment) — the
+  // hasBox flag in live-seo-map.json is ground truth per slug. Fallback for
+  // future projects with no map entry: box when there is real story text.
+  const visibleText = textPhase.filter((s) => !isHiddenStaged(s));
+  const wantsBox = liveSeo ? !!liveSeo.hasBox : visibleText.some((s) => s.kind === "story");
+  const boxedText = wantsBox ? visibleText : [];
+  const unboxedText = wantsBox ? [] : visibleText;
 
   return (
     <>
@@ -361,9 +391,11 @@ export default async function PortfolioProjectPage({
               {project.title}
             </h1>
             {project.location && (
-              <p className="text-white/75 text-[11px] md:text-[13px] font-[400] tracking-[0.3em] uppercase mt-3">
+              // live marks the city as an <h2> (their only own heading besides
+              // the keyword line) — keep the tag for SEO parity, same look
+              <h2 className="text-white/75 text-[11px] md:text-[13px] font-[400] tracking-[0.3em] uppercase mt-3">
                 {project.location}
-              </p>
+              </h2>
             )}
           </div>
         </div>
@@ -386,11 +418,16 @@ export default async function PortfolioProjectPage({
                   {subtitle}
                 </h2>
               ))}
-            {completedYear && (
-              <p className="text-[13px] md:text-[14px] font-[300] tracking-[0.18em] uppercase text-brand-mid">
-                Completed {completedYear}
-              </p>
-            )}
+            {completedYear &&
+              (isLiveH2(`Completed ${completedYear}`) ? (
+                <h2 className="text-[13px] md:text-[14px] font-[300] tracking-[0.18em] uppercase text-brand-mid">
+                  Completed {completedYear}
+                </h2>
+              ) : (
+                <p className="text-[13px] md:text-[14px] font-[300] tracking-[0.18em] uppercase text-brand-mid">
+                  Completed {completedYear}
+                </p>
+              ))}
             {allBadges.length > 0 && (
               <div className="flex flex-wrap justify-center items-center gap-6 pt-2">
                 {allBadges.map((b, i) => (
@@ -425,7 +462,8 @@ export default async function PortfolioProjectPage({
             />
           )}
 
-          {flow.map((s, i) => {
+          {(() => {
+            const renderStaged = (s: Staged, i: number) => {
             // the keyword line hides white-on-white like live NO MATTER which
             // staging bucket it landed in (subtitle catches only page-openers)
             if ((s.kind === "story" || s.kind === "label") && isHiddenSeoLine(s.text)) {
@@ -479,12 +517,14 @@ export default async function PortfolioProjectPage({
                     <div className="h-px flex-1 bg-ink/10" />
                   </div>
                 );
-              case "label":
+              case "label": {
+                const Tag = isLiveH2(s.text) ? "h2" : "p";
                 return (
-                  <p key={i} className="text-center text-[16px] md:text-[18px] font-[300] tracking-[0.28em] uppercase text-brand my-10">
+                  <Tag key={i} className="text-center text-[16px] md:text-[18px] font-[300] tracking-[0.28em] uppercase text-brand my-10">
                     {rich(s.block, s.text)}
-                  </p>
+                  </Tag>
                 );
+              }
               case "galleryGrid":
                 // inline gallery under its own label (e.g. Neighbor A / neighbor b)
                 return (
@@ -539,7 +579,23 @@ export default async function PortfolioProjectPage({
                   />
                 );
             }
-          })}
+            };
+            return (
+              <>
+                {textPhase.filter(isHiddenStaged).map((s) => renderStaged(s, flow.indexOf(s)))}
+                {unboxedText.map((s) => renderStaged(s, flow.indexOf(s)))}
+                {boxedText.length > 0 && (
+                  <div
+                    className="my-8 px-5 py-4 md:px-8 md:py-5 text-center [&>p:first-child]:mt-0 [&>p:last-child]:mb-0"
+                    style={{ border: "4px double #53565A", backgroundColor: "#f9fafb" }}
+                  >
+                    {boxedText.map((s) => renderStaged(s, flow.indexOf(s)))}
+                  </div>
+                )}
+                {media.map((s) => renderStaged(s, flow.indexOf(s)))}
+              </>
+            );
+          })()}
         </div>
       </section>
 
