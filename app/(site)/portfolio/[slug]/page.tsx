@@ -346,33 +346,15 @@ export default async function PortfolioProjectPage({
   // widgets on live); pages with no visible body text get no box.
   const isHiddenStaged = (s: Staged) =>
     (s.kind === "story" || s.kind === "label") && isHiddenSeoLine((s as { text: string }).text);
-  // live boxes body text on 21 of 70 pages (their newer treatment) — the
-  // hasBox flag in live-seo-map.json is ground truth per slug, and boxText is
-  // the box's exact live contents: ONLY blocks whose text appears there get
-  // boxed (labels like "Before & 3D Rendering" are separate widgets on live
-  // and must stay outside — Josh 7/15). Fallback for future projects with no
-  // map entry: box the story/quote text.
-  const normQ = (t: string) => t.replace(/\s+/g, " ").replace(/[‘’]/g, "'").replace(/[“”]/g, '"').trim();
+  // Josh 7/15 pm: EVERY page's body text gets the double-line box — live only
+  // boxed 21/70 but ours boxes them all. Inside: story paragraphs, pull-
+  // quotes, and their attributions. Outside: labels (picture titles like
+  // "Before & 3D Rendering" sit above their photos; promo links stay in flow).
   const visibleText = textPhase.filter((s) => !isHiddenStaged(s));
-  const wantsBox = liveSeo ? !!liveSeo.hasBox : visibleText.some((s) => s.kind === "story");
-  const inLiveBox = (s: Staged) => {
-    const t = (s as { text?: string }).text;
-    if (!t) return false;
-    if (liveSeo?.boxText) return liveSeo.boxText.includes(normQ(t));
-    return s.kind === "story" || s.kind === "quote";
-  };
-  const boxedText = wantsBox ? visibleText.filter(inLiveBox) : [];
-  // a label glued to a following image row (cool-california's Rivard award
-  // line) lands in the media phase — if live boxes it, pull it into the box
-  if (wantsBox) {
-    const pulled = media.filter(
-      (s) => s.kind === "label" && (s as { text: string }).text.trim().length > 14 && inLiveBox(s) && !isFgCredit(s)
-    );
-    if (pulled.length) {
-      boxedText.push(...pulled);
-      media = media.filter((s) => !pulled.includes(s));
-    }
-  }
+  const inBox = (s: Staged) =>
+    s.kind === "story" || s.kind === "quote" ||
+    (s.kind === "label" && /^\s*[-–—]/.test((s as { text: string }).text));
+  const boxedText = visibleText.filter(inBox);
   const boxSet = new Set<Staged>(boxedText);
   const firstBoxIdx = visibleText.findIndex((s) => boxSet.has(s));
   const preBox = firstBoxIdx === -1 ? visibleText : visibleText.slice(0, firstBoxIdx);
@@ -484,14 +466,10 @@ export default async function PortfolioProjectPage({
 
           {(() => {
             const renderStaged = (s: Staged, i: number) => {
-            // the keyword line hides white-on-white like live NO MATTER which
-            // staging bucket it landed in (subtitle catches only page-openers)
+            // keyword lines are dropped entirely (Josh 7/15 pm: no more
+            // hidden white text — their plain-<p> spam carries no SEO weight)
             if ((s.kind === "story" || s.kind === "label") && isHiddenSeoLine(s.text)) {
-              return (
-                <p key={i} className="text-white text-[18px] font-[300] select-none">
-                  <span>{s.text}</span>
-                </p>
-              );
+              return null;
             }
             switch (s.kind) {
               case "story":
@@ -602,15 +580,6 @@ export default async function PortfolioProjectPage({
             };
             return (
               <>
-                {/* live parks the hidden keyword line awkwardly at the top
-                    left of the content area — same here: white, left-aligned,
-                    OUTSIDE the box, before everything */}
-                {hiddenSubtitle && (
-                  <p className="text-white text-[18px] font-[300] select-none">
-                    <span>{subtitle}</span>
-                  </p>
-                )}
-                {textPhase.filter(isHiddenStaged).map((s) => renderStaged(s, flow.indexOf(s)))}
                 {preBox.map((s) => renderStaged(s, flow.indexOf(s)))}
                 {boxedText.length > 0 && (
                   <div
