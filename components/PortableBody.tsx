@@ -114,14 +114,20 @@ export default function PortableBody({ body, editorial = false }: { body?: BodyB
               : "text-[1.2em] md:text-[1.3em] font-[300] tracking-[1.5px] leading-[1.2] text-brand mt-8 mb-3";
             if (editorial && H === "h2") {
               h2Seen += 1;
+              // headings that number THEMSELVES ("2. GOODBYE BORING…") keep
+              // the double-rule but drop our running number — the "2 / 2."
+              // double numbering read as a bug (Josh 7/15, lighting-trends)
+              const selfNumbered = /^\s*\d+\s*[.):]/.test(plain(block));
               return (
                 <div key={block._key} className="mt-14 mb-5">
                   {/* section kicker: the site's double-rule + a running number */}
                   <div className="flex items-center gap-4 mb-5">
                     <span className="double-rule-brand w-10 shrink-0" />
-                    <span className="text-[12px] font-semibold tracking-[0.3em] text-brand/60">
-                      {String(h2Seen).padStart(2, "0")}
-                    </span>
+                    {!selfNumbered && (
+                      <span className="text-[12px] font-semibold tracking-[0.3em] text-brand/60">
+                        {String(h2Seen).padStart(2, "0")}
+                      </span>
+                    )}
                   </div>
                   <H className="text-[1.55em] md:text-[1.7em] font-[300] tracking-[1.8px] leading-[1.2] text-brand">
                     {renderSpans(block)}
