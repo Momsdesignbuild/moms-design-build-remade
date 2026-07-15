@@ -150,10 +150,20 @@ function HubBody({
   const headingColor = accent ? undefined : undefined; // accent applied via style below
   void headingColor;
 
-  const renderText = ({ b, i }: { b: BodyBlock; i: number }) => {
+  const renderText = ({ b, i }: { b: BodyBlock; i: number }, paired = false) => {
     if (isHeading(b)) {
       const Tag = b.style as "h1" | "h2" | "h3";
       const first = i === 0;
+      if (paired)
+        return (
+          <Tag
+            key={b._key}
+            className="text-[20px] md:text-[24px] font-[300] tracking-[0.18em] uppercase mb-5"
+            style={{ color: accent || "var(--color-brand)" }}
+          >
+            {plainText(b)}
+          </Tag>
+        );
       return first ? (
         <Tag
           key={b._key}
@@ -171,14 +181,28 @@ function HubBody({
         </Tag>
       );
     }
+    // their division byline: accent italic serif, centered under the logo
+    if (accent && /^A Division of Mom/i.test(plainText(b).trim())) {
+      return (
+        <p
+          key={b._key}
+          className="text-center italic text-[19px] md:text-[21px] mb-10 [font-family:Georgia,'Times_New_Roman',serif]"
+          style={{ color: accent }}
+        >
+          <Rich block={b} />
+        </p>
+      );
+    }
     const tagline = (b.children ?? []).length === 1 && (b.children![0].text ?? "").length < 45;
     return (
       <p
         key={b._key}
         className={
           tagline
-            ? "text-[15px] font-[400] tracking-[0.28em] uppercase text-center mb-8"
-            : "text-[17px] md:text-[18px] font-[300] leading-[1.8] text-brand-mid max-w-[760px] mx-auto mb-5"
+            ? `text-[15px] font-[400] tracking-[0.28em] uppercase ${paired ? "" : "text-center"} mb-8`
+            : paired
+              ? "text-[17px] md:text-[18px] font-[300] leading-[1.8] text-brand-mid mb-5"
+              : "text-[17px] md:text-[18px] font-[300] leading-[1.8] text-brand-mid max-w-[760px] mx-auto mb-5"
         }
         style={tagline ? { color: accent || "var(--color-brand)" } : undefined}
       >
@@ -224,31 +248,118 @@ function HubBody({
     return null;
   };
 
+  // ── division layout (Summer, audio 7/14): each HUGE photo sits PARALLEL to
+  // its text section — photo one side, copy the other, alternating — "this
+  // also is next to it, which is actually better… otherwise you're scrolling
+  // for what feels like days." A photo pairs with the text run that follows
+  // it; unpaired text runs keep the boxed double-rule treatment.
+  type Row =
+    | { kind: "pair"; img: BodyBlock; imgIdx: number; text: Extract<Seg, { kind: "text" }> }
+    | { kind: "seg"; seg: Seg; k: number };
+  const rows: Row[] = [];
+  // their order: HERO PHOTO first, division logo BELOW it (Josh 7/15 vs live)
+  let heroImg: BodyBlock | null = null;
+  let segsForRows = segs;
+  if (accent && segs[0]?.kind === "other" && (segs[0] as { b: BodyBlock }).b._type === "image") {
+    heroImg = (segs[0] as { b: BodyBlock }).b;
+    segsForRows = segs.slice(1);
+  }
+  if (accent) {
+    for (let k = 0; k < segsForRows.length; k++) {
+      const seg = segsForRows[k];
+      const next = segsForRows[k + 1];
+      if (
+        seg.kind === "other" &&
+        seg.b._type === "image" &&
+        seg.i > 0 && // never the intro area
+        next?.kind === "text"
+      ) {
+        rows.push({ kind: "pair", img: seg.b, imgIdx: seg.i, text: next as Extract<Seg, { kind: "text" }> });
+        k++; // consume the text run
+      } else rows.push({ kind: "seg", seg, k });
+    }
+  }
+
   let textSegN = -1;
+  let pairN = -1;
   return (
     <section className="pt-16 md:pt-24 pb-20 px-6 bg-white">
-      <div className="max-w-[1100px] mx-auto">
+      <div className="max-w-[1200px] mx-auto">
+        {/* their order: full-width hero photo, THEN the division logo below it */}
+        {heroImg && heroImg.url && (
+          <div className="mb-10">
+            <Image
+              src={heroImg.url}
+              alt={heroImg.alt || ""}
+              width={heroImg.dim?.width ?? 2000}
+              height={heroImg.dim?.height ?? 1300}
+              priority
+              className="w-full h-auto object-cover"
+              sizes="(max-width: 1200px) 100vw, 1200px"
+            />
+          </div>
+        )}
         {divisionLogoUrl && (
-          <div className="flex justify-center mb-10">
+          <div className="flex justify-center mb-5">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={divisionLogoUrl + "?w=800&auto=format"} alt="" style={{ maxWidth: 420, width: "100%" }} />
           </div>
         )}
-        {segs.map((seg, k) => {
+        {(accent ? rows : segs.map((seg, k) => ({ kind: "seg", seg, k }) as Row)).map((row) => {
+          if (row.kind === "pair") {
+            pairN += 1;
+            return (
+              <div key={"pair" + row.imgIdx}>
+                {/* thin accent rule between sections, like theirs */}
+                {pairN > 0 && <div className="h-px w-full my-2" style={{ backgroundColor: accent + "66" }} />}
+                <div className="my-10 md:my-14 grid grid-cols-1 md:grid-cols-[420px_1fr] gap-8 md:gap-12 items-start">
+                  <div className="relative w-full overflow-hidden">
+                    <Image
+                      src={row.img.url!}
+                      alt={row.img.alt || ""}
+                      width={row.img.dim?.width ?? 1200}
+                      height={row.img.dim?.height ?? 800}
+                      className="w-full h-auto object-cover"
+                      sizes="(max-width: 768px) 100vw, 420px"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div>{row.text.blocks.map((tb) => renderText(tb, true))}</div>
+                </div>
+              </div>
+            );
+          }
+          const { seg, k } = row;
           if (seg.kind === "other") return renderOther(seg.b, seg.i);
           textSegN += 1;
-          // division sectioning: every text run after the intro sits in a soft
-          // box between accent double-rules (Summer: contrast, not endless text)
+          // unpaired text run after the intro keeps the boxed double-rule
+          // treatment (contrast, not endless text)
+          if (accent && textSegN === 0) {
+            // the intro sits in THEIR coral double-border box (byline stays outside)
+            const byline = seg.blocks.filter(({ b }) => /^A Division of Mom/i.test(plainText(b).trim()));
+            const rest = seg.blocks.filter(({ b }) => !/^A Division of Mom/i.test(plainText(b).trim()));
+            return (
+              <div key={"seg" + k}>
+                {byline.map((tb) => renderText(tb))}
+                <div
+                  className="my-6 bg-[#F8F9FA] px-6 md:px-14 py-9 text-center [&_p]:max-w-none"
+                  style={{ border: `3px double ${accent}` }}
+                >
+                  {rest.map((tb) => renderText(tb))}
+                </div>
+              </div>
+            );
+          }
           if (accent && textSegN > 0) {
             return (
               <div key={"seg" + k} className="my-10 bg-[#FAFAF8] px-6 md:px-12 py-9">
                 <div className="double-rule mb-8" style={{ borderColor: accent }} />
-                {seg.blocks.map(renderText)}
+                {seg.blocks.map((tb) => renderText(tb))}
                 <div className="double-rule mt-8" style={{ borderColor: accent }} />
               </div>
             );
           }
-          return <div key={"seg" + k}>{seg.blocks.map(renderText)}</div>;
+          return <div key={"seg" + k}>{seg.blocks.map((tb) => renderText(tb))}</div>;
         })}
       </div>
     </section>
