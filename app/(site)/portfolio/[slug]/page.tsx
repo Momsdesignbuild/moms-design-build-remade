@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { createImageUrlBuilder } from "@sanity/image-url";
 import type { SanityImageSource } from "@sanity/image-url";
+import { stegaClean } from "next-sanity";
 import { client } from "@/sanity/lib/client";
 import { sanityFetch } from "@/sanity/lib/live";
 import { JsonLd } from "@/components/PortableBody";
@@ -162,7 +163,10 @@ type Staged =
   | { kind: "slider"; label: string; before: Block; after: Block; afterLabel: string };
 
 function analyze(blocks: Block[]) {
-  const textOf = (b: Block) => (b.children ?? []).map((c) => c.text).join("").trim();
+  // stegaClean: draft-mode stega chars made every label read as a 1000-char
+  // story for logged-in users — labels lost their galleries, keyword matching
+  // failed, boxes swallowed everything (Josh's "Studio is fucking em up", 7/15)
+  const textOf = (b: Block) => stegaClean((b.children ?? []).map((c) => c.text).join("")).trim();
   const isBadge = (b: Block) => /nari|award|winner|best.?of|remodeler|midwest design|houzz/i.test(b.alt ?? "");
 
   let subtitle: string | undefined;
@@ -250,7 +254,7 @@ export default async function PortfolioProjectPage({
   let photoAcc = 0;
   for (const g of grids) { gridOffsets.set(g, photoAcc); photoAcc += g.images.length; }
 
-  const isMp4 = !!project.videoUrl?.endsWith(".mp4");
+  const isMp4 = stegaClean(project.videoUrl ?? "").endsWith(".mp4");
   const heroSource = project.leadImage ?? project.heroImage;
   const heroAlt = project.leadImage?.alt || project.title;
   // hero ships through ONE encoder, not two: next/image gets the untouched

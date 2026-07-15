@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { createImageUrlBuilder } from "@sanity/image-url";
 import type { SanityImageSource } from "@sanity/image-url";
+import { stegaClean } from "next-sanity";
 import { client } from "@/sanity/lib/client";
 import { sanityFetch } from "@/sanity/lib/live";
 import PortableBody, { JsonLd, type BodyBlock } from "@/components/PortableBody";
@@ -106,7 +107,7 @@ function readingMinutes(body?: BodyBlock[]): number | null {
   if (!body) return null;
   const words = body
     .filter((b) => b._type === "block")
-    .flatMap((b) => (b.children ?? []).map((c) => c.text ?? ""))
+    .flatMap((b) => (b.children ?? []).map((c) => stegaClean(c.text ?? "")))
     .join(" ")
     .split(/\s+/)
     .filter(Boolean).length;
@@ -134,7 +135,8 @@ export default async function BlogPostPage({
   // mat instead of letting it float above the NEXT photo (Josh 7/14).
   const captionText = (b?: BodyBlock): string | null => {
     if (!b || b._type !== "block" || b.listItem || /^h[1-6]$/.test(b.style ?? "")) return null;
-    const t = (b.children ?? []).map((c) => c.text).join("").trim();
+    // stegaClean: draft-mode invisible chars would fail the <60-char test
+    const t = stegaClean((b.children ?? []).map((c) => c.text).join("")).trim();
     return t && t.length < 60 && !/[.!?:]$/.test(t) ? t : null;
   };
   let heroCaption: string | null = null;

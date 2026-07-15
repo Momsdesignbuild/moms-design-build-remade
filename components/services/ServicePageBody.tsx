@@ -61,7 +61,10 @@ function Rich({ block }: { block: BodyBlock }) {
 }
 
 const isHeading = (b: BodyBlock) => b._type === "block" && /^h[1-6]$/.test(b.style ?? "");
-const plainText = (b: BodyBlock) => (b.children ?? []).map((c) => c.text).join("");
+// stegaClean: in Studio draft mode every string carries invisible stega chars
+// — any logic that measures/matches text breaks for logged-in users (7/15:
+// "Casual Luxury Since 1993" lost its treatment inside Presentation)
+const plainText = (b: BodyBlock) => stegaClean((b.children ?? []).map((c) => c.text).join(""));
 
 type ListGroup = { kind: "list"; key: string; items: BodyBlock[] };
 type Grouped = BodyBlock | ListGroup;
@@ -193,7 +196,7 @@ function HubBody({
         </p>
       );
     }
-    const tagline = (b.children ?? []).length === 1 && (b.children![0].text ?? "").length < 45;
+    const tagline = (b.children ?? []).length === 1 && stegaClean(b.children![0].text ?? "").length < 45;
     return (
       <p
         key={b._key}

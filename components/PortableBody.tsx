@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { createImageUrlBuilder } from "@sanity/image-url";
 import type { SanityImageSource } from "@sanity/image-url";
+import { stegaClean } from "next-sanity";
 import { client } from "@/sanity/lib/client";
 
 const builder = createImageUrlBuilder(client);
@@ -64,7 +65,9 @@ export default function PortableBody({ body, editorial = false }: { body?: BodyB
   // on their WP pages ("Cedar & Stone" under the Cedar & Stone photo). Bind it
   // to the photo's mat so it can't read as a heading for the NEXT photo
   // (Josh 7/14: award-winning-designs cross-reference).
-  const plain = (b: BodyBlock) => (b.children ?? []).map((c) => c.text).join("").trim();
+  // stegaClean strips draft-mode invisible chars — without it caption/label
+  // detection breaks for anyone logged into Studio (7/15)
+  const plain = (b: BodyBlock) => stegaClean((b.children ?? []).map((c) => c.text).join("")).trim();
   const isCaption = (g: BodyBlock | ListGroup | undefined): g is BodyBlock => {
     if (!g || g._type !== "block") return false;
     const b = g as BodyBlock;

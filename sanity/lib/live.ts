@@ -19,7 +19,7 @@ export const { sanityFetch, SanityLive } = defineLive({
         const MECHANICAL = new Set([
           'jsonLd', 'sourceUrl', 'canonical', 'template', 'cardsSet',
           'divisionLogoUrl', 'href', 'style', 'listItem', 'ogImageUrl',
-          'ogImageType', 'slug', 'current', 'url',
+          'ogImageType', 'slug', 'current', 'url', 'videoUrl',
         ])
         const last = String(props.sourcePath.at(-1))
         if (MECHANICAL.has(last)) return false
