@@ -290,7 +290,7 @@ export default async function PortfolioProjectPage({
   // kept missing variants like "…– Mom's Design Build"). Heuristic kept as
   // fallback: short keyword line ending in MN/Minnesota, never location
   // lines ("Carver, MN") or anything with digits (addresses).
-  const liveSeo = (LIVE_SEO as Record<string, { hidden: string[]; h2: string[]; hasBox?: boolean }>)[slug];
+  const liveSeo = (LIVE_SEO as Record<string, { hidden: string[]; h2: string[]; hasBox?: boolean; boxText?: string }>)[slug];
   const isHiddenSeoLine = (t: string) => {
     const s = t.trim();
     if (liveSeo?.hidden.some((h) => h.trim() === s)) return true;
@@ -347,12 +347,36 @@ export default async function PortfolioProjectPage({
   const isHiddenStaged = (s: Staged) =>
     (s.kind === "story" || s.kind === "label") && isHiddenSeoLine((s as { text: string }).text);
   // live boxes body text on 21 of 70 pages (their newer treatment) — the
-  // hasBox flag in live-seo-map.json is ground truth per slug. Fallback for
-  // future projects with no map entry: box when there is real story text.
+  // hasBox flag in live-seo-map.json is ground truth per slug, and boxText is
+  // the box's exact live contents: ONLY blocks whose text appears there get
+  // boxed (labels like "Before & 3D Rendering" are separate widgets on live
+  // and must stay outside — Josh 7/15). Fallback for future projects with no
+  // map entry: box the story/quote text.
+  const normQ = (t: string) => t.replace(/\s+/g, " ").replace(/[‘’]/g, "'").replace(/[“”]/g, '"').trim();
   const visibleText = textPhase.filter((s) => !isHiddenStaged(s));
   const wantsBox = liveSeo ? !!liveSeo.hasBox : visibleText.some((s) => s.kind === "story");
-  const boxedText = wantsBox ? visibleText : [];
-  const unboxedText = wantsBox ? [] : visibleText;
+  const inLiveBox = (s: Staged) => {
+    const t = (s as { text?: string }).text;
+    if (!t) return false;
+    if (liveSeo?.boxText) return liveSeo.boxText.includes(normQ(t));
+    return s.kind === "story" || s.kind === "quote";
+  };
+  const boxedText = wantsBox ? visibleText.filter(inLiveBox) : [];
+  // a label glued to a following image row (cool-california's Rivard award
+  // line) lands in the media phase — if live boxes it, pull it into the box
+  if (wantsBox) {
+    const pulled = media.filter(
+      (s) => s.kind === "label" && (s as { text: string }).text.trim().length > 14 && inLiveBox(s) && !isFgCredit(s)
+    );
+    if (pulled.length) {
+      boxedText.push(...pulled);
+      media = media.filter((s) => !pulled.includes(s));
+    }
+  }
+  const boxSet = new Set<Staged>(boxedText);
+  const firstBoxIdx = visibleText.findIndex((s) => boxSet.has(s));
+  const preBox = firstBoxIdx === -1 ? visibleText : visibleText.slice(0, firstBoxIdx);
+  const postBox = firstBoxIdx === -1 ? [] : visibleText.slice(firstBoxIdx).filter((s) => !boxSet.has(s));
 
   return (
     <>
@@ -404,20 +428,16 @@ export default async function PortfolioProjectPage({
       {/* ── Meta bar: completed year + award badges. City lives under the H1 in
              the hero — never repeated here (Summer, 7/14). Hidden keyword H2s
              stay white-on-white exactly like the live WP pages. ── */}
-      {(completedYear || subtitle || allBadges.length > 0) && (
+      {(completedYear || (subtitle && !hiddenSubtitle) || allBadges.length > 0) && (
         <section className="border-b border-gray-100 bg-white">
           <div className="max-w-5xl mx-auto px-6 py-6 flex flex-col items-center gap-3">
-            {subtitle &&
-              (hiddenSubtitle ? (
-                // live renders this as an 18px white span — mirrored exactly
-                <p className="text-white text-[18px] font-[300] select-none" aria-hidden="false">
-                  <span>{subtitle}</span>
-                </p>
-              ) : (
-                <h2 className="text-[15px] md:text-[17px] font-[300] tracking-[0.22em] uppercase text-brand text-center">
-                  {subtitle}
-                </h2>
-              ))}
+            {/* hidden keyword subtitles render top-left of the BODY instead
+                (live's awkward placement) — only visible ones belong here */}
+            {subtitle && !hiddenSubtitle && (
+              <h2 className="text-[15px] md:text-[17px] font-[300] tracking-[0.22em] uppercase text-brand text-center">
+                {subtitle}
+              </h2>
+            )}
             {completedYear &&
               (isLiveH2(`Completed ${completedYear}`) ? (
                 <h2 className="text-[13px] md:text-[14px] font-[300] tracking-[0.18em] uppercase text-brand-mid">
@@ -582,8 +602,16 @@ export default async function PortfolioProjectPage({
             };
             return (
               <>
+                {/* live parks the hidden keyword line awkwardly at the top
+                    left of the content area — same here: white, left-aligned,
+                    OUTSIDE the box, before everything */}
+                {hiddenSubtitle && (
+                  <p className="text-white text-[18px] font-[300] select-none">
+                    <span>{subtitle}</span>
+                  </p>
+                )}
                 {textPhase.filter(isHiddenStaged).map((s) => renderStaged(s, flow.indexOf(s)))}
-                {unboxedText.map((s) => renderStaged(s, flow.indexOf(s)))}
+                {preBox.map((s) => renderStaged(s, flow.indexOf(s)))}
                 {boxedText.length > 0 && (
                   <div
                     className="my-8 px-5 py-4 md:px-8 md:py-5 text-center [&>p:first-child]:mt-0 [&>p:last-child]:mb-0"
@@ -592,6 +620,7 @@ export default async function PortfolioProjectPage({
                     {boxedText.map((s) => renderStaged(s, flow.indexOf(s)))}
                   </div>
                 )}
+                {postBox.map((s) => renderStaged(s, flow.indexOf(s)))}
                 {media.map((s) => renderStaged(s, flow.indexOf(s)))}
               </>
             );
