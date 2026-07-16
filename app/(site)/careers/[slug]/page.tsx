@@ -25,7 +25,9 @@ type Career = {
 
 async function getCareer(slug: string): Promise<Career | null> {
   const { data } = await sanityFetch({
-    query: `*[_type == "careerPage" && slug.current == $slug][0] {
+    // published != false: Summer's Studio toggle takes the page DOWN, not
+    // just off the grid (Josh 7/16 — "take them down if they aren't hiring")
+    query: `*[_type == "careerPage" && slug.current == $slug && published != false][0] {
       title, slug, order, facts, body[]{ ..., asset },
       applyHref, prevHref, nextHref,
       metaTitle, metaDescription, sourceUrl, jsonLd
@@ -37,7 +39,7 @@ async function getCareer(slug: string): Promise<Career | null> {
 
 async function getTiles(): Promise<CareerTile[]> {
   const { data } = await sanityFetch({
-    query: `*[_type == "careerPage" && order >= 0] | order(order asc) { title, slug, order, photo{ ..., asset } }`,
+    query: `*[_type == "careerPage" && order >= 0 && published != false] | order(order asc) { title, slug, order, photo{ ..., asset } }`,
   });
   return data as CareerTile[];
 }
