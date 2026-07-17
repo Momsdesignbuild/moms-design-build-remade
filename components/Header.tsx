@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -45,20 +45,94 @@ const NAV_ITEMS = [
   { label: "Careers", href: "/careers" },
 ];
 
+const HERO_SENTINEL_ID = "home-hero-sentinel";
+// React warns if useLayoutEffect runs during server rendering, which Next.js
+// does even for "use client" components on the initial SSR pass.
+const useIsomorphicLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
+
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileDropdown, setMobileDropdown] = useState<string | null>(null);
+  const headerRef = useRef<HTMLElement>(null);
   const pathname = usePathname();
   const isHome = pathname === "/";
   const transparent = isHome && !scrolled;
 
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 80);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  // useLayoutEffect (not useEffect) so this resolves before paint — no
+  // one-frame flash of the wrong header state on route change.
+  useIsomorphicLayoutEffect(() => {
+    if (!isHome) {
+      // No hero on this page. Forcing this here (rather than relying on
+      // `isHome &&` alone) means a stale `false` left over from a previous
+      // homepage visit can never leak a transparent flash onto an inner
+      // page, even for one frame.
+      setScrolled(true);
+      return;
+    }
+
+    const sentinel = document.getElementById(HERO_SENTINEL_ID);
+    const headerEl = headerRef.current;
+
+    if (!sentinel || !headerEl) {
+      // Sentinel not on the DOM yet (shouldn't happen on home, but stay
+      // safe): fall back to a viewport-scaled threshold instead of a fixed
+      // pixel number, and clamp overscroll's negative scrollY so a
+      // rubber-band bounce can't trip a false flip.
+      const handleScroll = () => {
+        const threshold = window.innerHeight * 0.85;
+        setScrolled(Math.max(0, window.scrollY) > threshold);
+      };
+      handleScroll();
+      window.addEventListener("scroll", handleScroll, { passive: true });
+      window.addEventListener("resize", handleScroll);
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+        window.removeEventListener("resize", handleScroll);
+      };
+    }
+
+    // The homepage hero is a pinned container-scroll effect (FramedHero):
+    // the video shrinks into a matted frame as you scroll, it never simply
+    // "ends" at some offset. The sentinel lives inside the video's own
+    // animated container, so its live on-screen top position IS the
+    // video's real top edge at every instant, no matter how that
+    // animation's curve is tuned. The header goes solid the moment that
+    // edge reaches the header's OWN live height — measured fresh on every
+    // tick, so safe-area changes or a future redesign can't drift this out
+    // of sync the way a hardcoded pixel number did before. rAF-throttled
+    // so a torrent of scroll events can't spam re-renders.
+    //
+    // Video is only "behind the header" while its top edge sits between
+    // y=0 and the header's bottom edge. Once the pin fully releases and
+    // the whole hero scrolls away, the sentinel goes NEGATIVE (scrolled
+    // above the viewport entirely) — that's a fundamentally different
+    // state from "still mid-shrink" even though both can read as small
+    // numbers, so it needs its own check, not just `>= headerHeight`.
+    let ticking = false;
+    const measure = () => {
+      ticking = false;
+      const headerHeight = headerEl.getBoundingClientRect().height;
+      const sentinelTop = sentinel.getBoundingClientRect().top;
+      const videoBehindHeader = sentinelTop >= 0 && sentinelTop < headerHeight;
+      setScrolled(!videoBehindHeader);
+    };
+    const onScrollOrResize = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(measure);
+    };
+
+    measure();
+    window.addEventListener("scroll", onScrollOrResize, { passive: true });
+    window.addEventListener("resize", onScrollOrResize);
+    return () => {
+      window.removeEventListener("scroll", onScrollOrResize);
+      window.removeEventListener("resize", onScrollOrResize);
+    };
+  }, [isHome, pathname]);
 
   // Close mobile menu on resize to desktop
   useEffect(() => {
@@ -71,6 +145,7 @@ export default function Header() {
 
   return (
     <motion.header
+      ref={headerRef}
       // Homepage: NO entrance swing (Josh, July 11) — the slide-in read as a
       // black bar settling over the hero. Transparent nav is simply present
       // from first paint; scroll flips it to the normal white header.

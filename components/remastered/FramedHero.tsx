@@ -42,6 +42,13 @@ export default function FramedHero() {
           className="absolute overflow-hidden"
           style={{ top: inset, bottom: inset, left: insetX, right: insetX }}
         >
+          {/* Header sync sentinel — inherits this div's own animated `top`,
+              so its on-screen position IS the live inset value, no matter
+              how the scroll-progress curve above is tuned. Header watches
+              this (not a fixed scroll offset) to know the instant the
+              video's top edge retreats behind the header band, i.e. when
+              the header stops floating over video and needs to go solid. */}
+          <div id="home-hero-sentinel" aria-hidden className="absolute top-0 left-0 w-full h-px pointer-events-none" />
           <video
             className="absolute inset-0 w-full h-full object-cover"
             autoPlay
