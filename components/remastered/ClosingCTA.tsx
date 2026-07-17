@@ -1,10 +1,15 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 
 // The bookend: the page opened with "Build Your Legacy" — it closes with it.
 // Cedar & Stone's nighttime drone shot (pool house, pool, hot tub, landscape
 // lighting) carries the exit — Summer's pick over the old Charleston Meadows
 // photo (7/14: "we pretty much just did those stairs"). Final crop = hers.
+// Entrance mirrors FramedHero's own opening stagger (Josh, July 17) so the
+// close reads as an echo of the open, not just a repeated line of text.
 export default function ClosingCTA() {
   const img =
     "https://cdn.sanity.io/images/wavk40jo/production/1964576dae251ea1193a83f5276f98265bbcd2ea-2400x1800.jpg"
@@ -25,18 +30,37 @@ export default function ClosingCTA() {
           )}
           <div className="absolute inset-0 bg-black/35" />
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
-            <p className="text-[10px] md:text-[11px] font-semibold tracking-[0.3em] uppercase text-white/70 mb-5">
-              Your Turn
-            </p>
-            <h2 className="text-4xl md:text-6xl font-[300] tracking-[0.08em] uppercase text-white mb-10">
-              Build Your Legacy
-            </h2>
-            <Link
-              href="/contact"
-              className="border border-white/90 text-white text-[11px] font-[600] tracking-[0.22em] uppercase px-10 py-4 hover:bg-white hover:text-ink transition-colors duration-300"
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.9, ease: 'easeOut' }}
+              className="text-[10px] md:text-[11px] font-semibold tracking-[0.3em] uppercase text-white/70 mb-5"
             >
-              Start a Project
-            </Link>
+              Your Turn
+            </motion.p>
+            <motion.h2
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 1.1, delay: 0.15, ease: 'easeOut' }}
+              className="text-4xl md:text-6xl font-[300] tracking-[0.08em] uppercase text-white mb-10"
+            >
+              Build Your Legacy
+            </motion.h2>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.9, delay: 0.3, ease: 'easeOut' }}
+            >
+              <Link
+                href="/contact"
+                className="border border-white/90 text-white text-[11px] font-[600] tracking-[0.22em] uppercase px-10 py-4 hover:bg-white hover:text-ink transition-colors duration-300"
+              >
+                Start a Project
+              </Link>
+            </motion.div>
           </div>
         </div>
       </div>
