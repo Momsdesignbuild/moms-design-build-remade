@@ -166,8 +166,11 @@ function HubBody({
       // their WP theme omits h1 on most of these pages (title only lived in
       // <title>) — promote the page's own first heading to a real h1
       // regardless of its authored style, same deliberate deviation already
-      // applied on 225 portfolio/blog pages.
-      const Tag = first ? "h1" : (b.style as "h1" | "h2" | "h3");
+      // applied on 225 portfolio/blog pages. A few pages (e.g. Service Areas
+      // on the landscape-architecture hub) already authored a LATER section
+      // heading as "h1" purely for its bigger visual style — downgrade any
+      // non-first h1 to h2 so there's still only one real h1 per page.
+      const Tag = first ? "h1" : b.style === "h1" ? "h2" : (b.style as "h1" | "h2" | "h3");
       if (paired)
         return (
           <Tag
@@ -419,7 +422,10 @@ function GroupedBody({
             heads += 1;
             // same promote-first-heading-to-h1 deviation as HubBody/blog/portfolio —
             // their WP theme omits h1 on these pages, first heading only lived in <title>.
-            const Tag = heads === 1 ? "h1" : (b.style as "h1" | "h2" | "h3" | "h4" | "h5" | "h6");
+            // downgrade any OTHER block already authored as "h1" so there's still
+            // only one real h1 per page (see HubBody's identical guard).
+            const Tag =
+              heads === 1 ? "h1" : b.style === "h1" ? "h2" : (b.style as "h1" | "h2" | "h3" | "h4" | "h5" | "h6");
             if (heads === 1)
               return (
                 <Tag
