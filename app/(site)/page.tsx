@@ -23,9 +23,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://momsdesignbuild.com/",
   },
-  openGraph: {
-    url: "https://momsdesignbuild.com/",
-  },
 };
 
 // iPhone chrome, homepage only (Josh, July 8): black behind the notch
