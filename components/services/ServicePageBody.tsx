@@ -153,10 +153,21 @@ function HubBody({
   const headingColor = accent ? undefined : undefined; // accent applied via style below
   void headingColor;
 
-  const renderText = ({ b, i }: { b: BodyBlock; i: number }, paired = false) => {
+  // Division-template pages open with a hero image + "A Division of Mom's…"
+  // byline BEFORE their first real heading, so `i === 0` never matched it —
+  // track the first heading actually rendered instead of its raw block index.
+  let firstHeadingSeen = false;
+
+  const renderText = ({ b, i: _i }: { b: BodyBlock; i: number }, paired = false) => {
+    void _i;
     if (isHeading(b)) {
-      const Tag = b.style as "h1" | "h2" | "h3";
-      const first = i === 0;
+      const first = !firstHeadingSeen;
+      if (first) firstHeadingSeen = true;
+      // their WP theme omits h1 on most of these pages (title only lived in
+      // <title>) — promote the page's own first heading to a real h1
+      // regardless of its authored style, same deliberate deviation already
+      // applied on 225 portfolio/blog pages.
+      const Tag = first ? "h1" : (b.style as "h1" | "h2" | "h3");
       if (paired)
         return (
           <Tag
@@ -405,8 +416,10 @@ function GroupedBody({
           }
           const b = g as BodyBlock;
           if (isHeading(b)) {
-            const Tag = b.style as "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
             heads += 1;
+            // same promote-first-heading-to-h1 deviation as HubBody/blog/portfolio —
+            // their WP theme omits h1 on these pages, first heading only lived in <title>.
+            const Tag = heads === 1 ? "h1" : (b.style as "h1" | "h2" | "h3" | "h4" | "h5" | "h6");
             if (heads === 1)
               return (
                 <Tag
