@@ -22,9 +22,9 @@ export const metadata: Metadata = {
     type: "article",
     images: [
       {
-        url: "https://momsdesignbuild.com/wp-content/uploads/2024/08/Moms-Design-Build_Garden-Grandeur-Project-029-1024x683.jpg",
-        width: 1024,
-        height: 683,
+        url: "https://cdn.sanity.io/images/wavk40jo/production/096048a3bf03f284a37293beb474024e6e7e94ee-2400x1601.jpg",
+        width: 2400,
+        height: 1601,
       },
     ],
   },
