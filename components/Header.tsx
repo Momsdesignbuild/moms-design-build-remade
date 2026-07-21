@@ -112,25 +112,50 @@ export default function Header() {
     // state from "still mid-shrink" even though both can read as small
     // numbers, so it needs its own check, not just `>= headerHeight`.
     let ticking = false;
+    let settleTimer: ReturnType<typeof setTimeout> | undefined;
     const measure = () => {
       ticking = false;
+      // Rubber-band overscroll ABOVE the top (Safari elastic bounce) drags
+      // the whole page downward: the sentinel's top lands BELOW the header
+      // line and the rect math reads "not behind the header" → solid white
+      // over the hero (Josh 7/17: "scrolling too high breaks the header").
+      // scrollY <= 0 means we are at the very top BY DEFINITION — hero
+      // behind the header, transparent — no matter what the rects say
+      // mid-bounce.
+      if (window.scrollY <= 0) {
+        setScrolled(false);
+        return;
+      }
       const headerHeight = headerEl.getBoundingClientRect().height;
       const sentinelTop = sentinel.getBoundingClientRect().top;
       const videoBehindHeader = sentinelTop >= 0 && sentinelTop < headerHeight;
       setScrolled(!videoBehindHeader);
     };
     const onScrollOrResize = () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(measure);
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(measure);
+      }
+      // The elastic settle can finish AFTER the last scroll event, leaving
+      // the final rAF measurement taken mid-bounce. One authoritative
+      // at-rest measure once events go quiet makes a stuck state impossible.
+      clearTimeout(settleTimer);
+      settleTimer = setTimeout(measure, 150);
     };
 
     measure();
     window.addEventListener("scroll", onScrollOrResize, { passive: true });
     window.addEventListener("resize", onScrollOrResize);
+    // scrollend fires after momentum/elastic scrolling fully settles
+    // (harmless where unsupported); pageshow re-measures on bfcache restore.
+    window.addEventListener("scrollend", measure);
+    window.addEventListener("pageshow", measure);
     return () => {
+      clearTimeout(settleTimer);
       window.removeEventListener("scroll", onScrollOrResize);
       window.removeEventListener("resize", onScrollOrResize);
+      window.removeEventListener("scrollend", measure);
+      window.removeEventListener("pageshow", measure);
     };
   }, [isHome, pathname]);
 
