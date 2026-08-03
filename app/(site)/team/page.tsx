@@ -18,6 +18,8 @@ export const metadata: Metadata = {
   description:
     "Meet the designers, project managers, and craftspeople behind Mom's Design Build — the most awarded landscape design firm in the Midwest.",
   alternates: { canonical: "https://momsdesignbuild.com/team/" },
+  // without this, og:url falls through to the root layout's homepage URL
+  openGraph: { url: "https://momsdesignbuild.com/team/" },
 };
 
 type Member = {
