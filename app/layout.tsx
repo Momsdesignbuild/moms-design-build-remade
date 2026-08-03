@@ -27,8 +27,6 @@ const OG_IMAGE =
 const DEFAULT_LOGO =
   "https://cdn.sanity.io/images/wavk40jo/production/8c90cd8a507f30403ce2194fa8a1a5eee1eaf1c1-1000x242.png";
 
-const isLive = process.env.SITE_LIVE === "true";
-
 // Go-live checklist: the siteSettings singleton (sanity/schemaTypes/siteSettings.ts)
 // existed as a schema with nothing reading it. This wires up the fields it
 // already defines — every value falls back to today's hardcoded default, so
@@ -62,19 +60,21 @@ export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSiteSettings();
   return {
     metadataBase: new URL("https://momsdesignbuild.com"),
-    robots: isLive
-      ? {
-          index: true,
-          follow: true,
-          googleBot: {
-            index: true,
-            follow: true,
-            "max-image-preview": "large",
-            "max-snippet": -1,
-            "max-video-preview": -1,
-          },
-        }
-      : "noindex, nofollow",
+    // Indexability is decided per-request by host, not by env: middleware.ts
+    // stamps X-Robots-Tag noindex on any host that isn't momsdesignbuild.com,
+    // so *.vercel.app can never leak into Google and the real domain is
+    // indexable the moment DNS points at it. No launch-day flip to forget.
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
+      },
+    },
     title: {
       default: settings.defaultMetaTitle,
       template: `%s | ${settings.siteName}`,

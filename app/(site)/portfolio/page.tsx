@@ -8,7 +8,7 @@ import OverlayTile from "@/components/OverlayTile";
 import { PORTFOLIO_JSONLD } from "./jsonld";
 
 // Head matches THEIR /portfolio/ exactly (Yoast values from the WP mirror).
-// robots is inherited from the root layout (noindex until SITE_LIVE=true).
+// robots is inherited from the root layout (host-based: middleware noindexes non-prod hosts).
 export const metadata: Metadata = {
   title: { absolute: "Landscape & Interior Design Build Portfolio - Mom's Design Build" },
   description:
