@@ -42,7 +42,7 @@ export default function ServicesEditorial() {
     <section className="bg-[#F7F5F2] py-24 lg:py-32">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
         <div className="mb-14">
-          <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-brand mb-4">Service Offerings</p>
+          <p className="text-[14px] font-semibold tracking-[0.3em] uppercase text-brand mb-4">Service Offerings</p>
           <h2 className="text-3xl md:text-5xl font-[300] tracking-[0.06em] uppercase text-ink">
             Four Crafts, One Roof
           </h2>

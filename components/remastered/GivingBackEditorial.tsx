@@ -28,7 +28,7 @@ export default function GivingBackEditorial() {
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.7, ease: 'easeOut' }}
           >
-            <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-brand mb-5">
+            <p className="text-[14px] font-semibold tracking-[0.3em] uppercase text-brand mb-5">
               Community Impact
             </p>
             <h2 className="text-3xl md:text-5xl font-[300] tracking-[0.06em] uppercase text-white mb-8">

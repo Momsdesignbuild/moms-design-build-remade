@@ -17,12 +17,23 @@ export default function AnatomyClient({ steps }: { steps: AnatomyStep[] }) {
   const [active, setActive] = useState(0)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] })
 
+  // Marketing 8/3: the pinned section must not trap users in a long scroll —
+  // steps are also buttons. Jump lands mid-band for step i so the scroll
+  // handler below agrees about which step is active.
+  const jumpTo = (i: number) => {
+    const el = ref.current
+    if (!el) return
+    const top = el.getBoundingClientRect().top + window.scrollY
+    const scrollable = el.offsetHeight - window.innerHeight
+    window.scrollTo({ top: top + ((i + 0.5) / steps.length) * scrollable, behavior: 'smooth' })
+  }
+
   useMotionValueEvent(scrollYProgress, 'change', (v) => {
     setActive(Math.min(steps.length - 1, Math.floor(v * steps.length)))
   })
 
   return (
-    <section ref={ref} className="relative bg-[#F7F5F2]" style={{ height: `${steps.length * 85 + 40}vh` }}>
+    <section ref={ref} className="relative bg-[#F7F5F2]" style={{ height: `${steps.length * 45 + 40}vh` }}>
       {/* 100svh + pt clears the fixed header; everything below is sized so the
           full story (photo + heading + 4 steps + link) fits ONE phone frame */}
       <div className="sticky top-0 h-[100svh] flex flex-col justify-center overflow-hidden pt-16 lg:pt-0">
@@ -31,7 +42,7 @@ export default function AnatomyClient({ steps }: { steps: AnatomyStep[] }) {
             {/* step list — active step breathes, others recede */}
             <div className="order-2 lg:order-1 space-y-3 lg:space-y-8">
               <div className="mb-4 lg:mb-10">
-                <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-brand mb-2 lg:mb-4">The Moms Way</p>
+                <p className="text-[14px] font-semibold tracking-[0.3em] uppercase text-brand mb-2 lg:mb-4">The Moms Way</p>
                 <h2 className="text-[22px] md:text-4xl font-[300] tracking-[0.06em] uppercase text-ink">
                   Anatomy of a Project
                 </h2>
@@ -39,11 +50,15 @@ export default function AnatomyClient({ steps }: { steps: AnatomyStep[] }) {
               {steps.map((s, i) => (
                 <div
                   key={s.title}
-                  className="transition-opacity duration-500"
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => jumpTo(i)}
+                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); jumpTo(i) } }}
+                  className="transition-opacity duration-500 cursor-pointer"
                   style={{ opacity: i === active ? 1 : 0.28 }}
                 >
                   <div className="flex items-baseline gap-4">
-                    <span className="text-[10px] font-semibold tracking-[0.26em] uppercase text-brand shrink-0">
+                    <span className="text-[12px] font-semibold tracking-[0.26em] uppercase text-brand shrink-0">
                       {s.label}
                     </span>
                     <div>

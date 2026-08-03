@@ -75,7 +75,6 @@ export default function FramedHero() {
   // gap above the video.
   const titleOpacity = useSettledTransform(scrollYProgress, [0, 0.3, 0.55], [1, 1, 0.35])
   // the frame's caption fades in as the mat forms
-  const captionOpacity = useSettledTransform(scrollYProgress, [0.62, 0.85], [0, 1])
 
   return (
     <section ref={ref} className="relative h-[195vh] bg-[#F7F5F2]">
@@ -119,7 +118,7 @@ export default function FramedHero() {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.9, delay: 0.3, ease: 'easeOut' }}
-                className="text-[11px] md:text-xs font-semibold tracking-[0.3em] uppercase text-white/75 mb-6"
+                className="text-sm md:text-base font-semibold tracking-[0.3em] uppercase text-white/85 mb-6"
               >
                 Minnesota&rsquo;s Most Awarded Design-Build Firm
               </motion.p>
@@ -158,13 +157,6 @@ export default function FramedHero() {
           </motion.div>
         </motion.div>
 
-        {/* gallery-label caption under the settled frame */}
-        <motion.p
-          className="absolute bottom-7 inset-x-0 text-center text-[10px] font-semibold tracking-[0.3em] uppercase text-muted"
-          style={{ opacity: captionOpacity }}
-        >
-          Minnetonka Area &middot; Pool &amp; Outdoor Living Transformation
-        </motion.p>
       </div>
     </section>
   )

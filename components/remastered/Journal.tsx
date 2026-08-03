@@ -26,7 +26,7 @@ export default async function Journal() {
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
         <div className="flex items-end justify-between mb-14">
           <div>
-            <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-brand mb-4">The Journal</p>
+            <p className="text-[14px] font-semibold tracking-[0.3em] uppercase text-brand mb-4">The Journal</p>
             <h2 className="text-3xl md:text-5xl font-[300] tracking-[0.06em] uppercase text-ink">
               From Our Notebook
             </h2>
