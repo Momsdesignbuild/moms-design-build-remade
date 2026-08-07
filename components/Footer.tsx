@@ -147,8 +147,7 @@ export default function Footer() {
       {/* Copyright */}
       <div className="border-t border-white/10">
         <div className="max-w-[1400px] mx-auto px-6 py-4 text-center text-[11px] text-white/35 tracking-wider">
-          &copy; {year} Mom&apos;s Design Build. All Rights Reserved. | BC#
-          638384
+          &copy; {year}{" "}Mom&apos;s Design Build. All Rights Reserved. | BC# 638384
         </div>
       </div>
     </footer>

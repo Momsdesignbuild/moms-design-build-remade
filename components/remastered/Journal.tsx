@@ -28,7 +28,7 @@ export default async function Journal() {
           <div>
             <p className="text-[14px] font-semibold tracking-[0.3em] uppercase text-brand mb-4">The Journal</p>
             <h2 className="text-3xl md:text-5xl font-[300] tracking-[0.06em] uppercase text-ink">
-              From Our Notebook
+              On Our Blog
             </h2>
           </div>
           <Link

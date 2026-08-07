@@ -19,7 +19,7 @@ export default function DesignNotes({ notes }: { notes: ProjectNotes }) {
           transition={{ duration: 0.7, ease: 'easeOut' }}
           className="mb-12 lg:mb-16"
         >
-          <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-brand mb-4">
+          <p className="text-[14px] italic tracking-[0.28em] uppercase text-brand mb-4" style={{ fontFamily: 'var(--font-serif, "Playfair Display", serif)' }}>
             Behind the Design
           </p>
           <h2 className="text-3xl md:text-5xl font-[300] tracking-[0.06em] uppercase text-brand">
@@ -61,12 +61,12 @@ export default function DesignNotes({ notes }: { notes: ProjectNotes }) {
             transition={{ duration: 0.6, ease: 'easeOut' }}
             className="lg:col-span-4"
           >
-            <h3 className="text-[16px] font-[400] tracking-[0.24em] uppercase text-brand mb-6 pb-3 border-b border-ink/15">
+            <h3 className="text-[19px] font-[600] tracking-[0.24em] uppercase text-brand mb-6 pb-3 border-b border-ink/15">
               The Brief
             </h3>
             <ul className="space-y-3.5">
               {notes.brief.map((b) => (
-                <li key={b} className="flex gap-3 text-[15.5px] font-[300] leading-relaxed text-brand-mid">
+                <li key={b} className="flex gap-3 text-[16px] font-[300] leading-relaxed text-brand-mid">
                   <span className="text-brand mt-[2px] shrink-0">—</span>
                   {b}
                 </li>
@@ -75,12 +75,12 @@ export default function DesignNotes({ notes }: { notes: ProjectNotes }) {
 
             {notes.materials && (
               <>
-                <h3 className="text-[16px] font-[400] tracking-[0.24em] uppercase text-brand mt-10 mb-6 pb-3 border-b border-ink/15">
+                <h3 className="text-[19px] font-[600] tracking-[0.24em] uppercase text-brand mt-10 mb-6 pb-3 border-b border-ink/15">
                   Materials &amp; Craft
                 </h3>
                 <ul className="space-y-2.5">
                   {notes.materials.map((m) => (
-                    <li key={m} className="text-[14.5px] font-[300] leading-relaxed text-brand-mid">
+                    <li key={m} className="text-[16px] font-[300] leading-relaxed text-brand-mid">
                       {m}
                     </li>
                   ))}
@@ -100,13 +100,13 @@ export default function DesignNotes({ notes }: { notes: ProjectNotes }) {
                   viewport={{ once: true, margin: '-60px' }}
                   transition={{ duration: 0.6, delay: (i % 2) * 0.1, ease: 'easeOut' }}
                 >
-                  <p className="text-[11px] font-semibold tracking-[0.26em] uppercase text-brand mb-2.5">
+                  <p className="text-[13px] font-semibold tracking-[0.26em] uppercase text-brand mb-2.5">
                     {String(i + 1).padStart(2, '0')}
                   </p>
                   <h4 className="text-[17px] md:text-[19px] font-[300] tracking-[0.06em] uppercase text-ink mb-3">
                     {m.title}
                   </h4>
-                  <p className="text-[15.5px] font-[300] leading-relaxed text-brand-mid">{m.detail}</p>
+                  <p className="text-[16px] font-[300] leading-relaxed text-brand-mid">{m.detail}</p>
                 </motion.div>
               ))}
             </div>

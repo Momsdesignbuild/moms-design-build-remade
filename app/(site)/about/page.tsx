@@ -314,11 +314,11 @@ export default function AboutPage() {
                       className="w-full aspect-square object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
-                  <p className="text-[12px] font-[500] tracking-[0.14em] uppercase text-brand border-b border-brand/20 pb-1.5 mb-1.5">
+                  <p className="text-[18px] font-[500] tracking-[0.14em] uppercase text-brand border-b border-brand/20 pb-1.5 mb-1.5">
                     {member.name}
                   </p>
                 </Link>
-                <p className="text-[11px] font-[300] tracking-[0.06em] uppercase text-ink">
+                <p className="text-[16px] font-[300] tracking-[0.06em] uppercase text-ink">
                   {member.role}
                 </p>
               </div>
@@ -339,7 +339,7 @@ export default function AboutPage() {
           >
             Our Mission
           </h2>
-          <p className="text-[15px] font-[300] leading-[1.9] text-muted italic">
+          <p className="text-[16px] font-[300] leading-[1.9] text-muted italic">
             &ldquo;To serve people through the fusion of anthropology,
             horticulture, and architecture, in order to discover, create, and
             enhance distinctive places.&rdquo;
@@ -363,7 +363,7 @@ export default function AboutPage() {
             {CORE_VALUES.map((value, i) => (
               <li
                 key={value}
-                className="flex items-center gap-4 text-[13px] font-[300] tracking-[0.1em] uppercase text-ink"
+                className="flex items-center gap-4 text-[16px] font-[300] tracking-[0.1em] uppercase text-ink"
               >
                 <span className="text-brand font-[400] text-[15px] w-6 text-right flex-shrink-0">
                   {i + 1}.

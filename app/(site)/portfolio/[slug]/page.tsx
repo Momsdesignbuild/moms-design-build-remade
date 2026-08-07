@@ -417,23 +417,29 @@ export default async function PortfolioProjectPage({
       {(completedYear || (subtitle && !hiddenSubtitle) || allBadges.length > 0) && (
         <section className="border-b border-gray-100 bg-white">
           <div className="max-w-5xl mx-auto px-6 py-6 flex flex-col items-center gap-3">
+            {/* marketing 8/7: city + completed read as ONE line, 16px+ */}
             {/* hidden keyword subtitles render top-left of the BODY instead
                 (live's awkward placement) — only visible ones belong here */}
+            <div className="flex flex-wrap items-baseline justify-center gap-x-4 gap-y-1">
             {subtitle && !hiddenSubtitle && (
-              <h2 className="text-[15px] md:text-[17px] font-[300] tracking-[0.22em] uppercase text-brand text-center">
+              <h2 className="inline text-[16px] md:text-[18px] font-[300] tracking-[0.22em] uppercase text-brand text-center">
                 {subtitle}
               </h2>
             )}
+            {subtitle && !hiddenSubtitle && completedYear && (
+              <span aria-hidden className="hidden md:inline text-brand-mid/60 text-[16px]">·</span>
+            )}
             {completedYear &&
               (isLiveH2(`Completed ${completedYear}`) ? (
-                <h2 className="text-[13px] md:text-[14px] font-[300] tracking-[0.18em] uppercase text-brand-mid">
+                <h2 className="inline text-[16px] md:text-[18px] font-[300] tracking-[0.18em] uppercase text-brand-mid">
                   Completed {completedYear}
                 </h2>
               ) : (
-                <p className="text-[13px] md:text-[14px] font-[300] tracking-[0.18em] uppercase text-brand-mid">
+                <p className="inline text-[16px] md:text-[18px] font-[300] tracking-[0.18em] uppercase text-brand-mid">
                   Completed {completedYear}
                 </p>
               ))}
+            </div>
             {allBadges.length > 0 && (
               <div className="flex flex-wrap justify-center items-center gap-6 pt-2">
                 {allBadges.map((b, i) => (
@@ -443,7 +449,7 @@ export default async function PortfolioProjectPage({
                     alt={b.alt || "Award"}
                     width={150}
                     height={130}
-                    className="h-16 w-auto object-contain opacity-90"
+                    className="h-32 w-auto object-contain opacity-90"
                   />
                 ))}
               </div>
@@ -494,7 +500,7 @@ export default async function PortfolioProjectPage({
               case "slider":
                 return (
                   <div key={i} className="my-14 -mx-6 md:mx-0">
-                    <p className="text-center text-[12px] font-[500] tracking-[0.28em] uppercase text-ink mb-6">
+                    <p className="text-center text-[20px] font-[400] tracking-[0.28em] uppercase text-ink mb-6">
                       {s.label}
                     </p>
                     <BeforeAfterSlider
@@ -504,7 +510,7 @@ export default async function PortfolioProjectPage({
                       afterAlt={s.after.alt || `${project.title} — after`}
                       afterLabel={s.afterLabel}
                     />
-                    <p className="text-center text-[10px] font-[300] tracking-[0.2em] uppercase text-muted mt-4">
+                    <p className="text-center text-[13px] font-[300] tracking-[0.2em] uppercase text-muted mt-4">
                       Drag to compare
                     </p>
                   </div>
@@ -513,7 +519,7 @@ export default async function PortfolioProjectPage({
                 return (
                   <div key={i} className="my-14 flex items-center justify-center gap-6">
                     <div className="h-px flex-1 bg-ink/10" />
-                    <p className="text-[16px] md:text-[20px] font-[300] tracking-[0.4em] uppercase text-ink">
+                    <p className="text-[24px] md:text-[30px] font-[300] tracking-[0.4em] uppercase text-ink">
                       {s.text}
                     </p>
                     <div className="h-px flex-1 bg-ink/10" />
@@ -550,11 +556,11 @@ export default async function PortfolioProjectPage({
                 return (
                   <div key={i} className="my-12 -mx-6 md:mx-0">
                     {s.label && (
-                      <p className="text-center text-[12px] font-[500] tracking-[0.28em] uppercase text-ink mb-6">
+                      <p className="text-center text-[20px] font-[400] tracking-[0.28em] uppercase text-ink mb-6">
                         {s.label}
                       </p>
                     )}
-                    <div className={`grid grid-cols-1 gap-3 px-6 md:px-0 ${s.images.length === 2 ? "md:grid-cols-2" : "md:grid-cols-3"}`}>
+                    <div className={`grid grid-cols-1 gap-3 px-6 md:px-0 ${"md:grid-cols-2"}`}>
                       {s.images.map((img, k) => (
                         <Image
                           key={k}
