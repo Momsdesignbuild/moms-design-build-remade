@@ -7,6 +7,7 @@ import type { SanityImageSource } from "@sanity/image-url";
 import { client } from "@/sanity/lib/client";
 import { sanityFetch } from "@/sanity/lib/live";
 import PortableBody, { JsonLd, type BodyBlock } from "@/components/PortableBody";
+import OverlayTile from "@/components/OverlayTile";
 
 export const revalidate = 3600;
 
@@ -89,6 +90,19 @@ export default async function TeamMemberPage({
   const m = await getMember(slug);
   if (!m) notFound();
 
+  // Marketing 8/7: this designer's portfolio work, shown on their page.
+  // `match` also catches shared credits ("Heather Sweeney and Melissa Mlejnek").
+  const { data: designedRaw } = await sanityFetch({
+    query: `*[_type == "portfolioProject" && designerName match $name]
+      | order(orderRank, _createdAt asc) { title, slug, heroImage }`,
+    params: { name: m.name },
+  });
+  const designed = (designedRaw ?? []) as Array<{
+    title: string;
+    slug: { current: string };
+    heroImage?: SanityImageSource;
+  }>;
+
   return (
     <>
       <JsonLd raw={m.jsonLd} />
@@ -118,6 +132,26 @@ export default async function TeamMemberPage({
             <PortableBody body={m.bio} />
           </div>
         </div>
+
+        {designed.length > 0 && (
+          <div className="pt-16 border-t border-ink/10 mt-14">
+            <h2 className="text-center text-[20px] md:text-[24px] font-[300] tracking-[0.22em] uppercase text-brand mb-8">
+              Projects by {m.name.split(" ")[0]}
+            </h2>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+              {designed.map((pr) => (
+                <OverlayTile
+                  key={pr.slug.current}
+                  href={`/portfolio/${pr.slug.current}`}
+                  img={pr.heroImage ? builder.image(pr.heroImage).width(500).height(625).auto("format").url() : null}
+                  title={pr.title}
+                  aspect="aspect-[4/5]"
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                />
+              ))}
+            </div>
+          </div>
+        )}
 
         <nav className="pt-14 text-center">
           {/* their site never links the /team archive — send people to the About team grid */}

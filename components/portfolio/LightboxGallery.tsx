@@ -19,7 +19,7 @@ export interface GalleryImage {
 // gentle fade only — a y-translate on dense masonry items reads as "snapping"
 const itemVariants: Variants = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.7, ease: 'easeOut' } },
+  visible: { opacity: 1, transition: { duration: 0.9, ease: 'easeOut' } },
 }
 
 /**
@@ -84,7 +84,7 @@ export default function LightboxGallery({
               className="relative aspect-[4/3] overflow-hidden block w-full group cursor-zoom-in"
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: '100px' }}
+              viewport={{ once: true, margin: '-40px' }}
               variants={itemVariants}
               aria-label={img.alt ? `View: ${img.alt}` : `View photo ${i + 1}`}
             >
@@ -236,7 +236,7 @@ export default function LightboxGallery({
                               className="block w-full group cursor-zoom-in"
                               initial="hidden"
                               whileInView="visible"
-                              viewport={{ once: true, margin: '100px' }}
+                              viewport={{ once: true, margin: '-40px' }}
                               variants={itemVariants}
                               aria-label={img.alt ? `View: ${img.alt}` : `View photo ${img.idx + 1}`}
                             >
@@ -287,7 +287,7 @@ export default function LightboxGallery({
                     className="break-inside-avoid overflow-hidden block w-full group cursor-zoom-in"
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: '100px' }}
+                    viewport={{ once: true, margin: '-40px' }}
                     variants={itemVariants}
                     aria-label={img.alt ? `View: ${img.alt}` : `View photo ${(img as GI).idx + 1}`}
                   >

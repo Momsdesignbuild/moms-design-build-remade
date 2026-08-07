@@ -10,6 +10,17 @@ import { sanityFetch } from "@/sanity/lib/live";
 import { JsonLd } from "@/components/PortableBody";
 import BeforeAfterSlider from "@/components/portfolio/BeforeAfterSlider";
 import LightboxGallery from "@/components/portfolio/LightboxGallery";
+import Reveal from "@/components/Reveal";
+
+// designer credit links (marketing 8/7). Former staff aren't listed on /team —
+// their projects fall back to the firm credit automatically.
+const DESIGNER_TEAM_SLUGS: Record<string, string> = {
+  "Becca Bastyr": "becca-bastyr",
+  "Heather Sweeney": "heather-sweeney",
+  "Melissa Mlejnek": "melissa-mlejnek",
+  "Kelley Woodhead": "kelley-woodhead",
+  "Owen Sweeney": "owen-sweeney",
+};
 import DesignNotes from "@/components/portfolio/DesignNotes";
 import OverlayTile from "@/components/OverlayTile";
 import { PROJECT_NOTES } from "@/content/project-notes";
@@ -358,8 +369,14 @@ export default async function PortfolioProjectPage({
   const inBox = (s: Staged) =>
     s.kind === "story" || s.kind === "quote" ||
     (s.kind === "label" && /^\s*[-–—]/.test((s as { text: string }).text));
-  const boxedText = visibleText.filter(inBox);
-  const boxSet = new Set<Staged>(boxedText);
+  const boxedTextAll = visibleText.filter(inBox);
+  // Marketing 8/7: quotes read ABOVE the write-up, OUTSIDE the box, in the
+  // live site's italic-serif voice. Dash-attribution labels travel with them.
+  const isQuoteish = (s: Staged) =>
+    s.kind === "quote" || (s.kind === "label" && /^\s*[-\u2013\u2014]/.test((s as { text: string }).text));
+  const quoteFlow = boxedTextAll.filter(isQuoteish);
+  const boxedText = boxedTextAll.filter((s) => !isQuoteish(s));
+  const boxSet = new Set<Staged>(boxedTextAll);
   const firstBoxIdx = visibleText.findIndex((s) => boxSet.has(s));
   const preBox = firstBoxIdx === -1 ? visibleText : visibleText.slice(0, firstBoxIdx);
   const postBox = firstBoxIdx === -1 ? [] : visibleText.slice(firstBoxIdx).filter((s) => !boxSet.has(s));
@@ -460,7 +477,7 @@ export default async function PortfolioProjectPage({
 
       {/* ── Editorial body: story, pull-quote, before/after slider, inline photos ── */}
       <section className="px-6 py-16 md:py-20 bg-white">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-3xl lg:max-w-[1100px] mx-auto">
           {/* when the video takes the hero, the WP lead photo opens the body (same img, same alt) */}
           {isMp4 && heroImgUrl && (
             <Image
@@ -490,11 +507,13 @@ export default async function PortfolioProjectPage({
                 );
               case "quote":
                 return (
-                  <blockquote key={i} className="my-14 text-center">
-                    <p className="text-[20px] md:text-[26px] font-[300] italic leading-relaxed tracking-[0.04em] text-ink max-w-2xl mx-auto">
+                  <blockquote key={i} className="my-12 text-center">
+                    <p
+                      className="text-[22px] md:text-[28px] italic leading-relaxed tracking-[0.02em] text-brand max-w-2xl mx-auto"
+                      style={{ fontFamily: 'var(--font-serif, "Playfair Display", Georgia, serif)' }}
+                    >
                       {rich(s.block, s.text)}
                     </p>
-                    <div className="w-10 h-px bg-ink/30 mx-auto mt-8" />
                   </blockquote>
                 );
               case "slider":
@@ -562,15 +581,16 @@ export default async function PortfolioProjectPage({
                     )}
                     <div className={`grid grid-cols-1 gap-3 px-6 md:px-0 ${"md:grid-cols-2"}`}>
                       {s.images.map((img, k) => (
-                        <Image
-                          key={k}
-                          src={urlFor(img).width(800).auto("format").url()}
-                          alt={img.alt || project.title}
-                          width={800}
-                          height={533}
-                          className="w-full h-full object-cover"
-                          sizes="(max-width: 768px) 100vw, 33vw"
-                        />
+                        <Reveal key={k}>
+                          <Image
+                            src={urlFor(img).width(800).auto("format").url()}
+                            alt={img.alt || project.title}
+                            width={800}
+                            height={533}
+                            className="w-full h-full object-cover"
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                          />
+                        </Reveal>
                       ))}
                     </div>
                   </div>
@@ -591,6 +611,7 @@ export default async function PortfolioProjectPage({
             return (
               <>
                 {preBox.map((s) => renderStaged(s, flow.indexOf(s)))}
+                {quoteFlow.map((s) => renderStaged(s, flow.indexOf(s)))}
                 {boxedText.length > 0 && (
                   <div
                     className="my-8 px-5 py-4 md:px-8 md:py-5 text-center [&>p:first-child]:mt-0 [&>p:last-child]:mb-0"
@@ -628,6 +649,42 @@ export default async function PortfolioProjectPage({
       {galleryImages.length > 0 && (
         <section className="px-4 md:px-6 pb-16 bg-white">
           <LightboxGallery images={galleryImages} title={project.title} />
+          {/* Marketing 8/7 (marketing director's call, supersedes founders'
+              no-designer rule): public designer credit under the photos,
+              linked to the designer's team page. No designerName on file =
+              credit the firm, linked home. */}
+          <p className="mt-10 text-center text-[16px] font-[300] tracking-[0.22em] uppercase text-brand-mid">
+            Designed by{" "}
+            {(project.designerName
+              ? project.designerName.split(/\s+and\s+/i)
+              : []
+            ).map((name, i, arr) => {
+              const slug = DESIGNER_TEAM_SLUGS[name.trim()];
+              return (
+                <span key={name}>
+                  {slug ? (
+                    <Link
+                      href={`/team/${slug}/`}
+                      className="text-brand underline decoration-brand/30 underline-offset-4 hover:decoration-brand transition-colors"
+                    >
+                      {name.trim()}
+                    </Link>
+                  ) : (
+                    name.trim()
+                  )}
+                  {i < arr.length - 1 ? " and " : ""}
+                </span>
+              );
+            })}
+            {!project.designerName && (
+              <Link
+                href="/"
+                className="text-brand underline decoration-brand/30 underline-offset-4 hover:decoration-brand transition-colors"
+              >
+                Mom&apos;s Design Build
+              </Link>
+            )}
+          </p>
         </section>
       )}
 
@@ -667,8 +724,9 @@ export default async function PortfolioProjectPage({
                 <OverlayTile
                   key={p.slug.current}
                   href={`/portfolio/${p.slug.current}`}
-                  img={p.heroImage ? urlFor(p.heroImage).width(600).height(450).auto("format").url() : null}
+                  img={p.heroImage ? urlFor(p.heroImage).width(600).height(750).auto("format").url() : null}
                   title={p.title}
+                  aspect="aspect-[4/5]"
                   sizes="(max-width: 768px) 50vw, 25vw"
                 />
               ))}

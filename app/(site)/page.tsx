@@ -10,6 +10,7 @@ import Testimonial from "@/components/remastered/Testimonial";
 import Journal from "@/components/remastered/Journal";
 import GivingBackEditorial from "@/components/remastered/GivingBackEditorial";
 import ClosingCTA from "@/components/remastered/ClosingCTA";
+import JoinTheList from "@/components/remastered/JoinTheList";
 
 export const revalidate = 3600;
 
@@ -57,6 +58,10 @@ export default function HomePage() {
       <Journal />
       <GivingBackEditorial />
       <ClosingCTA />
+      <JoinTheList
+        img="https://cdn.sanity.io/images/wavk40jo/production/87f222ef7b60ceb0b29f2fbd574a8bff606a15da-1500x1023.jpg?w=1000&auto=format"
+        imgAlt="Lakeside living outdoor space by Mom's Design Build"
+      />
     </>
   );
 }

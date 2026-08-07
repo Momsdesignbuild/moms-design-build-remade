@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useLayoutEffect, useRef } from "react";
+import SearchOverlay from "@/components/SearchOverlay";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -56,6 +57,7 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileDropdown, setMobileDropdown] = useState<string | null>(null);
+  const [searchOpen, setSearchOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const pathname = usePathname();
   const isHome = pathname === "/";
@@ -251,6 +253,17 @@ export default function Header() {
 
         {/* Contact CTA + Mobile Toggle */}
         <div className="flex items-center gap-4">
+          {/* site-wide search (marketing 8/7 — Jim's ask) */}
+          <button
+            onClick={() => setSearchOpen(true)}
+            aria-label="Search the site"
+            className={`p-2 transition-colors ${transparent ? "text-white hover:text-white/70" : "text-ink hover:text-brand"}`}
+          >
+            <svg viewBox="0 0 24 24" className="w-[20px] h-[20px]" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" aria-hidden>
+              <circle cx="10.5" cy="10.5" r="6.5" />
+              <path d="m20 20-4.9-4.9" />
+            </svg>
+          </button>
           <Link
             href="/contact"
             className={`hidden lg:inline-flex items-center justify-center text-[15px] font-[600] tracking-[0.18em] uppercase px-6 py-3 transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand ${
@@ -386,6 +399,7 @@ export default function Header() {
           </motion.div>
         )}
       </AnimatePresence>
+      <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
     </motion.header>
   );
 }

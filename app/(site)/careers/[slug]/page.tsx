@@ -80,6 +80,23 @@ export async function generateStaticParams() {
   return slugs.map((p) => ({ slug: p.slug.current }));
 }
 
+// Marketing 8/7: the live site fronts each job with icon rows (cash /
+// calendar / arrow / building). Icon picked from the fact's wording.
+function FactIcon({ text }: { text: string }) {
+  const t = text.toLowerCase();
+  const cls = "w-[18px] h-[18px] text-brand shrink-0";
+  const stroke = { fill: "none", stroke: "currentColor", strokeWidth: 1.6, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
+  if (/[$]|salary|pay|compensation|wage|bonus/.test(t))
+    return (<svg viewBox="0 0 24 24" className={cls} {...stroke} aria-hidden><circle cx="12" cy="12" r="9" /><path d="M12 7v10M15 9.5c0-1.4-1.3-2.5-3-2.5s-3 .9-3 2.25c0 3.4 6 1.6 6 5 0 1.35-1.3 2.25-3 2.25s-3-1.1-3-2.5" /></svg>);
+  if (/schedule|monday|friday|time|hour|am|pm|seasonal|year.round|week/.test(t))
+    return (<svg viewBox="0 0 24 24" className={cls} {...stroke} aria-hidden><rect x="3.5" y="5" width="17" height="15.5" rx="1.5" /><path d="M3.5 9.5h17M8 3v4M16 3v4" /></svg>);
+  if (/travel|drive|route|field|on.site|job.site/.test(t))
+    return (<svg viewBox="0 0 24 24" className={cls} {...stroke} aria-hidden><path d="M4 19.5 19.5 4M19.5 4h-8M19.5 4v8" /></svg>);
+  if (/office|shop|shakopee|building|hq|headquarters|location/.test(t))
+    return (<svg viewBox="0 0 24 24" className={cls} {...stroke} aria-hidden><path d="M4.5 20.5v-13l7.5-4 7.5 4v13M9.5 20.5v-5h5v5M4.5 20.5h15" /></svg>);
+  return (<svg viewBox="0 0 24 24" className={cls} {...stroke} aria-hidden><circle cx="12" cy="12" r="2.5" /></svg>);
+}
+
 function hrefToOurs(href?: string): string | null {
   if (!href) return null;
   // their prev/next/apply hrefs are same-site paths — keep them internal
@@ -111,13 +128,14 @@ export default async function CareerPage({
           </h1>
 
           {c.facts && c.facts.length > 0 && (
-            <ul className="border-y border-ink/10 py-5 mb-10 space-y-1.5 text-center">
+            <ul className="border-y border-ink/10 py-6 mb-10 space-y-3 max-w-md mx-auto">
               {c.facts.map((f, i) => (
                 <li
                   key={i}
-                  className="text-[12px] font-[300] tracking-[0.08em] text-muted"
+                  className="flex items-center justify-center gap-3 text-[16px] font-[300] tracking-[0.04em] text-muted"
                 >
-                  {f}
+                  <FactIcon text={f} />
+                  <span>{f}</span>
                 </li>
               ))}
             </ul>

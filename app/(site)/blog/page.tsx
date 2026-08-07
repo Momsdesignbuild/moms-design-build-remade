@@ -90,11 +90,11 @@ export default async function BlogPage() {
                 alt={featured.heroImage?.alt || featured.title}
                 fill
                 priority
-                className="object-cover opacity-90 transition-all duration-700 group-hover:opacity-100 group-hover:scale-[1.02]"
+                className="object-cover opacity-70 transition-all duration-700 group-hover:opacity-90 group-hover:scale-[1.02]"
                 sizes="100vw"
               />
             )}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/10" />
             <div className="absolute inset-x-0 bottom-0 p-8 md:p-14 max-w-3xl">
               <p className="text-white/60 text-[13px] font-[500] tracking-[0.3em] uppercase mb-3">
                 Latest{featured.publishedAt ? ` — ${fmtDate(featured.publishedAt)}` : ""}

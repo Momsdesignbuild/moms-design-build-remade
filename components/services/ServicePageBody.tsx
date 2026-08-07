@@ -112,8 +112,8 @@ function Cards({ cardsSet, layout }: { cardsSet?: string; layout: "flex" | "grid
   // larger than draft-1's 152px — Summer: "it needs to be larger"
   const cell =
     layout === "grid"
-      ? "group relative block h-[190px] md:h-[210px] overflow-hidden"
-      : "group relative block h-[190px] md:h-[210px] overflow-hidden w-[calc(50%-6px)] md:w-[calc(33.333%-8px)] lg:w-[calc(25%-9px)]";
+      ? "group relative block aspect-[4/5] overflow-hidden"
+      : "group relative block aspect-[4/5] overflow-hidden w-[calc(50%-6px)] md:w-[calc(33.333%-8px)] lg:w-[calc(25%-9px)]";
   return (
     <div className={wrap}>
       {cards.map((c) => (
@@ -509,7 +509,7 @@ function GroupedBody({
                     href={c.href}
                     bg={c.bg}
                     title={c.title}
-                    cell="group relative block h-[190px] md:h-[210px] overflow-hidden w-[calc(50%-6px)] md:w-[calc(33.333%-8px)] lg:w-[calc(25%-9px)]"
+                    cell="group relative block aspect-[4/5] overflow-hidden w-[calc(50%-6px)] md:w-[calc(33.333%-8px)] lg:w-[calc(25%-9px)]"
                   />
                 ))}
               </div>

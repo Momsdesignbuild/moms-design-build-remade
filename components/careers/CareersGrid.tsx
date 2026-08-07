@@ -1,7 +1,8 @@
+import Image from "next/image";
+import Link from "next/link";
 import { createImageUrlBuilder } from "@sanity/image-url";
 import type { SanityImageSource } from "@sanity/image-url";
 import { client } from "@/sanity/lib/client";
-import OverlayTile from "@/components/OverlayTile";
 
 const builder = createImageUrlBuilder(client);
 
@@ -12,11 +13,9 @@ export type CareerTile = {
   photo?: SanityImageSource & { alt?: string };
 };
 
-// Careers tiles = the SAME overlay treatment as portfolio/services (Summer,
-// 7/14: "the gray overlay… makes everything feel more cohesive — same across
-// portfolio, services, and careers; same size, job title, no box"). This
-// supersedes the earlier undimmed-photo note. Photos were CSS backgrounds on
-// WP (no alt there); ours are real <img> with descriptive alts.
+// Marketing 8/7 (supersedes Summer 7/14 overlay note): career tiles copy the
+// LIVE site's treatment — perfect-square photo, job name across the top,
+// blue double-line edging, lightest-gray tile, 4-across on desktop.
 export default function CareersGrid({
   tiles,
   heading,
@@ -31,16 +30,30 @@ export default function CareersGrid({
           {heading}
         </h2>
       )}
-      <div className="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+      <div className="max-w-[1400px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
         {tiles.map((t) => (
-          <OverlayTile
+          <Link
             key={t.slug.current}
             href={`/careers/${t.slug.current}/`}
-            img={t.photo ? builder.image(t.photo).width(800).height(600).auto("format").url() : null}
-            title={t.title}
-            alt={t.photo?.alt || `${t.title} — Mom's Design Build careers`}
-            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          />
+            className="group block border border-brand/70 p-[3px] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_18px_35px_-20px_rgba(28,28,26,0.35)]"
+          >
+            <div className="border border-brand/70 bg-[#F6F6F4] p-4 h-full flex flex-col gap-4">
+              <h3 className="text-center text-[16px] font-[400] tracking-[0.18em] uppercase text-ink">
+                {t.title}
+              </h3>
+              <div className="relative aspect-square overflow-hidden bg-brand-mid/20">
+                {t.photo && (
+                  <Image
+                    src={builder.image(t.photo).width(800).height(800).auto("format").url()}
+                    alt={t.photo?.alt || `${t.title} careers at Mom's Design Build`}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+                  />
+                )}
+              </div>
+            </div>
+          </Link>
         ))}
       </div>
     </section>
