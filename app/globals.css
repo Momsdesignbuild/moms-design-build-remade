@@ -37,6 +37,14 @@ body {
   overflow-x: clip;
 }
 
+html {
+  /* GuideCTA (8/11) is the first element pinned to `right: 0` on the site —
+     without this, browsers vary on whether a fixed right-0 element sits
+     inside or outside the scrollbar gutter, exposing a sliver of body's
+     white behind it. Always reserving the gutter keeps `right: 0` consistent. */
+  scrollbar-gutter: stable;
+}
+
 body {
   background-color: #ffffff;
   color: #1c1c1c;
