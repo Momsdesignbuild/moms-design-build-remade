@@ -1,14 +1,15 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Link from 'next/link'
 import BeforeAfterSlider from '@/components/portfolio/BeforeAfterSlider'
 
-// The most visceral proof a design-build firm can offer: one real backyard,
-// dragged from mud to legacy. Urban Oasis (St. Paul) — their own captioned
-// BEFORE/AFTER pair from the WP gallery.
-const BEFORE = 'https://cdn.sanity.io/images/wavk40jo/production/2e4413df61bc1f93e588cbd43a80ff9269a14da9-1080x1080.jpg?w=1600&auto=format&q=85'
-const AFTER = 'https://cdn.sanity.io/images/wavk40jo/production/312b09e263fb8652c0d52d205900290256cd288b-1080x1080.jpg?w=1600&auto=format&q=85'
+// 8/11 marketing swap (Josh, via call transcript): replaced the Urban Oasis
+// pair with the backyard photos she sent directly (her "Hamill project").
+// No matching portfolio page for this project, so served from /public
+// rather than Sanity; filenames + caption stay client-name-free per the
+// no-client-identifying-info rule (public URL paths count).
+const BEFORE = '/images/homepage-transformation/backyard-before.jpg'
+const AFTER = '/images/homepage-transformation/backyard-after.jpg'
 
 export default function TransformationSlider() {
   return (
@@ -26,11 +27,7 @@ export default function TransformationSlider() {
             Same Backyard
           </h2>
           <p className="mt-4 text-[13px] md:text-[14px] font-[300] tracking-[0.04em] text-muted">
-            Drag the line. St. Paul&rsquo;s{' '}
-            <Link href="/portfolio/urban-oasis" className="underline underline-offset-4 decoration-ink/25 hover:decoration-ink transition-colors">
-              Urban Oasis
-            </Link>
-            , before and after.
+            Drag the line. One real backyard, before and after.
           </p>
         </motion.div>
 
@@ -44,8 +41,8 @@ export default function TransformationSlider() {
           <BeforeAfterSlider
             beforeUrl={BEFORE}
             afterUrl={AFTER}
-            beforeAlt="Urban Oasis backyard before construction"
-            afterAlt="Urban Oasis finished backyard"
+            beforeAlt="Backyard before construction"
+            afterAlt="Finished backyard transformation"
           />
         </motion.div>
       </div>
