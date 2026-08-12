@@ -9,6 +9,11 @@ import type { ProjectNotes } from '@/content/project-notes'
  * notes. Additive: never replaces the WP-carbon body text above it.
  */
 export default function DesignNotes({ notes }: { notes: ProjectNotes }) {
+  // intro-only entries (e.g. country-classic — no written records exist,
+  // so there's no brief/moves to show, only photo-grounded body copy) skip
+  // this section entirely rather than rendering empty "The Brief" headers.
+  if (!notes.story?.length && !notes.brief?.length && !notes.moves?.length) return null
+
   return (
     <section data-addition="design-notes" className="bg-[#F7F5F2] py-20 lg:py-28 px-6 lg:px-10">
       <div className="max-w-[1400px] mx-auto">
@@ -65,7 +70,7 @@ export default function DesignNotes({ notes }: { notes: ProjectNotes }) {
               The Brief
             </h3>
             <ul className="space-y-3.5">
-              {notes.brief.map((b) => (
+              {(notes.brief ?? []).map((b) => (
                 <li key={b} className="flex gap-3 text-[16px] font-[300] leading-relaxed text-brand-mid">
                   <span className="text-brand mt-[2px] shrink-0">—</span>
                   {b}
@@ -92,7 +97,7 @@ export default function DesignNotes({ notes }: { notes: ProjectNotes }) {
           {/* The moves — numbered, editorial */}
           <div className="lg:col-span-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-9">
-              {notes.moves.map((m, i) => (
+              {(notes.moves ?? []).map((m, i) => (
                 <motion.div
                   key={m.title}
                   initial={{ opacity: 0, y: 24 }}

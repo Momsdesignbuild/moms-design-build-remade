@@ -4,9 +4,10 @@
 // RULES: no client surnames, no addresses, no pricing, no designer names.
 
 export type ProjectNotes = {
+  intro?: string[] // Summer-voice body copy for pages whose WP carbon layer has no story text — rendered in the editorial body ONLY when the page has no story blocks
   story?: Array<{ kicker: string; text: string }> // the before→after narrative, grounded in the designer's own written overview
-  brief: string[] // what the clients asked for (anonymized, from the award brief)
-  moves: Array<{ title: string; detail: string }> // the design/build moves that answered it
+  brief?: string[] // what the clients asked for (anonymized, from the award brief)
+  moves?: Array<{ title: string; detail: string }> // the design/build moves that answered it
   challenge?: { title: string; detail: string } // the hard part, told straight
   materials?: string[] // real products/materials — Front Load keywords
   award?: { name: string; category: string }
@@ -17,6 +18,7 @@ import { BATCH_1 } from './notes-batch-1'
 import { BATCH_2 } from './notes-batch-2'
 import { BATCH_3 } from './notes-batch-3'
 import { BATCH_4 } from './notes-batch-4'
+import { BATCH_5 } from './notes-batch-5'
 
 const CORE: Record<string, ProjectNotes> = {
   'countryside-collective': {
@@ -222,6 +224,29 @@ const CORE: Record<string, ProjectNotes> = {
     materials: ['Wood-look porcelain shower tile', 'Large-format porcelain bench', 'Marble trim & countertops', 'Round soaking tub', 'Custom-matched cabinetry'],
     source: 'Awards/2025/NARI — Ember Spa submission (job 80916)',
   },
+
+  'infinity-beyond': {
+    story: [
+      { kicker: 'Before', text: 'A quiet ask for a pizza oven, on a property that had grown to two adjoining lots — one already built out, the other still waiting for an idea.' },
+      { kicker: 'The Idea', text: 'The conversation grew from an oven into an infinity-edge pool aimed at the lake beyond it, a stone cabana with a full outdoor kitchen, and a plan to knit both lots into one backyard — down to filing an easement so a single driveway could serve them both.' },
+      { kicker: 'After', text: 'He never did get that pizza oven. Instead: a 280-degree view of Lake Minnetonka framed by an infinity pool, a cabana built for hosting, and a backyard he returns to every summer to gather friends and family.' },
+    ],
+    brief: [
+      'A simple request for a pizza oven that grew into a full backyard reinvention',
+      'A way to unite two adjoining lots into one cohesive outdoor living space',
+      'An infinity-edge pool that visually extends into Lake Minnetonka',
+      'A stone cabana with a full outdoor kitchen for entertaining',
+      'Fold an existing hot tub into the new design rather than replace it',
+    ],
+    moves: [
+      { title: 'An infinity edge aimed at the lake', detail: 'The pool’s edge was engineered to disappear into the property’s 280-degree Lake Minnetonka view, turning the whole backyard into one continuous sightline.' },
+      { title: 'A cabana instead of a pizza oven', detail: 'The original ask grew into a full stone cabana with a complete outdoor kitchen, fire pits, and a 65-foot flagpole — built for entertaining, not just grilling.' },
+      { title: 'Two lots, one easement', detail: 'Because the adjoining lots couldn’t be legally combined for code reasons, the plan instead filed an easement so one shared driveway could serve both properties — solving the site logistics the whole design depended on.' },
+      { title: 'The hot tub stayed', detail: 'Rather than replace it, the homeowner’s existing hot tub was folded directly into the new design so nothing he already loved had to go.' },
+    ],
+    materials: ['Curved glass pool railing', 'Travertine pool deck, patio & coping', 'Bluestone inlays', 'Sculptural water feature with laminar jets', 'Landscape lighting'],
+    source: '8/11 call transcript — Jim walking Owen through the project live; conservative subset only (features Owen offered as general category examples during the same discussion, e.g. sport court/garden stairs, are NOT included — too ambiguous whether project-specific)',
+  },
 }
 
 export const PROJECT_NOTES: Record<string, ProjectNotes> = {
@@ -229,5 +254,6 @@ export const PROJECT_NOTES: Record<string, ProjectNotes> = {
   ...BATCH_2,
   ...BATCH_3,
   ...BATCH_4,
+  ...BATCH_5,
   ...CORE,
 }
