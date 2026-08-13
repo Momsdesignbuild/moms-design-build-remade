@@ -56,9 +56,9 @@ export default function ClosingCTA() {
             >
               <Link
                 href="/contact"
-                className="border border-white/90 text-white text-[11px] font-[600] tracking-[0.22em] uppercase px-10 py-4 hover:bg-white hover:text-ink transition-colors duration-300"
+                className="border-2 border-brand bg-brand text-white text-sm font-[600] tracking-[0.22em] uppercase px-11 py-4.5 hover:bg-transparent hover:text-white transition-colors duration-300"
               >
-                Start a Project
+                Meet with Us
               </Link>
             </motion.div>
           </div>

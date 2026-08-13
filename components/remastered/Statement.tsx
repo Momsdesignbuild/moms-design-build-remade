@@ -21,9 +21,9 @@ export default function Statement() {
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start 0.85', 'start 0.28'] })
 
   return (
-    <section ref={ref} className="bg-[#F7F5F2] pt-14 lg:pt-20 pb-16 lg:pb-20 px-6">
+    <section ref={ref} className="bg-[#F7F5F2] pt-8 lg:pt-10 pb-16 lg:pb-20 px-6">
       <div className="max-w-4xl mx-auto text-center">
-        <p className="text-[14px] font-semibold tracking-[0.3em] uppercase text-brand mb-10">
+        <p className="text-base font-semibold tracking-[0.3em] uppercase text-brand mb-10">
           Mom&rsquo;s Design Build · Minneapolis, MN
         </p>
         <p
