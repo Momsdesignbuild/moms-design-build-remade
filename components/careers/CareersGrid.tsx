@@ -41,7 +41,7 @@ export default function CareersGrid({
               <h3 className="text-center text-[16px] font-[400] tracking-[0.18em] uppercase text-ink">
                 {t.title}
               </h3>
-              <div className="relative aspect-square overflow-hidden bg-brand-mid/20">
+              <div className="relative aspect-square overflow-hidden bg-brand-mid/20 border-[4.3px] border-double border-brand">
                 {t.photo && (
                   <Image
                     src={builder.image(t.photo).width(800).height(800).auto("format").url()}
