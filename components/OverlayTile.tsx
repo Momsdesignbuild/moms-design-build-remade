@@ -8,7 +8,7 @@ import { motion } from 'framer-motion'
  * THE tile treatment, used identically across portfolio / services / careers
  * (Summer, draft-1 audit 7/14): image grayed to ~75% opacity over the Astra
  * gray, title centered on it; hover → text fades away and the photo reveals
- * at 100%, exactly like the live WP site. Tiles fade in over 0.7s, lazy-loaded.
+ * at 100%, exactly like the live WP site. Tiles fade in over 0.9s, lazy-loaded.
  */
 export default function OverlayTile({
   href,
@@ -34,7 +34,7 @@ export default function OverlayTile({
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: '-40px' }}
-      transition={{ duration: 0.7, ease: 'easeOut' }}
+      transition={{ duration: 0.9, ease: 'easeOut' }}
     >
       <Link
         href={href}
