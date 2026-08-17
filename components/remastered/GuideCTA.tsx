@@ -75,7 +75,7 @@ export default function GuideCTA({
         onClick={() => { setOpen(true); setNudge(false) }}
         aria-label="Open free design guide"
         className={`fixed right-0 top-1/2 z-40 -translate-y-1/2 bg-ink text-white
-          px-3 py-5 text-[20px] font-[500] tracking-[0.22em] uppercase
+          px-[8px] py-[13px] text-[13px] md:px-3 md:py-5 md:text-[20px] font-[500] tracking-[0.22em] uppercase
           [writing-mode:vertical-rl] rotate-180
           shadow-[-4px_0_16px_rgba(0,0,0,0.18)] hover:bg-brand transition-all duration-300
           ${nudge ? '-translate-x-2' : ''}`}

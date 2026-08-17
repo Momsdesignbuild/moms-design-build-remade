@@ -118,7 +118,7 @@ export default function FramedHero() {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.9, delay: 0.3, ease: 'easeOut' }}
-                className="text-[27px] md:text-[31px] font-semibold tracking-[0.3em] uppercase text-white/85 mb-6"
+                className="text-[19px] md:text-[31px] font-semibold tracking-[0.3em] uppercase text-white/85 mb-6"
               >
                 Minnesota&rsquo;s Most Awarded Design-Build Firm
               </motion.p>
