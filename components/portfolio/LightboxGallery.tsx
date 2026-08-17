@@ -282,7 +282,7 @@ export default function LightboxGallery({
                   ? "max-w-3xl mx-auto my-3"
                   : seg.items.length === 2
                   ? "max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-3 my-3"
-                  : "max-w-[1400px] mx-auto columns-1 md:columns-2 lg:columns-3 gap-3 space-y-3 my-3"}>
+                  : "max-w-4xl mx-auto columns-1 md:columns-2 gap-3 space-y-3 my-3"}>
                 {seg.items.map((img, k) => (
                   <motion.button
                     key={k}
