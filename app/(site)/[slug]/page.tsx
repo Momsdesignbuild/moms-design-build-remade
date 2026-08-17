@@ -167,11 +167,15 @@ export default async function BlogPostPage({
         {/* ── Editorial masthead on cream ── */}
         <header className="bg-[#F7F5F2] pt-20 md:pt-28 pb-16 md:pb-20 px-6 text-center">
           <div className="max-w-3xl mx-auto">
-            <p className="text-[20px] md:text-[20px] font-semibold tracking-[0.28em] uppercase text-brand mb-6">
-              {[category ?? (isPost ? "The Journal" : null), fmtDate(post.publishedAt), minutes ? `${minutes} min read` : null]
-                .filter(Boolean)
-                .join("  ·  ")}
-            </p>
+            {/* Dropped category chip (e.g. "Tips From an Expert") from up here
+                — read weird above the H1. Reading time is the only thing
+                that belongs above the fold; author + date moved below the
+                hero as a real byline (Josh, 8/17). */}
+            {minutes && (
+              <p className="text-[20px] md:text-[20px] font-semibold tracking-[0.28em] uppercase text-brand mb-6">
+                {minutes} min read
+              </p>
+            )}
             <h1 className="text-[26px] md:text-[40px] font-[300] tracking-[0.04em] leading-[1.25] text-ink">
               {post.title}
             </h1>
@@ -197,6 +201,27 @@ export default async function BlogPostPage({
                 </figcaption>
               )}
             </figure>
+          </div>
+        )}
+
+        {/* ── Byline: logo + author + date, below the hero (Josh, 8/17) ── */}
+        {isPost && (
+          <div className="flex flex-col items-center gap-2 mb-12 md:mb-16">
+            <Image
+              src="https://cdn.sanity.io/images/wavk40jo/production/8c90cd8a507f30403ce2194fa8a1a5eee1eaf1c1-1000x242.png"
+              alt="Mom's Design Build"
+              width={88}
+              height={21}
+              className="h-[18px] w-auto opacity-80"
+            />
+            <p className="text-[20px] font-[400] tracking-[0.08em] uppercase text-ink">
+              By Mom&rsquo;s Design Build Team
+            </p>
+            {post.publishedAt && (
+              <p className="text-[20px] font-[300] tracking-[0.04em] text-muted">
+                {fmtDate(post.publishedAt)}
+              </p>
+            )}
           </div>
         )}
 
