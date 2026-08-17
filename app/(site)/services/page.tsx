@@ -93,7 +93,7 @@ export default function ServicesPage() {
               </Link>
 
               {/* Title */}
-              <h2 className="text-[20px] font-[300] tracking-[0.18em] uppercase text-ink mb-4 leading-snug">
+              <h2 className="text-[26px] font-[700] tracking-[0.1em] uppercase text-ink mb-4 leading-snug">
                 {service.title}
               </h2>
 
