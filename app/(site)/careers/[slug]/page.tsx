@@ -143,7 +143,7 @@ export default async function CareerPage({
             </ul>
           )}
 
-          <PortableBody body={c.body} />
+          <PortableBody body={c.body} sectionLabels />
 
           {c.applyHref && (
             <div className="pt-10 text-center">

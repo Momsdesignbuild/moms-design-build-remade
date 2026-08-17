@@ -44,8 +44,24 @@ type ListGroup = { _type: "list"; _key: string; ordered: boolean; items: BodyBlo
 
 /** Renders the portable-text body arrays produced by the WP migration (blocks, lists, links, inline images).
  * `editorial` (blog posts): matted images, brand list markers, double-rule
- * kickers above H2s — the "beautiful, not a word blob" treatment (Josh 7/14). */
-export default function PortableBody({ body, editorial = false }: { body?: BodyBlock[]; editorial?: boolean }) {
+ * kickers above H2s — the "beautiful, not a word blob" treatment (Josh 7/14).
+ * `sectionLabels` (careers, 8/17): WP career listings use bare, unmarked
+ * paragraphs as section dividers ("Financial Management", "Human Resources")
+ * — no heading tag, no strong mark, structurally identical to real body
+ * text, which is why they rendered as plain gray instead of colored. Since
+ * there's no markup to hook, detect them heuristically: a lone short
+ * title-case line with no terminal punctuation. Colored with the secondary
+ * accent (#CBD5E1, from Summer) rather than brand blue. */
+function isSectionLabelText(text: string): boolean {
+  const t = text.trim();
+  if (t.length === 0 || t.length > 45) return false;
+  if (/[.!?:;,]$/.test(t)) return false;
+  const words = t.split(/\s+/);
+  if (words.length > 6) return false;
+  return words.every((w) => /^[A-Z][a-zA-Z'&/-]*$/.test(w) || /^(and|of|the|a|an|to|for|in)$/i.test(w));
+}
+
+export default function PortableBody({ body, editorial = false, sectionLabels = false }: { body?: BodyBlock[]; editorial?: boolean; sectionLabels?: boolean }) {
   if (!body?.length) return null;
   let h2Seen = 0;
   // group consecutive list items into a single <ul>/<ol>
@@ -134,6 +150,20 @@ export default function PortableBody({ body, editorial = false }: { body?: BodyB
               );
             }
             return <H key={block._key} className={cls}>{renderSpans(block)}</H>;
+          }
+          if (sectionLabels) {
+            const text = block.children.map((c) => c.text).join("");
+            if (isSectionLabelText(text)) {
+              return (
+                <p
+                  key={block._key}
+                  className="font-[600] tracking-[0.06em] mt-8 mb-2"
+                  style={{ color: "#CBD5E1" }}
+                >
+                  {renderSpans(block)}
+                </p>
+              );
+            }
           }
           return <p key={block._key}>{renderSpans(block)}</p>;
         }
