@@ -19,7 +19,7 @@ export interface GalleryImage {
 // gentle fade only — a y-translate on dense masonry items reads as "snapping"
 const itemVariants: Variants = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.9, ease: 'easeOut' } },
+  visible: { opacity: 1, transition: { duration: 1.35, ease: 'easeOut' } },
 }
 
 /**
@@ -200,7 +200,11 @@ export default function LightboxGallery({
                   }
                   if (row.length && !!row[row.length - 1].caption !== !!img.caption) flushRow()
                   row.push(img)
-                  if (row.length === 3) flushRow()
+                  // capped at 2 (Josh, 8/16): TA-DA sections read as two-column
+                  // photos, matching their live site — the only 3-across case is
+                  // the deliberate before/rendering/ta-da triplet above, which
+                  // bypasses this generic row entirely.
+                  if (row.length === 2) flushRow()
                 }
                 flushRow()
                 return (

@@ -94,7 +94,9 @@ function FactIcon({ text }: { text: string }) {
     return (<svg viewBox="0 0 24 24" className={cls} {...stroke} aria-hidden><path d="M4 19.5 19.5 4M19.5 4h-8M19.5 4v8" /></svg>);
   if (/office|shop|shakopee|building|hq|headquarters|location/.test(t))
     return (<svg viewBox="0 0 24 24" className={cls} {...stroke} aria-hidden><path d="M4.5 20.5v-13l7.5-4 7.5 4v13M9.5 20.5v-5h5v5M4.5 20.5h15" /></svg>);
-  return (<svg viewBox="0 0 24 24" className={cls} {...stroke} aria-hidden><circle cx="12" cy="12" r="2.5" /></svg>);
+  if (/mom.?s design build|employer|company/.test(t))
+    return (<svg viewBox="0 0 24 24" className={cls} {...stroke} aria-hidden><path d="M4 8.5h16v11.5H4z" /><path d="M8.5 8.5V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v2.5M4 13h16" /></svg>);
+  return (<svg viewBox="0 0 24 24" className={cls} {...stroke} aria-hidden><circle cx="12" cy="12" r="9" /><path d="M12 8v4.5M12 16h.01" /></svg>);
 }
 
 function hrefToOurs(href?: string): string | null {
@@ -132,9 +134,11 @@ export default async function CareerPage({
               {c.facts.map((f, i) => (
                 <li
                   key={i}
-                  className="flex items-center justify-center gap-3 text-[16px] font-[300] tracking-[0.04em] text-muted"
+                  className="flex items-start justify-center gap-3 text-[16px] font-[300] tracking-[0.04em] text-muted"
                 >
-                  <FactIcon text={f} />
+                  <span className="mt-[1px] shrink-0">
+                    <FactIcon text={f} />
+                  </span>
                   <span>{f}</span>
                 </li>
               ))}
