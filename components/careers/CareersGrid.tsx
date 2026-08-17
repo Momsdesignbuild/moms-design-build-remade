@@ -1,8 +1,7 @@
-import Image from "next/image";
-import Link from "next/link";
 import { createImageUrlBuilder } from "@sanity/image-url";
 import type { SanityImageSource } from "@sanity/image-url";
 import { client } from "@/sanity/lib/client";
+import OverlayTile from "@/components/OverlayTile";
 
 const builder = createImageUrlBuilder(client);
 
@@ -13,11 +12,10 @@ export type CareerTile = {
   photo?: SanityImageSource & { alt?: string };
 };
 
-// Marketing 8/7 (supersedes Summer 7/14 overlay note): career tiles copy the
-// LIVE site's treatment — job name across the top, blue double-line edging,
-// lightest-gray tile, 4-across on desktop. Corrected 8/17 (Josh): their tiles
-// aren't actually square — measured live at ~264x302 (0.87 ratio), same 4:5
-// family as portfolio/services cards, not 1:1.
+// Corrected 8/17 (Josh): use the SAME OverlayTile treatment as portfolio —
+// title overlaid centered on the darkened photo, fades on hover to reveal
+// it at 100%, 4:5 ratio. Replaces the earlier bordered-box/title-above-photo
+// version (Marketing 8/7), which didn't actually match portfolio's tiles.
 export default function CareersGrid({
   tiles,
   heading,
@@ -34,28 +32,15 @@ export default function CareersGrid({
       )}
       <div className="max-w-[1400px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
         {tiles.map((t) => (
-          <Link
+          <OverlayTile
             key={t.slug.current}
             href={`/careers/${t.slug.current}/`}
-            className="group block border border-brand/70 p-[3px] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_18px_35px_-20px_rgba(28,28,26,0.35)]"
-          >
-            <div className="border border-brand/70 bg-[#F6F6F4] p-4 h-full flex flex-col gap-4">
-              <h3 className="text-center text-[20px] font-[400] tracking-[0.18em] uppercase text-ink">
-                {t.title}
-              </h3>
-              <div className="relative aspect-[4/5] overflow-hidden bg-brand-mid/20 border-[4.3px] border-double border-brand">
-                {t.photo && (
-                  <Image
-                    src={builder.image(t.photo).width(800).height(1000).auto("format").url()}
-                    alt={t.photo?.alt || `${t.title} careers at Mom's Design Build`}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
-                  />
-                )}
-              </div>
-            </div>
-          </Link>
+            img={t.photo ? builder.image(t.photo).width(800).height(1000).auto("format").url() : null}
+            title={t.title}
+            alt={t.photo?.alt || `${t.title} careers at Mom's Design Build`}
+            aspect="aspect-[4/5]"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+          />
         ))}
       </div>
     </section>
