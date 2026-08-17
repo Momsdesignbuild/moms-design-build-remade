@@ -26,14 +26,14 @@ export default async function Journal() {
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
         <div className="flex items-end justify-between mb-14">
           <div>
-            <p className="text-[14px] font-semibold tracking-[0.3em] uppercase text-brand mb-4">The Journal</p>
+            <p className="text-[16px] font-semibold tracking-[0.3em] uppercase text-brand mb-4">The Journal</p>
             <h2 className="text-3xl md:text-5xl font-[300] tracking-[0.06em] uppercase text-ink">
               On Our Blog
             </h2>
           </div>
           <Link
             href="/blog"
-            className="hidden md:inline-block text-[11px] font-semibold tracking-[0.24em] uppercase text-ink border-b border-ink/25 pb-1 hover:border-ink transition-colors"
+            className="hidden md:inline-block text-[16px] font-semibold tracking-[0.24em] uppercase text-ink border-b border-ink/25 pb-1 hover:border-ink transition-colors"
           >
             All Stories
           </Link>
@@ -53,7 +53,7 @@ export default async function Journal() {
                   />
                 )}
               </div>
-              <p className="text-[10px] font-semibold tracking-[0.24em] uppercase text-muted mb-2.5">
+              <p className="text-[16px] font-semibold tracking-[0.24em] uppercase text-muted mb-2.5">
                 {(p.cats ?? [])[0] ?? 'Journal'} · {fmt(p.publishedAt)}
               </p>
               <h3 className="text-[17px] md:text-[18px] font-[300] tracking-[0.06em] leading-snug text-ink group-hover:text-brand transition-colors duration-300">
@@ -65,7 +65,7 @@ export default async function Journal() {
 
         <Link
           href="/blog"
-          className="md:hidden mt-10 inline-block text-[11px] font-semibold tracking-[0.24em] uppercase text-ink border-b border-ink/25 pb-1"
+          className="md:hidden mt-10 inline-block text-[16px] font-semibold tracking-[0.24em] uppercase text-ink border-b border-ink/25 pb-1"
         >
           All Stories
         </Link>

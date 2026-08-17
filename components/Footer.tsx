@@ -97,7 +97,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-[11.5px] tracking-[0.1em] uppercase font-[300] hover:text-white transition-colors"
+                    className="text-[16px] tracking-[0.1em] uppercase font-[300] hover:text-white transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -146,7 +146,7 @@ export default function Footer() {
 
       {/* Copyright */}
       <div className="border-t border-white/10">
-        <div className="max-w-[1400px] mx-auto px-6 py-4 text-center text-[11px] text-white/35 tracking-wider">
+        <div className="max-w-[1400px] mx-auto px-6 py-4 text-center text-[16px] text-white/35 tracking-wider">
           &copy; {year}{" "}Mom&apos;s Design Build. All Rights Reserved. | BC# 638384
         </div>
       </div>

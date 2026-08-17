@@ -35,7 +35,7 @@ export default function ClosingCTA() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.9, ease: 'easeOut' }}
-              className="text-[10px] md:text-[11px] font-semibold tracking-[0.3em] uppercase text-white/70 mb-5"
+              className="text-[16px] font-semibold tracking-[0.3em] uppercase text-white/70 mb-5"
             >
               Your Turn
             </motion.p>

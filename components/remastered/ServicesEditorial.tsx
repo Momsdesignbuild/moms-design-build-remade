@@ -42,7 +42,7 @@ export default function ServicesEditorial() {
     <section className="bg-[#F7F5F2] py-24 lg:py-32">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
         <div className="mb-14">
-          <p className="text-[14px] font-semibold tracking-[0.3em] uppercase text-brand mb-4">Service Offerings</p>
+          <p className="text-[16px] font-semibold tracking-[0.3em] uppercase text-brand mb-4">Service Offerings</p>
           <h2 className="text-3xl md:text-5xl font-[300] tracking-[0.06em] uppercase text-ink">
             Four Crafts, One Roof
           </h2>
@@ -78,7 +78,7 @@ export default function ServicesEditorial() {
                 <p className="mt-4 text-[16px] font-[300] leading-relaxed text-brand-mid pr-4">
                   {s.description}
                 </p>
-                <span className="mt-3 inline-block text-[13px] font-semibold tracking-[0.24em] uppercase text-ink border-b border-ink/20 pb-0.5 group-hover:border-ink transition-colors">
+                <span className="mt-3 inline-block text-[16px] font-semibold tracking-[0.24em] uppercase text-ink border-b border-ink/20 pb-0.5 group-hover:border-ink transition-colors">
                   Explore
                 </span>
               </Link>

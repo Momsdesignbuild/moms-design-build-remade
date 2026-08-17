@@ -42,7 +42,7 @@ export default function AnatomyClient({ steps }: { steps: AnatomyStep[] }) {
             {/* step list — active step breathes, others recede */}
             <div className="order-2 lg:order-1 space-y-3 lg:space-y-8">
               <div className="mb-4 lg:mb-10">
-                <p className="text-[14px] font-semibold tracking-[0.3em] uppercase text-brand mb-2 lg:mb-4">The Moms Way</p>
+                <p className="text-[16px] font-semibold tracking-[0.3em] uppercase text-brand mb-2 lg:mb-4">The Moms Way</p>
                 <h2 className="text-[22px] md:text-4xl font-[300] tracking-[0.06em] uppercase text-ink">
                   Anatomy of a Project
                 </h2>
@@ -58,7 +58,7 @@ export default function AnatomyClient({ steps }: { steps: AnatomyStep[] }) {
                   style={{ opacity: i === active ? 1 : 0.28 }}
                 >
                   <div className="flex items-baseline gap-4">
-                    <span className="text-[12px] font-semibold tracking-[0.26em] uppercase text-brand shrink-0">
+                    <span className="text-[16px] font-semibold tracking-[0.26em] uppercase text-brand shrink-0">
                       {s.label}
                     </span>
                     <div>
@@ -79,7 +79,7 @@ export default function AnatomyClient({ steps }: { steps: AnatomyStep[] }) {
                   containers into stacked ghost lines during scroll */}
               <Link
                 href="/process"
-                className="inline-block mt-1 lg:mt-2 text-[11px] font-semibold tracking-[0.24em] uppercase text-ink hover:text-brand transition-colors"
+                className="inline-block mt-1 lg:mt-2 text-[16px] font-semibold tracking-[0.24em] uppercase text-ink hover:text-brand transition-colors"
               >
                 See the Full Process&ensp;&rarr;
               </Link>
@@ -107,7 +107,7 @@ export default function AnatomyClient({ steps }: { steps: AnatomyStep[] }) {
                   </div>
                 ))}
                 <div className="absolute right-3 bottom-3 bg-white/92 px-3 py-1.5">
-                  <span className="text-[10px] font-semibold tracking-[0.22em] uppercase text-ink">
+                  <span className="text-[16px] font-semibold tracking-[0.22em] uppercase text-ink">
                     Serene Shores · {active + 1} / {steps.length}
                   </span>
                 </div>

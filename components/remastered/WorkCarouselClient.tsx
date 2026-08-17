@@ -63,7 +63,7 @@ export default function WorkCarouselClient({ projects }: { projects: WorkCard[] 
     <section className="bg-white py-24 lg:py-32 overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 flex items-end justify-between mb-12">
         <div>
-          <p className="text-[14px] font-semibold tracking-[0.3em] uppercase text-brand mb-4">Our Work</p>
+          <p className="text-[16px] font-semibold tracking-[0.3em] uppercase text-brand mb-4">Our Work</p>
           <h2 className="text-3xl md:text-5xl font-[300] tracking-[0.06em] uppercase text-ink">
             Legacies We&rsquo;ve Built
           </h2>
@@ -122,7 +122,7 @@ export default function WorkCarouselClient({ projects }: { projects: WorkCard[] 
                   {p.title}
                 </h3>
                 {p.location && (
-                  <p className="mt-2 text-white/85 text-[15px] md:text-[16px] font-[300] tracking-[0.18em] uppercase [text-shadow:0_1px_8px_rgba(0,0,0,0.45)]">
+                  <p className="mt-2 text-white/85 text-[16px] md:text-[16px] font-[300] tracking-[0.18em] uppercase [text-shadow:0_1px_8px_rgba(0,0,0,0.45)]">
                     {p.location}
                   </p>
                 )}
@@ -137,7 +137,7 @@ export default function WorkCarouselClient({ projects }: { projects: WorkCard[] 
           data-wheel-card
           className="snap-center sm:snap-start shrink-0 w-[60vw] sm:w-[320px] aspect-[3/4] border border-ink/12 flex flex-col items-center justify-center gap-4 text-ink hover:border-ink transition-colors"
         >
-          <span className="text-[12px] font-semibold tracking-[0.28em] uppercase">All 70 Projects</span>
+          <span className="text-[16px] font-semibold tracking-[0.28em] uppercase">All 70 Projects</span>
           <ArrowRight size={22} />
         </Link>
       </div>

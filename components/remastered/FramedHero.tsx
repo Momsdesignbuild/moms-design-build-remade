@@ -142,7 +142,7 @@ export default function FramedHero() {
               >
                 <Link
                   href="/portfolio"
-                  className="border border-white/90 text-white text-[11px] font-[600] tracking-[0.22em] uppercase px-9 py-3.5 hover:bg-white hover:text-ink transition-colors duration-300"
+                  className="border border-white/90 text-white text-[16px] font-[600] tracking-[0.22em] uppercase px-9 py-3.5 hover:bg-white hover:text-ink transition-colors duration-300"
                 >
                   Explore Our Work
                 </Link>

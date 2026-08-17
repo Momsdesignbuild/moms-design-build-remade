@@ -75,7 +75,7 @@ export default function GuideCTA({
         onClick={() => { setOpen(true); setNudge(false) }}
         aria-label="Open free design guide"
         className={`fixed right-0 top-1/2 z-40 -translate-y-1/2 bg-ink text-white
-          px-3 py-5 text-[12px] font-[500] tracking-[0.22em] uppercase
+          px-3 py-5 text-[16px] font-[500] tracking-[0.22em] uppercase
           [writing-mode:vertical-rl] rotate-180
           shadow-[-4px_0_16px_rgba(0,0,0,0.18)] hover:bg-brand transition-all duration-300
           ${nudge ? '-translate-x-2' : ''}`}
@@ -137,12 +137,12 @@ export default function GuideCTA({
                   <button
                     type="submit"
                     disabled={state === 'busy'}
-                    className="bg-brand-stone text-white text-[13px] font-[600] tracking-[0.28em] uppercase px-8 py-3.5 hover:opacity-90 transition-opacity disabled:opacity-60"
+                    className="bg-brand-stone text-white text-[16px] font-[600] tracking-[0.28em] uppercase px-8 py-3.5 hover:opacity-90 transition-opacity disabled:opacity-60"
                   >
                     {state === 'busy' ? 'Sending…' : 'Get the Guide'}
                   </button>
                   {state === 'error' && (
-                    <p className="text-[14px] text-[#C0564F]">Something went wrong — try again?</p>
+                    <p className="text-[16px] text-[#C0564F]">Something went wrong — try again?</p>
                   )}
                 </form>
               )}
