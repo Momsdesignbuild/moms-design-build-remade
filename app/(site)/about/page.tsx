@@ -235,12 +235,18 @@ export default function AboutPage() {
       <JsonLd raw={ABOUT_JSONLD} />
 
       {/* ── Hero ── */}
-      <section className="relative w-full h-[55vw] max-h-[600px] min-h-[280px] overflow-hidden">
+      {/* Was a fixed-height crop (h-[55vw] max-h-[600px]) with object-cover
+          biased toward the bottom of the frame — on any screen wider than
+          ~1090px the height cap kicked in while width kept growing, cropping
+          progressively more of the top of the photo (where people's heads
+          are). Locked to the source photo's real aspect ratio instead, so
+          the whole crew is always visible, at any screen width (Josh, 8/17). */}
+      <section className="relative w-full max-w-[1800px] mx-auto aspect-[2560/1581] min-h-[280px] overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={HERO_IMAGE}
           alt="Mom's Design Build - Meet the Team!"
-          className="w-full h-full object-cover object-[center_75%]"
+          className="w-full h-full object-cover"
           loading="eager"
         />
       </section>
