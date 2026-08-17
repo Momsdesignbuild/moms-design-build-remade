@@ -417,26 +417,30 @@ export default async function PortfolioProjectPage({
             <h1 className="text-white text-[28px] md:text-[52px] font-[300] tracking-[0.18em] uppercase leading-tight">
               {project.title}
             </h1>
-            {project.location && (
-              // live marks the city as an <h2> (their only own heading besides
-              // the keyword line) — keep the tag for SEO parity, same look
-              <h2 className="text-white/75 text-[20px] md:text-[20px] font-[400] tracking-[0.3em] uppercase mt-3">
-                {project.location}
-              </h2>
+            {/* City + Completed: bigger, solid white (was /75 and /60 —
+                too small/faint to read against light photos), on a faded
+                dark banner so it stays legible on any background (Josh, 8/17). */}
+            {(project.location || completedYear) && (
+              <div className="inline-block mt-4 px-6 py-3 bg-black/35 backdrop-blur-[2px]">
+                {project.location && (
+                  // live marks the city as an <h2> (their only own heading besides
+                  // the keyword line) — keep the tag for SEO parity, same look
+                  <h2 className="text-white text-[26px] md:text-[28px] font-[400] tracking-[0.3em] uppercase">
+                    {project.location}
+                  </h2>
+                )}
+                {completedYear &&
+                  (isLiveH2(`Completed ${completedYear}`) ? (
+                    <h2 className="text-white text-[22px] md:text-[24px] font-[300] tracking-[0.18em] uppercase mt-1">
+                      Completed {completedYear}
+                    </h2>
+                  ) : (
+                    <p className="text-white text-[22px] md:text-[24px] font-[300] tracking-[0.18em] uppercase mt-1">
+                      Completed {completedYear}
+                    </p>
+                  ))}
+              </div>
             )}
-            {/* Completed <year> moved under the city, in the hero (Josh, 8/17) —
-                was in the separate white meta bar below, on one line with the
-                subtitle. Same isLiveH2 tag logic kept for SEO parity. */}
-            {completedYear &&
-              (isLiveH2(`Completed ${completedYear}`) ? (
-                <h2 className="text-white/60 text-[20px] md:text-[20px] font-[300] tracking-[0.18em] uppercase mt-1.5">
-                  Completed {completedYear}
-                </h2>
-              ) : (
-                <p className="text-white/60 text-[20px] md:text-[20px] font-[300] tracking-[0.18em] uppercase mt-1.5">
-                  Completed {completedYear}
-                </p>
-              ))}
           </div>
         </div>
       </section>
