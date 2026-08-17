@@ -63,12 +63,12 @@ export default function ApplicationForm() {
         <button
           type="submit"
           disabled={state === 'busy'}
-          className="border border-ink bg-ink text-white text-[10px] font-[500] tracking-[0.2em] uppercase px-10 py-3 hover:bg-white hover:text-ink transition-colors duration-300 disabled:opacity-60"
+          className="border border-ink bg-ink text-white text-[20px] font-[500] tracking-[0.2em] uppercase px-10 py-3 hover:bg-white hover:text-ink transition-colors duration-300 disabled:opacity-60"
         >
           {state === 'busy' ? 'Submitting…' : 'Submit Application'}
         </button>
         {state === 'error' && (
-          <p className="mt-3 text-[12px] text-red-700/80">Something went wrong — try again or email hello@momsdesignbuild.com</p>
+          <p className="mt-3 text-[20px] text-red-700/80">Something went wrong — try again or email hello@momsdesignbuild.com</p>
         )}
       </div>
     </form>

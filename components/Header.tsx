@@ -211,7 +211,7 @@ export default function Header() {
             >
               <Link
                 href={item.href}
-                className={`flex items-center gap-1 text-[17px] font-[500] tracking-[0.12em] uppercase transition-colors duration-300 ${
+                className={`flex items-center gap-1 text-[20px] font-[500] tracking-[0.12em] uppercase transition-colors duration-300 ${
                   transparent
                     ? "text-white/80 hover:text-white"
                     : "text-ink hover:text-brand"
@@ -335,7 +335,7 @@ export default function Header() {
                   <div className="flex items-center justify-between">
                     <Link
                       href={item.href}
-                      className="flex-1 py-4 text-[17px] font-[500] tracking-[0.14em] uppercase text-ink hover:text-brand transition-colors"
+                      className="flex-1 py-4 text-[20px] font-[500] tracking-[0.14em] uppercase text-ink hover:text-brand transition-colors"
                       onClick={() => setMobileOpen(false)}
                     >
                       {item.label}

@@ -99,8 +99,8 @@ export default function BeforeAfterSlider({ beforeUrl, afterUrl, beforeAlt, afte
         </div>
       </div>
 
-      <span className="absolute top-4 left-4 z-10 text-white text-[10px] font-[500] tracking-[0.2em] uppercase bg-black/45 px-3 py-1.5">{beforeLabel}</span>
-      <span className="absolute top-4 right-4 z-10 text-white text-[10px] font-[500] tracking-[0.2em] uppercase bg-black/45 px-3 py-1.5">{afterLabel}</span>
+      <span className="absolute top-4 left-4 z-10 text-white text-[20px] font-[500] tracking-[0.2em] uppercase bg-black/45 px-3 py-1.5">{beforeLabel}</span>
+      <span className="absolute top-4 right-4 z-10 text-white text-[20px] font-[500] tracking-[0.2em] uppercase bg-black/45 px-3 py-1.5">{afterLabel}</span>
     </div>
   )
 }

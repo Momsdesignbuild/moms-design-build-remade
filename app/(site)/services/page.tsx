@@ -69,7 +69,7 @@ export default function ServicesPage() {
         <h1 className="text-[22px] md:text-[28px] font-[300] tracking-[0.25em] uppercase text-ink">
           Our Services
         </h1>
-        <p className="mt-4 text-[13px] font-[300] tracking-[0.1em] uppercase text-muted">
+        <p className="mt-4 text-[20px] font-[300] tracking-[0.1em] uppercase text-muted">
           Landscaping &amp; Home Remodeling in Minnesota
         </p>
       </section>
@@ -93,7 +93,7 @@ export default function ServicesPage() {
               </Link>
 
               {/* Title */}
-              <h2 className="text-[14px] font-[300] tracking-[0.18em] uppercase text-ink mb-4 leading-snug">
+              <h2 className="text-[20px] font-[300] tracking-[0.18em] uppercase text-ink mb-4 leading-snug">
                 {service.title}
               </h2>
 
@@ -105,7 +105,7 @@ export default function ServicesPage() {
               {/* CTA */}
               <Link
                 href={service.href}
-                className="inline-block self-start bg-brand text-white text-[10.5px] font-[600] tracking-[0.2em] uppercase px-7 py-3 hover:bg-brand-dark transition-colors duration-200"
+                className="inline-block self-start bg-brand text-white text-[20px] font-[600] tracking-[0.2em] uppercase px-7 py-3 hover:bg-brand-dark transition-colors duration-200"
               >
                 Learn More
               </Link>

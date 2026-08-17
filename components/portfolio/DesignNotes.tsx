@@ -24,7 +24,7 @@ export default function DesignNotes({ notes }: { notes: ProjectNotes }) {
           transition={{ duration: 0.7, ease: 'easeOut' }}
           className="mb-12 lg:mb-16"
         >
-          <p className="text-[14px] italic tracking-[0.28em] uppercase text-brand mb-4" style={{ fontFamily: 'var(--font-serif, "Playfair Display", serif)' }}>
+          <p className="text-[20px] italic tracking-[0.28em] uppercase text-brand mb-4" style={{ fontFamily: 'var(--font-serif, "Playfair Display", serif)' }}>
             Behind the Design
           </p>
           <h2 className="text-3xl md:text-5xl font-[300] tracking-[0.06em] uppercase text-brand">
@@ -47,7 +47,7 @@ export default function DesignNotes({ notes }: { notes: ProjectNotes }) {
                   {ch.kicker}
                 </p>
                 <p
-                  className="text-[17px] md:text-[20px] font-[300] leading-[1.65] text-ink/85"
+                  className="text-[20px] md:text-[20px] font-[300] leading-[1.65] text-ink/85"
                   style={{ fontFamily: 'var(--font-heading, "Futura PT", sans-serif)' }}
                 >
                   {ch.text}
@@ -66,7 +66,7 @@ export default function DesignNotes({ notes }: { notes: ProjectNotes }) {
             transition={{ duration: 0.6, ease: 'easeOut' }}
             className="lg:col-span-4"
           >
-            <h3 className="text-[19px] font-[600] tracking-[0.24em] uppercase text-brand mb-6 pb-3 border-b border-ink/15">
+            <h3 className="text-[20px] font-[600] tracking-[0.24em] uppercase text-brand mb-6 pb-3 border-b border-ink/15">
               The Brief
             </h3>
             <ul className="space-y-3.5">
@@ -80,7 +80,7 @@ export default function DesignNotes({ notes }: { notes: ProjectNotes }) {
 
             {notes.materials && (
               <>
-                <h3 className="text-[19px] font-[600] tracking-[0.24em] uppercase text-brand mt-10 mb-6 pb-3 border-b border-ink/15">
+                <h3 className="text-[20px] font-[600] tracking-[0.24em] uppercase text-brand mt-10 mb-6 pb-3 border-b border-ink/15">
                   Materials &amp; Craft
                 </h3>
                 <ul className="space-y-2.5">
@@ -105,10 +105,10 @@ export default function DesignNotes({ notes }: { notes: ProjectNotes }) {
                   viewport={{ once: true, margin: '-60px' }}
                   transition={{ duration: 0.6, delay: (i % 2) * 0.1, ease: 'easeOut' }}
                 >
-                  <p className="text-[13px] font-semibold tracking-[0.26em] uppercase text-brand mb-2.5">
+                  <p className="text-[20px] font-semibold tracking-[0.26em] uppercase text-brand mb-2.5">
                     {String(i + 1).padStart(2, '0')}
                   </p>
-                  <h4 className="text-[17px] md:text-[19px] font-[300] tracking-[0.06em] uppercase text-ink mb-3">
+                  <h4 className="text-[20px] md:text-[20px] font-[300] tracking-[0.06em] uppercase text-ink mb-3">
                     {m.title}
                   </h4>
                   <p className="text-[20px] font-[300] leading-relaxed text-brand-mid">{m.detail}</p>
@@ -125,7 +125,7 @@ export default function DesignNotes({ notes }: { notes: ProjectNotes }) {
                 className="mt-12 bg-white px-8 py-7 shadow-[0_24px_50px_-28px_rgba(28,28,26,0.3)]"
               >
                 <div className="pl-5 border-l-2 border-brand">
-                  <h4 className="text-[13px] font-semibold tracking-[0.24em] uppercase text-ink mb-3">
+                  <h4 className="text-[20px] font-semibold tracking-[0.24em] uppercase text-ink mb-3">
                     {notes.challenge.title}
                   </h4>
                   <p className="text-[20px] font-[300] leading-relaxed text-brand-mid">{notes.challenge.detail}</p>
@@ -139,7 +139,7 @@ export default function DesignNotes({ notes }: { notes: ProjectNotes }) {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="mt-10 text-[11px] font-semibold tracking-[0.22em] uppercase text-muted"
+                className="mt-10 text-[20px] font-semibold tracking-[0.22em] uppercase text-muted"
               >
                 🏆 <span className="text-ink">{notes.award.name}</span> · {notes.award.category}
               </motion.p>

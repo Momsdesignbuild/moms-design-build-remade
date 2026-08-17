@@ -148,7 +148,7 @@ export default function FramedHero() {
                 </Link>
                 <Link
                   href="/contact"
-                  className="border-2 border-brand bg-brand text-white text-sm font-[600] tracking-[0.22em] uppercase px-10 py-4 hover:bg-transparent hover:text-brand transition-colors duration-300"
+                  className="border-2 border-brand bg-brand text-white text-[20px] font-[600] tracking-[0.22em] uppercase px-10 py-4 hover:bg-transparent hover:text-brand transition-colors duration-300"
                 >
                   Meet with Us
                 </Link>

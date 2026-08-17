@@ -167,7 +167,7 @@ export default async function BlogPostPage({
         {/* ── Editorial masthead on cream ── */}
         <header className="bg-[#F7F5F2] pt-20 md:pt-28 pb-16 md:pb-20 px-6 text-center">
           <div className="max-w-3xl mx-auto">
-            <p className="text-[10px] md:text-[11px] font-semibold tracking-[0.28em] uppercase text-brand mb-6">
+            <p className="text-[20px] md:text-[20px] font-semibold tracking-[0.28em] uppercase text-brand mb-6">
               {[category ?? (isPost ? "The Journal" : null), fmtDate(post.publishedAt), minutes ? `${minutes} min read` : null]
                 .filter(Boolean)
                 .join("  ·  ")}
@@ -192,7 +192,7 @@ export default async function BlogPostPage({
                 sizes="(max-width: 1000px) 100vw, 1000px"
               />
               {heroCaption && (
-                <figcaption className="pt-3.5 pb-1.5 text-center text-[13px] font-[400] tracking-[0.22em] uppercase text-brand-mid">
+                <figcaption className="pt-3.5 pb-1.5 text-center text-[20px] font-[400] tracking-[0.22em] uppercase text-brand-mid">
                   {heroCaption}
                 </figcaption>
               )}
@@ -216,12 +216,12 @@ export default async function BlogPostPage({
 
           {/* sign-off */}
           <div className="mt-14 pt-8 border-t border-ink/10 flex items-center justify-between gap-4 flex-wrap">
-            <p className="text-[10px] font-semibold tracking-[0.26em] uppercase text-muted">
+            <p className="text-[20px] font-semibold tracking-[0.26em] uppercase text-muted">
               Mom&rsquo;s Design Build · Minneapolis, MN
             </p>
             <Link
               href="/blog"
-              className="text-[10px] font-semibold tracking-[0.24em] uppercase text-ink border-b border-ink/25 pb-0.5 hover:border-ink transition-colors"
+              className="text-[20px] font-semibold tracking-[0.24em] uppercase text-ink border-b border-ink/25 pb-0.5 hover:border-ink transition-colors"
             >
               All Stories
             </Link>
@@ -233,7 +233,7 @@ export default async function BlogPostPage({
           <section className="bg-[#F7F5F2] py-20 lg:py-24 px-6 lg:px-10">
             <div className="max-w-[1400px] mx-auto">
               <div className="mb-12">
-                <p className="text-[11px] font-semibold tracking-[0.3em] uppercase text-brand mb-4">Keep Reading</p>
+                <p className="text-[20px] font-semibold tracking-[0.3em] uppercase text-brand mb-4">Keep Reading</p>
                 <h2 className="text-2xl md:text-4xl font-[300] tracking-[0.06em] uppercase text-ink">
                   More from the Journal
                 </h2>
@@ -252,10 +252,10 @@ export default async function BlogPostPage({
                         />
                       )}
                     </div>
-                    <p className="text-[10px] font-semibold tracking-[0.24em] uppercase text-muted mb-2.5">
+                    <p className="text-[20px] font-semibold tracking-[0.24em] uppercase text-muted mb-2.5">
                       {p.cat ?? "Journal"}{p.publishedAt ? ` · ${fmtDate(p.publishedAt)}` : ""}
                     </p>
-                    <h3 className="text-[20px] md:text-[17px] font-[300] tracking-[0.05em] leading-snug text-ink group-hover:text-brand transition-colors duration-300">
+                    <h3 className="text-[20px] md:text-[20px] font-[300] tracking-[0.05em] leading-snug text-ink group-hover:text-brand transition-colors duration-300">
                       {p.title}
                     </h3>
                   </Link>

@@ -21,7 +21,7 @@ export default function AwardsStrip() {
     <section className="bg-[#F7F5F2] pb-20 lg:pb-24 px-6">
       <div className="max-w-5xl mx-auto">
         {/* live WP homepage H2, verbatim — SEO heading parity */}
-        <h2 className="text-center text-[17px] md:text-[20px] font-[300] tracking-[0.26em] uppercase text-brand mb-10">
+        <h2 className="text-center text-[20px] md:text-[20px] font-[300] tracking-[0.26em] uppercase text-brand mb-10">
           The Most Award-Winning in the Midwest
         </h2>
         <div className="flex items-center justify-center gap-10 md:gap-14 flex-wrap">

@@ -222,7 +222,7 @@ export default function LightboxGallery({
                             reverseDom={c.reversed}
                             tagAsGallery
                           />
-                          <p className="text-center text-[10px] font-[300] tracking-[0.2em] uppercase text-muted mt-4">
+                          <p className="text-center text-[20px] font-[300] tracking-[0.2em] uppercase text-muted mt-4">
                             Drag to compare
                           </p>
                         </div>
@@ -256,7 +256,7 @@ export default function LightboxGallery({
                                 />
                               </div>
                               {img.caption && (
-                                <p className="pt-2 text-[10px] font-[500] tracking-[0.24em] uppercase text-muted text-center">
+                                <p className="pt-2 text-[20px] font-[500] tracking-[0.24em] uppercase text-muted text-center">
                                   {img.caption}
                                 </p>
                               )}
@@ -364,7 +364,7 @@ export default function LightboxGallery({
                 className="absolute inset-0 w-full h-full object-contain"
               />
             </div>
-            <figcaption className="mt-4 text-white/60 text-[11px] font-[300] tracking-[0.15em] uppercase text-center px-6">
+            <figcaption className="mt-4 text-white/60 text-[20px] font-[300] tracking-[0.15em] uppercase text-center px-6">
               {images[open].caption ? `${title} — ${images[open].caption}` : title}
               <span className="text-white/35 ml-3">{offset + open + 1} / {pageTotal}</span>
             </figcaption>

@@ -49,13 +49,13 @@ export default function ContactPage() {
         <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
           {/* Contact Info */}
           <div>
-            <h2 className="text-[14px] font-[300] tracking-[0.2em] uppercase text-ink mb-8">
+            <h2 className="text-[20px] font-[300] tracking-[0.2em] uppercase text-ink mb-8">
               Get in Touch
             </h2>
 
             <address className="not-italic space-y-6 text-[20px] font-[300] leading-relaxed text-muted">
               <div>
-                <p className="text-[10.5px] font-[500] tracking-[0.18em] uppercase text-ink mb-1.5">
+                <p className="text-[20px] font-[500] tracking-[0.18em] uppercase text-ink mb-1.5">
                   Address
                 </p>
                 <a
@@ -71,7 +71,7 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <p className="text-[10.5px] font-[500] tracking-[0.18em] uppercase text-ink mb-1.5">
+                <p className="text-[20px] font-[500] tracking-[0.18em] uppercase text-ink mb-1.5">
                   Phone
                 </p>
                 <a href="tel:+19522776667" className="hover:text-brand transition-colors">
@@ -80,7 +80,7 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <p className="text-[10.5px] font-[500] tracking-[0.18em] uppercase text-ink mb-1.5">
+                <p className="text-[20px] font-[500] tracking-[0.18em] uppercase text-ink mb-1.5">
                   Email
                 </p>
                 <a
@@ -93,7 +93,7 @@ export default function ContactPage() {
             </address>
 
             <div className="mt-10 pt-8 border-t border-gray-100">
-              <p className="text-[10.5px] font-[500] tracking-[0.18em] uppercase text-ink mb-4">
+              <p className="text-[20px] font-[500] tracking-[0.18em] uppercase text-ink mb-4">
                 Follow Us
               </p>
               <div className="flex gap-4">
@@ -124,7 +124,7 @@ export default function ContactPage() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[11px] font-[400] tracking-[0.08em] uppercase text-muted hover:text-brand transition-colors"
+                    className="text-[20px] font-[400] tracking-[0.08em] uppercase text-muted hover:text-brand transition-colors"
                   >
                     {social.label}
                   </a>
@@ -138,7 +138,7 @@ export default function ContactPage() {
               leads" emails to Cherilyn, which feed the intake automation +
               QuickBooks pipeline. Do NOT replace with a generic form. */}
           <div>
-            <h2 className="text-[14px] font-[300] tracking-[0.2em] uppercase text-ink mb-8">
+            <h2 className="text-[20px] font-[300] tracking-[0.2em] uppercase text-ink mb-8">
               Send a Message
             </h2>
             <BuilderTrendForm />

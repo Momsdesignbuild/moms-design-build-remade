@@ -57,7 +57,7 @@ export default function BlogGrid({ cards: cardsRaw }: { cards: BlogCard[] }) {
                 key={c ?? 'all'}
                 type="button"
                 onClick={() => { setCat(c); setShown(PAGE) }}
-                className={`text-[13px] font-[500] tracking-[0.18em] uppercase px-4 py-2 border transition-colors duration-200 ${
+                className={`text-[20px] font-[500] tracking-[0.18em] uppercase px-4 py-2 border transition-colors duration-200 ${
                   cat === c ? 'bg-ink text-white border-ink' : 'border-ink/20 text-muted hover:border-ink hover:text-ink'
                 }`}
               >
@@ -75,7 +75,7 @@ export default function BlogGrid({ cards: cardsRaw }: { cards: BlogCard[] }) {
           />
         </div>
         {(q || cat) && (
-          <p className="mt-4 text-[14px] font-[300] tracking-[0.15em] uppercase text-muted">
+          <p className="mt-4 text-[20px] font-[300] tracking-[0.15em] uppercase text-muted">
             {filtered.length} {filtered.length === 1 ? 'story' : 'stories'}{cat ? ` in ${cat}` : ''}{q ? ` matching “${query}”` : ''}
           </p>
         )}
@@ -104,7 +104,7 @@ export default function BlogGrid({ cards: cardsRaw }: { cards: BlogCard[] }) {
                 )}
               </div>
               {post.date && (
-                <p className="text-[13px] font-[500] tracking-[0.25em] uppercase text-muted mb-2">{post.date}</p>
+                <p className="text-[20px] font-[500] tracking-[0.25em] uppercase text-muted mb-2">{post.date}</p>
               )}
               <h2 className="text-[20px] md:text-[22px] font-[300] tracking-[0.04em] leading-snug text-ink group-hover:underline underline-offset-4 decoration-ink/30">
                 {post.title}
@@ -122,7 +122,7 @@ export default function BlogGrid({ cards: cardsRaw }: { cards: BlogCard[] }) {
           <button
             type="button"
             onClick={() => setShown((n) => n + PAGE)}
-            className="inline-block border border-ink text-ink text-[13px] font-[500] tracking-[0.2em] uppercase px-8 py-3 hover:bg-ink hover:text-white transition-colors duration-300"
+            className="inline-block border border-ink text-ink text-[20px] font-[500] tracking-[0.2em] uppercase px-8 py-3 hover:bg-ink hover:text-white transition-colors duration-300"
           >
             Load More ({filtered.length - shown} more)
           </button>

@@ -254,7 +254,7 @@ export default function AboutPage() {
           >
             The Story Behind the Name
           </h1>
-          <div className="space-y-5 text-[17px] md:text-[18px] font-[300] leading-[1.8] text-brand-mid text-left md:text-center">
+          <div className="space-y-5 text-[20px] md:text-[20px] font-[300] leading-[1.8] text-brand-mid text-left md:text-center">
             {/* verbatim from their live page — curly apostrophes + unspaced em-dashes are THEIRS */}
             <p>
               Simple as it may seem,{" "}
@@ -314,7 +314,7 @@ export default function AboutPage() {
                       className="w-full aspect-square object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
-                  <p className="text-[18px] font-[500] tracking-[0.14em] uppercase text-brand border-b border-brand/20 pb-1.5 mb-1.5">
+                  <p className="text-[20px] font-[500] tracking-[0.14em] uppercase text-brand border-b border-brand/20 pb-1.5 mb-1.5">
                     {member.name}
                   </p>
                 </Link>
@@ -365,7 +365,7 @@ export default function AboutPage() {
                 key={value}
                 className="flex items-center gap-4 text-[20px] font-[300] tracking-[0.1em] uppercase text-ink"
               >
-                <span className="text-brand font-[400] text-[15px] w-6 text-right flex-shrink-0">
+                <span className="text-brand font-[400] text-[20px] w-6 text-right flex-shrink-0">
                   {i + 1}.
                 </span>
                 {value}
@@ -379,7 +379,7 @@ export default function AboutPage() {
       <section className="py-16 px-6 bg-white border-t border-gray-100 text-center">
         <Link
           href="/contact"
-          className="inline-block bg-brand text-white text-[11.5px] font-[600] tracking-[0.22em] uppercase px-9 py-4 hover:bg-brand-dark transition-colors duration-200"
+          className="inline-block bg-brand text-white text-[20px] font-[600] tracking-[0.22em] uppercase px-9 py-4 hover:bg-brand-dark transition-colors duration-200"
         >
           Work with Our Team
         </Link>

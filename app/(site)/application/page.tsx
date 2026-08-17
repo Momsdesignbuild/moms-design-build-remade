@@ -22,7 +22,7 @@ export default function ApplicationPage() {
         <h1 className="text-[22px] md:text-[28px] font-[300] tracking-[0.25em] uppercase text-ink mb-4">
           Job Application
         </h1>
-        <p className="text-[13px] font-[300] tracking-[0.06em] leading-relaxed text-muted max-w-lg mx-auto">
+        <p className="text-[20px] font-[300] tracking-[0.06em] leading-relaxed text-muted max-w-lg mx-auto">
           Interested in building extraordinary spaces with us? Tell us who you are —
           or browse our{" "}
           <Link href="/careers" className="underline underline-offset-4 decoration-ink/30 hover:decoration-ink">

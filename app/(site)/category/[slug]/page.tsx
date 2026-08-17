@@ -95,7 +95,7 @@ export default async function CategoryPage({
       <JsonLd raw={seo.jsonLd} />
 
       <section className="pt-16 md:pt-20 pb-12 px-6 text-center bg-white">
-        <p className="text-[10px] font-[500] tracking-[0.3em] uppercase text-muted mb-3">
+        <p className="text-[20px] font-[500] tracking-[0.3em] uppercase text-muted mb-3">
           The Blog
         </p>
         <h1 className="text-[22px] md:text-[28px] font-[300] tracking-[0.25em] uppercase text-ink">

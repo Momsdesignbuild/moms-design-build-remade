@@ -59,9 +59,9 @@ export default async function TeamPage() {
                   />
                 )}
               </div>
-              <h2 className="text-[18px] font-[400] tracking-[0.12em] uppercase text-ink">{m.name}</h2>
+              <h2 className="text-[20px] font-[400] tracking-[0.12em] uppercase text-ink">{m.name}</h2>
               {m.role && (
-                <p className="text-[14px] font-[300] tracking-[0.08em] text-muted mt-1">{m.role}</p>
+                <p className="text-[20px] font-[300] tracking-[0.08em] text-muted mt-1">{m.role}</p>
               )}
             </Link>
           ))}

@@ -89,7 +89,7 @@ export default function PortableBody({ body, editorial = false }: { body?: BodyB
 
   return (
     // live-WP body copy: 18px / 1.8 Proxima 300, Astra gray #53565A (Summer: fonts ~1.5×)
-    <div className="max-w-none text-[17px] md:text-[18px] leading-[1.8] text-brand-mid font-[300] space-y-5">
+    <div className="max-w-none text-[20px] md:text-[20px] leading-[1.8] text-brand-mid font-[300] space-y-5">
       {groups.map((g) => {
         if ((g as BodyBlock)._key && consumed.has((g as BodyBlock)._key)) return null;
         if (g._type === "list") {
@@ -98,7 +98,7 @@ export default function PortableBody({ body, editorial = false }: { body?: BodyB
           // explicit list styling — Tailwind preflight strips list-style and the
           // typography plugin isn't installed, so bare ul/ol render without markers
           return list.ordered ? (
-            <ol key={list._key} className={editorial ? "list-none pl-1 my-6 space-y-3 [counter-reset:ed] [&>li]:relative [&>li]:pl-9 [&>li]:[counter-increment:ed] [&>li:before]:content-[counter(ed,decimal-leading-zero)] [&>li:before]:absolute [&>li:before]:left-0 [&>li:before]:top-[3px] [&>li:before]:text-[13px] [&>li:before]:font-semibold [&>li:before]:tracking-wide [&>li:before]:text-brand" : "list-decimal pl-6 my-5 space-y-2.5"}>{items}</ol>
+            <ol key={list._key} className={editorial ? "list-none pl-1 my-6 space-y-3 [counter-reset:ed] [&>li]:relative [&>li]:pl-9 [&>li]:[counter-increment:ed] [&>li:before]:content-[counter(ed,decimal-leading-zero)] [&>li:before]:absolute [&>li:before]:left-0 [&>li:before]:top-[3px] [&>li:before]:text-[20px] [&>li:before]:font-semibold [&>li:before]:tracking-wide [&>li:before]:text-brand" : "list-decimal pl-6 my-5 space-y-2.5"}>{items}</ol>
           ) : (
             <ul key={list._key} className={editorial ? "list-none pl-1 my-6 space-y-3 [&>li]:relative [&>li]:pl-7 [&>li:before]:content-['—'] [&>li:before]:absolute [&>li:before]:left-0 [&>li:before]:text-brand" : "list-disc pl-6 my-5 space-y-2.5"}>{items}</ul>
           );
@@ -126,7 +126,7 @@ export default function PortableBody({ body, editorial = false }: { body?: BodyB
                   {!selfNumbered && (
                     <div className="flex items-center gap-4 mb-5">
                       <span className="double-rule-brand w-10 shrink-0" />
-                      <span className="text-[12px] font-semibold tracking-[0.3em] text-brand/60">
+                      <span className="text-[20px] font-semibold tracking-[0.3em] text-brand/60">
                         {String(h2Seen).padStart(2, "0")}
                       </span>
                     </div>
@@ -161,7 +161,7 @@ export default function PortableBody({ body, editorial = false }: { body?: BodyB
             <figure key={block._key} className="my-10 bg-white p-2.5 shadow-[0_26px_55px_-30px_rgba(28,28,26,0.35)]">
               {img}
               {cap && (
-                <figcaption className="pt-3 pb-1 text-center text-[13px] font-[400] tracking-[0.22em] uppercase text-brand-mid">
+                <figcaption className="pt-3 pb-1 text-center text-[20px] font-[400] tracking-[0.22em] uppercase text-brand-mid">
                   {renderSpans(cap)}
                 </figcaption>
               )}

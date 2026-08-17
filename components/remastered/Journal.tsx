@@ -56,7 +56,7 @@ export default async function Journal() {
               <p className="text-[20px] font-semibold tracking-[0.24em] uppercase text-muted mb-2.5">
                 {(p.cats ?? [])[0] ?? 'Journal'} · {fmt(p.publishedAt)}
               </p>
-              <h3 className="text-[17px] md:text-[18px] font-[300] tracking-[0.06em] leading-snug text-ink group-hover:text-brand transition-colors duration-300">
+              <h3 className="text-[20px] md:text-[20px] font-[300] tracking-[0.06em] leading-snug text-ink group-hover:text-brand transition-colors duration-300">
                 {p.title}
               </h3>
             </Link>

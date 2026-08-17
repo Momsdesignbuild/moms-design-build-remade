@@ -151,7 +151,7 @@ export default async function CareerPage({
             <div className="pt-10 text-center">
               <Link
                 href={hrefToOurs(c.applyHref) || "/application/"}
-                className="inline-block border border-ink px-10 py-3 text-[11px] font-[500] tracking-[0.25em] uppercase text-ink hover:bg-ink hover:text-white transition-colors"
+                className="inline-block border border-ink px-10 py-3 text-[20px] font-[500] tracking-[0.25em] uppercase text-ink hover:bg-ink hover:text-white transition-colors"
               >
                 Apply
               </Link>
@@ -159,7 +159,7 @@ export default async function CareerPage({
           )}
 
           {(prev || next) && (
-            <nav className="mt-14 flex justify-between border-t border-ink/10 pt-6 text-[10px] font-[500] tracking-[0.2em] uppercase">
+            <nav className="mt-14 flex justify-between border-t border-ink/10 pt-6 text-[20px] font-[500] tracking-[0.2em] uppercase">
               {prev ? (
                 <Link href={prev} className="text-muted hover:text-ink transition-colors">
                   ← Previous

@@ -62,7 +62,7 @@ export default function AnatomyClient({ steps }: { steps: AnatomyStep[] }) {
                       {s.label}
                     </span>
                     <div>
-                      <h3 className="text-[17px] md:text-2xl font-[300] tracking-[0.1em] uppercase text-ink mb-1 lg:mb-1.5">
+                      <h3 className="text-[20px] md:text-2xl font-[300] tracking-[0.1em] uppercase text-ink mb-1 lg:mb-1.5">
                         {s.title}
                       </h3>
                       <p

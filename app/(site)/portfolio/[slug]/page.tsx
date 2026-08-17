@@ -410,7 +410,7 @@ export default async function PortfolioProjectPage({
         <div className="absolute inset-0 flex items-end justify-center pb-14 md:pb-20 px-6">
           <div className="text-center">
             {project.categories?.[0] && (
-              <p className="text-white/60 text-[10px] font-[500] tracking-[0.3em] uppercase mb-3">
+              <p className="text-white/60 text-[20px] font-[500] tracking-[0.3em] uppercase mb-3">
                 {project.categories[0]}
               </p>
             )}
@@ -420,7 +420,7 @@ export default async function PortfolioProjectPage({
             {project.location && (
               // live marks the city as an <h2> (their only own heading besides
               // the keyword line) — keep the tag for SEO parity, same look
-              <h2 className="text-white/75 text-[11px] md:text-[13px] font-[400] tracking-[0.3em] uppercase mt-3">
+              <h2 className="text-white/75 text-[20px] md:text-[20px] font-[400] tracking-[0.3em] uppercase mt-3">
                 {project.location}
               </h2>
             )}
@@ -439,7 +439,7 @@ export default async function PortfolioProjectPage({
                 (live's awkward placement) — only visible ones belong here */}
             <div className="flex flex-wrap items-baseline justify-center gap-x-4 gap-y-1">
             {subtitle && !hiddenSubtitle && (
-              <h2 className="inline text-[20px] md:text-[18px] font-[300] tracking-[0.22em] uppercase text-brand text-center">
+              <h2 className="inline text-[20px] md:text-[20px] font-[300] tracking-[0.22em] uppercase text-brand text-center">
                 {subtitle}
               </h2>
             )}
@@ -448,11 +448,11 @@ export default async function PortfolioProjectPage({
             )}
             {completedYear &&
               (isLiveH2(`Completed ${completedYear}`) ? (
-                <h2 className="inline text-[20px] md:text-[18px] font-[300] tracking-[0.18em] uppercase text-brand-mid">
+                <h2 className="inline text-[20px] md:text-[20px] font-[300] tracking-[0.18em] uppercase text-brand-mid">
                   Completed {completedYear}
                 </h2>
               ) : (
-                <p className="inline text-[20px] md:text-[18px] font-[300] tracking-[0.18em] uppercase text-brand-mid">
+                <p className="inline text-[20px] md:text-[20px] font-[300] tracking-[0.18em] uppercase text-brand-mid">
                   Completed {completedYear}
                 </p>
               ))}
@@ -501,7 +501,7 @@ export default async function PortfolioProjectPage({
             switch (s.kind) {
               case "story":
                 return (
-                  <p key={i} className="text-[17px] md:text-[18px] leading-[1.8] font-[300] text-brand-mid my-6">
+                  <p key={i} className="text-[20px] md:text-[20px] leading-[1.8] font-[300] text-brand-mid my-6">
                     {rich(s.block, s.text)}
                   </p>
                 );
@@ -529,7 +529,7 @@ export default async function PortfolioProjectPage({
                       afterAlt={s.after.alt || `${project.title} — after`}
                       afterLabel={s.afterLabel}
                     />
-                    <p className="text-center text-[13px] font-[300] tracking-[0.2em] uppercase text-muted mt-4">
+                    <p className="text-center text-[20px] font-[300] tracking-[0.2em] uppercase text-muted mt-4">
                       Drag to compare
                     </p>
                   </div>
@@ -547,7 +547,7 @@ export default async function PortfolioProjectPage({
               case "label": {
                 const Tag = isLiveH2(s.text) ? "h2" : "p";
                 return (
-                  <Tag key={i} className="text-center text-[20px] md:text-[18px] font-[300] tracking-[0.28em] uppercase text-brand my-10">
+                  <Tag key={i} className="text-center text-[20px] md:text-[20px] font-[300] tracking-[0.28em] uppercase text-brand my-10">
                     {rich(s.block, s.text)}
                   </Tag>
                 );
@@ -693,7 +693,7 @@ export default async function PortfolioProjectPage({
       {fgCredit && (
         <section className="bg-white px-6 pb-16">
           <p
-            className="text-center text-[15px] md:text-[20px] font-[400] tracking-[0.24em] uppercase [&_a]:decoration-[#FF6D6A]/50 [&_a]:hover:decoration-[#FF6D6A]"
+            className="text-center text-[20px] md:text-[20px] font-[400] tracking-[0.24em] uppercase [&_a]:decoration-[#FF6D6A]/50 [&_a]:hover:decoration-[#FF6D6A]"
             style={{ color: "#FF6D6A" }}
           >
             {rich(fgCredit.block, fgCredit.text)}
@@ -709,12 +709,12 @@ export default async function PortfolioProjectPage({
         <section className="px-4 md:px-6 py-16 bg-white border-t border-gray-100">
           <div className="max-w-[1400px] mx-auto">
             <div className="flex items-end justify-between mb-8 px-2">
-              <h2 className="text-[18px] md:text-[22px] font-[300] tracking-[0.25em] uppercase text-brand">
+              <h2 className="text-[20px] md:text-[22px] font-[300] tracking-[0.25em] uppercase text-brand">
                 More Projects
               </h2>
               <Link
                 href="/portfolio"
-                className="text-[13px] font-[500] tracking-[0.2em] uppercase text-muted hover:text-ink transition-colors"
+                className="text-[20px] font-[500] tracking-[0.2em] uppercase text-muted hover:text-ink transition-colors"
               >
                 View All →
               </Link>
@@ -745,7 +745,7 @@ export default async function PortfolioProjectPage({
         </p>
         <Link
           href="/contact"
-          className="inline-block border border-ink text-ink text-[10px] font-[500] tracking-[0.2em] uppercase px-8 py-3 hover:bg-ink hover:text-white transition-colors duration-300"
+          className="inline-block border border-ink text-ink text-[20px] font-[500] tracking-[0.2em] uppercase px-8 py-3 hover:bg-ink hover:text-white transition-colors duration-300"
         >
           Get in Touch
         </Link>

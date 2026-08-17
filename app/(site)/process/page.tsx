@@ -121,11 +121,11 @@ export default function ProcessPage() {
 
       {/* ── Header ── */}
       <section className="pt-20 md:pt-28 pb-14 md:pb-16 px-6 text-center bg-[#F7F5F2]">
-        <p className="text-[14px] font-semibold tracking-[0.3em] uppercase text-brand mb-5">The Process</p>
+        <p className="text-[20px] font-semibold tracking-[0.3em] uppercase text-brand mb-5">The Process</p>
         <h1 className="text-4xl md:text-6xl font-[300] tracking-[0.08em] uppercase text-ink mb-6">
           The Mom&rsquo;s Way
         </h1>
-        <p className="text-[20px] md:text-[17px] font-[300] tracking-[0.06em] text-brand-mid max-w-md mx-auto">
+        <p className="text-[20px] md:text-[20px] font-[300] tracking-[0.06em] text-brand-mid max-w-md mx-auto">
           From first conversation to happily ever after.
         </p>
       </section>
@@ -139,7 +139,7 @@ export default function ProcessPage() {
               className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center py-14"
             >
               <div className={step.photo && i % 2 === 1 ? "md:order-2" : ""}>
-                <p className="text-[14px] font-semibold tracking-[0.26em] uppercase text-brand mb-3">
+                <p className="text-[20px] font-semibold tracking-[0.26em] uppercase text-brand mb-3">
                   Step {String(i + 1).padStart(2, "0")}
                 </p>
                 <h2 className="text-[22px] md:text-[26px] font-[300] tracking-[0.1em] uppercase text-brand mb-5">
@@ -147,7 +147,7 @@ export default function ProcessPage() {
                 </h2>
                 <div className="space-y-4">
                   {step.paras.map((p, j) => (
-                    <p key={j} className="text-[17px] md:text-[18px] font-[300] leading-[1.8] text-brand-mid">
+                    <p key={j} className="text-[20px] md:text-[20px] font-[300] leading-[1.8] text-brand-mid">
                       {p}
                     </p>
                   ))}
@@ -158,7 +158,7 @@ export default function ProcessPage() {
                       href={WARRANTY_PDF}
                       target="_blank"
                       rel="noopener"
-                      className="inline-block bg-ink border border-ink text-white text-[10.5px] font-[600] tracking-[0.2em] uppercase px-8 py-3.5 hover:bg-white hover:text-ink transition-colors duration-300"
+                      className="inline-block bg-ink border border-ink text-white text-[20px] font-[600] tracking-[0.2em] uppercase px-8 py-3.5 hover:bg-white hover:text-ink transition-colors duration-300"
                     >
                       Best in Class Warranty
                     </a>
@@ -166,7 +166,7 @@ export default function ProcessPage() {
                       href="https://www.paradeofhomes.org/resources/managing-your-home/minimum-performance-guidelines/"
                       target="_blank"
                       rel="noopener"
-                      className="inline-block border border-ink text-ink text-[10.5px] font-[500] tracking-[0.2em] uppercase px-8 py-3 hover:bg-ink hover:text-white transition-colors duration-300"
+                      className="inline-block border border-ink text-ink text-[20px] font-[500] tracking-[0.2em] uppercase px-8 py-3 hover:bg-ink hover:text-white transition-colors duration-300"
                     >
                       Minimum Performance Guidelines
                     </a>
@@ -197,7 +197,7 @@ export default function ProcessPage() {
 
       {/* ── CTA ── */}
       <section className="bg-[#F7F5F2] py-20 lg:py-24 px-6 text-center">
-        <p className="text-[13px] font-semibold tracking-[0.3em] uppercase text-brand mb-4">Your Turn</p>
+        <p className="text-[20px] font-semibold tracking-[0.3em] uppercase text-brand mb-4">Your Turn</p>
         <h2 className="text-2xl md:text-4xl font-[300] tracking-[0.08em] uppercase text-brand mb-5">
           Build Your Legacy
         </h2>
@@ -206,7 +206,7 @@ export default function ProcessPage() {
         </p>
         <Link
           href="/contact"
-          className="inline-block border border-ink text-ink text-[11px] font-[600] tracking-[0.22em] uppercase px-10 py-4 hover:bg-ink hover:text-white transition-colors duration-300"
+          className="inline-block border border-ink text-ink text-[20px] font-[600] tracking-[0.22em] uppercase px-10 py-4 hover:bg-ink hover:text-white transition-colors duration-300"
         >
           Get in Touch
         </Link>

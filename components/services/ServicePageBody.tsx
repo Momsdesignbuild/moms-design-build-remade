@@ -94,7 +94,7 @@ function CardTile({ href, bg, title, cell }: { href: string; bg: string; title: 
         className="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-[1.03]"
       />
       <span className="absolute inset-0 flex items-center justify-center p-3 text-center transition-opacity duration-300 group-hover:opacity-0">
-        <span className="text-white text-[19px] md:text-[21px] font-[300] tracking-[0.18em] uppercase [text-shadow:0_1px_10px_rgba(0,0,0,0.45)]">
+        <span className="text-white text-[20px] md:text-[21px] font-[300] tracking-[0.18em] uppercase [text-shadow:0_1px_10px_rgba(0,0,0,0.45)]">
           {title}
         </span>
       </span>
@@ -203,7 +203,7 @@ function HubBody({
       return (
         <p
           key={b._key}
-          className="text-center italic text-[19px] md:text-[21px] mb-10 [font-family:Georgia,'Times_New_Roman',serif]"
+          className="text-center italic text-[20px] md:text-[21px] mb-10 [font-family:Georgia,'Times_New_Roman',serif]"
           style={{ color: accent }}
         >
           <Rich block={b} />
@@ -216,10 +216,10 @@ function HubBody({
         key={b._key}
         className={
           tagline
-            ? `text-[15px] font-[400] tracking-[0.28em] uppercase ${paired ? "" : "text-center"} mb-8`
+            ? `text-[20px] font-[400] tracking-[0.28em] uppercase ${paired ? "" : "text-center"} mb-8`
             : paired
-              ? "text-[17px] md:text-[18px] font-[300] leading-[1.8] text-brand-mid mb-5"
-              : "text-[17px] md:text-[18px] font-[300] leading-[1.8] text-brand-mid max-w-[760px] mx-auto mb-5"
+              ? "text-[20px] md:text-[20px] font-[300] leading-[1.8] text-brand-mid mb-5"
+              : "text-[20px] md:text-[20px] font-[300] leading-[1.8] text-brand-mid max-w-[760px] mx-auto mb-5"
         }
         style={tagline ? { color: accent || "var(--color-brand)" } : undefined}
       >
@@ -234,7 +234,7 @@ function HubBody({
         <div key={b._key} className="text-center my-10">
           <Link
             href={b.href!}
-            className="inline-block text-white text-[14px] font-[600] tracking-[0.2em] uppercase px-9 py-4 transition-opacity duration-200 hover:opacity-85"
+            className="inline-block text-white text-[20px] font-[600] tracking-[0.2em] uppercase px-9 py-4 transition-opacity duration-200 hover:opacity-85"
             style={{ backgroundColor: accent || "var(--color-brand)" }}
           >
             {b.text}
@@ -410,7 +410,7 @@ function GroupedBody({
                 }
               >
                 {list.items.map((li) => (
-                  <li key={li._key} className="text-[17px] font-[300] leading-[1.8] text-brand-mid">
+                  <li key={li._key} className="text-[20px] font-[300] leading-[1.8] text-brand-mid">
                     <Rich block={li} />
                   </li>
                 ))}
@@ -442,7 +442,7 @@ function GroupedBody({
             if (narrow) {
               if (b.style === "h3" || b.style === "h4")
                 return (
-                  <Tag key={b._key} className="text-[17px] font-[400] tracking-[0.16em] uppercase text-brand mt-10 mb-3">
+                  <Tag key={b._key} className="text-[20px] font-[400] tracking-[0.16em] uppercase text-brand mt-10 mb-3">
                     {plainText(b)}
                   </Tag>
                 );
@@ -459,7 +459,7 @@ function GroupedBody({
                 </Tag>
               );
             return (
-              <Tag key={b._key} className="text-[17px] font-[400] tracking-[0.16em] uppercase text-brand mt-10 mb-3 max-w-[820px] mx-auto">
+              <Tag key={b._key} className="text-[20px] font-[400] tracking-[0.16em] uppercase text-brand mt-10 mb-3 max-w-[820px] mx-auto">
                 {plainText(b)}
               </Tag>
             );
@@ -468,7 +468,7 @@ function GroupedBody({
             return (
               <blockquote
                 key={b._key}
-                className={`text-[19px] md:text-[22px] font-[300] italic leading-[1.8] text-ink text-center max-w-[640px] mx-auto ${narrow ? "my-8" : "my-10"}`}
+                className={`text-[20px] md:text-[22px] font-[300] italic leading-[1.8] text-ink text-center max-w-[640px] mx-auto ${narrow ? "my-8" : "my-10"}`}
               >
                 <Rich block={b} />
               </blockquote>
@@ -476,14 +476,14 @@ function GroupedBody({
           }
           if (b._type === "block" && b.style === "attrib") {
             return (
-              <p key={b._key} className="text-[13px] font-[500] tracking-[0.22em] uppercase text-brand text-center mb-10">
+              <p key={b._key} className="text-[20px] font-[500] tracking-[0.22em] uppercase text-brand text-center mb-10">
                 — {plainText(b)}
               </p>
             );
           }
           if (b._type === "block") {
             return (
-              <p key={b._key} className={mw("text-[17px] md:text-[18px] font-[300] leading-[1.8] text-brand-mid mb-5")}>
+              <p key={b._key} className={mw("text-[20px] md:text-[20px] font-[300] leading-[1.8] text-brand-mid mb-5")}>
                 <Rich block={b} />
               </p>
             );
@@ -493,7 +493,7 @@ function GroupedBody({
               <div key={b._key} className="text-center my-10">
                 <Link
                   href={b.href!}
-                  className="inline-block bg-brand text-white text-[14px] font-[600] tracking-[0.2em] uppercase px-9 py-4 hover:bg-brand-dark transition-colors duration-200"
+                  className="inline-block bg-brand text-white text-[20px] font-[600] tracking-[0.2em] uppercase px-9 py-4 hover:bg-brand-dark transition-colors duration-200"
                 >
                   {b.text}
                 </Link>
@@ -579,7 +579,7 @@ function PortalBody({ blocks }: { blocks: BodyBlock[] }) {
           if (b._type === "block" && b.style === "h2") {
             stepN = 0;
             return (
-              <h2 key={b._key} className="text-[19px] md:text-[21px] font-[400] tracking-[0.2em] uppercase text-brand mt-14 mb-5 pt-10 border-t border-gray-100">
+              <h2 key={b._key} className="text-[20px] md:text-[21px] font-[400] tracking-[0.2em] uppercase text-brand mt-14 mb-5 pt-10 border-t border-gray-100">
                 {plainText(b)}
               </h2>
             );
@@ -600,14 +600,14 @@ function PortalBody({ blocks }: { blocks: BodyBlock[] }) {
           if (b._type === "block" && b.listItem === "bullet")
             return (
               <ul key={b._key} className="list-disc pl-6 mb-3">
-                <li className="text-[17px] font-[300] leading-[1.8] text-brand-mid">
+                <li className="text-[20px] font-[300] leading-[1.8] text-brand-mid">
                   <RichA block={b} />
                 </li>
               </ul>
             );
           if (b._type === "block")
             return (
-              <p key={b._key} className="text-[17px] md:text-[18px] font-[300] leading-[1.8] text-brand-mid mb-4">
+              <p key={b._key} className="text-[20px] md:text-[20px] font-[300] leading-[1.8] text-brand-mid mb-4">
                 <RichA block={b} />
               </p>
             );

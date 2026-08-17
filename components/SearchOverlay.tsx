@@ -101,8 +101,8 @@ export default function SearchOverlay({ open, onClose }: { open: boolean; onClos
                 )}
               </div>
               <div className="min-w-0">
-                <p className="text-[11px] font-semibold tracking-[0.24em] uppercase text-brand mb-0.5">{r.type}</p>
-                <p className="text-[17px] font-[400] text-ink truncate group-hover:text-brand transition-colors">
+                <p className="text-[20px] font-semibold tracking-[0.24em] uppercase text-brand mb-0.5">{r.type}</p>
+                <p className="text-[20px] font-[400] text-ink truncate group-hover:text-brand transition-colors">
                   {r.title}
                 </p>
                 <p className="text-[20px] font-[300] text-muted truncate">{r.desc}</p>

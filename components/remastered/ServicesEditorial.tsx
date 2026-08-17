@@ -70,7 +70,7 @@ export default function ServicesEditorial() {
                     className="object-cover opacity-60 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-[1.03]"
                   />
                   <div className="absolute inset-0 flex items-center justify-center p-4 text-center transition-opacity duration-300 group-hover:opacity-0">
-                    <h3 className="text-white text-[19px] lg:text-[21px] font-[300] tracking-[0.14em] uppercase leading-snug [text-shadow:0_1px_10px_rgba(0,0,0,0.45)]">
+                    <h3 className="text-white text-[20px] lg:text-[21px] font-[300] tracking-[0.14em] uppercase leading-snug [text-shadow:0_1px_10px_rgba(0,0,0,0.45)]">
                       {s.title}
                     </h3>
                   </div>

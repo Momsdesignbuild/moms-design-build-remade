@@ -26,8 +26,8 @@ export default function NewsletterSignup() {
   return (
     <section className="bg-[#f7f4ef] py-16 px-6">
       <div className="max-w-xl mx-auto text-center">
-        <p className="text-[10px] font-[500] tracking-[0.3em] uppercase text-muted mb-3">The Mom&rsquo;s List</p>
-        <h2 className="text-[18px] md:text-[22px] font-[300] tracking-[0.15em] uppercase text-ink mb-3">
+        <p className="text-[20px] font-[500] tracking-[0.3em] uppercase text-muted mb-3">The Mom&rsquo;s List</p>
+        <h2 className="text-[20px] md:text-[22px] font-[300] tracking-[0.15em] uppercase text-ink mb-3">
           Design Stories, Delivered
         </h2>
         <p className="text-[20px] font-[300] tracking-[0.04em] text-muted mb-8">
@@ -51,14 +51,14 @@ export default function NewsletterSignup() {
             <button
               type="submit"
               disabled={state === 'busy'}
-              className="border border-ink bg-ink text-white text-[10px] font-[500] tracking-[0.2em] uppercase px-8 py-3 hover:bg-white hover:text-ink transition-colors duration-300 disabled:opacity-60"
+              className="border border-ink bg-ink text-white text-[20px] font-[500] tracking-[0.2em] uppercase px-8 py-3 hover:bg-white hover:text-ink transition-colors duration-300 disabled:opacity-60"
             >
               {state === 'busy' ? 'Joining…' : 'Join'}
             </button>
           </form>
         )}
         {state === 'error' && (
-          <p className="mt-3 text-[12px] text-red-700/80">Something went wrong — try again.</p>
+          <p className="mt-3 text-[20px] text-red-700/80">Something went wrong — try again.</p>
         )}
       </div>
     </section>

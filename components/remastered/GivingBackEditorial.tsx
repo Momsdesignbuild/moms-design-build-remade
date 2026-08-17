@@ -35,7 +35,7 @@ export default function GivingBackEditorial() {
               Giving Back
             </h2>
             <blockquote
-              className="text-[19px] md:text-[23px] font-[300] leading-[1.5] text-white/85 mb-8"
+              className="text-[20px] md:text-[23px] font-[300] leading-[1.5] text-white/85 mb-8"
               style={{ fontFamily: 'var(--font-heading, "Futura PT", sans-serif)' }}
             >
               &ldquo;Love our community. We give generously to impact people in need.&rdquo;

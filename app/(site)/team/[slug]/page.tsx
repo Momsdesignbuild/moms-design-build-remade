@@ -157,7 +157,7 @@ export default async function TeamMemberPage({
           {/* their site never links the /team archive — send people to the About team grid */}
           <Link
             href="/about#team-heading"
-            className="text-[10px] font-[500] tracking-[0.2em] uppercase text-muted hover:text-ink transition-colors"
+            className="text-[20px] font-[500] tracking-[0.2em] uppercase text-muted hover:text-ink transition-colors"
           >
             ← Meet the Full Team
           </Link>
