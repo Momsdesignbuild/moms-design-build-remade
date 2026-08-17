@@ -56,14 +56,6 @@ export default function ContactPage() {
         <p className="mt-4 text-[20px] font-[300] leading-relaxed text-muted max-w-md mx-auto">
           Ready to start your project? We&apos;d love to hear from you.
         </p>
-        {/* verbatim from their live contact page */}
-        <p className="mt-3 text-[20px] font-[300] leading-relaxed text-muted max-w-lg mx-auto">
-          Help us build a better tomorrow by joining our team today! A variety of full-time and
-          part-time positions are available!{" "}
-          <Link href="/careers" className="underline underline-offset-4 decoration-brand/40 hover:decoration-brand text-ink transition-colors">
-            Careers at Mom&rsquo;s
-          </Link>
-        </p>
       </section>
 
       {/* ── Contact Layout ── */}
@@ -151,6 +143,24 @@ export default function ContactPage() {
             </h2>
             <BuilderTrendForm />
           </div>
+        </div>
+
+        {/* verbatim ask from their live contact page — moved below the form
+            to match their layout (Josh, 8/17) */}
+        <div className="max-w-[1000px] mx-auto mt-16 pt-16 border-t border-gray-100 text-center">
+          <h2 className="text-[22px] md:text-[28px] font-[300] tracking-[0.2em] uppercase text-ink">
+            Looking for a Career?
+          </h2>
+          <p className="mt-4 text-[20px] font-[300] leading-relaxed text-muted max-w-lg mx-auto">
+            Help us build a better tomorrow by joining our team today! A variety of full-time and
+            part-time positions are available!
+          </p>
+          <Link
+            href="/careers"
+            className="inline-block mt-8 border border-ink text-ink text-[20px] font-[500] tracking-[0.2em] uppercase px-8 py-3 hover:bg-ink hover:text-white transition-colors duration-300"
+          >
+            Career Opportunities
+          </Link>
         </div>
       </section>
     </>
