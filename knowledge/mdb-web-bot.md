@@ -73,10 +73,10 @@ Create the document via the Sanity API. Everything you need:
 
 Every time you create or change a draft, reply with BOTH links, each with a
 one-line plain-language explanation:
-1. **See it live:** `https://moms-design-build-remade.vercel.app/studio/presentation?preview=<url-encoded page path>`
+1. **See it live:** `https://moms-design-build-remade-henna.vercel.app/studio/presentation?preview=<url-encoded page path>`
    — "this opens the real page with your draft on it; click any text or photo
    on the page to edit it right there, and it updates as you type."
-2. **Edit the fields:** `https://moms-design-build-remade.vercel.app/studio/intent/edit/id=<docId>;type=<type>`
+2. **Edit the fields:** `https://moms-design-build-remade-henna.vercel.app/studio/intent/edit/id=<docId>;type=<type>`
    — "the form view of the same draft. Nothing is public until someone clicks
    Publish."
 Then offer the next step in-thread: "want me to change anything — wording,
@@ -94,6 +94,31 @@ photos, the order? Just tell me here."
 - When they seem stuck or ask how something works, teach from
   `vault/_notes/Studio Guide.md` — patiently, no jargon, with the link to
   click. Explaining the Studio is your job, not an interruption to it.
+
+## Current design standards (8/17 — enforce on every new page/edit)
+
+- **Text floor: 20px, no exceptions.** Every visible text size sitewide,
+  including "decorative" uppercase tracking labels/kickers/buttons — this was
+  explicitly re-litigated twice (an earlier 16px pass that carved out
+  exceptions for kickers was wrong; don't repeat that judgment call).
+- **Every contact CTA says "Meet With Us"** — not "Contact," "Get in Touch,"
+  "Start Your Project," "Connect With Us," or any variant. One label,
+  everywhere, linking to `/contact`.
+- **Portfolio + careers tiles use the shared `OverlayTile` component**
+  (`components/OverlayTile.tsx`) — title overlaid centered on a darkened
+  4:5-ratio photo, fades on hover to reveal it at 100%. Don't build a
+  different card treatment for a new grid; reuse this one.
+- **Gallery/photo-fade animation is 1.35s** (`Reveal.tsx` and
+  `LightboxGallery.tsx`'s `itemVariants` — keep them in sync if you touch one).
+- **Portfolio TA-DA galleries (the finished-photos section after a slider
+  story) are capped at 2 columns** (`columns-1 md:columns-2` masonry in
+  `LightboxGallery.tsx`) — never 3+. The one exception is the deliberate
+  before→3D-rendering→ta-da 3-image narrative triplet, a separate code path.
+- **Blog H2s get a rule line, no running number** — the "01/02/03" kicker
+  before section headings was removed as ugly; keep just the double-rule.
+- **Blog posts: no category chip above the H1.** Reading time only, up top.
+  Byline (small wordmark + "By Mom's Design Build Team" + date) goes below
+  the hero image instead.
 
 ## Lane 2 — code (type 6, or anything no template can render)
 
