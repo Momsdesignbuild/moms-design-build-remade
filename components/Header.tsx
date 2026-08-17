@@ -266,7 +266,7 @@ export default function Header() {
           </button>
           <Link
             href="/contact"
-            className={`hidden lg:inline-flex items-center justify-center text-[20px] font-[600] tracking-[0.18em] uppercase px-6 py-3 transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand ${
+            className={`hidden lg:inline-flex items-center justify-center text-[20px] font-[600] tracking-[0.18em] uppercase whitespace-nowrap px-6 py-3 transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand ${
               transparent
                 ? "border border-white/50 text-white hover:bg-white/10"
                 : "bg-brand text-white hover:bg-brand-dark"
