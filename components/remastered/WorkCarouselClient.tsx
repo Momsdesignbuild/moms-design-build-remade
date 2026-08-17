@@ -137,7 +137,7 @@ export default function WorkCarouselClient({ projects }: { projects: WorkCard[] 
           data-wheel-card
           className="snap-center sm:snap-start shrink-0 w-[60vw] sm:w-[320px] aspect-[3/4] border border-ink/12 flex flex-col items-center justify-center gap-4 text-ink hover:border-ink transition-colors"
         >
-          <span className="text-[20px] font-semibold tracking-[0.28em] uppercase">All 70 Projects</span>
+          <span className="text-[20px] font-semibold tracking-[0.28em] uppercase">See All Projects</span>
           <ArrowRight size={22} />
         </Link>
       </div>

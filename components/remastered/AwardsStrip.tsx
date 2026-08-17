@@ -7,7 +7,8 @@ import { motion } from 'framer-motion'
 // WP homepage, self-hosted (wp-content dies at launch). Summer (7/14): NARI is
 // only ONE org — these span Best of Twin Cities, Midwest Design Awards, MNLA,
 // NARI and more, and the line reads "most award-winning in the Midwest".
-// Rendered grayscale ("I don't like how these are so colorful"), color on hover.
+// Full color always, 1.5x bigger (Josh, 8/17 — reverses the earlier
+// grayscale-until-hover treatment).
 const BADGES = [
   { url: '/images/awards/Best-of-2026-Award-Winner-Business-Rate-Moms-Design-Build-1024x885.webp', alt: 'Best of 2026 Award Winner' },
   { url: '/images/awards/Best-of-Twin-Cities-Readers-Choice-Award-2026-Moms-Design-Build-1024x986.webp', alt: "Best of Twin Cities Readers' Choice Award 2026" },
@@ -32,9 +33,9 @@ export default function AwardsStrip() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.5, delay: i * 0.08, ease: 'easeOut' }}
-              className="relative h-20 md:h-24 w-24 md:w-28 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-500 mix-blend-multiply"
+              className="relative h-[120px] md:h-[144px] w-[144px] md:w-[168px]"
             >
-              <Image src={b.url} alt={b.alt} fill sizes="112px" className="object-contain" />
+              <Image src={b.url} alt={b.alt} fill sizes="168px" className="object-contain" />
             </motion.div>
           ))}
         </div>
