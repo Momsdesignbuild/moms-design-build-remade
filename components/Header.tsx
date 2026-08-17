@@ -211,6 +211,7 @@ export default function Header() {
             >
               <Link
                 href={item.href}
+                onClick={() => setOpenDropdown(null)}
                 className={`flex items-center gap-1 text-[20px] font-[500] tracking-[0.12em] uppercase transition-colors duration-300 ${
                   transparent
                     ? "text-white/80 hover:text-white"
@@ -238,6 +239,7 @@ export default function Header() {
                         <Link
                           href={child.href}
                           role="menuitem"
+                          onClick={() => setOpenDropdown(null)}
                           className="block px-5 py-3 text-[20px] tracking-[0.1em] uppercase text-ink hover:text-brand hover:bg-gray-50 transition-colors"
                         >
                           {child.label}
