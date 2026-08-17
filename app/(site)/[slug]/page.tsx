@@ -210,8 +210,9 @@ export default async function BlogPostPage({
             <Image
               src="https://cdn.sanity.io/images/wavk40jo/production/8c90cd8a507f30403ce2194fa8a1a5eee1eaf1c1-1000x242.png"
               alt="Mom's Design Build"
-              width={88}
-              height={21}
+              width={300}
+              height={73}
+              quality={90}
               className="h-[36px] w-auto opacity-80"
             />
             <p className="text-[20px] font-[400] tracking-[0.08em] uppercase text-ink">

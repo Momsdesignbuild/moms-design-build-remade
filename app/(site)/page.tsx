@@ -11,7 +11,6 @@ import Journal from "@/components/remastered/Journal";
 import GivingBackEditorial from "@/components/remastered/GivingBackEditorial";
 import ClosingCTA from "@/components/remastered/ClosingCTA";
 import JoinTheList from "@/components/remastered/JoinTheList";
-import GuideCTA from "@/components/remastered/GuideCTA";
 
 export const revalidate = 3600;
 
@@ -63,7 +62,9 @@ export default function HomePage() {
         img="https://cdn.sanity.io/images/wavk40jo/production/87f222ef7b60ceb0b29f2fbd574a8bff606a15da-1500x1023.jpg?w=1000&auto=format"
         imgAlt="Lakeside living outdoor space by Mom's Design Build"
       />
-      <GuideCTA />
+      {/* GuideCTA (Free Guide side tab) archived 8/17 per Josh — component
+          kept, just not rendered. The guide content itself never existed
+          yet anyway. */}
     </>
   );
 }
