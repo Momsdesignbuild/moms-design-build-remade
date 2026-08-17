@@ -66,7 +66,7 @@ export default function AnatomyClient({ steps }: { steps: AnatomyStep[] }) {
                         {s.title}
                       </h3>
                       <p
-                        className="text-[20px] font-[300] leading-snug lg:leading-relaxed text-muted max-w-md transition-all duration-500 overflow-hidden"
+                        className="text-[17px] md:text-[20px] font-[300] leading-snug lg:leading-relaxed text-muted max-w-md transition-all duration-500 overflow-hidden"
                         style={{ maxHeight: i === active ? 150 : 0, opacity: i === active ? 1 : 0 }}
                       >
                         {s.blurb}
@@ -108,7 +108,7 @@ export default function AnatomyClient({ steps }: { steps: AnatomyStep[] }) {
                 ))}
                 <div className="absolute right-3 bottom-3 bg-white/92 px-3 py-1.5">
                   <span className="text-[20px] font-semibold tracking-[0.22em] uppercase text-ink">
-                    Serene Shores · {active + 1} / {steps.length}
+                    Serene Shores {active + 1} / {steps.length}
                   </span>
                 </div>
               </div>
