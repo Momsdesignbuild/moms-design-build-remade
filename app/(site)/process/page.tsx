@@ -208,7 +208,7 @@ export default function ProcessPage() {
           href="/contact"
           className="inline-block border border-ink text-ink text-[20px] font-[600] tracking-[0.22em] uppercase px-10 py-4 hover:bg-ink hover:text-white transition-colors duration-300"
         >
-          Get in Touch
+          Meet With Us
         </Link>
       </section>
     </>

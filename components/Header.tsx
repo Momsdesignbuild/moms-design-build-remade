@@ -272,7 +272,7 @@ export default function Header() {
                 : "bg-brand text-white hover:bg-brand-dark"
             }`}
           >
-            Contact
+            Meet With Us
           </Link>
 
           <button
@@ -393,7 +393,7 @@ export default function Header() {
                 className="mt-8 bg-brand text-white text-[20px] font-[600] tracking-[0.18em] uppercase px-6 py-4 text-center hover:bg-brand-dark transition-colors"
                 onClick={() => setMobileOpen(false)}
               >
-                Contact Us
+                Meet With Us
               </Link>
             </nav>
           </motion.div>

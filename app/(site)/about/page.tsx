@@ -387,7 +387,7 @@ export default function AboutPage() {
           href="/contact"
           className="inline-block bg-brand text-white text-[20px] font-[600] tracking-[0.22em] uppercase px-9 py-4 hover:bg-brand-dark transition-colors duration-200"
         >
-          Work with Our Team
+          Meet With Us
         </Link>
       </section>
     </>

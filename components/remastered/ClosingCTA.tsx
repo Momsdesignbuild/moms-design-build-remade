@@ -58,7 +58,7 @@ export default function ClosingCTA() {
                 href="/contact"
                 className="border-2 border-brand bg-brand text-white text-[20px] font-[600] tracking-[0.22em] uppercase px-11 py-4.5 hover:bg-transparent hover:text-white transition-colors duration-300"
               >
-                Meet with Us
+                Meet With Us
               </Link>
             </motion.div>
           </div>

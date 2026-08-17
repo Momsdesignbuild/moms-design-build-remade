@@ -70,7 +70,7 @@ export default async function CareersPage() {
           href="/contact"
           className="inline-block border border-ink text-ink text-[20px] font-[500] tracking-[0.2em] uppercase px-8 py-3 hover:bg-ink hover:text-white transition-colors duration-300"
         >
-          Get in Touch
+          Meet With Us
         </Link>
       </section>
     </>

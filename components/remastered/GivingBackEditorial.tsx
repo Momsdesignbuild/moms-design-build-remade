@@ -68,7 +68,7 @@ export default function GivingBackEditorial() {
               href="/contact"
               className="inline-block border border-white/80 text-white text-[20px] font-[600] tracking-[0.22em] uppercase px-8 py-3 hover:bg-white hover:text-ink transition-colors duration-300"
             >
-              Connect With Us
+              Meet With Us
             </Link>
           </motion.div>
 
