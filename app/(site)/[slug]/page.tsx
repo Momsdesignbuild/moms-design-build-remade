@@ -212,7 +212,7 @@ export default async function BlogPostPage({
               alt="Mom's Design Build"
               width={88}
               height={21}
-              className="h-[18px] w-auto opacity-80"
+              className="h-[36px] w-auto opacity-80"
             />
             <p className="text-[20px] font-[400] tracking-[0.08em] uppercase text-ink">
               By Mom&rsquo;s Design Build Team
