@@ -81,6 +81,46 @@ function groupLists(blocks: BodyBlock[]): Grouped[] {
   return groups;
 }
 
+/* Their live pages box a "FAQS" heading + its Q/A pairs in a bordered panel
+ * (italic question, plain answer) — one of the "cool sections" that breaks
+ * up the gray body-text wall (Josh 8/17, live pools page reference). The
+ * migrated data has no markup for this, just an "FAQS" heading followed by
+ * alternating h3 questions / paragraph answers, so detect it by heading text
+ * and absorb everything up to the next h2-level heading or non-text block. */
+type FaqGroup = { kind: "faq"; key: string; items: BodyBlock[] };
+function groupFaqs(groups: Grouped[]): Array<Grouped | FaqGroup> {
+  const out: Array<Grouped | FaqGroup> = [];
+  let i = 0;
+  while (i < groups.length) {
+    const g = groups[i];
+    const isFaqHeading =
+      (g as BodyBlock)._type === "block" &&
+      isHeading(g as BodyBlock) &&
+      /^(faqs?|frequently asked questions)$/i.test(plainText(g as BodyBlock).trim());
+    if (isFaqHeading) {
+      const items: BodyBlock[] = [];
+      let j = i + 1;
+      while (j < groups.length) {
+        const gg = groups[j];
+        if ((gg as ListGroup).kind === "list") break;
+        const bb = gg as BodyBlock;
+        if (bb._type !== "block") break;
+        if (isHeading(bb) && bb.style !== "h3" && bb.style !== "h4") break;
+        items.push(bb);
+        j++;
+      }
+      if (items.length) {
+        out.push({ kind: "faq", key: (g as BodyBlock)._key, items });
+        i = j;
+        continue;
+      }
+    }
+    out.push(g);
+    i++;
+  }
+  return out;
+}
+
 /* The unified tile: grayed image + centered title, hover clears the text and
  * reveals the photo — identical to portfolio/careers (Summer, 7/14). */
 function CardTile({ href, bg, title, cell }: { href: string; bg: string; title: string; cell: string }) {
@@ -393,13 +433,46 @@ function GroupedBody({
   cardsSet?: string;
   narrow: boolean; // interior = 820px column, per-element max-w dropped
 }) {
-  const groups = groupLists(blocks);
+  const groups = groupFaqs(groupLists(blocks));
   let heads = 0;
   const mw = (cls: string) => (narrow ? cls : `${cls} max-w-[820px] mx-auto`);
   return (
     <section className="pt-16 md:pt-24 pb-20 px-6 bg-white">
       <div className={narrow ? "max-w-[820px] mx-auto" : "max-w-[1100px] mx-auto"}>
         {groups.map((g, i) => {
+          if ((g as FaqGroup).kind === "faq") {
+            const faq = g as FaqGroup;
+            // pair each h3 question with the answer paragraphs that follow it
+            const pairs: Array<{ q?: BodyBlock; a: BodyBlock[] }> = [];
+            for (const b of faq.items) {
+              if (isHeading(b)) pairs.push({ q: b, a: [] });
+              else if (pairs.length) pairs[pairs.length - 1].a.push(b);
+              else pairs.push({ a: [b] });
+            }
+            return (
+              <div key={faq.key} className={mw("my-14 border border-ink/15 bg-[#FAFAF8] px-6 md:px-12 py-10")}>
+                <h2 className="text-[22px] md:text-[26px] font-[300] tracking-[0.3em] uppercase text-ink mb-8">
+                  FAQs
+                </h2>
+                <div className="space-y-8">
+                  {pairs.map((p, pi) => (
+                    <div key={p.q?._key ?? "a" + pi}>
+                      {p.q && (
+                        <h3 className="text-[20px] md:text-[22px] font-[400] italic text-brand mb-2">
+                          {plainText(p.q)}
+                        </h3>
+                      )}
+                      {p.a.map((b) => (
+                        <p key={b._key} className="text-[20px] font-[300] leading-[1.8] text-brand-mid">
+                          <Rich block={b} />
+                        </p>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          }
           if ((g as ListGroup).kind === "list") {
             const list = g as ListGroup;
             return (
