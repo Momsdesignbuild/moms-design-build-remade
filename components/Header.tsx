@@ -230,7 +230,7 @@ export default function Header() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -6 }}
                     transition={{ duration: 0.15, ease: "easeOut" }}
-                    className="absolute top-full left-0 mt-3 w-60 bg-white shadow-lg border border-gray-100 py-2 z-50"
+                    className="absolute top-full left-0 mt-3 w-60 bg-white shadow-lg border border-gray-100 py-2 z-50 divide-y divide-gray-100"
                     role="menu"
                   >
                     {item.children.map((child) => (
@@ -370,12 +370,12 @@ export default function Header() {
                         transition={{ duration: 0.2 }}
                         className="overflow-hidden"
                       >
-                        <div className="pl-4 pb-3 flex flex-col gap-1">
+                        <div className="pl-4 pb-3 flex flex-col divide-y divide-gray-100">
                           {item.children.map((child) => (
                             <Link
                               key={child.label}
                               href={child.href}
-                              className="py-2 text-[20px] tracking-[0.1em] uppercase text-muted hover:text-brand transition-colors block"
+                              className="py-2.5 text-[20px] tracking-[0.1em] uppercase text-muted hover:text-brand transition-colors block"
                               onClick={() => setMobileOpen(false)}
                             >
                               {child.label}
