@@ -424,39 +424,35 @@ export default async function PortfolioProjectPage({
                 {project.location}
               </h2>
             )}
+            {/* Completed <year> moved under the city, in the hero (Josh, 8/17) —
+                was in the separate white meta bar below, on one line with the
+                subtitle. Same isLiveH2 tag logic kept for SEO parity. */}
+            {completedYear &&
+              (isLiveH2(`Completed ${completedYear}`) ? (
+                <h2 className="text-white/60 text-[20px] md:text-[20px] font-[300] tracking-[0.18em] uppercase mt-1.5">
+                  Completed {completedYear}
+                </h2>
+              ) : (
+                <p className="text-white/60 text-[20px] md:text-[20px] font-[300] tracking-[0.18em] uppercase mt-1.5">
+                  Completed {completedYear}
+                </p>
+              ))}
           </div>
         </div>
       </section>
 
-      {/* ── Meta bar: completed year + award badges. City lives under the H1 in
-             the hero — never repeated here (Summer, 7/14). Hidden keyword H2s
-             stay white-on-white exactly like the live WP pages. ── */}
-      {(completedYear || (subtitle && !hiddenSubtitle) || allBadges.length > 0) && (
+      {/* ── Meta bar: keyword subtitle + award badges. City and completed year
+             live in the hero — never repeated here (Summer, 7/14; Josh 8/17). ── */}
+      {((subtitle && !hiddenSubtitle) || allBadges.length > 0) && (
         <section className="border-b border-gray-100 bg-white">
           <div className="max-w-5xl mx-auto px-6 py-6 flex flex-col items-center gap-3">
-            {/* marketing 8/7: city + completed read as ONE line, 16px+ */}
             {/* hidden keyword subtitles render top-left of the BODY instead
                 (live's awkward placement) — only visible ones belong here */}
-            <div className="flex flex-wrap items-baseline justify-center gap-x-4 gap-y-1">
             {subtitle && !hiddenSubtitle && (
-              <h2 className="inline text-[20px] md:text-[20px] font-[300] tracking-[0.22em] uppercase text-brand text-center">
+              <h2 className="text-[20px] md:text-[20px] font-[300] tracking-[0.22em] uppercase text-brand text-center">
                 {subtitle}
               </h2>
             )}
-            {subtitle && !hiddenSubtitle && completedYear && (
-              <span aria-hidden className="hidden md:inline text-brand-mid/60 text-[20px]">·</span>
-            )}
-            {completedYear &&
-              (isLiveH2(`Completed ${completedYear}`) ? (
-                <h2 className="inline text-[20px] md:text-[20px] font-[300] tracking-[0.18em] uppercase text-brand-mid">
-                  Completed {completedYear}
-                </h2>
-              ) : (
-                <p className="inline text-[20px] md:text-[20px] font-[300] tracking-[0.18em] uppercase text-brand-mid">
-                  Completed {completedYear}
-                </p>
-              ))}
-            </div>
             {allBadges.length > 0 && (
               <div className="flex flex-wrap justify-center items-center gap-6 pt-2">
                 {allBadges.map((b, i) => (
@@ -466,7 +462,7 @@ export default async function PortfolioProjectPage({
                     alt={b.alt || "Award"}
                     width={150}
                     height={130}
-                    className="h-32 w-auto object-contain opacity-90"
+                    className="h-[218px] w-auto object-contain opacity-90"
                   />
                 ))}
               </div>
