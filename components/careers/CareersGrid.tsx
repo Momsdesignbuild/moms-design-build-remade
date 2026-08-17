@@ -14,8 +14,10 @@ export type CareerTile = {
 };
 
 // Marketing 8/7 (supersedes Summer 7/14 overlay note): career tiles copy the
-// LIVE site's treatment — perfect-square photo, job name across the top,
-// blue double-line edging, lightest-gray tile, 4-across on desktop.
+// LIVE site's treatment — job name across the top, blue double-line edging,
+// lightest-gray tile, 4-across on desktop. Corrected 8/17 (Josh): their tiles
+// aren't actually square — measured live at ~264x302 (0.87 ratio), same 4:5
+// family as portfolio/services cards, not 1:1.
 export default function CareersGrid({
   tiles,
   heading,
@@ -41,10 +43,10 @@ export default function CareersGrid({
               <h3 className="text-center text-[20px] font-[400] tracking-[0.18em] uppercase text-ink">
                 {t.title}
               </h3>
-              <div className="relative aspect-square overflow-hidden bg-brand-mid/20 border-[4.3px] border-double border-brand">
+              <div className="relative aspect-[4/5] overflow-hidden bg-brand-mid/20 border-[4.3px] border-double border-brand">
                 {t.photo && (
                   <Image
-                    src={builder.image(t.photo).width(800).height(800).auto("format").url()}
+                    src={builder.image(t.photo).width(800).height(1000).auto("format").url()}
                     alt={t.photo?.alt || `${t.title} careers at Mom's Design Build`}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
