@@ -120,15 +120,11 @@ export default function PortableBody({ body, editorial = false }: { body?: BodyB
               const selfNumbered = /^\s*\d+\s*[.):]/.test(plain(block));
               return (
                 <div key={block._key} className="mt-14 mb-5">
-                  {/* section kicker: the site's double-rule + a running number.
-                      Self-numbered headings get NEITHER (the lone rule read
-                      as weird orphaned formatting — Josh 7/15) */}
+                  {/* section kicker: just the double-rule now — the running
+                      "01/02/03" number was dropped, read as ugly (Josh 8/17) */}
                   {!selfNumbered && (
                     <div className="flex items-center gap-4 mb-5">
                       <span className="double-rule-brand w-10 shrink-0" />
-                      <span className="text-[20px] font-semibold tracking-[0.3em] text-brand/60">
-                        {String(h2Seen).padStart(2, "0")}
-                      </span>
                     </div>
                   )}
                   <H className="text-[1.55em] md:text-[1.7em] font-[300] tracking-[1.8px] leading-[1.2] text-brand">
