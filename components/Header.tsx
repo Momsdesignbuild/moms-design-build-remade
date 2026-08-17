@@ -238,7 +238,7 @@ export default function Header() {
                         <Link
                           href={child.href}
                           role="menuitem"
-                          className="block px-5 py-3 text-[15px] tracking-[0.1em] uppercase text-ink hover:text-brand hover:bg-gray-50 transition-colors"
+                          className="block px-5 py-3 text-[16px] tracking-[0.1em] uppercase text-ink hover:text-brand hover:bg-gray-50 transition-colors"
                         >
                           {child.label}
                         </Link>
@@ -375,7 +375,7 @@ export default function Header() {
                             <Link
                               key={child.label}
                               href={child.href}
-                              className="py-2 text-[15px] tracking-[0.1em] uppercase text-muted hover:text-brand transition-colors block"
+                              className="py-2 text-[16px] tracking-[0.1em] uppercase text-muted hover:text-brand transition-colors block"
                               onClick={() => setMobileOpen(false)}
                             >
                               {child.label}

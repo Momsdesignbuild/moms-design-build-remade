@@ -31,11 +31,11 @@ export default function ContactPage() {
         <h1 className="text-[22px] md:text-[28px] font-[300] tracking-[0.25em] uppercase text-ink">
           Let&rsquo;s Talk
         </h1>
-        <p className="mt-4 text-[14px] font-[300] leading-relaxed text-muted max-w-md mx-auto">
+        <p className="mt-4 text-[16px] font-[300] leading-relaxed text-muted max-w-md mx-auto">
           Ready to start your project? We&apos;d love to hear from you.
         </p>
         {/* verbatim from their live contact page */}
-        <p className="mt-3 text-[13px] font-[300] leading-relaxed text-muted max-w-lg mx-auto">
+        <p className="mt-3 text-[16px] font-[300] leading-relaxed text-muted max-w-lg mx-auto">
           Help us build a better tomorrow by joining our team today! A variety of full-time and
           part-time positions are available!{" "}
           <Link href="/careers" className="underline underline-offset-4 decoration-brand/40 hover:decoration-brand text-ink transition-colors">
@@ -53,7 +53,7 @@ export default function ContactPage() {
               Get in Touch
             </h2>
 
-            <address className="not-italic space-y-6 text-[14px] font-[300] leading-relaxed text-muted">
+            <address className="not-italic space-y-6 text-[16px] font-[300] leading-relaxed text-muted">
               <div>
                 <p className="text-[10.5px] font-[500] tracking-[0.18em] uppercase text-ink mb-1.5">
                   Address

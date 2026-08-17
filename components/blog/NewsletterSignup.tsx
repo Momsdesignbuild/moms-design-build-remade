@@ -30,12 +30,12 @@ export default function NewsletterSignup() {
         <h2 className="text-[18px] md:text-[22px] font-[300] tracking-[0.15em] uppercase text-ink mb-3">
           Design Stories, Delivered
         </h2>
-        <p className="text-[13px] font-[300] tracking-[0.04em] text-muted mb-8">
+        <p className="text-[16px] font-[300] tracking-[0.04em] text-muted mb-8">
           Trends, project reveals, and seasonal tips from Minnesota&rsquo;s most award-winning design-build team.
         </p>
 
         {state === 'done' ? (
-          <p className="text-[13px] font-[400] tracking-[0.08em] text-ink">
+          <p className="text-[16px] font-[400] tracking-[0.08em] text-ink">
             You&rsquo;re on the list — welcome. 🌿
           </p>
         ) : (
@@ -46,7 +46,7 @@ export default function NewsletterSignup() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Your email address"
-              className="flex-1 border border-ink/20 bg-white px-4 py-3 text-[13px] font-[300] tracking-[0.04em] text-ink placeholder:text-muted/60 focus:outline-none focus:border-ink"
+              className="flex-1 border border-ink/20 bg-white px-4 py-3 text-[16px] font-[300] tracking-[0.04em] text-ink placeholder:text-muted/60 focus:outline-none focus:border-ink"
             />
             <button
               type="submit"

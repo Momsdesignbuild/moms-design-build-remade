@@ -66,8 +66,8 @@ export default function AnatomyClient({ steps }: { steps: AnatomyStep[] }) {
                         {s.title}
                       </h3>
                       <p
-                        className="text-[12.5px] md:text-[14px] font-[300] leading-snug lg:leading-relaxed text-muted max-w-md transition-all duration-500 overflow-hidden"
-                        style={{ maxHeight: i === active ? 120 : 0, opacity: i === active ? 1 : 0 }}
+                        className="text-[16px] font-[300] leading-snug lg:leading-relaxed text-muted max-w-md transition-all duration-500 overflow-hidden"
+                        style={{ maxHeight: i === active ? 150 : 0, opacity: i === active ? 1 : 0 }}
                       >
                         {s.blurb}
                       </p>

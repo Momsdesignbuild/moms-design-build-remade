@@ -3,7 +3,7 @@
 import { useState } from 'react'
 
 const field =
-  'w-full border border-ink/20 bg-white px-4 py-3 text-[13px] font-[300] tracking-[0.04em] text-ink placeholder:text-muted/60 focus:outline-none focus:border-ink'
+  'w-full border border-ink/20 bg-white px-4 py-3 text-[16px] font-[300] tracking-[0.04em] text-ink placeholder:text-muted/60 focus:outline-none focus:border-ink'
 
 /** working replacement for their WP job-application form — submissions → Sanity */
 export default function ApplicationForm() {
@@ -37,7 +37,7 @@ export default function ApplicationForm() {
     return (
       <div className="text-center py-16">
         <p className="text-[16px] font-[300] tracking-[0.1em] uppercase text-ink mb-3">Application received</p>
-        <p className="text-[13px] font-[300] text-muted">
+        <p className="text-[16px] font-[300] text-muted">
           Thank you — our team will be in touch if there&rsquo;s a fit.
         </p>
       </div>

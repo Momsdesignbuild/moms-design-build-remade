@@ -75,7 +75,7 @@ export default function ServicesEditorial() {
                     </h3>
                   </div>
                 </div>
-                <p className="mt-4 text-[15px] font-[300] leading-relaxed text-brand-mid pr-4">
+                <p className="mt-4 text-[16px] font-[300] leading-relaxed text-brand-mid pr-4">
                   {s.description}
                 </p>
                 <span className="mt-3 inline-block text-[13px] font-semibold tracking-[0.24em] uppercase text-ink border-b border-ink/20 pb-0.5 group-hover:border-ink transition-colors">

@@ -203,7 +203,7 @@ export default async function BlogPostPage({
         {/* ── The read: measured column, teal drop cap on the opening ── */}
         <div
           className="px-6 pb-16 max-w-[680px] mx-auto
-            [&_p]:text-[15px] md:[&_p]:text-[15.5px] [&_p]:leading-[1.95]
+            [&_p]:text-[16px] [&_p]:leading-[1.9]
             [&_p:first-of-type]:first-letter:float-left
             [&_p:first-of-type]:first-letter:text-[54px]
             [&_p:first-of-type]:first-letter:leading-[0.85]

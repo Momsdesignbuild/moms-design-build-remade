@@ -105,7 +105,7 @@ export default function SearchOverlay({ open, onClose }: { open: boolean; onClos
                 <p className="text-[17px] font-[400] text-ink truncate group-hover:text-brand transition-colors">
                   {r.title}
                 </p>
-                <p className="text-[14px] font-[300] text-muted truncate">{r.desc}</p>
+                <p className="text-[16px] font-[300] text-muted truncate">{r.desc}</p>
               </div>
             </Link>
           ))}

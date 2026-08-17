@@ -98,7 +98,7 @@ export default function ServicesPage() {
               </h2>
 
               {/* Description */}
-              <p className="text-[13.5px] font-[300] leading-[1.85] text-muted mb-6 flex-1">
+              <p className="text-[16px] font-[300] leading-[1.85] text-muted mb-6 flex-1">
                 {service.description}
               </p>
 

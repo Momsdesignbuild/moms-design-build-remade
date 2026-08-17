@@ -62,7 +62,7 @@ export default function Footer() {
     <footer className="bg-[#3C3C3C] text-white/75">
       <div className="max-w-[1400px] mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-10 items-start">
         {/* NAP */}
-        <address className="not-italic flex flex-col gap-3 text-[13px] font-[300] leading-relaxed">
+        <address className="not-italic flex flex-col gap-3 text-[16px] font-[300] leading-relaxed">
           <a
             href="https://www.google.com/maps/search/12275+Weckman+Road+Shakopee+MN+55379"
             target="_blank"
