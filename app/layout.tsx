@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Playfair_Display } from "next/font/google";
 import { draftMode } from "next/headers";
 import { VisualEditing } from "next-sanity/visual-editing";
 import { SanityLive } from "@/sanity/lib/live";
@@ -19,6 +20,17 @@ const proximaNova = localFont({
 const futuraPT = localFont({
   src: [{ path: "../public/fonts/futura-pt_light.woff2", weight: "300", style: "normal" }],
   variable: "--font-heading",
+  display: "swap",
+});
+// Pull-quotes / "Design Notes" editorial blocks want a distinct serif from
+// the sans body/heading fonts — was referenced via var(--font-serif, ...)
+// in the quote block already, but the variable was never actually wired up
+// to a loaded font, so it was silently rendering as plain Georgia.
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  style: ["normal", "italic"],
+  variable: "--font-serif",
   display: "swap",
 });
 
@@ -161,7 +173,7 @@ export default async function RootLayout({
   };
 
   return (
-    <html lang="en" className={`${proximaNova.variable} ${futuraPT.variable}`}>
+    <html lang="en" className={`${proximaNova.variable} ${futuraPT.variable} ${playfairDisplay.variable}`}>
       <head>
         <script
           type="application/ld+json"

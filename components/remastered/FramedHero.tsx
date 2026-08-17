@@ -118,7 +118,7 @@ export default function FramedHero() {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.9, delay: 0.3, ease: 'easeOut' }}
-                className="text-sm md:text-base font-semibold tracking-[0.3em] uppercase text-white/85 mb-6"
+                className="text-base md:text-lg font-semibold tracking-[0.3em] uppercase text-white/85 mb-6"
               >
                 Minnesota&rsquo;s Most Awarded Design-Build Firm
               </motion.p>
@@ -148,9 +148,9 @@ export default function FramedHero() {
                 </Link>
                 <Link
                   href="/contact"
-                  className="border border-transparent text-white/80 text-[11px] font-[600] tracking-[0.22em] uppercase px-9 py-3.5 hover:text-white transition-colors duration-300"
+                  className="border-2 border-brand bg-brand text-white text-sm font-[600] tracking-[0.22em] uppercase px-10 py-4 hover:bg-transparent hover:text-brand transition-colors duration-300"
                 >
-                  Start a Project
+                  Meet with Us
                 </Link>
               </motion.div>
             </motion.div>
