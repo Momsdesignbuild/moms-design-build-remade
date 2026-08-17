@@ -3,6 +3,28 @@ import Link from "next/link";
 import { JsonLd } from "@/components/PortableBody";
 import BuilderTrendForm from "@/components/BuilderTrendForm";
 import { PAGE_JSONLD } from "./jsonld";
+import {
+  InstagramLogo,
+  FacebookLogo,
+  PinterestLogo,
+  LinkedinLogo,
+} from "@phosphor-icons/react/dist/ssr";
+
+// Houzz doesn't have a Phosphor icon — same custom SVG as the footer
+function HouzzIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M1.27 0v24h8.244v-7.148h4.972V24h8.244V9.492L12.483 6.24V0H1.27z" />
+    </svg>
+  );
+}
+
+const SOCIAL_LINKS = [
+  { label: "Instagram", href: "https://www.instagram.com/momsdesignbuild/", Icon: InstagramLogo },
+  { label: "Facebook", href: "http://www.facebook.com/momsdesignbuild", Icon: FacebookLogo },
+  { label: "Pinterest", href: "https://www.pinterest.com/momsdesignbuild/", Icon: PinterestLogo },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/momsdesignbuild", Icon: LinkedinLogo },
+];
 
 export const metadata: Metadata = {
   title: { absolute: "Contact Mom's Design Build - Landscape & Interior Design" },
@@ -28,7 +50,7 @@ export default function ContactPage() {
 
       {/* ── Page Header ── */}
       <section className="py-16 md:py-20 px-6 text-center bg-white">
-        <h1 className="text-[22px] md:text-[28px] font-[300] tracking-[0.25em] uppercase text-ink">
+        <h1 className="text-[34px] md:text-[44px] font-[700] tracking-[0.25em] uppercase text-ink">
           Let&rsquo;s Talk
         </h1>
         <p className="mt-4 text-[20px] font-[300] leading-relaxed text-muted max-w-md mx-auto">
@@ -93,42 +115,28 @@ export default function ContactPage() {
             </address>
 
             <div className="mt-10 pt-8 border-t border-gray-100">
-              <p className="text-[20px] font-[500] tracking-[0.18em] uppercase text-ink mb-4">
-                Follow Us
-              </p>
-              <div className="flex gap-4">
-                {[
-                  {
-                    label: "Instagram",
-                    href: "https://www.instagram.com/momsdesignbuild/",
-                  },
-                  {
-                    label: "Facebook",
-                    href: "http://www.facebook.com/momsdesignbuild",
-                  },
-                  {
-                    label: "Houzz",
-                    href: "http://www.houzz.com/pro/momsdesignbuild",
-                  },
-                  {
-                    label: "Pinterest",
-                    href: "https://www.pinterest.com/momsdesignbuild/",
-                  },
-                  {
-                    label: "LinkedIn",
-                    href: "https://www.linkedin.com/company/momsdesignbuild",
-                  },
-                ].map((social) => (
+              <div className="flex gap-5">
+                {SOCIAL_LINKS.map(({ label, href, Icon }) => (
                   <a
-                    key={social.label}
-                    href={social.href}
+                    key={label}
+                    href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[20px] font-[400] tracking-[0.08em] uppercase text-muted hover:text-brand transition-colors"
+                    aria-label={label}
+                    className="text-ink hover:text-brand transition-colors"
                   >
-                    {social.label}
+                    <Icon size={22} weight="regular" />
                   </a>
                 ))}
+                <a
+                  href="http://www.houzz.com/pro/momsdesignbuild"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Houzz"
+                  className="text-ink hover:text-brand transition-colors"
+                >
+                  <HouzzIcon />
+                </a>
               </div>
             </div>
           </div>
