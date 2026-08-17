@@ -130,13 +130,15 @@ export default async function CareerPage({
           </h1>
 
           {c.facts && c.facts.length > 0 && (
-            <ul className="border-y border-ink/10 py-6 mb-10 max-w-3xl mx-auto flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+            <ul className="border-y border-ink/10 py-6 mb-10 max-w-md mx-auto flex flex-col items-center gap-3">
               {c.facts.map((f, i) => (
                 <li
                   key={i}
-                  className="flex items-center gap-3 text-[20px] font-[300] tracking-[0.04em] text-muted"
+                  className="flex items-start justify-center gap-3 text-[20px] font-[300] tracking-[0.04em] text-muted text-center"
                 >
-                  <FactIcon text={f} />
+                  <span className="mt-[3px] shrink-0">
+                    <FactIcon text={f} />
+                  </span>
                   <span>{f}</span>
                 </li>
               ))}
