@@ -65,6 +65,14 @@ const TEAM = [
     href: "/team/heather-sweeney",
   },
   {
+    name: "Aaron Calley",
+    role: "Senior Landscape Designer",
+    alt: "Aaron Calley - Senior Landscape Designer at Mom's Design Build - Most Awarded Design Build Firm in the Midwest",
+    photo:
+      "https://cdn.sanity.io/images/wavk40jo/production/30f7172255e7d6e9955e94d298caadc716285d95-1200x1200.jpg",
+    href: "/team/aaron-calley",
+  },
+  {
     name: "Melissa Mlejnek",
     role: "Senior Interior Designer",
     // alt verbatim from THEIR live about page
@@ -162,6 +170,14 @@ const TEAM = [
     photo:
       "https://cdn.sanity.io/images/wavk40jo/production/a102606db43edcfd2b1d625110869b3d24c81bd1-1024x1024.jpg",
     href: "/team/chris-moller",
+  },
+  {
+    name: "Alyssa Stommel",
+    role: "Project Coordinator",
+    alt: "Alyssa Stommel - Project Coordinator at Mom's Design Build - Most Awarded Design Build Firm in the Midwest",
+    photo:
+      "https://cdn.sanity.io/images/wavk40jo/production/29a85c802d484e8ef9d39258d9acb68981f70866-1200x1200.jpg",
+    href: "/team/alyssa-stommel",
   },
   {
     name: "Cara Anderson",
