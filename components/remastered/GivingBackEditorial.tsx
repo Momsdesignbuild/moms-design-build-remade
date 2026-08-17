@@ -28,7 +28,7 @@ export default function GivingBackEditorial() {
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.7, ease: 'easeOut' }}
           >
-            <p className="text-[16px] font-semibold tracking-[0.3em] uppercase text-brand mb-5">
+            <p className="text-[20px] font-semibold tracking-[0.3em] uppercase text-brand mb-5">
               Community Impact
             </p>
             <h2 className="text-3xl md:text-5xl font-[300] tracking-[0.06em] uppercase text-white mb-8">
@@ -40,7 +40,7 @@ export default function GivingBackEditorial() {
             >
               &ldquo;Love our community. We give generously to impact people in need.&rdquo;
             </blockquote>
-            <p className="text-[16px] font-[300] leading-relaxed text-white/60 max-w-md mb-9">
+            <p className="text-[20px] font-[300] leading-relaxed text-white/60 max-w-md mb-9">
               From this foundational value grew our Giving Back Initiative — where all
               consultation fees are donated to a community organization. We are honored to
               share the story of our partners.
@@ -66,7 +66,7 @@ export default function GivingBackEditorial() {
 
             <Link
               href="/contact"
-              className="inline-block border border-white/80 text-white text-[16px] font-[600] tracking-[0.22em] uppercase px-8 py-3 hover:bg-white hover:text-ink transition-colors duration-300"
+              className="inline-block border border-white/80 text-white text-[20px] font-[600] tracking-[0.22em] uppercase px-8 py-3 hover:bg-white hover:text-ink transition-colors duration-300"
             >
               Connect With Us
             </Link>
@@ -96,7 +96,7 @@ export default function GivingBackEditorial() {
                 <p className="text-4xl md:text-5xl font-[300] text-ink" style={{ fontFamily: 'var(--font-heading)' }}>
                   100%
                 </p>
-                <p className="mt-1.5 text-[16px] font-semibold tracking-[0.2em] uppercase text-muted leading-relaxed">
+                <p className="mt-1.5 text-[20px] font-semibold tracking-[0.2em] uppercase text-muted leading-relaxed">
                   Of consultation fees<br />donated to community
                 </p>
               </div>

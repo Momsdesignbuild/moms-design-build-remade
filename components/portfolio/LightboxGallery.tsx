@@ -274,7 +274,7 @@ export default function LightboxGallery({
                 {((s > 0 && segments[s - 1].stack && hasSliderPair(segments[s - 1])) || (seg as { gotTada?: boolean }).gotTada) && (
                   <div className="my-12 flex items-center justify-center gap-6 max-w-3xl mx-auto">
                     <div className="h-px flex-1 bg-ink/10" />
-                    <p className="text-[16px] md:text-[20px] font-[300] tracking-[0.4em] uppercase text-ink">TA-DA!</p>
+                    <p className="text-[20px] md:text-[20px] font-[300] tracking-[0.4em] uppercase text-ink">TA-DA!</p>
                     <div className="h-px flex-1 bg-ink/10" />
                   </div>
                 )}

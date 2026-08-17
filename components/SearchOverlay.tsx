@@ -84,7 +84,7 @@ export default function SearchOverlay({ open, onClose }: { open: boolean; onClos
         />
         <div className="mt-8 space-y-2">
           {q && index && results.length === 0 && (
-            <p className="text-[16px] font-[300] text-muted py-8 text-center">
+            <p className="text-[20px] font-[300] text-muted py-8 text-center">
               Nothing found for &ldquo;{q}&rdquo; — try a project name, city, or topic.
             </p>
           )}
@@ -105,7 +105,7 @@ export default function SearchOverlay({ open, onClose }: { open: boolean; onClos
                 <p className="text-[17px] font-[400] text-ink truncate group-hover:text-brand transition-colors">
                   {r.title}
                 </p>
-                <p className="text-[16px] font-[300] text-muted truncate">{r.desc}</p>
+                <p className="text-[20px] font-[300] text-muted truncate">{r.desc}</p>
               </div>
             </Link>
           ))}

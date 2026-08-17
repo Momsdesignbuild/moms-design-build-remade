@@ -591,7 +591,7 @@ function PortalBody({ blocks }: { blocks: BodyBlock[] }) {
                 <span className="text-[26px] font-[200] text-brand/40 leading-none">
                   {String(stepN).padStart(2, "0")}
                 </span>
-                <span className="text-[16px] font-[500] tracking-[0.14em] uppercase text-brand">
+                <span className="text-[20px] font-[500] tracking-[0.14em] uppercase text-brand">
                   {plainText(b).replace(/^\d+\.\s*/, "")}
                 </span>
               </h3>

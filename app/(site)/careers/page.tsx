@@ -52,7 +52,7 @@ export default async function CareersPage() {
         <h1 className="text-[22px] md:text-[28px] font-[300] tracking-[0.25em] uppercase text-ink mb-4">
           Careers
         </h1>
-        <p className="text-[16px] font-[300] leading-relaxed text-muted max-w-lg mx-auto">
+        <p className="text-[20px] font-[300] leading-relaxed text-muted max-w-lg mx-auto">
           We&apos;re always looking for talented, passionate people to join our
           team. Be part of Minnesota&apos;s most award-winning design-build firm.
         </p>
@@ -63,7 +63,7 @@ export default async function CareersPage() {
 
       {/* ── CTA ── */}
       <section className="bg-[#f7f4ef] py-14 px-6 text-center border-t border-gray-100">
-        <p className="text-[16px] font-[300] tracking-[0.08em] text-muted mb-6 max-w-md mx-auto">
+        <p className="text-[20px] font-[300] tracking-[0.08em] text-muted mb-6 max-w-md mx-auto">
           Don&apos;t see the right role? We&apos;d still love to hear from you.
         </p>
         <Link

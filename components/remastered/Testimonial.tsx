@@ -71,7 +71,7 @@ export default function Testimonial() {
               >
                 {q.text}
               </blockquote>
-              <p className="mt-8 text-[16px] font-semibold tracking-[0.28em] uppercase text-muted">
+              <p className="mt-8 text-[20px] font-semibold tracking-[0.28em] uppercase text-muted">
                 {q.who}
                 {q.href && (
                   <>

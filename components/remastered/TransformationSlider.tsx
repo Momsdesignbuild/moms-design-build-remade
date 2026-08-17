@@ -22,11 +22,11 @@ export default function TransformationSlider() {
           transition={{ duration: 0.7, ease: 'easeOut' }}
           className="text-center mb-12"
         >
-          <p className="text-[16px] font-semibold tracking-[0.3em] uppercase text-brand mb-4">The Transformation</p>
+          <p className="text-[20px] font-semibold tracking-[0.3em] uppercase text-brand mb-4">The Transformation</p>
           <h2 className="text-3xl md:text-5xl font-[300] tracking-[0.06em] uppercase text-ink">
             Same Backyard
           </h2>
-          <p className="mt-4 text-[16px] font-[300] tracking-[0.04em] text-muted">
+          <p className="mt-4 text-[20px] font-[300] tracking-[0.04em] text-muted">
             Drag the line. One real backyard, before and after.
           </p>
         </motion.div>

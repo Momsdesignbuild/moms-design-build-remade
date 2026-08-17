@@ -72,7 +72,7 @@ export default async function BlogPage() {
         <h1 className="text-[26px] md:text-[34px] font-[300] tracking-[0.25em] uppercase text-ink mb-4">
           The Blog
         </h1>
-        <p className="text-[16px] font-[300] tracking-[0.06em] leading-relaxed text-brand-mid max-w-3xl mx-auto">
+        <p className="text-[20px] font-[300] tracking-[0.06em] leading-relaxed text-brand-mid max-w-3xl mx-auto">
           Current trends, project stories, and home &amp; landscape design ideas.
         </p>
       </section>
@@ -103,7 +103,7 @@ export default async function BlogPage() {
                 {featured.title}
               </h2>
               {featured.excerpt && (
-                <p className="mt-4 text-white/75 text-[15px] md:text-[16px] font-[300] leading-relaxed line-clamp-2 max-w-xl">
+                <p className="mt-4 text-white/75 text-[15px] md:text-[20px] font-[300] leading-relaxed line-clamp-2 max-w-xl">
                   {featured.excerpt}
                 </p>
               )}

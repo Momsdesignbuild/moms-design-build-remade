@@ -125,7 +125,7 @@ export default async function TeamMemberPage({
               {m.name}
             </h1>
             {m.role && (
-              <p className="text-[16px] font-[400] tracking-[0.15em] uppercase text-muted mb-6">
+              <p className="text-[20px] font-[400] tracking-[0.15em] uppercase text-muted mb-6">
                 {m.role}
               </p>
             )}

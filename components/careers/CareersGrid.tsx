@@ -38,7 +38,7 @@ export default function CareersGrid({
             className="group block border border-brand/70 p-[3px] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_18px_35px_-20px_rgba(28,28,26,0.35)]"
           >
             <div className="border border-brand/70 bg-[#F6F6F4] p-4 h-full flex flex-col gap-4">
-              <h3 className="text-center text-[16px] font-[400] tracking-[0.18em] uppercase text-ink">
+              <h3 className="text-center text-[20px] font-[400] tracking-[0.18em] uppercase text-ink">
                 {t.title}
               </h3>
               <div className="relative aspect-square overflow-hidden bg-brand-mid/20 border-[4.3px] border-double border-brand">

@@ -23,7 +23,7 @@ export default function Statement() {
   return (
     <section ref={ref} className="bg-[#F7F5F2] pt-8 lg:pt-10 pb-16 lg:pb-20 px-6">
       <div className="max-w-4xl mx-auto text-center">
-        <p className="text-base font-semibold tracking-[0.3em] uppercase text-brand mb-10">
+        <p className="text-[20px] font-semibold tracking-[0.3em] uppercase text-brand mb-10">
           Mom&rsquo;s Design Build · Minneapolis, MN
         </p>
         <p

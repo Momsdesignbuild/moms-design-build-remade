@@ -203,7 +203,7 @@ export default async function BlogPostPage({
         {/* ── The read: measured column, teal drop cap on the opening ── */}
         <div
           className="px-6 pb-16 max-w-[680px] mx-auto
-            [&_p]:text-[16px] [&_p]:leading-[1.9]
+            [&_p]:text-[20px] [&_p]:leading-[1.9]
             [&_p:first-of-type]:first-letter:float-left
             [&_p:first-of-type]:first-letter:text-[54px]
             [&_p:first-of-type]:first-letter:leading-[0.85]
@@ -255,7 +255,7 @@ export default async function BlogPostPage({
                     <p className="text-[10px] font-semibold tracking-[0.24em] uppercase text-muted mb-2.5">
                       {p.cat ?? "Journal"}{p.publishedAt ? ` · ${fmtDate(p.publishedAt)}` : ""}
                     </p>
-                    <h3 className="text-[16px] md:text-[17px] font-[300] tracking-[0.05em] leading-snug text-ink group-hover:text-brand transition-colors duration-300">
+                    <h3 className="text-[20px] md:text-[17px] font-[300] tracking-[0.05em] leading-snug text-ink group-hover:text-brand transition-colors duration-300">
                       {p.title}
                     </h3>
                   </Link>

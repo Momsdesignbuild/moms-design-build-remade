@@ -75,7 +75,7 @@ export default function GuideCTA({
         onClick={() => { setOpen(true); setNudge(false) }}
         aria-label="Open free design guide"
         className={`fixed right-0 top-1/2 z-40 -translate-y-1/2 bg-ink text-white
-          px-3 py-5 text-[16px] font-[500] tracking-[0.22em] uppercase
+          px-3 py-5 text-[20px] font-[500] tracking-[0.22em] uppercase
           [writing-mode:vertical-rl] rotate-180
           shadow-[-4px_0_16px_rgba(0,0,0,0.18)] hover:bg-brand transition-all duration-300
           ${nudge ? '-translate-x-2' : ''}`}
@@ -115,12 +115,12 @@ export default function GuideCTA({
               >
                 {guideTitle}
               </h2>
-              <p className="text-[16px] font-[300] leading-relaxed text-muted mb-8">
+              <p className="text-[20px] font-[300] leading-relaxed text-muted mb-8">
                 Download <em className="italic">(FREE!)</em> {guideBody}.
               </p>
 
               {state === 'done' ? (
-                <p className="text-[16px] font-[400] tracking-[0.08em] text-brand">
+                <p className="text-[20px] font-[400] tracking-[0.08em] text-brand">
                   Check your inbox — your guide is on the way!
                 </p>
               ) : (
@@ -132,17 +132,17 @@ export default function GuideCTA({
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Email Address"
                     aria-label="Email address"
-                    className="border border-ink/20 px-5 py-3.5 text-[16px] font-[300] text-ink text-center placeholder:text-muted/70 focus:outline-none focus:border-brand transition-colors"
+                    className="border border-ink/20 px-5 py-3.5 text-[20px] font-[300] text-ink text-center placeholder:text-muted/70 focus:outline-none focus:border-brand transition-colors"
                   />
                   <button
                     type="submit"
                     disabled={state === 'busy'}
-                    className="bg-brand-stone text-white text-[16px] font-[600] tracking-[0.28em] uppercase px-8 py-3.5 hover:opacity-90 transition-opacity disabled:opacity-60"
+                    className="bg-brand-stone text-white text-[20px] font-[600] tracking-[0.28em] uppercase px-8 py-3.5 hover:opacity-90 transition-opacity disabled:opacity-60"
                   >
                     {state === 'busy' ? 'Sending…' : 'Get the Guide'}
                   </button>
                   {state === 'error' && (
-                    <p className="text-[16px] text-[#C0564F]">Something went wrong — try again?</p>
+                    <p className="text-[20px] text-[#C0564F]">Something went wrong — try again?</p>
                   )}
                 </form>
               )}

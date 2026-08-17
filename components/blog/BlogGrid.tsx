@@ -70,7 +70,7 @@ export default function BlogGrid({ cards: cardsRaw }: { cards: BlogCard[] }) {
             value={query}
             onChange={(e) => { setQuery(e.target.value); setShown(PAGE) }}
             placeholder="Search the blog…"
-            className="w-full md:w-72 border-b border-ink/20 bg-transparent px-1 py-2 text-[16px] font-[300] tracking-[0.04em] text-ink placeholder:text-muted/60 focus:outline-none focus:border-ink"
+            className="w-full md:w-72 border-b border-ink/20 bg-transparent px-1 py-2 text-[20px] font-[300] tracking-[0.04em] text-ink placeholder:text-muted/60 focus:outline-none focus:border-ink"
             aria-label="Search blog posts"
           />
         </div>
@@ -110,7 +110,7 @@ export default function BlogGrid({ cards: cardsRaw }: { cards: BlogCard[] }) {
                 {post.title}
               </h2>
               {post.excerpt && (
-                <p className="mt-2 text-[16px] font-[300] leading-relaxed text-brand-mid line-clamp-2">{post.excerpt}</p>
+                <p className="mt-2 text-[20px] font-[300] leading-relaxed text-brand-mid line-clamp-2">{post.excerpt}</p>
               )}
             </Link>
           </motion.div>

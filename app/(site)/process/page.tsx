@@ -125,7 +125,7 @@ export default function ProcessPage() {
         <h1 className="text-4xl md:text-6xl font-[300] tracking-[0.08em] uppercase text-ink mb-6">
           The Mom&rsquo;s Way
         </h1>
-        <p className="text-[16px] md:text-[17px] font-[300] tracking-[0.06em] text-brand-mid max-w-md mx-auto">
+        <p className="text-[20px] md:text-[17px] font-[300] tracking-[0.06em] text-brand-mid max-w-md mx-auto">
           From first conversation to happily ever after.
         </p>
       </section>
@@ -201,7 +201,7 @@ export default function ProcessPage() {
         <h2 className="text-2xl md:text-4xl font-[300] tracking-[0.08em] uppercase text-brand mb-5">
           Build Your Legacy
         </h2>
-        <p className="text-[16px] font-[300] tracking-[0.06em] text-brand-mid mb-9 max-w-md mx-auto">
+        <p className="text-[20px] font-[300] tracking-[0.06em] text-brand-mid mb-9 max-w-md mx-auto">
           Ready to begin the Mom&rsquo;s Way? Let&rsquo;s talk.
         </p>
         <Link

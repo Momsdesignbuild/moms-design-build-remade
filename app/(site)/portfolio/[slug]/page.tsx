@@ -439,20 +439,20 @@ export default async function PortfolioProjectPage({
                 (live's awkward placement) — only visible ones belong here */}
             <div className="flex flex-wrap items-baseline justify-center gap-x-4 gap-y-1">
             {subtitle && !hiddenSubtitle && (
-              <h2 className="inline text-[16px] md:text-[18px] font-[300] tracking-[0.22em] uppercase text-brand text-center">
+              <h2 className="inline text-[20px] md:text-[18px] font-[300] tracking-[0.22em] uppercase text-brand text-center">
                 {subtitle}
               </h2>
             )}
             {subtitle && !hiddenSubtitle && completedYear && (
-              <span aria-hidden className="hidden md:inline text-brand-mid/60 text-[16px]">·</span>
+              <span aria-hidden className="hidden md:inline text-brand-mid/60 text-[20px]">·</span>
             )}
             {completedYear &&
               (isLiveH2(`Completed ${completedYear}`) ? (
-                <h2 className="inline text-[16px] md:text-[18px] font-[300] tracking-[0.18em] uppercase text-brand-mid">
+                <h2 className="inline text-[20px] md:text-[18px] font-[300] tracking-[0.18em] uppercase text-brand-mid">
                   Completed {completedYear}
                 </h2>
               ) : (
-                <p className="inline text-[16px] md:text-[18px] font-[300] tracking-[0.18em] uppercase text-brand-mid">
+                <p className="inline text-[20px] md:text-[18px] font-[300] tracking-[0.18em] uppercase text-brand-mid">
                   Completed {completedYear}
                 </p>
               ))}
@@ -547,7 +547,7 @@ export default async function PortfolioProjectPage({
               case "label": {
                 const Tag = isLiveH2(s.text) ? "h2" : "p";
                 return (
-                  <Tag key={i} className="text-center text-[16px] md:text-[18px] font-[300] tracking-[0.28em] uppercase text-brand my-10">
+                  <Tag key={i} className="text-center text-[20px] md:text-[18px] font-[300] tracking-[0.28em] uppercase text-brand my-10">
                     {rich(s.block, s.text)}
                   </Tag>
                 );
@@ -653,7 +653,7 @@ export default async function PortfolioProjectPage({
               no-designer rule): public designer credit under the photos,
               linked to the designer's team page. No designerName on file =
               credit the firm, linked home. */}
-          <p className="mt-10 text-center text-[16px] font-[300] tracking-[0.22em] uppercase text-brand-mid">
+          <p className="mt-10 text-center text-[20px] font-[300] tracking-[0.22em] uppercase text-brand-mid">
             Designed by{" "}
             {(project.designerName
               ? project.designerName.split(/\s+and\s+/i)
@@ -693,7 +693,7 @@ export default async function PortfolioProjectPage({
       {fgCredit && (
         <section className="bg-white px-6 pb-16">
           <p
-            className="text-center text-[15px] md:text-[16px] font-[400] tracking-[0.24em] uppercase [&_a]:decoration-[#FF6D6A]/50 [&_a]:hover:decoration-[#FF6D6A]"
+            className="text-center text-[15px] md:text-[20px] font-[400] tracking-[0.24em] uppercase [&_a]:decoration-[#FF6D6A]/50 [&_a]:hover:decoration-[#FF6D6A]"
             style={{ color: "#FF6D6A" }}
           >
             {rich(fgCredit.block, fgCredit.text)}
@@ -740,7 +740,7 @@ export default async function PortfolioProjectPage({
         <h2 className="text-[20px] md:text-[26px] font-[300] tracking-[0.2em] uppercase text-brand mb-4">
           Start Your Project
         </h2>
-        <p className="text-[16px] font-[300] tracking-[0.04em] text-brand-mid mb-8 max-w-md mx-auto">
+        <p className="text-[20px] font-[300] tracking-[0.04em] text-brand-mid mb-8 max-w-md mx-auto">
           Ready to transform your outdoor or interior space? Let&apos;s talk.
         </p>
         <Link

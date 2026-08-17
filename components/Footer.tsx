@@ -62,7 +62,7 @@ export default function Footer() {
     <footer className="bg-[#3C3C3C] text-white/75">
       <div className="max-w-[1400px] mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-10 items-start">
         {/* NAP */}
-        <address className="not-italic flex flex-col gap-3 text-[16px] font-[300] leading-relaxed">
+        <address className="not-italic flex flex-col gap-3 text-[20px] font-[300] leading-relaxed">
           <a
             href="https://www.google.com/maps/search/12275+Weckman+Road+Shakopee+MN+55379"
             target="_blank"
@@ -97,7 +97,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-[16px] tracking-[0.1em] uppercase font-[300] hover:text-white transition-colors"
+                    className="text-[20px] tracking-[0.1em] uppercase font-[300] hover:text-white transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -146,7 +146,7 @@ export default function Footer() {
 
       {/* Copyright */}
       <div className="border-t border-white/10">
-        <div className="max-w-[1400px] mx-auto px-6 py-4 text-center text-[16px] text-white/35 tracking-wider">
+        <div className="max-w-[1400px] mx-auto px-6 py-4 text-center text-[20px] text-white/35 tracking-wider">
           &copy; {year}{" "}Mom&apos;s Design Build. All Rights Reserved. | BC# 638384
         </div>
       </div>

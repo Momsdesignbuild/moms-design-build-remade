@@ -134,7 +134,7 @@ export default async function CareerPage({
               {c.facts.map((f, i) => (
                 <li
                   key={i}
-                  className="flex items-start justify-center gap-3 text-[16px] font-[300] tracking-[0.04em] text-muted"
+                  className="flex items-start justify-center gap-3 text-[20px] font-[300] tracking-[0.04em] text-muted"
                 >
                   <span className="mt-[1px] shrink-0">
                     <FactIcon text={f} />

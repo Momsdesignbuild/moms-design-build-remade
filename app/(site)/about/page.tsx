@@ -318,7 +318,7 @@ export default function AboutPage() {
                     {member.name}
                   </p>
                 </Link>
-                <p className="text-[16px] font-[300] tracking-[0.06em] uppercase text-ink">
+                <p className="text-[20px] font-[300] tracking-[0.06em] uppercase text-ink">
                   {member.role}
                 </p>
               </div>
@@ -339,7 +339,7 @@ export default function AboutPage() {
           >
             Our Mission
           </h2>
-          <p className="text-[16px] font-[300] leading-[1.9] text-muted italic">
+          <p className="text-[20px] font-[300] leading-[1.9] text-muted italic">
             &ldquo;To serve people through the fusion of anthropology,
             horticulture, and architecture, in order to discover, create, and
             enhance distinctive places.&rdquo;
@@ -363,7 +363,7 @@ export default function AboutPage() {
             {CORE_VALUES.map((value, i) => (
               <li
                 key={value}
-                className="flex items-center gap-4 text-[16px] font-[300] tracking-[0.1em] uppercase text-ink"
+                className="flex items-center gap-4 text-[20px] font-[300] tracking-[0.1em] uppercase text-ink"
               >
                 <span className="text-brand font-[400] text-[15px] w-6 text-right flex-shrink-0">
                   {i + 1}.
