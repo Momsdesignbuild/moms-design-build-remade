@@ -11,6 +11,15 @@ already happened.
 
 ## 2026-08-19
 
+- **Post-Launch Checklist written** ([[../_notes/Post-Launch Checklist]]) —
+  the old Go-Live Checklist only had a single bullet for everything after
+  the DNS flip. While building it, found the Sanity→Vercel revalidation
+  webhook's code and secret were already in place (23 days old, never
+  wired up) — tried to finish the job by registering the webhook itself,
+  but our Sanity API token isn't an Administrator, which webhook creation
+  requires. Left the exact dashboard values in the checklist for whoever
+  has admin access to click through — it's a 5-minute manual step now
+  instead of a rediscovery later.
 - **Vault remodeled.** The old per-page content mirror (`vault/blog/`,
   `portfolio/`, etc.) was a migration-verification tool — useful while moving
   WordPress content into Sanity, dead weight now that the migration is done

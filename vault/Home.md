@@ -34,5 +34,6 @@ Learned something worth remembering? Update the right note — don't duplicate.
 - [[_notes/Landmines]] — mistakes that burned an agent before, don't repeat them
 - [[_notes/Security and Credentials]] — token locations, rotation notes
 - [[_notes/Go-Live Checklist]] — the DNS-flip day list (domain still dormant)
+- [[_notes/Post-Launch Checklist]] — what to do right after the flip
 - [[_archive/Migration-Hub|_archive/]] — the old WordPress→Sanity migration
   record, kept for history. Not a live reference — see the note in that file.

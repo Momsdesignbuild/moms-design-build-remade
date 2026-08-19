@@ -11,7 +11,7 @@ The domain (`momsdesignbuild.com` + www) is already claimed on the Vercel projec
 2. **wp-content path rewrites** — the byte-copied Yoast schema references `momsdesignbuild.com/wp-content/...` image URLs; add rewrites so those paths resolve (schema URLs must not 404 post-launch).
 3. **`SITE_LIVE=true`** — ungates robots.txt (currently noindex-safe).
 4. **DNS flip** at their registrar → Vercel. TLS is automatic.
-5. **Sanity publish webhook → revalidation** — so Summer's publishes appear without waiting for ISR (currently `revalidate: 3600`).
+5. **Sanity publish webhook → revalidation** — so Summer's publishes appear without waiting for ISR (currently `revalidate: 3600`). Code + secret are already in place (8/19); only the webhook itself needs registering in Sanity's dashboard by an Administrator — see [[Post-Launch Checklist]] for the exact values.
 6. **siteSettings doc** for homepage knobs.
 7. **Summer's Studio login + training** — drafts vs publish, Presentation tab, [[Web Bot Flow|#mdb-web-bot]] as her assistant.
 8. **Newsletter → Mailchimp swap** (form stays, API route changes; subscribers exported from Sanity).
