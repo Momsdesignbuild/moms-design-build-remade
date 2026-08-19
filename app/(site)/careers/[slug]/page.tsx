@@ -124,13 +124,15 @@ export default async function CareerPage({
       <JsonLd raw={c.jsonLd} />
 
       <section className="pt-16 md:pt-24 pb-14 px-6 bg-white">
-        <div className="max-w-[760px] mx-auto">
-          <h1 className="text-center text-[22px] md:text-[28px] font-[300] tracking-[0.25em] uppercase text-ink mb-8">
+        {/* live column is ~995px with 18px body — narrow 760px read as "thin"
+            (Josh voice memo: words should fill out the page) */}
+        <div className="max-w-[995px] mx-auto">
+          <h1 className="text-left text-[24px] md:text-[31px] font-[700] tracking-[0.06em] uppercase text-ink mb-8">
             {c.title}
           </h1>
 
           {c.facts && c.facts.length > 0 && (
-            <ul className="border-y border-ink/10 py-6 mb-10 max-w-md mx-auto flex flex-col items-center gap-3">
+            <ul className="border-y border-ink/10 py-6 mb-10 max-w-2xl mx-auto flex flex-col items-center gap-3">
               {c.facts.map((f, i) => (
                 <li
                   key={i}
