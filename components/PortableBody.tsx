@@ -113,10 +113,12 @@ export default function PortableBody({ body, editorial = false, sectionLabels = 
           const items = list.items.map((b) => <li key={b._key}>{renderSpans(b)}</li>);
           // explicit list styling — Tailwind preflight strips list-style and the
           // typography plugin isn't installed, so bare ul/ol render without markers
+          {/* universal rule (Josh 8/19): bullets AND numbered lists always
+              indent from the body text edge */}
           return list.ordered ? (
-            <ol key={list._key} className={editorial ? "list-none pl-1 my-6 space-y-3 [counter-reset:ed] [&>li]:relative [&>li]:pl-9 [&>li]:[counter-increment:ed] [&>li:before]:content-[counter(ed,decimal-leading-zero)] [&>li:before]:absolute [&>li:before]:left-0 [&>li:before]:top-[3px] [&>li:before]:text-[20px] [&>li:before]:font-semibold [&>li:before]:tracking-wide [&>li:before]:text-brand" : "list-decimal pl-6 my-5 space-y-2.5"}>{items}</ol>
+            <ol key={list._key} className={editorial ? "list-none pl-1 ml-6 my-6 space-y-3 [counter-reset:ed] [&>li]:relative [&>li]:pl-9 [&>li]:[counter-increment:ed] [&>li:before]:content-[counter(ed,decimal-leading-zero)] [&>li:before]:absolute [&>li:before]:left-0 [&>li:before]:top-[3px] [&>li:before]:text-[20px] [&>li:before]:font-semibold [&>li:before]:tracking-wide [&>li:before]:text-brand" : "list-decimal pl-6 ml-5 my-5 space-y-2.5"}>{items}</ol>
           ) : (
-            <ul key={list._key} className={editorial ? "list-none pl-1 my-6 space-y-3 [&>li]:relative [&>li]:pl-7 [&>li:before]:content-['—'] [&>li:before]:absolute [&>li:before]:left-0 [&>li:before]:text-brand" : "list-disc pl-6 my-5 space-y-2.5"}>{items}</ul>
+            <ul key={list._key} className={editorial ? "list-none pl-1 ml-6 my-6 space-y-3 [&>li]:relative [&>li]:pl-7 [&>li:before]:content-['—'] [&>li:before]:absolute [&>li:before]:left-0 [&>li:before]:text-brand" : "list-disc pl-6 ml-5 my-5 space-y-2.5"}>{items}</ul>
           );
         }
         const block = g as BodyBlock;
@@ -166,7 +168,10 @@ export default function PortableBody({ body, editorial = false, sectionLabels = 
               );
             }
           }
-          return <p key={block._key}>{renderSpans(block)}</p>;
+          // paragraphs typed as "1." / "2." lists indent like real lists
+          // (universal rule, Josh 8/19); plain() strips stega chars first
+          const numbered = /^\d+\s*[.)]\s/.test(plain(block));
+          return <p key={block._key} className={numbered ? "ml-5 pl-6 -indent-6" : undefined}>{renderSpans(block)}</p>;
         }
         if (block._type === "image" && block.asset) {
           const img = (

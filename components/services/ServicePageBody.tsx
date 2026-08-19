@@ -492,7 +492,8 @@ function GroupedBody({
               <ul
                 key={list.key}
                 className={
-                  narrow ? "list-disc pl-6 my-5 space-y-2" : "list-disc pl-6 my-5 space-y-2 max-w-[1050px] mx-auto"
+                  // universal rule (Josh 8/19): lists always indent from body text
+                  narrow ? "list-disc pl-6 ml-5 my-5 space-y-2" : "list-disc pl-12 my-5 space-y-2 max-w-[1050px] mx-auto"
                 }
               >
                 {list.items.map((li) => (
@@ -568,8 +569,10 @@ function GroupedBody({
             );
           }
           if (b._type === "block") {
+            // paragraphs typed as "1." / "2." lists indent like real lists
+            const numbered = /^\d+\s*[.)]\s/.test(plainText(b).trim());
             return (
-              <p key={b._key} className={mw("text-[20px] md:text-[20px] font-[300] leading-[1.8] text-brand-mid mb-5")}>
+              <p key={b._key} className={mw(`text-[20px] md:text-[20px] font-[300] leading-[1.8] text-brand-mid mb-5${numbered ? " ml-5 pl-6 -indent-6" : ""}`)}>
                 <Rich block={b} />
               </p>
             );

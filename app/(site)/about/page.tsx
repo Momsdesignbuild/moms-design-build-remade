@@ -257,12 +257,16 @@ export default function AboutPage() {
           progressively more of the top of the photo (where people's heads
           are). Locked to the source photo's real aspect ratio instead, so
           the whole crew is always visible, at any screen width (Josh, 8/17). */}
-      <section className="relative w-full max-w-[1800px] mx-auto aspect-[2560/1581] min-h-[280px] overflow-hidden">
+      {/* 8/19: full-aspect hero filled a laptop viewport — nothing visible
+          below the photo. Section is 30% shorter; the crop removes the TOP
+          30% of the frame (sky/building), bottom-anchored so the crew stays
+          in view (aspect 2560/1107 = 70% of the photo's real height). */}
+      <section className="relative w-full max-w-[1800px] mx-auto aspect-[2560/1107] min-h-[280px] overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={HERO_IMAGE}
           alt="Mom's Design Build - Meet the Team!"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-bottom"
           loading="eager"
         />
       </section>
