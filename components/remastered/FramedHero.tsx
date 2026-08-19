@@ -40,6 +40,17 @@ function useSettledTransform(value: MotionValue<number>, input: number[], output
   })
 }
 
+// Shared with Header.tsx, which derives its own transparent/solid threshold
+// from these same two numbers — computed synchronously from raw scroll
+// position against the static section below, NOT by reading this file's
+// animated elements. Reading an animated element's rendered position from
+// another component raced against Framer's own scroll-driven render pass
+// (confirmed 8/19: scrolling back up could momentarily/permanently strand
+// the header solid white over the hero). Tune the curve here; Header
+// follows automatically.
+export const HERO_INSET_PROGRESS_RANGE: [number, number] = [0.12, 0.82]
+export const HERO_INSET_MAX_REM = { mobile: 4.5, desktop: 5.5 }
+
 export default function FramedHero() {
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] })
@@ -56,7 +67,11 @@ export default function FramedHero() {
   }, [])
 
   // full-bleed → matted frame
-  const inset = useTransform(scrollYProgress, [0.12, 0.82], ['0rem', isMobile ? '4.5rem' : '5.5rem'])
+  const inset = useTransform(
+    scrollYProgress,
+    HERO_INSET_PROGRESS_RANGE,
+    ['0rem', `${isMobile ? HERO_INSET_MAX_REM.mobile : HERO_INSET_MAX_REM.desktop}rem`]
+  )
   const insetX = useTransform(scrollYProgress, [0.12, 0.82], ['0rem', isMobile ? '1.25rem' : '6.5rem'])
   const veil = useSettledTransform(scrollYProgress, [0, 0.5], [0.32, 0.14])
   // The whole title block shrinks together as one unit (Josh, July 17: "just
@@ -77,20 +92,13 @@ export default function FramedHero() {
   // the frame's caption fades in as the mat forms
 
   return (
-    <section ref={ref} className="relative h-[195vh] bg-[#F7F5F2]">
+    <section ref={ref} id="home-hero-section" className="relative h-[195vh] bg-[#F7F5F2]">
       {/* 100svh: iOS Safari's collapsing toolbar makes 100vh overshoot and jitter */}
       <div className="sticky top-0 h-[100svh] overflow-hidden bg-[#F7F5F2]">
         <motion.div
           className="absolute overflow-hidden"
           style={{ top: inset, bottom: inset, left: insetX, right: insetX }}
         >
-          {/* Header sync sentinel — inherits this div's own animated `top`,
-              so its on-screen position IS the live inset value, no matter
-              how the scroll-progress curve above is tuned. Header watches
-              this (not a fixed scroll offset) to know the instant the
-              video's top edge retreats behind the header band, i.e. when
-              the header stops floating over video and needs to go solid. */}
-          <div id="home-hero-sentinel" aria-hidden className="absolute top-0 left-0 w-full h-px pointer-events-none" />
           <video
             className="absolute inset-0 w-full h-full object-cover"
             autoPlay

@@ -40,5 +40,5 @@ Page-type inventory, routes, doc shapes: [[Page Types and Structure]].
 ## The paper trail
 
 - `~/Desktop/moms-handoff.md` (both machines) — the live agent ledger. Update it when you change state.
-- This vault (`vault/` in the repo) — the visual knowledge base + per-page status board. Regenerate with `node scripts/build-vault.mjs`; hand-written notes in `_notes/` survive.
+- This vault (`vault/` in the repo) — memory written as things happen: `website/change-log.md`, `decisions/`, `campaigns/`, `content/`, `brand/`, plus `_notes/` (hand-written, permanent). The old auto-regenerated per-page mirror was retired 8/19 — see [[../decisions/2026-08-19-vault-remodel]] — and lives on only as history in `_archive/`.
 - Claude memory on Josh's mini — accumulated war-wisdom.

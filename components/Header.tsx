@@ -7,6 +7,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { List, X, CaretDown } from "@phosphor-icons/react";
+import { HERO_INSET_PROGRESS_RANGE, HERO_INSET_MAX_REM } from "@/components/remastered/FramedHero";
 
 const NAV_ITEMS = [
   { label: "Portfolio", href: "/portfolio" },
@@ -46,7 +47,7 @@ const NAV_ITEMS = [
   { label: "Careers", href: "/careers" },
 ];
 
-const HERO_SENTINEL_ID = "home-hero-sentinel";
+const HERO_SECTION_ID = "home-hero-section";
 // React warns if useLayoutEffect runs during server rendering, which Next.js
 // does even for "use client" components on the initial SSR pass.
 const useIsomorphicLayoutEffect =
@@ -75,10 +76,10 @@ export default function Header() {
       return;
     }
 
-    const sentinel = document.getElementById(HERO_SENTINEL_ID);
+    const heroSection = document.getElementById(HERO_SECTION_ID);
     const headerEl = headerRef.current;
 
-    if (!sentinel || !headerEl) {
+    if (!heroSection || !headerEl) {
       // Sentinel not on the DOM yet (shouldn't happen on home, but stay
       // safe): fall back to a viewport-scaled threshold instead of a fixed
       // pixel number, and clamp overscroll's negative scrollY so a
@@ -98,39 +99,60 @@ export default function Header() {
 
     // The homepage hero is a pinned container-scroll effect (FramedHero):
     // the video shrinks into a matted frame as you scroll, it never simply
-    // "ends" at some offset. The sentinel lives inside the video's own
-    // animated container, so its live on-screen top position IS the
-    // video's real top edge at every instant, no matter how that
-    // animation's curve is tuned. The header goes solid the moment that
-    // edge reaches the header's OWN live height — measured fresh on every
-    // tick, so safe-area changes or a future redesign can't drift this out
-    // of sync the way a hardcoded pixel number did before. rAF-throttled
-    // so a torrent of scroll events can't spam re-renders.
+    // "ends" at some offset. We used to find the crossover point by reading
+    // the live position of an element ANIMATED by Framer Motion's own
+    // scroll-driven render pass — but that pass runs on its own timing,
+    // and reading its output from here raced against it: scrolling back up
+    // could catch a stale (pre-update) position and read "solid" when the
+    // hero was really still behind the header, sometimes sticking that way
+    // once scrolling stopped (confirmed 8/19 via scripted repro).
     //
-    // Video is only "behind the header" while its top edge sits between
-    // y=0 and the header's bottom edge. Once the pin fully releases and
-    // the whole hero scrolls away, the sentinel goes NEGATIVE (scrolled
-    // above the viewport entirely) — that's a fundamentally different
-    // state from "still mid-shrink" even though both can read as small
-    // numbers, so it needs its own check, not just `>= headerHeight`.
+    // Fix: compute the identical progress value Framer computes for this
+    // section — via the same `getBoundingClientRect` math `useScroll`
+    // itself uses (offset ['start start','end end']) — straight off the
+    // hero SECTION, which is plain document flow, never transformed by
+    // Framer. That makes this a pure function of the real, instantaneous
+    // scroll position every time, with nothing else's render loop able to
+    // put it out of sync. HERO_INSET_PROGRESS_RANGE/HERO_INSET_MAX_REM are
+    // imported from FramedHero so the two can never drift apart if that
+    // curve is retuned. rAF-throttled so a torrent of scroll events can't
+    // spam re-renders.
     let ticking = false;
     let settleTimer: ReturnType<typeof setTimeout> | undefined;
     const measure = () => {
       ticking = false;
       // Rubber-band overscroll ABOVE the top (Safari elastic bounce) drags
-      // the whole page downward: the sentinel's top lands BELOW the header
-      // line and the rect math reads "not behind the header" → solid white
-      // over the hero (Josh 7/17: "scrolling too high breaks the header").
-      // scrollY <= 0 means we are at the very top BY DEFINITION — hero
-      // behind the header, transparent — no matter what the rects say
-      // mid-bounce.
+      // the whole page downward, which can otherwise misread as "not
+      // behind the header" → solid white over the hero (Josh 7/17:
+      // "scrolling too high breaks the header"). scrollY <= 0 means we are
+      // at the very top BY DEFINITION — hero behind the header,
+      // transparent — no matter what the rect math says mid-bounce.
       if (window.scrollY <= 0) {
         setScrolled(false);
         return;
       }
       const headerHeight = headerEl.getBoundingClientRect().height;
-      const sentinelTop = sentinel.getBoundingClientRect().top;
-      const videoBehindHeader = sentinelTop >= 0 && sentinelTop < headerHeight;
+      const rect = heroSection.getBoundingClientRect();
+      const scrollableDistance = rect.height - window.innerHeight;
+      const progress =
+        scrollableDistance > 0
+          ? Math.min(1, Math.max(0, -rect.top / scrollableDistance))
+          : 1;
+      const isMobile = window.innerWidth < 1024;
+      const insetMaxRem = isMobile
+        ? HERO_INSET_MAX_REM.mobile
+        : HERO_INSET_MAX_REM.desktop;
+      const rootFontPx =
+        parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+      const insetMaxPx = insetMaxRem * rootFontPx;
+      const [p0, p1] = HERO_INSET_PROGRESS_RANGE;
+      const insetPx =
+        progress <= p0
+          ? 0
+          : progress >= p1
+            ? insetMaxPx
+            : (insetMaxPx * (progress - p0)) / (p1 - p0);
+      const videoBehindHeader = insetPx < headerHeight;
       setScrolled(!videoBehindHeader);
     };
     const onScrollOrResize = () => {

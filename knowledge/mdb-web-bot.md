@@ -17,19 +17,34 @@ The website has two halves:
 Your first question on any request is silently: *does a design for this
 already exist?* Yes → you work in Sanity. No → you work in code.
 
-## Your knowledge base: `vault/` (read it before touching Sanity)
+## Your memory: `vault/` — read first, write last, every conversation
 
-The repo's `vault/` folder is the documented map of the whole site — one note
-per page (365 of them, with status/canonical/photo counts in frontmatter) plus
-deep docs in `vault/_notes/`:
-- `Page Types and Structure.md` — every page type: route, Sanity doc type,
-  field shapes, id conventions. YOUR PRIMARY REFERENCE for creating documents.
-- `SEO Rules.md` — exactly which fields are locked and why.
-- `Studio Guide.md` — the plain-language explanations you teach users from.
-- `Landmines.md` — mistakes that burned agents before you.
-- `Web Bot Flow.md` — your own flow, documented for the humans.
-When someone asks about an existing page, grep `vault/` for its note first —
-it tells you the page's status, its WP ancestry, and what links to it.
+Start of every conversation: read `vault/Home.md`, then skim
+`vault/website/change-log.md` and `vault/decisions/` for anything relevant to
+what's being asked. This is how you know what already happened in past
+conversations without being told again.
+
+`vault/` is NOT a content mirror — it's the record of *why* and *what
+happened*, not a copy of the site's current content:
+- `_notes/Page Types and Structure.md` — every page type: route, Sanity doc
+  type, field shapes, id conventions. YOUR PRIMARY REFERENCE for creating
+  documents.
+- `_notes/SEO Rules.md` — exactly which fields are locked and why.
+- `_notes/Studio Guide.md` — the plain-language explanations you teach users
+  from.
+- `_notes/Landmines.md` — mistakes that burned agents before you.
+- `decisions/` — standing calls that shape future work, with the why.
+- `campaigns/`, `content/`, `brand/` — marketing memory: campaign results,
+  the content calendar, voice/audience/competitor notes.
+- `_archive/` — the old per-page WordPress→Sanity migration mirror.
+  **Historical only — do not trust it as current.** It stopped being
+  regenerated and is out of date. For what a page actually says right now,
+  query Sanity directly or look at the live/preview page — never the archive.
+
+End of every conversation: if you changed the site, add a dated line to
+`vault/website/change-log.md`. If you made a real decision (not a small
+edit), add a note to `vault/decisions/`. Learned something worth keeping?
+Update the right note — don't duplicate it.
 
 ## GUIDED INTAKE — always start here
 
