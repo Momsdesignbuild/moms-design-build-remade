@@ -464,14 +464,16 @@ function GroupedBody({
             }
             return (
               <div key={faq.key} className={mw("my-14 border border-ink/15 bg-[#FAFAF8] px-6 md:px-12 py-10")}>
-                <h2 className="text-[22px] md:text-[26px] font-[300] tracking-[0.3em] uppercase text-ink mb-8">
+                <h2 className="text-[26px] md:text-[35px] font-[300] tracking-[0.3em] uppercase text-ink mb-8">
                   FAQs
                 </h2>
                 <div className="space-y-8">
                   {pairs.map((p, pi) => (
                     <div key={p.q?._key ?? "a" + pi}>
                       {p.q && (
-                        <h3 className="text-[20px] md:text-[22px] font-[400] italic text-brand mb-2">
+                        // subheads universally ~35px (Josh 8/19 — FAQ questions
+                        // read the same size as body at 20/22)
+                        <h3 className="text-[26px] md:text-[35px] font-[300] italic leading-[1.25] text-brand mb-3">
                           {plainText(p.q)}
                         </h3>
                       )}
