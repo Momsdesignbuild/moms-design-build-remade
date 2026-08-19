@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { stegaClean } from "next-sanity";
 import { CARD_SETS } from "./serviceCards";
+import ServiceCarousel from "./ServiceCarousel";
 
 /* Renders a servicePage doc's portable-text body with one of the FOUR
  * renderer designs:
@@ -33,6 +34,8 @@ export type BodyBlock = {
   url?: string;
   alt?: string;
   dim?: { width: number; height: number };
+  // imageCarousel (urls + dims resolved in GROQ)
+  images?: Array<{ url: string; alt?: string; dim?: { width: number; height: number } }>;
 };
 
 export type ServiceTemplate = "hub" | "standard" | "interior" | "division" | "portal";
@@ -215,7 +218,7 @@ function HubBody({
         return (
           <Tag
             key={b._key}
-            className="text-[20px] md:text-[24px] font-[300] tracking-[0.18em] uppercase mb-5"
+            className="text-[26px] md:text-[35px] font-[300] tracking-[0.18em] uppercase mb-5"
             style={{ color: accent || "var(--color-brand)" }}
           >
             {plainText(b)}
@@ -231,7 +234,7 @@ function HubBody({
       ) : (
         <Tag
           key={b._key}
-          className="text-[20px] md:text-[24px] font-[300] tracking-[0.22em] uppercase text-center mt-16 mb-6 pt-4"
+          className="text-[26px] md:text-[35px] font-[300] tracking-[0.22em] uppercase text-center mt-16 mb-6 pt-4"
           style={{ color: accent || "var(--color-brand)" }}
         >
           {plainText(b)}
@@ -259,7 +262,7 @@ function HubBody({
             ? `text-[20px] font-[400] tracking-[0.28em] uppercase ${paired ? "" : "text-center"} mb-8`
             : paired
               ? "text-[20px] md:text-[20px] font-[300] leading-[1.8] text-brand-mid mb-5"
-              : "text-[20px] md:text-[20px] font-[300] leading-[1.8] text-brand-mid max-w-[760px] mx-auto mb-5"
+              : "text-[20px] md:text-[20px] font-[300] leading-[1.8] text-brand-mid max-w-[1050px] mx-auto mb-5"
         }
         style={tagline ? { color: accent || "var(--color-brand)" } : undefined}
       >
@@ -284,6 +287,13 @@ function HubBody({
     }
     if (b._type === "cardsGrid") {
       return <Cards key={b._key} cardsSet={cardsSet} layout={cardsLayout} />;
+    }
+    if (b._type === "imageCarousel" && b.images?.length) {
+      return (
+        <div key={b._key} className="my-8">
+          <ServiceCarousel slides={b.images.filter((s) => s.url)} />
+        </div>
+      );
     }
     if (b._type === "image" && b.url && b.dim) {
       const display = Math.min(b.dim.width, 1100);
@@ -435,10 +445,13 @@ function GroupedBody({
 }) {
   const groups = groupFaqs(groupLists(blocks));
   let heads = 0;
-  const mw = (cls: string) => (narrow ? cls : `${cls} max-w-[820px] mx-auto`);
+  // Josh 8/19 (meeting doc): text must FILL the page — min ~95% of the nav
+  // row (~1050px @1440) — "wide but not wider than the nav items"
+  const mw = (cls: string) => (narrow ? cls : `${cls} max-w-[1050px] mx-auto`);
   return (
     <section className="pt-16 md:pt-24 pb-20 px-6 bg-white">
-      <div className={narrow ? "max-w-[820px] mx-auto" : "max-w-[1100px] mx-auto"}>
+      {/* min ~1050 everywhere (Josh 8/19: text fills to ~95% of the nav row) */}
+      <div className={narrow ? "max-w-[1050px] mx-auto" : "max-w-[1100px] mx-auto"}>
         {groups.map((g, i) => {
           if ((g as FaqGroup).kind === "faq") {
             const faq = g as FaqGroup;
@@ -479,7 +492,7 @@ function GroupedBody({
               <ul
                 key={list.key}
                 className={
-                  narrow ? "list-disc pl-6 my-5 space-y-2" : "list-disc pl-6 my-5 space-y-2 max-w-[790px] mx-auto"
+                  narrow ? "list-disc pl-6 my-5 space-y-2" : "list-disc pl-6 my-5 space-y-2 max-w-[1050px] mx-auto"
                 }
               >
                 {list.items.map((li) => (
@@ -506,7 +519,7 @@ function GroupedBody({
                   className={
                     narrow
                       ? "text-[26px] md:text-[32px] font-[300] tracking-[0.18em] uppercase text-ink text-center mb-8"
-                      : "text-[25px] md:text-[31px] font-[300] tracking-[0.16em] uppercase text-ink text-center mb-8 max-w-[860px] mx-auto"
+                      : "text-[26px] md:text-[35px] font-[300] tracking-[0.16em] uppercase text-ink text-center mb-8 max-w-[1050px] mx-auto"
                   }
                 >
                   {plainText(b)}
@@ -515,24 +528,24 @@ function GroupedBody({
             if (narrow) {
               if (b.style === "h3" || b.style === "h4")
                 return (
-                  <Tag key={b._key} className="text-[20px] font-[400] tracking-[0.16em] uppercase text-brand mt-10 mb-3">
+                  <Tag key={b._key} className="text-[24px] md:text-[28px] font-[400] tracking-[0.16em] uppercase text-brand mt-10 mb-3">
                     {plainText(b)}
                   </Tag>
                 );
               return (
-                <Tag key={b._key} className="text-[20px] md:text-[22px] font-[300] tracking-[0.2em] uppercase text-brand text-center mt-16 mb-6">
+                <Tag key={b._key} className="text-[26px] md:text-[35px] font-[300] tracking-[0.2em] uppercase text-brand text-center mt-16 mb-6">
                   {plainText(b)}
                 </Tag>
               );
             }
             if (b.style === "h2")
               return (
-                <Tag key={b._key} className="text-[20px] md:text-[22px] font-[300] tracking-[0.2em] uppercase text-brand text-center mt-16 mb-6 max-w-[820px] mx-auto">
+                <Tag key={b._key} className="text-[26px] md:text-[35px] font-[300] tracking-[0.2em] uppercase text-brand text-center mt-16 mb-6 max-w-[1050px] mx-auto">
                   {plainText(b)}
                 </Tag>
               );
             return (
-              <Tag key={b._key} className="text-[20px] font-[400] tracking-[0.16em] uppercase text-brand mt-10 mb-3 max-w-[820px] mx-auto">
+              <Tag key={b._key} className="text-[24px] md:text-[28px] font-[400] tracking-[0.16em] uppercase text-brand mt-10 mb-3 max-w-[1050px] mx-auto">
                 {plainText(b)}
               </Tag>
             );
@@ -541,7 +554,7 @@ function GroupedBody({
             return (
               <blockquote
                 key={b._key}
-                className={`text-[20px] md:text-[22px] font-[300] italic leading-[1.8] text-ink text-center max-w-[640px] mx-auto ${narrow ? "my-8" : "my-10"}`}
+                className={`text-[20px] md:text-[22px] font-[300] italic leading-[1.8] text-ink text-center max-w-[1050px] mx-auto ${narrow ? "my-8" : "my-10"}`}
               >
                 <Rich block={b} />
               </blockquote>
@@ -585,6 +598,13 @@ function GroupedBody({
                     cell="group relative block aspect-[4/5] overflow-hidden w-[calc(50%-6px)] md:w-[calc(33.333%-8px)] lg:w-[calc(25%-9px)]"
                   />
                 ))}
+              </div>
+            );
+          }
+          if (b._type === "imageCarousel" && b.images?.length) {
+            return (
+              <div key={b._key} className={narrow ? "my-8" : "my-8 max-w-[1050px] mx-auto"}>
+                <ServiceCarousel slides={b.images.filter((s) => s.url)} />
               </div>
             );
           }

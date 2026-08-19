@@ -166,7 +166,7 @@ export default async function BlogPostPage({
       <article>
         {/* ── Editorial masthead on cream ── */}
         <header className="bg-[#F7F5F2] pt-20 md:pt-28 pb-16 md:pb-20 px-6 text-center">
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-[1050px] mx-auto">
             {/* Dropped category chip (e.g. "Tips From an Expert") from up here
                 — read weird above the H1. Reading time is the only thing
                 that belongs above the fold; author + date moved below the
@@ -228,7 +228,7 @@ export default async function BlogPostPage({
 
         {/* ── The read: measured column, teal drop cap on the opening ── */}
         <div
-          className="px-6 pb-16 max-w-[680px] mx-auto
+          className="px-6 pb-16 max-w-[1050px] mx-auto
             [&_p]:text-[20px] [&_p]:leading-[1.9]
             [&_p:first-of-type]:first-letter:float-left
             [&_p:first-of-type]:first-letter:text-[54px]

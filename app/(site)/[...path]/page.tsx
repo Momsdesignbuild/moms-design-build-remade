@@ -55,7 +55,7 @@ export default async function NestedPage({ params }: { params: Promise<{ path: s
         <h1 className="text-[22px] md:text-[28px] font-[300] tracking-[0.25em] uppercase text-ink">{doc.title}</h1>
       </section>
       <section className="px-6 pb-24">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-[1050px] mx-auto">
           <PortableBody body={doc.body} />
         </div>
       </section>

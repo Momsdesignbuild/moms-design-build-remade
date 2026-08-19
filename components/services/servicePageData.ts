@@ -24,7 +24,11 @@ export async function getServicePage(slug: string): Promise<ServicePageDoc | nul
     query: `*[_type == "servicePage" && slug.current == $slug][0]{
       title, template, cardsSet, divisionLogoUrl, metaTitle, metaDescription,
       ogImageUrl, ogImageWidth, ogImageHeight, ogImageType, sourceUrl, jsonLd,
-      body[]{ ..., _type == "image" => { "url": asset->url, "dim": asset->metadata.dimensions{ width, height } } }
+      body[]{
+        ...,
+        _type == "image" => { "url": asset->url, "dim": asset->metadata.dimensions{ width, height } },
+        _type == "imageCarousel" => { "images": images[]{ "url": asset->url, alt, href, "dim": asset->metadata.dimensions{ width, height } } }
+      }
     }`,
     params: { slug },
   });

@@ -72,7 +72,7 @@ export default async function BlogPage() {
         <h1 className="text-[26px] md:text-[34px] font-[300] tracking-[0.25em] uppercase text-ink mb-4">
           The Blog
         </h1>
-        <p className="text-[20px] font-[300] tracking-[0.06em] leading-relaxed text-brand-mid max-w-3xl mx-auto">
+        <p className="text-[20px] font-[300] tracking-[0.06em] leading-relaxed text-brand-mid max-w-[1050px] mx-auto">
           Current trends, project stories, and home &amp; landscape design ideas.
         </p>
       </section>

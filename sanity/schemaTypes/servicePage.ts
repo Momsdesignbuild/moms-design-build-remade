@@ -70,6 +70,24 @@ export default defineType({
           preview: { select: { title: 'text', subtitle: 'href' } },
         },
         {
+          name: 'imageCarousel', type: 'object', title: 'Photo carousel',
+          fields: [{
+            name: 'images', type: 'array', title: 'Slides',
+            of: [{
+              type: 'image',
+              options: { hotspot: true },
+              fields: [
+                { name: 'alt', type: 'string', title: 'Alt text' },
+                { name: 'href', type: 'string', title: 'Slide link (optional)' },
+              ],
+            }],
+          }],
+          preview: {
+            select: { images: 'images' },
+            prepare: ({ images }: { images?: unknown[] }) => ({ title: `▶ Photo carousel (${images?.length ?? 0} slides)` }),
+          },
+        },
+        {
           name: 'cardsGrid', type: 'object', title: 'Sub-service card grid',
           fields: [{
             name: 'note', type: 'string', title: 'Note', readOnly: true,

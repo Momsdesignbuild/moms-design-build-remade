@@ -124,10 +124,11 @@ export default function PortableBody({ body, editorial = false, sectionLabels = 
           if (!block.children.some((c) => c.text.trim())) return null;
           if (/^h[2-6]$/.test(block.style ?? "")) {
             const H = block.style as "h2" | "h3" | "h4" | "h5" | "h6";
-            // live-WP heading scale, Mom's blue per Summer (H2 1.7em / H3 1.3em, Futura 300)
-            const cls = H === "h2"
-              ? "text-[1.55em] md:text-[1.7em] font-[300] tracking-[1.8px] leading-[1.2] text-brand mt-10 mb-4"
-              : "text-[1.2em] md:text-[1.3em] font-[300] tracking-[1.5px] leading-[1.2] text-brand mt-8 mb-3";
+            // blue subheads sitewide at ~35px desktop (Josh 8/19: "always
+            // really small"); careers section h3/h4 count as main subheads
+            const cls = H === "h2" || (sectionLabels && (H === "h3" || H === "h4"))
+              ? "text-[28px] md:text-[35px] font-[300] tracking-[1.8px] leading-[1.2] text-brand mt-10 mb-4"
+              : "text-[24px] md:text-[28px] font-[300] tracking-[1.5px] leading-[1.2] text-brand mt-8 mb-3";
             if (editorial && H === "h2") {
               h2Seen += 1;
               // headings that number THEMSELVES ("2. GOODBYE BORING…") keep
@@ -143,7 +144,7 @@ export default function PortableBody({ body, editorial = false, sectionLabels = 
                       <span className="double-rule-brand w-10 shrink-0" />
                     </div>
                   )}
-                  <H className="text-[1.55em] md:text-[1.7em] font-[300] tracking-[1.8px] leading-[1.2] text-brand">
+                  <H className="text-[28px] md:text-[35px] font-[300] tracking-[1.8px] leading-[1.2] text-brand">
                     {renderSpans(block)}
                   </H>
                 </div>
@@ -157,7 +158,7 @@ export default function PortableBody({ body, editorial = false, sectionLabels = 
               return (
                 <p
                   key={block._key}
-                  className="font-[600] tracking-[0.06em] mt-8 mb-2"
+                  className="text-[24px] font-[600] tracking-[0.06em] mt-8 mb-2"
                   style={{ color: "#CBD5E1" }}
                 >
                   {renderSpans(block)}

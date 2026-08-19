@@ -44,7 +44,7 @@ export default async function PrivacyPolicyPage() {
       </section>
 
       <section className="px-6 pb-24">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-[1050px] mx-auto">
           <PortableBody body={doc?.body} />
         </div>
       </section>

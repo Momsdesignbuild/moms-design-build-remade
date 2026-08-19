@@ -269,7 +269,7 @@ export default function AboutPage() {
 
       {/* ── Story ── */}
       <section className="py-16 md:py-24 px-6 bg-white" aria-labelledby="story-heading">
-        <div className="max-w-3xl mx-auto text-center">
+        <div className="max-w-[1050px] mx-auto text-center">
           <h1
             id="story-heading"
             className="text-[22px] md:text-[28px] font-[300] tracking-[0.22em] uppercase text-ink mb-8"
@@ -354,10 +354,10 @@ export default function AboutPage() {
         className="py-16 md:py-20 px-6 bg-white double-rule"
         aria-labelledby="mission-heading"
       >
-        <div className="max-w-2xl mx-auto text-center">
+        <div className="max-w-[1050px] mx-auto text-center">
           <h2
             id="mission-heading"
-            className="text-[24px] md:text-[28px] font-[300] tracking-[0.22em] uppercase text-brand mb-6"
+            className="text-[26px] md:text-[35px] font-[300] tracking-[0.22em] uppercase text-brand mb-6"
           >
             Our Mission
           </h2>
@@ -374,10 +374,10 @@ export default function AboutPage() {
         className="py-16 md:py-20 px-6 bg-white double-rule"
         aria-labelledby="values-heading"
       >
-        <div className="max-w-xl mx-auto text-center">
+        <div className="max-w-[1050px] mx-auto text-center">
           <h2
             id="values-heading"
-            className="text-[24px] md:text-[28px] font-[300] tracking-[0.22em] uppercase text-brand mb-10"
+            className="text-[26px] md:text-[35px] font-[300] tracking-[0.22em] uppercase text-brand mb-10"
           >
             Core Values
           </h2>

@@ -509,7 +509,7 @@ export default async function PortfolioProjectPage({
                 return (
                   <blockquote key={i} className="my-12 text-center">
                     <p
-                      className="text-[22px] md:text-[28px] italic leading-relaxed tracking-[0.02em] text-brand max-w-2xl mx-auto"
+                      className="text-[22px] md:text-[28px] italic leading-relaxed tracking-[0.02em] text-brand max-w-[1050px] mx-auto"
                       style={{ fontFamily: 'var(--font-serif, "Playfair Display", Georgia, serif)' }}
                     >
                       {rich(s.block, s.text)}
