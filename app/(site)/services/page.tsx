@@ -12,7 +12,6 @@ export const metadata: Metadata = {
     title: "Landscaping & Home Remodeling in Minnesota - Mom's Design Build Services",
     description:
       "Mom's Design Build offers luxury landscape architecture and design, interior design and remodeling, & Fine Gardening in MN. Contact us today!",
-    url: "https://momsdesignbuild.com/services/",
     siteName: "Mom's Design Build",
     locale: "en_US",
     type: "article",

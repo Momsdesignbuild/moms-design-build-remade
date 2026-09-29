@@ -24,7 +24,6 @@ export const metadata: Metadata = {
     title: "Mom's Design Build Blog - Explore Home & Landscape Design",
     description:
       "The Mom's Design Build Blog is composed of various current trends and home design ideas that are sure to inspire your next project.",
-    url: "https://momsdesignbuild.com/blog/",
     type: "website",
   },
 };

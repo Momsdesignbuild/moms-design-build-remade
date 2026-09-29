@@ -18,7 +18,6 @@ export const metadata: Metadata = {
     title: "Careers At Mom's Design Build - Explore Job Opportunities",
     description:
       "Mom's Design Build is looking for talented applicants from designers to builders in MN. Explore our job openings and submit your application today!",
-    url: "https://momsdesignbuild.com/careers/",
     siteName: "Mom's Design Build",
     locale: "en_US",
     type: "article",

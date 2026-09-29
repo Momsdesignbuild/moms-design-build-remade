@@ -20,6 +20,7 @@ const DESIGNER_TEAM_SLUGS: Record<string, string> = {
   "Melissa Mlejnek": "melissa-mlejnek",
   "Kelley Woodhead": "kelley-woodhead",
   "Owen Sweeney": "owen-sweeney",
+  "Brittney Udenberg": "brittney-udenberg",
 };
 import DesignNotes from "@/components/portfolio/DesignNotes";
 import OverlayTile from "@/components/OverlayTile";

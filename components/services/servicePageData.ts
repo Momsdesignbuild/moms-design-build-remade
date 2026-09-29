@@ -56,7 +56,6 @@ export function serviceMetadata(doc: ServicePageDoc | null): Metadata {
     openGraph: {
       title: doc.metaTitle,
       description: doc.metaDescription,
-      url,
       siteName: "Mom's Design Build",
       locale: "en_US",
       type: "article",

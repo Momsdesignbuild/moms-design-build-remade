@@ -17,7 +17,6 @@ export const metadata: Metadata = {
     title: "About Mom's Design Build - Landscape & Remodeling Design",
     description:
       "Discover the talented team behind Mom's Design Build, an award-winning landscape and interior remodel design firm based in Minnesota.",
-    url: "https://momsdesignbuild.com/about/",
     siteName: "Mom's Design Build",
     locale: "en_US",
     type: "article",
@@ -26,7 +25,7 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image" },
 };
 
-// 21 members, THEIR live-page order; photos are SHA-verified WP originals on Sanity CDN
+// 24 members, THEIR live-page order; photos are SHA-verified WP originals on Sanity CDN
 const TEAM = [
   {
     name: "Jim Sweeney",
@@ -45,6 +44,15 @@ const TEAM = [
     photo:
       "https://cdn.sanity.io/images/wavk40jo/production/9b03bc4b6fba9f9a6d9abb896950c93b024affb4-1024x1024.jpg",
     href: "/team/craig-weckman",
+  },
+  {
+    name: "Shanna Ballsrud",
+    role: "Controller, System Developer & HR",
+    // alt verbatim from THEIR live about page (added 9/29)
+    alt: "Shanna Ballsrud - Controller, Systems Developer, and HR at Mom's Design Build in MN",
+    photo:
+      "https://cdn.sanity.io/images/wavk40jo/production/632b29fc689935e7d6cea75dfc0c17cd08a7c3a7-1200x1200.jpg",
+    href: "/team/shanna-ballsrud",
   },
   {
     name: "Becca Bastyr",
@@ -98,6 +106,15 @@ const TEAM = [
     photo:
       "https://cdn.sanity.io/images/wavk40jo/production/5125fa61dc71a8db6f5266d8832c07262c1044e4-1024x1024.jpg",
     href: "/team/brittney-udenberg",
+  },
+  {
+    name: "Melanie Bolson",
+    role: "Special Projects Manager & Designer",
+    // alt verbatim from THEIR live about page (added 9/29)
+    alt: "Melanie Bolson - Special Projects Manager and Designer at Mom's Design Build - The Most Awarded Design Build Firm in MN",
+    photo:
+      "https://cdn.sanity.io/images/wavk40jo/production/dfd559bc5f26a0836faa553629f83dbe2841fd1a-1200x1200.jpg",
+    href: "/team/melanie-bolson",
   },
   {
     name: "Cherilyn Tangen",
@@ -232,6 +249,15 @@ const TEAM = [
     photo:
       "https://cdn.sanity.io/images/wavk40jo/production/889be4555ddc033829a5eb60939ddfeff26e9d31-1024x1024.jpg",
     href: "/team/jazper-wiebusch",
+  },
+  {
+    name: "Joshua Montanez",
+    role: "Business Systems & Automation Specialist",
+    // alt verbatim from THEIR live about page (added 9/29)
+    alt: "Joshua Montanez - Business Systems and Automations Specialist at Mom's Design Build MN",
+    photo:
+      "https://cdn.sanity.io/images/wavk40jo/production/840f202afd4c76eecb7fb3cd7698d784f9d12896-1200x1200.jpg",
+    href: "/team/joshua-montanez",
   },
 ];
 

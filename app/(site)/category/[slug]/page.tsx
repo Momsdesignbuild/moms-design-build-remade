@@ -55,7 +55,6 @@ export async function generateMetadata({
     title: { absolute: seo.titleTag },
     description: seo.metaDescription ?? undefined,
     alternates: { canonical: `https://momsdesignbuild.com/category/${slug}/` },
-    openGraph: { url: `https://momsdesignbuild.com/category/${slug}/` },
   };
 }
 

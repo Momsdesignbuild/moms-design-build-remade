@@ -18,7 +18,6 @@ export const metadata: Metadata = {
     title: "Landscape & Interior Design Build Portfolio - Mom's Design Build",
     description:
       "Mom's Design Build has completed a variety of custom luxury interior and landscape projects for our clients in Minnesota. Explore our design-build portfolio today!",
-    url: "https://momsdesignbuild.com/portfolio/",
     type: "article",
     images: [
       {

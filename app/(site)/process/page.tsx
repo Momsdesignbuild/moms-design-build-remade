@@ -7,9 +7,9 @@ import { PROCESS_JSONLD } from "./jsonld";
 // og:image = the exact 768x512 crop WP serves, same bytes, from Sanity
 const OG_IMAGE =
   "https://cdn.sanity.io/images/wavk40jo/production/126b88b9f5bf35c72b00dbef22b8802f6ee9ec5c-768x512.jpg";
-// their warranty PDF, re-hosted on Sanity (was a wp-content link on their site)
+// their warranty PDF (the 2026/09 version Summer flagged 9/29), re-hosted on Sanity
 const WARRANTY_PDF =
-  "https://cdn.sanity.io/files/wavk40jo/production/73ebc3f295515e599b6fade1738fff0275178b53.pdf";
+  "https://cdn.sanity.io/files/wavk40jo/production/25db9c7900412d5804296d38abb9eb145bb8c1ab.pdf";
 
 export const metadata: Metadata = {
   title: { absolute: "Home & Landscape Design Process - Mom's Design Build Company" },
@@ -20,7 +20,6 @@ export const metadata: Metadata = {
     title: "Home & Landscape Design Process - Mom's Design Build Company",
     description:
       "Mom's Design Build is with you throughout the whole design build process from consultation to a tour of your new space. Let's make your project a reality.",
-    url: "https://momsdesignbuild.com/process/",
     siteName: "Mom's Design Build",
     locale: "en_US",
     type: "article",

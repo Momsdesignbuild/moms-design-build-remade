@@ -61,7 +61,6 @@ export async function generateMetadata({
     openGraph: {
       title,
       description: m.metaDescription,
-      url: `https://momsdesignbuild.com${path}`,
       siteName: "Mom's Design Build",
       locale: "en_US",
       type: "article",

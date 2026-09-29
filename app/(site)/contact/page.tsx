@@ -35,7 +35,6 @@ export const metadata: Metadata = {
     title: "Contact Mom's Design Build - Landscape & Interior Design",
     description:
       "Mom's Design Build offers custom luxury landscaping, remodeling & gardening services to the Twin Cities, MN and surrounding areas. Let's chat!",
-    url: "https://momsdesignbuild.com/contact/",
     siteName: "Mom's Design Build",
     locale: "en_US",
     type: "article",
