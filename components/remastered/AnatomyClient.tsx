@@ -12,6 +12,8 @@ export type AnatomyStep = { label: string; title: string; blurb: string; image: 
  * the photo crossfades from plan → rendering → build → reveal. One real
  * project, start to finish. (Sticky-scroll-reveal language, MDB story.)
  */
+// Mobile text is 15% smaller than md+ on purpose (Josh, 9/29) — below the
+// sitewide 20px floor for this section only.
 export default function AnatomyClient({ steps, kicker, heading, linkLabel }: { steps: AnatomyStep[]; kicker: string; heading: string; linkLabel: string }) {
   const ref = useRef<HTMLDivElement>(null)
   const [active, setActive] = useState(0)
@@ -42,8 +44,8 @@ export default function AnatomyClient({ steps, kicker, heading, linkLabel }: { s
             {/* step list — active step breathes, others recede */}
             <div className="order-2 lg:order-1 space-y-3 lg:space-y-8">
               <div className="mb-4 lg:mb-10">
-                <p className="text-[20px] font-semibold tracking-[0.3em] uppercase text-brand mb-2 lg:mb-4">{kicker}</p>
-                <h2 className="text-[22px] md:text-4xl font-[300] tracking-[0.06em] uppercase text-ink">
+                <p className="text-[17px] md:text-[20px] font-semibold tracking-[0.3em] uppercase text-brand mb-2 lg:mb-4">{kicker}</p>
+                <h2 className="text-[18.7px] md:text-4xl font-[300] tracking-[0.06em] uppercase text-ink">
                   {heading}
                 </h2>
               </div>
@@ -58,15 +60,15 @@ export default function AnatomyClient({ steps, kicker, heading, linkLabel }: { s
                   style={{ opacity: i === active ? 1 : 0.28 }}
                 >
                   <div className="flex items-baseline gap-4">
-                    <span className="text-[20px] font-semibold tracking-[0.26em] uppercase text-brand shrink-0">
+                    <span className="text-[17px] md:text-[20px] font-semibold tracking-[0.26em] uppercase text-brand shrink-0">
                       {s.label}
                     </span>
                     <div>
-                      <h3 className="text-[20px] md:text-2xl font-[300] tracking-[0.1em] uppercase text-ink mb-1 lg:mb-1.5">
+                      <h3 className="text-[17px] md:text-2xl font-[300] tracking-[0.1em] uppercase text-ink mb-1 lg:mb-1.5">
                         {s.title}
                       </h3>
                       <p
-                        className="text-[17px] md:text-[20px] font-[300] leading-snug lg:leading-relaxed text-muted max-w-md transition-all duration-500 overflow-hidden"
+                        className="text-[14.5px] md:text-[20px] font-[300] leading-snug lg:leading-relaxed text-muted max-w-md transition-all duration-500 overflow-hidden"
                         style={{ maxHeight: i === active ? 150 : 0, opacity: i === active ? 1 : 0 }}
                       >
                         {s.blurb}
@@ -79,7 +81,7 @@ export default function AnatomyClient({ steps, kicker, heading, linkLabel }: { s
                   containers into stacked ghost lines during scroll */}
               <Link
                 href="/process"
-                className="inline-block mt-1 lg:mt-2 text-[20px] font-semibold tracking-[0.24em] uppercase text-ink hover:text-brand transition-colors"
+                className="inline-block mt-1 lg:mt-2 text-[17px] md:text-[20px] font-semibold tracking-[0.24em] uppercase text-ink hover:text-brand transition-colors"
               >
                 {linkLabel}&ensp;&rarr;
               </Link>
@@ -107,7 +109,7 @@ export default function AnatomyClient({ steps, kicker, heading, linkLabel }: { s
                   </div>
                 ))}
                 <div className="absolute right-3 bottom-3 bg-white/92 px-3 py-1.5">
-                  <span className="text-[20px] font-semibold tracking-[0.22em] uppercase text-ink">
+                  <span className="text-[17px] md:text-[20px] font-semibold tracking-[0.22em] uppercase text-ink">
                     Serene Shores {active + 1} / {steps.length}
                   </span>
                 </div>
