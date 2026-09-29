@@ -246,14 +246,17 @@ export default function Header() {
                 )}
               </Link>
 
-              <AnimatePresence>
-                {item.children && openDropdown === item.label && (
+              {/* Always in the HTML (hidden until hover) so crawlers see the
+                  dropdown links, like live WP's menu (audit 9/29: portal + service
+                  sub-pages were missing from the page source). */}
+              {item.children && (
                   <motion.ul
-                    initial={{ opacity: 0, y: -6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -6 }}
+                    initial={false}
+                    animate={openDropdown === item.label ? { opacity: 1, y: 0 } : { opacity: 0, y: -6 }}
                     transition={{ duration: 0.15, ease: "easeOut" }}
-                    className="absolute top-full left-0 mt-3 w-60 bg-white shadow-lg border border-gray-100 py-2 z-50 divide-y divide-gray-100"
+                    className={`absolute top-full left-0 mt-3 w-60 bg-white shadow-lg border border-gray-100 py-2 z-50 divide-y divide-gray-100 ${
+                      openDropdown === item.label ? "visible" : "invisible pointer-events-none"
+                    }`}
                     role="menu"
                   >
                     {item.children.map((child) => (
@@ -269,8 +272,7 @@ export default function Header() {
                       </li>
                     ))}
                   </motion.ul>
-                )}
-              </AnimatePresence>
+              )}
             </div>
           ))}
         </nav>
