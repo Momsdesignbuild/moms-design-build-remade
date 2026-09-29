@@ -23,6 +23,9 @@ const variants = (t: string) => {
 }
 const has = (hay: string, t: string) => variants(t).some((v) => hay.includes(v))
 
+type Photo = { src: string; alt: string; w: number; h: number; page: string; href: string; type: string }
+const PHOTO_IDEAS = ['Pool', 'Fire pit', 'Kitchen', 'Patio', 'Pergola', 'Garden', 'Hot tub', 'Basement']
+
 /**
  * Site-wide search (marketing 8/7 — Jim's ask): magnifier in the header opens
  * this overlay; results across portfolio, blog, and careers show a thumbnail
@@ -32,7 +35,19 @@ const has = (hay: string, t: string) => variants(t).some((v) => hay.includes(v))
 export default function SearchOverlay({ open, onClose }: { open: boolean; onClose: () => void }) {
   const [q, setQ] = useState('')
   const [index, setIndex] = useState<Item[] | null>(null)
+  // Photo catalog (Josh 9/29): search the photos themselves, by their alt text
+  const [mode, setMode] = useState<'pages' | 'photos'>('pages')
+  const [photos, setPhotos] = useState<Photo[] | null>(null)
+  const [zoom, setZoom] = useState<Photo | null>(null)
   const inputRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    if (!open || mode !== 'photos' || photos) return
+    fetch('/api/photo-index/')
+      .then((r) => r.json())
+      .then(setPhotos)
+      .catch(() => setPhotos([]))
+  }, [open, mode, photos])
 
   useEffect(() => {
     if (!open) return
@@ -44,7 +59,7 @@ export default function SearchOverlay({ open, onClose }: { open: boolean; onClos
         .catch(() => setIndex([]))
     }
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose()
+      if (e.key === 'Escape') (zoom ? setZoom(null) : onClose())
     }
     window.addEventListener('keydown', onKey)
     document.body.style.overflow = 'hidden'
@@ -52,7 +67,7 @@ export default function SearchOverlay({ open, onClose }: { open: boolean; onClos
       window.removeEventListener('keydown', onKey)
       document.body.style.overflow = ''
     }
-  }, [open, index, onClose])
+  }, [open, index, onClose, zoom])
 
   if (!open) return null
 
@@ -82,9 +97,34 @@ export default function SearchOverlay({ open, onClose }: { open: boolean; onClos
           .sort((a, b) => b.score - a.score)
           .slice(0, 30)
 
+  const photoResults =
+    terms.length === 0 || !photos
+      ? []
+      : photos
+          .map((ph) => {
+            const alt = ph.alt.toLowerCase()
+            const page = ph.page.toLowerCase()
+            let score = 0
+            for (const t of terms) {
+              if (has(alt, t)) score += 2
+              else if (has(page, t)) score += 1
+              else return null
+            }
+            return { ph, score }
+          })
+          .filter((x): x is { ph: Photo; score: number } => x !== null)
+          .sort((a, b) => b.score - a.score)
+          .slice(0, 60)
+          .map((x) => x.ph)
+
+  const tab = (on: boolean) =>
+    `whitespace-nowrap text-[20px] font-[500] tracking-[0.1em] md:tracking-[0.18em] uppercase px-3 md:px-4 py-2 border transition-colors duration-200 ${
+      on ? 'bg-ink text-white border-ink' : 'border-ink/20 text-muted hover:border-ink hover:text-ink'
+    }`
+
   return (
-    <div className="fixed inset-0 z-[90] bg-white/[0.98] overflow-y-auto" role="dialog" aria-modal="true" aria-label="Search the site">
-      <div className="max-w-3xl mx-auto px-6 pt-24 pb-20">
+    <div className="fixed inset-0 z-[90] bg-white overflow-y-auto" role="dialog" aria-modal="true" aria-label="Search the site">
+      <div className={`${mode === 'photos' ? 'max-w-6xl' : 'max-w-3xl'} mx-auto px-6 pt-24 pb-20`}>
         <button
           onClick={onClose}
           aria-label="Close search"
@@ -96,10 +136,70 @@ export default function SearchOverlay({ open, onClose }: { open: boolean; onClos
           ref={inputRef}
           value={q}
           onChange={(e) => setQ(e.target.value)}
-          placeholder="Search projects, services, stories, careers…"
+          placeholder={mode === 'photos' ? 'Search photos — pool, fire pit, kitchen…' : 'Search projects, services, stories, careers…'}
           aria-label="Search"
           className="w-full border-b-2 border-ink/15 focus:border-brand bg-transparent py-4 text-[22px] md:text-[28px] font-[300] text-ink placeholder:text-muted/60 focus:outline-none transition-colors"
         />
+        <div className="mt-5 flex gap-2" role="tablist" aria-label="Search in">
+          <button type="button" role="tab" aria-selected={mode === 'pages'} onClick={() => setMode('pages')} className={tab(mode === 'pages')}>
+            Pages{q && index ? ` · ${results.length}` : ''}
+          </button>
+          <button type="button" role="tab" aria-selected={mode === 'photos'} onClick={() => setMode('photos')} className={tab(mode === 'photos')}>
+            Photos{q && photos ? ` · ${photoResults.length}` : ''}
+          </button>
+        </div>
+
+        {mode === 'photos' && (
+          <div className="mt-8">
+            {!q && (
+              <div className="flex flex-wrap gap-2">
+                <p className="w-full text-[20px] font-[300] text-muted mb-2">Browse our photo catalog — try:</p>
+                {PHOTO_IDEAS.map((idea) => (
+                  <button key={idea} type="button" onClick={() => setQ(idea)} className="text-[20px] font-[300] px-4 py-2 bg-[#F6F6F4] text-ink hover:bg-brand hover:text-white transition-colors">
+                    {idea}
+                  </button>
+                ))}
+              </div>
+            )}
+            {q && photos && photoResults.length === 0 && (
+              <p className="text-[20px] font-[300] text-muted py-8 text-center">No photos of &ldquo;{q}&rdquo; yet — try &ldquo;patio&rdquo; or &ldquo;pergola&rdquo;.</p>
+            )}
+            {q && !photos && <p className="text-[20px] font-[300] text-muted py-8 text-center">Loading photos…</p>}
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+              {photoResults.map((ph) => (
+                <button
+                  key={ph.src}
+                  type="button"
+                  onClick={() => setZoom(ph)}
+                  className="group relative aspect-square overflow-hidden bg-brand-mid/15 text-left"
+                  aria-label={`${ph.alt} — from ${ph.page}`}
+                >
+                  <Image src={`${ph.src}?w=600&h=600&fit=crop&auto=format`} alt={ph.alt} fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover transition-transform duration-500 group-hover:scale-[1.04]" />
+                  <span className="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-black/70 to-transparent text-white text-[20px] font-[300] leading-snug opacity-0 group-hover:opacity-100 transition-opacity line-clamp-2">
+                    {ph.page}
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {zoom && (
+          <div className="fixed inset-0 z-[95] bg-black/90 flex flex-col items-center justify-center p-4 md:p-10" onClick={() => setZoom(null)} role="dialog" aria-modal="true" aria-label={zoom.alt}>
+            <button type="button" onClick={() => setZoom(null)} aria-label="Close photo" className="absolute top-5 right-5 p-3 text-white/70 hover:text-white text-[22px] leading-none">✕</button>
+            <div className="relative w-full max-w-6xl h-[70vh]" onClick={(e) => e.stopPropagation()}>
+              <Image src={`${zoom.src}?w=2000&auto=format`} alt={zoom.alt} fill sizes="100vw" className="object-contain" />
+            </div>
+            <div className="mt-5 max-w-3xl text-center" onClick={(e) => e.stopPropagation()}>
+              <p className="text-white/85 text-[20px] font-[300] leading-relaxed">{zoom.alt}</p>
+              <Link href={zoom.href} onClick={() => { setZoom(null); onClose() }} className="inline-block mt-3 text-[20px] font-semibold tracking-[0.2em] uppercase text-white border-b border-white/40 hover:border-white pb-0.5">
+                See it on {zoom.page} &rarr;
+              </Link>
+            </div>
+          </div>
+        )}
+
+        {mode === 'pages' && (
         <div className="mt-8 space-y-2">
           {q && index && results.length === 0 && (
             <p className="text-[20px] font-[300] text-muted py-8 text-center">
@@ -128,6 +228,7 @@ export default function SearchOverlay({ open, onClose }: { open: boolean; onClos
             </Link>
           ))}
         </div>
+        )}
       </div>
     </div>
   )
