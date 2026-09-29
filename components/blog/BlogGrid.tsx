@@ -1,10 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
+import OverlayTile from '@/components/OverlayTile'
 import { stegaClean } from '@sanity/client/stega'
-import { motion, type Variants } from 'framer-motion'
 
 export interface BlogCard {
   title: string
@@ -14,11 +12,6 @@ export interface BlogCard {
   date: string | null
   excerpt: string | null
   categories: string[]
-}
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.7, ease: 'easeOut' } },
 }
 
 const PAGE = 24
@@ -81,39 +74,20 @@ export default function BlogGrid({ cards: cardsRaw }: { cards: BlogCard[] }) {
         )}
       </div>
 
-      <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14">
+      <div className="max-w-[1400px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
         {visible.map((post, i) => (
-          <motion.div
+          <OverlayTile
             key={post.slug}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '100px' }}
-            variants={itemVariants}
-          >
-            <Link href={`/${post.slug}`} className="group block">
-              <div className="relative aspect-[3/2] overflow-hidden bg-gray-100 mb-5">
-                {post.imageUrl && (
-                  <Image
-                    src={post.imageUrl}
-                    alt={post.alt}
-                    fill
-                    loading={i < 6 ? 'eager' : 'lazy'}
-                    className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                  />
-                )}
-              </div>
-              {post.date && (
-                <p className="text-[20px] font-[500] tracking-[0.25em] uppercase text-muted mb-2">{post.date}</p>
-              )}
-              <h2 className="text-[20px] md:text-[22px] font-[300] tracking-[0.04em] leading-snug text-ink group-hover:underline underline-offset-4 decoration-ink/30">
-                {post.title}
-              </h2>
-              {post.excerpt && (
-                <p className="mt-2 text-[20px] font-[300] leading-relaxed text-brand-mid line-clamp-2">{post.excerpt}</p>
-              )}
-            </Link>
-          </motion.div>
+            href={`/${post.slug}`}
+            img={post.imageUrl}
+            alt={post.alt}
+            title={post.title}
+            subtitle={post.date ?? undefined}
+            aspect="aspect-[4/5]"
+            eager={i < 6}
+            titleClass="text-[20px] tracking-[0.12em] leading-snug"
+            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+          />
         ))}
       </div>
 

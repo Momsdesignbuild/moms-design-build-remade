@@ -19,6 +19,7 @@ export default function OverlayTile({
   sizes,
   aspect = 'aspect-[4/3]',
   eager = false,
+  titleClass = 'text-[22px] md:text-[26px] tracking-[0.2em]',
 }: {
   href: string
   img: string | null
@@ -28,6 +29,7 @@ export default function OverlayTile({
   sizes?: string
   aspect?: string
   eager?: boolean
+  titleClass?: string
 }) {
   return (
     <motion.div
@@ -51,7 +53,7 @@ export default function OverlayTile({
           />
         )}
         <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center transition-opacity duration-300 group-hover:opacity-0">
-          <p className="text-white text-[22px] md:text-[26px] font-[300] tracking-[0.2em] uppercase [text-shadow:0_1px_10px_rgba(0,0,0,0.45)]">
+          <p className={`text-white ${titleClass} font-[300] uppercase [text-shadow:0_1px_10px_rgba(0,0,0,0.45)]`}>
             {title}
           </p>
           {subtitle && (
