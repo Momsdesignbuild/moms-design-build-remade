@@ -7,6 +7,7 @@ import { SanityLive } from "@/sanity/lib/live";
 import { client } from "@/sanity/lib/client";
 import "./globals.css";
 import OgUrl from "@/components/OgUrl";
+import GoogleTagManager from "@/components/GoogleTagManager";
 
 // MDB style guide (Jim, July 8 meeting): Futura PT for headings, Proxima Nova
 // for body — the EXACT self-hosted files their WP site serves (from the mirror).
@@ -185,6 +186,7 @@ export default async function RootLayout({
       <body className="antialiased">
         {children}
         <SanityLive />
+        <GoogleTagManager />
         {(await draftMode()).isEnabled && <VisualEditing />}
       </body>
     </html>
