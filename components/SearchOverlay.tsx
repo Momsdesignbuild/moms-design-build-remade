@@ -5,12 +5,23 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 type Item = {
-  type: 'Portfolio' | 'Blog' | 'Careers'
+  type: 'Portfolio' | 'Blog' | 'Careers' | 'Services'
   title: string
   href: string
   img: string | null
   desc: string
+  tags: string
+  alts: string[]
 }
+
+// "pools" should find "pool" and vice versa — match the word or its singular
+const variants = (t: string) => {
+  const v = [t]
+  if (t.length > 4 && t.endsWith('es')) v.push(t.slice(0, -2))
+  if (t.length > 3 && t.endsWith('s')) v.push(t.slice(0, -1))
+  return v
+}
+const has = (hay: string, t: string) => variants(t).some((v) => hay.includes(v))
 
 /**
  * Site-wide search (marketing 8/7 — Jim's ask): magnifier in the header opens
@@ -51,18 +62,25 @@ export default function SearchOverlay({ open, onClose }: { open: boolean; onClos
       ? []
       : index
           .map((it) => {
-            const hay = `${it.title} ${it.desc}`.toLowerCase()
+            // title > description/tags > photo alt text; every term must hit somewhere
+            const title = it.title.toLowerCase()
+            const text = `${it.desc} ${it.tags}`.toLowerCase()
+            const alts = it.alts.map((a) => a.toLowerCase())
             let score = 0
+            let viaPhotoOnly = true
             for (const t of terms) {
-              if (!hay.includes(t)) return null
-              score += it.title.toLowerCase().includes(t) ? 2 : 1
+              if (has(title, t)) { score += 6; viaPhotoOnly = false }
+              else if (has(text, t)) { score += 3; viaPhotoOnly = false }
+              else if (alts.some((a) => has(a, t))) score += 1 + Math.min(2, alts.filter((a) => has(a, t)).length * 0.25)
+              else return null
             }
-            return { it, score }
+            // a result found only through its photos says which photo
+            const photo = viaPhotoOnly ? it.alts.find((a) => terms.every((t) => has(a.toLowerCase(), t))) ?? it.alts.find((a) => has(a.toLowerCase(), terms[0])) : undefined
+            return { it, score, photo }
           })
-          .filter((x): x is { it: Item; score: number } => x !== null)
+          .filter((x): x is { it: Item; score: number; photo: string | undefined } => x !== null)
           .sort((a, b) => b.score - a.score)
-          .slice(0, 24)
-          .map((x) => x.it)
+          .slice(0, 30)
 
   return (
     <div className="fixed inset-0 z-[90] bg-white/[0.98] overflow-y-auto" role="dialog" aria-modal="true" aria-label="Search the site">
@@ -78,17 +96,17 @@ export default function SearchOverlay({ open, onClose }: { open: boolean; onClos
           ref={inputRef}
           value={q}
           onChange={(e) => setQ(e.target.value)}
-          placeholder="Search projects, stories, careers…"
+          placeholder="Search projects, services, stories, careers…"
           aria-label="Search"
           className="w-full border-b-2 border-ink/15 focus:border-brand bg-transparent py-4 text-[22px] md:text-[28px] font-[300] text-ink placeholder:text-muted/60 focus:outline-none transition-colors"
         />
         <div className="mt-8 space-y-2">
           {q && index && results.length === 0 && (
             <p className="text-[20px] font-[300] text-muted py-8 text-center">
-              Nothing found for &ldquo;{q}&rdquo; — try a project name, city, or topic.
+              Nothing found for &ldquo;{q}&rdquo; — try a project name, city, service, or something in the photos like “pool” or “fire pit”.
             </p>
           )}
-          {results.map((r) => (
+          {results.map(({ it: r, photo }) => (
             <Link
               key={`${r.type}-${r.href}`}
               href={r.href}
@@ -105,7 +123,7 @@ export default function SearchOverlay({ open, onClose }: { open: boolean; onClos
                 <p className="text-[20px] font-[400] text-ink truncate group-hover:text-brand transition-colors">
                   {r.title}
                 </p>
-                <p className="text-[20px] font-[300] text-muted truncate">{r.desc}</p>
+                <p className="text-[20px] font-[300] text-muted truncate">{photo ? `In a photo: ${photo}` : r.desc}</p>
               </div>
             </Link>
           ))}

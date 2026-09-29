@@ -35,6 +35,7 @@ type Post = {
   publishedAt?: string;
   excerpt?: string;
   categories?: string[];
+  words?: number;
 };
 
 const fmtDate = (iso?: string) =>
@@ -47,7 +48,8 @@ export default async function BlogPage() {
     // junk WP utility pages live at root like posts — never list them here
     query: `*[_type == "post" && !(slug.current in ["test", "thank-you", "contact-thanks-original", "mediterranean-meets-mn", "application"])]
       | order(coalesce(publishedAt, "1970-01-01") desc) {
-      title, slug, heroImage, publishedAt, excerpt, categories
+      title, slug, heroImage, publishedAt, excerpt, categories,
+      "words": length(string::split(pt::text(body), " "))
     }`,
   })) as { data: Post[] };
 
@@ -55,9 +57,11 @@ export default async function BlogPage() {
   const cards: BlogCard[] = rest.map((p) => ({
     title: p.title,
     slug: p.slug.current,
-    imageUrl: p.heroImage ? builder.image(p.heroImage).width(800).height(533).auto("format").url() : null,
+    imageUrl: p.heroImage ? builder.image(p.heroImage).width(800).height(1000).auto("format").url() : null,
     alt: p.heroImage?.alt || p.title,
     date: fmtDate(p.publishedAt),
+    publishedAt: p.publishedAt ?? null,
+    readMinutes: Math.max(1, Math.round((p.words ?? 0) / 225)),
     excerpt: p.excerpt ?? null,
     categories: p.categories ?? [],
   }));

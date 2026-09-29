@@ -32,6 +32,7 @@ type Post = {
   publishedAt?: string;
   excerpt?: string;
   categories?: string[];
+  words?: number;
 };
 
 const fmtDate = (iso?: string) =>
@@ -72,9 +73,9 @@ export default async function CategoryPage({
     query:
       slug === "uncategorized"
         ? `*[_type == "post" && !defined(categories) && !(slug.current in ["test", "thank-you", "contact-thanks-original", "mediterranean-meets-mn", "application"])]
-            | order(coalesce(publishedAt, "1970-01-01") desc) { title, slug, heroImage, publishedAt, excerpt, categories }`
+            | order(coalesce(publishedAt, "1970-01-01") desc) { title, slug, heroImage, publishedAt, excerpt, categories, "words": length(string::split(pt::text(body), " ")) }`
         : `*[_type == "post" && $name in categories]
-            | order(coalesce(publishedAt, "1970-01-01") desc) { title, slug, heroImage, publishedAt, excerpt, categories }`,
+            | order(coalesce(publishedAt, "1970-01-01") desc) { title, slug, heroImage, publishedAt, excerpt, categories, "words": length(string::split(pt::text(body), " ")) }`,
     params: { name: seo.name },
   });
   const posts = data as Post[];
@@ -82,9 +83,11 @@ export default async function CategoryPage({
   const cards: BlogCard[] = posts.map((p) => ({
     title: p.title,
     slug: p.slug.current,
-    imageUrl: p.heroImage ? builder.image(p.heroImage).width(800).height(533).auto("format").url() : null,
+    imageUrl: p.heroImage ? builder.image(p.heroImage).width(800).height(1000).auto("format").url() : null,
     alt: p.heroImage?.alt || p.title,
     date: fmtDate(p.publishedAt),
+    publishedAt: p.publishedAt ?? null,
+    readMinutes: Math.max(1, Math.round((p.words ?? 0) / 225)),
     excerpt: p.excerpt ?? null,
     categories: p.categories ?? [],
   }));
