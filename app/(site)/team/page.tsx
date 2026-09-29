@@ -26,7 +26,7 @@ type Member = {
   name: string;
   slug: { current: string };
   role?: string;
-  photo?: SanityImageSource;
+  photo?: SanityImageSource & { alt?: string };
 };
 
 export default async function TeamPage() {
@@ -52,7 +52,7 @@ export default async function TeamPage() {
                 {m.photo && (
                   <Image
                     src={builder.image(m.photo).width(500).height(667).auto("format").url()}
-                    alt={m.name}
+                    alt={m.photo.alt || m.name}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 768px) 50vw, 25vw"

@@ -6,6 +6,7 @@ import { VisualEditing } from "next-sanity/visual-editing";
 import { SanityLive } from "@/sanity/lib/live";
 import { client } from "@/sanity/lib/client";
 import "./globals.css";
+import OgUrl from "@/components/OgUrl";
 
 // MDB style guide (Jim, July 8 meeting): Futura PT for headings, Proxima Nova
 // for body — the EXACT self-hosted files their WP site serves (from the mirror).
@@ -95,7 +96,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       type: "website",
       locale: "en_US",
-      url: "https://momsdesignbuild.com",
+      // og:url is per page — <OgUrl /> in <head>
       siteName: settings.siteName,
       images: [
         {
@@ -175,6 +176,7 @@ export default async function RootLayout({
   return (
     <html lang="en" className={`${proximaNova.variable} ${futuraPT.variable} ${playfairDisplay.variable}`}>
       <head>
+        <OgUrl />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}

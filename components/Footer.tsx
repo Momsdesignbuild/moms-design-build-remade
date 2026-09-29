@@ -108,7 +108,7 @@ export default function Footer() {
           <Link href="/" aria-label="Mom's Design Build — Home">
             <Image
               src="https://cdn.sanity.io/images/wavk40jo/production/d3036e0363c0c79d395ebe0bd644402afc7e3aa6-260x260.png"
-              alt="Mom's Design Build"
+              alt="Mom's Design Build - Luxury Landscape and Interior Design and Build in Minnesota"
               width={180}
               height={44}
               className="opacity-70 hover:opacity-100 transition-opacity"
