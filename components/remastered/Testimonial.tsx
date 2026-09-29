@@ -3,11 +3,12 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import Link from 'next/link'
+import { withDefaults, type HomeContent } from '@/sanity/lib/homeContent'
 
 // Rotating client voices (Summer, 7/14: "a rotation of different quotes").
 // Every quote is REAL, verbatim from their live pages — nothing invented,
 // no staff names (founders' rule). Auto-advances, dots to jump.
-const QUOTES: Array<{ text: string; who: string; href?: string; hrefLabel?: string }> = [
+const DEFAULT_QUOTES: Array<{ text: string; who: string; href?: string; hrefLabel?: string }> = [
   {
     text:
       'Mom’s Design Build remodeled our backyard pool and outdoor kitchen. They did such a beautiful job! Our family loves to spend time in our new space… and I continue to work with their Fine Gardening team as they also do beautiful work.',
@@ -39,15 +40,18 @@ const QUOTES: Array<{ text: string; who: string; href?: string; hrefLabel?: stri
 
 const HOLD_MS = 7000
 
-export default function Testimonial() {
+export default function Testimonial({ content }: { content?: HomeContent['testimonials'] }) {
+  const QUOTES = content?.quotes?.length
+    ? content.quotes.map((q) => ({ text: q.text, who: q.who, href: q.linkHref, hrefLabel: q.linkLabel }))
+    : DEFAULT_QUOTES
   const [i, setI] = useState(0)
 
   useEffect(() => {
     const t = setInterval(() => setI((v) => (v + 1) % QUOTES.length), HOLD_MS)
     return () => clearInterval(t)
-  }, [])
+  }, [QUOTES.length])
 
-  const q = QUOTES[i]
+  const q = QUOTES[i % QUOTES.length]
 
   return (
     <section className="bg-white py-28 lg:py-36 px-6">

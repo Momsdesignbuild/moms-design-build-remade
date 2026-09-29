@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import { withDefaults, type HomeContent } from '@/sanity/lib/homeContent'
 
 // Same four divisions as the June homepage — re-dressed in the Bria language:
 // framed photos, white overlap caption cards, teal rule.
@@ -37,19 +38,20 @@ const SERVICES = [
   },
 ]
 
-export default function ServicesEditorial() {
+export default function ServicesEditorial({ content }: { content?: HomeContent['services'] }) {
+  const c = withDefaults({ kicker: 'Service Offerings', heading: 'Four Crafts, One Roof', items: SERVICES }, content)
   return (
     <section className="bg-[#F7F5F2] py-24 lg:py-32">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
         <div className="mb-14">
-          <p className="text-[20px] font-semibold tracking-[0.3em] uppercase text-brand mb-4">Service Offerings</p>
+          <p className="text-[20px] font-semibold tracking-[0.3em] uppercase text-brand mb-4">{c.kicker}</p>
           <h2 className="text-3xl md:text-5xl font-[300] tracking-[0.06em] uppercase text-ink">
-            Four Crafts, One Roof
+            {c.heading}
           </h2>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-          {SERVICES.map((s, i) => (
+          {c.items.map((s, i) => (
             <motion.div
               key={s.href}
               initial={{ opacity: 0, y: 28 }}
@@ -63,7 +65,7 @@ export default function ServicesEditorial() {
                 <div className="relative aspect-[4/5] overflow-hidden bg-brand-mid">
                   <Image
                     src={s.image}
-                    alt={s.alt}
+                    alt={s.alt ?? s.title}
                     fill
                     quality={90}
                     sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 330px"

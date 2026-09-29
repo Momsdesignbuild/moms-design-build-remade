@@ -15,6 +15,8 @@ export default defineConfig({
   title: "Mom's Design Build",
   schema: {
     types: schemaTypes,
+    // the Homepage is a singleton: hide it from "+ Create"
+    templates: (templates) => templates.filter((t) => t.schemaType !== 'homePage'),
   },
   plugins: [
     structureTool({
@@ -25,6 +27,11 @@ export default defineConfig({
         S.list()
           .title('Content')
           .items([
+            // one Homepage document, opened directly — no list, no duplicates
+            S.listItem()
+              .title('Homepage')
+              .id('homePage')
+              .child(S.document().schemaType('homePage').documentId('homePage')),
             orderableDocumentListDeskItem({
               type: 'portfolioProject',
               title: 'Portfolio (drag to reorder)',

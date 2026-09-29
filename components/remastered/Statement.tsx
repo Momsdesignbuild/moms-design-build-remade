@@ -2,9 +2,12 @@
 
 import { useRef } from 'react'
 import { motion, useScroll, useTransform, type MotionValue } from 'framer-motion'
+import { withDefaults, type HomeContent } from '@/sanity/lib/homeContent'
 
-const WORDS =
-  `We are a design-build firm with one belief: the experience of a home should be crafted as beautifully as the life lived within it.`.split(' ')
+const STATEMENT = {
+  kicker: 'Mom’s Design Build · Minneapolis, MN',
+  text: 'We are a design-build firm with one belief: the experience of a home should be crafted as beautifully as the life lived within it.',
+}
 
 function Word({ progress, range, children }: { progress: MotionValue<number>; range: [number, number]; children: string }) {
   const opacity = useTransform(progress, range, [0.14, 1])
@@ -16,7 +19,9 @@ function Word({ progress, range, children }: { progress: MotionValue<number>; ra
 }
 
 /** Bria-style statement section — Futura light, words breathe in on scroll. */
-export default function Statement() {
+export default function Statement({ content }: { content?: HomeContent['statement'] }) {
+  const c = withDefaults(STATEMENT, content)
+  const WORDS = c.text.trim().split(/\s+/)
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start 0.85', 'start 0.28'] })
 
@@ -24,7 +29,7 @@ export default function Statement() {
     <section ref={ref} className="bg-[#F7F5F2] pt-8 lg:pt-10 pb-16 lg:pb-20 px-6">
       <div className="max-w-4xl mx-auto text-center">
         <p className="text-[20px] font-semibold tracking-[0.3em] uppercase text-brand mb-10">
-          Mom&rsquo;s Design Build · Minneapolis, MN
+          {c.kicker}
         </p>
         <p
           className="text-[26px] md:text-[38px] lg:text-[44px] font-[300] leading-[1.35] tracking-[0.015em] text-ink"

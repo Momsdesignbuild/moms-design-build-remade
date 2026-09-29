@@ -1,5 +1,6 @@
 import { client } from '@/sanity/lib/client'
 import WorkCarouselClient, { type WorkCard } from './WorkCarouselClient'
+import { withDefaults, type HomeContent } from '@/sanity/lib/homeContent'
 
 type Row = {
   title: string
@@ -15,7 +16,8 @@ type Row = {
  * as the wrong/old portfolio). Card-resolution rule still applies: some of
  * THEIR grid photos are 300–750px thumbnails — those fall back to the
  * hi-res lead so nothing renders soft. */
-export default async function WorkCarousel() {
+export default async function WorkCarousel({ content }: { content?: HomeContent['work'] }) {
+  const c = withDefaults({ kicker: 'Our Work', heading: 'Legacies We’ve Built' }, content)
   const rows = await client.fetch<Row[]>(
     `*[_type == "portfolioProject"] | order(orderRank) [0...10] {
       title,
@@ -33,5 +35,5 @@ export default async function WorkCarousel() {
       image: (r.card && r.card.w >= 900 ? r.card.url : r.lead || r.card?.url) ?? '',
     }))
     .filter((p) => p.image)
-  return <WorkCarouselClient projects={projects} />
+  return <WorkCarouselClient projects={projects} kicker={c.kicker} heading={c.heading} />
 }

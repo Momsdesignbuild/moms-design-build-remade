@@ -7,8 +7,10 @@ import subscriber from './subscriber'
 import jobApplication from './jobApplication'
 import careerPage from './careerPage'
 import servicePage from './servicePage'
+import homePage from './homePage'
 
 export const schemaTypes = [
+  homePage,
   siteSettings,
   page,
   post,

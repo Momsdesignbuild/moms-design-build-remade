@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
+import { withDefaults, type HomeContent } from '@/sanity/lib/homeContent'
 
 /**
  * "Join the List" — homepage email capture above the footer (marketing 8/7,
@@ -9,7 +10,17 @@ import Image from 'next/image'
  * pitch, email field, quiet button). Posts to the existing /api/newsletter
  * lane — same subscriber list as the blog capture.
  */
-export default function JoinTheList({ img, imgAlt }: { img: string; imgAlt: string }) {
+export default function JoinTheList({ img, imgAlt, content }: { img: string; imgAlt: string; content?: HomeContent['joinList'] }) {
+  const c = withDefaults(
+    {
+      kicker: 'Join the List',
+      heading: 'Design stories, delivered',
+      body: "Project reveals, seasonal ideas, and what we're building next — straight from the Mom's Design Build studio.",
+      image: img,
+      imageAlt: imgAlt,
+    },
+    content
+  )
   const [email, setEmail] = useState('')
   const [state, setState] = useState<'idle' | 'busy' | 'done' | 'error'>('idle')
 
@@ -33,19 +44,18 @@ export default function JoinTheList({ img, imgAlt }: { img: string; imgAlt: stri
     <section className="bg-[#F7F5F2] px-6 py-16 lg:py-20">
       <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-2 bg-white shadow-[0_30px_60px_-40px_rgba(28,28,26,0.35)]">
         <div className="relative aspect-[4/3] md:aspect-auto md:min-h-[380px]">
-          <Image src={img} alt={imgAlt} fill className="object-cover" sizes="(max-width: 768px) 100vw, 500px" />
+          <Image src={c.image} alt={c.imageAlt} fill className="object-cover" sizes="(max-width: 768px) 100vw, 500px" />
         </div>
         <div className="p-10 lg:p-14 flex flex-col justify-center text-center">
-          <p className="text-[20px] font-semibold tracking-[0.3em] uppercase text-brand mb-4">Join the List</p>
+          <p className="text-[20px] font-semibold tracking-[0.3em] uppercase text-brand mb-4">{c.kicker}</p>
           <h2
             className="text-[26px] lg:text-[30px] italic leading-snug text-ink mb-4"
             style={{ fontFamily: 'var(--font-serif, "Playfair Display", Georgia, serif)' }}
           >
-            Design stories, delivered
+            {c.heading}
           </h2>
           <p className="text-[20px] font-[300] leading-relaxed text-muted mb-8">
-            Project reveals, seasonal ideas, and what we&apos;re building next — straight from the Mom&apos;s
-            Design Build studio.
+            {c.body}
           </p>
           {state === 'done' ? (
             <p className="text-[20px] font-[400] tracking-[0.08em] text-brand">

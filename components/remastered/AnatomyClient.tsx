@@ -12,7 +12,7 @@ export type AnatomyStep = { label: string; title: string; blurb: string; image: 
  * the photo crossfades from plan → rendering → build → reveal. One real
  * project, start to finish. (Sticky-scroll-reveal language, MDB story.)
  */
-export default function AnatomyClient({ steps }: { steps: AnatomyStep[] }) {
+export default function AnatomyClient({ steps, kicker, heading, linkLabel }: { steps: AnatomyStep[]; kicker: string; heading: string; linkLabel: string }) {
   const ref = useRef<HTMLDivElement>(null)
   const [active, setActive] = useState(0)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] })
@@ -42,9 +42,9 @@ export default function AnatomyClient({ steps }: { steps: AnatomyStep[] }) {
             {/* step list — active step breathes, others recede */}
             <div className="order-2 lg:order-1 space-y-3 lg:space-y-8">
               <div className="mb-4 lg:mb-10">
-                <p className="text-[20px] font-semibold tracking-[0.3em] uppercase text-brand mb-2 lg:mb-4">The Moms Way</p>
+                <p className="text-[20px] font-semibold tracking-[0.3em] uppercase text-brand mb-2 lg:mb-4">{kicker}</p>
                 <h2 className="text-[22px] md:text-4xl font-[300] tracking-[0.06em] uppercase text-ink">
-                  Anatomy of a Project
+                  {heading}
                 </h2>
               </div>
               {steps.map((s, i) => (
@@ -81,7 +81,7 @@ export default function AnatomyClient({ steps }: { steps: AnatomyStep[] }) {
                 href="/process"
                 className="inline-block mt-1 lg:mt-2 text-[20px] font-semibold tracking-[0.24em] uppercase text-ink hover:text-brand transition-colors"
               >
-                See the Full Process&ensp;&rarr;
+                {linkLabel}&ensp;&rarr;
               </Link>
             </div>
 

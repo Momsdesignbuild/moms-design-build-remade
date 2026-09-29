@@ -1,5 +1,6 @@
 import { client } from '@/sanity/lib/client'
 import AnatomyClient, { type AnatomyStep } from './AnatomyClient'
+import { withDefaults, type HomeContent } from '@/sanity/lib/homeContent'
 
 // The Moms Way, told through a real project (Serene Shores carries the full
 // captioned 2d plan → 3d rendering → under construction → ta-da! sequence).
@@ -31,15 +32,18 @@ const COPY: Record<string, { label: string; title: string; blurb: string }> = {
 }
 const ORDER = ['2d plan', '3d rendering', 'under construction', 'ta-da!']
 
-export default async function Anatomy() {
+export default async function Anatomy({ content }: { content?: HomeContent['anatomy'] }) {
+  const c = withDefaults({ kicker: 'The Moms Way', heading: 'Anatomy of a Project', linkLabel: 'See the Full Process' }, content)
   const gallery = await client.fetch<Array<{ caption?: string; url: string; alt?: string }>>(
     `*[_type == "portfolioProject" && slug.current == "serene-shores"][0]
       .gallery[]{ caption, "url": asset->url, alt }`
   )
-  const steps: AnatomyStep[] = ORDER.flatMap((key) => {
+  // step copy: Sanity (by position) over the baked-in COPY; photos stay keyed to the gallery captions
+  const steps: AnatomyStep[] = ORDER.flatMap((key, n) => {
     const g = (gallery ?? []).find((x) => x.caption?.toLowerCase().trim() === key)
-    return g ? [{ ...COPY[key], image: g.url, alt: g.alt || COPY[key].title }] : []
+    const copy = withDefaults(COPY[key], content?.steps?.[n])
+    return g ? [{ ...copy, image: g.url, alt: g.alt || copy.title }] : []
   })
   if (steps.length < 4) return null
-  return <AnatomyClient steps={steps} />
+  return <AnatomyClient steps={steps} kicker={c.kicker} heading={c.heading} linkLabel={c.linkLabel} />
 }

@@ -12,7 +12,7 @@ export type WorkCard = { title: string; slug: string; location?: string; image: 
  * Our Work — tall story cards in a drag/snap rail (Apple carousel language),
  * each with a Bria-style white caption card overlapping the photo's foot.
  */
-export default function WorkCarouselClient({ projects }: { projects: WorkCard[] }) {
+export default function WorkCarouselClient({ projects, kicker, heading }: { projects: WorkCard[]; kicker: string; heading: string }) {
   const rail = useRef<HTMLDivElement>(null)
   const [canPrev, setCanPrev] = useState(false)
   const [canNext, setCanNext] = useState(true)
@@ -63,9 +63,9 @@ export default function WorkCarouselClient({ projects }: { projects: WorkCard[] 
     <section className="bg-white py-24 lg:py-32 overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 flex items-end justify-between mb-12">
         <div>
-          <p className="text-[20px] font-semibold tracking-[0.3em] uppercase text-brand mb-4">Our Work</p>
+          <p className="text-[20px] font-semibold tracking-[0.3em] uppercase text-brand mb-4">{kicker}</p>
           <h2 className="text-3xl md:text-5xl font-[300] tracking-[0.06em] uppercase text-ink">
-            Legacies We&rsquo;ve Built
+            {heading}
           </h2>
         </div>
         <div className="hidden md:flex items-center gap-3">

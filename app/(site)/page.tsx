@@ -11,6 +11,7 @@ import Journal from "@/components/remastered/Journal";
 import GivingBackEditorial from "@/components/remastered/GivingBackEditorial";
 import ClosingCTA from "@/components/remastered/ClosingCTA";
 import JoinTheList from "@/components/remastered/JoinTheList";
+import { getHomeContent } from "@/sanity/lib/homePage";
 
 export const revalidate = 3600;
 
@@ -43,22 +44,25 @@ export const viewport: Viewport = {
 // "Most Award-Winning in the Midwest" + the five real multi-org badges,
 // Cedar & Stone night drone closes the page, giving-back partners link out,
 // no Buildertrend section, larger nav. H1/meta/canonical unchanged from live.
-export default function HomePage() {
+export default async function HomePage() {
+  // words + pictures from the Sanity "Homepage" document; empty fields fall back to the defaults in each component
+  const home = await getHomeContent();
   return (
     <>
       <style>{`@media (max-width: 1023px) { html, body { background-color: #000; } }`}</style>
-      <FramedHero />
-      <Statement />
-      <AwardsStrip />
-      <WorkCarousel />
-      <Anatomy />
-      <TransformationSlider />
-      <ServicesEditorial />
-      <Testimonial />
-      <Journal />
-      <GivingBackEditorial />
-      <ClosingCTA />
+      <FramedHero content={home.hero} />
+      <Statement content={home.statement} />
+      <AwardsStrip content={home.awards} />
+      <WorkCarousel content={home.work} />
+      <Anatomy content={home.anatomy} />
+      <TransformationSlider content={home.transformation} />
+      <ServicesEditorial content={home.services} />
+      <Testimonial content={home.testimonials} />
+      <Journal content={home.journal} />
+      <GivingBackEditorial content={home.givingBack} />
+      <ClosingCTA content={home.closing} />
       <JoinTheList
+        content={home.joinList}
         img="https://cdn.sanity.io/images/wavk40jo/production/87f222ef7b60ceb0b29f2fbd574a8bff606a15da-1500x1023.jpg?w=1000&auto=format"
         imgAlt="Lakeside living outdoor space by Mom's Design Build"
       />

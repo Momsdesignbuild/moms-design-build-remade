@@ -3,6 +3,7 @@
 import { useRef, useState, useEffect } from 'react'
 import Link from 'next/link'
 import { motion, useScroll, useTransform, type MotionValue } from 'framer-motion'
+import { withDefaults, type HomeContent } from '@/sanity/lib/homeContent'
 
 /**
  * "Build Your Legacy" hero, inverted container-scroll: opens FULL-BLEED
@@ -51,7 +52,19 @@ function useSettledTransform(value: MotionValue<number>, input: number[], output
 export const HERO_INSET_PROGRESS_RANGE: [number, number] = [0.12, 0.82]
 export const HERO_INSET_MAX_REM = { mobile: 4.5, desktop: 5.5 }
 
-export default function FramedHero() {
+const HERO = {
+  kicker: 'Minnesota’s Most Awarded Design-Build Firm',
+  title: 'Build Your Legacy',
+  videoUrl: '/video/hero.mp4',
+  posterUrl: '/video/hero-poster.jpg',
+  primaryCta: { label: 'Explore Our Work', href: '/portfolio' },
+  secondaryCta: { label: 'Meet With Us', href: '/contact' },
+}
+
+export default function FramedHero({ content }: { content?: HomeContent['hero'] }) {
+  const c = withDefaults(HERO, content)
+  const cta1 = withDefaults(HERO.primaryCta, c.primaryCta)
+  const cta2 = withDefaults(HERO.secondaryCta, c.secondaryCta)
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] })
 
@@ -106,9 +119,9 @@ export default function FramedHero() {
             muted
             playsInline
             preload="auto"
-            poster="/video/hero-poster.jpg"
+            poster={c.posterUrl}
           >
-            <source src="/video/hero.mp4" type="video/mp4" />
+            <source src={c.videoUrl} type="video/mp4" />
           </video>
           <motion.div className="absolute inset-0 bg-black" style={{ opacity: veil }} />
 
@@ -128,7 +141,7 @@ export default function FramedHero() {
                 transition={{ duration: 0.9, delay: 0.3, ease: 'easeOut' }}
                 className="text-[19px] md:text-[31px] font-semibold tracking-[0.3em] uppercase text-white/85 mb-6"
               >
-                Minnesota&rsquo;s Most Awarded Design-Build Firm
+                {c.kicker}
               </motion.p>
             </motion.div>
             <motion.div style={{ opacity: titleOpacity }}>
@@ -138,7 +151,7 @@ export default function FramedHero() {
                 transition={{ duration: 1.1, delay: 0.45, ease: 'easeOut' }}
                 className="text-5xl md:text-7xl lg:text-8xl font-[300] tracking-[0.08em] uppercase text-white"
               >
-                Build Your Legacy
+                {c.title}
               </motion.h1>
             </motion.div>
             <motion.div style={{ opacity: supportOpacity, pointerEvents: supportPointerEvents }}>
@@ -149,16 +162,16 @@ export default function FramedHero() {
                 className="mt-10 flex flex-col sm:flex-row items-center gap-4"
               >
                 <Link
-                  href="/portfolio"
+                  href={cta1.href}
                   className="border border-white/90 text-white text-[20px] font-[600] tracking-[0.22em] uppercase px-9 py-3.5 hover:bg-white hover:text-ink transition-colors duration-300"
                 >
-                  Explore Our Work
+                  {cta1.label}
                 </Link>
                 <Link
-                  href="/contact"
+                  href={cta2.href}
                   className="border-2 border-brand bg-brand text-white text-[20px] font-[600] tracking-[0.22em] uppercase px-10 py-4 hover:bg-transparent hover:text-brand transition-colors duration-300"
                 >
-                  Meet With Us
+                  {cta2.label}
                 </Link>
               </motion.div>
             </motion.div>

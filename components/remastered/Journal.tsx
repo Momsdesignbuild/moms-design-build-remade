@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { client } from '@/sanity/lib/client'
+import { withDefaults, type HomeContent } from '@/sanity/lib/homeContent'
 
 type Post = { title: string; slug: string; publishedAt?: string; cats?: string[]; img?: string }
 
@@ -12,7 +13,8 @@ const DESIGNER_RE = /bastyr|sweeney|mlejnek|udenberg|birkenbeuel|wiebusch|woodhe
 const fmt = (d?: string) =>
   d ? new Date(d).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) : ''
 
-export default async function Journal() {
+export default async function Journal({ content }: { content?: HomeContent['journal'] }) {
+  const c = withDefaults({ kicker: 'The Journal', heading: 'On Our Blog', linkLabel: 'All Stories' }, content)
   const posts = await client.fetch<Post[]>(
     `*[_type == "post" && defined(heroImage)] | order(publishedAt desc) [0...8] {
       title, "slug": slug.current, publishedAt, "cats": categories, "img": heroImage.asset->url
@@ -26,16 +28,16 @@ export default async function Journal() {
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
         <div className="flex items-end justify-between mb-14">
           <div>
-            <p className="text-[20px] font-semibold tracking-[0.3em] uppercase text-brand mb-4">The Journal</p>
+            <p className="text-[20px] font-semibold tracking-[0.3em] uppercase text-brand mb-4">{c.kicker}</p>
             <h2 className="text-3xl md:text-5xl font-[300] tracking-[0.06em] uppercase text-ink">
-              On Our Blog
+              {c.heading}
             </h2>
           </div>
           <Link
             href="/blog"
             className="hidden md:inline-block text-[20px] font-semibold tracking-[0.24em] uppercase text-ink border-b border-ink/25 pb-1 hover:border-ink transition-colors"
           >
-            All Stories
+            {c.linkLabel}
           </Link>
         </div>
 
@@ -67,7 +69,7 @@ export default async function Journal() {
           href="/blog"
           className="md:hidden mt-10 inline-block text-[20px] font-semibold tracking-[0.24em] uppercase text-ink border-b border-ink/25 pb-1"
         >
-          All Stories
+          {c.linkLabel}
         </Link>
       </div>
     </section>

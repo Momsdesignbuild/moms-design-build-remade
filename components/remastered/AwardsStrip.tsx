@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import { withDefaults, type HomeContent } from '@/sanity/lib/homeContent'
 
 // Receipts for the hero's "most awarded" claim — the FIVE badges from the live
 // WP homepage, self-hosted (wp-content dies at launch). Summer (7/14): NARI is
@@ -17,16 +18,17 @@ const BADGES = [
   { url: '/images/awards/PNG2025-NARI_RotY-MINNESOTA-WinnerMultipleAwards_CLR.webp', alt: '2025 NARI Remodeler of the Year — Minnesota, Multiple Awards' },
 ]
 
-export default function AwardsStrip() {
+export default function AwardsStrip({ content }: { content?: HomeContent['awards'] }) {
+  const c = withDefaults({ heading: 'The Most Award-Winning in the Midwest', badges: BADGES }, content)
   return (
     <section className="bg-[#F7F5F2] pb-20 lg:pb-24 px-6">
       <div className="max-w-5xl mx-auto">
         {/* live WP homepage H2, verbatim — SEO heading parity */}
         <h2 className="text-center text-[20px] md:text-[20px] font-[300] tracking-[0.26em] uppercase text-brand mb-10">
-          The Most Award-Winning in the Midwest
+          {c.heading}
         </h2>
         <div className="flex items-center justify-center gap-10 md:gap-14 flex-wrap">
-          {BADGES.map((b, i) => (
+          {c.badges.map((b, i) => (
             <motion.div
               key={b.url}
               initial={{ opacity: 0, y: 14 }}
@@ -35,7 +37,7 @@ export default function AwardsStrip() {
               transition={{ duration: 0.5, delay: i * 0.08, ease: 'easeOut' }}
               className="relative h-[120px] md:h-[144px] w-[144px] md:w-[168px]"
             >
-              <Image src={b.url} alt={b.alt} fill sizes="168px" className="object-contain" />
+              <Image src={b.url} alt={b.alt ?? ''} fill sizes="168px" className="object-contain" />
             </motion.div>
           ))}
         </div>

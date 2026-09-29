@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import { withDefaults, type HomeContent } from '@/sanity/lib/homeContent'
 
 // Giving Back, re-dressed: same dark room and same facts as the June section,
 // but with the mat/overlap language — a white-matted garden photo carrying
@@ -17,7 +18,20 @@ const PARTNERS = [
   { name: 'Grief Club of Minnesota', href: 'https://griefclubmn.org/', logo: '/images/partners/Grief-Club-of-MN-N.webp' },
 ]
 
-export default function GivingBackEditorial() {
+const DEFAULTS = {
+  kicker: 'Community Impact',
+  heading: 'Giving Back',
+  quote: 'Love our community. We give generously to impact people in need.',
+  body: 'From this foundational value grew our Giving Back Initiative — where all consultation fees are donated to a community organization. We are honored to share the story of our partners.',
+  partners: PARTNERS,
+  image: 'https://cdn.sanity.io/images/wavk40jo/production/29ea708ab7e0e65d0d063b4ca2e1484a6c40fb74-1601x2400.jpg',
+  imageAlt: "Mom's Design Build garden",
+  statNumber: '100%',
+  statLabel: 'Of consultation fees\ndonated to community',
+}
+
+export default function GivingBackEditorial({ content }: { content?: HomeContent['givingBack'] }) {
+  const c = withDefaults(DEFAULTS, content)
   return (
     <section className="bg-[#1C1C1A] py-24 lg:py-32 overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
@@ -29,28 +43,26 @@ export default function GivingBackEditorial() {
             transition={{ duration: 0.7, ease: 'easeOut' }}
           >
             <p className="text-[20px] font-semibold tracking-[0.3em] uppercase text-brand mb-5">
-              Community Impact
+              {c.kicker}
             </p>
             <h2 className="text-3xl md:text-5xl font-[300] tracking-[0.06em] uppercase text-white mb-8">
-              Giving Back
+              {c.heading}
             </h2>
             <blockquote
               className="text-[20px] md:text-[23px] font-[300] leading-[1.5] text-white/85 mb-8"
               style={{ fontFamily: 'var(--font-heading, "Futura PT", sans-serif)' }}
             >
-              &ldquo;Love our community. We give generously to impact people in need.&rdquo;
+              &ldquo;{c.quote}&rdquo;
             </blockquote>
             <p className="text-[20px] font-[300] leading-relaxed text-white/60 max-w-md mb-9">
-              From this foundational value grew our Giving Back Initiative — where all
-              consultation fees are donated to a community organization. We are honored to
-              share the story of our partners.
+              {c.body}
             </p>
 
             {/* the organizations we give to — each links to their site.
                 White cards, object-contain: no circle mask, nothing cropped
                 (Josh 7/14: forced circles were clipping several logos) */}
             <div className="flex flex-wrap items-center gap-4 mb-10">
-              {PARTNERS.map((p) => (
+              {c.partners.map((p) => (
                 <a
                   key={p.href}
                   href={p.href}
@@ -82,8 +94,8 @@ export default function GivingBackEditorial() {
             <div className="bg-white p-3">
               <div className="relative aspect-[4/5]">
                 <Image
-                  src="https://cdn.sanity.io/images/wavk40jo/production/29ea708ab7e0e65d0d063b4ca2e1484a6c40fb74-1601x2400.jpg"
-                  alt="Mom's Design Build garden"
+                  src={c.image}
+                  alt={c.imageAlt}
                   fill
                   sizes="(max-width: 1024px) 92vw, 520px"
                   className="object-cover"
@@ -94,10 +106,10 @@ export default function GivingBackEditorial() {
             <div className="absolute -bottom-6 -left-4 md:-left-10 bg-white px-8 py-6 shadow-[0_24px_50px_-20px_rgba(0,0,0,0.5)]">
               <div className="pl-5 border-l-2 border-brand">
                 <p className="text-4xl md:text-5xl font-[300] text-ink" style={{ fontFamily: 'var(--font-heading)' }}>
-                  100%
+                  {c.statNumber}
                 </p>
-                <p className="mt-1.5 text-[20px] font-semibold tracking-[0.2em] uppercase text-muted leading-relaxed">
-                  Of consultation fees<br />donated to community
+                <p className="mt-1.5 text-[20px] font-semibold tracking-[0.2em] uppercase text-muted leading-relaxed whitespace-pre-line">
+                  {c.statLabel}
                 </p>
               </div>
             </div>
