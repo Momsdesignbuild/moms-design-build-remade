@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 type Item = {
-  type: 'Portfolio' | 'Blog' | 'Careers' | 'Services'
+  type: 'Portfolio' | 'Blog' | 'Careers' | 'Services' | 'Team'
   title: string
   href: string
   img: string | null
@@ -136,7 +136,7 @@ export default function SearchOverlay({ open, onClose }: { open: boolean; onClos
           ref={inputRef}
           value={q}
           onChange={(e) => setQ(e.target.value)}
-          placeholder={mode === 'photos' ? 'Search photos — pool, fire pit, kitchen…' : 'Search projects, services, stories, careers…'}
+          placeholder={mode === 'photos' ? 'Search photos — pool, fire pit, kitchen…' : 'Search projects, services, stories, people…'}
           aria-label="Search"
           className="w-full border-b-2 border-ink/15 focus:border-brand bg-transparent py-4 text-[22px] md:text-[28px] font-[300] text-ink placeholder:text-muted/60 focus:outline-none transition-colors"
         />

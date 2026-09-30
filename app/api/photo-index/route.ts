@@ -25,7 +25,7 @@ const NUMBERED = /[-–_ ]\d{1,3}$/;
 const IMG = `{ "src": asset->url, alt, "w": asset->metadata.dimensions.width, "h": asset->metadata.dimensions.height }`;
 
 export async function GET() {
-  const [projects, posts, services, careers] = await Promise.all([
+  const [projects, posts, services, careers, team] = await Promise.all([
     client.fetch<Row[]>(`*[_type == "portfolioProject"] | order(orderRank) {
       "page": title, "href": "/portfolio/" + slug.current + "/",
       "imgs": [leadImage${IMG}] + coalesce(gallery[]${IMG}, []) + coalesce(description[_type == "image"]${IMG}, [])
@@ -40,6 +40,11 @@ export async function GET() {
     }`),
     client.fetch<Row[]>(`*[_type == "careerPage" && order >= 0] {
       "page": title, "href": "/careers/" + slug.current + "/", "imgs": [photo${IMG}]
+    }`),
+    // team headshots, findable by name — alt falls back to "Name — Role"
+    client.fetch<Row[]>(`*[_type == "teamMember" && defined(slug.current)] | order(order asc, name asc) {
+      "page": name, "href": "/team/" + slug.current + "/",
+      "imgs": [photo{ "src": asset->url, "alt": coalesce(alt, ^.name + " — " + ^.role), "w": asset->metadata.dimensions.width, "h": asset->metadata.dimensions.height }]
     }`),
   ]);
 
@@ -57,6 +62,7 @@ export async function GET() {
   services.forEach(add("Services"));
   posts.forEach(add("Blog"));
   careers.forEach(add("Careers"));
+  team.forEach(add("Team"));
 
   return NextResponse.json(photos, {
     headers: { "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400" },

@@ -15,7 +15,7 @@ const client = createClient({
 });
 
 export type SearchItem = {
-  type: "Portfolio" | "Blog" | "Careers" | "Services";
+  type: "Portfolio" | "Blog" | "Careers" | "Services" | "Team";
   title: string;
   href: string;
   img: string | null;
@@ -34,7 +34,7 @@ const cleanAlts = (alts: Row["alts"]) =>
     .map((a) => a.slice(0, 140));
 
 export async function GET() {
-  const [projects, posts, careers, services] = await Promise.all([
+  const [projects, posts, careers, services, team] = await Promise.all([
     client.fetch<Row[]>(
       `*[_type == "portfolioProject"] | order(orderRank, _createdAt asc) {
         title, "href": "/portfolio/" + slug.current + "/", "img": heroImage.asset->url, "desc": location,
@@ -61,6 +61,13 @@ export async function GET() {
         "alts": array::compact(coalesce(body[].alt, []) + coalesce(body[].images[].alt, []))
       }`,
     ),
+    // the people (Josh 9/30): search a name, land on their team page
+    client.fetch<Row[]>(
+      `*[_type == "teamMember" && defined(slug.current)] | order(order asc, name asc) {
+        "title": name, "href": "/team/" + slug.current + "/", "img": photo.asset->url, "desc": role,
+        "tags": [role], "alts": [photo.alt]
+      }`,
+    ),
   ]);
 
   const thumb = (u: string | null) => (u ? `${u}?w=160&h=160&fit=crop&auto=format` : null);
@@ -75,6 +82,7 @@ export async function GET() {
   });
 
   const items: SearchItem[] = [
+    ...team.map(item("Team", "Mom's Design Build team")),
     ...services.map(item("Services", "Mom's Design Build services")),
     ...projects.map(item("Portfolio", "Portfolio project")),
     ...posts.map(item("Blog", "From the blog")),
