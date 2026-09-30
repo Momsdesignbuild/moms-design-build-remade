@@ -71,31 +71,66 @@ Create the document via the Sanity API. Everything you need:
 - **ALWAYS create as a DRAFT** — document `_id` prefixed `drafts.` (e.g.
   `drafts.svc-landscape-architecture-rooftop-terraces`). You NEVER publish.
   A human reviews in the Studio and clicks Publish. No exceptions.
+- **Blog posts — use the helper:** write `/tmp/post.json` as
+  `{"title", "excerpt", "categories": ["Tips From an Expert"], "paragraphs": ["…", {"h2": "…"}, "…"], "photo": "fire pit"}`
+  then `node --env-file=.env.local scripts/draft-post.mjs /tmp/post.json`. It
+  saves the DRAFT, picks the cover photo by matching `photo` against the site's
+  photo descriptions, and prints all three links. Categories = the real WP
+  categories only (`app/(site)/category/category-seo.json`), never made-up tags.
+- **The homepage's words and photos are content now** (Sanity doc `homePage`,
+  Studio → Homepage — hero, awards, before/after, services, testimonials,
+  giving back, closing, newsletter). Changes are drafts of `homePage`
+  (`drafts.homePage`, start from the published doc). Its DESIGN is still off
+  limits without Josh.
 - Doc types: `post` (blog), `portfolioProject`, `careerPage`, `servicePage`
   (services/city/info hub pages — `template` field picks the design:
   `standard` for sub-service/city pages, `portal` for step guides), `page`
   (simple info pages, renders via catch-all at any slug).
 - Match field shapes to existing docs — ALWAYS fetch one existing doc of the
   type first and mirror its structure (portable text blocks need `_key`s).
-- Photos: search existing assets first (2,262 in the library) via GROQ on
-  `sanity.imageAsset` (originalFilename/altText) — reference by `_ref`.
-  Only upload new files if asked.
+- Photos: search by what's IN the photo — every photo on the site has a real
+  description (alt text) since 9/29. The fastest way: fetch
+  `https://moms-design-build-remade-henna.vercel.app/api/photo-index/`
+  (src, alt, page) and match words ("pool", "fire pit"); or GROQ on the
+  `alt` of gallery/body images. Reference by asset `_ref`. Only upload new
+  files if asked — and any NEW photo gets a real, specific alt (site search
+  and Google both read it).
 - SEO fields on NEW pages: write a real metaTitle (~60 chars, ends
   "- Mom's Design Build") and metaDescription (~155 chars). Leave `jsonLd`
   EMPTY on new pages (the layout provides org schema).
 
-### Always end with the two magic links (this IS the product)
+### Always end with the three magic links (this IS the product)
 
-Every time you create or change a draft, reply with BOTH links, each with a
-one-line plain-language explanation:
-1. **See it live:** `https://moms-design-build-remade-henna.vercel.app/studio/presentation?preview=<url-encoded page path>`
-   — "this opens the real page with your draft on it; click any text or photo
-   on the page to edit it right there, and it updates as you type."
-2. **Edit the fields:** `https://moms-design-build-remade-henna.vercel.app/studio/intent/edit/id=<docId>;type=<type>`
-   — "the form view of the same draft. Nothing is public until someone clicks
-   Publish."
+Every time you create or change a draft, reply with ALL THREE links, each with
+a one-line plain-language explanation:
+1. **Preview it (test link):** run `node --env-file=.env.local scripts/preview-link.mjs <page path>`
+   (e.g. `/fall-backyard-checklist/`) and paste the URL it prints.
+   — "a private test link: the real site with your draft on it. No login, works
+   on a phone, fine to text to someone. It expires in an hour — ask me for a
+   fresh one anytime. The public site doesn't change."
+2. **Edit it on the page:** `https://moms-design-build-remade-henna.vercel.app/studio/presentation?preview=<url-encoded page path>`
+   — "the same page inside the Studio: click any text or photo to edit it right
+   there, and it updates as you type. Needs your Sanity login."
+3. **Edit the fields / Publish:** `https://moms-design-build-remade-henna.vercel.app/studio/intent/edit/id=<docId>;type=<type>`
+   — "the form view of the same draft, with the Publish button. Nothing is
+   public until someone clicks Publish."
 Then offer the next step in-thread: "want me to change anything — wording,
 photos, the order? Just tell me here."
+
+### Draft vs. test link vs. published — explain this nuance, don't assume it
+
+- A **draft** is a saved, unpublished version. It lives in Sanity only.
+- The **test link** (1) shows the draft on the real site design. It's private
+  (only people with the link), read-only, and expires after an hour.
+- The **public page** is untouched until someone clicks **Publish**:
+  - a NEW page doesn't exist publicly until then (its address is a blank 404);
+  - an EXISTING page keeps showing the old version until then — the test link
+    is the only place the change is visible.
+- After Publish: the page updates in about 5 seconds, and the blog list /
+  grids in about 15. No deploy, no waiting on Josh.
+- Design changes (lane 2) are different: those get a Vercel preview that only
+  Josh can open (it's behind the team login). Say so; don't send Summer a link
+  she can't open.
 
 ### The experience bar (Summer is the customer)
 
@@ -119,10 +154,14 @@ photos, the order? Just tell me here."
 - **Every contact CTA says "Meet With Us"** — not "Contact," "Get in Touch,"
   "Start Your Project," "Connect With Us," or any variant. One label,
   everywhere, linking to `/contact`.
-- **Portfolio + careers tiles use the shared `OverlayTile` component**
-  (`components/OverlayTile.tsx`) — title overlaid centered on a darkened
-  4:5-ratio photo, fades on hover to reveal it at 100%. Don't build a
-  different card treatment for a new grid; reuse this one.
+- **Portfolio, careers, team and services tiles use the shared `OverlayTile`
+  component** (`components/OverlayTile.tsx`) — title overlaid centered on a
+  darkened 4:5-ratio photo, fades on hover to reveal it at 100%.
+- **The blog grid is the exception (Josh 9/29):** editorial cards — 4:5
+  photo, then date, title and excerpt UNDER it, three across. No text on the
+  photo. Filters panel (topics + sort) lives in `components/blog/BlogGrid.tsx`.
+- **Anatomy of a Project (Serene Shores, homepage) mobile text is 15% under
+  the 20px floor on purpose** (Josh 9/29) — the one exception; don't "fix" it.
 - **Gallery/photo-fade animation is 1.35s** (`Reveal.tsx` and
   `LightboxGallery.tsx`'s `itemVariants` — keep them in sync if you touch one).
 - **Portfolio TA-DA galleries (the finished-photos section after a slider
