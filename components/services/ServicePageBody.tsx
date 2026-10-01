@@ -40,7 +40,7 @@ export type BodyBlock = {
 };
 
 export type ServiceTemplate = "hub" | "standard" | "interior" | "division" | "portal";
-export type ServiceHero = { videoUrl?: string; posterUrl?: string; alt?: string };
+export type ServiceHero = { videoUrl?: string; posterUrl?: string; alt?: string; title?: string; w?: number; h?: number };
 
 function Rich({ block }: { block: BodyBlock }) {
   return (
@@ -791,15 +791,26 @@ function LiveButton({ b }: { b: BodyBlock }) {
 }
 
 function LiveBody({ blocks, cardsSet, hero }: { blocks: BodyBlock[]; cardsSet?: string; hero?: ServiceHero }) {
-  const items = parseLive(blocks);
+  const videoUrl = stegaClean(hero?.videoUrl);
+  const posterUrl = stegaClean(hero?.posterUrl);
+  const hasHero = !!(videoUrl || posterUrl);
+  let body = blocks;
+  // with a top photo set, a leading image block is the migrated copy of their old top photo
+  if (hasHero && body[0]?._type === "image") body = body.slice(1);
+  // a short heading straight before another heading sits ON their banner photo (Front Entries, Gardens, PATIOS)
+  let bannerTitle: BodyBlock | null = null;
+  if (posterUrl && !videoUrl && isHeading(body[0]) && isHeading(body[1]) && plainText(body[0]).trim().split(/\s+/).length <= 4) {
+    bannerTitle = body[0];
+    body = body.slice(1);
+  }
+  const caption = stegaClean(hero?.title);
+  const items = parseLive(body);
   // city pages ("Landscape Architecture In Edina"): live shows the title unboxed, with plain gray subheads
   const city = items[0]?.k === "intro" && /^landscape architecture in /i.test(plainText(items[0].blocks[0]).trim());
   const h3Cls = `${LV.h3} ${city ? "text-brand-mid" : "text-[#00B4D1]"}`;
   const h3Style = city ? PROXIMA : { ...PROXIMA, ...ITALIC };
   const textish = (it?: LiveItem) =>
     !!it && (it.k === "row" || it.k === "list" || it.k === "lead" || (it.k === "b" && (it.b._type === "block" || it.b._type === "ctaButton")));
-  const videoUrl = stegaClean(hero?.videoUrl);
-  const posterUrl = stegaClean(hero?.posterUrl);
   return (
     <section className="pt-6 md:pt-8 pb-20 px-5 bg-white">
       <div className="max-w-[1080px] mx-auto">
@@ -817,7 +828,36 @@ function LiveBody({ blocks, cardsSet, hero }: { blocks: BodyBlock[]; cardsSet?: 
                 className="w-full aspect-[1060/596] object-cover bg-brand-light"
               />
             ) : (
-              <Image src={posterUrl!} alt={hero?.alt || ""} width={2120} height={1192} priority className="w-full aspect-[1060/596] object-cover" sizes="(max-width: 1080px) 100vw, 1060px" />
+              <div className="relative">
+                <Image
+                  src={posterUrl!}
+                  alt={hero?.alt || ""}
+                  width={hero?.w ?? 2120}
+                  height={hero?.h ?? 1192}
+                  priority
+                  className={
+                    bannerTitle
+                      ? "w-full aspect-[1060/547] object-cover"
+                      : caption
+                        ? "w-full h-auto max-h-[600px] object-cover opacity-80 brightness-90" // their captioned top photos are hazed so the words read
+                        : "w-full h-auto"
+                  }
+                  sizes="(max-width: 1080px) 100vw, 1060px"
+                />
+                {caption && (
+                  <p className="absolute inset-0 flex items-center justify-center px-4 text-center text-white text-[30px] md:text-[60px] font-[500] tracking-[5px] leading-[1.1]" style={PROXIMA}>
+                    {caption}
+                  </p>
+                )}
+                {bannerTitle && (
+                  <h1
+                    className="absolute inset-0 flex items-center justify-center px-4 text-center text-white text-[34px] md:text-[60px] font-[500] tracking-[5px] uppercase leading-[1.1] [text-shadow:0_2px_18px_rgba(0,0,0,0.35)]"
+                    style={PROXIMA}
+                  >
+                    {plainText(bannerTitle)}
+                  </h1>
+                )}
+              </div>
             )}
           </div>
         )}
@@ -829,9 +869,16 @@ function LiveBody({ blocks, cardsSet, hero }: { blocks: BodyBlock[]; cardsSet?: 
                 {it.blocks.map((b, i) =>
                   i === 0 ? (
                     // their WP theme put this in an h2; it is the page's one real h1 here (same deviation as before)
-                    <h1 key={b._key} className={`${LV.h2} text-center mb-5${city ? " md:text-[43.2px]" : ""}`}>
-                      {plainText(b)}
-                    </h1>
+                    // unless the banner title above already took the h1
+                    bannerTitle ? (
+                      <h2 key={b._key} className={`${LV.h2} text-center mb-5`}>
+                        {plainText(b)}
+                      </h2>
+                    ) : (
+                      <h1 key={b._key} className={`${LV.h2} text-center mb-5${city ? " md:text-[43.2px]" : ""}`}>
+                        {plainText(b)}
+                      </h1>
+                    )
                   ) : (
                     <p key={b._key} className={`${LV.p} text-center mb-2.5`}>
                       <Rich block={b} />

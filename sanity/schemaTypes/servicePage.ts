@@ -37,6 +37,10 @@ export default defineType({
       description: 'Shows at the top when there is no video (and while the video loads).',
       fields: [{ name: 'alt', type: 'string', title: 'Alt text' }],
     }),
+    defineField({
+      name: 'heroTitle', title: 'Words over the top photo', type: 'string',
+      description: 'Big white words laid over the top photo, e.g. "CUSTOM DECKS". Leave empty for none.',
+    }),
     defineField({ name: 'divisionLogoUrl', title: 'Division logo URL (division template only)', type: 'string', readOnly: true }),
     defineField({
       name: 'body', title: 'Page content', type: 'array',
