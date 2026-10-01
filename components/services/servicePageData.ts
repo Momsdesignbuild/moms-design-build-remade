@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { sanityFetch } from "@/sanity/lib/live";
 import { client } from "@/sanity/lib/client";
-import type { BodyBlock, ServiceTemplate } from "./ServicePageBody";
+import type { BodyBlock, ServiceHero, ServiceTemplate } from "./ServicePageBody";
 
 export type ServicePageDoc = {
   title: string;
@@ -16,6 +16,7 @@ export type ServicePageDoc = {
   ogImageType?: string;
   sourceUrl?: string;
   jsonLd?: string;
+  hero?: ServiceHero;
   body: BodyBlock[];
 };
 
@@ -24,6 +25,7 @@ export async function getServicePage(slug: string): Promise<ServicePageDoc | nul
     query: `*[_type == "servicePage" && slug.current == $slug][0]{
       title, template, cardsSet, divisionLogoUrl, metaTitle, metaDescription,
       ogImageUrl, ogImageWidth, ogImageHeight, ogImageType, sourceUrl, jsonLd,
+      "hero": select(defined(heroVideo) || defined(heroImage) => { "videoUrl": heroVideo.asset->url, "posterUrl": heroImage.asset->url, "alt": heroImage.alt }),
       body[]{
         ...,
         _type == "image" => { "url": asset->url, "dim": asset->metadata.dimensions{ width, height } },

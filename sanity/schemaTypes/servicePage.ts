@@ -28,6 +28,15 @@ export default defineType({
       options: { list: ['landscape', 'interiorHub'] },
       readOnly: true,
     }),
+    defineField({
+      name: 'heroVideo', title: 'Top video', type: 'file', options: { accept: 'video/mp4' },
+      description: 'Plays at the top of the page, like the live site. MP4. Leave empty for no video.',
+    }),
+    defineField({
+      name: 'heroImage', title: 'Top photo', type: 'image', options: { hotspot: true },
+      description: 'Shows at the top when there is no video (and while the video loads).',
+      fields: [{ name: 'alt', type: 'string', title: 'Alt text' }],
+    }),
     defineField({ name: 'divisionLogoUrl', title: 'Division logo URL (division template only)', type: 'string', readOnly: true }),
     defineField({
       name: 'body', title: 'Page content', type: 'array',

@@ -9,7 +9,7 @@ import Link from "next/link";
 
 export type CarouselSlide = { url: string; alt?: string; href?: string; dim?: { width: number; height: number } };
 
-export default function ServiceCarousel({ slides }: { slides: CarouselSlide[] }) {
+export default function ServiceCarousel({ slides, aspect = "aspect-[3/2]" }: { slides: CarouselSlide[]; aspect?: string }) {
   const [idx, setIdx] = useState(0);
   const hovered = useRef(false);
   const touchX = useRef<number | null>(null);
@@ -51,7 +51,7 @@ export default function ServiceCarousel({ slides }: { slides: CarouselSlide[] })
               alt={s.alt || ""}
               width={s.dim?.width ?? 2000}
               height={s.dim?.height ?? 1333}
-              className="w-full h-auto object-cover aspect-[3/2]"
+              className={`w-full h-auto object-cover ${aspect}`}
               sizes="(max-width: 1200px) 100vw, 1200px"
               {...(i === 0 ? { priority: true } : { loading: "lazy" as const })}
             />

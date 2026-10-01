@@ -3,11 +3,12 @@ import Link from "next/link";
 import { stegaClean } from "next-sanity";
 import { CARD_SETS } from "./serviceCards";
 import ServiceCarousel from "./ServiceCarousel";
+import LiveQuotes from "./LiveQuotes";
 
 /* Renders a servicePage doc's portable-text body with one of the FOUR
  * renderer designs:
  *   hub       — LA + interior hubs (big first heading, brand taglines)
- *   standard  — the 36 sub-service/city pages
+ *   standard  — the 37 sub-service/city pages, laid out like their live Elementor pages (LiveBody)
  *   interior  — bathroom/kitchen/living remodeling (narrow 820px column)
  *   division  — garden management + commercial maintenance (division logo top)
  * Text verbatim from THEIR site — do not reword.
@@ -39,6 +40,7 @@ export type BodyBlock = {
 };
 
 export type ServiceTemplate = "hub" | "standard" | "interior" | "division" | "portal";
+export type ServiceHero = { videoUrl?: string; posterUrl?: string; alt?: string };
 
 function Rich({ block }: { block: BodyBlock }) {
   return (
@@ -55,6 +57,10 @@ function Rich({ block }: { block: BodyBlock }) {
           >
             {s.text}
           </Link>
+        ) : s.marks?.includes("strong") || s.marks?.includes("em") ? (
+          <span key={i} className={s.marks.includes("strong") ? "font-[600]" : undefined} style={s.marks.includes("em") ? ITALIC : undefined}>
+            {s.text}
+          </span>
         ) : (
           <span key={i}>{s.text}</span>
         );
@@ -62,6 +68,11 @@ function Rich({ block }: { block: BodyBlock }) {
     </>
   );
 }
+
+// html has font-synthesis:none and Proxima ships no italic file; their live WP fakes the italic, so do we
+const ITALIC: React.CSSProperties = { fontStyle: "italic", fontSynthesis: "style" };
+// the global h1–h6 rule forces Futura; their live h3/h4/quotes are Proxima
+const PROXIMA: React.CSSProperties = { fontFamily: "var(--font-body), 'Proxima Nova', sans-serif" };
 
 const isHeading = (b: BodyBlock) => b._type === "block" && /^h[1-6]$/.test(b.style ?? "");
 // stegaClean: in Studio draft mode every string carries invisible stega chars
@@ -181,6 +192,8 @@ function HubBody({
   divisionLogoUrl?: string;
   cardsLayout: "flex" | "grid";
   accent?: string;
+  /** standard template: the top video/photo, like their live pages */
+  hero?: ServiceHero;
 }) {
   // segment the flat walk: consecutive text blocks form a run; images/cards/CTAs break it
   type Seg = { kind: "text"; blocks: Array<{ b: BodyBlock; i: number }> } | { kind: "other"; b: BodyBlock; i: number };
@@ -637,6 +650,309 @@ function GroupedBody({
   );
 }
 
+/* ── standard: mirrors their live Elementor service pages (Summer 8/17 + 10/1,
+ * "the changes we talked about"; Josh 10/1: "mirror her pages in their look").
+ * Framed top video, intro in the double-rule gray box, double hairline dividers,
+ * each h3 with its photo beside it, FAQs boxed, "Why choose" beside the reviews.
+ * Sizes/colours measured off the live water-features page 2026-10-01. ── */
+const LV = {
+  box: "bg-[#F9FAFB] border-4 border-double border-brand-mid",
+  h2: "font-[300] text-[24px] md:text-[30.6px] leading-[1.2] tracking-[0.06em] uppercase text-brand-mid",
+  p: "font-sans text-[18px] font-[300] leading-[1.8] text-brand-mid",
+  h3: "text-[21px] md:text-[23.4px] font-[300] leading-[1.2] tracking-[0.067em]",
+  q: "text-[20px] md:text-[24px] font-[600] leading-[1.2] tracking-[0.04em] text-brand-mid",
+  divider: "border-t-4 border-double border-[#CBD5E1] my-8",
+};
+const WHY = /^why (should i |)choose/i;
+type Quote = { text: string; name?: string };
+type LiveItem =
+  | { k: "intro"; blocks: BodyBlock[] }
+  | { k: "row"; head: BodyBlock; text: BodyBlock[]; img: BodyBlock }
+  | { k: "faq"; items: BodyBlock[] }
+  | { k: "why"; head: BodyBlock; list: BodyBlock[]; quotes: Quote[] }
+  | { k: "quotes"; quotes: Quote[] }
+  | { k: "lead"; p: BodyBlock; cta: BodyBlock }
+  | { k: "list"; items: BodyBlock[] }
+  | { k: "b"; b: BodyBlock };
+
+function parseLive(blocks: BodyBlock[]): LiveItem[] {
+  const out: LiveItem[] = [];
+  const text = (b?: BodyBlock) => b?._type === "block" && b.style !== "blockquote" && b.style !== "attrib";
+  const quotesAt = (j: number): [Quote[], number] => {
+    const qs: Quote[] = [];
+    while (blocks[j]?.style === "blockquote") {
+      const q: Quote = { text: plainText(blocks[j]) };
+      j++;
+      if (blocks[j]?.style === "attrib") q.name = plainText(blocks[j++]);
+      qs.push(q);
+    }
+    return [qs, j];
+  };
+  let i = 0;
+  // intro = the page's first heading + the paragraphs under it (their boxed opener)
+  if (blocks[0] && isHeading(blocks[0])) {
+    let j = 1;
+    while (text(blocks[j]) && !isHeading(blocks[j]) && !blocks[j].listItem) j++;
+    out.push({ k: "intro", blocks: blocks.slice(0, j) });
+    i = j;
+  }
+  while (i < blocks.length) {
+    const b = blocks[i];
+    const t = isHeading(b) ? plainText(b).trim() : "";
+    if (/^(faqs?|frequently asked questions)$/i.test(t)) {
+      let j = i + 1;
+      while (text(blocks[j]) && !(isHeading(blocks[j]) && /^h[12]$/.test(blocks[j].style!)) && !WHY.test(plainText(blocks[j]).trim())) j++;
+      out.push({ k: "faq", items: blocks.slice(i + 1, j) });
+      i = j;
+      continue;
+    }
+    if (WHY.test(t)) {
+      let j = i + 1;
+      while (text(blocks[j]) && !isHeading(blocks[j])) j++;
+      const [quotes, k] = quotesAt(j);
+      out.push({ k: "why", head: b, list: blocks.slice(i + 1, j), quotes });
+      i = k;
+      continue;
+    }
+    if (b.style === "blockquote") {
+      const [quotes, k] = quotesAt(i);
+      out.push({ k: "quotes", quotes });
+      i = k;
+      continue;
+    }
+    if (b.style === "h3" || b.style === "h4") {
+      let j = i + 1;
+      while (text(blocks[j]) && !isHeading(blocks[j])) j++;
+      if (blocks[j]?._type === "image" && blocks[j].url) {
+        out.push({ k: "row", head: b, text: blocks.slice(i + 1, j), img: blocks[j] });
+        i = j + 1;
+        continue;
+      }
+    }
+    if (text(b) && !isHeading(b) && !b.listItem && blocks[i + 1]?._type === "ctaButton" && plainText(b).length < 160) {
+      out.push({ k: "lead", p: b, cta: blocks[i + 1] });
+      i += 2;
+      continue;
+    }
+    if (b.listItem) {
+      const items: BodyBlock[] = [];
+      while (blocks[i]?.listItem) items.push(blocks[i++]);
+      out.push({ k: "list", items });
+      continue;
+    }
+    out.push({ k: "b", b });
+    i++;
+  }
+  return out;
+}
+
+function LiveText({ blocks, center = false }: { blocks: BodyBlock[]; center?: boolean }) {
+  return (
+    <>
+      {groupLists(blocks).map((g) =>
+        (g as ListGroup).kind === "list" ? (
+          <ul key={(g as ListGroup).key} className="list-disc pl-10 mb-5">
+            {(g as ListGroup).items.map((li) => (
+              <li key={li._key} className={LV.p}>
+                <Rich block={li} />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p key={(g as BodyBlock)._key} className={center ? `${LV.p} mb-[22px] text-center` : `${LV.p} mb-[22px]`}>
+            <Rich block={g as BodyBlock} />
+          </p>
+        )
+      )}
+    </>
+  );
+}
+
+function LiveButton({ b }: { b: BodyBlock }) {
+  // their last button ("Back to Landscape Architecture") is a plain teal text link
+  if (/^back to /i.test(stegaClean(b.text ?? "")))
+    return (
+      <div className="mt-14 mb-6 px-2.5">
+        <Link href={b.href!} className="font-sans text-[18px] font-[600] tracking-[0.06em] text-[#33BED1] hover:text-brand-dark transition-colors">
+          {b.text}
+        </Link>
+      </div>
+    );
+  return (
+    <div className="text-center my-10">
+      <Link
+        href={b.href!}
+        className="inline-block bg-brand text-white font-sans text-[15px] font-[600] tracking-[0.07em] uppercase leading-none px-[34px] py-[21px] rounded-[3px] hover:bg-brand-dark transition-colors duration-200"
+      >
+        {b.text}
+      </Link>
+    </div>
+  );
+}
+
+function LiveBody({ blocks, cardsSet, hero }: { blocks: BodyBlock[]; cardsSet?: string; hero?: ServiceHero }) {
+  const items = parseLive(blocks);
+  // city pages ("Landscape Architecture In Edina"): live shows the title unboxed, with plain gray subheads
+  const city = items[0]?.k === "intro" && /^landscape architecture in /i.test(plainText(items[0].blocks[0]).trim());
+  const h3Cls = `${LV.h3} ${city ? "text-brand-mid" : "text-[#00B4D1]"}`;
+  const h3Style = city ? PROXIMA : { ...PROXIMA, ...ITALIC };
+  const textish = (it?: LiveItem) =>
+    !!it && (it.k === "row" || it.k === "list" || it.k === "lead" || (it.k === "b" && (it.b._type === "block" || it.b._type === "ctaButton")));
+  const videoUrl = stegaClean(hero?.videoUrl);
+  const posterUrl = stegaClean(hero?.posterUrl);
+  return (
+    <section className="pt-6 md:pt-8 pb-20 px-5 bg-white">
+      <div className="max-w-[1080px] mx-auto">
+        {(videoUrl || posterUrl) && (
+          <div className="md:px-2.5 mb-8">
+            {videoUrl ? (
+              <video
+                src={videoUrl}
+                poster={posterUrl}
+                autoPlay
+                muted
+                loop
+                playsInline
+                aria-label={hero?.alt || undefined}
+                className="w-full aspect-[1060/596] object-cover bg-brand-light"
+              />
+            ) : (
+              <Image src={posterUrl!} alt={hero?.alt || ""} width={2120} height={1192} priority className="w-full aspect-[1060/596] object-cover" sizes="(max-width: 1080px) 100vw, 1060px" />
+            )}
+          </div>
+        )}
+        {items.map((it, n) => {
+          const prev = items[n - 1];
+          if (it.k === "intro")
+            return (
+              <div key="intro" className={city ? "pt-8 pb-6" : `${LV.box} px-5 md:px-6 pt-6 pb-4 mb-2`}>
+                {it.blocks.map((b, i) =>
+                  i === 0 ? (
+                    // their WP theme put this in an h2; it is the page's one real h1 here (same deviation as before)
+                    <h1 key={b._key} className={`${LV.h2} text-center mb-5${city ? " md:text-[43.2px]" : ""}`}>
+                      {plainText(b)}
+                    </h1>
+                  ) : (
+                    <p key={b._key} className={`${LV.p} text-center mb-2.5`}>
+                      <Rich block={b} />
+                    </p>
+                  )
+                )}
+              </div>
+            );
+          if (it.k === "row")
+            return (
+              <div key={it.head._key} className="grid md:grid-cols-[minmax(0,1fr)_412px] gap-5 items-start md:px-2.5 mb-12 md:mb-5">
+                <div>
+                  <h3 className={`${h3Cls} mb-5`} style={h3Style}>{plainText(it.head)}</h3>
+                  <LiveText blocks={it.text} />
+                </div>
+                <Image
+                  src={it.img.url!}
+                  alt={it.img.alt || ""}
+                  width={it.img.dim?.width ?? 1200}
+                  height={it.img.dim?.height ?? 800}
+                  className="w-full h-auto"
+                  sizes="(max-width: 768px) 100vw, 412px"
+                  loading="lazy"
+                />
+              </div>
+            );
+          if (it.k === "faq")
+            return (
+              <div key={"faq" + n} className={`${LV.box} px-5 md:px-6 py-6 my-10`}>
+                <h2 className={`${LV.h2} mb-5`}>FAQs</h2>
+                {it.items.map((b) =>
+                  isHeading(b) ? (
+                    <h3 key={b._key} className={`${LV.q} mt-12 first:mt-0 mb-5`} style={{ ...PROXIMA, ...ITALIC }}>
+                      {plainText(b)}
+                    </h3>
+                  ) : (
+                    <LiveText key={b._key} blocks={[b]} />
+                  )
+                )}
+              </div>
+            );
+          if (it.k === "why" || it.k === "quotes") {
+            const quotes = it.quotes;
+            const why = it.k === "why" && (
+              <div className="md:px-2.5">
+                <h2 className="text-[22px] md:text-[24px] font-[300] leading-[1.2] tracking-[0.04em] text-[#00B4D1] text-center mb-5" style={PROXIMA}>
+                  {plainText(it.head)}
+                </h2>
+                <LiveText blocks={it.list} />
+              </div>
+            );
+            return (
+              <div key={"why" + n} className={`my-14 grid gap-10 items-center ${why && quotes.length ? "md:grid-cols-2" : ""}`}>
+                {why}
+                {quotes.length > 0 && <LiveQuotes quotes={quotes} />}
+              </div>
+            );
+          }
+          if (it.k === "lead")
+            return (
+              <div key={it.p._key}>
+                {(prev?.k === "why" || prev?.k === "quotes") && <div className={LV.divider} />}
+                <div className="text-center my-8">
+                  <p className={`${LV.p} text-center mb-6`}>
+                    <Rich block={it.p} />
+                  </p>
+                  <LiveButton b={it.cta} />
+                </div>
+              </div>
+            );
+          if (it.k === "list") return <LiveText key={it.items[0]._key} blocks={it.items} />;
+          const b = it.b;
+          if (isHeading(b)) {
+            if (/^h[12]$/.test(b.style!))
+              return (
+                <div key={b._key}>
+                  {textish(prev) && <div className={LV.divider} />}
+                  <h2 className={`${LV.h2} mt-8 mb-3`}>{plainText(b)}</h2>
+                </div>
+              );
+            if (b.style === "h3" || b.style === "h4")
+              return (
+                <h3 key={b._key} className={`${h3Cls} mt-8 mb-5 md:px-2.5`} style={h3Style}>
+                  {plainText(b)}
+                </h3>
+              );
+            return (
+              <h4 key={b._key} className={`${LV.q} mt-8 mb-5`} style={{ ...PROXIMA, ...ITALIC }}>
+                {plainText(b)}
+              </h4>
+            );
+          }
+          if (b._type === "block") return <LiveText key={b._key} blocks={[b]} />;
+          if (b._type === "ctaButton") return <LiveButton key={b._key} b={b} />;
+          if (b._type === "imageCarousel" && b.images?.length)
+            return (
+              <div key={b._key} className="my-8">
+                <ServiceCarousel slides={b.images.filter((s) => s.url)} aspect="aspect-[1080/238]" />
+              </div>
+            );
+          if (b._type === "image" && b.url && b.dim)
+            return (
+              <div key={b._key} className="my-8 flex justify-center">
+                <Image src={b.url} alt={b.alt || ""} width={b.dim.width} height={b.dim.height} className="h-auto" style={{ maxWidth: Math.min(b.dim.width, 1080), width: "100%" }} sizes="(max-width: 768px) 100vw, 1080px" loading="lazy" />
+              </div>
+            );
+          if (b._type === "cardsGrid")
+            return (
+              <div key={b._key} className="flex flex-wrap justify-center gap-5 my-6 md:px-2.5">
+                {(cardsSet ? CARD_SETS[cardsSet] : [])?.map((c) => (
+                  <CardTile key={c.href} href={c.href} bg={c.bg} title={c.title} cell="group relative block aspect-[250/275] overflow-hidden w-[calc(50%-10px)] md:w-[calc(25%-15px)]" />
+                ))}
+              </div>
+            );
+          return null;
+        })}
+      </div>
+    </section>
+  );
+}
+
 /* ── portal: homeowner-portal's numbered-step guide (760px column). h2 resets
  * the step counter, each h3 renders as an auto-numbered step (leading "N. "
  * stripped), external links open in a new tab, screenshots get a border.
@@ -737,6 +1053,7 @@ export default function ServicePageBody({
   cardsSet: cardsSetRaw,
   divisionLogoUrl: divisionLogoUrlRaw,
   accent,
+  hero,
 }: {
   template: ServiceTemplate;
   body: BodyBlock[];
@@ -744,6 +1061,8 @@ export default function ServicePageBody({
   divisionLogoUrl?: string;
   /** division brand accent — Fine Gardening #FF6D6A, Commercial #5EAD4F */
   accent?: string;
+  /** standard template: the top video/photo, like their live pages */
+  hero?: ServiceHero;
 }) {
   // In draft mode (Studio Presentation), stega watermarks string values with
   // invisible characters — clean anything used as a comparison/lookup key or
@@ -758,5 +1077,6 @@ export default function ServicePageBody({
     return (
       <HubBody blocks={body} cardsSet={cardsSet} divisionLogoUrl={divisionLogoUrl} cardsLayout="grid" accent={accent} />
     );
-  return <GroupedBody blocks={body} cardsSet={cardsSet} narrow={template === "interior"} />;
+  if (template === "standard") return <LiveBody blocks={body} cardsSet={cardsSet} hero={hero} />;
+  return <GroupedBody blocks={body} cardsSet={cardsSet} narrow />;
 }
