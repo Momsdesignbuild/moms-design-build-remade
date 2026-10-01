@@ -40,7 +40,7 @@ export type BodyBlock = {
 };
 
 export type ServiceTemplate = "hub" | "standard" | "interior" | "division" | "portal";
-export type ServiceHero = { videoUrl?: string; posterUrl?: string; alt?: string; title?: string; w?: number; h?: number };
+export type ServiceHero = { videoUrl?: string; posterUrl?: string; alt?: string; title?: string; height?: number; w?: number; h?: number };
 
 function Rich({ block }: { block: BodyBlock }) {
   return (
@@ -804,6 +804,7 @@ function LiveBody({ blocks, cardsSet, hero }: { blocks: BodyBlock[]; cardsSet?: 
     body = body.slice(1);
   }
   const caption = stegaClean(hero?.title);
+  const heroHeight = hero?.height || 500;
   const items = parseLive(body);
   // city pages ("Landscape Architecture In Edina"): live shows the title unboxed, with plain gray subheads
   const city = items[0]?.k === "intro" && /^landscape architecture in /i.test(plainText(items[0].blocks[0]).trim());
@@ -828,7 +829,7 @@ function LiveBody({ blocks, cardsSet, hero }: { blocks: BodyBlock[]; cardsSet?: 
                 className="w-full aspect-[1060/596] object-cover bg-brand-light"
               />
             ) : (
-              <div className="relative">
+              <div className="relative group">
                 <Image
                   src={posterUrl!}
                   alt={hero?.alt || ""}
@@ -839,13 +840,15 @@ function LiveBody({ blocks, cardsSet, hero }: { blocks: BodyBlock[]; cardsSet?: 
                     bannerTitle
                       ? "w-full aspect-[1060/547] object-cover"
                       : caption
-                        ? "w-full h-auto max-h-[600px] object-cover opacity-80 brightness-90" // their captioned top photos are hazed so the words read
+                        ? "w-full object-cover opacity-[0.78] brightness-90 transition-opacity duration-500 group-hover:opacity-100" // hazed so the words read; clears on hover, like live
                         : "w-full h-auto"
                   }
                   sizes="(max-width: 1080px) 100vw, 1060px"
+                  // live sets each captioned photo's height (decks 500px); keep that shape at every width
+                  style={caption ? { aspectRatio: `1080 / ${heroHeight}` } : undefined}
                 />
                 {caption && (
-                  <p className="absolute inset-0 flex items-center justify-center px-4 text-center text-white text-[30px] md:text-[60px] font-[500] tracking-[5px] leading-[1.1]" style={PROXIMA}>
+                  <p className="pointer-events-none absolute inset-0 flex items-center justify-center px-4 text-center text-white text-[30px] md:text-[60px] font-[500] tracking-[5px] leading-[1.1] [text-shadow:0_0_10px_rgba(0,0,0,0.3)]" style={PROXIMA}>
                     {caption}
                   </p>
                 )}
@@ -976,7 +979,7 @@ function LiveBody({ blocks, cardsSet, hero }: { blocks: BodyBlock[]; cardsSet?: 
           if (b._type === "imageCarousel" && b.images?.length)
             return (
               <div key={b._key} className="my-8">
-                <ServiceCarousel slides={b.images.filter((s) => s.url)} aspect="aspect-[1080/238]" />
+                <ServiceCarousel slides={b.images.filter((s) => s.url)} strip />
               </div>
             );
           if (b._type === "image" && b.url && b.dim)

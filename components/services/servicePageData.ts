@@ -25,7 +25,7 @@ export async function getServicePage(slug: string): Promise<ServicePageDoc | nul
     query: `*[_type == "servicePage" && slug.current == $slug][0]{
       title, template, cardsSet, divisionLogoUrl, metaTitle, metaDescription,
       ogImageUrl, ogImageWidth, ogImageHeight, ogImageType, sourceUrl, jsonLd,
-      "hero": select(defined(heroVideo) || defined(heroImage) => { "videoUrl": heroVideo.asset->url, "posterUrl": heroImage.asset->url, "alt": heroImage.alt, "title": heroTitle, "w": heroImage.asset->metadata.dimensions.width, "h": heroImage.asset->metadata.dimensions.height }),
+      "hero": select(defined(heroVideo) || defined(heroImage) => { "videoUrl": heroVideo.asset->url, "posterUrl": heroImage.asset->url, "alt": heroImage.alt, "title": heroTitle, "height": heroHeight, "w": heroImage.asset->metadata.dimensions.width, "h": heroImage.asset->metadata.dimensions.height }),
       body[]{
         ...,
         _type == "image" => { "url": asset->url, "dim": asset->metadata.dimensions{ width, height } },

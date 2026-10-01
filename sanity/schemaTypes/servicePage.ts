@@ -41,6 +41,10 @@ export default defineType({
       name: 'heroTitle', title: 'Words over the top photo', type: 'string',
       description: 'Big white words laid over the top photo, e.g. "CUSTOM DECKS". Leave empty for none.',
     }),
+    defineField({
+      name: 'heroHeight', title: 'Top photo height (px on a computer)', type: 'number',
+      description: 'Only used with "Words over the top photo". The photo is 1080px wide; 500 = wide and short. Default 500.',
+    }),
     defineField({ name: 'divisionLogoUrl', title: 'Division logo URL (division template only)', type: 'string', readOnly: true }),
     defineField({
       name: 'body', title: 'Page content', type: 'array',
