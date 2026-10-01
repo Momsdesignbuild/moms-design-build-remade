@@ -29,7 +29,8 @@ export async function getServicePage(slug: string): Promise<ServicePageDoc | nul
       body[]{
         ...,
         _type == "image" => { "url": asset->url, "dim": asset->metadata.dimensions{ width, height } },
-        _type == "imageCarousel" => { "images": images[]{ "url": asset->url, alt, href, "dim": asset->metadata.dimensions{ width, height } } }
+        _type == "imageCarousel" => { "images": images[]{ "url": asset->url, alt, href, "dim": asset->metadata.dimensions{ width, height } } },
+        _type == "sectionVideo" => { "videoUrl": file.asset->url, "posterUrl": poster.asset->url }
       }
     }`,
     params: { slug },

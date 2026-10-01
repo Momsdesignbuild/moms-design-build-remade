@@ -37,12 +37,15 @@ export type BodyBlock = {
   dim?: { width: number; height: number };
   // imageCarousel (urls + dims resolved in GROQ)
   images?: Array<{ url: string; alt?: string; dim?: { width: number; height: number } }>;
+  // sectionVideo (urls resolved in GROQ)
+  videoUrl?: string;
+  posterUrl?: string;
 };
 
 export type ServiceTemplate = "hub" | "standard" | "interior" | "division" | "portal";
 export type ServiceHero = { videoUrl?: string; posterUrl?: string; alt?: string; title?: string; height?: number; w?: number; h?: number };
 
-function Rich({ block }: { block: BodyBlock }) {
+function Rich({ block, teal = false }: { block: BodyBlock; teal?: boolean }) {
   return (
     <>
       {(block.children ?? []).map((s, i) => {
@@ -53,7 +56,7 @@ function Rich({ block }: { block: BodyBlock }) {
           <Link
             key={i}
             href={def.href}
-            className="underline underline-offset-4 decoration-brand/40 hover:decoration-brand text-ink transition-colors"
+            className={teal ? "text-brand hover:text-brand-dark transition-colors" : "underline underline-offset-4 decoration-brand/40 hover:decoration-brand text-ink transition-colors"}
           >
             {s.text}
           </Link>
@@ -80,16 +83,17 @@ const isHeading = (b: BodyBlock) => b._type === "block" && /^h[1-6]$/.test(b.sty
 // "Casual Luxury Since 1993" lost its treatment inside Presentation)
 const plainText = (b: BodyBlock) => stegaClean((b.children ?? []).map((c) => c.text).join(""));
 
-type ListGroup = { kind: "list"; key: string; items: BodyBlock[] };
+type ListGroup = { kind: "list"; key: string; items: BodyBlock[]; ordered?: boolean };
 type Grouped = BodyBlock | ListGroup;
 
 function groupLists(blocks: BodyBlock[]): Grouped[] {
   const groups: Grouped[] = [];
   for (const b of blocks) {
     const last = groups[groups.length - 1];
-    if (b._type === "block" && b.listItem === "bullet") {
-      if (last && (last as ListGroup).kind === "list") (last as ListGroup).items.push(b);
-      else groups.push({ kind: "list", key: "list-" + b._key, items: [b] });
+    if (b._type === "block" && (b.listItem === "bullet" || b.listItem === "number")) {
+      const ordered = b.listItem === "number";
+      if (last && (last as ListGroup).kind === "list" && !!(last as ListGroup).ordered === ordered) (last as ListGroup).items.push(b);
+      else groups.push({ kind: "list", key: "list-" + b._key, items: [b], ordered });
     } else groups.push(b);
   }
   return groups;
@@ -216,6 +220,13 @@ function HubBody({
 
   const renderText = ({ b, i: _i }: { b: BodyBlock; i: number }, paired = false) => {
     void _i;
+    // commercial: "Serving the Greater Twin Cities Area" is a plain subhead on live
+    if (accent && /^serving the greater/i.test(plainText(b).trim()))
+      return (
+        <h3 key={b._key} className="font-sans text-[18px] font-[600] tracking-[0.06em] text-left mt-10 mb-3" style={{ ...PROXIMA, color: accent }}>
+          {plainText(b)}
+        </h3>
+      );
     if (isHeading(b)) {
       const first = !firstHeadingSeen;
       if (first) firstHeadingSeen = true;
@@ -229,11 +240,7 @@ function HubBody({
       const Tag = first ? "h1" : b.style === "h1" ? "h2" : (b.style as "h1" | "h2" | "h3");
       if (paired)
         return (
-          <Tag
-            key={b._key}
-            className="text-[26px] md:text-[35px] font-[300] tracking-[0.18em] uppercase mb-5"
-            style={{ color: accent || "var(--color-brand)" }}
-          >
+          <Tag key={b._key} className={`${LV.h2} mb-1`}>
             {plainText(b)}
           </Tag>
         );
@@ -266,6 +273,12 @@ function HubBody({
         </p>
       );
     }
+    if (accent && /look forward to serving/i.test(plainText(b)))
+      return (
+        <p key={b._key} className="font-sans text-[18px] font-bold text-brand-mid text-center mt-4 mb-2" style={ITALIC}>
+          {plainText(b)}
+        </p>
+      );
     const tagline = (b.children ?? []).length === 1 && stegaClean(b.children![0].text ?? "").length < 45;
     return (
       <p
@@ -274,7 +287,7 @@ function HubBody({
           tagline
             ? `text-[20px] font-[400] tracking-[0.28em] uppercase ${paired ? "" : "text-center"} mb-8`
             : paired
-              ? "text-[20px] md:text-[20px] font-[300] leading-[1.8] text-brand-mid mb-5"
+              ? "text-[18px] font-[300] leading-[1.8] text-brand-mid mb-5"
               : "text-[20px] md:text-[20px] font-[300] leading-[1.8] text-brand-mid max-w-[1050px] mx-auto mb-5"
         }
         style={tagline ? { color: accent || "var(--color-brand)" } : undefined}
@@ -364,7 +377,7 @@ function HubBody({
   let pairN = -1;
   return (
     <section className="pt-16 md:pt-24 pb-20 px-6 bg-white">
-      <div className="max-w-[1200px] mx-auto">
+      <div className={`${accent ? "max-w-[1080px]" : "max-w-[1200px]"} mx-auto`}>
         {/* their order: full-width hero photo, THEN the division logo below it */}
         {heroImg && heroImg.url && (
           <div className="mb-10">
@@ -391,7 +404,7 @@ function HubBody({
             return (
               <div key={"pair" + row.imgIdx}>
                 {/* thin accent rule between sections, like theirs */}
-                {pairN > 0 && <div className="h-px w-full my-2" style={{ backgroundColor: accent + "66" }} />}
+                {pairN > 0 && <div className="h-px w-full my-2 bg-brand-mid/70" />}
                 <div className="my-10 md:my-14 grid grid-cols-1 md:grid-cols-[420px_1fr] gap-8 md:gap-12 items-start">
                   <div className="relative w-full overflow-hidden">
                     <Image
@@ -417,16 +430,20 @@ function HubBody({
           if (accent && textSegN === 0) {
             // the intro sits in THEIR coral double-border box (byline stays outside)
             const byline = seg.blocks.filter(({ b }) => /^A Division of Mom/i.test(plainText(b).trim()));
-            const rest = seg.blocks.filter(({ b }) => !/^A Division of Mom/i.test(plainText(b).trim()));
+            const all = seg.blocks.filter(({ b }) => !/^A Division of Mom/i.test(plainText(b).trim()));
+            const cut = all.findIndex(({ b }) => /^serving the greater/i.test(plainText(b).trim()));
+            const rest = cut >= 0 ? all.slice(0, cut) : all;
+            const after = cut >= 0 ? all.slice(cut) : [];
             return (
               <div key={"seg" + k}>
                 {byline.map((tb) => renderText(tb))}
                 <div
                   className="my-6 bg-[#F8F9FA] px-6 md:px-14 py-9 text-center [&_p]:max-w-none"
-                  style={{ border: `3px double ${accent}` }}
+                  style={{ border: `4px double ${accent}` }}
                 >
                   {rest.map((tb) => renderText(tb))}
                 </div>
+                {after.length > 0 && <div className="text-left [&_p]:text-left [&_p]:max-w-none">{after.map((tb) => renderText(tb, true))}</div>}
               </div>
             );
           }
@@ -650,27 +667,33 @@ function GroupedBody({
   );
 }
 
-/* ── standard: mirrors their live Elementor service pages (Summer 8/17 + 10/1,
- * "the changes we talked about"; Josh 10/1: "mirror her pages in their look").
- * Framed top video, intro in the double-rule gray box, double hairline dividers,
- * each h3 with its photo beside it, FAQs boxed, "Why choose" beside the reviews.
- * Sizes/colours measured off the live water-features page 2026-10-01. ── */
+/* ── standard + interior: mirrors their live Elementor service pages (Summer 8/17
+ * + 10/1, "the changes we talked about"; Josh 10/1: "mirror her pages in their
+ * look", then "EVERY SINGLE SERVICE PAGE"). Framed top video/photo, intro in the
+ * double-rule gray box, double hairline dividers, every section's photo beside
+ * its text, FAQs boxed, "Why choose" beside the reviews, 3-up photo strip.
+ * Sizes/colours measured off live pages 2026-10-01 (custom-decks, water-features,
+ * chanhassen, bathroom-remodeling). ── */
 const LV = {
   box: "bg-[#F9FAFB] border-4 border-double border-brand-mid",
-  h2: "font-[300] text-[24px] md:text-[30.6px] leading-[1.2] tracking-[0.06em] uppercase text-brand-mid",
+  // live loads only Futura PT *light* but asks for 700, so the browser fakes the bold; html turns that off here
+  h2: "font-bold [font-synthesis:weight] text-[24px] md:text-[30.6px] leading-[1.2] tracking-[0.06em] uppercase text-brand-mid",
   p: "font-sans text-[18px] font-[300] leading-[1.8] text-brand-mid",
   h3: "text-[21px] md:text-[23.4px] font-[300] leading-[1.2] tracking-[0.067em]",
   q: "text-[20px] md:text-[24px] font-[600] leading-[1.2] tracking-[0.04em] text-brand-mid",
   divider: "border-t-4 border-double border-[#CBD5E1] my-8",
 };
-const WHY = /^why (should i |)choose/i;
+const WHY = /^(why (should i |)choose|we bring luxury)/i;
+const FAQ = /(^|\s)(faqs?|frequently asked questions)$/i;
+const isMedia = (b?: BodyBlock) => !!b && ((b._type === "image" && !!b.url) || (b._type === "sectionVideo" && !!b.videoUrl));
 type Quote = { text: string; name?: string };
 type LiveItem =
   | { k: "intro"; blocks: BodyBlock[] }
-  | { k: "row"; head: BodyBlock; text: BodyBlock[]; img: BodyBlock }
-  | { k: "faq"; items: BodyBlock[] }
+  // layout: "sub" = h3 subhead in the text column · "above" = h2 full width over a 50/50 row · "inside" = h2 heads the text column
+  | { k: "row"; head: BodyBlock; pre?: BodyBlock[]; text: BodyBlock[]; media: BodyBlock[]; left: boolean; layout: "sub" | "above" | "inside" }
+  | { k: "faq"; head: BodyBlock; items: BodyBlock[] }
   | { k: "why"; head: BodyBlock; list: BodyBlock[]; quotes: Quote[] }
-  | { k: "quotes"; quotes: Quote[] }
+  | { k: "quotes"; quotes: Quote[]; top: boolean }
   | { k: "lead"; p: BodyBlock; cta: BodyBlock }
   | { k: "list"; items: BodyBlock[] }
   | { k: "b"; b: BodyBlock };
@@ -678,6 +701,16 @@ type LiveItem =
 function parseLive(blocks: BodyBlock[]): LiveItem[] {
   const out: LiveItem[] = [];
   const text = (b?: BodyBlock) => b?._type === "block" && b.style !== "blockquote" && b.style !== "attrib";
+  const isH2 = (b?: BodyBlock) => !!b && isHeading(b) && /^h[12]$/.test(b.style!);
+  // a "why choose" heading: by wording, or any heading whose bullets run straight into the reviews
+  const isWhy = (j: number) => {
+    if (!isHeading(blocks[j])) return false;
+    if (WHY.test(plainText(blocks[j]).trim())) return true;
+    let k = j + 1;
+    if (!blocks[k]?.listItem) return false;
+    while (blocks[k]?.listItem) k++;
+    return blocks[k]?.style === "blockquote";
+  };
   const quotesAt = (j: number): [Quote[], number] => {
     const qs: Quote[] = [];
     while (blocks[j]?.style === "blockquote") {
@@ -699,14 +732,14 @@ function parseLive(blocks: BodyBlock[]): LiveItem[] {
   while (i < blocks.length) {
     const b = blocks[i];
     const t = isHeading(b) ? plainText(b).trim() : "";
-    if (/^(faqs?|frequently asked questions)$/i.test(t)) {
+    if (FAQ.test(t)) {
       let j = i + 1;
-      while (text(blocks[j]) && !(isHeading(blocks[j]) && /^h[12]$/.test(blocks[j].style!)) && !WHY.test(plainText(blocks[j]).trim())) j++;
-      out.push({ k: "faq", items: blocks.slice(i + 1, j) });
+      while (text(blocks[j]) && !isH2(blocks[j]) && !isWhy(j)) j++;
+      out.push({ k: "faq", head: b, items: blocks.slice(i + 1, j) });
       i = j;
       continue;
     }
-    if (WHY.test(t)) {
+    if (isWhy(i)) {
       let j = i + 1;
       while (text(blocks[j]) && !isHeading(blocks[j])) j++;
       const [quotes, k] = quotesAt(j);
@@ -716,16 +749,56 @@ function parseLive(blocks: BodyBlock[]): LiveItem[] {
     }
     if (b.style === "blockquote") {
       const [quotes, k] = quotesAt(i);
-      out.push({ k: "quotes", quotes });
+      // a review straight under the page title (interior pages) is their small italic one-liner, not a bubble
+      out.push({ k: "quotes", quotes, top: out.length <= 1 });
       i = k;
       continue;
     }
-    if (b.style === "h3" || b.style === "h4") {
+    // media straight before a heading section → photo/video on the LEFT, the whole section on the right (automated screens)
+    if (isMedia(b) && i > 0 && isH2(blocks[i + 1]) && (blocks[i - 1]._type === "ctaButton" || (text(blocks[i - 1]) && !isHeading(blocks[i - 1])))) {
+      let j = i + 2;
+      while (j < blocks.length && (text(blocks[j]) || blocks[j]._type === "ctaButton") && !isH2(blocks[j]) && !FAQ.test(plainText(blocks[j]).trim()) && !isWhy(j)) j++;
+      out.push({ k: "row", head: blocks[i + 1], text: blocks.slice(i + 2, j), media: [b], left: true, layout: "inside" });
+      i = j;
+      continue;
+    }
+    // an h2 with subheads and ONE photo at the very end: the whole section beside that photo (kitchen "The Details")
+    if (isH2(b) && isHeading(blocks[i + 1]) && !FAQ.test(t) && !isWhy(i + 1)) {
       let j = i + 1;
-      while (text(blocks[j]) && !isHeading(blocks[j])) j++;
-      if (blocks[j]?._type === "image" && blocks[j].url) {
-        out.push({ k: "row", head: b, text: blocks.slice(i + 1, j), img: blocks[j] });
+      while (j < blocks.length && (text(blocks[j]) || blocks[j]._type === "ctaButton") && !isH2(blocks[j]) && !FAQ.test(plainText(blocks[j]).trim()) && !isWhy(j)) j++;
+      if (isMedia(blocks[j]) && !isMedia(blocks[j + 1]) && (j + 1 >= blocks.length || isH2(blocks[j + 1]) || !text(blocks[j + 1]))) {
+        out.push({ k: "row", head: b, text: blocks.slice(i + 1, j), media: [blocks[j]], left: false, layout: "inside" });
         i = j + 1;
+        continue;
+      }
+    }
+    if (isHeading(b) && !isH2(b) || (isH2(b) && !isHeading(blocks[i + 1]))) {
+      // a section (h3 subhead, or an h2 with no subheads) whose text/list/button run meets its photo(s)
+      let j = i + 1;
+      let mid = -1;
+      const content: BodyBlock[] = [];
+      while (j < blocks.length && (text(blocks[j]) || blocks[j]._type === "ctaButton" || isMedia(blocks[j])) && !isHeading(blocks[j])) {
+        if (isMedia(blocks[j])) {
+          // a photo mid-section (text on both sides) sits on the LEFT, like live's process steps
+          if (content.length && text(blocks[j + 1]) && !isHeading(blocks[j + 1]) && mid < 0) { mid = j; j++; continue; }
+          break;
+        }
+        content.push(blocks[j]);
+        j++;
+      }
+      if (mid >= 0 && content.length) {
+        // live: the section's intro runs full width, then the photo sits left of what follows it (process steps)
+        const pre = content.filter((x) => blocks.indexOf(x) < mid);
+        const post = content.filter((x) => blocks.indexOf(x) > mid);
+        out.push({ k: "row", head: b, pre, text: post, media: [blocks[mid]], left: true, layout: isH2(b) ? "above" : "sub" });
+        i = j;
+        continue;
+      }
+      const media: BodyBlock[] = [];
+      while (isMedia(blocks[j])) media.push(blocks[j++]);
+      if (media.length && content.length) {
+        out.push({ k: "row", head: b, text: content, media, left: false, layout: isH2(b) ? "above" : "sub" });
+        i = j;
         continue;
       }
     }
@@ -749,37 +822,43 @@ function parseLive(blocks: BodyBlock[]): LiveItem[] {
 function LiveText({ blocks, center = false }: { blocks: BodyBlock[]; center?: boolean }) {
   return (
     <>
-      {groupLists(blocks).map((g) =>
-        (g as ListGroup).kind === "list" ? (
-          <ul key={(g as ListGroup).key} className="list-disc pl-10 mb-5">
-            {(g as ListGroup).items.map((li) => (
-              <li key={li._key} className={LV.p}>
-                <Rich block={li} />
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p key={(g as BodyBlock)._key} className={center ? `${LV.p} mb-[22px] text-center` : `${LV.p} mb-[22px]`}>
-            <Rich block={g as BodyBlock} />
+      {groupLists(blocks).map((g) => {
+        if ((g as ListGroup).kind === "list") {
+          const l = g as ListGroup;
+          const Tag = l.ordered ? "ol" : "ul";
+          return (
+            <Tag key={l.key} className={`${l.ordered ? "list-decimal" : "list-disc"} pl-10 mb-5`}>
+              {l.items.map((li) => (
+                <li key={li._key} className={LV.p}>
+                  <Rich block={li} teal />
+                </li>
+              ))}
+            </Tag>
+          );
+        }
+        const b = g as BodyBlock;
+        return (
+          <p key={b._key} className={center ? `${LV.p} mb-[22px] text-center` : `${LV.p} mb-[22px]`}>
+            <Rich block={b} teal />
           </p>
-        )
-      )}
+        );
+      })}
     </>
   );
 }
 
-function LiveButton({ b }: { b: BodyBlock }) {
+function LiveButton({ b, left = false }: { b: BodyBlock; left?: boolean }) {
   // their last button ("Back to Landscape Architecture") is a plain teal text link
   if (/^back to /i.test(stegaClean(b.text ?? "")))
     return (
-      <div className="mt-14 mb-6 px-2.5">
+      <div className="mt-14 mb-6 md:px-2.5">
         <Link href={b.href!} className="font-sans text-[18px] font-[600] tracking-[0.06em] text-[#33BED1] hover:text-brand-dark transition-colors">
           {b.text}
         </Link>
       </div>
     );
   return (
-    <div className="text-center my-10">
+    <div className={left ? "my-6" : "text-center my-10"}>
       <Link
         href={b.href!}
         className="inline-block bg-brand text-white font-sans text-[15px] font-[600] tracking-[0.07em] uppercase leading-none px-[34px] py-[21px] rounded-[3px] hover:bg-brand-dark transition-colors duration-200"
@@ -787,6 +866,64 @@ function LiveButton({ b }: { b: BodyBlock }) {
         {b.text}
       </Link>
     </div>
+  );
+}
+
+function LiveMedia({ media, narrow, maxH }: { media: BodyBlock[]; narrow: number; maxH?: number }) {
+  if (media.length > 1)
+    return <ServiceCarousel slides={media.filter((m) => m.url).map((m) => ({ url: m.url!, alt: m.alt, dim: m.dim }))} />;
+  const m = media[0];
+  if (m._type === "sectionVideo")
+    return (
+      <video
+        src={stegaClean(m.videoUrl)}
+        poster={stegaClean(m.posterUrl)}
+        autoPlay
+        muted
+        loop
+        playsInline
+        aria-label={m.alt || undefined}
+        className="w-full h-auto"
+      />
+    );
+  // a photo smaller than the column shows at its own size, centred (live's Water Tables), never blown up
+  const small = (m.dim?.width ?? 9999) < narrow;
+  if (maxH && m.dim && m.dim.height > m.dim.width)
+    return (
+      <Image src={m.url!} alt={m.alt || ""} width={m.dim.width} height={m.dim.height} className="h-auto w-auto mx-auto" style={{ maxHeight: maxH }} sizes="(max-width: 768px) 100vw, 540px" loading="lazy" />
+    );
+  return (
+    <Image
+      src={m.url!}
+      alt={m.alt || ""}
+      width={m.dim?.width ?? 1200}
+      height={m.dim?.height ?? 800}
+      className={small ? "h-auto mx-auto" : "w-full h-auto"}
+      style={small ? { width: m.dim!.width } : undefined}
+      sizes={`(max-width: 768px) 100vw, ${narrow}px`}
+      loading="lazy"
+    />
+  );
+}
+
+/* their card grid: 250×275 flip-box tiles, photo under a 38% black overlay, big
+ * two-line white label (31px/500), rows fill from the left */
+function LiveTile({ href, bg, title, wide = false }: { href: string; bg: string; title: string; wide?: boolean }) {
+  return (
+    <Link
+      href={href}
+      className={`group relative block overflow-hidden bg-brand-mid ${wide ? "aspect-[340/275] w-full md:w-[340px]" : "aspect-[250/275] w-[calc(50%-10px)] md:w-[250px]"}`}
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={bg + "?w=600&auto=format"} alt="" loading="lazy" className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
+      <span className="absolute inset-0 bg-black/[0.376] transition-opacity duration-300 group-hover:opacity-0" />
+      <span
+        className="absolute inset-0 flex items-center justify-center px-[35px] text-center text-white text-[20px] md:text-[31px] font-[500] leading-[1.2] tracking-[1.56px] uppercase transition-opacity duration-300 group-hover:opacity-0"
+        style={PROXIMA}
+      >
+        {title}
+      </span>
+    </Link>
   );
 }
 
@@ -804,18 +941,22 @@ function LiveBody({ blocks, cardsSet, hero }: { blocks: BodyBlock[]; cardsSet?: 
     body = body.slice(1);
   }
   const caption = stegaClean(hero?.title);
-  const heroHeight = hero?.height || 500;
+  const heroHeight = hero?.height || (bannerTitle ? 547 : 500);
   const items = parseLive(body);
-  // city pages ("Landscape Architecture In Edina"): live shows the title unboxed, with plain gray subheads
+  // city pages ("Landscape Architecture In Edina"): live shows the title unboxed, gray subheads, a wider page
   const city = items[0]?.k === "intro" && /^landscape architecture in /i.test(plainText(items[0].blocks[0]).trim());
+  // interior pages open with a bare title + a review (no paragraphs): title unboxed too
+  const bareTitle = items[0]?.k === "intro" && items[0].blocks.length === 1;
   const h3Cls = `${LV.h3} ${city ? "text-brand-mid" : "text-[#00B4D1]"}`;
   const h3Style = city ? PROXIMA : { ...PROXIMA, ...ITALIC };
-  const textish = (it?: LiveItem) =>
-    !!it && (it.k === "row" || it.k === "list" || it.k === "lead" || (it.k === "b" && (it.b._type === "block" || it.b._type === "ctaButton")));
+  const textish = (it?: LiveItem) => !!it && (it.k === "row" || it.k === "list" || it.k === "lead" || (it.k === "b" && it.b._type === "block"));
+  const mediaW = city ? 559 : 412;
   return (
     <section className="pt-6 md:pt-8 pb-20 px-5 bg-white">
-      <div className="max-w-[1080px] mx-auto">
-        {(videoUrl || posterUrl) && (
+      <div className={`${city ? "max-w-[1238px]" : "max-w-[1080px]"} mx-auto`}>
+        {/* automated screens: their title sits on white ABOVE the video */}
+        {videoUrl && caption && <h1 className={`${LV.h2} md:text-[43.2px] text-center mt-4 mb-8`}>{caption}</h1>}
+        {hasHero && (
           <div className="md:px-2.5 mb-8">
             {videoUrl ? (
               <video
@@ -838,17 +979,22 @@ function LiveBody({ blocks, cardsSet, hero }: { blocks: BodyBlock[]; cardsSet?: 
                   priority
                   className={
                     bannerTitle
-                      ? "w-full aspect-[1060/547] object-cover"
+                      ? "w-full object-cover"
                       : caption
                         ? "w-full object-cover opacity-[0.78] brightness-90 transition-opacity duration-500 group-hover:opacity-100" // hazed so the words read; clears on hover, like live
                         : "w-full h-auto"
                   }
                   sizes="(max-width: 1080px) 100vw, 1060px"
-                  // live sets each captioned photo's height (decks 500px); keep that shape at every width
-                  style={caption ? { aspectRatio: `1080 / ${heroHeight}` } : undefined}
+                  // live sets each banner's height (decks 500px, patios 344px); keep that shape at every width
+                  style={bannerTitle || caption ? { aspectRatio: `1080 / ${heroHeight}` } : undefined}
                 />
                 {caption && (
-                  <p className="pointer-events-none absolute inset-0 flex items-center justify-center px-4 text-center text-white text-[30px] md:text-[60px] font-[500] tracking-[5px] leading-[1.1] [text-shadow:0_0_10px_rgba(0,0,0,0.3)]" style={PROXIMA}>
+                  <p
+                    className={`pointer-events-none absolute inset-0 flex items-center justify-center px-4 text-center text-white font-[500] leading-[1.1] [text-shadow:0_0_10px_rgba(0,0,0,0.3)] ${
+                      caption.length > 20 ? "text-[26px] md:text-[53px]" : "text-[30px] md:text-[60px] tracking-[5px]"
+                    }`}
+                    style={PROXIMA}
+                  >
                     {caption}
                   </p>
                 )}
@@ -868,53 +1014,103 @@ function LiveBody({ blocks, cardsSet, hero }: { blocks: BodyBlock[]; cardsSet?: 
           const prev = items[n - 1];
           if (it.k === "intro")
             return (
-              <div key="intro" className={city ? "pt-8 pb-6" : `${LV.box} px-5 md:px-6 pt-6 pb-4 mb-2`}>
-                {it.blocks.map((b, i) =>
-                  i === 0 ? (
-                    // their WP theme put this in an h2; it is the page's one real h1 here (same deviation as before)
-                    // unless the banner title above already took the h1
-                    bannerTitle ? (
-                      <h2 key={b._key} className={`${LV.h2} text-center mb-5`}>
-                        {plainText(b)}
-                      </h2>
-                    ) : (
-                      <h1 key={b._key} className={`${LV.h2} text-center mb-5${city ? " md:text-[43.2px]" : ""}`}>
-                        {plainText(b)}
-                      </h1>
-                    )
-                  ) : (
-                    <p key={b._key} className={`${LV.p} text-center mb-2.5`}>
-                      <Rich block={b} />
-                    </p>
-                  )
-                )}
+              <div key="intro" className={city || bareTitle ? "pt-8 pb-6" : `${LV.box} px-5 md:px-6 pt-6 pb-4 mb-2`}>
+                {it.blocks.map((b, i) => {
+                  if (i > 0)
+                    return (
+                      <p key={b._key} className={`${LV.p} text-center mb-2.5`}>
+                        <Rich block={b} teal />
+                      </p>
+                    );
+                  // their WP theme put this in an h2; it is the page's one real h1 here, unless a banner title took it
+                  const Tag = bannerTitle || (videoUrl && caption) ? "h2" : "h1";
+                  return (
+                    <Tag
+                      key={b._key}
+                      className={`${LV.h2} text-center mb-5 ${city || bareTitle ? "md:text-[43.2px] max-w-[788px] mx-auto leading-[1.4]" : ""}`}
+                    >
+                      {plainText(b)}
+                    </Tag>
+                  );
+                })}
               </div>
             );
-          if (it.k === "row")
+          if (it.k === "row") {
+            const sub = it.layout === "sub";
+            const head = sub ? (
+              <h3 className={`${h3Cls} mb-5`} style={h3Style}>
+                {plainText(it.head)}
+              </h3>
+            ) : (
+              <h2 className={`${LV.h2} mb-3`}>{plainText(it.head)}</h2>
+            );
+            // keep the section's own order: runs of text/lists, subheads, its button
+            const runsOf = (blocks: BodyBlock[]) => {
+              const runs: BodyBlock[][] = [];
+              for (const b of blocks) {
+                const last = runs[runs.length - 1];
+                const plain = b._type === "block" && !isHeading(b);
+                if (plain && last && last[0]._type === "block" && !isHeading(last[0])) last.push(b);
+                else runs.push([b]);
+              }
+              return runs.map((r) =>
+                r[0]._type === "ctaButton" ? (
+                  <LiveButton key={r[0]._key} b={r[0]} left />
+                ) : isHeading(r[0]) ? (
+                  <h3 key={r[0]._key} className={`${h3Cls} mt-6 mb-0`} style={h3Style}>
+                    {plainText(r[0])}
+                  </h3>
+                ) : (
+                  <LiveText key={r[0]._key} blocks={r} />
+                )
+              );
+            };
+            const above = it.layout === "above";
+            const words = (
+              <div>
+                {!above && head}
+                {runsOf(it.text)}
+              </div>
+            );
+            const mid = !!it.pre?.length;
+            const cols = city
+              ? "md:grid-cols-[minmax(0,630px)_559px] md:justify-between"
+              : mid
+                ? "md:grid-cols-[250px_minmax(0,1fr)]"
+                : above || (it.left && it.layout === "inside")
+                  ? "md:grid-cols-2"
+                  : it.left
+                    ? "md:grid-cols-[412px_minmax(0,1fr)]"
+                    : "md:grid-cols-[minmax(0,1fr)_412px]";
+            const media = <LiveMedia media={it.media} narrow={above ? 540 : mediaW} maxH={above ? 490 : undefined} />;
             return (
-              <div key={it.head._key} className="grid md:grid-cols-[minmax(0,1fr)_412px] gap-5 items-start md:px-2.5 mb-12 md:mb-5">
-                <div>
-                  <h3 className={`${h3Cls} mb-5`} style={h3Style}>{plainText(it.head)}</h3>
-                  <LiveText blocks={it.text} />
+              <div key={it.head._key}>
+                {!sub && textish(prev) && <div className={LV.divider} />}
+                {above && <div className={`${sub ? "" : "mt-8"} md:px-2.5`}>{head}</div>}
+                {mid && <div className="md:px-2.5">{runsOf(it.pre!)}</div>}
+                <div className={`grid ${cols} gap-5 md:gap-[35px] items-start ${city ? "" : "md:px-2.5"} mb-12 md:mb-5 ${sub || above || mid ? "" : "mt-8"}`}>
+                  {it.left ? (
+                    <>
+                      {media}
+                      {words}
+                    </>
+                  ) : (
+                    <>
+                      {words}
+                      {media}
+                    </>
+                  )}
                 </div>
-                <Image
-                  src={it.img.url!}
-                  alt={it.img.alt || ""}
-                  width={it.img.dim?.width ?? 1200}
-                  height={it.img.dim?.height ?? 800}
-                  className="w-full h-auto"
-                  sizes="(max-width: 768px) 100vw, 412px"
-                  loading="lazy"
-                />
               </div>
             );
+          }
           if (it.k === "faq")
             return (
               <div key={"faq" + n} className={`${LV.box} px-5 md:px-6 py-6 my-10`}>
-                <h2 className={`${LV.h2} mb-5`}>FAQs</h2>
+                <h2 className={`${LV.h2} mb-1`}>{plainText(it.head)}</h2>
                 {it.items.map((b) =>
                   isHeading(b) ? (
-                    <h3 key={b._key} className={`${LV.q} mt-12 first:mt-0 mb-5`} style={{ ...PROXIMA, ...ITALIC }}>
+                    <h3 key={b._key} className={`${LV.q} mt-16 first:mt-0 mb-1`} style={{ ...PROXIMA, ...ITALIC }}>
                       {plainText(b)}
                     </h3>
                   ) : (
@@ -923,8 +1119,29 @@ function LiveBody({ blocks, cardsSet, hero }: { blocks: BodyBlock[]; cardsSet?: 
                 )}
               </div>
             );
+          if (it.k === "quotes" && it.top)
+            return (
+              <div key={"tq" + n} className="text-center max-w-[900px] mx-auto mb-8">
+                {it.quotes.map((q, qi) => (
+                  <figure key={qi} className="m-0">
+                    <blockquote className={`${LV.p} text-brand-stone`} style={ITALIC}>
+                      {q.text}
+                    </blockquote>
+                    {q.name && <figcaption className="mt-2 font-sans text-[16px] font-[600] text-brand-mid">{q.name}</figcaption>}
+                  </figure>
+                ))}
+              </div>
+            );
           if (it.k === "why" || it.k === "quotes") {
             const quotes = it.quotes;
+            if (it.k === "why" && !quotes.length)
+              return (
+                <div key={"why" + n}>
+                  {textish(prev) && <div className={LV.divider} />}
+                  <h2 className={`${LV.h2} mt-8 mb-3`}>{plainText(it.head)}</h2>
+                  <LiveText blocks={it.list} />
+                </div>
+              );
             const why = it.k === "why" && (
               <div className="md:px-2.5">
                 <h2 className="text-[22px] md:text-[24px] font-[300] leading-[1.2] tracking-[0.04em] text-[#00B4D1] text-center mb-5" style={PROXIMA}>
@@ -934,9 +1151,11 @@ function LiveBody({ blocks, cardsSet, hero }: { blocks: BodyBlock[]; cardsSet?: 
               </div>
             );
             return (
-              <div key={"why" + n} className={`my-14 grid gap-10 items-center ${why && quotes.length ? "md:grid-cols-2" : ""}`}>
-                {why}
-                {quotes.length > 0 && <LiveQuotes quotes={quotes} />}
+              <div key={"why" + n}>
+                <div className={`my-14 grid gap-10 items-center ${why && quotes.length ? "md:grid-cols-2" : ""}`}>
+                  {why}
+                  {quotes.length > 0 && <LiveQuotes quotes={quotes} />}
+                </div>
               </div>
             );
           }
@@ -946,7 +1165,7 @@ function LiveBody({ blocks, cardsSet, hero }: { blocks: BodyBlock[]; cardsSet?: 
                 {(prev?.k === "why" || prev?.k === "quotes") && <div className={LV.divider} />}
                 <div className="text-center my-8">
                   <p className={`${LV.p} text-center mb-6`}>
-                    <Rich block={it.p} />
+                    <Rich block={it.p} teal />
                   </p>
                   <LiveButton b={it.cta} />
                 </div>
@@ -963,8 +1182,9 @@ function LiveBody({ blocks, cardsSet, hero }: { blocks: BodyBlock[]; cardsSet?: 
                 </div>
               );
             if (b.style === "h3" || b.style === "h4")
+              // live: ~31px under its section heading, and the paragraph sits right under it
               return (
-                <h3 key={b._key} className={`${h3Cls} mt-8 mb-5 md:px-2.5`} style={h3Style}>
+                <h3 key={b._key} className={`${h3Cls} mt-5 mb-0`} style={h3Style}>
                   {plainText(b)}
                 </h3>
               );
@@ -982,18 +1202,88 @@ function LiveBody({ blocks, cardsSet, hero }: { blocks: BodyBlock[]; cardsSet?: 
                 <ServiceCarousel slides={b.images.filter((s) => s.url)} strip />
               </div>
             );
-          if (b._type === "image" && b.url && b.dim)
+          if (isMedia(b))
             return (
               <div key={b._key} className="my-8 flex justify-center">
-                <Image src={b.url} alt={b.alt || ""} width={b.dim.width} height={b.dim.height} className="h-auto" style={{ maxWidth: Math.min(b.dim.width, 1080), width: "100%" }} sizes="(max-width: 768px) 100vw, 1080px" loading="lazy" />
+                <div style={{ width: "100%", maxWidth: Math.min(b.dim?.width ?? 1060, 1060) }}>
+                  <LiveMedia media={[b]} narrow={1060} />
+                </div>
               </div>
             );
           if (b._type === "cardsGrid")
             return (
-              <div key={b._key} className="flex flex-wrap justify-center gap-5 my-6 md:px-2.5">
+              <div key={b._key} className="flex flex-wrap justify-start gap-5 my-6 md:px-2.5 max-w-[1080px] mx-auto">
                 {(cardsSet ? CARD_SETS[cardsSet] : [])?.map((c) => (
-                  <CardTile key={c.href} href={c.href} bg={c.bg} title={c.title} cell="group relative block aspect-[250/275] overflow-hidden w-[calc(50%-10px)] md:w-[calc(25%-15px)]" />
+                  <LiveTile key={c.href} href={c.href} bg={c.bg} title={c.title} />
                 ))}
+              </div>
+            );
+          return null;
+        })}
+      </div>
+    </section>
+  );
+}
+
+/* ── hub: LA + interior hubs, mirroring live (2026-10-01 measurements): big
+ * Futura title, "Casual Luxury Since 1993" in gray Georgia italic between two
+ * double hairlines, centred intro with teal links, consultation button, 250×275
+ * (LA) / 340×275 (interior) flip-box tiles under a 38% black overlay with big
+ * white labels, then "Service Areas" with teal city links. ── */
+function LiveHub({ blocks, cardsSet }: { blocks: BodyBlock[]; cardsSet?: string }) {
+  const cards = (cardsSet ? CARD_SETS[cardsSet] : []) ?? [];
+  const wide = cards.length <= 4;
+  let firstHeading = true;
+  return (
+    <section className="pt-10 md:pt-14 pb-20 px-5 bg-white">
+      <div className="max-w-[1080px] mx-auto">
+        {blocks.map((b, i) => {
+          if (isHeading(b)) {
+            const Tag = firstHeading ? "h1" : "h2";
+            const big = firstHeading;
+            firstHeading = false;
+            return (
+              <Tag
+                key={b._key}
+                className={`font-bold [font-synthesis:weight] uppercase text-brand-mid text-center leading-[1.2] tracking-[1.836px] ${
+                  big
+                    ? `text-[32px] ${plainText(b).length > 28 ? "md:text-[43px]" : "md:text-[50px]"} mb-3`
+                    : `mt-16 mb-4 ${b.style === "h1" ? "text-[26px] md:text-[43px]" : "text-[24px] md:text-[30.6px]"}`
+                }`}
+              >
+                {plainText(b)}
+              </Tag>
+            );
+          }
+          if (b._type === "block" && /^casual luxury/i.test(plainText(b).trim()))
+            return (
+              <div key={b._key} className="flex items-center gap-6 md:gap-12 mb-8">
+                <span className="flex-1 border-t-4 border-double border-[#CBD5E1]" />
+                <p className="m-0 text-[22px] md:text-[27px] italic text-[#94A3B8] whitespace-nowrap" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>
+                  {plainText(b)}
+                </p>
+                <span className="flex-1 border-t-4 border-double border-[#CBD5E1]" />
+              </div>
+            );
+          if (b._type === "block")
+            return (
+              <p key={b._key} className={`${LV.p} text-center mb-[22px]`}>
+                <Rich block={b} teal />
+              </p>
+            );
+          if (b._type === "ctaButton") return <LiveButton key={b._key} b={b} />;
+          if (b._type === "cardsGrid")
+            return (
+              <div key={b._key} className="flex flex-wrap justify-start gap-5 my-10 md:px-2.5">
+                {cards.map((c) => (
+                  <LiveTile key={c.href} href={c.href} bg={c.bg} title={c.title} wide={wide} />
+                ))}
+              </div>
+            );
+          if (b._type === "image" && b.url && b.dim)
+            return (
+              <div key={b._key} className="my-8">
+                <LiveMedia media={[b]} narrow={1060} />
               </div>
             );
           return null;
@@ -1008,90 +1298,145 @@ function LiveBody({ blocks, cardsSet, hero }: { blocks: BodyBlock[]; cardsSet?: 
  * stripped), external links open in a new tab, screenshots get a border.
  * Summer (7/14): the screenshots are supposed to be USEFUL — render them big. ── */
 function PortalBody({ blocks }: { blocks: BodyBlock[] }) {
-  let stepN = 0;
+  /* mirrors live /homeowner-portal/ (2026-10-01): centred title + Buildertrend logo, then
+   * two 378px columns (Online Access · Overview · Helpful Hints | Portal Set-Up steps),
+   * then Online Payment Set-Up with each step's screenshots to the right of its text */
+  const at = (re: RegExp) => blocks.findIndex((b) => isHeading(b) && re.test(plainText(b).trim()));
+  const iLeft = at(/^online access/i), iRight = at(/^portal set-?up/i), iPay = at(/^online payment/i);
+  const ok = iLeft > 0 && iRight > iLeft && iPay > iRight;
   const RichA = ({ block }: { block: BodyBlock }) => (
     <>
       {(block.children ?? []).map((s, i) => {
-        const def = s.marks
-          ?.map((m) => block.markDefs?.find((d) => d._key === m))
-          .find((d) => d?._type === "link");
+        const def = s.marks?.map((m) => block.markDefs?.find((d) => d._key === m)).find((d) => d?._type === "link");
         return def?.href ? (
-          <a
-            key={i}
-            href={def.href}
-            className="underline underline-offset-4 decoration-brand/40 hover:decoration-brand text-ink transition-colors"
-            {...(def.href.startsWith("http") ? { target: "_blank", rel: "noopener" } : {})}
-          >
+          <a key={i} href={def.href} className="text-brand hover:text-brand-dark transition-colors" {...(def.href.startsWith("http") ? { target: "_blank", rel: "noopener" } : {})}>
             {s.text}
           </a>
         ) : (
-          <span key={i}>{s.text}</span>
+          <span key={i} className={s.marks?.includes("strong") ? "font-[600]" : undefined} style={s.marks?.includes("em") ? ITALIC : undefined}>
+            {s.text}
+          </span>
         );
       })}
     </>
   );
+  const P = "font-sans text-[18px] font-[300] leading-[1.8] text-brand-mid mb-[22px]";
+  const render = (list: BodyBlock[]) =>
+    groupLists(list).map((g) => {
+      if ((g as ListGroup).kind === "list") {
+        const l = g as ListGroup;
+        const Tag = l.ordered ? "ol" : "ul";
+        return (
+          <Tag key={l.key} className={`${l.ordered ? "list-decimal" : "list-disc"} pl-10 mb-6`}>
+            {l.items.map((li) => (
+              <li key={li._key} className="font-sans text-[18px] font-[300] leading-[1.8] text-brand-mid">
+                <RichA block={li} />
+              </li>
+            ))}
+          </Tag>
+        );
+      }
+      const b = g as BodyBlock;
+      if (b._type === "block" && b.style === "h1")
+        return (
+          <h1 key={b._key} className="font-[200] text-[26px] md:text-[31px] tracking-[0.06em] uppercase text-brand-mid text-center mb-8">
+            {plainText(b)}
+          </h1>
+        );
+      if (isHeading(b) && /^online access/i.test(plainText(b).trim()))
+        return (
+          <div key={b._key}>
+            <h2 className="font-[300] text-[34px] md:text-[43px] leading-[1.4] uppercase text-brand-mid mb-1">{plainText(b)}</h2>
+          </div>
+        );
+      if (b._type === "block" && b.style === "h2" && /^helpful hints/i.test(plainText(b).trim()))
+        return (
+          <h2 key={b._key} className="font-sans text-[16px] font-[600] uppercase tracking-[0.04em] text-brand-mid mt-12 mb-2" style={{ ...PROXIMA, ...ITALIC }}>
+            {plainText(b)}
+          </h2>
+        );
+      if (b._type === "block" && b.style === "h2")
+        return (
+          <h2 key={b._key} className="font-sans text-[23px] font-bold leading-[1.2] text-brand-mid mt-10 mb-2" style={PROXIMA}>
+            {plainText(b)}
+          </h2>
+        );
+      if (isHeading(b))
+        return (
+          <h3 key={b._key} className="font-sans text-[18px] font-bold leading-[1.8] text-brand-mid mt-8 mb-1" style={PROXIMA}>
+            {plainText(b)}
+          </h3>
+        );
+      if (b._type === "block")
+        return (
+          <p key={b._key} className={P}>
+            <RichA block={b} />
+          </p>
+        );
+      if (b._type === "image" && b.url && b.dim)
+        return (
+          <Image key={b._key} src={b.url} alt={b.alt || ""} width={b.dim.width} height={b.dim.height} className="w-full h-auto mb-6" sizes="(max-width: 768px) 100vw, 380px" loading="lazy" />
+        );
+      return null;
+    });
+  if (!ok)
+    return (
+      <section className="pt-16 pb-20 px-5 bg-white">
+        <div className="max-w-[900px] mx-auto">{render(blocks)}</div>
+      </section>
+    );
+  const head = blocks.slice(0, iLeft);
+  const left = blocks.slice(iLeft, iRight);
+  const loginAfter = left[1]?._key; // the Online Access paragraph
+  const right = blocks.slice(iRight, iPay);
+  const pay = blocks.slice(iPay);
+  // payment: each step (h3 + its text) beside the screenshots that follow it
+  const steps: Array<{ text: BodyBlock[]; imgs: BodyBlock[] }> = [];
+  for (const b of pay.slice(1)) {
+    const last = steps[steps.length - 1];
+    if (isHeading(b) || !last) steps.push({ text: [b], imgs: [] });
+    else if (b._type === "image") last.imgs.push(b);
+    else last.text.push(b);
+  }
   return (
-    <section className="pt-16 md:pt-24 pb-20 px-6 bg-white">
-      <div className="max-w-[900px] mx-auto">
-        {blocks.map((b, i) => {
-          if (b._type === "block" && b.style === "h1")
-            return (
-              <h1 key={b._key} className="text-[26px] md:text-[34px] font-[300] tracking-[0.22em] uppercase text-ink text-center mb-10">
-                {plainText(b)}
-              </h1>
-            );
-          if (b._type === "block" && b.style === "h2") {
-            stepN = 0;
-            return (
-              <h2 key={b._key} className="text-[20px] md:text-[21px] font-[400] tracking-[0.2em] uppercase text-brand mt-14 mb-5 pt-10 border-t border-gray-100">
-                {plainText(b)}
-              </h2>
-            );
-          }
-          if (b._type === "block" && b.style === "h3") {
-            stepN += 1;
-            return (
-              <h3 key={b._key} className="flex items-baseline gap-3 mt-10 mb-3">
-                <span className="text-[26px] font-[200] text-brand/40 leading-none">
-                  {String(stepN).padStart(2, "0")}
-                </span>
-                <span className="text-[20px] font-[500] tracking-[0.14em] uppercase text-brand">
-                  {plainText(b).replace(/^\d+\.\s*/, "")}
-                </span>
-              </h3>
-            );
-          }
-          if (b._type === "block" && b.listItem === "bullet")
-            return (
-              <ul key={b._key} className="list-disc pl-6 mb-3">
-                <li className="text-[20px] font-[300] leading-[1.8] text-brand-mid">
-                  <RichA block={b} />
-                </li>
-              </ul>
-            );
-          if (b._type === "block")
-            return (
-              <p key={b._key} className="text-[20px] md:text-[20px] font-[300] leading-[1.8] text-brand-mid mb-4">
-                <RichA block={b} />
-              </p>
-            );
-          if (b._type === "image" && b.url && b.dim)
-            return (
-              <div key={b._key} className="my-8 flex justify-center">
-                <Image
-                  src={b.url}
-                  alt={b.alt || ""}
-                  width={b.dim.width}
-                  height={b.dim.height}
-                  className="h-auto border border-gray-100"
-                  style={{ maxWidth: Math.min(b.dim.width, 900), width: "100%" }}
-                  sizes="(max-width: 768px) 100vw, 900px"
-                  {...(i < 2 ? { priority: true } : { loading: "lazy" as const })}
-                />
+    <section className="pt-14 md:pt-16 pb-20 px-5 bg-white">
+      <div className="max-w-[1080px] mx-auto">
+        {head.map((b) =>
+          b._type === "image" && b.url && b.dim ? (
+            <div key={b._key} className="flex justify-center mb-16">
+              <Image src={b.url} alt={b.alt || ""} width={b.dim.width} height={b.dim.height} className="h-auto w-full max-w-[512px]" sizes="512px" priority />
+            </div>
+          ) : (
+            render([b])
+          )
+        )}
+        <div className="max-w-[816px] mx-auto grid md:grid-cols-2 gap-x-[60px] items-start">
+          <div>
+            {left.map((b) => (
+              <div key={b._key}>
+                {render([b])}
+                {b._key === loginAfter && (
+                  <iframe
+                    title="Sign in to Buildertrend"
+                    src="https://buildertrend.net/NewLoginFrame.aspx?color=Navy"
+                    loading="lazy"
+                    className="w-full h-[60px] border-0 mb-6"
+                  />
+                )}
               </div>
-            );
-          return null;
-        })}
+            ))}
+          </div>
+          <div className="md:pt-3">{render(right)}</div>
+        </div>
+        <div className="max-w-[816px] mx-auto mt-10">
+          {render([pay[0]])}
+          {steps.map((st, i) => (
+            <div key={i} className="grid md:grid-cols-[345px_345px] md:justify-between gap-6 items-start">
+              <div>{render(st.text)}</div>
+              <div className="md:pt-6">{render(st.imgs)}</div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -1121,12 +1466,11 @@ export default function ServicePageBody({
   const cardsSet = stegaClean(cardsSetRaw);
   const divisionLogoUrl = stegaClean(divisionLogoUrlRaw);
   if (template === "portal") return <PortalBody blocks={body} />;
-  if (template === "hub")
-    return <HubBody blocks={body} cardsSet={cardsSet} cardsLayout="flex" />;
+  if (template === "hub") return <LiveHub blocks={body} cardsSet={cardsSet} />;
   if (template === "division")
     return (
       <HubBody blocks={body} cardsSet={cardsSet} divisionLogoUrl={divisionLogoUrl} cardsLayout="grid" accent={accent} />
     );
-  if (template === "standard") return <LiveBody blocks={body} cardsSet={cardsSet} hero={hero} />;
+  if (template === "standard" || template === "interior") return <LiveBody blocks={body} cardsSet={cardsSet} hero={hero} />;
   return <GroupedBody blocks={body} cardsSet={cardsSet} narrow />;
 }

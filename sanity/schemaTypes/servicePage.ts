@@ -59,7 +59,7 @@ export default defineType({
             { title: 'Quote', value: 'blockquote' },
             { title: 'Quote attribution', value: 'attrib' },
           ],
-          lists: [{ title: 'Bullet', value: 'bullet' }],
+          lists: [{ title: 'Bullet', value: 'bullet' }, { title: 'Numbered', value: 'number' }],
           marks: {
             decorators: [
               { title: 'Bold', value: 'strong' },
@@ -77,6 +77,15 @@ export default defineType({
           type: 'image',
           options: { hotspot: true },
           fields: [{ name: 'alt', type: 'string', title: 'Alt text' }],
+        },
+        {
+          name: 'sectionVideo', type: 'object', title: 'Video (beside a section)',
+          fields: [
+            { name: 'file', type: 'file', title: 'Video (MP4)', options: { accept: 'video/mp4' } },
+            { name: 'poster', type: 'image', title: 'Still shown while it loads' },
+            { name: 'alt', type: 'string', title: 'What the video shows' },
+          ],
+          preview: { select: { title: 'alt' }, prepare: ({ title }: { title?: string }) => ({ title: '▶ Video: ' + (title || '') }) },
         },
         {
           name: 'ctaButton', type: 'object', title: 'CTA Button',

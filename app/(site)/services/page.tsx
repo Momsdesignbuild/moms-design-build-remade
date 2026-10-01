@@ -58,56 +58,35 @@ const SERVICES = [
   },
 ];
 
+// mirrors live /services/ (2026-10-01): four 260×252 photos, the name under each in
+// Futura uppercase, the paragraph, a square teal LEARN MORE — no page heading on live
 export default function ServicesPage() {
   return (
     <>
       <JsonLd raw={PAGE_JSONLD} />
-
-      {/* ── Page Header ── */}
-      <section className="py-16 md:py-20 px-6 text-center bg-white">
-        <h1 className="text-[22px] md:text-[28px] font-[300] tracking-[0.25em] uppercase text-ink">
-          Our Services
-        </h1>
-        <p className="mt-4 text-[20px] font-[300] tracking-[0.1em] uppercase text-muted">
-          Landscaping &amp; Home Remodeling in Minnesota
-        </p>
-      </section>
-
-      {/* ── Services Grid ── */}
-      <section className="px-6 pb-20 bg-white">
-        <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <h1 className="sr-only">Our Services — Landscaping &amp; Home Remodeling in Minnesota</h1>
+      <section className="px-5 pt-14 md:pt-16 pb-20 bg-white">
+        <div className="max-w-[1080px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-5">
           {SERVICES.map((service) => (
-            <div key={service.title} className="flex flex-col">
-              {/* Portfolio-style tile (meeting 8/18): 4:5 vertical, grayed
-                  photo with the division name ON it, hover reveals the photo,
-                  whole tile clickable — same treatment as portfolio/careers */}
-              <Link
-                href={service.href}
-                className="group relative block aspect-[4/5] overflow-hidden bg-brand-mid mb-4"
-              >
+            <div key={service.title} className="flex flex-col items-center">
+              <Link href={service.href} className="block w-full overflow-hidden mb-6">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={service.image}
                   alt={service.alt}
                   loading="lazy"
-                  className="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-[1.03]"
+                  className="w-full aspect-[260/252] object-cover transition-transform duration-500 hover:scale-[1.03]"
                 />
-                <span className="absolute inset-0 flex items-center justify-center p-4 text-center transition-opacity duration-300 group-hover:opacity-0">
-                  <h2 className="text-white text-[24px] md:text-[28px] font-[500] tracking-[0.14em] uppercase leading-snug [text-shadow:0_1px_10px_rgba(0,0,0,0.45)]">
-                    {service.title}
-                  </h2>
-                </span>
               </Link>
-
-              {/* Description */}
-              <p className="text-[20px] font-[300] leading-[1.85] text-muted mb-6 flex-1">
+              <h2 className="font-bold [font-synthesis:weight] text-[26px] md:text-[30.6px] leading-[1.2] tracking-[1.836px] uppercase text-brand-mid text-center mb-5">
+                <Link href={service.href}>{service.title}</Link>
+              </h2>
+              <p className="font-sans text-[18px] font-[300] leading-[1.8] text-brand-mid mb-8 flex-1 self-stretch md:px-1">
                 {service.description}
               </p>
-
-              {/* CTA */}
               <Link
                 href={service.href}
-                className="inline-block self-start bg-brand text-white text-[20px] font-[600] tracking-[0.2em] uppercase px-7 py-3 hover:bg-brand-dark transition-colors duration-200"
+                className="inline-block bg-brand text-white font-sans text-[15px] font-[600] tracking-[1px] uppercase leading-none px-[34px] py-[21px] rounded-[3px] hover:bg-brand-dark transition-colors duration-200"
               >
                 Learn More
               </Link>

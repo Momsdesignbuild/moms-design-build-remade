@@ -23,7 +23,7 @@ export default async function Page({ params }: { params: Promise<{ sub: string }
   return (
     <>
       {doc.jsonLd && <JsonLd raw={doc.jsonLd} />}
-      <ServicePageBody template={doc.template} body={doc.body} cardsSet={doc.cardsSet} divisionLogoUrl={doc.divisionLogoUrl} />
+      <ServicePageBody template={doc.template} body={doc.body} cardsSet={doc.cardsSet} divisionLogoUrl={doc.divisionLogoUrl} hero={doc.hero} />
     </>
   );
 }
