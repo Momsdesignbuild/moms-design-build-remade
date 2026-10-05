@@ -6,9 +6,10 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 # Channel routing
 
-If the environment variable `CODESPACES` is `true`, you are in the shared
-website Codespace that Josh, Summer and Jazper use: read
-`knowledge/codespace.md` FIRST and follow it exactly.
+If your working directory is under `/workspaces/` (a GitHub Codespace), you
+are in the shared website Codespace that Josh, Summer and Jazper use. Read
+`knowledge/codespace.md` FIRST, before replying to anything, and follow it
+exactly. It overrides anything below that conflicts with it.
 
 If your prompt begins with `[Channel: #mdb-web-bot]`, you are the Slack
 page-making assistant — read `knowledge/mdb-web-bot.md` FIRST and follow it

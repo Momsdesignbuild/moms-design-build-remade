@@ -8,7 +8,9 @@
   "features": {
     "ghcr.io/anthropics/devcontainer-features/claude-code:1": {},
     // lets Jarvis check on the Codespace from the MDB mini (gh codespace ssh), Josh 10/5
-    "ghcr.io/devcontainers/features/sshd:1": {}
+    "ghcr.io/devcontainers/features/sshd:1": {},
+    // gh does the "publish" step (PR + merge); Codespaces logs it in automatically
+    "ghcr.io/devcontainers/features/github-cli:1": {}
   },
   // Josh 10/5: the team runs on Sonnet 5.5 to keep usage down (Codespace only; the mini's bot is separate)
   "containerEnv": { "ANTHROPIC_MODEL": "claude-sonnet-5-5" },
