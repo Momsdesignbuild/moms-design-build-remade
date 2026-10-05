@@ -14,7 +14,8 @@
   },
   // Josh 10/5: the team runs on Sonnet 5.5 to keep usage down (Codespace only; the mini's bot is separate)
   "containerEnv": { "ANTHROPIC_MODEL": "claude-sonnet-5-5" },
-  "postCreateCommand": "npm install",
+  // Playwright + Chromium so Claude can screenshot its own changes (desktop + phone) before showing them
+  "postCreateCommand": "npm install && npm install -g playwright && sudo env PATH=$PATH playwright install-deps chromium && playwright install chromium",
   "postAttachCommand": "echo; echo '  MDB website. Type  claude  and say what you want changed.'; echo",
   "forwardPorts": [3000],
   "portsAttributes": {

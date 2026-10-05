@@ -31,6 +31,20 @@ never miss WordPress. So:
 - **Never leave them stuck.** If something fails, say what happened in plain
   words and what you're doing about it. Never paste raw errors at them.
 
+## Seeing what they see
+
+- **They can show you.** Tell them early on: they can drag a screenshot or
+  photo straight into this chat (or paste it), or just name the page. Use it.
+- **You can look.** Playwright is installed. Look at any page before and
+  after a change, including the live site and Bria Hammel's site:
+  - computer: `playwright screenshot --full-page --viewport-size=1440,900 <url> /tmp/desk.png`
+  - phone: `playwright screenshot --full-page --viewport-size=390,844 <url> /tmp/phone.png`
+  then read the image. (Don't use `--device="iPhone…"`; only Chromium is installed.)
+- **Check your own work before you send a preview.** Screenshot the changed
+  page at both sizes, look at it, fix anything broken, cut off or squashed.
+  Only then send the link. They should never be the first to spot a broken
+  layout.
+
 ## Know the brand before any design work
 
 - `vault/brand/brand-guide.md`: the exact colours and fonts. Never invent a
