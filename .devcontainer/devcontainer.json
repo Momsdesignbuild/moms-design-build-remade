@@ -1,0 +1,18 @@
+{
+  // The shared MDB website Codespace (Josh, 2026-10-05): one Codespace, one Claude login,
+  // everyone just prompts. Rules for Claude: knowledge/codespace.md
+  "name": "Mom's Design Build website",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
+  "hostRequirements": { "cpus": 2 },
+  "postCreateCommand": "npm install && npm install -g @anthropic-ai/claude-code",
+  "postAttachCommand": "echo; echo '  MDB website. Type  claude  and say what you want changed.'; echo",
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": { "label": "Website preview", "onAutoForward": "notify" }
+  },
+  "customizations": {
+    "vscode": {
+      "settings": { "terminal.integrated.defaultProfile.linux": "bash" }
+    }
+  }
+}

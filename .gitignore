@@ -44,3 +44,6 @@ next-env.d.ts
 # migration scripts (may contain env refs, keep local only)
 /scripts/
 vault/.obsidian/workspace*.json
+
+# MDB mini only: the Slack web bot keeps its full lockdown here (incl. no gh)
+.claude/settings.local.json
