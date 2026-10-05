@@ -8,7 +8,7 @@ export const revalidate = 3600;
 
 // Nested WP utility/sub pages (contact/thanks, services/x/y…) — carbon-copied
 // `page` docs served at their exact WP paths.
-type PageDoc = {
+export type PageDoc = {
   title: string;
   metaTitle?: string;
   metaDescription?: string;
@@ -17,7 +17,7 @@ type PageDoc = {
   sourceUrl?: string;
 };
 
-async function getDoc(path: string): Promise<PageDoc | null> {
+export async function getDoc(path: string): Promise<PageDoc | null> {
   const { data } = await sanityFetch({
     query: `*[_type == "page" && slug.current == $path][0]{ title, metaTitle, metaDescription, body, jsonLd, sourceUrl }`,
     params: { path },
@@ -34,7 +34,11 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ path: string[] }> }): Promise<Metadata> {
   const { path } = await params;
-  const doc = await getDoc(path.join("/"));
+  return nestedMetadata(path.join("/"));
+}
+
+export async function nestedMetadata(slug: string): Promise<Metadata> {
+  const doc = await getDoc(slug);
   if (!doc) return {};
   return {
     title: { absolute: doc.metaTitle || doc.title },
@@ -47,6 +51,11 @@ export default async function NestedPage({ params }: { params: Promise<{ path: s
   const { path } = await params;
   const doc = await getDoc(path.join("/"));
   if (!doc) notFound();
+  return <NestedView doc={doc} />;
+}
+
+// also used by the services/<section>/[sub] routes, which match first (Basements, 10/5)
+export function NestedView({ doc }: { doc: PageDoc }) {
 
   return (
     <>
