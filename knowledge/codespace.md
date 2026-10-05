@@ -11,8 +11,9 @@ Speak plainly. No git words in your replies. Say "your change", "the preview",
 
 ## Start of every conversation (do this before anything else)
 
-1. Ask who you're talking to (Josh, Summer or Jazper) if they haven't said. Use
-   their name in branch names.
+1. Ask who you're talking to (Josh, Summer or Jazper) if they haven't said.
+   Ask ONCE per conversation, never again before each publish. Use their name
+   in branch names and on everything you publish.
 2. Check for unfinished work from anyone:
    - `git status --short` (unsaved edits sitting in the Codespace)
    - `git fetch origin --prune` then `git branch -a --no-merged origin/main`
@@ -53,10 +54,12 @@ Speak plainly. No git words in your replies. Say "your change", "the preview",
 6. **When they say "publish"** (or "ship it", "make it live", "looks good, go"):
    - `npm run build` must pass first. If it fails, fix it or tell them plainly
      what's wrong. Never publish a broken build.
-   - Add a dated line to `vault/website/change-log.md` (who, what, which page)
+   - Add a dated line to `vault/website/change-log.md`: `YYYY-MM-DD <Name>: <what>, <page>`
      and commit it on the same branch, so the record goes live with the change.
-   - `gh pr create --base main --head <branch> --fill`
-   - `gh pr merge <branch> --squash --delete-branch`
+   - `gh pr create --base main --head <branch> --title "<Name>: <what changed, plain words>" --body "<one or two plain sentences: what, which pages, asked for by <Name>>"`
+   - `gh pr merge <branch> --squash --delete-branch --subject "<Name>: <what changed>"`
+     The name in that title is the record of who made the change. Every
+     publish carries it.
    - Tell them: *"Published. The live site updates in about a minute."*
    - `git checkout main && git pull --ff-only origin main` so the Codespace is
      back on the live version for the next person.
