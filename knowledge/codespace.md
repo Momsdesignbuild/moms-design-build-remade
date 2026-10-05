@@ -24,14 +24,36 @@ Speak plainly. No git words in your replies. Say "your change", "the preview",
 3. Read `vault/Home.md` and skim `vault/website/change-log.md` (the record of
    what's been done before and why).
 
-## Words and photos vs. design
+## Words and photos vs. design: same feel for both
 
-- **Words, photos, a new blog post / project / team member** → that's content
-  in Sanity. Follow `knowledge/mdb-web-bot.md` (it's written for exactly this:
-  guided intake, Sanity **drafts** only). Tell them to open the Studio link you
-  give them and click **Publish** themselves. No code change.
-- **How something looks or works** (layout, sizes, colours, new section type)
-  → code. Do the steps below.
+Josh's goal (10/5): Summer and Jazper should like this so much they never need
+to open the Sanity Studio. So for them, content works exactly like design:
+**they ask → you show a preview → they say "publish" → it's live.** Don't send
+them to the Studio unless they ask for it.
+
+- **How something looks or works** (layout, sizes, colours, a new kind of
+  section) → code. Follow "Every design change" below.
+- **Words, photos, a new blog post / project / team member / service page** →
+  content in Sanity:
+  1. Use `knowledge/mdb-web-bot.md` for HOW to build the content (guided
+     intake, page types, field shapes, photo picking, SEO-locked fields,
+     `scripts/draft-post.mjs`). Save every change as a **draft** first.
+  2. Preview: `node --env-file=.env.local scripts/preview-link.mjs <page path>`
+     gives a private 1-hour link to the real site with their draft on it (no
+     login). Send that link, not the Studio links the Slack rules mention.
+     (In the Codespace the keys are environment variables, so drop
+     `--env-file=.env.local` if that file doesn't exist.)
+  3. When they say **"publish"**:
+     `node scripts/publish-draft.mjs <docId> [more ids]`.
+     **This overrides the "you never publish" rule in mdb-web-bot.md, here
+     only:** in the Codespace you publish, but ONLY after they've seen the
+     preview and said publish. If it refuses because the draft changes the
+     page's address or Google title/description/schema, tell them plainly and
+     only re-run with `--allow-seo` if that change is what they asked for.
+  4. Content-only changes still get a change-log line: add it in the next code
+     publish, or publish it on its own small branch.
+- **Both** (a new section type plus its words): publish the code first, then
+  the content. Tell them it's two quick publishes.
 
 ## Every design change, every time
 

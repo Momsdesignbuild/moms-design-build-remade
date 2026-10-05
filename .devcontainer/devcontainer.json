@@ -20,6 +20,8 @@
   },
   "customizations": {
     "vscode": {
+      // Claude in a chat panel instead of the terminal (Josh 10/5: nicer for Summer + Jazper)
+      "extensions": ["anthropic.claude-code"],
       "settings": { "terminal.integrated.defaultProfile.linux": "bash" }
     }
   }
