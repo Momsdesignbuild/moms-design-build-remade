@@ -52,7 +52,11 @@ Speak plainly. No git words in your replies. Say "your change", "the preview",
 5. **Save it** as you go so nothing is lost: commit on the branch and
    `git push -u origin <branch>`.
 6. **When they say "publish"** (or "ship it", "make it live", "looks good, go"):
-   - `npm run build` must pass first. If it fails, fix it or tell them plainly
+   - **Catch up first.** Others (or Jarvis, from the MDB mini) may have
+     published since you started: `git fetch origin && git merge origin/main`
+     into the branch. If anything conflicts, keep both sides' intent, re-check
+     the preview, and tell them in one plain line if what they see changed.
+   - `npm run build` must pass after that. If it fails, fix it or tell them plainly
      what's wrong. Never publish a broken build.
    - Add a dated line to `vault/website/change-log.md`: `YYYY-MM-DD <Name>: <what>, <page>`
      and commit it on the same branch, so the record goes live with the change.
