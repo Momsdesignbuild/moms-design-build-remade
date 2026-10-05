@@ -4,7 +4,11 @@
   "name": "Mom's Design Build website",
   "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
   "hostRequirements": { "cpus": 2 },
-  "postCreateCommand": "npm install && npm install -g @anthropic-ai/claude-code",
+  // Claude Code baked into the image (the npm -g step in postCreate didn't land on 10/5)
+  "features": {
+    "ghcr.io/anthropics/devcontainer-features/claude-code:1": {}
+  },
+  "postCreateCommand": "npm install",
   "postAttachCommand": "echo; echo '  MDB website. Type  claude  and say what you want changed.'; echo",
   "forwardPorts": [3000],
   "portsAttributes": {
