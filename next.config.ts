@@ -1,3 +1,4 @@
+import wpRedirects from "./wp-redirects.json";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
@@ -17,11 +18,16 @@ const nextConfig: NextConfig = {
     ],
   },
   async redirects() {
+    // Every redirect from live WordPress's Redirection plugin (export 2026-10-06, 251 rules):
+    // wp-redirects.json, minus the 16 already listed below, one junk rule and one duplicate.
+    // 19 pointed at pages dead on live too; those go to the nearest real page (see the PR).
+    const fromWordPress = wpRedirects.map((r) => ({ source: r.source, destination: r.destination, permanent: true }));
     // WP's 342 auto-generated /tag/* archives and the /author/* archive are
     // thin-content pages we deliberately don't rebuild (flagged for Jim's SEO
     // sign-off in the handoff, July 9) — permanent-redirect them to the blog
     // so their link equity and any bookmarks land somewhere real.
     return [
+      ...fromWordPress,
       { source: "/tag/:path*", destination: "/blog", permanent: true },
       { source: "/author/:path*", destination: "/blog", permanent: true },
       // old (Squarespace-era) addresses live WordPress's Redirection plugin sends on — found by crawling 10/5.
