@@ -43,6 +43,10 @@ html {
      inside or outside the scrollbar gutter, exposing a sliver of body's
      white behind it. Always reserving the gutter keeps `right: 0` consistent. */
   scrollbar-gutter: stable;
+  /* No elastic bounce past the top: on a Mac trackpad it drags the page down
+     and exposes a blank white bar above the (transparent) hero header
+     (Josh 10/7). */
+  overscroll-behavior-y: none;
 }
 
 body {
