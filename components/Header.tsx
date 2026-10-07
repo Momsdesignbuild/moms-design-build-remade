@@ -57,6 +57,16 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const openMenu = (label: string) => {
+    clearTimeout(closeTimer.current);
+    setOpenDropdown(label);
+  };
+  // Small grace period so the menu doesn't vanish on the way down into it.
+  const closeMenuSoon = () => {
+    clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setOpenDropdown(null), 300);
+  };
   const [mobileDropdown, setMobileDropdown] = useState<string | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
@@ -228,8 +238,8 @@ export default function Header() {
             <div
               key={item.label}
               className="relative"
-              onMouseEnter={() => item.children && setOpenDropdown(item.label)}
-              onMouseLeave={() => setOpenDropdown(null)}
+              onMouseEnter={() => (item.children ? openMenu(item.label) : closeMenuSoon())}
+              onMouseLeave={closeMenuSoon}
             >
               <Link
                 href={item.href}
@@ -254,7 +264,7 @@ export default function Header() {
                     initial={false}
                     animate={openDropdown === item.label ? { opacity: 1, y: 0 } : { opacity: 0, y: -6 }}
                     transition={{ duration: 0.15, ease: "easeOut" }}
-                    className={`absolute top-full left-0 mt-3 w-60 bg-white shadow-lg border border-gray-100 py-2 z-50 divide-y divide-gray-100 ${
+                    className={`absolute top-full left-0 mt-3 w-60 bg-white shadow-lg border border-gray-100 py-2 z-50 divide-y divide-gray-100 before:absolute before:-top-3 before:left-0 before:h-3 before:w-full before:content-[''] ${
                       openDropdown === item.label ? "visible" : "invisible pointer-events-none"
                     }`}
                     role="menu"
