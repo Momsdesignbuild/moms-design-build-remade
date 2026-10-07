@@ -21,7 +21,7 @@ const BADGES = [
 export default function AwardsStrip({ content }: { content?: HomeContent['awards'] }) {
   const c = withDefaults({ heading: 'The Most Award-Winning in the Midwest', badges: BADGES }, content)
   return (
-    <section className="bg-[#F7F5F2] pb-20 lg:pb-24 px-6">
+    <section className="bg-[#F7F5F2] pb-20 lg:pb-24 px-3 sm:px-6">
       <div className="max-w-5xl mx-auto">
         {/* live WP homepage H2, verbatim — SEO heading parity */}
         <h2 className="text-center text-[20px] md:text-[20px] font-[300] tracking-[0.26em] uppercase text-brand mb-10">
@@ -29,15 +29,15 @@ export default function AwardsStrip({ content }: { content?: HomeContent['awards
         </h2>
         {/* One row on every screen (Summer 10/7: no badge left alone
             underneath); badges just shrink on phones. */}
-        <div className="flex items-center justify-center gap-2.5 sm:gap-4 md:gap-6 lg:gap-8">
+        <div className="flex items-center justify-center gap-2 sm:gap-4 md:gap-6 lg:gap-8">
           {c.badges.map((b, i) => (
             <motion.div
               key={b.url}
               initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
+              viewport={{ once: true, amount: 0 }}
               transition={{ duration: 0.5, delay: i * 0.08, ease: 'easeOut' }}
-              className="relative h-[64px] sm:h-[100px] md:h-[144px] flex-1 max-w-[168px]"
+              className="relative h-[76px] sm:h-[100px] md:h-[144px] flex-1 max-w-[168px]"
             >
               <Image src={b.url} alt={b.alt ?? ''} fill sizes="168px" className="object-contain" />
             </motion.div>
