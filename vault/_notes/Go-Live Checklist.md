@@ -13,7 +13,8 @@ The domain (`momsdesignbuild.com` + www) is already claimed on the Vercel projec
 4. **DNS flip** at their registrar → Vercel. TLS is automatic.
 5. **Sanity publish webhook → revalidation** — so Summer's publishes appear without waiting for ISR (currently `revalidate: 3600`). Code + secret are already in place (8/19); only the webhook itself needs registering in Sanity's dashboard by an Administrator — see [[Post-Launch Checklist]] for the exact values.
 6. **siteSettings doc** for homepage knobs.
-7. **Summer's Studio login + training** — drafts vs publish, Presentation tab, the shared Codespace as her assistant.
+7. **Preview links:** set `PREVIEW_ORIGIN=https://momsdesignbuild.com` (Codespace secret and `.env.local`) or flip the default in `scripts/preview-link.mjs`, else draft previews keep opening on the test address.
+8. **Summer's Studio login + training** — drafts vs publish, Presentation tab, the shared Codespace as her assistant.
 8. **Newsletter → Mailchimp swap** (form stays, API route changes; subscribers exported from Sanity).
 9. **Post-flip sweep** — verify a portfolio page, a post, sitemap.xml, robots.txt, GSC domain verification + sitemap submission, watch coverage for the 301'd tag/author archives (needs Jim's sign-off first — see [[Open Questions]]).
 10. Old Flywheel hosting: keep until index settles, then Jim cancels.
