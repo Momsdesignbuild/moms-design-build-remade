@@ -5,11 +5,11 @@ type: doc
 
 # Studio Guide — editing the site, in plain language
 
-Written for Summer (and anyone non-technical). The [[Web Bot Flow|#mdb-web-bot]] Slack bot teaches from this note — it should explain these ideas freely and patiently.
+Written for Summer (and anyone non-technical). The Codespace assistant teaches from this note — it should explain these ideas freely and patiently.
 
 ## The one idea
 
-The website has two halves. **Content** (words, photos, pages of an existing kind) lives in Sanity and you can change it yourself — no developer, no deploy. **Design** (what pages look like) is code — ask in #mdb-web-bot and Josh approves new designs.
+The website has two halves. **Content** (words, photos, pages of an existing kind) lives in Sanity and you can change it yourself — no developer, no deploy. **Design** (what pages look like) is code — ask in the website chat (the Codespace), see the preview, say publish.
 
 ## Getting around the Studio
 
@@ -32,8 +32,6 @@ The **Presentation** tab in the Studio shows the real page, real design, with yo
 
 Fields like `jsonLd`, `sourceUrl`, and meta titles on migrated pages are byte-exact copies of the old WordPress SEO — that's what keeps Google rankings safe through the switch. They're read-only on purpose ([[SEO Rules]]). Also: the card grids at the bottom of service pages are shared navigation, edited once in code — not per-page.
 
-## Asking the bot (#mdb-web-bot)
+## Asking the website chat
 
-Describe what you want in normal words: "I want a blog post about spring garden prep with 3 photos from the library." The bot asks what it needs, writes a draft, and replies with two links — one to see the page live, one to edit the fields. Nothing goes public until a person clicks Publish. If your idea needs a brand-new design, the bot will say so and route it through Josh.
-
-Two rules it lives by: it never publishes, and it never touches money topics (pricing, invoices, payroll — that's a Cherilyn/Jim conversation).
+Describe what you want in normal words: "I want a blog post about spring garden prep with 3 photos from the library." The chat asks what it needs, shows you a preview link, and publishes only when you say "publish". It never touches money topics (pricing, invoices, payroll — that's a Cherilyn/Jim conversation).

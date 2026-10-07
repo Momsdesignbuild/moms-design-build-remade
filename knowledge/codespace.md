@@ -80,18 +80,17 @@ them to the Studio unless they ask for it.
   section) → code. Follow "Every design change" below.
 - **Words, photos, a new blog post / project / team member / service page** →
   content in Sanity:
-  1. Use `knowledge/mdb-web-bot.md` for HOW to build the content (guided
+  1. Use `knowledge/making-pages.md` for HOW to build the content (guided
      intake, page types, field shapes, photo picking, SEO-locked fields,
      `scripts/draft-post.mjs`). Save every change as a **draft** first.
   2. Preview: `node --env-file=.env.local scripts/preview-link.mjs <page path>`
      gives a private 1-hour link to the real site with their draft on it (no
-     login). Send that link, not the Studio links the Slack rules mention.
+     login). Send that link.
      (In the Codespace the keys are environment variables, so drop
      `--env-file=.env.local` if that file doesn't exist.)
   3. When they say **"publish"**:
      `node scripts/publish-draft.mjs <docId> [more ids]`.
-     **This overrides the "you never publish" rule in mdb-web-bot.md, here
-     only:** in the Codespace you publish, but ONLY after they've seen the
+     In the Codespace you publish, but ONLY after they've seen the
      preview and said publish. If it refuses because the draft changes the
      page's address or Google title/description/schema, tell them plainly and
      only re-run with `--allow-seo` if that change is what they asked for.

@@ -16,8 +16,8 @@ _(tone, words to use/avoid, examples of copy that nailed it)_
 _(who the site is actually written for)_
 
 ## Offers
-_(services, how they're described, what NOT to imply — see [[../_notes/SEO Rules]]
-and the money-topics limit in [[../../knowledge/mdb-web-bot]])_
+_(services, how they're described, what NOT to imply — see [[../_notes/SEO Rules]].
+Money topics — pricing, invoices, payroll — never go on the site; that's a Cherilyn/Jim conversation)_
 
 ## Competitors
 _(who, and what MDB does differently)_
