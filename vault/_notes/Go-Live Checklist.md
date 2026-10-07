@@ -5,6 +5,9 @@ type: doc
 
 # Go-Live Checklist — DNS-flip day
 
+**DONE 2026-10-07 ~12:45 PM CT.** momsdesignbuild.com points at Vercel (A 216.198.79.1 at GoDaddy, TXT _vercel for ownership); sweep passed: 383-page sitemap, robots open, no noindex, both GTM containers firing, redirects working. www pending its own TXT. Flywheel kept 30 days for rollback; export WordPress content + media before cancelling.
+
+
 The domain (`momsdesignbuild.com` + www) is already claimed on the Vercel project, dormant. Launch order:
 
 1. **Audit the last unaudited pages** — `contact` + root `services` hub (render fine; byte-check meta/canonical/JSON-LD vs manifest). See [[Pages]].
@@ -13,7 +16,7 @@ The domain (`momsdesignbuild.com` + www) is already claimed on the Vercel projec
 4. **DNS flip** at their registrar → Vercel. TLS is automatic.
 5. **Sanity publish webhook → revalidation** — so Summer's publishes appear without waiting for ISR (currently `revalidate: 3600`). Code + secret are already in place (8/19); only the webhook itself needs registering in Sanity's dashboard by an Administrator — see [[Post-Launch Checklist]] for the exact values.
 6. **siteSettings doc** for homepage knobs.
-7. **Preview links:** set `PREVIEW_ORIGIN=https://momsdesignbuild.com` (Codespace secret and `.env.local`) or flip the default in `scripts/preview-link.mjs`, else draft previews keep opening on the test address.
+7. ~~Preview links~~ — default flipped to momsdesignbuild.com on 2026-10-07.
 8. **Summer's Studio login + training** — drafts vs publish, Presentation tab, the shared Codespace as her assistant.
 8. **Newsletter → Mailchimp swap** (form stays, API route changes; subscribers exported from Sanity).
 9. **Post-flip sweep** — verify a portfolio page, a post, sitemap.xml, robots.txt, GSC domain verification + sitemap submission, watch coverage for the 301'd tag/author archives (needs Jim's sign-off first — see [[Open Questions]]).

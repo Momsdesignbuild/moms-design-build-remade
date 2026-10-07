@@ -11,6 +11,7 @@ already happened.
 
 ## 2026-10-07
 
+- **LIVE.** momsdesignbuild.com now serves this site (DNS moved from Flywheel to Vercel ~12:45 PM). Preview links open on the real domain from now on.
 - 2026-10-07 Summer: homepage hero gets an "Est. 1993 | Shakopee, Minnesota" line between two thin white rules under the buttons (from the editorial concept); award badges all in one row on every screen, smaller on phones, homepage. (Homepage look is normally Josh's call; Summer was reminded and asked to publish.)
 - 2026-10-07 Summer: header dropdown menus (Process, Services, etc.) stay open while moving the mouse down into them, with a short delay before closing, every page
 - **Josh:** homepage header no longer vanishes when scrolling back up, and no blank white bar when bouncing past the top.
