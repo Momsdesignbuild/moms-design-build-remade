@@ -79,13 +79,22 @@ export default function FramedHero({ content }: { content?: HomeContent['hero'] 
     return () => mq.removeEventListener('change', sync)
   }, [])
 
-  // full-bleed → matted frame
-  const inset = useTransform(
+  // full-bleed → matted frame. Function-form (useSettledTransform), not the
+  // array form: the array form takes the accelerated scroll-timeline path
+  // described above, and scrolling back up could strand the frame inset from
+  // the top — a white strip with the (white, transparent) header invisible on it.
+  const insetRem = useSettledTransform(
     scrollYProgress,
-    HERO_INSET_PROGRESS_RANGE,
-    ['0rem', `${isMobile ? HERO_INSET_MAX_REM.mobile : HERO_INSET_MAX_REM.desktop}rem`]
+    [...HERO_INSET_PROGRESS_RANGE],
+    [0, isMobile ? HERO_INSET_MAX_REM.mobile : HERO_INSET_MAX_REM.desktop]
   )
-  const insetX = useTransform(scrollYProgress, [0.12, 0.82], ['0rem', isMobile ? '1.25rem' : '6.5rem'])
+  const insetXRem = useSettledTransform(
+    scrollYProgress,
+    [...HERO_INSET_PROGRESS_RANGE],
+    [0, isMobile ? 1.25 : 6.5]
+  )
+  const inset = useTransform(insetRem, (r) => `${r}rem`)
+  const insetX = useTransform(insetXRem, (r) => `${r}rem`)
   const veil = useSettledTransform(scrollYProgress, [0, 0.5], [0.32, 0.14])
   // The whole title block shrinks together as one unit (Josh, July 17: "just
   // shrink slightly" — pushed further than the original 0.94 so it reads).
