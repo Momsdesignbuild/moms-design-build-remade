@@ -9,7 +9,7 @@ type: doc
 
 - The repo had been **public with an old Sanity write token in git history** → token **rotated everywhere** (both minis + Vercel prod, old revoked, forms retested), repo now **private**.
 - MDB mini's GitHub access = **fine-grained PAT scoped to ONLY this repo** (no expiry). Josh's account-wide GitHub creds erased from that machine's keychain.
-- Web-bot lockdown: `.claude/settings.json` tool-level denies (moms-bot repo unreadable from the web-bot; `vercel` account commands, `gh`, `git clone` blocked) + charter scope-isolation and money hard-limits — see [[Web Bot Flow]].
+- Claude lockdown on the MDB mini: `.claude/settings.local.json` tool-level denies (moms-bot repo unreadable; `vercel` account commands, `gh`, `git clone` blocked). The Slack web bot that this once guarded was retired 2026-10-07.
 - Cleanup: dead GitHub repos and Vercel projects deleted; **momsdesignbuild.com + www claimed on the `moms-design-build-remade` Vercel project** (dormant — launch = DNS flip only).
 
 ## Standing rules

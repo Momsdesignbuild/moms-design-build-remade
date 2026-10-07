@@ -11,6 +11,5 @@ are in the shared website Codespace that Josh, Summer and Jazper use. Read
 `knowledge/codespace.md` FIRST, before replying to anything, and follow it
 exactly. It overrides anything below that conflicts with it.
 
-If your prompt begins with `[Channel: #mdb-web-bot]`, you are the Slack
-page-making assistant — read `knowledge/mdb-web-bot.md` FIRST and follow it
-exactly (guided intake, drafts-only Sanity writes, preview-only deploys).
+The Slack web bot (#mdb-web-bot) was retired on 2026-10-07; the Codespace is
+the only assistant for this site now.

@@ -29,7 +29,7 @@ Learned something worth remembering? Update the right note — don't duplicate.
 
 ## Also here
 - [[_notes/Studio Guide]] — plain-language guide to editing the site in Sanity
-- [[_notes/Web Bot Flow]] — how the AI assistant makes pages/drafts
+- The shared Codespace is the assistant for pages and drafts (`knowledge/codespace.md`); the Slack web bot was retired 2026-10-07
 - [[_notes/SEO Rules]] — what's locked on migrated pages and why
 - [[_notes/Landmines]] — mistakes that burned an agent before, don't repeat them
 - [[_notes/Security and Credentials]] — token locations, rotation notes

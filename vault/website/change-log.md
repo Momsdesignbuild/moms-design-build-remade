@@ -9,6 +9,45 @@ Every site change, dated, newest first. What changed, why, and the result
 when it's known. This is how a conversation three weeks from now knows what
 already happened.
 
+## 2026-10-07
+
+- **Slack web bot retired.** `#mdb-web-bot`, its instructions
+  (`knowledge/mdb-web-bot.md`), the `/website` command and the Web Bot Flow
+  note are gone. The shared Codespace is the only assistant for this site;
+  its rules live in `knowledge/codespace.md`.
+
+## 2026-10-06
+
+- **Every WordPress redirect loaded** — Josh exported the Redirection plugin
+  list (251 rules); 233 added in `wp-redirects.json`, 19 of them re-pointed
+  because their targets were dead on the old site too. All 384 addresses in
+  the old site's sitemap load on the new one (crawl 10/7).
+- **Job application form rebuilt** to ask every question the WordPress form
+  asked (address, licenses, education, three references, resume upload,
+  skills). Applications land in Studio under Job Application.
+- **Garden Management page:** Summer's new Seasonal Container Design photo
+  and copy copied over from the live site.
+
+## 2026-10-05
+
+- **Shared Codespace** for Josh, Summer and Jazper: one workspace, plain
+  English requests, preview, "publish". `main` now needs a pull request.
+- **Basements page fixed** (was a 404) and 16 old-address redirects found by
+  crawling the live site.
+
+## 2026-10-01
+
+- **Service pages mirror the live site** (all 37): same layout, top videos
+  and photos, bigger text.
+
+## 2026-09-29 / 30
+
+- Homepage words and photos moved into Sanity. Blog cards back to 4:5 with a
+  filter panel. Site search: pages, team by name, and a 2,249-photo catalog;
+  descriptions written for 1,793 photos that had none. Summer's live-site
+  additions since 8/19 ported (two portfolio projects, two posts, warranty
+  PDF, three team members). SEO parity fixes from the live-vs-rebuild audit.
+
 ## 2026-08-19
 
 - **Post-Launch Checklist written** ([[../_notes/Post-Launch Checklist]]) —

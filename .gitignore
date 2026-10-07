@@ -45,5 +45,5 @@ next-env.d.ts
 /scripts/
 vault/.obsidian/workspace*.json
 
-# MDB mini only: the Slack web bot keeps its full lockdown here (incl. no gh)
+# MDB mini only: Claude's full lockdown lives here (incl. no gh)
 .claude/settings.local.json

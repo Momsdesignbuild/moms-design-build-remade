@@ -4,11 +4,13 @@
 import { createClient } from '@sanity/client'
 import { createPreviewSecret } from '@sanity/preview-url-secret/create-secret'
 
-export const ORIGIN = 'https://moms-design-build-remade-henna.vercel.app'
+// LAUNCH DAY: set PREVIEW_ORIGIN=https://momsdesignbuild.com (Codespace secret + .env.local)
+// or flip this default, or previews keep opening on the old test address.
+export const ORIGIN = process.env.PREVIEW_ORIGIN || 'https://moms-design-build-remade-henna.vercel.app'
 
 export async function previewLink(pathname) {
   const client = createClient({ projectId: 'wavk40jo', dataset: 'production', apiVersion: '2025-02-19', token: process.env.SANITY_API_TOKEN, useCdn: false })
-  const { secret, expiresAt } = await createPreviewSecret(client, 'mdb-web-bot', `${ORIGIN}/studio`)
+  const { secret, expiresAt } = await createPreviewSecret(client, 'codespace', `${ORIGIN}/studio`)
   const url = `${ORIGIN}/api/draft-mode/enable?sanity-preview-secret=${secret}&sanity-preview-pathname=${encodeURIComponent(pathname)}`
   return { url, expiresAt }
 }

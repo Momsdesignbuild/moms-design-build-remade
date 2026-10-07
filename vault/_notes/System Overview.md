@@ -10,7 +10,7 @@ Mom's Design Build (MDB) = residential landscape design/build firm, Minneapolis.
 | Machine | What lives there |
 |---|---|
 | **Josh's Mac mini** (`joshsmacmini1@100.69.233.64`) | The website rebuild: this repo, the 5.6GB WordPress mirror (`~/mdb-mirror`), all migration scripts, Josh's main Claude session + memory |
-| **MDB Mini** (`momsdesignbuildmini@100.71.24.20`) | moms-bot — the AI back office (Slack bots, OneDrive brain, digests, crew board) **plus a clone of this repo** that powers [[Web Bot Flow|#mdb-web-bot]] |
+| **MDB Mini** (`momsdesignbuildmini@100.71.24.20`) | moms-bot — the AI back office (Slack bots, OneDrive brain, digests, crew board) **plus a clone of this repo** used for builds and scripts (the Slack web bot it once powered was retired 2026-10-07) |
 
 **Git is the sync point between the two clones. Always pull before working.**
 
@@ -33,7 +33,7 @@ Page-type inventory, routes, doc shapes: [[Page Types and Structure]].
 ## Who's who
 
 - **Jim & Owen** — owners. Big-picture only; Jim literally counts photos. Everything must be provably complete.
-- **Summer** — marketing; edits the site in Studio and via [[Web Bot Flow|#mdb-web-bot]].
+- **Summer** — marketing; edits the site in Studio and via the shared Codespace.
 - **Cherilyn** — office ops (crew boards, QuickBooks side — out of website scope).
 - **Josh** — Steady Scaling; the only person who can approve production deploys and design changes.
 

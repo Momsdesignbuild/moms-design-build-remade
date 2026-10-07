@@ -37,4 +37,4 @@ All run from the repo root on Josh's mini (they need `~/mdb-mirror` + `.env.loca
 
 ## Deploy
 
-`npm run build && vercel --prod --yes` (Josh's mini, prod). The web-bot uses `npx vercel` previews only — see [[Web Bot Flow]].
+`npm run build && vercel --prod --yes` (Josh's mini, prod). The Codespace publishes through a pull request; see `knowledge/codespace.md`.

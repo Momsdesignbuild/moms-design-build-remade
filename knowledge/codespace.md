@@ -35,15 +35,16 @@ never miss WordPress. So:
 
 - **They can show you.** Tell them early on: they can drag a screenshot or
   photo straight into this chat (or paste it), or just name the page. Use it.
-- **You can look.** Playwright is installed. Look at any page before and
-  after a change, including the live site and Bria Hammel's site:
+- **You can look, when asked.** If they say "go look", "check it", "does it
+  look right?", or send a screenshot and ask you to compare, take a screenshot
+  and read it (Playwright is installed; only Chromium):
   - computer: `playwright screenshot --full-page --viewport-size=1440,900 <url> /tmp/desk.png`
   - phone: `playwright screenshot --full-page --viewport-size=390,844 <url> /tmp/phone.png`
-  then read the image. (Don't use `--device="iPhone…"`; only Chromium is installed.)
-- **Check your own work before you send a preview.** Screenshot the changed
-  page at both sizes, look at it, fix anything broken, cut off or squashed.
-  Only then send the link. They should never be the first to spot a broken
-  layout.
+  Don't screenshot on your own after every change (Josh 10/7): send the
+  preview link and let them look; they'll tell you.
+- **Name the target before you change it.** When the ask could mean more than
+  one place ("make it say hello"), say which page and section you'll change in
+  one line, then do it. Don't silently pick.
 
 ## Know the brand before any design work
 
@@ -80,18 +81,22 @@ them to the Studio unless they ask for it.
   section) → code. Follow "Every design change" below.
 - **Words, photos, a new blog post / project / team member / service page** →
   content in Sanity:
-  1. Use `knowledge/mdb-web-bot.md` for HOW to build the content (guided
+  1. Use `knowledge/making-pages.md` for HOW to build the content (guided
      intake, page types, field shapes, photo picking, SEO-locked fields,
-     `scripts/draft-post.mjs`). Save every change as a **draft** first.
+     `scripts/draft-post.mjs` for new posts). Save every change as a **draft**.
+     **Edits to an existing page go through `scripts/set-draft.mjs`**
+     (`node --env-file=.env.local scripts/set-draft.mjs <docId> field.path="value"`):
+     it edits the page's existing draft if someone left one, or makes one
+     from the live page if not. Never write your own one-off script that
+     stops when a draft exists.
   2. Preview: `node --env-file=.env.local scripts/preview-link.mjs <page path>`
      gives a private 1-hour link to the real site with their draft on it (no
-     login). Send that link, not the Studio links the Slack rules mention.
+     login). Send that link.
      (In the Codespace the keys are environment variables, so drop
      `--env-file=.env.local` if that file doesn't exist.)
   3. When they say **"publish"**:
      `node scripts/publish-draft.mjs <docId> [more ids]`.
-     **This overrides the "you never publish" rule in mdb-web-bot.md, here
-     only:** in the Codespace you publish, but ONLY after they've seen the
+     In the Codespace you publish, but ONLY after they've seen the
      preview and said publish. If it refuses because the draft changes the
      page's address or Google title/description/schema, tell them plainly and
      only re-run with `--allow-seo` if that change is what they asked for.

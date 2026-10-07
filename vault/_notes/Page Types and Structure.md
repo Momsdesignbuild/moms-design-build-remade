@@ -49,7 +49,7 @@ Sanity project `wavk40jo`, dataset `production`. Studio: `https://moms-design-bu
 
 ## Things that are CODE, not content
 
-Homepage (sacred — Josh only), about + process (bespoke designs), the services card grids, header/footer, the portfolio staging logic. If a request needs a new LOOK, it's Lane 2 in [[Web Bot Flow]]: branch → preview deploy → Josh's "ship".
+Homepage (sacred — Josh only), about + process (bespoke designs), the services card grids, header/footer, the portfolio staging logic. If a request needs a new LOOK, it goes through the Codespace: change → preview → "publish" (`knowledge/codespace.md`).
 
 ## SEO on every page
 
