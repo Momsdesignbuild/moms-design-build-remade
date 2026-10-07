@@ -27,9 +27,9 @@ export default function AwardsStrip({ content }: { content?: HomeContent['awards
         <h2 className="text-center text-[20px] md:text-[20px] font-[300] tracking-[0.26em] uppercase text-brand mb-10">
           {c.heading}
         </h2>
-        {/* One row from tablet up (Summer 10/7: no badge left alone underneath);
-            phones get 3 over 2. */}
-        <div className="flex items-center justify-center gap-x-4 gap-y-6 flex-wrap md:flex-nowrap md:gap-6 lg:gap-8">
+        {/* One row on every screen (Summer 10/7: no badge left alone
+            underneath); badges just shrink on phones. */}
+        <div className="flex items-center justify-center gap-2.5 sm:gap-4 md:gap-6 lg:gap-8">
           {c.badges.map((b, i) => (
             <motion.div
               key={b.url}
@@ -37,7 +37,7 @@ export default function AwardsStrip({ content }: { content?: HomeContent['awards
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.5, delay: i * 0.08, ease: 'easeOut' }}
-              className="relative h-[88px] w-[100px] md:h-[144px] md:w-auto md:flex-1 md:max-w-[168px]"
+              className="relative h-[64px] sm:h-[100px] md:h-[144px] flex-1 max-w-[168px]"
             >
               <Image src={b.url} alt={b.alt ?? ''} fill sizes="168px" className="object-contain" />
             </motion.div>
