@@ -15,7 +15,21 @@
       "Bash(node scripts/set-draft.mjs:*)",
       "Bash(node scripts/preview-link.mjs:*)",
       "Bash(node scripts/draft-post.mjs:*)",
-      "Bash(node scripts/publish-draft.mjs:*)"
+      "Bash(node scripts/publish-draft.mjs:*)",
+      "Bash(scripts/publish.sh:*)",
+      "Bash(bash scripts/publish.sh:*)",
+      "Bash(./scripts/publish.sh:*)",
+      "Bash(git checkout:*)",
+      "Bash(git status:*)",
+      "Bash(git log:*)",
+      "Bash(git diff:*)",
+      "Bash(git branch:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git merge --no-edit origin/main)",
+      "Bash(npx tsc:*)",
+      "Bash(npm run dev:*)",
+      "Bash(pkill -f next:*)"
     ],
     "deny": [
       "Read(//Users/momsdesignbuildmini/repos/moms-bot/**)",
