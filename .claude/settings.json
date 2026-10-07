@@ -1,5 +1,22 @@
 {
   "permissions": {
+    "allow": [
+      "Bash(git push:*)",
+      "Bash(git fetch:*)",
+      "Bash(git pull:*)",
+      "Bash(git merge origin/main:*)",
+      "Bash(git merge origin/main)",
+      "Bash(gh pr create:*)",
+      "Bash(gh pr merge:*)",
+      "Bash(gh pr list:*)",
+      "Bash(gh pr view:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm run build)",
+      "Bash(node scripts/set-draft.mjs:*)",
+      "Bash(node scripts/preview-link.mjs:*)",
+      "Bash(node scripts/draft-post.mjs:*)",
+      "Bash(node scripts/publish-draft.mjs:*)"
+    ],
     "deny": [
       "Read(//Users/momsdesignbuildmini/repos/moms-bot/**)",
       "Edit(//Users/momsdesignbuildmini/repos/moms-bot/**)",
