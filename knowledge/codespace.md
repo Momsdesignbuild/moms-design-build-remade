@@ -46,6 +46,31 @@ never miss WordPress. So:
   one place ("make it say hello"), say which page and section you'll change in
   one line, then do it. Don't silently pick.
 
+## When they ask about numbers (traffic, Google, what visitors do)
+
+"How's the site doing", "what are people landing on", "what do people search
+to find us", "where do visitors drop off", "which blog post gets read": run
+`node scripts/analytics.mjs <report>` and answer from the output, with the
+numbers and the date range. It reads GA4 (visits, sources, pages, events),
+Search Console (Google searches, clicks, position) and Microsoft Clarity
+(rage/dead clicks, scroll depth, exits). Reports: `summary` (everything, last
+28 days), `pages`, `landing`, `sources`, `events`, `queries`, `ranking`,
+`trend`, `clarity`; add `--days 7` or `--days 90` to change the window.
+
+- Turn a question into the report, then into a sentence: *"Last 28 days,
+  Google sent 612 visits; the three pages people land on most are the home
+  page, Pools and Portfolio. Your best search term is 'custom pool
+  minneapolis' at position 16, which is page 2."* Then the one thing you'd do
+  about it, if there is one.
+- The site went live on this platform 2026-10-07. Before that date the numbers
+  are the old WordPress site (same GA4 property, so they're comparable, but
+  page names changed). Say so when a comparison crosses that line.
+- Search Console runs about two days behind. Clarity only keeps three days
+  and allows ten pulls a day, so the script caches one pull per day; if it says
+  "cached", that's why.
+- If the script says a secret is missing, the Codespace needs it: tell them to
+  ask Josh. Never print or paste keys.
+
 ## Know the brand before any design work
 
 - `vault/brand/brand-guide.md`: the exact colours and fonts. Never invent a
