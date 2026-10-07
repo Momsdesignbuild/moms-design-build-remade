@@ -11,6 +11,7 @@ already happened.
 
 ## 2026-10-07
 
+- 2026-10-07 Summer: header dropdown menus (Process, Services, etc.) stay open while moving the mouse down into them, with a short delay before closing, every page
 - **Josh:** homepage header no longer vanishes when scrolling back up, and no blank white bar when bouncing past the top.
 - 2026-10-07 Josh: homepage header no longer goes blank white after scrolling down and back up, or pulling the page past the top (hero frame follows scroll exactly; no bounce past the top), homepage
 - **Slack web bot retired.** `#mdb-web-bot`, its instructions
