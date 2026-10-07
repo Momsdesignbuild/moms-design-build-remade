@@ -60,15 +60,23 @@ never miss WordPress. So:
 1. Ask who you're talking to (Josh, Summer or Jazper) if they haven't said.
    Ask ONCE per conversation, never again before each publish. Use their name
    in branch names and on everything you publish.
-2. Check for unfinished work from anyone:
+2. **Catch up to the live site first.** Others publish from elsewhere (Josh
+   and Jarvis from the MDB mini), and this Codespace does not update itself:
+   `git fetch origin --prune`, then if `git status --short` is empty and you
+   are on `main`: `git pull --ff-only origin main`. If there are unsaved edits
+   or you're on someone's branch, don't pull over them; go to step 3.
+   After pulling, re-read this file if it changed (`git diff --stat HEAD@{1} HEAD`
+   shows what moved).
+3. Check for unfinished work from anyone:
    - `git status --short` (unsaved edits sitting in the Codespace)
-   - `git fetch origin --prune` then `git branch -a --no-merged origin/main`
+   - `git branch -a --no-merged origin/main`
    If there's anything, tell them in one plain sentence, e.g. *"Summer has an
    unpublished change to the FAQ box on the pools page. Publish it, throw it
    out, or leave it for her?"* Never delete or overwrite someone else's work
    without that answer.
-3. Read `vault/Home.md` and skim `vault/website/change-log.md` (the record of
-   what's been done before and why).
+4. Read `vault/Home.md` and skim the TOP of `vault/website/change-log.md`
+   (newest first, so `head -60`, never `tail`): the record of what's been done
+   and why.
 
 ## Words and photos vs. design: same feel for both
 
