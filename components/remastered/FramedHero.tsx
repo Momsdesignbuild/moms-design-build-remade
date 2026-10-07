@@ -183,6 +183,22 @@ export default function FramedHero({ content }: { content?: HomeContent['hero'] 
                   {cta2.label}
                 </Link>
               </motion.div>
+              {/* "Issue line" from the editorial concept (Summer 10/7): small
+                  spaced caps between two thin white rules. Just Est. 1993 and
+                  Shakopee on every screen size (Summer 10/7). */}
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.9, delay: 0.9, ease: 'easeOut' }}
+                className="mt-12 mx-auto w-[min(420px,80vw)] text-white/85"
+              >
+                <i className="block h-px bg-[#F7F5F2]/55" />
+                <div className="flex justify-between gap-4 py-2.5 text-[11px] md:text-[13px] font-semibold tracking-[0.2em] uppercase">
+                  <span>Est. 1993</span>
+                  <span>Shakopee, Minnesota</span>
+                </div>
+                <i className="block h-px bg-[#F7F5F2]/55" />
+              </motion.div>
             </motion.div>
           </motion.div>
         </motion.div>
