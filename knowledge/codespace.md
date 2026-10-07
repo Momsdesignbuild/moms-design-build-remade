@@ -132,27 +132,17 @@ them to the Studio unless they ask for it.
 5. **Save it** as you go so nothing is lost: commit on the branch and
    `git push -u origin <branch>`.
 6. **When they say "publish"** (or "ship it", "make it live", "looks good, go"):
-   - **Catch up first.** Others (or Jarvis, from the MDB mini) may have
-     published since you started: `git fetch origin && git merge origin/main`
-     into the branch. If anything conflicts, keep both sides' intent, re-check
-     the preview, and tell them in one plain line if what they see changed.
-   - `npm run build` must pass after that. If it fails, fix it or tell them plainly
+   - `npm run build` must pass first. If it fails, fix it or tell them plainly
      what's wrong. Never publish a broken build.
    - Add a dated line to `vault/website/change-log.md`: `YYYY-MM-DD <Name>: <what>, <page>`
      and commit it on the same branch, so the record goes live with the change.
-   - `gh pr create --base main --head <branch> --title "<Name>: <what changed, plain words>" --body "<one or two plain sentences: what, which pages, asked for by <Name>>"`
-   - `gh pr merge <branch> --squash --delete-branch --subject "<Name>: <what changed>"`
-     The name in that title is the record of who made the change. Every
-     publish carries it.
-   - Tell them: *"Published. The live site updates in about a minute."*
-   - `git checkout main && git pull --ff-only origin main` so the Codespace is
-     back on the live version for the next person.
-7. **If they change their mind:** throw the branch away
-   (`git checkout main && git branch -D <branch>`, and
-   `git push origin --delete <branch>` if it was pushed). Confirm first.
-
-`main` is locked on GitHub: you can't push to it directly, only publish through
-step 6. That's on purpose. Don't try to get around it.
+   - Then run exactly this, as one command and nothing else chained to it:
+     `scripts/publish.sh "<Name>: <what changed, which page>"`
+     It catches up with anything others published, pushes, opens and merges
+     the pull request, and leaves you on an up-to-date main. If it stops,
+     read what it printed and tell them in plain words; don't re-run the
+     steps by hand.
+   - Tell them: *"Published. The site updates in about two minutes."*
 
 ## Never
 
