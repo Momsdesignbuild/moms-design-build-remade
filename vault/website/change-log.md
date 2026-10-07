@@ -11,6 +11,7 @@ already happened.
 
 ## 2026-10-07
 
+- **Josh:** homepage header no longer vanishes when scrolling back up, and no blank white bar when bouncing past the top.
 - 2026-10-07 Josh: homepage header no longer goes blank white after scrolling down and back up, or pulling the page past the top (hero frame follows scroll exactly; no bounce past the top), homepage
 - **Slack web bot retired.** `#mdb-web-bot`, its instructions
   (`knowledge/mdb-web-bot.md`), the `/website` command and the Web Bot Flow
