@@ -7,7 +7,6 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { List, X, CaretDown } from "@phosphor-icons/react";
-import { HERO_INSET_PROGRESS_RANGE, HERO_INSET_MAX_REM } from "@/components/remastered/FramedHero";
 
 const NAV_ITEMS = [
   { label: "Portfolio", href: "/portfolio" },
@@ -107,26 +106,14 @@ export default function Header() {
       };
     }
 
-    // The homepage hero is a pinned container-scroll effect (FramedHero):
-    // the video shrinks into a matted frame as you scroll, it never simply
-    // "ends" at some offset. We used to find the crossover point by reading
-    // the live position of an element ANIMATED by Framer Motion's own
-    // scroll-driven render pass — but that pass runs on its own timing,
-    // and reading its output from here raced against it: scrolling back up
-    // could catch a stale (pre-update) position and read "solid" when the
-    // hero was really still behind the header, sometimes sticking that way
-    // once scrolling stopped (confirmed 8/19 via scripted repro).
-    //
-    // Fix: compute the identical progress value Framer computes for this
-    // section — via the same `getBoundingClientRect` math `useScroll`
-    // itself uses (offset ['start start','end end']) — straight off the
-    // hero SECTION, which is plain document flow, never transformed by
-    // Framer. That makes this a pure function of the real, instantaneous
-    // scroll position every time, with nothing else's render loop able to
-    // put it out of sync. HERO_INSET_PROGRESS_RANGE/HERO_INSET_MAX_REM are
-    // imported from FramedHero so the two can never drift apart if that
-    // curve is retuned. rAF-throttled so a torrent of scroll events can't
-    // spam re-renders.
+    // The homepage hero (FramedHero) is a plain full-bleed block, one
+    // viewport tall — so the header stays transparent for exactly as long
+    // as the hero is still underneath it. Measured off the hero SECTION,
+    // which is untransformed document flow: a pure function of the real,
+    // instantaneous scroll position, with no other render loop able to put
+    // it out of sync. (It used to mirror a Framer scroll curve shared with
+    // FramedHero; that pinned shrink was removed 2026-10-08.) rAF-throttled
+    // so a torrent of scroll events can't spam re-renders.
     let ticking = false;
     let settleTimer: ReturnType<typeof setTimeout> | undefined;
     const measure = () => {
@@ -143,27 +130,7 @@ export default function Header() {
       }
       const headerHeight = headerEl.getBoundingClientRect().height;
       const rect = heroSection.getBoundingClientRect();
-      const scrollableDistance = rect.height - window.innerHeight;
-      const progress =
-        scrollableDistance > 0
-          ? Math.min(1, Math.max(0, -rect.top / scrollableDistance))
-          : 1;
-      const isMobile = window.innerWidth < 1024;
-      const insetMaxRem = isMobile
-        ? HERO_INSET_MAX_REM.mobile
-        : HERO_INSET_MAX_REM.desktop;
-      const rootFontPx =
-        parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
-      const insetMaxPx = insetMaxRem * rootFontPx;
-      const [p0, p1] = HERO_INSET_PROGRESS_RANGE;
-      const insetPx =
-        progress <= p0
-          ? 0
-          : progress >= p1
-            ? insetMaxPx
-            : (insetMaxPx * (progress - p0)) / (p1 - p0);
-      const videoBehindHeader = insetPx < headerHeight;
-      setScrolled(!videoBehindHeader);
+      setScrolled(rect.bottom <= headerHeight);
     };
     const onScrollOrResize = () => {
       if (!ticking) {
