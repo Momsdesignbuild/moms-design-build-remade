@@ -137,6 +137,15 @@ them to the Studio unless they ask for it.
      publish, or publish it on its own small branch.
 - **Both** (a new section type plus its words): publish the code first, then
   the content. Tell them it's two quick publishes.
+- **The rule (Josh, 2026-10-19): words and photos ALWAYS live in Sanity, never
+  in the code.** Code holds layout only. If someone asks you to change a
+  sentence or swap a photo, that is a Sanity draft, even if it feels quicker to
+  edit the page's file. If you find words or a photo hardcoded in a component
+  (a page that isn't reading from Sanity yet), don't edit them there: tell
+  them in plain words, move them into Sanity first (a field with the old text as
+  its starting value), then make the change as a draft. Why: Summer's and
+  Jazper's edits and yours must land in the same place, or the site shows one
+  version and the Studio another.
 
 ## Every design change, every time
 
@@ -175,6 +184,7 @@ them to the Studio unless they ask for it.
 - Change slugs, page addresses, meta titles/descriptions, canonical links or
   the JSON-LD on existing pages unless they explicitly ask. Those are what the
   site ranks with (`vault/_notes/SEO Rules.md`).
+- Put words or photos into the code. Content goes in Sanity as a draft.
 - Publish something they haven't looked at.
 - Leave a half-done change on `main`'s working copy at the end. If they walk
   away mid-change, commit it to their branch and push so the next person sees
