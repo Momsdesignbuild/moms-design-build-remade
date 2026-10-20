@@ -55,7 +55,10 @@ export default function BeforeAfterSlider({ beforeUrl, afterUrl, beforeAlt, afte
   return (
     <div
       ref={ref}
-      className="relative w-full aspect-[16/10] overflow-hidden select-none cursor-ew-resize bg-gray-100"
+      className="relative w-full aspect-[16/10] overflow-hidden select-none cursor-ew-resize bg-gray-100 touch-pan-y"
+      // touch-pan-y: without a touch-action the browser claims the gesture, starts a
+      // vertical scroll and fires pointercancel mid-drag — the drag "unlocks" (Josh, 10/20).
+      // pan-y keeps vertical page scroll working from the image; horizontal is ours alone.
       onPointerDown={(e) => { touched.current = true; setDragging(true); move(e.clientX); e.currentTarget.setPointerCapture(e.pointerId) }}
       onPointerMove={(e) => dragging && move(e.clientX)}
       onPointerUp={() => setDragging(false)}
@@ -88,7 +91,7 @@ export default function BeforeAfterSlider({ beforeUrl, afterUrl, beforeAlt, afte
 
       {/* divider + handle — eased left so the nudge glides instead of jumping */}
       <div
-        className="absolute top-0 bottom-0 w-[2px] bg-white/90 shadow-[0_0_12px_rgba(0,0,0,0.35)] z-10"
+        className="absolute top-0 bottom-0 w-[2px] bg-white/90 shadow-[0_0_12px_rgba(0,0,0,0.35)] z-10 touch-none"
         style={{ left: `${pos}%`, transition: dragging ? 'none' : 'left 0.55s cubic-bezier(0.33,1,0.68,1)' }}
       >
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white shadow-lg flex items-center justify-center">
