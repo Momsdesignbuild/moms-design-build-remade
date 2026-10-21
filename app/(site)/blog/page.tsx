@@ -1,3 +1,4 @@
+import { getCopy } from "@/sanity/lib/copy";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -44,6 +45,7 @@ const fmtDate = (iso?: string) =>
     : null;
 
 export default async function BlogPage() {
+  const c = await getCopy("blog");
   const { data: posts } = (await sanityFetch({
     // junk WP utility pages live at root like posts — never list them here
     query: `*[_type == "post" && !(slug.current in ["test", "thank-you", "contact-thanks-original", "mediterranean-meets-mn", "application"])]
@@ -73,10 +75,10 @@ export default async function BlogPage() {
       {/* ── header ── */}
       <section className="pt-16 md:pt-20 pb-12 px-6 text-center bg-white">
         <h1 className="text-[26px] md:text-[34px] font-[300] tracking-[0.25em] uppercase text-ink mb-4">
-          The Blog
+          {c.heading}
         </h1>
         <p className="text-[20px] font-[300] tracking-[0.06em] leading-relaxed text-brand-mid max-w-[1050px] mx-auto">
-          Current trends, project stories, and home &amp; landscape design ideas.
+          {c.subline}
         </p>
       </section>
 
@@ -100,7 +102,7 @@ export default async function BlogPage() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/10" />
             <div className="absolute inset-x-0 bottom-0 p-8 md:p-14 max-w-3xl">
               <p className="text-white/60 text-[20px] font-[500] tracking-[0.3em] uppercase mb-3">
-                Latest{featured.publishedAt ? ` — ${fmtDate(featured.publishedAt)}` : ""}
+                {c.latestLabel}{featured.publishedAt ? ` — ${fmtDate(featured.publishedAt)}` : ""}
               </p>
               <h2 className="text-white text-[24px] md:text-[38px] font-[300] tracking-[0.06em] leading-tight">
                 {featured.title}
@@ -111,7 +113,7 @@ export default async function BlogPage() {
                 </p>
               )}
               <span className="mt-6 inline-block text-white text-[20px] font-[500] tracking-[0.25em] uppercase border-b border-white/40 pb-1 group-hover:border-white transition-colors">
-                Read the Story →
+                {c.readLabel}
               </span>
             </div>
           </Link>

@@ -1,3 +1,4 @@
+import { getCopy } from "@/sanity/lib/copy";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { client } from "@/sanity/lib/client";
@@ -40,7 +41,7 @@ async function getTiles(): Promise<CareerTile[]> {
 }
 
 export default async function CareersPage() {
-  const [jsonLd, tiles] = await Promise.all([getHubJsonLd(), getTiles()]);
+  const [jsonLd, tiles, c] = await Promise.all([getHubJsonLd(), getTiles(), getCopy("careers")]);
 
   return (
     <>
@@ -49,11 +50,10 @@ export default async function CareersPage() {
       {/* ── Header ── */}
       <section className="py-16 md:py-20 px-6 text-center bg-white">
         <h1 className="text-[22px] md:text-[28px] font-[300] tracking-[0.25em] uppercase text-ink mb-4">
-          Careers
+          {c.heading}
         </h1>
         <p className="text-[20px] font-[300] leading-relaxed text-muted max-w-lg mx-auto">
-          We&apos;re always looking for talented, passionate people to join our
-          team. Be part of Minnesota&apos;s most award-winning design-build firm.
+          {c.intro}
         </p>
       </section>
 
@@ -63,13 +63,13 @@ export default async function CareersPage() {
       {/* ── CTA ── */}
       <section className="bg-[#f7f4ef] py-14 px-6 text-center border-t border-gray-100">
         <p className="text-[20px] font-[300] tracking-[0.08em] text-muted mb-6 max-w-md mx-auto">
-          Don&apos;t see the right role? We&apos;d still love to hear from you.
+          {c.ctaText}
         </p>
         <Link
-          href="/contact"
+          href={c.ctaHref}
           className="inline-block border border-ink text-ink text-[20px] font-[500] tracking-[0.2em] uppercase px-8 py-3 hover:bg-ink hover:text-white transition-colors duration-300"
         >
-          Meet With Us
+          {c.ctaLabel}
         </Link>
       </section>
     </>

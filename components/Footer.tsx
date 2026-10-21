@@ -1,61 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
-import {
-  InstagramLogo,
-  FacebookLogo,
-  PinterestLogo,
-  LinkedinLogo,
-} from "@phosphor-icons/react/dist/ssr";
+import { getCopy } from "@/sanity/lib/copy";
+import { socialIcon } from "@/components/SocialIcon";
 
-// Houzz doesn't have a Phosphor icon — custom SVG
-function HouzzIcon() {
-  return (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-hidden="true"
-    >
-      <path d="M1.27 0v24h8.244v-7.148h4.972V24h8.244V9.492L12.483 6.24V0H1.27z" />
-    </svg>
-  );
-}
-
-const NAV_LINKS = [
-  { label: "Home", href: "/" },
-  { label: "Contact Us", href: "/contact" },
-  { label: "Portfolio", href: "/portfolio" },
-  { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "Blog", href: "/blog" },
-  { label: "Privacy Policy", href: "/privacy-policy" },
-];
-
-const SOCIAL_LINKS = [
-  {
-    label: "Instagram",
-    href: "https://www.instagram.com/momsdesignbuild/",
-    Icon: InstagramLogo,
-  },
-  {
-    label: "Facebook",
-    href: "http://www.facebook.com/momsdesignbuild",
-    Icon: FacebookLogo,
-  },
-  {
-    label: "Pinterest",
-    href: "https://www.pinterest.com/momsdesignbuild/",
-    Icon: PinterestLogo,
-  },
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/company/momsdesignbuild",
-    Icon: LinkedinLogo,
-  },
-];
-
-export default function Footer() {
+export default async function Footer() {
+  const nav = await getCopy("nav");
   const year = new Date().getFullYear();
 
   return (
@@ -64,28 +13,31 @@ export default function Footer() {
         {/* NAP */}
         <address className="not-italic flex flex-col gap-3 text-[20px] font-[300] leading-relaxed">
           <a
-            href="https://www.google.com/maps/search/12275+Weckman+Road+Shakopee+MN+55379"
+            href={nav.addressLink}
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-white transition-colors"
           >
-            12275 Weckman Road
-            <br />
-            Shakopee, MN 55379
+            {nav.addressLines.map((line, i) => (
+              <span key={i}>
+                {i > 0 && <br />}
+                {line}
+              </span>
+            ))}
           </a>
           <span className="w-8 h-px bg-white/25 block" aria-hidden="true" />
           <a
-            href="mailto:hello@momsdesignbuild.com"
+            href={`mailto:${nav.email}`}
             className="hover:text-white transition-colors"
           >
-            hello@momsdesignbuild.com
+            {nav.email}
           </a>
           <span className="w-8 h-px bg-white/25 block" aria-hidden="true" />
           <a
-            href="tel:+19522776667"
+            href={nav.phoneHref}
             className="hover:text-white transition-colors tracking-[0.12em]"
           >
-            952.277.6667
+            {nav.phone}
           </a>
         </address>
 
@@ -93,7 +45,7 @@ export default function Footer() {
         <div className="flex flex-col items-center gap-8">
           <nav aria-label="Footer navigation">
             <ul className="flex flex-col items-center gap-2.5">
-              {NAV_LINKS.map((link) => (
+              {nav.footerLinks.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
@@ -119,27 +71,21 @@ export default function Footer() {
         {/* Social */}
         <div className="flex md:justify-end">
           <div className="flex flex-row md:flex-col gap-5">
-            {SOCIAL_LINKS.map(({ label, href, Icon }) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={label}
-                className="text-white/60 hover:text-white transition-colors"
-              >
-                <Icon size={20} weight="regular" />
-              </a>
-            ))}
-            <a
-              href="http://www.houzz.com/pro/momsdesignbuild"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Houzz"
-              className="text-white/60 hover:text-white transition-colors"
-            >
-              <HouzzIcon />
-            </a>
+            {nav.socials.map(({ label, href }) => {
+              const Icon = socialIcon(label);
+              return (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="text-white/60 hover:text-white transition-colors"
+                >
+                  <Icon size={20} />
+                </a>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -147,7 +93,7 @@ export default function Footer() {
       {/* Copyright */}
       <div className="border-t border-white/10">
         <div className="max-w-[1400px] mx-auto px-6 py-4 text-center text-[20px] text-white/35 tracking-wider">
-          &copy; {year}{" "}Mom&apos;s Design Build. All Rights Reserved. | BC# 638384
+          &copy; {year} {nav.copyright}
         </div>
       </div>
     </footer>

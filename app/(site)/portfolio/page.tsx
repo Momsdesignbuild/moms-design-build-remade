@@ -1,3 +1,4 @@
+import { getCopy } from "@/sanity/lib/copy";
 import type { Metadata } from "next";
 import { createImageUrlBuilder } from "@sanity/image-url";
 import type { SanityImageSource } from "@sanity/image-url";
@@ -53,7 +54,7 @@ async function getCards(): Promise<Card[]> {
 }
 
 export default async function PortfolioPage() {
-  const cards = await getCards();
+  const [cards, c] = await Promise.all([getCards(), getCopy("portfolio")]);
 
   return (
     <>
@@ -61,7 +62,7 @@ export default async function PortfolioPage() {
 
       <section className="py-16 md:py-20 px-6 text-center bg-white">
         <h1 className="text-[22px] md:text-[28px] font-[300] tracking-[0.25em] uppercase text-ink">
-          Portfolio
+          {c.heading}
         </h1>
       </section>
 
