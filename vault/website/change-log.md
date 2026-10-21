@@ -9,6 +9,10 @@ Every site change, dated, newest first. What changed, why, and the result
 when it's known. This is how a conversation three weeks from now knows what
 already happened.
 
+## 2026-10-21
+
+- 2026-10-21 Jazper: About page team job titles and photo descriptions now read from Sanity (Jazper's title is Marketing Coordinator, not Social Media Specialist), about
+
 ## 2026-10-07
 
 - **LIVE.** momsdesignbuild.com now serves this site (DNS moved from Flywheel to Vercel ~12:45 PM). Preview links open on the real domain from now on.
