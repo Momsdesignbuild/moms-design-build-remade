@@ -11,6 +11,7 @@ already happened.
 
 ## 2026-10-21
 
+- 2026-10-21 Jazper: the Codespace assistant is now named Jason (CLAUDE.md), no site change
 - 2026-10-21 Jazper: About page team job titles and photo descriptions now read from Sanity (Jazper's title is Marketing Coordinator, not Social Media Specialist), about
 
 ## 2026-10-07
