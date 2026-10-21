@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "@/components/PortableBody";
+import { sanityFetch } from "@/sanity/lib/live";
 import { ABOUT_JSONLD } from "./jsonld";
 
 // og:image = the SAME photo WP serves (SHA-verified identical bytes), from Sanity —
@@ -271,7 +272,13 @@ const CORE_VALUES = [
   "Make a Better Tomorrow",
 ];
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  // Job titles and photo descriptions live in Sanity (Team Member); the list above is only the fallback
+  const { data: people } = (await sanityFetch({
+    query: `*[_type == "teamMember"]{ "slug": slug.current, role, "alt": photo.alt }`,
+  })) as { data: { slug: string; role?: string; alt?: string }[] };
+  const bySlug = new Map(people.map((p) => [p.slug, p]));
+  const sanityFor = (href: string) => bySlug.get(href.split("/").pop() ?? "");
   return (
     <>
       <JsonLd raw={ABOUT_JSONLD} />
@@ -361,7 +368,7 @@ export default function AboutPage() {
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={member.photo}
-                      alt={member.alt}
+                      alt={sanityFor(member.href)?.alt || member.alt}
                       loading="lazy"
                       className="w-full aspect-square object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     />
@@ -371,7 +378,7 @@ export default function AboutPage() {
                   </p>
                 </Link>
                 <p className="text-[20px] font-[300] tracking-[0.06em] uppercase text-ink">
-                  {member.role}
+                  {sanityFor(member.href)?.role || member.role}
                 </p>
               </div>
             ))}
