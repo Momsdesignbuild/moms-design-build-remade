@@ -11,6 +11,7 @@ already happened.
 
 ## 2026-10-21
 
+- 2026-10-21 Jarvis: Codespace instructions now list the Page text documents (copy-about, copy-process, ...) and how to edit them as drafts, no site change.
 - 2026-10-21 Jarvis: newsletter sign-ups now also go to the Brevo list "Website newsletter" (and still save in Sanity); new scripts/newsletter.mjs lets the Codespace count, list, add and remove sign-ups (never sends), blog and every page with the sign-up box.
 - 2026-10-21 Jarvis: homepage hero line (Est. 1993 | Shakopee, Minnesota), the Explore link on the Services tiles and the Giving Back button are now editable in the Studio (Homepage), homepage. Same words as before.
 - 2026-10-21 Jarvis: the words and photos on About, Process, Contact, Services, Careers, Portfolio, Blog and Team intro, plus the menus, footer and contact details, now live in Sanity (Studio: Page text). Seeded with today's text, so the site looks the same. In a paragraph, put *stars* around words to highlight them.
