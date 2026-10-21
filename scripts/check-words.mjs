@@ -47,13 +47,14 @@ for (const l of diff.split('\n')) {
   line++
   const text = l.slice(1)
   const t = text.trim()
-  if (!t || /ui-label/.test(t) || inComment(file, line)) continue
+  if (!t || /ui-label/.test(t) || file.startsWith('app/api/') || inComment(file, line)) continue // API routes never show words to visitors
   if (/^(\/\/|\/\*|\*|\{\/\*|import |export type|type )/.test(t)) continue // comments, imports, types
   if (IMG.test(t) && !/^import /.test(t)) { hits.push({ file, line, why: 'a photo link', text: t }); continue }
   // sentences inside quotes: 4+ real words, not a class list, not a URL or path
   for (const m of t.matchAll(/(["'`])((?:\\.|(?!\1).)+)\1/g)) {
     const s = m[2]
     const before = t.slice(0, m.index)
+    if (/(?:Error|console\.\w+)\(\s*$/.test(before)) continue // error + log messages are for us, not visitors
     if (/class(?:Name)?=\{?\s*(?:\w+\()?$/.test(before) || /\b(?:cn|clsx|twMerge)\($/.test(before)) continue // styling
     if (/^(https?:|\/|#|mailto:|tel:)/.test(s) || looksLikeClasses(s) || /\$\{/.test(s) || /\*\[_type|\bquery\b/.test(s + before)) continue
     if (wordsOf(s).length >= 4 && /\s/.test(s)) { hits.push({ file, line, why: 'words in quotes', text: t }); break }
