@@ -39,7 +39,7 @@ const SERVICES = [
 ]
 
 export default function ServicesEditorial({ content }: { content?: HomeContent['services'] }) {
-  const c = withDefaults({ kicker: 'Service Offerings', heading: 'Four Crafts, One Roof', exploreLabel: 'Explore', items: SERVICES }, content)
+  const c = withDefaults({ kicker: 'Service Offerings', heading: 'Four Crafts, One Roof', exploreLabel: 'Explore', items: SERVICES }, content) // ui-label: fallback until the Homepage document has a value
   return (
     <section className="bg-[#F7F5F2] py-24 lg:py-32">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
