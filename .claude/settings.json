@@ -29,7 +29,9 @@
       "Bash(git merge --no-edit origin/main)",
       "Bash(npx tsc:*)",
       "Bash(npm run dev:*)",
-      "Bash(pkill -f next:*)"
+      "Bash(pkill -f next:*)",
+      "Bash(node scripts/newsletter.mjs:*)",
+      "Bash(node scripts/analytics.mjs:*)"
     ],
     "deny": [
       "Read(//Users/momsdesignbuildmini/repos/moms-bot/**)",
