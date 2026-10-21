@@ -120,6 +120,10 @@ publish on the person's word.
 | Menus, footer links, address, phone, email, social links, copyright | `copy-nav` |
 | Homepage | `homePage` |
 
+Each of these documents (and `homePage`) also has a collapsed "Google search" section with the
+page's Google title and description; see "Google titles and descriptions" in `codespace.md`
+before touching them.
+
 Examples: `node scripts/set-draft.mjs copy-about mission="..."`,
 `node scripts/set-draft.mjs copy-process ctaHeading="Build Your Legacy"`. A list (the
 story paragraphs, the values) is set whole with `:=`, e.g.

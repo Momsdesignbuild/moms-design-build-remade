@@ -11,22 +11,25 @@ import { ABOUT_JSONLD } from "./jsonld";
 const HERO_IMAGE =
   "https://cdn.sanity.io/images/wavk40jo/production/7eea8bef60c3713a0431574b13024cba6eb7ee2f-2560x1581.jpg";
 
-export const metadata: Metadata = {
-  title: { absolute: "About Mom's Design Build - Landscape & Remodeling Design" },
+export async function generateMetadata(): Promise<Metadata> {
+  const c = await getCopy("about");
+  return {
+  title: { absolute: c.metaTitle },
   description:
-    "Discover the talented team behind Mom's Design Build, an award-winning landscape and interior remodel design firm based in Minnesota.",
+    c.metaDescription,
   alternates: { canonical: "https://momsdesignbuild.com/about/" },
   openGraph: {
-    title: "About Mom's Design Build - Landscape & Remodeling Design",
+    title: c.metaTitle,
     description:
-      "Discover the talented team behind Mom's Design Build, an award-winning landscape and interior remodel design firm based in Minnesota.",
+      c.metaDescription,
     siteName: "Mom's Design Build",
     locale: "en_US",
     type: "article",
     images: [{ url: HERO_IMAGE, width: 2560, height: 1581, type: "image/jpeg" }],
   },
   twitter: { card: "summary_large_image" },
-};
+  };
+}
 
 export default async function AboutPage() {
   const c = await getCopy("about");

@@ -16,18 +16,21 @@ export const revalidate = 3600;
 const builder = createImageUrlBuilder(client);
 
 // Head matches THEIR /blog/ exactly (Yoast values); robots inherited from root layout
-export const metadata: Metadata = {
-  title: { absolute: "Mom's Design Build Blog - Explore Home & Landscape Design" },
+export async function generateMetadata(): Promise<Metadata> {
+  const c = await getCopy("blog");
+  return {
+  title: { absolute: c.metaTitle },
   description:
-    "The Mom's Design Build Blog is composed of various current trends and home design ideas that are sure to inspire your next project.",
+    c.metaDescription,
   alternates: { canonical: "https://momsdesignbuild.com/blog/" },
   openGraph: {
-    title: "Mom's Design Build Blog - Explore Home & Landscape Design",
+    title: c.metaTitle,
     description:
-      "The Mom's Design Build Blog is composed of various current trends and home design ideas that are sure to inspire your next project.",
+      c.metaDescription,
     type: "website",
   },
-};
+  };
+}
 
 type Post = {
   title: string;

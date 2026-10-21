@@ -10,21 +10,24 @@ export const revalidate = 3600;
 
 // SEO fields = WP verbatim (manifest `careers` entry); JSON-LD = live Yoast,
 // byte-for-byte, stored on the career-hub doc by scripts/build-careers.mjs.
-export const metadata: Metadata = {
-  title: { absolute: "Careers At Mom's Design Build - Explore Job Opportunities" },
+export async function generateMetadata(): Promise<Metadata> {
+  const c = await getCopy("careers");
+  return {
+  title: { absolute: c.metaTitle },
   description:
-    "Mom's Design Build is looking for talented applicants from designers to builders in MN. Explore our job openings and submit your application today!",
+    c.metaDescription,
   alternates: { canonical: "https://momsdesignbuild.com/careers/" },
   openGraph: {
-    title: "Careers At Mom's Design Build - Explore Job Opportunities",
+    title: c.metaTitle,
     description:
-      "Mom's Design Build is looking for talented applicants from designers to builders in MN. Explore our job openings and submit your application today!",
+      c.metaDescription,
     siteName: "Mom's Design Build",
     locale: "en_US",
     type: "article",
   },
   twitter: { card: "summary_large_image" },
-};
+  };
+}
 
 async function getHubJsonLd(): Promise<string | undefined> {
   const { data: doc } = (await sanityFetch({
