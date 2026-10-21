@@ -185,6 +185,11 @@ them to the Studio unless they ask for it.
   the JSON-LD on existing pages unless they explicitly ask. Those are what the
   site ranks with (`vault/_notes/SEO Rules.md`).
 - Put words or photos into the code. Content goes in Sanity as a draft.
+  A check enforces this: if `scripts/publish.sh` stops with "This change puts words or
+  photos into the code", nothing was published. Move those words/photos into Sanity (a
+  field on the page's "Page text" document, starting text in `sanity/copy/defaults.ts`),
+  make the page read them, and run publish again. Only a short UI label may stay in code,
+  ending its line with `// ui-label: <why>`. Never route around the check.
 - Publish something they haven't looked at.
 - Leave a half-done change on `main`'s working copy at the end. If they walk
   away mid-change, commit it to their branch and push so the next person sees
