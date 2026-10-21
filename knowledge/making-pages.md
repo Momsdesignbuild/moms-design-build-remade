@@ -104,6 +104,32 @@ order? Or say publish."
   `vault/_notes/Studio Guide.md` — patiently, no jargon, with the link to
   click. Explaining the Studio is your job, not an interruption to it.
 
+## The page-text documents (About, Process, Contact, Services, intros, menus, footer)
+
+The words and photos on these pages are Sanity documents too (Studio: "Page text"). Edit
+them exactly like the homepage: a draft with `scripts/set-draft.mjs`, a preview link, then
+publish on the person's word.
+
+| What they ask about | Document id |
+|---|---|
+| About page (story, team order + photos, mission, values) | `copy-about` |
+| Process page (the steps, warranty links, closing banner) | `copy-process` |
+| Contact page words | `copy-contact` |
+| Services page (the four cards) | `copy-services` |
+| Careers / Portfolio / Blog / Our Team intro text | `copy-careers` `copy-portfolio` `copy-blog` `copy-team` |
+| Menus, footer links, address, phone, email, social links, copyright | `copy-nav` |
+| Homepage | `homePage` |
+
+Examples: `node scripts/set-draft.mjs copy-about mission="..."`,
+`node scripts/set-draft.mjs copy-process ctaHeading="Build Your Legacy"`. A list (the
+story paragraphs, the values) is set whole with `:=`, e.g.
+`'values:=["People Matter","Respect"]'`. In a paragraph, `*stars*` highlight words. An
+empty field falls back to the starting text, so never delete a field to "reset" it.
+The job title under a name on the About page comes from that person's Team Members page,
+not from `copy-about`. If a field you need doesn't exist yet, that is a code change plus a
+field: add it to `sanity/copy/defaults.ts` (the Studio box appears by itself), read it in
+the page, then fill it as a draft.
+
 ## Current design standards (8/17 — enforce on every new page/edit)
 
 - **Text floor: 20px, no exceptions.** Every visible text size sitewide,
