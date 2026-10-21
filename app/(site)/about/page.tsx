@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "@/components/PortableBody";
+import { sanityFetch } from "@/sanity/lib/live";
 import { ABOUT_JSONLD } from "./jsonld";
 
 // og:image = the SAME photo WP serves (SHA-verified identical bytes), from Sanity —
@@ -271,7 +272,12 @@ const CORE_VALUES = [
   "Make a Better Tomorrow",
 ];
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  // Job titles live in Sanity (Team Member → Role / Title); the list above is only the fallback
+  const { data: roles } = (await sanityFetch({
+    query: `*[_type == "teamMember" && defined(role)]{ "slug": slug.current, role }`,
+  })) as { data: { slug: string; role: string }[] };
+  const roleBySlug = new Map(roles.map((r) => [r.slug, r.role]));
   return (
     <>
       <JsonLd raw={ABOUT_JSONLD} />
@@ -371,7 +377,7 @@ export default function AboutPage() {
                   </p>
                 </Link>
                 <p className="text-[20px] font-[300] tracking-[0.06em] uppercase text-ink">
-                  {member.role}
+                  {roleBySlug.get(member.href.split("/").pop() ?? "") ?? member.role}
                 </p>
               </div>
             ))}
