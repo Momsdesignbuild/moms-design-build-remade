@@ -3,6 +3,8 @@
 
 type Link = { label?: string; href?: string }
 export type HomeContent = {
+  metaTitle?: string
+  metaDescription?: string
   hero?: { kicker?: string; title?: string; established?: string; location?: string; videoUrl?: string; posterUrl?: string; primaryCta?: Link; secondaryCta?: Link }
   statement?: { kicker?: string; text?: string }
   awards?: { heading?: string; badges?: { url: string; alt?: string }[] }

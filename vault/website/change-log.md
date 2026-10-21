@@ -11,6 +11,7 @@ already happened.
 
 ## 2026-10-21
 
+- 2026-10-21 Jarvis: Google title and description of the homepage, About, Process, Contact, Services, Careers, Portfolio, Blog and Team pages are now editable in the Studio (collapsed "Google search" section) and from the Codespace with --allow-seo, only on a clear ask and with the old text logged. Same text as before; slugs, canonicals and schema stay locked.
 - 2026-10-21 Jarvis: the Codespace chat now checks Sanity for unpublished drafts at the start of every conversation and answers "what does this page say" from Sanity (scripts/get-doc.mjs: live text plus any draft), not from the code; fixed the drafts list, which could not see drafts before. No site change.
 - 2026-10-21 Jarvis: Codespace instructions now list the Page text documents (copy-about, copy-process, ...) and how to edit them as drafts, no site change.
 - 2026-10-21 Jarvis: newsletter sign-ups now also go to the Brevo list "Website newsletter" (and still save in Sanity); new scripts/newsletter.mjs lets the Codespace count, list, add and remove sign-ups (never sends), blog and every page with the sign-up box.

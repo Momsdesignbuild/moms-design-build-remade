@@ -8,22 +8,25 @@ import { getCopy } from "@/sanity/lib/copy";
 // og:image = the exact 768x512 crop WP serves, same bytes, from Sanity
 const OG_IMAGE =
   "https://cdn.sanity.io/images/wavk40jo/production/126b88b9f5bf35c72b00dbef22b8802f6ee9ec5c-768x512.jpg";
-export const metadata: Metadata = {
-  title: { absolute: "Home & Landscape Design Process - Mom's Design Build Company" },
+export async function generateMetadata(): Promise<Metadata> {
+  const c = await getCopy("process");
+  return {
+  title: { absolute: c.metaTitle },
   description:
-    "Mom's Design Build is with you throughout the whole design build process from consultation to a tour of your new space. Let's make your project a reality.",
+    c.metaDescription,
   alternates: { canonical: "https://momsdesignbuild.com/process/" },
   openGraph: {
-    title: "Home & Landscape Design Process - Mom's Design Build Company",
+    title: c.metaTitle,
     description:
-      "Mom's Design Build is with you throughout the whole design build process from consultation to a tour of your new space. Let's make your project a reality.",
+      c.metaDescription,
     siteName: "Mom's Design Build",
     locale: "en_US",
     type: "article",
     images: [{ url: OG_IMAGE, width: 768, height: 512, type: "image/jpeg" }],
   },
   twitter: { card: "summary_large_image" },
-};
+  };
+}
 
 export default async function ProcessPage() {
   const c = await getCopy("process");

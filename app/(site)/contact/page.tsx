@@ -6,21 +6,24 @@ import { PAGE_JSONLD } from "./jsonld";
 import { getCopy } from "@/sanity/lib/copy";
 import { socialIcon } from "@/components/SocialIcon";
 
-export const metadata: Metadata = {
-  title: { absolute: "Contact Mom's Design Build - Landscape & Interior Design" },
+export async function generateMetadata(): Promise<Metadata> {
+  const c = await getCopy("contact");
+  return {
+  title: { absolute: c.metaTitle },
   description:
-    "Mom's Design Build offers custom luxury landscaping, remodeling & gardening services to the Twin Cities, MN and surrounding areas. Let's chat!",
+    c.metaDescription,
   alternates: { canonical: "https://momsdesignbuild.com/contact/" },
   openGraph: {
-    title: "Contact Mom's Design Build - Landscape & Interior Design",
+    title: c.metaTitle,
     description:
-      "Mom's Design Build offers custom luxury landscaping, remodeling & gardening services to the Twin Cities, MN and surrounding areas. Let's chat!",
+      c.metaDescription,
     siteName: "Mom's Design Build",
     locale: "en_US",
     type: "article",
   },
   twitter: { card: "summary_large_image" },
-};
+  };
+}
 
 export default async function ContactPage() {
   const [c, nav] = await Promise.all([getCopy("contact"), getCopy("nav")]);

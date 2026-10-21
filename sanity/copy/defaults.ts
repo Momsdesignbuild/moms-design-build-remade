@@ -66,6 +66,8 @@ export const COPY = {
 
   // ── About ──
   about: {
+    metaTitle: "About Mom's Design Build - Landscape & Remodeling Design",
+    metaDescription: "Discover the talented team behind Mom's Design Build, an award-winning landscape and interior remodel design firm based in Minnesota.",
     heroImage: I(CDN + '7eea8bef60c3713a0431574b13024cba6eb7ee2f-2560x1581.jpg', "Mom's Design Build - Meet the Team!"),
     storyHeading: 'The Story Behind the Name',
     story: [
@@ -114,6 +116,8 @@ export const COPY = {
 
   // ── Process ──
   process: {
+    metaTitle: "Home & Landscape Design Process - Mom's Design Build Company",
+    metaDescription: "Mom's Design Build is with you throughout the whole design build process from consultation to a tour of your new space. Let's make your project a reality.",
     eyebrow: 'The Process',
     heading: 'The Mom’s Way',
     subline: 'From first conversation to happily ever after.',
@@ -200,6 +204,8 @@ export const COPY = {
 
   // ── Contact ── (address, phone and email come from the site-wide details)
   contact: {
+    metaTitle: "Contact Mom's Design Build - Landscape & Interior Design",
+    metaDescription: "Mom's Design Build offers custom luxury landscaping, remodeling & gardening services to the Twin Cities, MN and surrounding areas. Let's chat!",
     heading: 'Let’s Talk',
     subline: "Ready to start your project? We'd love to hear from you.",
     infoHeading: 'Get in Touch',
@@ -215,6 +221,8 @@ export const COPY = {
 
   // ── Services (the page with the four cards) ──
   services: {
+    metaTitle: "Landscaping & Home Remodeling in Minnesota - Mom's Design Build Services",
+    metaDescription: "Mom's Design Build offers luxury landscape architecture and design, interior design and remodeling, & Fine Gardening in MN. Contact us today!",
     hiddenHeading: 'Our Services — Landscaping & Home Remodeling in Minnesota',
     learnMoreLabel: 'Learn More',
     cards: [
@@ -247,6 +255,8 @@ export const COPY = {
 
   // ── Careers, Portfolio, Blog, Team: the intro text on each list page ──
   careers: {
+    metaTitle: "Careers At Mom's Design Build - Explore Job Opportunities",
+    metaDescription: "Mom's Design Build is looking for talented applicants from designers to builders in MN. Explore our job openings and submit your application today!",
     heading: 'Careers',
     intro: "We're always looking for talented, passionate people to join our team. Be part of Minnesota's most award-winning design-build firm.",
     ctaText: "Don't see the right role? We'd still love to hear from you.",
@@ -254,15 +264,21 @@ export const COPY = {
     ctaHref: '/contact',
   },
   portfolio: {
+    metaTitle: "Landscape & Interior Design Build Portfolio - Mom's Design Build",
+    metaDescription: "Mom's Design Build has completed a variety of custom luxury interior and landscape projects for our clients in Minnesota. Explore our design-build portfolio today!",
     heading: 'Portfolio',
   },
   blog: {
+    metaTitle: "Mom's Design Build Blog - Explore Home & Landscape Design",
+    metaDescription: "The Mom's Design Build Blog is composed of various current trends and home design ideas that are sure to inspire your next project.",
     heading: 'The Blog',
     subline: 'Current trends, project stories, and home & landscape design ideas.',
     latestLabel: 'Latest',
     readLabel: 'Read the Story →',
   },
   team: {
+    metaTitle: "Team Members Archive - Mom's Design Build",
+    metaDescription: "Meet the designers, project managers, and craftspeople behind Mom's Design Build — the most awarded landscape design firm in the Midwest.",
     heading: 'Our Team',
   },
 }

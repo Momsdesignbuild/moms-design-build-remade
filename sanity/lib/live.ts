@@ -20,7 +20,7 @@ export const { sanityFetch, SanityLive } = defineLive({
           'jsonLd', 'sourceUrl', 'canonical', 'template', 'cardsSet',
           'divisionLogoUrl', 'href', 'style', 'listItem', 'ogImageUrl',
           'ogImageType', 'slug', 'current', 'url', 'videoUrl',
-          'linkHref', 'posterUrl', 'addressLink', 'phoneHref', 'warrantyUrl', 'guidelinesUrl', 'ctaHref', 'careerHref', 'image', 'logo', 'beforeUrl', 'afterUrl',
+          'linkHref', 'posterUrl', 'metaTitle', 'metaDescription', 'addressLink', 'phoneHref', 'warrantyUrl', 'guidelinesUrl', 'ctaHref', 'careerHref', 'image', 'logo', 'beforeUrl', 'afterUrl',
         ])
         const last = String(props.sourcePath.at(-1))
         if (MECHANICAL.has(last)) return false

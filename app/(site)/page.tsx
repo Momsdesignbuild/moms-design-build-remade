@@ -16,16 +16,20 @@ import { getHomeContent } from "@/sanity/lib/homePage";
 export const revalidate = 3600;
 
 // SEO head identical to live WP — Yoast values verbatim.
-export const metadata: Metadata = {
-  title: {
-    absolute: "Mom's Design Build - Landscape & Interior Designers In Minnesota",
-  },
-  description:
-    "Mom's Design Build is a MN based custom luxury remodeling & landscaping firm. Learn why we are Minnesota's most awarded design build company.",
-  alternates: {
-    canonical: "https://momsdesignbuild.com/",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const home = await getHomeContent();
+  return {
+    title: {
+      // fallback until the Homepage document has a value: ui-label
+      absolute: home.metaTitle || "Mom's Design Build - Landscape & Interior Designers In Minnesota", // ui-label: fallback only
+    },
+    description:
+      home.metaDescription || "Mom's Design Build is a MN based custom luxury remodeling & landscaping firm. Learn why we are Minnesota's most awarded design build company.", // ui-label: fallback only
+    alternates: {
+      canonical: "https://momsdesignbuild.com/",
+    },
+  };
+}
 
 // iPhone chrome, homepage only (Josh, July 8): black behind the notch
 // (theme-color) + black rubber-band overscroll top/bottom (html/body bg,

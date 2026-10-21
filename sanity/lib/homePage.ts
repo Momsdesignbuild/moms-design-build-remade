@@ -5,6 +5,7 @@ import type { HomeContent } from './homeContent'
 // sanity/schemaTypes/homePage.ts). Asset URLs are resolved here so the
 // components just get strings.
 const QUERY = `*[_id == "homePage"][0]{
+  metaTitle, metaDescription,
   hero{ kicker, title, established, location, "videoUrl": video.asset->url, "posterUrl": poster.asset->url, primaryCta, secondaryCta },
   statement{ kicker, text },
   awards{ heading, "badges": badges[]{ "url": asset->url, alt } },

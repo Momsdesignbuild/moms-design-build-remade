@@ -69,12 +69,20 @@ function objectFields(items: Sample[]) {
   })
 }
 
+const SEO_HELP: Record<string, string> = {
+  metaTitle: 'The blue link in Google. Keep it under about 60 characters. Changing it changes how this page ranks, so only on purpose.',
+  metaDescription: 'The grey text under the link in Google. Keep it under about 160 characters. Changing it changes how often people click.',
+}
+
 export const copyTypes = (Object.keys(COPY) as CopyKey[]).map((key) =>
   defineType({
     name: `copy_${key}`,
     title: TITLES[key],
     type: 'document',
-    fields: objectFields([COPY[key]]),
+    fieldsets: [{ name: 'seo', title: 'Google search: title and description (changes how this page ranks)', options: { collapsible: true, collapsed: true } }],
+    fields: objectFields([COPY[key]]).map((f) =>
+      f.name in SEO_HELP ? { ...f, fieldset: 'seo', title: f.name === 'metaTitle' ? 'Page title in Google' : 'Description in Google', description: SEO_HELP[f.name] } : f,
+    ),
     preview: { prepare: () => ({ title: TITLES[key] }) },
   }),
 )

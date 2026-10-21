@@ -13,13 +13,16 @@ export const revalidate = 3600;
 
 const builder = createImageUrlBuilder(client);
 
-export const metadata: Metadata = {
-  title: { absolute: "Team Members Archive - Mom's Design Build" },
+export async function generateMetadata(): Promise<Metadata> {
+  const c = await getCopy("team");
+  return {
+  title: { absolute: c.metaTitle },
   // WP's archive has no meta description — ours supplies one
   description:
-    "Meet the designers, project managers, and craftspeople behind Mom's Design Build — the most awarded landscape design firm in the Midwest.",
+    c.metaDescription,
   alternates: { canonical: "https://momsdesignbuild.com/team/" },
-};
+  };
+}
 
 type Member = {
   name: string;

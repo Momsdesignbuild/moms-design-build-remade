@@ -10,15 +10,17 @@ import { PORTFOLIO_JSONLD } from "./jsonld";
 
 // Head matches THEIR /portfolio/ exactly (Yoast values from the WP mirror).
 // robots is inherited from the root layout (host-based: middleware noindexes non-prod hosts).
-export const metadata: Metadata = {
-  title: { absolute: "Landscape & Interior Design Build Portfolio - Mom's Design Build" },
+export async function generateMetadata(): Promise<Metadata> {
+  const c = await getCopy("portfolio");
+  return {
+  title: { absolute: c.metaTitle },
   description:
-    "Mom's Design Build has completed a variety of custom luxury interior and landscape projects for our clients in Minnesota. Explore our design-build portfolio today!",
+    c.metaDescription,
   alternates: { canonical: "https://momsdesignbuild.com/portfolio/" },
   openGraph: {
-    title: "Landscape & Interior Design Build Portfolio - Mom's Design Build",
+    title: c.metaTitle,
     description:
-      "Mom's Design Build has completed a variety of custom luxury interior and landscape projects for our clients in Minnesota. Explore our design-build portfolio today!",
+      c.metaDescription,
     type: "article",
     images: [
       {
@@ -28,7 +30,8 @@ export const metadata: Metadata = {
       },
     ],
   },
-};
+  };
+}
 
 export const revalidate = 3600;
 

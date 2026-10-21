@@ -4,21 +4,24 @@ import Link from "next/link";
 import { JsonLd } from "@/components/PortableBody";
 import { PAGE_JSONLD } from "./jsonld";
 
-export const metadata: Metadata = {
-  title: { absolute: "Landscaping & Home Remodeling in Minnesota - Mom's Design Build Services" },
+export async function generateMetadata(): Promise<Metadata> {
+  const c = await getCopy("services");
+  return {
+  title: { absolute: c.metaTitle },
   description:
-    "Mom's Design Build offers luxury landscape architecture and design, interior design and remodeling, & Fine Gardening in MN. Contact us today!",
+    c.metaDescription,
   alternates: { canonical: "https://momsdesignbuild.com/services/" },
   openGraph: {
-    title: "Landscaping & Home Remodeling in Minnesota - Mom's Design Build Services",
+    title: c.metaTitle,
     description:
-      "Mom's Design Build offers luxury landscape architecture and design, interior design and remodeling, & Fine Gardening in MN. Contact us today!",
+      c.metaDescription,
     siteName: "Mom's Design Build",
     locale: "en_US",
     type: "article",
   },
   twitter: { card: "summary_large_image" },
-};
+  };
+}
 
 // mirrors live /services/ (2026-10-01): four 260×252 photos, the name under each in
 // Futura uppercase, the paragraph, a square teal LEARN MORE — no page heading on live

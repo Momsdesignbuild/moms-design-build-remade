@@ -71,6 +71,27 @@ Search Console (Google searches, clicks, position) and Microsoft Clarity
 - If the script says a secret is missing, the Codespace needs it: tell them to
   ask Josh. Never print or paste keys.
 
+## Google titles and descriptions (SEO)
+
+Summer and Jazper may change a page's Google title and description, because the
+numbers in `scripts/analytics.mjs` show what people search for. It changes how the
+page ranks, so it's deliberate, never a side effect:
+
+1. Only when they clearly ask ("change the Google title of the Team page to ..."). A
+   request to reword the page is NOT a request to change its Google title.
+2. Show the old and the new text side by side and say plainly it can change how the page
+   ranks. Keep titles near 60 characters and descriptions near 160. Wait for a yes.
+3. Make the draft with `--allow-seo`:
+   `node scripts/set-draft.mjs copy-team metaTitle="..." --allow-seo` (`metaDescription`
+   too). It prints the old text. Preview, then on their "publish":
+   `node scripts/publish-draft.mjs copy-team --allow-seo`.
+4. Add a change-log line with the OLD text so it can be put back:
+   `YYYY-MM-DD <Name>: Google title of /team changed from "<old>" to "<new>"`.
+5. Never touch the page address (slug), canonical link, share image or JSON-LD, and never
+   use `--allow-seo` for anything but a title or description. The same fields exist on
+   portfolio projects, posts, services, team members and careers (`metaTitle`,
+   `metaDescription`); the same steps apply.
+
 ## The email newsletter (Brevo)
 
 Everyone who signs up on the site lands in the Brevo list "Website newsletter" and in
@@ -201,9 +222,10 @@ them to the Studio unless they ask for it.
 ## Never
 
 - Touch `.env*` files, print keys or tokens, or put them in code.
-- Change slugs, page addresses, meta titles/descriptions, canonical links or
-  the JSON-LD on existing pages unless they explicitly ask. Those are what the
-  site ranks with (`vault/_notes/SEO Rules.md`).
+- Change slugs, page addresses, canonical links or the JSON-LD on existing
+  pages. Never from here; send it to Josh (`vault/_notes/SEO Rules.md`). The
+  page title and Google description are different: see "Google titles and
+  descriptions" below.
 - Put words or photos into the code. Content goes in Sanity as a draft.
   A check enforces this: if `scripts/publish.sh` stops with "This change puts words or
   photos into the code", nothing was published. Move those words/photos into Sanity (a

@@ -29,8 +29,11 @@ export default defineType({
     { name: 'journal', title: 'Blog' },
     { name: 'givingBack', title: 'Giving Back' },
     { name: 'closing', title: 'Closing + Newsletter' },
+    { name: 'seo', title: 'Google search' },
   ],
   fields: [
+    defineField({ name: 'metaTitle', title: 'Page title in Google (changes how the homepage ranks, change only on purpose)', type: 'string', group: 'seo' }),
+    defineField({ name: 'metaDescription', title: 'Description in Google (about 160 characters)', type: 'text', rows: 3, group: 'seo' }),
     defineField({
       name: 'hero', title: 'Hero (top of the page)', type: 'object', group: 'hero',
       fields: [
