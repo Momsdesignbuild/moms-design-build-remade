@@ -26,6 +26,8 @@ const DEFAULTS = {
   partners: PARTNERS,
   image: 'https://cdn.sanity.io/images/wavk40jo/production/29ea708ab7e0e65d0d063b4ca2e1484a6c40fb74-1601x2400.jpg',
   imageAlt: "Mom's Design Build garden",
+  buttonLabel: 'Meet With Us',
+  buttonHref: '/contact',
   statNumber: '100%',
   statLabel: 'Of consultation fees\ndonated to community',
 }
@@ -77,10 +79,10 @@ export default function GivingBackEditorial({ content }: { content?: HomeContent
             </div>
 
             <Link
-              href="/contact"
+              href={c.buttonHref}
               className="inline-block border border-white/80 text-white text-[20px] font-[600] tracking-[0.22em] uppercase px-8 py-3 hover:bg-white hover:text-ink transition-colors duration-300"
             >
-              Meet With Us
+              {c.buttonLabel}
             </Link>
           </motion.div>
 

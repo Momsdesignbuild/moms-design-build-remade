@@ -3,16 +3,16 @@
 
 type Link = { label?: string; href?: string }
 export type HomeContent = {
-  hero?: { kicker?: string; title?: string; videoUrl?: string; posterUrl?: string; primaryCta?: Link; secondaryCta?: Link }
+  hero?: { kicker?: string; title?: string; established?: string; location?: string; videoUrl?: string; posterUrl?: string; primaryCta?: Link; secondaryCta?: Link }
   statement?: { kicker?: string; text?: string }
   awards?: { heading?: string; badges?: { url: string; alt?: string }[] }
   work?: { kicker?: string; heading?: string }
   anatomy?: { kicker?: string; heading?: string; linkLabel?: string; steps?: { label?: string; title?: string; blurb?: string }[] }
   transformation?: { kicker?: string; heading?: string; subline?: string; beforeUrl?: string; beforeAlt?: string; afterUrl?: string; afterAlt?: string }
-  services?: { kicker?: string; heading?: string; items?: { title: string; description?: string; href: string; image: string; alt?: string }[] }
+  services?: { kicker?: string; heading?: string; exploreLabel?: string; items?: { title: string; description?: string; href: string; image: string; alt?: string }[] }
   testimonials?: { quotes?: { text: string; who: string; linkLabel?: string; linkHref?: string }[] }
   journal?: { kicker?: string; heading?: string; linkLabel?: string }
-  givingBack?: { kicker?: string; heading?: string; quote?: string; body?: string; statNumber?: string; statLabel?: string; image?: string; imageAlt?: string; partners?: { name: string; href: string; logo: string }[] }
+  givingBack?: { kicker?: string; heading?: string; quote?: string; body?: string; buttonLabel?: string; buttonHref?: string; statNumber?: string; statLabel?: string; image?: string; imageAlt?: string; partners?: { name: string; href: string; logo: string }[] }
   closing?: { kicker?: string; heading?: string; cta?: Link; image?: string; imageAlt?: string }
   joinList?: { kicker?: string; heading?: string; body?: string; image?: string; imageAlt?: string }
 }

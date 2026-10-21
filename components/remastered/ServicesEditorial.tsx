@@ -39,7 +39,7 @@ const SERVICES = [
 ]
 
 export default function ServicesEditorial({ content }: { content?: HomeContent['services'] }) {
-  const c = withDefaults({ kicker: 'Service Offerings', heading: 'Four Crafts, One Roof', items: SERVICES }, content)
+  const c = withDefaults({ kicker: 'Service Offerings', heading: 'Four Crafts, One Roof', exploreLabel: 'Explore', items: SERVICES }, content) // ui-label: fallback until the Homepage document has a value
   return (
     <section className="bg-[#F7F5F2] py-24 lg:py-32">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
@@ -81,7 +81,7 @@ export default function ServicesEditorial({ content }: { content?: HomeContent['
                   {s.description}
                 </p>
                 <span className="mt-3 inline-block text-[20px] font-semibold tracking-[0.24em] uppercase text-ink border-b border-ink/20 pb-0.5 group-hover:border-ink transition-colors">
-                  Explore
+                  {c.exploreLabel}
                 </span>
               </Link>
             </motion.div>
