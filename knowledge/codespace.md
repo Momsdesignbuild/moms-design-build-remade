@@ -71,6 +71,16 @@ Search Console (Google searches, clicks, position) and Microsoft Clarity
 - If the script says a secret is missing, the Codespace needs it: tell them to
   ask Josh. Never print or paste keys.
 
+## The email newsletter (Brevo)
+
+Everyone who signs up on the site lands in the Brevo list "Website newsletter" and in
+Studio > Subscribers. "How many people signed up", "who joined this week", "add Jane
+Smith, jane@..." , "take this address off": run `node scripts/newsletter.mjs`
+(`count`, `recent`, `add <email>`, `remove <email>`, `lists`). Answer in plain words with
+the number and the date. You can look and add/remove one person when they ask; you
+**never send an email or campaign**, that is Josh's call each time. If the script says the
+key is missing, tell them to ask Josh. Never print or paste keys.
+
 ## Know the brand before any design work
 
 - `vault/brand/brand-guide.md`: the exact colours and fonts. Never invent a
