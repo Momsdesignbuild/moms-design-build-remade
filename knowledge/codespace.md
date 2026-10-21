@@ -105,6 +105,8 @@ key is missing, tell them to ask Josh. Never print or paste keys.
 3. Check for unfinished work from anyone:
    - `git status --short` (unsaved edits sitting in the Codespace)
    - `git branch -a --no-merged origin/main`
+   - `node scripts/list-drafts.mjs` (words/photos waiting unpublished in Sanity,
+     which git can't see: Summer may have started one in the Studio)
    If there's anything, tell them in one plain sentence, e.g. *"Summer has an
    unpublished change to the FAQ box on the pools page. Publish it, throw it
    out, or leave it for her?"* Never delete or overwrite someone else's work
@@ -112,6 +114,14 @@ key is missing, tell them to ask Josh. Never print or paste keys.
 4. Read `vault/Home.md` and skim the TOP of `vault/website/change-log.md`
    (newest first, so `head -60`, never `tail`): the record of what's been done
    and why.
+
+**What a page says: ask Sanity, never the code.** For "what does the About page say",
+"what's the text on X", or before changing any words, run
+`node scripts/get-doc.mjs <docId> [field]` (ids are in `knowledge/making-pages.md`). It
+shows what is live AND any unpublished draft, and which fields the draft changes. Words
+in the code or in `sanity/copy/defaults.ts` are only starting text and go stale the
+moment someone edits in the Studio. If there is a draft, say so plainly ("live says X;
+Summer's draft says Y, not published").
 
 ## Words and photos vs. design: same feel for both
 

@@ -31,7 +31,9 @@
       "Bash(npm run dev:*)",
       "Bash(pkill -f next:*)",
       "Bash(node scripts/newsletter.mjs:*)",
-      "Bash(node scripts/analytics.mjs:*)"
+      "Bash(node scripts/analytics.mjs:*)",
+      "Bash(node scripts/list-drafts.mjs)",
+      "Bash(node scripts/get-doc.mjs:*)"
     ],
     "deny": [
       "Read(//Users/momsdesignbuildmini/repos/moms-bot/**)",
