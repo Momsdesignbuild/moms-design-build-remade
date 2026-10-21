@@ -21,6 +21,8 @@ import { withDefaults, type HomeContent } from '@/sanity/lib/homeContent'
 const HERO = {
   kicker: 'Minnesota’s Most Awarded Design-Build Firm',
   title: 'Build Your Legacy',
+  established: 'Est. 1993',
+  location: 'Shakopee, Minnesota',
   videoUrl: '/video/hero.mp4',
   posterUrl: '/video/hero-poster.jpg',
   primaryCta: { label: 'Explore Our Work', href: '/portfolio' },
@@ -76,8 +78,8 @@ export default function FramedHero({ content }: { content?: HomeContent['hero'] 
         <div className="mt-12 mx-auto w-[min(420px,80vw)] text-white/85">
           <i className="block h-px bg-[#F7F5F2]/55" />
           <div className="flex justify-between gap-4 py-2.5 text-[11px] md:text-[13px] font-semibold tracking-[0.2em] uppercase">
-            <span>Est. 1993</span>
-            <span>Shakopee, Minnesota</span>
+            <span>{c.established}</span>
+            <span>{c.location}</span>
           </div>
           <i className="block h-px bg-[#F7F5F2]/55" />
         </div>

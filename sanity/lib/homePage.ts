@@ -5,7 +5,7 @@ import type { HomeContent } from './homeContent'
 // sanity/schemaTypes/homePage.ts). Asset URLs are resolved here so the
 // components just get strings.
 const QUERY = `*[_id == "homePage"][0]{
-  hero{ kicker, title, "videoUrl": video.asset->url, "posterUrl": poster.asset->url, primaryCta, secondaryCta },
+  hero{ kicker, title, established, location, "videoUrl": video.asset->url, "posterUrl": poster.asset->url, primaryCta, secondaryCta },
   statement{ kicker, text },
   awards{ heading, "badges": badges[]{ "url": asset->url, alt } },
   work{ kicker, heading },
@@ -13,10 +13,10 @@ const QUERY = `*[_id == "homePage"][0]{
   transformation{ kicker, heading, subline,
     "beforeUrl": before.asset->url, "beforeAlt": before.alt,
     "afterUrl": after.asset->url, "afterAlt": after.alt },
-  services{ kicker, heading, "items": items[]{ title, description, href, "image": image.asset->url, "alt": image.alt } },
+  services{ kicker, heading, exploreLabel, "items": items[]{ title, description, href, "image": image.asset->url, "alt": image.alt } },
   testimonials{ "quotes": quotes[]{ text, who, linkLabel, linkHref } },
   journal{ kicker, heading, linkLabel },
-  givingBack{ kicker, heading, quote, body, statNumber, statLabel,
+  givingBack{ kicker, heading, quote, body, buttonLabel, buttonHref, statNumber, statLabel,
     "image": image.asset->url, "imageAlt": image.alt,
     "partners": partners[]{ name, href, "logo": logo.asset->url } },
   closing{ kicker, heading, cta, "image": image.asset->url, "imageAlt": image.alt },

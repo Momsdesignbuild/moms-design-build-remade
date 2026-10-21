@@ -36,6 +36,8 @@ export default defineType({
       fields: [
         s('kicker', 'Small line above the title'),
         s('title', 'Big title'),
+        s('established', 'Line under the buttons, left side (e.g. Est. 1993)'),
+        s('location', 'Line under the buttons, right side (e.g. Shakopee, Minnesota)'),
         defineField({ name: 'video', title: 'Background video (mp4)', type: 'file', options: { accept: 'video/mp4' } }),
         img('poster', 'Still image shown while the video loads'),
         link('primaryCta', 'First button'),
@@ -81,7 +83,7 @@ export default defineType({
     defineField({
       name: 'services', title: 'Services', type: 'object', group: 'services',
       fields: [
-        s('kicker', 'Small blue line'), s('heading', 'Heading'),
+        s('kicker', 'Small blue line'), s('heading', 'Heading'), s('exploreLabel', 'Link under each tile (e.g. Explore)'),
         defineField({
           name: 'items', title: 'Service tiles (drag to reorder)', type: 'array',
           of: [defineArrayMember({
@@ -113,6 +115,7 @@ export default defineType({
       name: 'givingBack', title: 'Giving Back', type: 'object', group: 'givingBack',
       fields: [
         s('kicker', 'Small blue line'), s('heading', 'Heading'), t('quote', 'Quote', 2), t('body', 'Paragraph', 4),
+        s('buttonLabel', 'Button text (e.g. Meet With Us)'), s('buttonHref', 'Button links to (e.g. /contact)'),
         defineField({
           name: 'partners', title: 'Partner logos (each links to their site)', type: 'array',
           of: [defineArrayMember({
