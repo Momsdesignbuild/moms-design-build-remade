@@ -7,6 +7,7 @@ import { visionTool } from '@sanity/vision'
 import { media } from 'sanity-plugin-media'
 import { orderableDocumentListDeskItem } from '@sanity/orderable-document-list'
 import { schemaTypes } from './sanity/schemaTypes'
+import { copyDocs } from './sanity/copy/schema'
 
 export default defineConfig({
   basePath: '/studio',
@@ -16,7 +17,7 @@ export default defineConfig({
   schema: {
     types: schemaTypes,
     // the Homepage is a singleton: hide it from "+ Create"
-    templates: (templates) => templates.filter((t) => t.schemaType !== 'homePage'),
+    templates: (templates) => templates.filter((t) => t.schemaType !== 'homePage' && !t.schemaType.startsWith('copy_')),
   },
   plugins: [
     structureTool({
@@ -32,6 +33,19 @@ export default defineConfig({
               .title('Homepage')
               .id('homePage')
               .child(S.document().schemaType('homePage').documentId('homePage')),
+            // the words on About, Process, Contact, Services, Careers, Portfolio, Blog, Team, plus the menus and footer
+            S.listItem()
+              .title('Page text (About, Process, Contact, menus…)')
+              .id('pageText')
+              .child(
+                S.list()
+                  .title('Page text')
+                  .items(
+                    copyDocs.map((d) =>
+                      S.listItem().title(d.title).id(d.id).child(S.document().schemaType(d.type).documentId(d.id)),
+                    ),
+                  ),
+              ),
             orderableDocumentListDeskItem({
               type: 'portfolioProject',
               title: 'Portfolio (drag to reorder)',

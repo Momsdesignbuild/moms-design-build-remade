@@ -8,6 +8,7 @@ import jobApplication from './jobApplication'
 import careerPage from './careerPage'
 import servicePage from './servicePage'
 import homePage from './homePage'
+import { copyTypes } from '../copy/schema'
 
 export const schemaTypes = [
   homePage,
@@ -20,4 +21,5 @@ export const schemaTypes = [
   jobApplication,
   careerPage,
   servicePage,
+  ...copyTypes,
 ]

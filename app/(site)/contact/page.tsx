@@ -3,28 +3,8 @@ import Link from "next/link";
 import { JsonLd } from "@/components/PortableBody";
 import BuilderTrendForm from "@/components/BuilderTrendForm";
 import { PAGE_JSONLD } from "./jsonld";
-import {
-  InstagramLogo,
-  FacebookLogo,
-  PinterestLogo,
-  LinkedinLogo,
-} from "@phosphor-icons/react/dist/ssr";
-
-// Houzz doesn't have a Phosphor icon — same custom SVG as the footer
-function HouzzIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M1.27 0v24h8.244v-7.148h4.972V24h8.244V9.492L12.483 6.24V0H1.27z" />
-    </svg>
-  );
-}
-
-const SOCIAL_LINKS = [
-  { label: "Instagram", href: "https://www.instagram.com/momsdesignbuild/", Icon: InstagramLogo },
-  { label: "Facebook", href: "http://www.facebook.com/momsdesignbuild", Icon: FacebookLogo },
-  { label: "Pinterest", href: "https://www.pinterest.com/momsdesignbuild/", Icon: PinterestLogo },
-  { label: "LinkedIn", href: "https://www.linkedin.com/company/momsdesignbuild", Icon: LinkedinLogo },
-];
+import { getCopy } from "@/sanity/lib/copy";
+import { socialIcon } from "@/components/SocialIcon";
 
 export const metadata: Metadata = {
   title: { absolute: "Contact Mom's Design Build - Landscape & Interior Design" },
@@ -42,7 +22,8 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image" },
 };
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const [c, nav] = await Promise.all([getCopy("contact"), getCopy("nav")]);
   return (
     <>
       <JsonLd raw={PAGE_JSONLD} />
@@ -50,10 +31,10 @@ export default function ContactPage() {
       {/* ── Page Header ── */}
       <section className="py-16 md:py-20 px-6 text-center bg-white">
         <h1 className="text-[34px] md:text-[44px] font-[700] tracking-[0.25em] uppercase text-ink">
-          Let&rsquo;s Talk
+          {c.heading}
         </h1>
         <p className="mt-4 text-[20px] font-[300] leading-relaxed text-muted max-w-md mx-auto">
-          Ready to start your project? We&apos;d love to hear from you.
+          {c.subline}
         </p>
       </section>
 
@@ -63,71 +44,68 @@ export default function ContactPage() {
           {/* Contact Info */}
           <div>
             <h2 className="text-[20px] font-[300] tracking-[0.2em] uppercase text-ink mb-8">
-              Get in Touch
+              {c.infoHeading}
             </h2>
 
             <address className="not-italic space-y-6 text-[20px] font-[300] leading-relaxed text-muted">
               <div>
                 <p className="text-[20px] font-[500] tracking-[0.18em] uppercase text-ink mb-1.5">
-                  Address
+                  {c.addressLabel}
                 </p>
                 <a
-                  href="https://www.google.com/maps/search/12275+Weckman+Road+Shakopee+MN+55379"
+                  href={nav.addressLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-brand transition-colors"
                 >
-                  12275 Weckman Road
-                  <br />
-                  Shakopee, MN 55379
+                  {nav.addressLines.map((line, i) => (
+                    <span key={i}>
+                      {i > 0 && <br />}
+                      {line}
+                    </span>
+                  ))}
                 </a>
               </div>
 
               <div>
                 <p className="text-[20px] font-[500] tracking-[0.18em] uppercase text-ink mb-1.5">
-                  Phone
+                  {c.phoneLabel}
                 </p>
-                <a href="tel:+19522776667" className="hover:text-brand transition-colors">
-                  952.277.6667
+                <a href={nav.phoneHref} className="hover:text-brand transition-colors">
+                  {nav.phone}
                 </a>
               </div>
 
               <div>
                 <p className="text-[20px] font-[500] tracking-[0.18em] uppercase text-ink mb-1.5">
-                  Email
+                  {c.emailLabel}
                 </p>
                 <a
-                  href="mailto:hello@momsdesignbuild.com"
+                  href={`mailto:${nav.email}`}
                   className="hover:text-brand transition-colors"
                 >
-                  hello@momsdesignbuild.com
+                  {nav.email}
                 </a>
               </div>
             </address>
 
             <div className="mt-10 pt-8 border-t border-gray-100">
               <div className="flex gap-5">
-                {SOCIAL_LINKS.map(({ label, href, Icon }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={label}
-                    className="text-ink hover:text-brand transition-colors"
-                  >
-                    <Icon size={22} weight="regular" />
-                  </a>
-                ))}
-                <a
-                  href="http://www.houzz.com/pro/momsdesignbuild"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Houzz"
-                  className="text-ink hover:text-brand transition-colors"
-                >
-                  <HouzzIcon />
-                </a>
+                {nav.socials.map(({ label, href }) => {
+                  const Icon = socialIcon(label);
+                  return (
+                    <a
+                      key={label}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={label}
+                      className="text-ink hover:text-brand transition-colors"
+                    >
+                      <Icon size={22} />
+                    </a>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -138,7 +116,7 @@ export default function ContactPage() {
               QuickBooks pipeline. Do NOT replace with a generic form. */}
           <div>
             <h2 className="text-[20px] font-[300] tracking-[0.2em] uppercase text-ink mb-8">
-              Send a Message
+              {c.formHeading}
             </h2>
             <BuilderTrendForm />
           </div>
@@ -148,17 +126,16 @@ export default function ContactPage() {
             to match their layout (Josh, 8/17) */}
         <div className="max-w-[1000px] mx-auto mt-16 pt-16 border-t border-gray-100 text-center">
           <h2 className="text-[22px] md:text-[28px] font-[300] tracking-[0.2em] uppercase text-ink">
-            Looking for a Career?
+            {c.careerHeading}
           </h2>
           <p className="mt-4 text-[20px] font-[300] leading-relaxed text-muted max-w-lg mx-auto">
-            Help us build a better tomorrow by joining our team today! A variety of full-time and
-            part-time positions are available!
+            {c.careerText}
           </p>
           <Link
-            href="/careers"
+            href={c.careerHref}
             className="inline-block mt-8 border border-ink text-ink text-[20px] font-[500] tracking-[0.2em] uppercase px-8 py-3 hover:bg-ink hover:text-white transition-colors duration-300"
           >
-            Career Opportunities
+            {c.careerLabel}
           </Link>
         </div>
       </section>

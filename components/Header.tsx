@@ -8,43 +8,7 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { List, X, CaretDown } from "@phosphor-icons/react";
 
-const NAV_ITEMS = [
-  { label: "Portfolio", href: "/portfolio" },
-  { label: "About", href: "/about" },
-  {
-    label: "Process",
-    href: "/process",
-    children: [
-      { label: "Homeowner Portal", href: "/homeowner-portal" },
-      { label: "The Mom's Way", href: "/process" },
-    ],
-  },
-  {
-    label: "Services",
-    href: "/services",
-    children: [
-      {
-        label: "Landscape Architecture",
-        href: "/services/landscape-architecture",
-      },
-      {
-        label: "Interior Design & Remodeling",
-        href: "/services/interior-design-and-remodeling",
-      },
-      {
-        label: "Residential Fine Gardening",
-        href: "/services/garden-management",
-      },
-      {
-        label: "Commercial Maintenance",
-        // yes, "commerical" — THEIR live slug carries this typo; keeping it preserves the URL 1:1
-        href: "/services/commerical-maintenance",
-      },
-    ],
-  },
-  { label: "Blog", href: "/blog" },
-  { label: "Careers", href: "/careers" },
-];
+type NavItem = { label: string; href: string; children?: { label: string; href: string }[] };
 
 const HERO_SECTION_ID = "home-hero-section";
 // React warns if useLayoutEffect runs during server rendering, which Next.js
@@ -52,7 +16,7 @@ const HERO_SECTION_ID = "home-hero-section";
 const useIsomorphicLayoutEffect =
   typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
-export default function Header() {
+export default function Header({ items: NAV_ITEMS }: { items: NavItem[] }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);

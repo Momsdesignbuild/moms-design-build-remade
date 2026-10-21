@@ -1,3 +1,4 @@
+import { getCopy } from "@/sanity/lib/copy";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -28,6 +29,7 @@ type Member = {
 };
 
 export default async function TeamPage() {
+  const c = await getCopy("team");
   const { data: members } = (await sanityFetch({
     query: `*[_type == "teamMember"] | order(order asc, name asc) { name, slug, role, photo }`,
   })) as { data: Member[] };
@@ -38,7 +40,7 @@ export default async function TeamPage() {
 
       <section className="pt-16 md:pt-24 pb-10 px-6 text-center bg-white">
         <h1 className="text-[22px] md:text-[28px] font-[300] tracking-[0.25em] uppercase text-ink mb-4">
-          Our Team
+          {c.heading}
         </h1>
       </section>
 

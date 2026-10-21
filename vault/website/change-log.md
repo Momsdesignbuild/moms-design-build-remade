@@ -11,6 +11,7 @@ already happened.
 
 ## 2026-10-21
 
+- 2026-10-21 Jarvis: the words and photos on About, Process, Contact, Services, Careers, Portfolio, Blog and Team intro, plus the menus, footer and contact details, now live in Sanity (Studio: Page text). Seeded with today's text, so the site looks the same. In a paragraph, put *stars* around words to highlight them.
 - 2026-10-21 Jazper: the Codespace assistant is now named Jason (CLAUDE.md), no site change
 - 2026-10-21 Jazper: About page team job titles and photo descriptions now read from Sanity (Jazper's title is Marketing Coordinator, not Social Media Specialist), about
 

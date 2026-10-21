@@ -1,12 +1,14 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MainContent from "@/components/MainContent";
+import { getCopy } from "@/sanity/lib/copy";
 
-export default function SiteLayout({
+export default async function SiteLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const nav = await getCopy("nav");
   return (
     <>
       <a
@@ -15,7 +17,7 @@ export default function SiteLayout({
       >
         Skip to main content
       </a>
-      <Header />
+      <Header items={nav.header} />
       <MainContent>{children}</MainContent>
       <Footer />
     </>
