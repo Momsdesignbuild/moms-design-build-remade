@@ -273,11 +273,12 @@ const CORE_VALUES = [
 ];
 
 export default async function AboutPage() {
-  // Job titles live in Sanity (Team Member → Role / Title); the list above is only the fallback
-  const { data: roles } = (await sanityFetch({
-    query: `*[_type == "teamMember" && defined(role)]{ "slug": slug.current, role }`,
-  })) as { data: { slug: string; role: string }[] };
-  const roleBySlug = new Map(roles.map((r) => [r.slug, r.role]));
+  // Job titles and photo descriptions live in Sanity (Team Member); the list above is only the fallback
+  const { data: people } = (await sanityFetch({
+    query: `*[_type == "teamMember"]{ "slug": slug.current, role, "alt": photo.alt }`,
+  })) as { data: { slug: string; role?: string; alt?: string }[] };
+  const bySlug = new Map(people.map((p) => [p.slug, p]));
+  const sanityFor = (href: string) => bySlug.get(href.split("/").pop() ?? "");
   return (
     <>
       <JsonLd raw={ABOUT_JSONLD} />
@@ -367,7 +368,7 @@ export default async function AboutPage() {
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={member.photo}
-                      alt={member.alt}
+                      alt={sanityFor(member.href)?.alt || member.alt}
                       loading="lazy"
                       className="w-full aspect-square object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     />
@@ -377,7 +378,7 @@ export default async function AboutPage() {
                   </p>
                 </Link>
                 <p className="text-[20px] font-[300] tracking-[0.06em] uppercase text-ink">
-                  {roleBySlug.get(member.href.split("/").pop() ?? "") ?? member.role}
+                  {sanityFor(member.href)?.role || member.role}
                 </p>
               </div>
             ))}
