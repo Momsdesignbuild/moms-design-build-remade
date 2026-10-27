@@ -47,7 +47,7 @@ export default async function CmHome() {
         </div>
       </section>
 
-      <SeasonsScene videoUrl={c.seasonsVideo} imageUrl={c.seasonsImage.url} seasons={c.seasons} />
+      <SeasonsScene videoUrl={c.seasonsVideo} imageUrl={c.seasonsImage.url} statement={c.seasonsStatement} accent={c.seasonsStatementAccent} seasons={c.seasons} />
 
       <section className="px-6 py-20 bg-white">
         <div className="max-w-[820px] mx-auto flex flex-col gap-6">
