@@ -38,7 +38,7 @@ export default function CmHeader({ cm }: { cm: Cm }) {
   const services = cm.services.map((s) => ({ label: s.title, href: `/commercial/${s.slug}` }));
   const areas = cm.cities.map((c) => ({ label: c.name, href: `/commercial/service-areas/${c.slug}` }));
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-sm">
+    <header className="cm-header sticky top-0 z-50 bg-white shadow-sm">
       <div className="max-w-[1400px] mx-auto px-6 h-[72px] flex items-center justify-between gap-6">
         <Link href="/commercial" className="flex-shrink-0" aria-label={cm.logo.alt}>
           <Image src={cm.logo.url} alt={cm.logo.alt} width={250} height={49} priority />

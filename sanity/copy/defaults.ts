@@ -298,8 +298,14 @@ export const COPY = {
       { label: 'Residential Fine Gardening', href: '/services/garden-management' },
     ],
     careersLabel: "Mom's Design Build Careers",
-    heroImage: I(CDN + '5d382e460a015cf152496efda47d158f66b4efb3-1920x1080.jpg', 'A commercial building with a manicured lawn and gardens, maintained by Mom\'s Commercial Maintenance'),
-    heroVideo: 'https://cdn.sanity.io/files/wavk40jo/production/4276d28e3df87050e89ef6e51e58647768b1c530.mp4', // summer into fall, 5s; desktop scroll hero
+    heroImage: I(CDN + '8db9cd9d931f3443822eb032c576f49ced32a482-2400x1600.jpg', "A commercial property maintained by Mom's Commercial Maintenance"),
+    seasonsImage: I(CDN + '5d382e460a015cf152496efda47d158f66b4efb3-1920x1080.jpg', "A commercial building with a manicured lawn and gardens, maintained by Mom's Commercial Maintenance"),
+    seasonsVideo: 'https://cdn.sanity.io/files/wavk40jo/production/73b8b5364a6483ece52e0c51e28ef2e38f316b17.mp4', // the full-screen scroll scene after the hero: summer, fall, winter (8s, desktop)
+    seasons: [
+      { label: 'Summer', service: 'Turf Management & Fine Gardening' },
+      { label: 'Fall', service: 'Spring & Fall Clean-Up' },
+      { label: 'Winter', service: 'Snow & Ice Management' },
+    ],
     heroKicker: "A Division of Mom's Design Build",
     heroHeading: "Mom's Commercial Maintenance",
     heroLine: 'Your property is often the first impression your business makes.',

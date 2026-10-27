@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getCopy } from "@/sanity/lib/copy";
 import Reveal from "@/components/Reveal";
-import ScrollHero from "@/components/cm/ScrollHero";
+import SeasonsScene from "@/components/cm/SeasonsScene";
 
 export async function generateMetadata(): Promise<Metadata> {
   const c = await getCopy("cm");
@@ -22,14 +22,19 @@ export default async function CmHome() {
   const c = await getCopy("cm");
   return (
     <>
-      <ScrollHero videoUrl={c.heroVideo} imageUrl={c.heroImage.url} imageAlt={c.heroImage.alt}>
-        <p className="text-[20px] tracking-[0.2em] uppercase mb-4">{c.heroKicker}</p>
-        <h1 className="font-bold [font-synthesis:weight] text-[40px] md:text-[64px] leading-[1.1] tracking-[0.04em] uppercase">{c.heroHeading}</h1>
-        <p className="mt-6 text-[22px] md:text-[26px] font-[300] leading-[1.5]">{c.heroLine}</p>
-        <Link href="/contact" className="mt-10 inline-block bg-[#5EAD4F] text-white text-[20px] font-[600] tracking-[0.18em] uppercase px-8 py-4 hover:bg-[#4d9340] transition-colors [text-shadow:none]">
-          {c.ctaLabel}
-        </Link>
-      </ScrollHero>
+      <section className="relative min-h-[70vh] flex items-center justify-center bg-[#222]">
+        <Image src={c.heroImage.url} alt={c.heroImage.alt} fill priority sizes="100vw" className="object-cover opacity-45" />
+        <div className="relative px-6 py-24 max-w-[900px] text-center text-white [text-shadow:0_1px_14px_rgba(0,0,0,0.5)]">
+          <p className="text-[20px] tracking-[0.2em] uppercase mb-4">{c.heroKicker}</p>
+          <h1 className="font-bold [font-synthesis:weight] text-[40px] md:text-[64px] leading-[1.1] tracking-[0.04em] uppercase">{c.heroHeading}</h1>
+          <p className="mt-6 text-[22px] md:text-[26px] font-[300] leading-[1.5]">{c.heroLine}</p>
+          <Link href="/contact" className="mt-10 inline-block bg-[#5EAD4F] text-white text-[20px] font-[600] tracking-[0.18em] uppercase px-8 py-4 hover:bg-[#4d9340] transition-colors [text-shadow:none]">
+            {c.ctaLabel}
+          </Link>
+        </div>
+      </section>
+
+      <SeasonsScene videoUrl={c.seasonsVideo} imageUrl={c.seasonsImage.url} seasons={c.seasons} />
 
       <section className="px-6 py-20 bg-white">
         <div className="max-w-[820px] mx-auto flex flex-col gap-6">
