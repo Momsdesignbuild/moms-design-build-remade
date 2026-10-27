@@ -281,6 +281,119 @@ export const COPY = {
     metaDescription: "Meet the designers, project managers, and craftspeople behind Mom's Design Build — the most awarded landscape design firm in the Midwest.",
     heading: 'Our Team',
   },
+  // ── Commercial Maintenance (CM): its own section at /commercial, own header + footer ──
+  cm: {
+    metaTitle: "Commercial Landscape Maintenance & Snow Removal in the Twin Cities - Mom's Commercial Maintenance",
+    metaDescription: "Mom's Commercial Maintenance, a division of Mom's Design Build: turf management, seasonal clean-up, fine gardening, irrigation, snow and ice management, holiday decorating and palm trees for Twin Cities commercial properties.",
+    logo: I(CDN + '4e380cc16154871226fe0a20a5d57357c8202f4b-999x194.png', "Mom's Commercial Maintenance, a division of Mom's Design Build"),
+    servicesLabel: 'Services',
+    propertiesLabel: 'Properties We Serve',
+    aboutLabel: 'About',
+    ctaLabel: 'Meet With Us',
+    residentialSiteLabel: '← Residential Site',
+    otherServicesHeading: 'Residential & Design-Build',
+    otherServices: [
+      { label: 'Landscape Architecture', href: '/services/landscape-architecture' },
+      { label: 'Interior Design & Remodeling', href: '/services/interior-design-and-remodeling' },
+      { label: 'Residential Fine Gardening', href: '/services/garden-management' },
+    ],
+    careersLabel: "Mom's Design Build Careers",
+    heroImage: I(CDN + '8db9cd9d931f3443822eb032c576f49ced32a482-2400x1600.jpg', "A commercial property maintained by Mom's Commercial Maintenance"),
+    heroKicker: "A Division of Mom's Design Build",
+    heroHeading: "Mom's Commercial Maintenance",
+    heroLine: 'Your property is often the first impression your business makes.',
+    intro: [
+      "Clean, well-maintained grounds speak volumes before anyone walks through the door. Our role is to ensure that impression is always a positive one, without adding to your daily responsibilities.",
+      "We take a proactive approach to commercial maintenance, building a customized plan that aligns with your property's needs, schedule, and standards. By anticipating issues and staying ahead of seasonal demands, we help you avoid disruptions and maintain a consistently professional environment, backed by fast, responsive communication whenever you need us, and luxury-level service.",
+      "With a focus on curb appeal, presentation, and long-term property health, we ensure your outdoor spaces remain an asset to your business, not a distraction. We look forward to serving you!",
+    ],
+    servicesHeading: 'Seven Services, One Team',
+    learnMoreLabel: 'Learn More',
+    services: [
+      {
+        title: 'Turf Management',
+        slug: 'turf-management',
+        image: I(CDN + '7c4889c910a73b5374b4b3c99ef8bce2467fa384-600x400.jpg', 'Commercial turf management in the Twin Cities'),
+        summary: 'Weekly mowing, trimming and edging, plus fertilization and weed control.',
+        body: [
+          'Our turf management service provides consistent, professional care to keep your lawn healthy, green, and well-maintained. With weekly visits, our team handles mowing, trimming, edging, and overall turf upkeep, along with targeted treatments like fertilization and weed control as needed.',
+          'Services also include seasonal fertilizing, weed control, aeration, de-thatching, and overseeding.',
+        ],
+      },
+      {
+        title: 'Spring & Fall Clean-Up',
+        slug: 'spring-and-fall-cleanup',
+        image: I(CDN + '272f159c60188ecfd90e65e22620fc8b89a88a2a-750x500.jpg', 'Seasonal commercial landscape clean-up'),
+        summary: 'Thorough seasonal clean-ups that leave your grounds ready for the next season.',
+        body: [
+          'Keep your property looking polished year-round with thorough seasonal cleanups. We remove debris, leaves, and buildup to ensure your properties landscape is clean, healthy, and ready for the next season.',
+        ],
+      },
+      {
+        title: 'Fine Gardening & Bed Care',
+        slug: 'fine-gardening-and-bed-care',
+        image: I(CDN + 'ee26e289601cf0b738446987912b6c9f864499c7-2560x1920.jpg', 'Commercial garden bed care and seasonal containers'),
+        summary: 'Pruning, edging and seasonal container design for beds that stay sharp.',
+        body: [
+          'Elevate your landscape with expertly maintained garden beds and plantings. We provide detailed care, including pruning, edging, and seasonal container design to keep everything looking sharp and vibrant.',
+          "Here's to stunning curb appeal year round!",
+        ],
+      },
+      {
+        title: 'Irrigation',
+        slug: 'irrigation',
+        image: I(CDN + '20706c9761e94fa60e830a578c480bc88d2732f7-2000x1767.jpg', 'Commercial irrigation and water feature service'),
+        summary: 'Start-ups, winterizations, adjustments and audits, plus pond and water feature care.',
+        body: [
+          'What keeps a landscape thriving? Water, applied at the right time, in the right amount. Our irrigation services are designed to deliver exactly that, with seasonal start-ups, winterizations, and precise system adjustments to keep everything running efficiently. We also perform detailed irrigation audits to ensure your landscape is receiving optimal coverage without waste.',
+          'In addition, we service ponds and water features with professional start-ups, routine maintenance and cleaning, and seasonal shutdowns, keeping every element of your outdoor space operating smoothly and looking its best.',
+        ],
+      },
+      {
+        title: 'Snow & Ice Management',
+        slug: 'snow-and-ice-management',
+        image: I(CDN + '0a399add959a6b7a18510ecc61c8f5ced0642059-1265x921.jpg', 'Commercial snow and ice management'),
+        summary: 'Prompt plowing, de-icing and monitoring to keep your property safe and open.',
+        body: [
+          "Minnesota's winters are unpredictable. Count on our reliable snow and ice management to keep your property safe and accessible. Our team provides prompt plowing, de-icing, and monitoring to minimize hazards and business disruptions.",
+        ],
+      },
+      {
+        title: 'Holiday Decorating',
+        slug: 'holiday-decorating',
+        image: I(CDN + '635fe0bd0a3edf608b5b8d1ae7a15faa5441f77d-750x563.jpg', 'Commercial holiday decorating'),
+        summary: 'Garland, wreaths, lights and containers, hand-made with natural greens.',
+        body: [
+          'Garland, wreaths, door charms and more. We will make your business merry and bright for the holidays. Our seasoned elves have been decorating in the Metro over 15 years!',
+          'Think a creative assortment of lights, containers, window boxes, garland wraps, kissing balls and wreaths; all hand-made with natural greens, sticks and berries.',
+        ],
+      },
+      {
+        title: 'Palm Trees',
+        slug: 'palm-trees',
+        image: I(CDN + '934edee2ffbc934e8261e9855f274d143795556f-750x500.jpg', 'Palm trees for Minnesota commercial spaces'),
+        summary: 'A taste of the tropics for spaces that are anything but traditional.',
+        body: [
+          "You're anything but traditional, so why should your space be? Experience Minnesota with a taste of the tropics by adding Palm Trees to your space!",
+        ],
+      },
+    ],
+    propertiesHeading: 'Serving the Greater Twin Cities Area',
+    propertiesAnchorNote: 'Southwest Metro of Minnesota and surrounding communities',
+    propertiesBody: "We proudly serve the Southwest Metro area of Minnesota and surrounding communities. Whether you manage a single building or oversee multiple properties, our team delivers dependable, professional service tailored to your needs, schedule, and operational requirements.",
+    properties: ['Multifamily communities', 'Retail strip centers', 'Industrial & warehouse buildings', 'HOAs', 'Office buildings', 'Banks', 'Medical & dental offices', 'Other commercial properties'],
+    closingHeading: 'Ready for a property that makes the right first impression?',
+    closingBody: "We build a customized plan around your property, your schedule and your standards.",
+    aboutMetaTitle: "About Mom's Commercial Maintenance - A Division of Mom's Design Build",
+    aboutMetaDescription: "Mom's Commercial Maintenance is the commercial grounds division of Mom's Design Build, serving the Twin Cities.",
+    aboutHeading: "About Mom's Commercial Maintenance",
+    aboutBody: [
+      "Mom's Commercial Maintenance is a division of Mom's Design Build, the most awarded landscape design firm in the Midwest. We bring the same standards to commercial properties: dependable care day in and day out, fast responsive communication, and luxury-level service.",
+      "We understand the expectations that come with managing commercial spaces, and we are committed to keeping your outdoor spaces an asset to your business, not a distraction.",
+    ],
+    aboutLinkLabel: "Learn more about Mom's Design Build",
+  },
+
 }
 
 export type CopyKey = keyof typeof COPY
