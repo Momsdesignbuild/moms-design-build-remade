@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import BuilderTrendForm from "@/components/BuilderTrendForm";
 import { getCopy } from "@/sanity/lib/copy";
@@ -60,6 +61,7 @@ export default async function CmContact() {
           {c.contactSections.map((sec) => (
             <div key={sec.heading} className="flex flex-col gap-6">
               <h2 className="text-[26px] md:text-[34px] font-[300] leading-[1.2] tracking-[0.06em] uppercase text-ink mt-8">{sec.heading}</h2>
+              {sec.image && <Image src={sec.image.url} alt={sec.image.alt} width={1200} height={800} sizes="(max-width: 820px) 100vw, 820px" className="w-full aspect-[3/2] object-cover" />}
               {sec.body.map((p, i) => (
                 <p key={i} className="text-[20px] font-[300] leading-[1.8] text-brand-mid">{p}</p>
               ))}
