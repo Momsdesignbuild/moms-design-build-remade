@@ -109,3 +109,8 @@ img[data-nimg] {
 /* CM header: slides away while the full-screen seasons scene is on screen (SeasonsScene sets the attribute) */
 .cm-header { transition: transform 0.5s ease; }
 html[data-cm-immersive] .cm-header { transform: translateY(-100%); }
+
+/* CM hero question: words rise in one by one (Pressure Titans style) */
+.cm-word { transform: translateY(110%); animation: cm-rise 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+@keyframes cm-rise { to { transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { .cm-word { transform: none; animation: none; } }

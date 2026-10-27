@@ -308,7 +308,8 @@ export const COPY = {
     ],
     heroKicker: "A Division of Mom's Design Build",
     heroHeading: "Mom's Commercial Maintenance",
-    heroLine: 'Your property is often the first impression your business makes.',
+    heroQuestion: 'What does your property say',
+    heroQuestionAccent: 'before anyone walks in?',
     intro: [
       "Clean, well-maintained grounds speak volumes before anyone walks through the door. Our role is to ensure that impression is always a positive one, without adding to your daily responsibilities.",
       "We take a proactive approach to commercial maintenance, building a customized plan that aligns with your property's needs, schedule, and standards. By anticipating issues and staying ahead of seasonal demands, we help you avoid disruptions and maintain a consistently professional environment, backed by fast, responsive communication whenever you need us, and luxury-level service.",

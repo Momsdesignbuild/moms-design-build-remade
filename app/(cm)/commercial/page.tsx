@@ -25,9 +25,15 @@ export default async function CmHome() {
       <section className="relative min-h-[70vh] flex items-center justify-center bg-[#222]">
         <Image src={c.heroImage.url} alt={c.heroImage.alt} fill priority sizes="100vw" className="object-cover opacity-45" />
         <div className="relative px-6 py-24 max-w-[900px] text-center text-white [text-shadow:0_1px_14px_rgba(0,0,0,0.5)]">
-          <p className="text-[20px] tracking-[0.2em] uppercase mb-4">{c.heroKicker}</p>
-          <h1 className="font-bold [font-synthesis:weight] text-[40px] md:text-[64px] leading-[1.1] tracking-[0.04em] uppercase">{c.heroHeading}</h1>
-          <p className="mt-6 text-[22px] md:text-[26px] font-[300] leading-[1.5]">{c.heroLine}</p>
+          <p className="text-[20px] tracking-[0.2em] uppercase mb-6">{c.heroKicker}</p>
+          <h1 className="font-medium text-[38px] md:text-[64px] leading-[1.08] tracking-[-0.01em] max-w-[1000px]">
+            {c.heroQuestion.split(" ").map((w, i) => (
+              <span key={`q${i}`} className="inline-block overflow-hidden align-bottom mr-[0.22em]"><span className="cm-word inline-block" style={{ animationDelay: `${0.1 + i * 0.07}s` }}>{w}</span></span>
+            ))}
+            {c.heroQuestionAccent.split(" ").map((w, i) => (
+              <span key={`a${i}`} className="inline-block overflow-hidden align-bottom mr-[0.22em]"><span className="cm-word inline-block italic font-normal [font-family:var(--font-serif)]" style={{ animationDelay: `${0.1 + (c.heroQuestion.split(" ").length + i) * 0.07}s` }}>{w}</span></span>
+            ))}
+          </h1>
           <Link href="/contact" className="mt-10 inline-block bg-[#5EAD4F] text-white text-[20px] font-[600] tracking-[0.18em] uppercase px-8 py-4 hover:bg-[#4d9340] transition-colors [text-shadow:none]">
             {c.ctaLabel}
           </Link>
