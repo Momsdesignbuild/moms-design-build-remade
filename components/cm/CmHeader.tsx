@@ -5,7 +5,7 @@ import type { COPY } from "@/sanity/copy/defaults";
 type Cm = (typeof COPY)["cm"];
 type Item = { label: string; href: string };
 
-const linkCls = "text-[20px] font-[500] tracking-[0.12em] uppercase text-ink hover:text-[#5EAD4F] transition-colors";
+const linkCls = "cm-tl text-[20px] font-[500] tracking-[0.12em] uppercase text-ink hover:text-[#5EAD4F] transition-colors";
 const subCls = "block px-5 py-3 text-[15px] tracking-[0.1em] uppercase text-ink hover:text-[#5EAD4F] hover:bg-gray-50 transition-colors";
 const mobLabel = "pt-5 pb-2 text-[20px] tracking-[0.14em] uppercase text-muted";
 const mobSub = "py-2.5 pl-4 text-[20px] tracking-[0.1em] uppercase text-ink border-b border-gray-100";
@@ -41,7 +41,7 @@ export default function CmHeader({ cm }: { cm: Cm }) {
     <header className="cm-header sticky top-0 z-50 bg-white shadow-sm">
       <div className="max-w-[1400px] mx-auto px-6 h-[72px] flex items-center justify-between gap-6">
         <Link href="/commercial" className="flex-shrink-0" aria-label={cm.logo.alt}>
-          <Image src={cm.logo.url} alt={cm.logo.alt} width={250} height={49} priority />
+          <Image src={cm.logo.url} alt={cm.logo.alt} width={250} height={49} priority className="cm-logo" />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-7" aria-label="Commercial navigation">
@@ -51,7 +51,7 @@ export default function CmHeader({ cm }: { cm: Cm }) {
         </nav>
 
         <div className="flex items-center gap-5">
-          <Link href="/" className="hidden xl:block text-[20px] tracking-[0.1em] uppercase text-muted hover:text-ink transition-colors">
+          <Link href="/" className="cm-tl hidden xl:block text-[20px] tracking-[0.1em] uppercase text-muted hover:text-ink transition-colors">
             {cm.residentialSiteLabel}
           </Link>
           <Link
@@ -62,7 +62,7 @@ export default function CmHeader({ cm }: { cm: Cm }) {
           </Link>
 
           <details className="lg:hidden group/m">
-            <summary className="list-none cursor-pointer p-2 text-[20px] tracking-[0.14em] uppercase text-ink" aria-label="Open navigation menu">
+            <summary className="cm-tl list-none cursor-pointer p-2 text-[20px] tracking-[0.14em] uppercase text-ink" aria-label="Open navigation menu">
               Menu
             </summary>
             <nav className="fixed left-0 right-0 top-[72px] bottom-0 overflow-y-auto bg-white px-6 py-6 flex flex-col" aria-label="Commercial mobile navigation">

@@ -114,3 +114,10 @@ html[data-cm-immersive] .cm-header { transform: translateY(-100%); }
 .cm-word { transform: translateY(110%); animation: cm-rise 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 @keyframes cm-rise { to { transform: translateY(0); } }
 @media (prefers-reduced-motion: reduce) { .cm-word { transform: none; animation: none; } }
+
+/* CM header floats transparent over the full-screen hero at the very top of /commercial (HeroTop sets the attribute) */
+.cm-header { transition: transform 0.5s ease, background-color 0.3s ease, box-shadow 0.3s ease; }
+.cm-logo { transition: filter 0.3s ease; }
+html[data-cm-top] .cm-header { background-color: transparent; box-shadow: none; }
+html[data-cm-top] .cm-header .cm-tl { color: #fff; }
+html[data-cm-top] .cm-header .cm-logo { filter: brightness(0) invert(1); }

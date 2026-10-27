@@ -4,6 +4,7 @@ import Link from "next/link";
 import { getCopy } from "@/sanity/lib/copy";
 import Reveal from "@/components/Reveal";
 import SeasonsScene from "@/components/cm/SeasonsScene";
+import HeroTop from "@/components/cm/HeroTop";
 
 export async function generateMetadata(): Promise<Metadata> {
   const c = await getCopy("cm");
@@ -22,17 +23,23 @@ export default async function CmHome() {
   const c = await getCopy("cm");
   return (
     <>
-      <section className="relative min-h-[70vh] flex items-center justify-center bg-[#222]">
-        <Image src={c.heroImage.url} alt={c.heroImage.alt} fill priority sizes="100vw" className="object-cover opacity-45" />
-        <div className="relative px-6 py-24 max-w-[900px] text-center text-white [text-shadow:0_1px_14px_rgba(0,0,0,0.5)]">
+      <section className="relative min-h-[100svh] -mt-[72px] flex items-center justify-center bg-[#222]">
+        <Image src={c.heroImage.url} alt={c.heroImage.alt} fill priority sizes="100vw" className="object-cover" />
+        <div className="absolute inset-0 bg-black/40" />
+        <HeroTop />
+        <div className="relative px-6 pt-32 pb-24 max-w-[1300px] text-center text-white [text-shadow:0_1px_14px_rgba(0,0,0,0.5)]">
           <p className="text-[20px] tracking-[0.2em] uppercase mb-6">{c.heroKicker}</p>
-          <h1 className="font-medium text-[38px] md:text-[64px] leading-[1.08] tracking-[-0.01em] max-w-[1000px]">
-            {c.heroQuestion.split(" ").map((w, i) => (
-              <span key={`q${i}`} className="inline-block overflow-hidden align-bottom mr-[0.22em]"><span className="cm-word inline-block" style={{ animationDelay: `${0.1 + i * 0.07}s` }}>{w}</span></span>
-            ))}
-            {c.heroQuestionAccent.split(" ").map((w, i) => (
-              <span key={`a${i}`} className="inline-block overflow-hidden align-bottom mr-[0.22em]"><span className="cm-word inline-block italic font-normal [font-family:var(--font-serif)]" style={{ animationDelay: `${0.1 + (c.heroQuestion.split(" ").length + i) * 0.07}s` }}>{w}</span></span>
-            ))}
+          <h1 className="text-[13vw] md:text-[9vw] leading-[0.92] tracking-[-0.045em] font-medium">
+            <span className="block">
+              {c.heroLine1.split(" ").map((w, i) => (
+                <span key={`a${i}`} className="inline-block overflow-hidden align-bottom mr-[0.2em]"><span className="cm-word inline-block" style={{ animationDelay: `${0.1 + i * 0.07}s` }}>{w}</span></span>
+              ))}
+            </span>
+            <span className="block">
+              {c.heroLine2.split(" ").map((w, i) => (
+                <span key={`b${i}`} className="inline-block overflow-hidden align-bottom pb-[0.12em] mr-[0.2em]"><span className="cm-word inline-block italic font-normal [font-family:var(--font-serif)] tracking-[-0.03em]" style={{ animationDelay: `${0.1 + (c.heroLine1.split(" ").length + i) * 0.07}s` }}>{w}</span></span>
+              ))}
+            </span>
           </h1>
           <Link href="/contact" className="mt-10 inline-block bg-[#5EAD4F] text-white text-[20px] font-[600] tracking-[0.18em] uppercase px-8 py-4 hover:bg-[#4d9340] transition-colors [text-shadow:none]">
             {c.ctaLabel}
