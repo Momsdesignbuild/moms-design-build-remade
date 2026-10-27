@@ -7,22 +7,28 @@ type Item = { label: string; href: string };
 
 const linkCls = "cm-tl text-[20px] font-[500] tracking-[0.12em] uppercase text-ink hover:text-brand transition-colors";
 const subCls = "block px-5 py-3 text-[15px] tracking-[0.1em] uppercase text-ink hover:text-brand hover:bg-gray-50 transition-colors";
-const mobLabel = "pt-5 pb-2 text-[20px] tracking-[0.14em] uppercase text-muted";
+const mobLabel = "pt-5 pb-2 text-[20px] font-[700] tracking-[0.14em] uppercase text-ink";
 const mobSub = "py-2.5 pl-4 text-[20px] tracking-[0.1em] uppercase text-ink border-b border-gray-100";
 
 // A top-level item whose list opens on hover/focus. Pure CSS, so every link is in the HTML.
-function Menu({ label, href, items, extraHeading, extraItems = [], twoCols = false }: { label: string; href: string; items: Item[]; extraHeading?: string; extraItems?: Item[]; twoCols?: boolean }) {
+function Menu({ label, href, items, extraHeading, extraItems = [], twoCols = false }: { label: string; href?: string; items: Item[]; extraHeading?: string; extraItems?: Item[]; twoCols?: boolean }) {
   return (
     <div className="relative group">
-      <Link href={href} className={`${linkCls} flex items-center gap-1`}>
-        {label} <span aria-hidden className="text-[12px]">▾</span>
-      </Link>
+      {href ? (
+        <Link href={href} className={`${linkCls} flex items-center gap-1`}>
+          {label} <span aria-hidden className="text-[12px]">▾</span>
+        </Link>
+      ) : (
+        <span tabIndex={0} className={`${linkCls} flex items-center gap-1 cursor-default`}>
+          {label} <span aria-hidden className="text-[12px]">▾</span>
+        </span>
+      )}
       <div className={`absolute top-full left-0 ${twoCols ? "w-[34rem]" : "w-72"} pt-3 invisible opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 transition-opacity`}>
         <ul className={`bg-white shadow-lg border border-gray-100 py-2 ${twoCols ? "grid grid-flow-col" : "divide-y divide-gray-100"}`} style={twoCols ? { gridTemplateRows: `repeat(${Math.ceil(items.length / 2)}, auto)` } : undefined}>
           {items.map((s) => (
             <li key={s.href}><Link href={s.href} className={subCls}>{s.label}</Link></li>
           ))}
-          {extraHeading && <li className="px-5 pt-4 pb-1 text-[15px] tracking-[0.1em] uppercase text-muted">{extraHeading}</li>}
+          {extraHeading && <li className="px-5 pt-4 pb-1 text-[15px] font-[700] tracking-[0.1em] uppercase text-ink">{extraHeading}</li>}
           {extraItems.map((s) => (
             <li key={s.href}><Link href={s.href} className={subCls}>{s.label}</Link></li>
           ))}
@@ -48,14 +54,12 @@ export default function CmHeader({ cm }: { cm: Cm }) {
           <Menu label={cm.servicesLabel} href="/commercial#services" items={services} extraHeading={cm.otherServicesHeading} extraItems={cm.otherServices} />
           <Menu label={cm.propertiesLabel} href="/commercial#properties" items={areas} twoCols />
           <Link href="/commercial/about" className={linkCls}>{cm.aboutLabel}</Link>
+          <Menu label={cm.moreLabel} items={cm.moreItems} />
         </nav>
 
         <div className="flex items-center gap-5">
-          <Link href="/" className="cm-tl hidden xl:block text-[20px] tracking-[0.1em] uppercase text-muted hover:text-ink transition-colors">
-            {cm.residentialSiteLabel}
-          </Link>
           <Link
-            href="/contact"
+            href="/commercial/contact"
             className="hidden lg:inline-flex bg-brand text-white text-[20px] font-[600] tracking-[0.18em] uppercase whitespace-nowrap px-6 py-3 hover:bg-brand-dark transition-colors"
           >
             {cm.ctaLabel}
@@ -79,8 +83,10 @@ export default function CmHeader({ cm }: { cm: Cm }) {
                 <Link key={s.href} href={s.href} className={mobSub}>{s.label}</Link>
               ))}
               <Link href="/commercial/about" className="mt-2 py-4 text-[20px] tracking-[0.14em] uppercase text-ink border-b border-gray-100">{cm.aboutLabel}</Link>
-              <Link href="/" className="py-4 text-[20px] tracking-[0.14em] uppercase text-muted">{cm.residentialSiteLabel}</Link>
-              <Link href="/contact" className="mt-4 bg-brand text-white text-[20px] font-[600] tracking-[0.18em] uppercase px-6 py-4 text-center">{cm.ctaLabel}</Link>
+              {cm.moreItems.map((s) => (
+                <Link key={s.href} href={s.href} className="py-4 text-[20px] tracking-[0.14em] uppercase text-ink border-b border-gray-100">{s.label}</Link>
+              ))}
+              <Link href="/commercial/contact" className="mt-4 bg-brand text-white text-[20px] font-[600] tracking-[0.18em] uppercase px-6 py-4 text-center">{cm.ctaLabel}</Link>
             </nav>
           </details>
         </div>

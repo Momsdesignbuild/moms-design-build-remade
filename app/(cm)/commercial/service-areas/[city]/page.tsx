@@ -54,7 +54,7 @@ export default async function CmCityPage({ params }: { params: Promise<{ city: s
               </li>
             ))}
           </ul>
-          <Link href="/contact" className="self-start mt-6 bg-brand text-white text-[20px] font-[600] tracking-[0.18em] uppercase px-8 py-4 hover:bg-brand-dark transition-colors">
+          <Link href="/commercial/contact" className="self-start mt-6 bg-brand text-white text-[20px] font-[600] tracking-[0.18em] uppercase px-8 py-4 hover:bg-brand-dark transition-colors">
             {c.ctaLabel}
           </Link>
         </div>

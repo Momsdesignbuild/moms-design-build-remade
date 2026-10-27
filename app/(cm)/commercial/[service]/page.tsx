@@ -18,12 +18,12 @@ async function find(slug: string) {
 export async function generateMetadata({ params }: { params: Promise<{ service: string }> }): Promise<Metadata> {
   const { c, s } = await find((await params).service);
   if (!s) return {};
-  const title = `${s.title} for Twin Cities Commercial Properties - Mom's Commercial Maintenance`;
+  const title = s.metaTitle;
   return {
     title: { absolute: title },
-    description: s.summary,
+    description: s.metaDescription,
     alternates: { canonical: `https://momsdesignbuild.com/commercial/${s.slug}/` },
-    openGraph: { title, description: s.summary, siteName: c.heroHeading, locale: "en_US", type: "article", images: [{ url: s.image.url }] },
+    openGraph: { title, description: s.metaDescription, siteName: c.heroHeading, locale: "en_US", type: "article", images: [{ url: s.image.url }] },
     twitter: { card: "summary_large_image" },
   };
 }
@@ -45,7 +45,7 @@ export default async function CmServicePage({ params }: { params: Promise<{ serv
             <p key={i} className="text-[20px] font-[300] leading-[1.8] text-brand-mid">{p}</p>
           ))}
           <div className="flex flex-wrap gap-4 mt-6">
-            <Link href="/contact" className="bg-brand text-white text-[20px] font-[600] tracking-[0.18em] uppercase px-8 py-4 hover:bg-brand-dark transition-colors">
+            <Link href="/commercial/contact" className="bg-brand text-white text-[20px] font-[600] tracking-[0.18em] uppercase px-8 py-4 hover:bg-brand-dark transition-colors">
               {c.ctaLabel}
             </Link>
             <Link href="/commercial#services" className="border border-brand text-brand-mid text-[20px] font-[600] tracking-[0.12em] uppercase px-8 py-4 hover:bg-gray-50 transition-colors">

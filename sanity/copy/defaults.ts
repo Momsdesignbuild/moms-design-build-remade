@@ -290,7 +290,16 @@ export const COPY = {
     propertiesLabel: 'Service Areas',
     aboutLabel: 'About',
     ctaLabel: 'Meet With Us',
-    residentialSiteLabel: 'Residential Site',
+    moreLabel: 'More',
+    moreItems: [
+      { label: 'Careers', href: '/careers' },
+      { label: 'Blog', href: '/blog' },
+    ],
+    blogLabel: 'Blog',
+    contactMetaTitle: "Contact Mom's Commercial Maintenance - Twin Cities Commercial Grounds & Snow",
+    contactMetaDescription: "Meet with Mom's Commercial Maintenance about commercial landscape maintenance, snow removal and seasonal services for your Twin Cities property.",
+    contactHeading: 'Meet With Us',
+    contactSubline: 'Tell us about your property and we will build a plan around your schedule and your standards.',
     otherServicesHeading: 'Residential & Design-Build',
     otherServices: [
       { label: 'Landscape Architecture', href: '/services/landscape-architecture' },
@@ -324,6 +333,8 @@ export const COPY = {
       {
         title: 'Turf Management',
         slug: 'turf-management',
+        metaTitle: "Commercial Lawn Maintenance & Turf Management in the Twin Cities - Mom's Commercial Maintenance",
+        metaDescription: "Commercial lawn maintenance for Twin Cities properties: weekly mowing, trimming and edging, fertilization, weed control, aeration and overseeding.",
         image: I(CDN + '7c4889c910a73b5374b4b3c99ef8bce2467fa384-600x400.jpg', 'Commercial turf management in the Twin Cities'),
         summary: 'Weekly mowing, trimming and edging, plus fertilization and weed control.',
         body: [
@@ -334,25 +345,33 @@ export const COPY = {
       {
         title: 'Spring & Fall Clean-Up',
         slug: 'spring-and-fall-cleanup',
+        metaTitle: "Commercial Fall Cleanup & Leaf Removal in the Twin Cities - Mom's Commercial Maintenance",
+        metaDescription: "Commercial fall cleanup and leaf removal for Twin Cities properties, plus spring clean-ups that leave your grounds ready for the season.",
         image: I(CDN + '272f159c60188ecfd90e65e22620fc8b89a88a2a-750x500.jpg', 'Seasonal commercial landscape clean-up'),
         summary: 'Thorough seasonal clean-ups that leave your grounds ready for the next season.',
         body: [
           'Keep your property looking polished year-round with thorough seasonal cleanups. We remove debris, leaves, and buildup to ensure your properties landscape is clean, healthy, and ready for the next season.',
+          "Commercial fall cleanup and leaf removal for properties across the Twin Cities: leaves, debris and buildup cleared before winter, and the same again in spring.",
         ],
       },
       {
         title: 'Fine Gardening & Bed Care',
         slug: 'fine-gardening-and-bed-care',
+        metaTitle: "Commercial Landscape Maintenance & Garden Bed Care in the Twin Cities - Mom's Commercial Maintenance",
+        metaDescription: "Commercial landscape maintenance for Twin Cities properties: bed care, pruning, edging and seasonal container design.",
         image: I(CDN + 'ee26e289601cf0b738446987912b6c9f864499c7-2560x1920.jpg', 'Commercial garden bed care and seasonal containers'),
         summary: 'Pruning, edging and seasonal container design for beds that stay sharp.',
         body: [
           'Elevate your landscape with expertly maintained garden beds and plantings. We provide detailed care, including pruning, edging, and seasonal container design to keep everything looking sharp and vibrant.',
           "Here's to stunning curb appeal year round!",
+          "Commercial landscape maintenance for beds, containers and plantings, kept sharp all season.",
         ],
       },
       {
         title: 'Irrigation',
         slug: 'irrigation',
+        metaTitle: "Commercial Irrigation Services in the Twin Cities - Mom's Commercial Maintenance",
+        metaDescription: "Commercial irrigation start-ups, winterizations, adjustments and audits, plus pond and water feature care, for Twin Cities properties.",
         image: I(CDN + '20706c9761e94fa60e830a578c480bc88d2732f7-2000x1767.jpg', 'Commercial irrigation and water feature service'),
         summary: 'Start-ups, winterizations, adjustments and audits, plus pond and water feature care.',
         body: [
@@ -363,15 +382,20 @@ export const COPY = {
       {
         title: 'Snow & Ice Management',
         slug: 'snow-and-ice-management',
+        metaTitle: "Commercial Snow Removal & Snow Plowing in the Twin Cities - Mom's Commercial Maintenance",
+        metaDescription: "Commercial snow removal, snow plowing and ice management for Twin Cities properties: prompt plowing, de-icing and monitoring to keep you safe and open.",
         image: I(CDN + '0a399add959a6b7a18510ecc61c8f5ced0642059-1265x921.jpg', 'Commercial snow and ice management'),
         summary: 'Prompt plowing, de-icing and monitoring to keep your property safe and open.',
         body: [
           "Minnesota's winters are unpredictable. Count on our reliable snow and ice management to keep your property safe and accessible. Our team provides prompt plowing, de-icing, and monitoring to minimize hazards and business disruptions.",
+          "Commercial snow removal and snow plowing for parking lots, drive lanes and walkways, with de-icing and monitoring through every storm.",
         ],
       },
       {
         title: 'Holiday Decorating',
         slug: 'holiday-decorating',
+        metaTitle: "Commercial Holiday Decorating in the Twin Cities - Mom's Commercial Maintenance",
+        metaDescription: "Commercial holiday decorating for Twin Cities businesses: garland, wreaths, lights and containers, hand-made with natural greens.",
         image: I(CDN + '635fe0bd0a3edf608b5b8d1ae7a15faa5441f77d-750x563.jpg', 'Commercial holiday decorating'),
         summary: 'Garland, wreaths, lights and containers, hand-made with natural greens.',
         body: [
@@ -382,6 +406,8 @@ export const COPY = {
       {
         title: 'Palm Trees',
         slug: 'palm-trees',
+        metaTitle: "Palm Trees for Minnesota Commercial Spaces - Mom's Commercial Maintenance",
+        metaDescription: "Add a taste of the tropics to your Minnesota commercial space with palm trees from Mom's Commercial Maintenance.",
         image: I(CDN + '934edee2ffbc934e8261e9855f274d143795556f-750x500.jpg', 'Palm trees for Minnesota commercial spaces'),
         summary: 'A taste of the tropics for spaces that are anything but traditional.',
         body: [
@@ -415,12 +441,12 @@ export const COPY = {
       { name: 'Medina', slug: 'medina' },
       { name: 'Minnetrista', slug: 'minnetrista' },
     ],
-    cityMetaTitle: "Commercial Landscape Maintenance in {city}, MN - Mom's Commercial Maintenance",
-    cityMetaDescription: "Mom's Commercial Maintenance serves commercial properties in {city}, Minnesota: turf management, seasonal clean-up, fine gardening, irrigation, snow and ice management, holiday decorating and palm trees.",
-    cityHeading: 'Commercial Maintenance in {city}',
+    cityMetaTitle: "Snow Removal & Commercial Landscape Maintenance in {city}, MN - Mom's Commercial Maintenance",
+    cityMetaDescription: "Snow removal, snow plowing, fall cleanup and commercial landscape maintenance for properties in {city}, Minnesota, from Mom's Commercial Maintenance.",
+    cityHeading: 'Snow Removal & Commercial Maintenance in {city}',
     cityBody: [
       "Your property is often the first impression your business makes. Mom's Commercial Maintenance keeps commercial grounds in {city} clean, healthy and professional all year, with a customized plan built around your property, your schedule and your standards.",
-      "From weekly turf care to snow and ice management and holiday decorating, one team handles the whole year, with fast, responsive communication whenever you need us.",
+      "From snow removal and snow plowing in the winter to fall cleanup, leaf removal and weekly turf care the rest of the year, one team handles the whole year, with fast, responsive communication whenever you need us.",
     ],
     propertiesHeading: 'Serving the Greater Twin Cities Area',
     propertiesAnchorNote: 'Southwest Metro of Minnesota and surrounding communities',

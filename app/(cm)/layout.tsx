@@ -11,7 +11,7 @@ export default async function CmLayout({ children }: { children: React.ReactNode
         href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-[100] focus:px-4 focus:py-3 focus:bg-brand focus:text-white focus:text-[20px] focus:font-medium"
       >
-        Skip to main content
+        Skip to main content{/* ui-label: accessibility skip link */}
       </a>
       <CmHeader cm={cm} />
       <main id="main-content">{children}</main>

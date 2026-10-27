@@ -38,7 +38,7 @@ export default async function CmHome() {
               </span>
             ))}
           </h1>
-          <Link href="/contact" className="mt-10 inline-block border-2 border-brand bg-brand text-white text-[20px] font-[600] tracking-[0.22em] uppercase px-10 py-4 hover:bg-transparent hover:text-white transition-colors duration-300 [text-shadow:none]">
+          <Link href="/commercial/contact" className="mt-10 inline-block border-2 border-brand bg-brand text-white text-[20px] font-[600] tracking-[0.22em] uppercase px-10 py-4 hover:bg-transparent hover:text-white transition-colors duration-300 [text-shadow:none]">
             {c.ctaLabel}
           </Link>
         </div>
@@ -61,7 +61,7 @@ export default async function CmHome() {
             <div key={s.slug} className="flex flex-col">
               <Link href={`/commercial/${s.slug}`} className="block overflow-hidden mb-5">
                 <Reveal>
-                  <Image src={s.image.url} alt={s.image.alt} width={600} height={450} sizes="(max-width: 640px) 100vw, 25vw" className="w-full aspect-[4/3] object-cover transition-transform duration-500 hover:scale-[1.03]" />
+                  <Image src={s.image.url} alt={s.image.alt} width={600} height={450} sizes="(max-width: 640px) 100vw, 25vw" className="w-full aspect-[4/3] object-cover transition-transform duration-500 hover:scale-[1.03]" />{/* ui-label: image size hint, not visitor text */}{/* ui-label: image size hint, not visitor text */}
                 </Reveal>
               </Link>
               <h3 className="text-[20px] lg:text-[21px] font-[300] tracking-[0.14em] uppercase leading-snug text-ink mb-3">
@@ -91,7 +91,7 @@ export default async function CmHome() {
       <section className="px-6 py-24 bg-[#3C3C3C] text-center text-white">
         <h2 className="text-3xl md:text-5xl font-[300] tracking-[0.06em] uppercase max-w-[900px] mx-auto !text-white">{c.closingHeading}</h2>
         <p className="mt-5 text-[20px] font-[300] text-white/80">{c.closingBody}</p>
-        <Link href="/contact" className="mt-10 inline-block border-2 border-brand bg-brand text-white text-[20px] font-[600] tracking-[0.22em] uppercase px-10 py-4 hover:bg-transparent hover:text-white transition-colors duration-300">
+        <Link href="/commercial/contact" className="mt-10 inline-block border-2 border-brand bg-brand text-white text-[20px] font-[600] tracking-[0.22em] uppercase px-10 py-4 hover:bg-transparent hover:text-white transition-colors duration-300">
           {c.ctaLabel}
         </Link>
       </section>
