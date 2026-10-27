@@ -38,7 +38,7 @@ export default async function CmCityPage({ params }: { params: Promise<{ city: s
     <>
       <section className="relative h-[40vh] min-h-[320px] flex items-center justify-center bg-[#222]">
         <Image src={c.heroImage.url} alt={c.heroImage.alt} fill priority sizes="100vw" className="object-cover opacity-45" />
-        <h1 className="relative px-6 max-w-[1000px] text-center text-white font-bold [font-synthesis:weight] text-[34px] md:text-[52px] leading-[1.1] tracking-[0.05em] uppercase [text-shadow:0_1px_14px_rgba(0,0,0,0.5)]">
+        <h1 className="relative px-6 max-w-[1000px] text-center text-white font-[300] text-[34px] md:text-[52px] leading-[1.1] tracking-[0.05em] uppercase [text-shadow:0_1px_14px_rgba(0,0,0,0.5)]">
           {fill(c.cityHeading)}
         </h1>
       </section>
@@ -50,11 +50,11 @@ export default async function CmCityPage({ params }: { params: Promise<{ city: s
           <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-2 mt-4">
             {c.services.map((s) => (
               <li key={s.slug}>
-                <Link href={`/commercial/${s.slug}`} className="text-[20px] font-[300] text-brand-mid underline underline-offset-4 hover:text-[#5EAD4F]">{s.title}</Link>
+                <Link href={`/commercial/${s.slug}`} className="text-[20px] font-[300] text-brand-mid underline underline-offset-4 hover:text-brand">{s.title}</Link>
               </li>
             ))}
           </ul>
-          <Link href="/contact" className="self-start mt-6 bg-[#5EAD4F] text-white text-[20px] font-[600] tracking-[0.18em] uppercase px-8 py-4 hover:bg-[#4d9340] transition-colors">
+          <Link href="/contact" className="self-start mt-6 bg-brand text-white text-[20px] font-[600] tracking-[0.18em] uppercase px-8 py-4 hover:bg-brand-dark transition-colors">
             {c.ctaLabel}
           </Link>
         </div>

@@ -5,8 +5,8 @@ import type { COPY } from "@/sanity/copy/defaults";
 type Cm = (typeof COPY)["cm"];
 type Item = { label: string; href: string };
 
-const linkCls = "cm-tl text-[20px] font-[500] tracking-[0.12em] uppercase text-ink hover:text-[#5EAD4F] transition-colors";
-const subCls = "block px-5 py-3 text-[15px] tracking-[0.1em] uppercase text-ink hover:text-[#5EAD4F] hover:bg-gray-50 transition-colors";
+const linkCls = "cm-tl text-[20px] font-[500] tracking-[0.12em] uppercase text-ink hover:text-brand transition-colors";
+const subCls = "block px-5 py-3 text-[15px] tracking-[0.1em] uppercase text-ink hover:text-brand hover:bg-gray-50 transition-colors";
 const mobLabel = "pt-5 pb-2 text-[20px] tracking-[0.14em] uppercase text-muted";
 const mobSub = "py-2.5 pl-4 text-[20px] tracking-[0.1em] uppercase text-ink border-b border-gray-100";
 
@@ -56,7 +56,7 @@ export default function CmHeader({ cm }: { cm: Cm }) {
           </Link>
           <Link
             href="/contact"
-            className="hidden lg:inline-flex bg-[#5EAD4F] text-white text-[20px] font-[600] tracking-[0.18em] uppercase whitespace-nowrap px-6 py-3 hover:bg-[#4d9340] transition-colors"
+            className="hidden lg:inline-flex bg-brand text-white text-[20px] font-[600] tracking-[0.18em] uppercase whitespace-nowrap px-6 py-3 hover:bg-brand-dark transition-colors"
           >
             {cm.ctaLabel}
           </Link>
@@ -80,7 +80,7 @@ export default function CmHeader({ cm }: { cm: Cm }) {
               ))}
               <Link href="/commercial/about" className="mt-2 py-4 text-[20px] tracking-[0.14em] uppercase text-ink border-b border-gray-100">{cm.aboutLabel}</Link>
               <Link href="/" className="py-4 text-[20px] tracking-[0.14em] uppercase text-muted">{cm.residentialSiteLabel}</Link>
-              <Link href="/contact" className="mt-4 bg-[#5EAD4F] text-white text-[20px] font-[600] tracking-[0.18em] uppercase px-6 py-4 text-center">{cm.ctaLabel}</Link>
+              <Link href="/contact" className="mt-4 bg-brand text-white text-[20px] font-[600] tracking-[0.18em] uppercase px-6 py-4 text-center">{cm.ctaLabel}</Link>
             </nav>
           </details>
         </div>

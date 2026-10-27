@@ -35,7 +35,7 @@ export default async function CmServicePage({ params }: { params: Promise<{ serv
     <>
       <section className="relative h-[40vh] min-h-[320px] flex items-center justify-center bg-[#222]">
         <Image src={s.image.url} alt={s.image.alt} fill priority sizes="100vw" className="object-cover opacity-45" />
-        <h1 className="relative px-6 text-center text-white font-bold [font-synthesis:weight] text-[36px] md:text-[56px] leading-[1.1] tracking-[0.05em] uppercase [text-shadow:0_1px_14px_rgba(0,0,0,0.5)]">
+        <h1 className="relative px-6 text-center text-white font-[300] text-[36px] md:text-[56px] leading-[1.1] tracking-[0.05em] uppercase [text-shadow:0_1px_14px_rgba(0,0,0,0.5)]">
           {s.title}
         </h1>
       </section>
@@ -45,10 +45,10 @@ export default async function CmServicePage({ params }: { params: Promise<{ serv
             <p key={i} className="text-[20px] font-[300] leading-[1.8] text-brand-mid">{p}</p>
           ))}
           <div className="flex flex-wrap gap-4 mt-6">
-            <Link href="/contact" className="bg-[#5EAD4F] text-white text-[20px] font-[600] tracking-[0.18em] uppercase px-8 py-4 hover:bg-[#4d9340] transition-colors">
+            <Link href="/contact" className="bg-brand text-white text-[20px] font-[600] tracking-[0.18em] uppercase px-8 py-4 hover:bg-brand-dark transition-colors">
               {c.ctaLabel}
             </Link>
-            <Link href="/commercial#services" className="border border-[#5EAD4F] text-brand-mid text-[20px] font-[600] tracking-[0.12em] uppercase px-8 py-4 hover:bg-gray-50 transition-colors">
+            <Link href="/commercial#services" className="border border-brand text-brand-mid text-[20px] font-[600] tracking-[0.12em] uppercase px-8 py-4 hover:bg-gray-50 transition-colors">
               {c.servicesHeading}
             </Link>
           </div>

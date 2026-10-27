@@ -16,11 +16,11 @@ export default async function CmAbout() {
   return (
     <section className="px-6 py-20 bg-white">
       <div className="max-w-[820px] mx-auto flex flex-col gap-6">
-        <h1 className="font-bold [font-synthesis:weight] text-[34px] md:text-[44px] leading-[1.15] tracking-[0.05em] uppercase text-brand-mid">{c.aboutHeading}</h1>
+        <h1 className="font-[300] text-[34px] md:text-[44px] leading-[1.15] tracking-[0.05em] uppercase text-brand-mid">{c.aboutHeading}</h1>
         {c.aboutBody.map((p, i) => (
           <p key={i} className="text-[20px] font-[300] leading-[1.8] text-brand-mid">{p}</p>
         ))}
-        <Link href="/about" className="self-start text-[20px] font-[600] tracking-[0.12em] uppercase text-[#5EAD4F] underline underline-offset-4">
+        <Link href="/about" className="self-start text-[20px] font-[600] tracking-[0.12em] uppercase text-brand underline underline-offset-4">
           {c.aboutLinkLabel}
         </Link>
       </div>
