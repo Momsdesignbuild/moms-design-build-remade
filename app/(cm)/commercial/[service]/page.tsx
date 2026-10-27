@@ -44,6 +44,29 @@ export default async function CmServicePage({ params }: { params: Promise<{ serv
           {s.body.map((p, i) => (
             <p key={i} className="text-[20px] font-[300] leading-[1.8] text-brand-mid">{p}</p>
           ))}
+          {s.sections.map((sec) => (
+            <div key={sec.heading} className="flex flex-col gap-6">
+              <h2 className="text-[26px] md:text-[34px] font-[300] leading-[1.2] tracking-[0.06em] uppercase text-ink mt-8">{sec.heading}</h2>
+              {sec.body.map((p, i) => (
+                <p key={i} className="text-[20px] font-[300] leading-[1.8] text-brand-mid">{p}</p>
+              ))}
+            </div>
+          ))}
+          <h2 className="text-[26px] md:text-[34px] font-[300] leading-[1.2] tracking-[0.06em] uppercase text-ink mt-8">{c.includedHeading}</h2>
+          <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-2">
+            {s.included.map((x) => (
+              <li key={x} className="text-[20px] font-[300] leading-[1.6] text-brand-mid before:content-['—'] before:mr-3 before:text-brand">{x}</li>
+            ))}
+          </ul>
+          <h2 className="text-[26px] md:text-[34px] font-[300] leading-[1.2] tracking-[0.06em] uppercase text-ink mt-8">{c.faqHeading}</h2>
+          <div className="flex flex-col gap-6">
+            {s.faqs.map((f, i) => (
+              <div key={i}>
+                <h3 className="text-[20px] font-[500] tracking-[0.08em] uppercase text-ink">{f.q}</h3>
+                <p className="mt-2 text-[20px] font-[300] leading-[1.8] text-brand-mid">{f.a}</p>
+              </div>
+            ))}
+          </div>
           <div className="flex flex-wrap gap-4 mt-6">
             <Link href="/commercial/contact" className="bg-brand text-white text-[20px] font-[600] tracking-[0.18em] uppercase px-8 py-4 hover:bg-brand-dark transition-colors">
               {c.ctaLabel}

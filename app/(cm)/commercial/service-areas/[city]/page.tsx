@@ -44,9 +44,21 @@ export default async function CmCityPage({ params }: { params: Promise<{ city: s
       </section>
       <section className="px-6 py-20 bg-white">
         <div className="max-w-[820px] mx-auto flex flex-col gap-6">
+          {city.intro.map((p, i) => (
+            <p key={`i${i}`} className="text-[20px] font-[300] leading-[1.8] text-brand-mid">{fill(p)}</p>
+          ))}
           {c.cityBody.map((p, i) => (
             <p key={i} className="text-[20px] font-[300] leading-[1.8] text-brand-mid">{fill(p)}</p>
           ))}
+          {c.citySections.map((sec) => (
+            <div key={sec.heading} className="flex flex-col gap-6">
+              <h2 className="text-[26px] md:text-[34px] font-[300] leading-[1.2] tracking-[0.06em] uppercase text-ink mt-8">{fill(sec.heading)}</h2>
+              {sec.body.map((p, i) => (
+                <p key={i} className="text-[20px] font-[300] leading-[1.8] text-brand-mid">{fill(p)}</p>
+              ))}
+            </div>
+          ))}
+          <h2 className="text-[26px] md:text-[34px] font-[300] leading-[1.2] tracking-[0.06em] uppercase text-ink mt-8">{fill(c.cityServicesHeading)}</h2>
           <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-2 mt-4">
             {c.services.map((s) => (
               <li key={s.slug}>
@@ -54,6 +66,15 @@ export default async function CmCityPage({ params }: { params: Promise<{ city: s
               </li>
             ))}
           </ul>
+          <h2 className="text-[26px] md:text-[34px] font-[300] leading-[1.2] tracking-[0.06em] uppercase text-ink mt-8">{c.faqHeading}</h2>
+          <div className="flex flex-col gap-6">
+            {c.cityFaqs.map((f, i) => (
+              <div key={i}>
+                <h3 className="text-[20px] font-[500] tracking-[0.08em] uppercase text-ink">{fill(f.q)}</h3>
+                <p className="mt-2 text-[20px] font-[300] leading-[1.8] text-brand-mid">{fill(f.a)}</p>
+              </div>
+            ))}
+          </div>
           <Link href="/commercial/contact" className="self-start mt-6 bg-brand text-white text-[20px] font-[600] tracking-[0.18em] uppercase px-8 py-4 hover:bg-brand-dark transition-colors">
             {c.ctaLabel}
           </Link>
