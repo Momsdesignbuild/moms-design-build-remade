@@ -56,6 +56,16 @@ export default async function CmContact() {
             <BuilderTrendForm />
           </div>
         </div>
+        <div className="max-w-[820px] mx-auto mt-16 pt-16 border-t border-gray-100 flex flex-col gap-6">
+          {c.contactSections.map((sec) => (
+            <div key={sec.heading} className="flex flex-col gap-6">
+              <h2 className="text-[26px] md:text-[34px] font-[300] leading-[1.2] tracking-[0.06em] uppercase text-ink mt-8">{sec.heading}</h2>
+              {sec.body.map((p, i) => (
+                <p key={i} className="text-[20px] font-[300] leading-[1.8] text-brand-mid">{p}</p>
+              ))}
+            </div>
+          ))}
+        </div>
       </section>
     </>
   );

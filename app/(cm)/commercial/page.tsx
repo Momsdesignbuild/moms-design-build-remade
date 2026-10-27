@@ -88,6 +88,19 @@ export default async function CmHome() {
         </div>
       </section>
 
+      <section className="px-6 py-20 bg-white">
+        <div className="max-w-[820px] mx-auto flex flex-col gap-6">
+          {c.homeSections.map((sec) => (
+            <div key={sec.heading} className="flex flex-col gap-6">
+              <h2 className="text-[26px] md:text-[34px] font-[300] leading-[1.2] tracking-[0.06em] uppercase text-ink mt-8 first:mt-0">{sec.heading}</h2>
+              {sec.body.map((p, i) => (
+                <p key={i} className="text-[20px] font-[300] leading-[1.8] text-brand-mid">{p}</p>
+              ))}
+            </div>
+          ))}
+        </div>
+      </section>
+
       <section className="px-6 py-24 bg-[#3C3C3C] text-center text-white">
         <h2 className="text-3xl md:text-5xl font-[300] tracking-[0.06em] uppercase max-w-[900px] mx-auto !text-white">{c.closingHeading}</h2>
         <p className="mt-5 text-[20px] font-[300] text-white/80">{c.closingBody}</p>
