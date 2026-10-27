@@ -287,10 +287,10 @@ export const COPY = {
     metaDescription: "Mom's Commercial Maintenance, a division of Mom's Design Build: turf management, seasonal clean-up, fine gardening, irrigation, snow and ice management, holiday decorating and palm trees for Twin Cities commercial properties.",
     logo: I(CDN + '4e380cc16154871226fe0a20a5d57357c8202f4b-999x194.png', "Mom's Commercial Maintenance, a division of Mom's Design Build"),
     servicesLabel: 'Services',
-    propertiesLabel: 'Properties We Serve',
+    propertiesLabel: 'Service Areas',
     aboutLabel: 'About',
     ctaLabel: 'Meet With Us',
-    residentialSiteLabel: '← Residential Site',
+    residentialSiteLabel: 'Residential Site',
     otherServicesHeading: 'Residential & Design-Build',
     otherServices: [
       { label: 'Landscape Architecture', href: '/services/landscape-architecture' },

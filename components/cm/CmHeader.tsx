@@ -5,7 +5,7 @@ import type { COPY } from "@/sanity/copy/defaults";
 type Cm = (typeof COPY)["cm"];
 
 const linkCls = "text-[20px] font-[500] tracking-[0.12em] uppercase text-ink hover:text-[#5EAD4F] transition-colors";
-const subCls = "block px-5 py-3 text-[20px] tracking-[0.1em] uppercase text-ink hover:text-[#5EAD4F] hover:bg-gray-50 transition-colors";
+const subCls = "block px-5 py-3 text-[15px] tracking-[0.1em] uppercase text-ink hover:text-[#5EAD4F] hover:bg-gray-50 transition-colors";
 
 // CM's own header. Server-rendered: the Services menu is pure CSS hover/focus and the
 // phone menu is a <details>, so every link is in the HTML for crawlers with no client JS.
@@ -28,7 +28,7 @@ export default function CmHeader({ cm }: { cm: Cm }) {
                 {services.map((s) => (
                   <li key={s.href}><Link href={s.href} className={subCls}>{s.label}</Link></li>
                 ))}
-                <li className="px-5 pt-4 pb-1 text-[20px] tracking-[0.1em] uppercase text-muted">{cm.otherServicesHeading}</li>
+                <li className="px-5 pt-4 pb-1 text-[15px] tracking-[0.1em] uppercase text-muted">{cm.otherServicesHeading}</li>
                 {cm.otherServices.map((s) => (
                   <li key={s.href}><Link href={s.href} className={subCls}>{s.label}</Link></li>
                 ))}
