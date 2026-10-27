@@ -11,14 +11,14 @@ const mobLabel = "pt-5 pb-2 text-[20px] tracking-[0.14em] uppercase text-muted";
 const mobSub = "py-2.5 pl-4 text-[20px] tracking-[0.1em] uppercase text-ink border-b border-gray-100";
 
 // A top-level item whose list opens on hover/focus. Pure CSS, so every link is in the HTML.
-function Menu({ label, href, items, extraHeading, extraItems = [] }: { label: string; href: string; items: Item[]; extraHeading?: string; extraItems?: Item[] }) {
+function Menu({ label, href, items, extraHeading, extraItems = [], twoCols = false }: { label: string; href: string; items: Item[]; extraHeading?: string; extraItems?: Item[]; twoCols?: boolean }) {
   return (
     <div className="relative group">
       <Link href={href} className={`${linkCls} flex items-center gap-1`}>
         {label} <span aria-hidden className="text-[12px]">▾</span>
       </Link>
-      <div className="absolute top-full left-0 w-72 pt-3 invisible opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 transition-opacity">
-        <ul className="bg-white shadow-lg border border-gray-100 py-2 divide-y divide-gray-100">
+      <div className={`absolute top-full left-0 ${twoCols ? "w-[34rem]" : "w-72"} pt-3 invisible opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 transition-opacity`}>
+        <ul className={`bg-white shadow-lg border border-gray-100 py-2 ${twoCols ? "grid grid-flow-col" : "divide-y divide-gray-100"}`} style={twoCols ? { gridTemplateRows: `repeat(${Math.ceil(items.length / 2)}, auto)` } : undefined}>
           {items.map((s) => (
             <li key={s.href}><Link href={s.href} className={subCls}>{s.label}</Link></li>
           ))}
@@ -46,7 +46,7 @@ export default function CmHeader({ cm }: { cm: Cm }) {
 
         <nav className="hidden lg:flex items-center gap-7" aria-label="Commercial navigation">
           <Menu label={cm.servicesLabel} href="/commercial#services" items={services} extraHeading={cm.otherServicesHeading} extraItems={cm.otherServices} />
-          <Menu label={cm.propertiesLabel} href="/commercial#properties" items={areas} />
+          <Menu label={cm.propertiesLabel} href="/commercial#properties" items={areas} twoCols />
           <Link href="/commercial/about" className={linkCls}>{cm.aboutLabel}</Link>
         </nav>
 
