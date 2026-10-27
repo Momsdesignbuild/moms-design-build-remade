@@ -378,6 +378,25 @@ export const COPY = {
         ],
       },
     ],
+    // Placeholder list: Southwest Metro cities Mom's already serves, plus Shakopee (the office).
+    // Replace with the service areas on Summer's new Google Business Profile.
+    cities: [
+      { name: 'Shakopee', slug: 'shakopee' },
+      { name: 'Chaska', slug: 'chaska' },
+      { name: 'Prior Lake', slug: 'prior-lake' },
+      { name: 'Chanhassen', slug: 'chanhassen' },
+      { name: 'Eden Prairie', slug: 'eden-prairie' },
+      { name: 'Minnetonka', slug: 'minnetonka' },
+      { name: 'Edina', slug: 'edina' },
+      { name: 'Maple Grove', slug: 'maple-grove' },
+    ],
+    cityMetaTitle: "Commercial Landscape Maintenance in {city}, MN - Mom's Commercial Maintenance",
+    cityMetaDescription: "Mom's Commercial Maintenance serves commercial properties in {city}, Minnesota: turf management, seasonal clean-up, fine gardening, irrigation, snow and ice management, holiday decorating and palm trees.",
+    cityHeading: 'Commercial Maintenance in {city}',
+    cityBody: [
+      "Your property is often the first impression your business makes. Mom's Commercial Maintenance keeps commercial grounds in {city} clean, healthy and professional all year, with a customized plan built around your property, your schedule and your standards.",
+      "From weekly turf care to snow and ice management and holiday decorating, one team handles the whole year, with fast, responsive communication whenever you need us.",
+    ],
     propertiesHeading: 'Serving the Greater Twin Cities Area',
     propertiesAnchorNote: 'Southwest Metro of Minnesota and surrounding communities',
     propertiesBody: "We proudly serve the Southwest Metro area of Minnesota and surrounding communities. Whether you manage a single building or oversee multiple properties, our team delivers dependable, professional service tailored to your needs, schedule, and operational requirements.",
