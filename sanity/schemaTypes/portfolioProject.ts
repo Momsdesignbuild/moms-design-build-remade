@@ -21,6 +21,7 @@ export default defineType({
     defineField({ name: 'videoUrl', title: 'Video URL (Vimeo/YouTube embed)', type: 'url' }),
     defineField({ name: 'designerName', title: 'Designer Name', type: 'string' }),
     defineField({ name: 'creditFirm', title: 'Add "of Mom\'s Design Build" after the designer credit', type: 'boolean', initialValue: false }),
+    defineField({ name: 'threeAcross', title: 'Show a set of 3 before / rendering photos in one row (computer and tablet)', type: 'boolean', initialValue: false }),
     defineField({ name: 'designerSlug', title: 'Designer Slug (for team page link)', type: 'string' }),
     defineField({ name: 'featured', title: 'Featured', type: 'boolean', initialValue: false }),
     // Legacy numeric order (WP-migration capture). Superseded by orderRank —

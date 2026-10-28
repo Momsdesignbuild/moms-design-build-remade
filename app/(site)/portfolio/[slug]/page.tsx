@@ -91,6 +91,7 @@ type PortfolioProject = {
   designerName?: string;
   designerSlug?: string;
   creditFirm?: boolean;
+  threeAcross?: boolean;
   location?: string;
   jsonLd?: string;
   sourceUrl?: string;
@@ -105,7 +106,7 @@ async function getProject(slug: string): Promise<PortfolioProject | null> {
       galleryBadges[]{ ..., asset },
       categories,
       description[]{ ..., _type == "image" => { "dim": asset->metadata.dimensions{ width, height } } },
-      videoUrl, designerName, designerSlug, creditFirm, location, completedYear, jsonLd, sourceUrl
+      videoUrl, designerName, designerSlug, creditFirm, threeAcross, location, completedYear, jsonLd, sourceUrl
     }`,
     params: { slug },
   });
@@ -581,7 +582,7 @@ export default async function PortfolioProjectPage({
                         {s.label}
                       </p>
                     )}
-                    <div className={`grid grid-cols-1 gap-3 px-6 md:px-0 ${"md:grid-cols-2"}`}>
+                    <div className={`grid grid-cols-1 gap-3 px-6 md:px-0 ${project.threeAcross && s.images.length === 3 ? "md:grid-cols-3" : "md:grid-cols-2"}`}>
                       {s.images.map((img, k) => (
                         <Reveal key={k}>
                           <Image
