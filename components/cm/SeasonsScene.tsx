@@ -64,7 +64,7 @@ export default function SeasonsScene({ videoUrl, mobileVideoUrl, imageUrl, state
             <span key={i} data-word style={{ opacity: 0.16 }} className="inline-block mr-[0.32em]">{w}</span>
           ))}
         </p>
-        <div className="absolute left-6 right-6 bottom-[7svh] lg:left-12 lg:right-auto lg:bottom-10 h-16 lg:h-8 text-white/85 text-[20px] font-semibold tracking-[0.2em] lg:tracking-[0.3em] uppercase text-center lg:text-left [text-shadow:0_1px_10px_rgba(0,0,0,0.5)]">
+        <div className="absolute left-6 right-6 bottom-[calc(84px+env(safe-area-inset-bottom))] lg:left-12 lg:right-auto lg:bottom-[92px] h-16 lg:h-8 text-white/85 text-[20px] font-semibold tracking-[0.2em] lg:tracking-[0.3em] uppercase text-center lg:text-left [text-shadow:0_1px_10px_rgba(0,0,0,0.5)]">
           {seasons.map((s, i) => (
             <span key={s.label} className={`absolute bottom-0 left-0 right-0 lg:right-auto lg:whitespace-nowrap transition-opacity duration-500 ${i === idx ? "opacity-100" : "opacity-0"}`} aria-hidden={i !== idx}>
               {s.label} <span className="hidden lg:inline opacity-60">/ </span><br className="lg:hidden" />{s.service}
