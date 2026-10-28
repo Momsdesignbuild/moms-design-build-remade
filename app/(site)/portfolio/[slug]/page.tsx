@@ -90,6 +90,7 @@ type PortfolioProject = {
   videoUrl?: string;
   designerName?: string;
   designerSlug?: string;
+  creditFirm?: boolean;
   location?: string;
   jsonLd?: string;
   sourceUrl?: string;
@@ -104,7 +105,7 @@ async function getProject(slug: string): Promise<PortfolioProject | null> {
       galleryBadges[]{ ..., asset },
       categories,
       description[]{ ..., _type == "image" => { "dim": asset->metadata.dimensions{ width, height } } },
-      videoUrl, designerName, designerSlug, location, completedYear, jsonLd, sourceUrl
+      videoUrl, designerName, designerSlug, creditFirm, location, completedYear, jsonLd, sourceUrl
     }`,
     params: { slug },
   });
@@ -677,7 +678,8 @@ export default async function PortfolioProjectPage({
                 </span>
               );
             })}
-            {!project.designerName && (
+            {project.designerName && project.creditFirm && " of "}{/* ui-label: credit line joiner */}
+            {(!project.designerName || project.creditFirm) && (
               <Link
                 href="/"
                 className="text-brand underline decoration-brand/30 underline-offset-4 hover:decoration-brand transition-colors"
