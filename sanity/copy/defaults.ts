@@ -293,7 +293,6 @@ export const COPY = {
     moreLabel: 'More',
     moreItems: [
       { label: 'Careers', href: '/careers' },
-      { label: 'Blog', href: '/blog' },
     ],
     blogLabel: 'Blog',
     contactMetaTitle: "Contact Mom's Commercial Maintenance - Twin Cities Commercial Grounds & Snow",

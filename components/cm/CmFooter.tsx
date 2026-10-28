@@ -34,7 +34,6 @@ export default function CmFooter({ cm, nav }: { cm: Cm; nav: Nav }) {
           <li><Link href="/commercial/about" className={linkCls}>{cm.aboutLabel}</Link></li>
           <li><Link href="/commercial/contact" className={linkCls}>{cm.ctaLabel}</Link></li>
           <li><Link href="/careers" className={linkCls}>{cm.careersLabel}</Link></li>
-          <li><Link href="/blog" className={linkCls}>{cm.blogLabel}</Link></li>
           {nav.footerLinks.filter((l) => l.href === "/privacy-policy").map((l) => (
             <li key={l.href}><Link href={l.href} className={linkCls}>{l.label}</Link></li>
           ))}
