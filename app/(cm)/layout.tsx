@@ -1,5 +1,6 @@
 import CmHeader from "@/components/cm/CmHeader";
 import CmFooter from "@/components/cm/CmFooter";
+import CmMobileBar from "@/components/cm/CmMobileBar";
 import { getCopy } from "@/sanity/lib/copy";
 
 // The Commercial Maintenance (CM) section: same site, its own header and footer.
@@ -16,6 +17,7 @@ export default async function CmLayout({ children }: { children: React.ReactNode
       <CmHeader cm={cm} />
       <main id="main-content">{children}</main>
       <CmFooter cm={cm} nav={nav} />
+      <CmMobileBar cm={cm} nav={nav} />
     </>
   );
 }

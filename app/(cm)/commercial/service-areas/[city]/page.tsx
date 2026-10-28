@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getCopy } from "@/sanity/lib/copy";
 import { COPY } from "@/sanity/copy/defaults";
-import { PageHero, Intro, Rows, FaqCards, SectionHead, ServiceTiles, CitiesBand, ClosingCta } from "@/components/cm/CmParts";
+import { PageHero, Intro, Rows, FaqCards, SectionHead, ServiceTiles, CitiesBand, ClosingCta, CtaStrip } from "@/components/cm/CmParts";
 
 // One page per CM service area. Same template for every city until each gets its own
 // researched words; {city} in the Studio text is replaced with the city's name.
@@ -44,6 +44,7 @@ export default async function CmCityPage({ params }: { params: Promise<{ city: s
         <ServiceTiles services={c.services} label={c.learnMoreLabel} />
       </section>
       <Rows sections={c.citySections} fill={fill} />
+      <CtaStrip />
       <section className={`px-6 py-20 md:py-28 ${faqBg}`}>
         <SectionHead>{c.faqHeading}</SectionHead>
         <FaqCards faqs={c.cityFaqs} fill={fill} />

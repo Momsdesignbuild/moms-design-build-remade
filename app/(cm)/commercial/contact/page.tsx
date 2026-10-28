@@ -23,7 +23,7 @@ export default async function CmContact() {
   const link = "text-white hover:text-brand transition-colors";
   return (
     <>
-      <PageHero image={c.heroImage} title={c.contactHeading} />
+      <PageHero image={c.heroImage} title={c.contactHeading} cta={false} />
       <section className="px-6 py-14 md:py-20 bg-white text-center">
         <p className="text-[22px] md:text-[28px] font-[300] leading-relaxed text-ink max-w-3xl mx-auto">{c.contactSubline}</p>
       </section>

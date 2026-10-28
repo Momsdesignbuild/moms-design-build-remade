@@ -10,7 +10,7 @@ const linkCls = "text-[20px] tracking-[0.1em] uppercase font-[300] hover:text-wh
 // and the residential site are the only links that leave the section, and say so.
 export default function CmFooter({ cm, nav }: { cm: Cm; nav: Nav }) {
   return (
-    <footer className="bg-[#3C3C3C] text-white/75">
+    <footer className="bg-[#3C3C3C] text-white/75 pb-[72px] lg:pb-0">
       <div className="max-w-[1400px] mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-10 items-start">
         <address className="not-italic flex flex-col gap-3 text-[20px] font-[300] leading-relaxed">
           <a href={nav.addressLink} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
@@ -20,6 +20,7 @@ export default function CmFooter({ cm, nav }: { cm: Cm; nav: Nav }) {
           </a>
           <a href={`mailto:${nav.email}`} className="hover:text-white transition-colors">{nav.email}</a>
           <a href={nav.phoneHref} className="hover:text-white transition-colors tracking-[0.12em]">{nav.phone}</a>
+          <Link href="/commercial/contact" className="self-start mt-3 bg-brand text-white text-[18px] font-[600] tracking-[0.18em] uppercase whitespace-nowrap px-7 py-3.5 hover:bg-brand-dark transition-colors">{cm.ctaLabel}</Link>
         </address>
 
         <nav aria-label="Commercial footer navigation">
@@ -32,7 +33,6 @@ export default function CmFooter({ cm, nav }: { cm: Cm; nav: Nav }) {
 
         <ul className="flex flex-col md:items-end gap-2.5">
           <li><Link href="/commercial/about" className={linkCls}>{cm.aboutLabel}</Link></li>
-          <li><Link href="/commercial/contact" className={linkCls}>{cm.ctaLabel}</Link></li>
           <li><Link href="/careers" className={linkCls}>{cm.careersLabel}</Link></li>
           {nav.footerLinks.filter((l) => l.href === "/privacy-policy").map((l) => (
             <li key={l.href}><Link href={l.href} className={linkCls}>{l.label}</Link></li>

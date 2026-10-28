@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { getCopy } from "@/sanity/lib/copy";
 
 // Shared pieces for the Commercial Maintenance pages. Layout and imagery only: every visitor-facing
 // word is passed in from the Sanity text, so the words check has nothing new to flag.
@@ -15,14 +16,21 @@ export const h2 = "text-3xl md:text-5xl font-[300] tracking-[0.06em] uppercase t
 const body = "text-[19px] md:text-[20px] font-[400] leading-[1.8] text-[#3c3c3c]";
 const card = "shadow-[0_2px_14px_rgba(0,0,0,0.06)]";
 
-export function PageHero({ image, title }: { image: Img; title: string }) {
+export async function PageHero({ image, title, cta = true }: { image: Img; title: string; cta?: boolean }) {
+  const [c, nav] = cta ? await Promise.all([getCopy("cm"), getCopy("nav")]) : [null, null];
   return (
     <section className="relative min-h-[340px] md:min-h-[480px] flex items-end bg-[#222] overflow-hidden">
       <Image src={image.url} alt={image.alt} fill priority sizes="100vw" className="object-cover" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-black/10" />
-      <div className="relative w-full max-w-[1200px] mx-auto px-6 md:px-10 pb-12 md:pb-16">
+      <div className="relative w-full max-w-[1200px] mx-auto px-6 md:px-10 pt-14 pb-12 md:pt-20 md:pb-16">
         <h1 className="max-w-[900px] font-[300] text-[clamp(2rem,5vw,3.75rem)] leading-[1.08] tracking-[0.05em] uppercase !text-white [text-shadow:0_1px_14px_rgba(0,0,0,0.5)]">{title}</h1>
         <div className="mt-6 w-16 h-1 bg-brand" />
+        {c && nav && (
+          <div className="mt-8 flex flex-wrap items-center gap-3 md:gap-4">
+            <Link href="/commercial/contact" className="bg-brand text-white text-[17px] md:text-[20px] font-[600] tracking-[0.18em] uppercase whitespace-nowrap px-7 py-3.5 hover:bg-brand-dark transition-colors">{c.ctaLabel}</Link>
+            <a href={nav.phoneHref} className="hidden sm:inline-block border-2 border-white/80 text-white text-[17px] md:text-[20px] font-[600] tracking-[0.12em] whitespace-nowrap px-6 py-3 hover:bg-white hover:!text-ink transition-colors">{nav.phone}</a>
+          </div>
+        )}
       </div>
     </section>
   );
@@ -184,6 +192,19 @@ export function ClosingCta({ heading, text, label }: { heading: string; text: st
       <Link href="/commercial/contact" className="mt-10 inline-block border-2 border-brand bg-brand text-white text-[20px] font-[600] tracking-[0.22em] uppercase px-10 py-4 hover:bg-transparent hover:text-white transition-colors duration-300">
         {label}
       </Link>
+    </section>
+  );
+}
+
+/** A slim teal band with the two ways to reach us, for the middle of long pages. */
+export async function CtaStrip() {
+  const [c, nav] = await Promise.all([getCopy("cm"), getCopy("nav")]);
+  return (
+    <section className="bg-brand px-6 py-8 md:py-10">
+      <div className="max-w-[1100px] mx-auto flex flex-wrap items-center justify-center gap-4 md:gap-6">
+        <Link href="/commercial/contact" className="bg-white !text-ink text-[18px] md:text-[20px] font-[600] tracking-[0.18em] uppercase whitespace-nowrap px-8 py-3.5 hover:bg-[#3C3C3C] hover:!text-white transition-colors">{c.ctaLabel}</Link>
+        <a href={nav.phoneHref} className="text-white text-[22px] md:text-[26px] font-[400] tracking-[0.1em] whitespace-nowrap hover:underline underline-offset-4">{nav.phone}</a>
+      </div>
     </section>
   );
 }

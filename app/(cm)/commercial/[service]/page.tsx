@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getCopy } from "@/sanity/lib/copy";
 import { COPY } from "@/sanity/copy/defaults";
-import { PageHero, Intro, Rows, Checklist, FaqCards, SectionHead, ServiceTiles, CitiesBand, ClosingCta } from "@/components/cm/CmParts";
+import { PageHero, Intro, Rows, Checklist, FaqCards, SectionHead, ServiceTiles, CitiesBand, ClosingCta, CtaStrip } from "@/components/cm/CmParts";
 
 // One page per CM service, all read from the "cm" page-text document.
 export function generateStaticParams() {
@@ -38,6 +38,7 @@ export default async function CmServicePage({ params }: { params: Promise<{ serv
       <PageHero image={s.image} title={s.title} />
       <Intro paras={s.body} />
       <Rows sections={s.sections} offset={1} />
+      <CtaStrip />
       <section className={`px-6 py-20 md:py-28 ${a}`}>
         <SectionHead>{c.includedHeading}</SectionHead>
         <Checklist items={s.included} />
