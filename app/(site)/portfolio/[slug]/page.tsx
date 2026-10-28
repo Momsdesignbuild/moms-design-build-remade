@@ -90,6 +90,8 @@ type PortfolioProject = {
   videoUrl?: string;
   designerName?: string;
   designerSlug?: string;
+  creditFirm?: boolean;
+  threeAcross?: boolean;
   location?: string;
   jsonLd?: string;
   sourceUrl?: string;
@@ -104,6 +106,7 @@ async function getProject(slug: string): Promise<PortfolioProject | null> {
       galleryBadges[]{ ..., asset },
       categories,
       description[]{ ..., _type == "image" => { "dim": asset->metadata.dimensions{ width, height } } },
+      creditFirm, threeAcross,
       videoUrl, designerName, designerSlug, location, completedYear, jsonLd, sourceUrl
     }`,
     params: { slug },
@@ -580,7 +583,28 @@ export default async function PortfolioProjectPage({
                         {s.label}
                       </p>
                     )}
-                    <div className={`grid grid-cols-1 gap-3 px-6 md:px-0 ${"md:grid-cols-2"}`}>
+                    {project.threeAcross && s.images.length === 3 ? (
+                      // same-height row: each photo keeps its own shape, width follows its aspect ratio, nothing is cropped
+                      <div className="flex flex-col md:flex-row gap-3 px-6 md:px-0">
+                        {s.images.map((img, k) => {
+                          const d = sized(img.dim, 1000);
+                          return (
+                            <div key={k} className="md:min-w-0 md:[flex:var(--ar)_1_0%]" style={{ "--ar": d.width / d.height } as React.CSSProperties}>
+                              <Reveal>
+                                <Image
+                                  src={urlFor(img).width(1000).auto("format").url()}
+                                  alt={img.alt || project.title}
+                                  {...d}
+                                  className="w-full h-auto"
+                                  sizes="(max-width: 768px) 100vw, 50vw" // ui-label: image size hint, not words
+                                />
+                              </Reveal>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    ) : (
+                    <div className="grid grid-cols-1 gap-3 px-6 md:px-0 md:grid-cols-2">
                       {s.images.map((img, k) => (
                         <Reveal key={k}>
                           <Image
@@ -594,6 +618,7 @@ export default async function PortfolioProjectPage({
                         </Reveal>
                       ))}
                     </div>
+                    )}
                   </div>
                 );
               case "image":
@@ -677,7 +702,8 @@ export default async function PortfolioProjectPage({
                 </span>
               );
             })}
-            {!project.designerName && (
+            {project.designerName && project.creditFirm && " of "}{/* ui-label: credit line joiner */}
+            {(!project.designerName || project.creditFirm) && (
               <Link
                 href="/"
                 className="text-brand underline decoration-brand/30 underline-offset-4 hover:decoration-brand transition-colors"
