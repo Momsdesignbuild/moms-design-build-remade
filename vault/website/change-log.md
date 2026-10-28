@@ -9,6 +9,10 @@ Every site change, dated, newest first. What changed, why, and the result
 when it's known. This is how a conversation three weeks from now knows what
 already happened.
 
+## 2026-10-28
+
+- 2026-10-28 Josh: new portfolio project Enchanted Entry (Deephaven, MN) at /portfolio/enchanted-entry/; portfolio projects get two optional switches ("of Mom's Design Build" after the designer credit, and a same-height row of three before/rendering photos), both on for Enchanted Entry only, portfolio.
+
 ## 2026-10-21
 
 - 2026-10-21 Jarvis: Google title and description of the homepage, About, Process, Contact, Services, Careers, Portfolio, Blog and Team pages are now editable in the Studio (collapsed "Google search" section) and from the Codespace with --allow-seo, only on a clear ask and with the old text logged. Same text as before; slugs, canonicals and schema stay locked.
