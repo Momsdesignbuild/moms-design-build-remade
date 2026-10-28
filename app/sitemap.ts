@@ -58,7 +58,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // servicePage slugs: section pages live under /services/, root-level info
     // pages (homeowner-portal, commercial-spaces) are already in statics
     ...services
-      .filter((s) => s.slug.current.includes("/") || ["landscape-architecture", "interior-design-and-remodeling", "garden-management", "commerical-maintenance"].includes(s.slug.current))
+      .filter((s) => s.slug.current.includes("/") || ["landscape-architecture", "interior-design-and-remodeling", "garden-management"].includes(s.slug.current))
       .map((s) => entry(`/services/${s.slug.current}`, new Date(s._updatedAt), "monthly", 0.8)),
     ...projects.map((p) => entry(`/portfolio/${p.slug.current}`, new Date(p._updatedAt), "monthly", 0.7)),
     // posts live at ROOT paths (their WP structure), never /blog/<slug>

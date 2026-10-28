@@ -34,7 +34,7 @@ const SERVICES = [
     description: 'Reliable, consistent, beautiful commercial landscapes — every season.',
     image: 'https://cdn.sanity.io/images/wavk40jo/production/7e8c32c76b3b3b28bd00417af8d40b405a6f1275-1500x1124.jpg',
     alt: "Mom's Commercial Maintenance - Commercial Landscape in Minnesota",
-    href: '/services/commerical-maintenance',
+    href: '/commercial',
   },
 ]
 

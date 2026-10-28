@@ -28,6 +28,8 @@ const nextConfig: NextConfig = {
     // so their link equity and any bookmarks land somewhere real.
     return [
       ...fromWordPress,
+      // Commercial Maintenance has its own section now; the old services page (and its typo'd slug) lands on its home.
+      { source: "/services/commerical-maintenance/", destination: "/commercial/", permanent: true },
       { source: "/tag/:path*", destination: "/blog", permanent: true },
       { source: "/author/:path*", destination: "/blog", permanent: true },
       // old (Squarespace-era) addresses live WordPress's Redirection plugin sends on — found by crawling 10/5.

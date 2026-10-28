@@ -32,8 +32,7 @@ export const COPY = {
           { label: 'Landscape Architecture', href: '/services/landscape-architecture' },
           { label: 'Interior Design & Remodeling', href: '/services/interior-design-and-remodeling' },
           { label: 'Residential Fine Gardening', href: '/services/garden-management' },
-          // yes, "commerical": the live slug carries this typo; keeping it preserves the URL
-          { label: 'Commercial Maintenance', href: '/services/commerical-maintenance' },
+          { label: 'Commercial Maintenance', href: '/commercial' },
         ],
       },
       { label: 'Blog', href: '/blog' },
@@ -246,7 +245,7 @@ export const COPY = {
       },
       {
         title: 'Commercial Maintenance',
-        href: '/services/commerical-maintenance',
+        href: '/commercial',
         image: I(CDN + '76b6e92d3cbfa29d0db6230a4f610adec8971951-768x512.jpg', "Mom's Commercial Maintenance — professional grounds care in Minnesota"),
         description: "Your property is often the first impression your business makes, and we ensure it's stunning. Mom's Commercial Maintenance delivers customized plans, luxury-level service, and responsive support to keep your grounds clean, professional, and disruption-free year-round.",
       },
