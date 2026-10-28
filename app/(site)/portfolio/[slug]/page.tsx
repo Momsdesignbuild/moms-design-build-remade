@@ -106,7 +106,8 @@ async function getProject(slug: string): Promise<PortfolioProject | null> {
       galleryBadges[]{ ..., asset },
       categories,
       description[]{ ..., _type == "image" => { "dim": asset->metadata.dimensions{ width, height } } },
-      videoUrl, designerName, designerSlug, creditFirm, threeAcross, location, completedYear, jsonLd, sourceUrl
+      videoUrl, designerName, designerSlug, location, completedYear, jsonLd, sourceUrl,
+      creditFirm, threeAcross
     }`,
     params: { slug },
   });
@@ -595,7 +596,7 @@ export default async function PortfolioProjectPage({
                                   alt={img.alt || project.title}
                                   {...d}
                                   className="w-full h-auto"
-                                  sizes="(max-width: 768px) 100vw, 50vw"
+                                  sizes="(max-width: 768px) 100vw, 50vw" // ui-label: image size hint, not words
                                 />
                               </Reveal>
                             </div>
