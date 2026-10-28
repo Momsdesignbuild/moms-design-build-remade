@@ -106,8 +106,8 @@ async function getProject(slug: string): Promise<PortfolioProject | null> {
       galleryBadges[]{ ..., asset },
       categories,
       description[]{ ..., _type == "image" => { "dim": asset->metadata.dimensions{ width, height } } },
-      videoUrl, designerName, designerSlug, location, completedYear, jsonLd, sourceUrl,
-      creditFirm, threeAcross
+      creditFirm, threeAcross,
+      videoUrl, designerName, designerSlug, location, completedYear, jsonLd, sourceUrl
     }`,
     params: { slug },
   });
