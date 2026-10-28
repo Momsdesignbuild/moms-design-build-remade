@@ -29,7 +29,7 @@ export default async function CmContact() {
       </section>
       <section className="px-6 pb-20 md:pb-28 bg-white">
         <div className="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-[1fr_1.35fr] gap-8 md:gap-12 items-start">
-          <div className="bg-[#2B3A3F] text-white p-8 md:p-10">
+          <div className="bg-[#2B3A3F] text-white p-8 md:p-10 md:sticky md:top-28">
             <h2 className="text-[20px] font-[300] tracking-[0.2em] uppercase !text-white mb-8">{labels.infoHeading}</h2>
             <address className="not-italic space-y-7 text-[20px] font-[300] leading-relaxed text-white/90">
               <div>

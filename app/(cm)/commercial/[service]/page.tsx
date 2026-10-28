@@ -30,7 +30,6 @@ export async function generateMetadata({ params }: { params: Promise<{ service: 
 export default async function CmServicePage({ params }: { params: Promise<{ service: string }> }) {
   const { c, s } = await find((await params).service);
   if (!s) notFound();
-  const others = c.services.filter((x) => x.slug !== s.slug);
   // The rows start on the light background (offset 1). The bands after them alternate from the color the last row ended on.
   const a = s.sections.length % 2 === 1 ? "bg-white" : "bg-brand-light";
   const b = a === "bg-white" ? "bg-brand-light" : "bg-white";
@@ -49,7 +48,7 @@ export default async function CmServicePage({ params }: { params: Promise<{ serv
       </section>
       <section className={`px-4 md:px-8 py-20 md:py-28 ${a}`}>
         <SectionHead>{c.servicesHeading}</SectionHead>
-        <ServiceTiles services={others} label={c.learnMoreLabel} />
+        <ServiceTiles services={c.services} label={c.learnMoreLabel} />
       </section>
       <CitiesBand image={c.seasonsImage} heading={c.propertiesHeading} cities={c.cities} />
       <ClosingCta heading={c.closingHeading} text={c.closingBody} label={c.ctaLabel} />
