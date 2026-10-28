@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getCopy } from "@/sanity/lib/copy";
 import { COPY } from "@/sanity/copy/defaults";
+import { PageHero, Intro, Rows, FaqCards, SectionHead, ServiceTiles, CitiesBand, ClosingCta } from "@/components/cm/CmParts";
 
 // One page per CM service area. Same template for every city until each gets its own
 // researched words; {city} in the Studio text is replaced with the city's name.
@@ -34,54 +33,23 @@ export async function generateMetadata({ params }: { params: Promise<{ city: str
 export default async function CmCityPage({ params }: { params: Promise<{ city: string }> }) {
   const { c, city, fill } = await find((await params).city);
   if (!city) notFound();
+  // After the light services band the rows start white; the FAQ band takes the opposite of the last row.
+  const faqBg = c.citySections.length % 2 === 0 ? "bg-white" : "bg-brand-light";
   return (
     <>
-      <section className="relative h-[40vh] min-h-[320px] flex items-center justify-center bg-[#222]">
-        <Image src={c.heroImage.url} alt={c.heroImage.alt} fill priority sizes="100vw" className="object-cover opacity-45" />
-        <h1 className="relative px-6 max-w-[1000px] text-center text-white font-[300] text-[34px] md:text-[52px] leading-[1.1] tracking-[0.05em] uppercase [text-shadow:0_1px_14px_rgba(0,0,0,0.5)]">
-          {fill(c.cityHeading)}
-        </h1>
+      <PageHero image={city.image} title={fill(c.cityHeading)} />
+      <Intro paras={[...city.intro, ...c.cityBody]} fill={fill} />
+      <section className="px-4 md:px-8 py-20 md:py-28 bg-brand-light">
+        <SectionHead>{fill(c.cityServicesHeading)}</SectionHead>
+        <ServiceTiles services={c.services} label={c.learnMoreLabel} />
       </section>
-      <section className="px-6 py-20 bg-white">
-        <div className="max-w-[820px] mx-auto flex flex-col gap-6">
-          {city.intro.map((p, i) => (
-            <p key={`i${i}`} className="text-[20px] font-[300] leading-[1.8] text-brand-mid">{fill(p)}</p>
-          ))}
-          <Image src={city.image.url} alt={city.image.alt} width={1200} height={800} sizes="(max-width: 820px) 100vw, 820px" className="w-full aspect-[3/2] object-cover" />
-          {c.cityBody.map((p, i) => (
-            <p key={i} className="text-[20px] font-[300] leading-[1.8] text-brand-mid">{fill(p)}</p>
-          ))}
-          {c.citySections.map((sec) => (
-            <div key={sec.heading} className="flex flex-col gap-6">
-              <h2 className="text-[26px] md:text-[34px] font-[300] leading-[1.2] tracking-[0.06em] uppercase text-ink mt-8">{fill(sec.heading)}</h2>
-              {sec.image && <Image src={sec.image.url} alt={sec.image.alt} width={1200} height={800} sizes="(max-width: 820px) 100vw, 820px" className="w-full aspect-[3/2] object-cover" />}
-              {sec.body.map((p, i) => (
-                <p key={i} className="text-[20px] font-[300] leading-[1.8] text-brand-mid">{fill(p)}</p>
-              ))}
-            </div>
-          ))}
-          <h2 className="text-[26px] md:text-[34px] font-[300] leading-[1.2] tracking-[0.06em] uppercase text-ink mt-8">{fill(c.cityServicesHeading)}</h2>
-          <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-2 mt-4">
-            {c.services.map((s) => (
-              <li key={s.slug}>
-                <Link href={`/commercial/${s.slug}`} className="text-[20px] font-[300] text-brand-mid underline underline-offset-4 hover:text-brand">{s.title}</Link>
-              </li>
-            ))}
-          </ul>
-          <h2 className="text-[26px] md:text-[34px] font-[300] leading-[1.2] tracking-[0.06em] uppercase text-ink mt-8">{c.faqHeading}</h2>
-          <div className="flex flex-col gap-6">
-            {c.cityFaqs.map((f, i) => (
-              <div key={i}>
-                <h3 className="text-[20px] font-[500] tracking-[0.08em] uppercase text-ink">{fill(f.q)}</h3>
-                <p className="mt-2 text-[20px] font-[300] leading-[1.8] text-brand-mid">{fill(f.a)}</p>
-              </div>
-            ))}
-          </div>
-          <Link href="/commercial/contact" className="self-start mt-6 bg-brand text-white text-[20px] font-[600] tracking-[0.18em] uppercase px-8 py-4 hover:bg-brand-dark transition-colors">
-            {c.ctaLabel}
-          </Link>
-        </div>
+      <Rows sections={c.citySections} fill={fill} />
+      <section className={`px-6 py-20 md:py-28 ${faqBg}`}>
+        <SectionHead>{c.faqHeading}</SectionHead>
+        <FaqCards faqs={c.cityFaqs} fill={fill} />
       </section>
+      <CitiesBand image={c.seasonsImage} heading={c.propertiesHeading} cities={c.cities} current={city.slug} />
+      <ClosingCta heading={c.closingHeading} text={c.closingBody} label={c.ctaLabel} />
     </>
   );
 }

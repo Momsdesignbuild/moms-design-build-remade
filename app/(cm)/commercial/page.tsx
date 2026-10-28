@@ -4,6 +4,7 @@ import Link from "next/link";
 import { getCopy } from "@/sanity/lib/copy";
 import SeasonsScene from "@/components/cm/SeasonsScene";
 import HeroTop from "@/components/cm/HeroTop";
+import { ServiceTiles } from "@/components/cm/CmParts";
 
 export async function generateMetadata(): Promise<Metadata> {
   const c = await getCopy("cm");
@@ -61,24 +62,7 @@ export default async function CmHome() {
       <section id="services" className="px-4 md:px-8 py-20 md:py-28 bg-brand-light scroll-mt-[90px]">
         <h2 className={`${h2} mb-3`}>{c.servicesHeading}</h2>
         <div className="w-16 h-1 bg-brand mx-auto mb-12 md:mb-16" />
-        <div className="max-w-[1240px] mx-auto grid grid-cols-2 lg:grid-cols-4 lg:auto-rows-[300px] gap-3 lg:gap-4">
-          {c.services.map((s, i) => {
-            const feature = i === 0;
-            const wide = i >= c.services.length - 2;
-            const span = feature ? "col-span-2 aspect-[16/10] lg:aspect-auto lg:row-span-2" : `aspect-[4/5] lg:aspect-auto ${wide ? "lg:col-span-2" : ""}`;
-            return (
-              <Link key={s.slug} href={`/commercial/${s.slug}`} className={`group relative block overflow-hidden bg-[#222] ${span}`}>
-                <Image src={s.image.url} alt={s.image.alt} fill sizes="(max-width: 1024px) 50vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.06]" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-4 md:p-6 text-white [text-shadow:0_1px_12px_rgba(0,0,0,0.6)]">
-                  <h3 className={`font-[400] tracking-[0.14em] uppercase leading-snug !text-white ${feature ? "text-[22px] md:text-[28px]" : "text-[15px] md:text-[19px]"}`}>{s.title}</h3>
-                  <p className={`mt-2 text-[17px] font-[300] leading-relaxed text-white/90 max-w-[40ch] ${feature ? "hidden md:block" : "hidden lg:block lg:max-h-0 lg:opacity-0 lg:overflow-hidden lg:transition-all lg:duration-300 lg:group-hover:max-h-24 lg:group-hover:opacity-100 lg:group-focus-visible:max-h-24 lg:group-focus-visible:opacity-100"}`}>{s.summary}</p>
-                  <span className="mt-3 inline-block text-[13px] md:text-[14px] font-semibold tracking-[0.24em] uppercase text-brand border-b border-brand/40 pb-0.5 group-hover:border-brand transition-colors">{c.learnMoreLabel} →</span>
-                </div>
-              </Link>
-            );
-          })}
-        </div>
+        <ServiceTiles services={c.services} label={c.learnMoreLabel} />
       </section>
 
       <section id="properties" className="relative px-5 md:px-8 py-24 md:py-32 scroll-mt-[90px] text-white overflow-hidden">
@@ -126,7 +110,7 @@ export default async function CmHome() {
             <div className={`mx-auto grid gap-10 md:gap-16 items-center ${sec.image ? "max-w-[1200px] md:grid-cols-2" : "max-w-[820px]"}`}>
               {sec.image && (
                 <div className={i % 2 === 0 ? "md:order-2" : ""}>
-                  <Image src={sec.image.url} alt={sec.image.alt} width={1200} height={900} sizes="(max-width: 768px) 100vw, 600px" className="w-full aspect-[4/3] object-cover shadow-[0_12px_40px_rgba(0,0,0,0.15)]" />
+                  <Image src={sec.image.url} alt={sec.image.alt} width={1200} height={900} sizes="(max-width: 768px) 100vw, 600px" className="w-full aspect-[4/3] object-cover shadow-[0_12px_40px_rgba(0,0,0,0.15)]" /> {/* ui-label: image size hint, not visitor text */}
                 </div>
               )}
               <div className="flex flex-col gap-6">

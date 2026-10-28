@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getCopy } from "@/sanity/lib/copy";
 import { COPY } from "@/sanity/copy/defaults";
+import { PageHero, Intro, Rows, Checklist, FaqCards, SectionHead, ServiceTiles, CitiesBand, ClosingCta } from "@/components/cm/CmParts";
 
 // One page per CM service, all read from the "cm" page-text document.
 export function generateStaticParams() {
@@ -31,53 +30,29 @@ export async function generateMetadata({ params }: { params: Promise<{ service: 
 export default async function CmServicePage({ params }: { params: Promise<{ service: string }> }) {
   const { c, s } = await find((await params).service);
   if (!s) notFound();
+  const others = c.services.filter((x) => x.slug !== s.slug);
+  // The rows start on the light background (offset 1). The bands after them alternate from the color the last row ended on.
+  const a = s.sections.length % 2 === 1 ? "bg-white" : "bg-brand-light";
+  const b = a === "bg-white" ? "bg-brand-light" : "bg-white";
   return (
     <>
-      <section className="relative h-[40vh] min-h-[320px] flex items-center justify-center bg-[#222]">
-        <Image src={s.image.url} alt={s.image.alt} fill priority sizes="100vw" className="object-cover opacity-45" />
-        <h1 className="relative px-6 text-center text-white font-[300] text-[36px] md:text-[56px] leading-[1.1] tracking-[0.05em] uppercase [text-shadow:0_1px_14px_rgba(0,0,0,0.5)]">
-          {s.title}
-        </h1>
+      <PageHero image={s.image} title={s.title} />
+      <Intro paras={s.body} />
+      <Rows sections={s.sections} offset={1} />
+      <section className={`px-6 py-20 md:py-28 ${a}`}>
+        <SectionHead>{c.includedHeading}</SectionHead>
+        <Checklist items={s.included} />
       </section>
-      <section className="px-6 py-20 bg-white">
-        <div className="max-w-[820px] mx-auto flex flex-col gap-6">
-          {s.body.map((p, i) => (
-            <p key={i} className="text-[20px] font-[300] leading-[1.8] text-brand-mid">{p}</p>
-          ))}
-          {s.sections.map((sec) => (
-            <div key={sec.heading} className="flex flex-col gap-6">
-              <h2 className="text-[26px] md:text-[34px] font-[300] leading-[1.2] tracking-[0.06em] uppercase text-ink mt-8">{sec.heading}</h2>
-              {sec.image && <Image src={sec.image.url} alt={sec.image.alt} width={1200} height={800} sizes="(max-width: 820px) 100vw, 820px" className="w-full aspect-[3/2] object-cover" />}
-              {sec.body.map((p, i) => (
-                <p key={i} className="text-[20px] font-[300] leading-[1.8] text-brand-mid">{p}</p>
-              ))}
-            </div>
-          ))}
-          <h2 className="text-[26px] md:text-[34px] font-[300] leading-[1.2] tracking-[0.06em] uppercase text-ink mt-8">{c.includedHeading}</h2>
-          <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-2">
-            {s.included.map((x) => (
-              <li key={x} className="text-[20px] font-[300] leading-[1.6] text-brand-mid before:content-['—'] before:mr-3 before:text-brand">{x}</li>
-            ))}
-          </ul>
-          <h2 className="text-[26px] md:text-[34px] font-[300] leading-[1.2] tracking-[0.06em] uppercase text-ink mt-8">{c.faqHeading}</h2>
-          <div className="flex flex-col gap-6">
-            {s.faqs.map((f, i) => (
-              <div key={i}>
-                <h3 className="text-[20px] font-[500] tracking-[0.08em] uppercase text-ink">{f.q}</h3>
-                <p className="mt-2 text-[20px] font-[300] leading-[1.8] text-brand-mid">{f.a}</p>
-              </div>
-            ))}
-          </div>
-          <div className="flex flex-wrap gap-4 mt-6">
-            <Link href="/commercial/contact" className="bg-brand text-white text-[20px] font-[600] tracking-[0.18em] uppercase px-8 py-4 hover:bg-brand-dark transition-colors">
-              {c.ctaLabel}
-            </Link>
-            <Link href="/commercial#services" className="border border-brand text-brand-mid text-[20px] font-[600] tracking-[0.12em] uppercase px-8 py-4 hover:bg-gray-50 transition-colors">
-              {c.servicesHeading}
-            </Link>
-          </div>
-        </div>
+      <section className={`px-6 py-20 md:py-28 ${b}`}>
+        <SectionHead>{c.faqHeading}</SectionHead>
+        <FaqCards faqs={s.faqs} />
       </section>
+      <section className={`px-4 md:px-8 py-20 md:py-28 ${a}`}>
+        <SectionHead>{c.servicesHeading}</SectionHead>
+        <ServiceTiles services={others} label={c.learnMoreLabel} />
+      </section>
+      <CitiesBand image={c.seasonsImage} heading={c.propertiesHeading} cities={c.cities} />
+      <ClosingCta heading={c.closingHeading} text={c.closingBody} label={c.ctaLabel} />
     </>
   );
 }
