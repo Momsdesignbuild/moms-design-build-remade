@@ -30,6 +30,27 @@ const nextConfig: NextConfig = {
       ...fromWordPress,
       // Commercial Maintenance has its own section now; the old services page (and its typo'd slug) lands on its home.
       { source: "/services/commerical-maintenance/", destination: "/commercial/", permanent: true },
+      // legacy-404: URLs Search Console reported as 404 (checked live 2026-10-29). Each goes to the nearest real page.
+      { source: "/wp-content/uploads/2023/05/WarrantyMomsDesignBuild.pdf", destination: "https://cdn.sanity.io/files/wavk40jo/production/25db9c7900412d5804296d38abb9eb145bb8c1ab.pdf", permanent: true },
+      { source: "/home/", destination: "/", permanent: true },
+      { source: "/outdoor-lights/", destination: "/outdoor-lighting-trends/", permanent: true },
+      { source: "/karie-zemlicka/", destination: "/team/", permanent: true },
+      { source: "/karie-/", destination: "/team/", permanent: true },
+      { source: "/japan-english/", destination: "/turning-japanese/", permanent: true },
+      { source: "/career-fair-2021/", destination: "/careers/", permanent: true },
+      { source: "/careers/design-build-project-coordinator-job-listing-minnesota/", destination: "/careers/", permanent: true },
+      { source: "/careers/controller-administrative-director-hiring-minnesota/", destination: "/careers/", permanent: true },
+      { source: "/careers/fine-gardening-property-manager-job-listing-minnesota/", destination: "/careers/", permanent: true },
+      { source: "/careers/professional-gardener-job-listing-minnesota/", destination: "/careers/", permanent: true },
+      { source: "/careers/social-media-job-opportunity-in-minnesota/", destination: "/careers/", permanent: true },
+      { source: "/portfolio/sunset-terrace/", destination: "/portfolio/", permanent: true },
+      { source: "/portfolio/st-paul-summer-splash/", destination: "/portfolio/", permanent: true },
+      { source: "/portfolio/porcelain-porch/", destination: "/portfolio/", permanent: true },
+      { source: "/services/landscape-architecture/water-features-1/", destination: "/services/landscape-architecture/water-features/", permanent: true },
+      { source: "/services/landscape-architecture/patio-pergola-design-build-in-chanhassen/", destination: "/services/landscape-architecture/pergolas-and-pavilions/", permanent: true },
+      { source: "/services/landscape-architecture/play/", destination: "/services/landscape-architecture/", permanent: true },
+      // category archives no longer paginate
+      { source: "/category/:slug/page/:n/", destination: "/category/:slug/", permanent: true },
       { source: "/tag/:path*", destination: "/blog", permanent: true },
       { source: "/author/:path*", destination: "/blog", permanent: true },
       // old (Squarespace-era) addresses live WordPress's Redirection plugin sends on — found by crawling 10/5.
