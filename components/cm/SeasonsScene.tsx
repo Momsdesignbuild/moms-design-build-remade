@@ -71,7 +71,7 @@ export default function SeasonsScene({ videoUrl, mobileVideoUrl, imageUrl, state
         <video ref={video} src={src} poster={imageUrl} muted playsInline preload="auto" aria-hidden className="[mask-image:linear-gradient(to_bottom,transparent,black_18%,black_82%,transparent)] [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_18%,black_82%,transparent)] lg:[mask-image:none] lg:[-webkit-mask-image:none] absolute left-0 right-0 top-1/2 -translate-y-1/2 w-full aspect-video object-cover lg:inset-0 lg:top-0 lg:translate-y-0 lg:h-full lg:aspect-auto" />
         <div className="absolute inset-x-0 top-0 h-3/5 bg-gradient-to-b from-black/55 to-transparent" />
         <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-black/50 to-transparent" />
-        <p className="absolute left-1/2 -translate-x-1/2 top-[9svh] lg:top-[12vh] w-[min(56rem,88vw)] text-center text-[25px] md:text-[38px] lg:text-[46px] font-[300] leading-[1.3] lg:leading-[1.35] tracking-[0.015em] text-white [text-shadow:0_1px_18px_rgba(0,0,0,0.45)] [font-family:var(--font-heading)]">
+        <p className="absolute left-1/2 -translate-x-1/2 top-[9svh] lg:top-[12vh] w-[min(56rem,88vw)] lg:w-[min(52rem,90vw)] text-center text-[25px] md:text-[38px] lg:text-[40px] font-[300] leading-[1.3] lg:leading-[1.35] tracking-[0.015em] text-white [text-shadow:0_1px_18px_rgba(0,0,0,0.45)] [font-family:var(--font-heading)]">
           {words.map((w, i) => (
             <span key={i} data-word style={{ opacity: 0.16 }} className="inline-block mr-[0.32em]">{w}</span>
           ))}

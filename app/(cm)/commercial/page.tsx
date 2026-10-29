@@ -47,15 +47,10 @@ export default async function CmHome() {
       <SeasonsScene videoUrl={c.seasonsVideo} mobileVideoUrl={c.seasonsVideoMobile} imageUrl={c.seasonsImage.url} statement={c.seasonsStatement} accent={c.seasonsStatementAccent} seasons={c.seasons} />
 
       <section className="px-6 py-24 md:py-32 bg-white">
-        <div className="max-w-[1100px] mx-auto grid md:grid-cols-[1fr_1.15fr] gap-10 md:gap-20 items-start">
-          <div className="border-l-4 border-brand pl-6 md:pl-8">
-            <p className="text-[26px] md:text-[38px] font-[300] leading-[1.3] text-ink">{c.intro[0]}</p>
-          </div>
-          <div className="flex flex-col gap-6">
-            {c.intro.slice(1).map((p, i) => (
-              <p key={i} className="text-[19px] md:text-[20px] font-[400] leading-[1.8] text-[#3C3C3C]">{p}</p>
-            ))}
-          </div>
+        <div className="max-w-[900px] mx-auto border-l-4 border-brand pl-6 md:pl-10 flex flex-col gap-6">
+          {c.intro.map((p, i) => (
+            <p key={i} className="text-[19px] md:text-[20px] font-[400] leading-[1.8] text-[#3C3C3C]">{p}</p>
+          ))}
         </div>
       </section>
 
