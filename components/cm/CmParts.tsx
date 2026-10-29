@@ -103,27 +103,23 @@ export function Rows({ sections, fill = same, cinematicFirst = false, offset = 0
   );
 }
 
-/** Photo tiles for the services. A multiple of three fills a 3-wide grid; otherwise the first tile is the big one. */
+/** Photo tiles for the services: every tile the same size, a short last row is centered. */
 export function ServiceTiles({ services, label }: { services: Service[]; label: string }) {
-  const uniform = services.length % 3 === 0;
+  const three = services.length % 3 === 0;
+  const width = three ? "lg:w-[calc(33.333%-0.667rem)]" : "lg:w-[calc(25%-0.75rem)]";
   return (
-    <div className={`max-w-[1240px] mx-auto grid grid-cols-2 gap-3 lg:gap-4 ${uniform ? "lg:grid-cols-3 lg:auto-rows-[280px]" : "lg:grid-cols-4 lg:auto-rows-[300px]"}`}>
-      {services.map((s, i) => {
-        const feature = !uniform && i === 0;
-        const wide = !uniform && i >= services.length - 2;
-        const span = feature ? "col-span-2 aspect-[16/10] lg:aspect-auto lg:row-span-2" : `aspect-[4/5] lg:aspect-auto ${wide ? "lg:col-span-2" : ""}`;
-        return (
-          <Link key={s.slug} href={`/commercial/${s.slug}`} className={`group relative block overflow-hidden bg-[#222] ${span}`}>
+    <div className="max-w-[1240px] mx-auto flex flex-wrap justify-center gap-3 lg:gap-4">
+      {services.map((s) => (
+        <Link key={s.slug} href={`/commercial/${s.slug}`} className={`group relative block overflow-hidden bg-[#222] w-[calc(50%-0.375rem)] aspect-[4/5] ${width}`}>
             <Image src={s.image.url} alt={s.image.alt} fill sizes="(max-width: 1024px) 50vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.06]" /> {/* ui-label: image size hint, not visitor text */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent" />
             <div className="absolute inset-x-0 bottom-0 p-4 md:p-6 text-white [text-shadow:0_1px_12px_rgba(0,0,0,0.6)]">
-              <h3 className={`font-[400] tracking-[0.14em] uppercase leading-snug !text-white ${feature ? "text-[22px] md:text-[28px]" : "text-[15px] md:text-[19px]"}`}>{s.title}</h3>
-              <p className={`mt-2 text-[17px] font-[300] leading-relaxed text-white/90 max-w-[40ch] ${feature ? "hidden md:block" : "hidden lg:block lg:max-h-0 lg:opacity-0 lg:overflow-hidden lg:transition-all lg:duration-300 lg:group-hover:max-h-24 lg:group-hover:opacity-100 lg:group-focus-visible:max-h-24 lg:group-focus-visible:opacity-100"}`}>{s.summary}</p>
+              <h3 className="font-[400] tracking-[0.14em] uppercase leading-snug !text-white text-[15px] md:text-[19px]">{s.title}</h3>
+              <p className={`mt-2 text-[17px] font-[300] leading-relaxed text-white/90 max-w-[40ch] hidden lg:block lg:max-h-0 lg:opacity-0 lg:overflow-hidden lg:transition-all lg:duration-300 lg:group-hover:max-h-24 lg:group-hover:opacity-100 lg:group-focus-visible:max-h-24 lg:group-focus-visible:opacity-100`}>{s.summary}</p>
               <span className="mt-3 inline-block text-[13px] md:text-[14px] font-semibold tracking-[0.24em] uppercase text-brand border-b border-brand/40 pb-0.5 group-hover:border-brand transition-colors">{label} →</span>
             </div>
-          </Link>
-        );
-      })}
+        </Link>
+      ))}
     </div>
   );
 }

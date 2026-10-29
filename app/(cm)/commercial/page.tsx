@@ -28,7 +28,7 @@ export default async function CmHome() {
         <div className="absolute inset-0 bg-black/40" />
         <HeroTop />
         <div className="relative px-6 pt-32 pb-24 max-w-[1300px] text-center text-white [text-shadow:0_1px_14px_rgba(0,0,0,0.5)]">
-          <p className="text-[19px] md:text-[31px] font-semibold tracking-[0.3em] uppercase text-white/85 mb-6">{c.heroKicker}</p>
+          <p className="text-[17px] md:text-[24px] font-semibold tracking-[0.3em] uppercase text-white/85 mb-6">{c.heroKicker}</p>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-[300] leading-[1.08] tracking-[0.08em] uppercase text-white">
             {[c.heroLine1, c.heroLine2].map((line, li) => (
               <span key={li} className="block">

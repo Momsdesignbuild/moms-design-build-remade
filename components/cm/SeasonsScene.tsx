@@ -14,7 +14,7 @@ export default function SeasonsScene({ videoUrl, mobileVideoUrl, imageUrl, state
   const fill = useRef<HTMLCanvasElement>(null);
   const [idx, setIdx] = useState(0);
   const [src, setSrc] = useState<string>();
-  const words = [...statement.split(" "), ...accent.split(" ")];
+  const words = [...statement.split(" "), ...accent.split(" ")].filter(Boolean);
 
   useEffect(() => {
     setSrc(window.innerWidth < 1024 ? mobileVideoUrl : videoUrl);
