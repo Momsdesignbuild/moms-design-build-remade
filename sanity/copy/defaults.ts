@@ -310,8 +310,8 @@ export const COPY = {
     seasonsImage: I(CDN + '5d382e460a015cf152496efda47d158f66b4efb3-1920x1080.jpg', "A commercial building with a manicured lawn and gardens, maintained by Mom's Commercial Maintenance"),
     seasonsVideo: 'https://cdn.sanity.io/files/wavk40jo/production/73b8b5364a6483ece52e0c51e28ef2e38f316b17.mp4', // the full-screen scroll scene after the hero: summer, fall, winter (8s, desktop)
     seasonsVideoMobile: 'https://cdn.sanity.io/files/wavk40jo/production/7fc14f95129bde394ff62071b7f800e98e411963.mp4', // lighter 960px file for phones
-    seasonsStatement: 'A property doesn\'t fall apart overnight. It slips one season at a time, so nobody notices', // lights up word by word as the scene scrolls
-    seasonsStatementAccent: 'until the day a customer does.', // serif italic
+    seasonsStatement: 'Clean, well-maintained grounds speak volumes before anyone walks through the door. Our role is to ensure that impression is always a positive one,', // lights up word by word as the scene scrolls
+    seasonsStatementAccent: 'without adding to your daily responsibilities.', // serif italic
     seasons: [
       { label: 'Summer', service: 'Turf Management & Fine Gardening' },
       { label: 'Fall', service: 'Spring & Fall Clean-Up' },
