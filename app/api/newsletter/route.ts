@@ -2,8 +2,9 @@ import { NextResponse } from "next/server";
 import { createClient } from "@sanity/client";
 import { createHash } from "node:crypto";
 
-// Newsletter sign-up: every email is saved in Sanity (Studio > Subscribers) AND added
-// to the Brevo list "Website newsletter". Either one working is enough for the visitor;
+// Newsletter + guide sign-up: every email is saved in Sanity (Studio > Subscribers) AND added
+// to the Brevo list "Customer Email List ALL TIME" (id 6; changed from the 2-person "Website
+// newsletter" list 7 on 2026-11-04, Josh). Either one working is enough for the visitor;
 // if one fails it is logged, never shown to them.
 const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
@@ -13,16 +14,19 @@ const client = createClient({
   useCdn: false,
 });
 
-const BREVO_LIST_ID = Number(process.env.BREVO_LIST_ID || 7);
+// ponytail: id is fixed here on purpose; the old BREVO_LIST_ID env var (set to 7 in Vercel) must not override it
+const BREVO_LIST_ID = 6;
 
-async function saveToSanity(email: string) {
+const SOURCES = new Set(["blog", "home", "guide-download"]);
+
+async function saveToSanity(email: string, source: string) {
   const id = "subscriber-" + createHash("sha1").update(email).digest("hex");
   await client.createIfNotExists({
     _id: id,
     _type: "subscriber",
     email,
     subscribedAt: new Date().toISOString(),
-    source: "blog",
+    source,
   });
 }
 
@@ -45,7 +49,8 @@ export async function POST(req: Request) {
       return NextResponse.json({ ok: false, error: "Invalid email" }, { status: 400 });
     }
     const email = raw.toLowerCase().trim();
-    const [sanity, brevo] = await Promise.allSettled([saveToSanity(email), addToBrevo(email)]);
+    const source = SOURCES.has(body?.source) ? body.source : "blog";
+    const [sanity, brevo] = await Promise.allSettled([saveToSanity(email, source), addToBrevo(email)]);
     if (sanity.status === "rejected") console.error("newsletter: Sanity save failed", sanity.reason);
     if (brevo.status === "rejected") console.error("newsletter: Brevo add failed", brevo.reason);
     if (sanity.status === "rejected" && brevo.status === "rejected") {
