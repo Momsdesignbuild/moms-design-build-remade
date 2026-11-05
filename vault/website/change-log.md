@@ -9,6 +9,11 @@ Every site change, dated, newest first. What changed, why, and the result
 when it's known. This is how a conversation three weeks from now knows what
 already happened.
 
+## 2026-11-05
+
+- 2026-11-05 Summer: blog posts can now have a row of 2-3 photos side by side (new "Photo row" in the post editor; only used on the new winter post), and bold text in blog posts now shows as truly bold (affects all posts), blog.
+- 2026-11-05 Summer: new blog post "Winter Containers & Holiday Decorating in the Twin Cities" (Fine Gardening) at /winter-containers-and-holiday-decorating-in-the-twin-cities/, from Summer's PDF, with three photo rows, blog.
+
 ## 2026-10-28
 
 - 2026-10-28 Josh: new portfolio project Enchanted Entry (Deephaven, MN) at /portfolio/enchanted-entry/; portfolio projects get two optional switches ("of Mom's Design Build" after the designer credit, and a same-height row of three before/rendering photos), both on for Enchanted Entry only, portfolio.
