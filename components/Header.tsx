@@ -175,7 +175,7 @@ export default function Header({ items: NAV_ITEMS }: { items: NavItem[] }) {
               <Link
                 href={item.href}
                 onClick={() => setOpenDropdown(null)}
-                className={`flex items-center gap-1 text-[20px] font-[500] tracking-[0.12em] uppercase transition-colors duration-300 ${
+                className={`flex items-center gap-1 whitespace-nowrap text-[20px] font-[500] tracking-[0.12em] uppercase transition-colors duration-300 ${
                   transparent
                     ? "text-white/80 hover:text-white"
                     : "text-ink hover:text-brand"

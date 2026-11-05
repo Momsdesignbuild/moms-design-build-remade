@@ -1,102 +1,77 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
+import GuideForm, { type GuideCopy } from '@/components/guide/GuideForm'
+import { SERIF, SIZE_BOOK_SM, GUIDE_TAB_CSS } from '@/components/areas/fonts'
 
 /**
- * Side-tab lead magnet (marketing 8/11): NOT a load-triggered popup — she was
- * explicit that intrusive popups are off the table. A small tab rests against
- * the edge of the viewport and nudges once; the guide card only opens on
- * click. Card styling copies the Bria Hammel guide tile she pointed to:
- * photo left, boxed close X, serif headline w/ italic "(FREE!)", email
- * field, solid stone-tan button. Posts to /api/newsletter — same subscriber
- * list as Join the List (confirmed same-list on the 8/11 call).
- *
- * PLACEHOLDER: guide doesn't exist yet ("we're creating it" - transcript).
- * Swap `guideTitle`/`guideBody`/`img` for the real guide once it's built —
- * everything below is wired but using Interior Design & Remodeling's stock
- * photo as a stand-in.
+ * Free-guide tab on every page of the main site. A slim teal handle rests on the right edge
+ * with just an arrow. Hovering it widens the handle so FREE GUIDE sits next to the arrow, and it
+ * stays open while you hover. Every 10 seconds it does the same on its own, then settles back. Clicking opens the guide card, which slides
+ * in from the left. Words and the cover come from the Studio ("guide" text document).
  */
-export default function GuideCTA({
-  img = 'https://cdn.sanity.io/images/wavk40jo/production/e8a89a12d85b1b115c9966e277c9c37745ba9c70-2400x1600.jpg',
-  imgAlt = "Mom's Design Build interior project",
-  guideTitle = 'Design Guide',
-  guideBody = 'our favorite, tried-and-true ideas from our own projects',
-}: {
-  img?: string
-  imgAlt?: string
-  guideTitle?: string
-  guideBody?: string
-}) {
-  const [open, setOpen] = useState(false)
-  const [nudge, setNudge] = useState(false)
-  const [email, setEmail] = useState('')
-  const [state, setState] = useState<'idle' | 'busy' | 'done' | 'error'>('idle')
+export default function GuideCTA({ c }: { c: GuideCopy }) {
+  const [open, setOpen] = useState(false)   // card is mounted
+  const [shown, setShown] = useState(false) // card is slid in
+  const [taunt, setTaunt] = useState(false)
 
-  // one gentle nudge after the visitor's settled in, so the tab reads as
-  // interactive without acting like a popup
+  const hovering = useRef(false)
+  // the timed taunt never fights a hover: while the pointer is on the tab it simply stays open
+  const play = useCallback(() => { if (!hovering.current) setTaunt(true) }, [])
+
+  // first taunt after the visitor has settled in, then every 10 seconds while the card is closed
   useEffect(() => {
-    const t = setTimeout(() => setNudge(true), 4000)
-    return () => clearTimeout(t)
-  }, [])
+    if (open) return
+    const first = setTimeout(play, 3500)
+    const every = setInterval(play, 10000)
+    return () => { clearTimeout(first); clearInterval(every) }
+  }, [open, play])
+
+  const show = () => { setOpen(true); requestAnimationFrame(() => requestAnimationFrame(() => setShown(true))) }
+  const hide = useCallback(() => { setShown(false); setTimeout(() => setOpen(false), 450) }, [])
 
   useEffect(() => {
     if (!open) return
-    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false)
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && hide()
     window.addEventListener('keydown', onKey)
     document.body.style.overflow = 'hidden'
     return () => {
       window.removeEventListener('keydown', onKey)
       document.body.style.overflow = ''
     }
-  }, [open])
-
-  async function submit(e: React.FormEvent) {
-    e.preventDefault()
-    if (!email || state === 'busy') return
-    setState('busy')
-    try {
-      const r = await fetch('/api/newsletter', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, source: 'guide-download' }),
-      })
-      setState(r.ok ? 'done' : 'error')
-    } catch {
-      setState('error')
-    }
-  }
+  }, [open, hide])
 
   return (
     <>
-      {/* side tab */}
+      <style>{GUIDE_TAB_CSS}</style>
       <button
         type="button"
-        onClick={() => { setOpen(true); setNudge(false) }}
-        aria-label="Open free design guide"
-        className={`fixed right-0 top-1/2 z-40 -translate-y-1/2 bg-ink text-white
-          px-[8px] py-[13px] text-[13px] md:px-3 md:py-5 md:text-[20px] font-[500] tracking-[0.22em] uppercase
-          [writing-mode:vertical-rl] rotate-180
-          shadow-[-4px_0_16px_rgba(0,0,0,0.18)] hover:bg-brand transition-all duration-300
-          ${nudge ? '-translate-x-2' : ''}`}
+        onClick={show}
+        onMouseEnter={() => { hovering.current = true; setTaunt(false) }}
+        onMouseLeave={() => { hovering.current = false }}
+        onAnimationEnd={(e) => e.target === e.currentTarget && setTaunt(false)}
+        aria-label={c.tab}
+        className={`gh ${taunt ? 'gh-taunt' : ''} fixed right-0 bottom-28 md:bottom-auto md:top-1/2 md:-translate-y-1/2 z-40 flex items-center justify-start overflow-hidden bg-brand text-white rounded-l-[14px] w-[28px] md:w-[32px] h-[150px] md:h-[180px] p-0`}
       >
-        Free Guide
+        <span className="gh-arrow flex shrink-0 w-[28px] md:w-[32px] items-center justify-center">
+          <svg className="w-5 h-5 md:w-6 md:h-6" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M10.5 2.5 5 8l5.5 5.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </span>
+        <span className="gh-label whitespace-nowrap [writing-mode:vertical-rl] rotate-180 text-[12px] md:text-[14px] font-[600] tracking-[0.24em] uppercase ml-1">{c.tab}</span>
       </button>
 
-      {/* modal */}
       {open && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-ink/60 backdrop-blur-[2px] px-4"
-          onClick={() => setOpen(false)}
-        >
+        <div className={`fixed inset-0 z-50 flex items-center justify-center px-4 transition-colors duration-[450ms] ${shown ? 'bg-ink/60 backdrop-blur-[2px]' : 'bg-ink/0'}`} onClick={hide}>
           <div
-            className="relative w-full max-w-[760px] grid grid-cols-1 md:grid-cols-2 bg-white shadow-2xl"
+            className={`relative w-full max-w-[780px] max-h-[92vh] overflow-y-auto grid grid-cols-1 md:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] bg-white shadow-2xl transition-transform duration-[450ms] ease-[cubic-bezier(.2,.7,.2,1)] ${shown ? 'translate-x-0' : '-translate-x-[120vw]'}`}
             onClick={(e) => e.stopPropagation()}
           >
             <button
               type="button"
-              onClick={() => setOpen(false)}
-              aria-label="Close"
+              onClick={hide}
+              aria-label={c.close}
               className="absolute top-4 right-4 z-10 w-9 h-9 flex items-center justify-center border border-ink/15 bg-white hover:border-brand transition-colors"
             >
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -104,48 +79,17 @@ export default function GuideCTA({
               </svg>
             </button>
 
-            <div className="relative aspect-[4/3] md:aspect-auto md:min-h-[420px]">
-              <Image src={img} alt={imgAlt} fill className="object-cover" sizes="(max-width: 768px) 100vw, 380px" />
+            <div className="relative bg-[#F7F5F2] flex items-center justify-center p-8 md:p-10">
+              <Image src={c.image.url} alt={c.image.alt ?? ''} width={1445} height={1870} className="w-[130px] md:w-full h-auto shadow-[0_24px_44px_-20px_rgba(28,28,26,0.55)]" sizes={SIZE_BOOK_SM} loading="eager" />
             </div>
 
-            <div className="p-10 lg:p-12 flex flex-col justify-center text-center">
-              <h2
-                className="text-[24px] lg:text-[28px] leading-snug text-ink mb-5"
-                style={{ fontFamily: 'var(--font-serif, "Playfair Display", Georgia, serif)' }}
-              >
-                {guideTitle}
+            <div className="p-8 lg:p-12 flex flex-col justify-center text-center">
+              <p className="text-[16px] font-semibold tracking-[0.3em] uppercase text-brand mb-3">{c.kicker}</p>
+              <h2 className="text-[28px] lg:text-[34px] leading-tight text-ink mb-4" style={{ fontFamily: SERIF }}>
+                {c.heading}
               </h2>
-              <p className="text-[20px] font-[300] leading-relaxed text-muted mb-8">
-                Download <em className="italic">(FREE!)</em> {guideBody}.
-              </p>
-
-              {state === 'done' ? (
-                <p className="text-[20px] font-[400] tracking-[0.08em] text-brand">
-                  Check your inbox — your guide is on the way!
-                </p>
-              ) : (
-                <form onSubmit={submit} className="flex flex-col gap-3">
-                  <input
-                    type="email"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Email Address"
-                    aria-label="Email address"
-                    className="border border-ink/20 px-5 py-3.5 text-[20px] font-[300] text-ink text-center placeholder:text-muted/70 focus:outline-none focus:border-brand transition-colors"
-                  />
-                  <button
-                    type="submit"
-                    disabled={state === 'busy'}
-                    className="bg-brand-stone text-white text-[20px] font-[600] tracking-[0.28em] uppercase px-8 py-3.5 hover:opacity-90 transition-opacity disabled:opacity-60"
-                  >
-                    {state === 'busy' ? 'Sending…' : 'Get the Guide'}
-                  </button>
-                  {state === 'error' && (
-                    <p className="text-[20px] text-[#C0564F]">Something went wrong — try again?</p>
-                  )}
-                </form>
-              )}
+              <p className="text-[18px] font-[300] leading-relaxed text-muted mb-7">{c.body}</p>
+              <GuideForm c={c} source="guide-download" />
             </div>
           </div>
         </div>
