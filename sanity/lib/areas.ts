@@ -58,16 +58,31 @@ export function cityThumb(everyProject: Project[], city: string): Photo | undefi
 
 export const fill = (s: string, city: string) => s.replaceAll('{city}', city)
 
-/** up to n mini photos for a city: its own projects first (one per project, then more), then nearby cities, then pool photos */
-export function cityPhotos(everyProject: Project[], city: string, nearby: string[], n: number): Photo[] {
-  const out: Photo[] = [], seen = new Set<string>()
-  const add = (ph?: Photo) => { if (ph && out.length < n && !seen.has(ph.url) && !NOT_A_PHOTO.test(ph.alt ?? '')) { seen.add(ph.url); out.push(ph) } }
+/** up to n mini photos for a city: its own projects first, then nearby cities, then anyone's. Photos already `used` elsewhere are skipped, so rows never repeat. */
+export function cityPhotos(everyProject: Project[], city: string, nearby: string[], n: number, used = new Set<string>()): Photo[] {
+  const out: Photo[] = []
+  const add = (ph?: Photo) => { if (ph && out.length < n && !used.has(ph.url) && ph.w >= 900 && !NOT_A_PHOTO.test(ph.alt ?? '')) { used.add(ph.url); out.push(ph) } }
   const mine = projectsIn(everyProject, city)
   mine.forEach((p) => add(p.hero))
   for (let i = 0; out.length < n && mine.some((p) => p.gallery[i]); i++) mine.forEach((p) => add(p.gallery[i]))
-  nearby.forEach((c) => projectsIn(everyProject, c).forEach((p) => add(p.hero)))
-  pick([], everyProject, 'pool', n).forEach(add)
+  nearby.forEach((c) => projectsIn(everyProject, c).forEach((p) => { add(p.hero); p.gallery.slice(0, 2).forEach(add) }))
+  all(everyProject).forEach(add)
   return out
+}
+
+/** the one photo that fits a tile of the given width/height ratio best: sharp (1800px+), not a render, never used before */
+export function bestPhoto(everyProject: Project[], city: string, nearby: string[], target: number, used: Set<string>): Photo | undefined {
+  const pools = [all(projectsIn(everyProject, city)), nearby.flatMap((c) => all(projectsIn(everyProject, c))), all(everyProject)]
+  for (const pool of pools) {
+    let best: Photo | undefined, bs = Infinity
+    for (const ph of pool) {
+      if (used.has(ph.url) || NOT_A_PHOTO.test(ph.alt ?? '') || ph.w < 1800) continue
+      const alt = ph.alt ?? ''
+      const sc = Math.abs(Math.log(ph.w / ph.h / target)) - (/pool|patio|deck|landscape|outdoor|backyard|terrace|garden|lake/i.test(alt) ? 0.35 : 0) + (/interior|kitchen|bath|living room|lighting|bedroom|basement/i.test(alt) ? 0.7 : 0)
+      if (sc < bs) { bs = sc; best = ph }
+    }
+    if (best) { used.add(best.url); return best }
+  }
 }
 
 export type Tokens = { city: string; region: string; near: string; work: string }

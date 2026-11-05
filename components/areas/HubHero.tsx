@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
+import Link from 'next/link'
 import { serifBlack } from './fonts'
 import { motion, useScroll, useTransform, useVelocity, useSpring, useAnimationFrame, useMotionValue } from 'framer-motion'
 import { SERIF } from "@/components/areas/fonts";
@@ -25,7 +26,9 @@ export function MaskedHeading({ lines, photo }: { lines: string[]; photo: string
   )
 }
 
-function Row({ names, base, outline }: { names: string[]; base: number; outline?: boolean }) {
+type City = { name: string; slug: string }
+
+function Row({ cities, base, outline }: { cities: City[]; base: number; outline?: boolean }) {
   const x = useMotionValue(0)
   const { scrollY } = useScroll()
   const v = useSpring(useVelocity(scrollY), { damping: 50, stiffness: 400 })
@@ -38,13 +41,21 @@ function Row({ names, base, outline }: { names: string[]; base: number; outline?
     if (next > 0) next -= w
     x.set(next)
   })
-  const run = [...names, ...names]
+  const run = [...cities, ...cities]
   return (
     <div className="overflow-hidden whitespace-nowrap">
-      <motion.div ref={ref} style={{ x }} className="inline-flex">
-        {run.map((n, i) => (
-          <span key={i} className={`mr-10 text-[clamp(40px,7vw,104px)] leading-[1.15] ${outline ? 'text-transparent [-webkit-text-stroke:1.2px_#1c1c1c]' : 'text-ink italic'}`} style={{ fontFamily: SERIF }}>
-            {n}<span className="ml-10 text-brand not-italic" aria-hidden="true">◆</span>
+      <motion.div ref={ref} style={{ x }} className="inline-flex items-center">
+        {run.map((c, i) => (
+          <span key={i} className="inline-flex items-center">
+            <Link
+              href={`/service-areas/${c.slug}/`}
+              tabIndex={i < cities.length ? 0 : -1}
+              className={`text-[clamp(40px,7vw,104px)] leading-[1.15] transition-colors hover:text-brand ${outline ? 'text-transparent [-webkit-text-stroke:1.2px_#1c1c1c] hover:[-webkit-text-stroke-color:#00AEC7]' : 'text-ink italic'}`}
+              style={{ fontFamily: SERIF }}
+            >
+              {c.name}
+            </Link>
+            <span className="mx-10 text-[clamp(28px,4vw,56px)] text-brand not-italic [-webkit-text-stroke:0]" aria-hidden="true">◆</span>
           </span>
         ))}
       </motion.div>
@@ -52,13 +63,13 @@ function Row({ names, base, outline }: { names: string[]; base: number; outline?
   )
 }
 
-/** Two rows of city names drifting in opposite directions; they surge when you scroll. */
-export function CityMarquee({ names }: { names: string[] }) {
-  const half = Math.ceil(names.length / 2)
+/** Two rows of city names drifting in opposite directions; they surge when you scroll. Every name links to its city page. */
+export function CityMarquee({ cities }: { cities: City[] }) {
+  const half = Math.ceil(cities.length / 2)
   return (
-    <div aria-hidden="true" className="py-6 select-none motion-reduce:[&_*]:!transform-none">
-      <Row names={names.slice(0, half)} base={-0.6} />
-      <Row names={names.slice(half)} base={0.6} outline />
+    <div className="py-6 select-none motion-reduce:[&_*]:!transform-none">
+      <Row cities={cities.slice(0, half)} base={-0.6} />
+      <Row cities={cities.slice(half)} base={0.6} outline />
     </div>
   )
 }
