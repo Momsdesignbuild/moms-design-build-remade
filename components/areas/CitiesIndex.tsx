@@ -49,8 +49,6 @@ export default function CitiesIndex({ cities, regions, allRegions, placeholder, 
               <div onMouseEnter={() => fine() && setOpen(c.slug)} onMouseLeave={() => fine() && setOpen('')} onFocus={() => fine() && setOpen(c.slug)}>
                 <Link
                   href={`/service-areas/${c.slug}/`}
-                  onClick={(e) => { if (!fine()) { e.preventDefault(); setOpen(open === c.slug ? '' : c.slug) } }}
-                  aria-expanded={open === c.slug}
                   className="group/row flex items-center gap-4 lg:gap-8 py-3 lg:py-4"
                 >
                   <span className="min-w-0">
@@ -64,7 +62,7 @@ export default function CitiesIndex({ cities, regions, allRegions, placeholder, 
                   <span aria-hidden="true" className={`ml-auto sm:ml-0 text-[28px] text-brand transition-transform duration-300 ${open === c.slug ? 'rotate-90 sm:rotate-0 sm:translate-x-1.5' : ''}`}>→</span>
                 </Link>
                 {/* the row grows downward into a strip of mini photos */}
-                <div className={`grid transition-[grid-template-rows] duration-[650ms] ease-[cubic-bezier(.2,.7,.2,1)] ${open === c.slug ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
+                <div className={`max-md:hidden [@media(hover:none)]:hidden grid transition-[grid-template-rows] duration-[650ms] ease-[cubic-bezier(.2,.7,.2,1)] ${open === c.slug ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
                   <div className="overflow-hidden">
                     <div className="flex gap-2 overflow-x-auto pb-5 pt-1 [scrollbar-width:none]">
                       {c.photos.map((ph, k) => (
