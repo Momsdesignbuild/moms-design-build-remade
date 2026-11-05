@@ -15,6 +15,8 @@ const TITLES: Record<CopyKey, string> = {
   portfolio: 'Portfolio page intro',
   blog: 'Blog page intro',
   team: 'Our Team page intro',
+  guide: 'Free guide (side tab + band above the footer)',
+  areas: 'Service areas hub and city pages',
   cm: 'Commercial Maintenance (CM) section text',
 }
 
