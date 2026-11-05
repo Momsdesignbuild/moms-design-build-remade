@@ -187,7 +187,7 @@ export default function PortableBody({ body, editorial = false, sectionLabels = 
                       fill
                       loading="lazy"
                       className="object-cover"
-                      sizes="(max-width: 768px) 33vw, 330px"
+                      sizes="(max-width: 768px) 33vw, 330px" // ui-label: image size hint for the browser, not words
                     />
                   </div>
                 </figure>
