@@ -15,13 +15,14 @@ export type BodyBlock = {
   children?: Array<{ _key?: string; text: string; marks?: string[] }>;
   alt?: string;
   asset?: { _ref: string };
+  images?: Array<{ _key: string; alt?: string; asset?: { _ref: string } }>;
 };
 
 // spans → JSX honoring link/strong/em marks (e.g. award lists linking to portfolio pages)
 function renderSpans(block: BodyBlock) {
   return (block.children ?? []).map((c, j) => {
     let node: React.ReactNode = c.text;
-    if (c.marks?.includes("strong")) node = <strong>{node}</strong>;
+    if (c.marks?.includes("strong")) node = <strong className="font-[600]">{node}</strong>;
     if (c.marks?.includes("em")) node = <em>{node}</em>;
     const def = c.marks?.map((m) => block.markDefs?.find((d) => d._key === m)).find((d) => d?._type === "link");
     if (def?.href) {
@@ -172,6 +173,27 @@ export default function PortableBody({ body, editorial = false, sectionLabels = 
           // (universal rule, Josh 8/19); plain() strips stega chars first
           const numbered = /^\d+\s*[.)]\s/.test(plain(block));
           return <p key={block._key} className={numbered ? "ml-5 pl-6 -indent-6" : undefined}>{renderSpans(block)}</p>;
+        }
+        // a row of 2-3 photos side by side: same matted-print look, smaller
+        if (block._type === "photoRow" && block.images?.length) {
+          return (
+            <div key={block._key} className="my-10 grid grid-cols-3 gap-2 md:gap-4">
+              {block.images.filter((im) => im.asset).map((im) => (
+                <figure key={im._key} className="bg-white p-1.5 md:p-2.5 shadow-[0_26px_55px_-30px_rgba(28,28,26,0.35)]">
+                  <div className="relative aspect-[4/5] w-full overflow-hidden">
+                    <Image
+                      src={builder.image(im as SanityImageSource).width(700).height(875).fit("crop").auto("format").url()}
+                      alt={im.alt || ""}
+                      fill
+                      loading="lazy"
+                      className="object-cover"
+                      sizes="(max-width: 768px) 33vw, 330px" // ui-label: image size hint for the browser, not words
+                    />
+                  </div>
+                </figure>
+              ))}
+            </div>
+          );
         }
         if (block._type === "image" && block.asset) {
           const img = (
