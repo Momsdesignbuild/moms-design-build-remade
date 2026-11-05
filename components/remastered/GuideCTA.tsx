@@ -1,55 +1,73 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import Image from 'next/image'
 import GuideForm, { type GuideCopy } from '@/components/guide/GuideForm'
-import { SERIF, SIZE_BOOK_SM, GUIDE_TAB_CSS } from "@/components/areas/fonts";
+import { SERIF, SIZE_BOOK_SM, GUIDE_TAB_CSS } from '@/components/areas/fonts'
 
 /**
- * Side-tab lead magnet on every page of the main site (Josh 11/5; first built 8/11,
- * archived 8/17). Not a load popup: a small tab rests on the right edge, nudges once,
- * and the guide card opens only on click. Words and the cover photo come from the
- * Studio ("guide" text document); the layout passes them in.
+ * Free-guide tab on every page of the main site. A slim teal handle rests on the right edge
+ * with just an arrow. Every 10 seconds, and whenever you hover it, it "taunts": it widens to
+ * show FREE GUIDE, then settles back to the arrow. Clicking opens the guide card, which slides
+ * in from the left. Words and the cover come from the Studio ("guide" text document).
  */
 export default function GuideCTA({ c }: { c: GuideCopy }) {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false)   // card is mounted
+  const [shown, setShown] = useState(false) // card is slid in
+  const [taunt, setTaunt] = useState(false)
 
+  const play = useCallback(() => setTaunt(true), [])
+
+  // first taunt after the visitor has settled in, then every 10 seconds while the card is closed
+  useEffect(() => {
+    if (open) return
+    const first = setTimeout(play, 3500)
+    const every = setInterval(play, 10000)
+    return () => { clearTimeout(first); clearInterval(every) }
+  }, [open, play])
+
+  const show = () => { setOpen(true); requestAnimationFrame(() => requestAnimationFrame(() => setShown(true))) }
+  const hide = useCallback(() => { setShown(false); setTimeout(() => setOpen(false), 450) }, [])
 
   useEffect(() => {
     if (!open) return
-    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false)
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && hide()
     window.addEventListener('keydown', onKey)
     document.body.style.overflow = 'hidden'
     return () => {
       window.removeEventListener('keydown', onKey)
       document.body.style.overflow = ''
     }
-  }, [open])
+  }, [open, hide])
 
   return (
     <>
       <style>{GUIDE_TAB_CSS}</style>
       <button
         type="button"
-        onClick={() => setOpen(true)}
+        onClick={show}
+        onMouseEnter={() => window.matchMedia('(pointer: fine)').matches && play()}
+        onAnimationEnd={(e) => e.target === e.currentTarget && setTaunt(false)}
         aria-label={c.tab}
-        className="gh group fixed right-0 bottom-28 md:bottom-auto md:top-1/2 md:-translate-y-1/2 z-40 flex flex-col items-center justify-center overflow-hidden bg-brand text-white rounded-l-[14px] w-[28px] md:w-[32px] h-[170px] md:h-[200px]"
+        className={`gh ${taunt ? 'gh-taunt' : ''} fixed right-0 bottom-28 md:bottom-auto md:top-1/2 md:-translate-y-1/2 z-40 flex items-center justify-start overflow-hidden bg-brand text-white rounded-l-[14px] w-[28px] md:w-[32px] h-[150px] md:h-[180px] p-0`}
       >
-        <svg className="gh-arrow shrink-0 w-5 h-5 md:w-6 md:h-6" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <path d="M10.5 2.5 5 8l5.5 5.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-        <span className="gh-label block overflow-hidden whitespace-nowrap [writing-mode:vertical-rl] rotate-180 text-[13px] md:text-[16px] font-[600] tracking-[0.26em] uppercase">{c.tab}</span>
+        <span className="gh-arrow flex shrink-0 w-[28px] md:w-[32px] items-center justify-center">
+          <svg className="w-5 h-5 md:w-6 md:h-6" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M10.5 2.5 5 8l5.5 5.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </span>
+        <span className="gh-label whitespace-nowrap [writing-mode:vertical-rl] rotate-180 text-[12px] md:text-[14px] font-[600] tracking-[0.24em] uppercase ml-1">{c.tab}</span>
       </button>
 
       {open && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink/60 backdrop-blur-[2px] px-4" onClick={() => setOpen(false)}>
+        <div className={`fixed inset-0 z-50 flex items-center justify-center px-4 transition-colors duration-[450ms] ${shown ? 'bg-ink/60 backdrop-blur-[2px]' : 'bg-ink/0'}`} onClick={hide}>
           <div
-            className="relative w-full max-w-[780px] max-h-[92vh] overflow-y-auto grid grid-cols-1 md:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] bg-white shadow-2xl"
+            className={`relative w-full max-w-[780px] max-h-[92vh] overflow-y-auto grid grid-cols-1 md:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] bg-white shadow-2xl transition-transform duration-[450ms] ease-[cubic-bezier(.2,.7,.2,1)] ${shown ? 'translate-x-0' : '-translate-x-[120vw]'}`}
             onClick={(e) => e.stopPropagation()}
           >
             <button
               type="button"
-              onClick={() => setOpen(false)}
+              onClick={hide}
               aria-label={c.close}
               className="absolute top-4 right-4 z-10 w-9 h-9 flex items-center justify-center border border-ink/15 bg-white hover:border-brand transition-colors"
             >
@@ -59,7 +77,7 @@ export default function GuideCTA({ c }: { c: GuideCopy }) {
             </button>
 
             <div className="relative bg-[#F7F5F2] flex items-center justify-center p-8 md:p-10">
-              <Image src={c.image.url} alt={c.image.alt ?? ''} width={1445} height={1870} className="w-[130px] md:w-full h-auto shadow-[0_24px_44px_-20px_rgba(28,28,26,0.55)]" sizes={SIZE_BOOK_SM} />
+              <Image src={c.image.url} alt={c.image.alt ?? ''} width={1445} height={1870} className="w-[130px] md:w-full h-auto shadow-[0_24px_44px_-20px_rgba(28,28,26,0.55)]" sizes={SIZE_BOOK_SM} loading="eager" />
             </div>
 
             <div className="p-8 lg:p-12 flex flex-col justify-center text-center">
