@@ -12,24 +12,11 @@ const build = (k: number, p: number) => {
   return 'M' + pts.join('L') + 'Z'
 }
 
-function Ring({ k, phase }: { k: number; phase: MotionValue<number> }) {
-  const d = useTransform(phase, (p) => build(k, p))
-  return <motion.path d={d} fill="none" stroke="#00AEC7" strokeOpacity={0.1 + (k % 4) * 0.018} strokeWidth="1.2" strokeLinejoin="round" />
-}
-
-/** Contour lines, teal on cream. They drift on their own, on a clock, so scrolling and hovering never move them. */
+/** Contour lines, teal on cream. Static; nothing moves them. */
 export default function Topo({ className = '' }: { className?: string }) {
-  const calm = useReducedMotion()
-  const phase = useMotionValue(0)
-  let last = 0
-  useAnimationFrame((t) => {
-    if (calm || t - last < 80) return // ponytail: ~12 redraws a second, plenty for a slow drift
-    last = t
-    phase.set(t * 0.0004)
-  })
   return (
-    <svg style={{ transform: "translateZ(0)", willChange: "transform" }} className={className} viewBox="0 0 1800 1040" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      {Array.from({ length: 11 }, (_, i) => <Ring key={i} k={i + 1} phase={phase} />)}
+    <svg className={className} viewBox="0 0 1800 1040" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      {Array.from({ length: 11 }, (_, i) => <path key={i} d={build(i + 1, 0)} fill="none" stroke="#00AEC7" strokeOpacity={0.1 + (i % 4) * 0.018} strokeWidth="1.2" />)}
     </svg>
   )
 }
