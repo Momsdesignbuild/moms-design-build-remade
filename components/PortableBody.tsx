@@ -22,7 +22,7 @@ export type BodyBlock = {
 function renderSpans(block: BodyBlock) {
   return (block.children ?? []).map((c, j) => {
     let node: React.ReactNode = c.text;
-    if (c.marks?.includes("strong")) node = <strong>{node}</strong>;
+    if (c.marks?.includes("strong")) node = <strong className="font-[600]">{node}</strong>;
     if (c.marks?.includes("em")) node = <em>{node}</em>;
     const def = c.marks?.map((m) => block.markDefs?.find((d) => d._key === m)).find((d) => d?._type === "link");
     if (def?.href) {
