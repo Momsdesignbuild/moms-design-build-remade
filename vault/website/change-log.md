@@ -13,6 +13,7 @@ already happened.
 
 - 2026-11-05 Summer: blog posts can now have a row of 2-3 photos side by side (new "Photo row" in the post editor; only used on the new winter post), and bold text in blog posts now shows as truly bold (affects all posts), blog.
 - 2026-11-05 Summer: new blog post "Winter Containers & Holiday Decorating in the Twin Cities" (Fine Gardening) at /winter-containers-and-holiday-decorating-in-the-twin-cities/, from Summer's PDF, with three photo rows, blog.
+- 2026-11-05 Summer: winter post cities list fixed from "Deephaven. Orono," to "Deephaven, Orono," (FAQ "What areas does Mom's Fine Gardening service?"), blog.
 
 ## 2026-10-28
 
