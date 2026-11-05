@@ -33,13 +33,19 @@ export default function GuideCTA({ c }: { c: GuideCopy }) {
         type="button"
         onClick={() => setOpen(true)}
         aria-label={c.tab}
-        className="gtab fixed right-0 bottom-24 md:bottom-1/3 z-40 flex flex-col items-end gap-1.5 pl-6 pb-1"
+        className="group fixed right-0 bottom-28 md:bottom-auto md:top-1/2 md:-translate-y-1/2 z-40 w-[56px] h-[176px] md:w-[72px] md:h-[236px]"
       >
-        <span className="gbook relative block w-[62px] md:w-[88px] aspect-[1445/1870] bg-white">
-          <Image src={c.image.url} alt="" fill sizes="90px" className="object-cover" />
-          <span className="absolute inset-y-0 left-0 w-[3px] bg-brand" aria-hidden="true" />
+        <span className="gnudge absolute inset-0 block">
+          <svg className="absolute inset-0 w-full h-full drop-shadow-[-3px_4px_8px_rgba(0,0,0,0.25)]" viewBox="0 0 72 236" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M72 0V236H30Q16 236 11 222L3 190Q0 180 0 170V66Q0 56 3 46L11 14Q16 0 30 0Z" strokeWidth="1.6" strokeLinejoin="round" className="fill-[#F7F5F2] stroke-ink transition-colors duration-300 group-hover:fill-brand" />
+          </svg>
+          <span className="absolute inset-y-0 right-0 left-[16%] flex flex-col items-center justify-center gap-3 text-ink group-hover:text-white transition-colors duration-300">
+            <svg className="gnudge-arrow w-5 h-5 md:w-6 md:h-6 text-brand group-hover:text-white" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M10.5 2.5 5 8l5.5 5.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            <span className="[writing-mode:vertical-rl] rotate-180 text-[13px] md:text-[17px] font-[600] tracking-[0.26em] uppercase">{c.tab}</span>
+          </span>
         </span>
-        <span className="mr-2 bg-white/95 px-2 py-1 text-[11px] md:text-[13px] font-[600] tracking-[0.22em] uppercase text-ink shadow-[0_2px_8px_rgba(0,0,0,0.18)]">{c.tab}</span>
       </button>
 
       {open && (
