@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import GuideForm, { type GuideCopy } from '@/components/guide/GuideForm'
-import { SERIF, SIZE_BOOK_SM } from "@/components/areas/fonts";
+import { SERIF, SIZE_BOOK_SM, GUIDE_TAB_CSS } from "@/components/areas/fonts";
 
 /**
  * Side-tab lead magnet on every page of the main site (Josh 11/5; first built 8/11,
@@ -13,13 +13,7 @@ import { SERIF, SIZE_BOOK_SM } from "@/components/areas/fonts";
  */
 export default function GuideCTA({ c }: { c: GuideCopy }) {
   const [open, setOpen] = useState(false)
-  const [nudge, setNudge] = useState(false)
 
-  // one gentle nudge after the visitor has settled in
-  useEffect(() => {
-    const t = setTimeout(() => setNudge(true), 4000)
-    return () => clearTimeout(t)
-  }, [])
 
   useEffect(() => {
     if (!open) return
@@ -34,20 +28,18 @@ export default function GuideCTA({ c }: { c: GuideCopy }) {
 
   return (
     <>
+      <style>{GUIDE_TAB_CSS}</style>
       <button
         type="button"
-        onClick={() => { setOpen(true); setNudge(false) }}
+        onClick={() => setOpen(true)}
         aria-label={c.tab}
-        className={`fixed right-0 top-1/2 z-40 -translate-y-1/2 bg-ink text-white flex items-center gap-2
-          px-[8px] py-[13px] text-[13px] md:px-3 md:py-5 md:text-[20px] font-[500] tracking-[0.22em] uppercase
-          [writing-mode:vertical-rl] rotate-180
-          shadow-[-4px_0_16px_rgba(0,0,0,0.18)] hover:bg-brand transition-all duration-300
-          ${nudge ? '-translate-x-2' : ''}`}
+        className="gtab fixed right-0 bottom-24 md:bottom-1/3 z-40 flex flex-col items-end gap-1.5 pl-6 pb-1"
       >
-        {c.tab}
-        <svg className="w-3 h-3 md:w-4 md:h-4 -rotate-90" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <path d="M3 10l5-5 5 5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
+        <span className="gbook relative block w-[62px] md:w-[88px] aspect-[1445/1870] bg-white">
+          <Image src={c.image.url} alt="" fill sizes="90px" className="object-cover" />
+          <span className="absolute inset-y-0 left-0 w-[3px] bg-brand" aria-hidden="true" />
+        </span>
+        <span className="mr-2 bg-white/95 px-2 py-1 text-[11px] md:text-[13px] font-[600] tracking-[0.22em] uppercase text-ink shadow-[0_2px_8px_rgba(0,0,0,0.18)]">{c.tab}</span>
       </button>
 
       {open && (
