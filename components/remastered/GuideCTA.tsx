@@ -1,14 +1,14 @@
 'use client'
 
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import GuideForm, { type GuideCopy } from '@/components/guide/GuideForm'
 import { SERIF, SIZE_BOOK_SM, GUIDE_TAB_CSS } from '@/components/areas/fonts'
 
 /**
  * Free-guide tab on every page of the main site. A slim teal handle rests on the right edge
- * with just an arrow. Every 10 seconds, and whenever you hover it, it "taunts": it widens to
- * show FREE GUIDE, then settles back to the arrow. Clicking opens the guide card, which slides
+ * with just an arrow. Hovering it widens the handle so FREE GUIDE sits next to the arrow, and it
+ * stays open while you hover. Every 10 seconds it does the same on its own, then settles back. Clicking opens the guide card, which slides
  * in from the left. Words and the cover come from the Studio ("guide" text document).
  */
 export default function GuideCTA({ c }: { c: GuideCopy }) {
@@ -16,7 +16,9 @@ export default function GuideCTA({ c }: { c: GuideCopy }) {
   const [shown, setShown] = useState(false) // card is slid in
   const [taunt, setTaunt] = useState(false)
 
-  const play = useCallback(() => setTaunt(true), [])
+  const hovering = useRef(false)
+  // the timed taunt never fights a hover: while the pointer is on the tab it simply stays open
+  const play = useCallback(() => { if (!hovering.current) setTaunt(true) }, [])
 
   // first taunt after the visitor has settled in, then every 10 seconds while the card is closed
   useEffect(() => {
@@ -46,7 +48,8 @@ export default function GuideCTA({ c }: { c: GuideCopy }) {
       <button
         type="button"
         onClick={show}
-        onMouseEnter={() => window.matchMedia('(pointer: fine)').matches && play()}
+        onMouseEnter={() => { hovering.current = true; setTaunt(false) }}
+        onMouseLeave={() => { hovering.current = false }}
         onAnimationEnd={(e) => e.target === e.currentTarget && setTaunt(false)}
         aria-label={c.tab}
         className={`gh ${taunt ? 'gh-taunt' : ''} fixed right-0 bottom-28 md:bottom-auto md:top-1/2 md:-translate-y-1/2 z-40 flex items-center justify-start overflow-hidden bg-brand text-white rounded-l-[14px] w-[28px] md:w-[32px] h-[150px] md:h-[180px] p-0`}
