@@ -1,6 +1,6 @@
 'use client'
 
-import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from 'framer-motion'
+import { motion, useReducedMotion, useAnimationFrame, useMotionValue, useTransform, type MotionValue } from 'framer-motion'
 
 const build = (k: number, p: number) => {
   const pts: string[] = []
@@ -17,11 +17,16 @@ function Ring({ k, phase }: { k: number; phase: MotionValue<number> }) {
   return <motion.path d={d} fill="none" stroke="#00AEC7" strokeOpacity={0.1 + (k % 4) * 0.018} strokeWidth="1.2" strokeLinejoin="round" />
 }
 
-/** Contour lines, teal on cream. They ripple and drift as the page scrolls; nothing follows the mouse. */
+/** Contour lines, teal on cream. They drift on their own, on a clock, so scrolling and hovering never move them. */
 export default function Topo({ className = '' }: { className?: string }) {
-  const { scrollY } = useScroll()
   const calm = useReducedMotion()
-  const phase = useTransform(scrollY, (y) => (calm ? 0 : Math.round(y / 24) * 24 * 0.0035))
+  const phase = useMotionValue(0)
+  let last = 0
+  useAnimationFrame((t) => {
+    if (calm || t - last < 80) return // ponytail: ~12 redraws a second, plenty for a slow drift
+    last = t
+    phase.set(t * 0.0004)
+  })
   return (
     <svg style={{ transform: "translateZ(0)", willChange: "transform" }} className={className} viewBox="0 0 1800 1040" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       {Array.from({ length: 11 }, (_, i) => <Ring key={i} k={i + 1} phase={phase} />)}
