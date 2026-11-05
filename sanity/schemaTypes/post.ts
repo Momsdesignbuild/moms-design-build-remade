@@ -11,7 +11,18 @@ export default defineType({
     defineField({ name: 'metaDescription', title: 'Meta Description', type: 'text', rows: 3 }),
     defineField({ name: 'heroImage', title: 'Hero Image', type: 'image', options: { hotspot: true } }),
     defineField({ name: 'excerpt', title: 'Excerpt', type: 'text', rows: 3 }),
-    defineField({ name: 'body', title: 'Body', type: 'array', of: [{ type: 'block' }, { type: 'image', options: { hotspot: true } }] }),
+    defineField({ name: 'body', title: 'Body', type: 'array', of: [
+      { type: 'block' },
+      { type: 'image', options: { hotspot: true } },
+      // a row of 2-3 photos side by side (a small gallery)
+      {
+        type: 'object',
+        name: 'photoRow',
+        title: 'Photo row (2–3 photos side by side)',
+        fields: [{ name: 'images', title: 'Photos', type: 'array', of: [{ type: 'image', options: { hotspot: true }, fields: [{ name: 'alt', title: 'Describe the photo', type: 'string' }] }], validation: (r) => r.min(2).max(3) }],
+        preview: { select: { media: 'images.0' }, prepare: ({ media }) => ({ title: 'Photo row', media }) },
+      },
+    ] }),
     defineField({ name: 'publishedAt', title: 'Published At', type: 'datetime' }),
     defineField({ name: 'categories', title: 'Categories', type: 'array', of: [{ type: 'string' }] }),
     defineField({ name: 'author', title: 'Author', type: 'reference', to: [{ type: 'teamMember' }] }),
