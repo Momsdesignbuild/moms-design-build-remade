@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { getCopy } from "@/sanity/lib/copy";
-import { cityThumb, getProjects, pick, projectsIn } from "@/sanity/lib/areas";
+import { cityPhotos, cityThumb, getProjects, pick, projectsIn } from "@/sanity/lib/areas";
 import Topo from "@/components/areas/Topo";
 import { CityMarquee, MaskedHeading } from "@/components/areas/HubHero";
 import CitiesIndex from "@/components/areas/CitiesIndex";
@@ -28,7 +28,7 @@ export default async function ServiceAreasPage() {
   const index = c.cities.map((x) => ({
     slug: x.slug, name: x.name, region: x.region,
     count: projectsIn(projects, x.name).length,
-    thumb: cityThumb(projects, x.name),
+    photos: cityPhotos(projects, x.name, c.cities.filter((k) => k.region === x.region && k.slug !== x.slug).map((k) => k.name), 6).map((ph) => ({ url: ph.url + "?h=480&auto=format&q=80", alt: ph.alt, ratio: Math.min(2.2, Math.max(0.7, ph.w / ph.h)) })),
   }));
   return (
     <>
@@ -71,7 +71,7 @@ export default async function ServiceAreasPage() {
         <Topo className="absolute inset-0 w-full h-full" />
         <div className="relative max-w-[1400px] mx-auto">
           <h2 className="text-[clamp(34px,5vw,64px)] leading-tight mb-10 !text-ink !font-normal !tracking-normal" style={{ fontFamily: SERIF }}>{c.allLabel}</h2>
-          <CitiesIndex cities={index} regions={c.regions} allRegions={c.allRegions} placeholder={c.searchPlaceholder} noMatch={c.noMatch} one={c.projectsOne} many={c.projectsMany} />
+          <CitiesIndex cities={index} regions={c.regions} allRegions={c.allRegions} placeholder={c.searchPlaceholder} noMatch={c.noMatch} one={c.projectsOne} many={c.projectsMany} view={c.viewCity} />
         </div>
       </section>
     </>

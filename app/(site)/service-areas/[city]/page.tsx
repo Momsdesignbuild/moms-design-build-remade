@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getCopy } from "@/sanity/lib/copy";
-import { fill, getProjects, pick, projectsIn, type Photo } from "@/sanity/lib/areas";
+import { fill, fillAll, getProjects, pick, projectsIn, type Photo } from "@/sanity/lib/areas";
 import { JsonLd } from "@/components/PortableBody";
 import CityHero from "@/components/areas/CityHero";
 import WordReveal from "@/components/areas/WordReveal";
@@ -43,8 +43,8 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
   const local = [...mine, ...nearbyProjects];
 
   const used = new Set<string>();
-  const heroPhoto = pick(local, projects, "pool", 1, used, true)[0];
-  const one = (cat: "pool" | "deck" | "living" | "interior") => pick(local, projects, cat, 1, used)[0];
+  const heroPhoto = pick(local, projects, "pool", 1, used, true, 2000)[0];
+  const one = (cat: "pool" | "deck" | "living" | "interior") => pick(local, projects, cat, 1, used, false, 1500)[0];
   const panels = ([
     [c.poolsLabel, c.poolsText, one("pool")],
     [c.decksLabel, c.decksText, one("deck")],
@@ -56,6 +56,13 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
   const countLine = mine.length
     ? fill(c.countLine, x.name).replace("{count}", String(mine.length)).replace("{noun}", mine.length === 1 ? c.projectsOne : c.projectsMany)
     : "";
+  const namesNear = sameRegion.slice(0, 3).map((k) => k.name);
+  const near = namesNear.length > 1 ? `${namesNear.slice(0, -1).join(", ")} and ${namesNear[namesNear.length - 1]}` : namesNear[0] ?? "";
+  const work = mine.length
+    ? `We have completed ${mine.length} ${mine.length === 1 ? c.projectsOne : c.projectsMany} in ${x.name}, including ${mine[0].title}.`
+    : `We serve ${x.name} and design for the lots and homes we find there.`;
+  const tok = { city: x.name, region: x.region, near, work };
+  const faqLd = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: c.faqs.map((f) => ({ "@type": "Question", name: fillAll(f.q, tok), acceptedAnswer: { "@type": "Answer", text: fillAll(f.a, tok) } })) }; // ui-label: JSON-LD, not page words
   const ld = {
     "@context": "https://schema.org", "@type": "Service", // ui-label: JSON-LD, not page words
     name: `Pool, landscape and interior design-build in ${x.name}, MN`,
@@ -67,6 +74,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
   return (
     <>
       <JsonLd raw={JSON.stringify(ld)} />
+      <JsonLd raw={JSON.stringify(faqLd)} />
       {heroPhoto && <CityHero city={x.name} kicker={c.cityKicker} tagline={fill(c.cityTagline, x.name)} primary={c.primaryCta} secondary={c.secondaryCta} photo={heroPhoto} />}
 
       <section className="relative overflow-hidden bg-[#F7F5F2] px-6 py-24 lg:py-36">
@@ -75,6 +83,21 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
           <p className="text-[18px] font-semibold tracking-[0.34em] uppercase text-brand mb-8">{fill(c.introLabel, x.name)}</p>
           <WordReveal text={x.intro} className="text-[clamp(28px,4.2vw,56px)] leading-[1.18] text-ink" />
           {countLine && <p className="text-[20px] font-[300] text-muted mt-10">{countLine} <Link href="/portfolio" className="text-brand border-b border-brand/40 hover:border-brand">{c.secondaryCta}</Link></p>}
+        </div>
+      </section>
+
+
+      <section className="bg-white px-6 py-20 lg:py-28">
+        <div className="max-w-[1400px] mx-auto">
+          <h2 className="text-[clamp(32px,4.6vw,60px)] leading-tight mb-12 !text-ink !font-normal !tracking-normal" style={{ fontFamily: SERIF }}>{fill(c.servicesKicker, x.name)}</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
+            {c.serviceBlocks.map((b) => (
+              <div key={b.title}>
+                <h3 className="text-[28px] leading-tight mb-3 !text-ink !font-normal !tracking-normal" style={{ fontFamily: SERIF }}>{fillAll(b.title, tok)}</h3>
+                <p className="text-[19px] font-[300] leading-relaxed text-muted">{fillAll(b.text, tok)}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -105,6 +128,24 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
           </div>
         </section>
       )}
+
+
+      <section className="relative overflow-hidden bg-[#F7F5F2] px-6 py-20 lg:py-28">
+        <div className="max-w-[900px] mx-auto">
+          <h2 className="text-[clamp(32px,4.6vw,60px)] leading-tight mb-10 !text-ink !font-normal !tracking-normal" style={{ fontFamily: SERIF }}>{fill(c.faqHeading, x.name)}</h2>
+          <div>
+            {c.faqs.map((f) => (
+              <details key={f.q} className="group border-b border-ink/15 py-5">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 text-[22px] lg:text-[26px] leading-snug text-ink" style={{ fontFamily: SERIF }}>
+                  {fillAll(f.q, tok)}
+                  <span aria-hidden="true" className="text-brand text-[30px] transition-transform duration-300 group-open:rotate-45">+</span>
+                </summary>
+                <p className="mt-4 text-[19px] font-[300] leading-relaxed text-muted max-w-[760px]">{fillAll(f.a, tok)}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="bg-white px-6 py-16 lg:py-20">
         <div className="max-w-[1400px] mx-auto">

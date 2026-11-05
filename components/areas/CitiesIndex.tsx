@@ -4,18 +4,20 @@ import { useMemo, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { AnimatePresence, motion } from 'framer-motion'
-import { SERIF } from "@/components/areas/fonts";
+import { SERIF } from '@/components/areas/fonts'
 
-export type IndexCity = { slug: string; name: string; region: string; count: number; thumb?: { url: string; alt: string } }
+export type IndexCity = { slug: string; name: string; region: string; count: number; photos: { url: string; alt: string; ratio: number }[] }
 
 /**
  * The full list: huge serif names, region chips, search. Filtering reflows the rows with a
  * layout animation. On desktop a photo slides out of the hovered row and the others soften
  * to 45% (never black); on phones each row simply shows its photo.
  */
-export default function CitiesIndex({ cities, regions, allRegions, placeholder, noMatch, one, many }: {
-  cities: IndexCity[]; regions: string[]; allRegions: string; placeholder: string; noMatch: string; one: string; many: string
+export default function CitiesIndex({ cities, regions, allRegions, placeholder, noMatch, one, many, view }: {
+  cities: IndexCity[]; regions: string[]; allRegions: string; placeholder: string; noMatch: string; one: string; many: string; view: string
 }) {
+  const [open, setOpen] = useState('')
+  const fine = () => window.matchMedia('(pointer: fine)').matches
   const [region, setRegion] = useState('')
   const [q, setQ] = useState('')
   const shown = useMemo(
@@ -44,18 +46,41 @@ export default function CitiesIndex({ cities, regions, allRegions, placeholder, 
               transition={{ duration: 0.45, ease: [0.2, 0.7, 0.2, 1] }}
               className="transition-opacity duration-300 [@media(pointer:fine)]:hover:!opacity-100"
             >
-              <Link href={`/service-areas/${c.slug}/`} className="group/row flex items-center gap-4 lg:gap-8 py-3 lg:py-4">
-                {c.thumb && <span className="relative shrink-0 w-[84px] h-[56px] lg:w-0 lg:h-[72px] lg:group-hover/row:w-[190px] overflow-hidden transition-[width] duration-500 ease-[cubic-bezier(.2,.7,.2,1)] order-first"><Image src={c.thumb.url} alt={c.thumb.alt} fill sizes="190px" className="object-cover" /></span>}
-                <span className="min-w-0">
-                  <span className="block text-[clamp(28px,6vw,84px)] leading-[1.05] text-ink" style={{ fontFamily: SERIF }}>{c.name}</span>
-                  {c.count > 0 && <span className="block sm:hidden text-[13px] tracking-[0.18em] uppercase text-brand">{c.count} {c.count === 1 ? one : many}</span>}
-                </span>
-                <span className="hidden sm:block ml-auto text-right text-[16px] tracking-[0.18em] uppercase text-muted">
-                  <span className="block">{c.region}</span>
-                  {c.count > 0 && <span className="block text-brand">{c.count} {c.count === 1 ? one : many}</span>}
-                </span>
-                <span aria-hidden="true" className="ml-auto sm:ml-0 text-[28px] text-brand transition-transform duration-300 group-hover/row:translate-x-1.5">→</span>
-              </Link>
+              <div onMouseEnter={() => fine() && setOpen(c.slug)} onMouseLeave={() => fine() && setOpen('')} onFocus={() => fine() && setOpen(c.slug)}>
+                <Link
+                  href={`/service-areas/${c.slug}/`}
+                  onClick={(e) => { if (!fine()) { e.preventDefault(); setOpen(open === c.slug ? '' : c.slug) } }}
+                  aria-expanded={open === c.slug}
+                  className="group/row flex items-center gap-4 lg:gap-8 py-3 lg:py-4"
+                >
+                  <span className="min-w-0">
+                    <span className="block text-[clamp(28px,6vw,84px)] leading-[1.05] text-ink" style={{ fontFamily: SERIF }}>{c.name}</span>
+                    {c.count > 0 && <span className="block sm:hidden text-[13px] tracking-[0.18em] uppercase text-brand">{c.count} {c.count === 1 ? one : many}</span>}
+                  </span>
+                  <span className="hidden sm:block ml-auto text-right text-[16px] tracking-[0.18em] uppercase text-muted">
+                    <span className="block">{c.region}</span>
+                    {c.count > 0 && <span className="block text-brand">{c.count} {c.count === 1 ? one : many}</span>}
+                  </span>
+                  <span aria-hidden="true" className={`ml-auto sm:ml-0 text-[28px] text-brand transition-transform duration-300 ${open === c.slug ? 'rotate-90 sm:rotate-0 sm:translate-x-1.5' : ''}`}>→</span>
+                </Link>
+                {/* the row grows downward into a strip of mini photos */}
+                <div className={`grid transition-[grid-template-rows] duration-[650ms] ease-[cubic-bezier(.2,.7,.2,1)] ${open === c.slug ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
+                  <div className="overflow-hidden">
+                    <div className="flex gap-2 overflow-x-auto pb-5 pt-1 [scrollbar-width:none]">
+                      {c.photos.map((ph, k) => (
+                        <span
+                          key={ph.url}
+                          className={`relative shrink-0 h-[108px] lg:h-[160px] overflow-hidden bg-ink transition-all duration-[700ms] ease-[cubic-bezier(.2,.7,.2,1)] ${open === c.slug ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-3 scale-95'}`}
+                          style={{ aspectRatio: ph.ratio, transitionDelay: open === c.slug ? `${120 + k * 70}ms` : '0ms' }}
+                        >
+                          <Image src={ph.url} alt={ph.alt} fill sizes="320px" className="object-cover" />
+                        </span>
+                      ))}
+                      <Link href={`/service-areas/${c.slug}/`} className="shrink-0 self-center px-6 text-[16px] tracking-[0.2em] uppercase text-brand border-b border-brand/40 hover:border-brand whitespace-nowrap">{view} →</Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </motion.li>
           ))}
         </AnimatePresence>
