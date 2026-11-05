@@ -8,7 +8,7 @@ import { client } from "@/sanity/lib/client";
 import { sanityFetch } from "@/sanity/lib/live";
 import { JsonLd } from "@/components/PortableBody";
 import BlogGrid, { type BlogCard } from "@/components/blog/BlogGrid";
-import NewsletterSignup from "@/components/blog/NewsletterSignup";
+import GuideBand from "@/components/guide/GuideBand";
 import { BLOG_JSONLD } from "./jsonld";
 
 export const revalidate = 3600;
@@ -129,7 +129,7 @@ export default async function BlogPage() {
       </section>
 
       {/* ── newsletter — capture their site never had ── */}
-      <NewsletterSignup />
+      <GuideBand source="blog" />
     </>
   );
 }

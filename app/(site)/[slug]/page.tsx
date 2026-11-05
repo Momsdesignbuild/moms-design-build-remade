@@ -9,7 +9,7 @@ import { client } from "@/sanity/lib/client";
 import { sanityFetch } from "@/sanity/lib/live";
 import PortableBody, { JsonLd, type BodyBlock } from "@/components/PortableBody";
 import ReadingProgress from "@/components/blog/ReadingProgress";
-import NewsletterSignup from "@/components/blog/NewsletterSignup";
+import GuideBand from "@/components/guide/GuideBand";
 
 export const revalidate = 3600;
 
@@ -291,7 +291,7 @@ export default async function BlogPostPage({
           </section>
         )}
 
-        {isPost && <NewsletterSignup />}
+        {isPost && <GuideBand source="blog" />}
       </article>
     </>
   );
