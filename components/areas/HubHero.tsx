@@ -3,6 +3,7 @@
 import { useRef } from 'react'
 import { serifBlack } from './fonts'
 import { motion, useScroll, useTransform, useVelocity, useSpring, useAnimationFrame, useMotionValue } from 'framer-motion'
+import { SERIF } from "@/components/areas/fonts";
 
 /** Headline cut out of a pool photo: the photo drifts inside the letters as the page scrolls. */
 export function MaskedHeading({ lines, photo }: { lines: string[]; photo: string }) {
@@ -42,7 +43,7 @@ function Row({ names, base, outline }: { names: string[]; base: number; outline?
     <div className="overflow-hidden whitespace-nowrap">
       <motion.div ref={ref} style={{ x }} className="inline-flex">
         {run.map((n, i) => (
-          <span key={i} className={`mr-10 text-[clamp(40px,7vw,104px)] leading-[1.15] ${outline ? 'text-transparent [-webkit-text-stroke:1.2px_#1c1c1c]' : 'text-ink italic'}`} style={{ fontFamily: 'var(--font-serif, "Playfair Display", Georgia, serif)' }}>
+          <span key={i} className={`mr-10 text-[clamp(40px,7vw,104px)] leading-[1.15] ${outline ? 'text-transparent [-webkit-text-stroke:1.2px_#1c1c1c]' : 'text-ink italic'}`} style={{ fontFamily: SERIF }}>
             {n}<span className="ml-10 text-brand not-italic" aria-hidden="true">◆</span>
           </span>
         ))}

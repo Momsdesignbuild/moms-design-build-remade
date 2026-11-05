@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { AnimatePresence, motion } from 'framer-motion'
+import { SERIF } from "@/components/areas/fonts";
 
 export type IndexCity = { slug: string; name: string; region: string; count: number; thumb?: { url: string; alt: string } }
 
@@ -46,7 +47,7 @@ export default function CitiesIndex({ cities, regions, allRegions, placeholder, 
               <Link href={`/service-areas/${c.slug}/`} className="group/row flex items-center gap-4 lg:gap-8 py-3 lg:py-4">
                 {c.thumb && <span className="relative shrink-0 w-[84px] h-[56px] lg:w-0 lg:h-[72px] lg:group-hover/row:w-[190px] overflow-hidden transition-[width] duration-500 ease-[cubic-bezier(.2,.7,.2,1)] order-first"><Image src={c.thumb.url} alt={c.thumb.alt} fill sizes="190px" className="object-cover" /></span>}
                 <span className="min-w-0">
-                  <span className="block text-[clamp(28px,6vw,84px)] leading-[1.05] text-ink" style={{ fontFamily: 'var(--font-serif, "Playfair Display", Georgia, serif)' }}>{c.name}</span>
+                  <span className="block text-[clamp(28px,6vw,84px)] leading-[1.05] text-ink" style={{ fontFamily: SERIF }}>{c.name}</span>
                   {c.count > 0 && <span className="block sm:hidden text-[13px] tracking-[0.18em] uppercase text-brand">{c.count} {c.count === 1 ? one : many}</span>}
                 </span>
                 <span className="hidden sm:block ml-auto text-right text-[16px] tracking-[0.18em] uppercase text-muted">

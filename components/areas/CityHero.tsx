@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import type { Photo } from '@/sanity/lib/areas'
+import { SERIF } from "@/components/areas/fonts";
 
 /**
  * City page opener. The pool photo and the H1 are readable at once: two ink doors
@@ -28,7 +29,7 @@ export default function CityHero({ city, kicker, tagline, primary, secondary, ph
       <div className="door-r absolute inset-y-0 right-0 w-1/2 bg-ink z-10" aria-hidden="true" />
       <div className="relative z-20 h-full max-w-[1400px] mx-auto px-6 flex flex-col justify-end pb-16 lg:pb-24">
         <p className="hero-up text-[18px] font-semibold tracking-[0.34em] uppercase text-white/85 mb-4">{kicker}</p>
-        <h1 className="hero-up text-[clamp(56px,11vw,168px)] leading-[0.92] mb-5 !text-white !font-normal !tracking-normal" style={{ fontFamily: 'var(--font-serif, "Playfair Display", Georgia, serif)' }}>
+        <h1 className="hero-up text-[clamp(56px,11vw,168px)] leading-[0.92] mb-5 !text-white !font-normal !tracking-normal" style={{ fontFamily: SERIF }}>
           {city}
         </h1>
         <p className="hero-up text-[20px] lg:text-[24px] font-[300] tracking-[0.03em] max-w-[640px] text-white/90 mb-9">{tagline}</p>

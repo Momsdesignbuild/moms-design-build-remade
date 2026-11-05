@@ -11,6 +11,7 @@ import ServicePanels from "@/components/areas/ServicePanels";
 import Topo from "@/components/areas/Topo";
 import CityCta from "@/components/areas/CityCta";
 import { COPY } from "@/sanity/copy/defaults";
+import { SERIF, SIZE_RAIL } from "@/components/areas/fonts";
 
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -56,7 +57,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
     ? fill(c.countLine, x.name).replace("{count}", String(mine.length)).replace("{noun}", mine.length === 1 ? c.projectsOne : c.projectsMany)
     : "";
   const ld = {
-    "@context": "https://schema.org", "@type": "Service",
+    "@context": "https://schema.org", "@type": "Service", // ui-label: JSON-LD, not page words
     name: `Pool, landscape and interior design-build in ${x.name}, MN`,
     provider: { "@type": "HomeAndConstructionBusiness", name: "Mom's Design Build", url: "https://momsdesignbuild.com", telephone: nav.phone },
     areaServed: { "@type": "City", name: `${x.name}, Minnesota` },
@@ -80,7 +81,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
       {panels.length > 0 && (
         <section className="bg-white px-6 py-20 lg:py-28">
           <div className="max-w-[1400px] mx-auto">
-            <h2 className="text-[clamp(32px,4.6vw,60px)] leading-tight mb-10 !text-ink !font-normal !tracking-normal" style={{ fontFamily: 'var(--font-serif, "Playfair Display", Georgia, serif)' }}>{fill(c.panelsHeading, x.name)}</h2>
+            <h2 className="text-[clamp(32px,4.6vw,60px)] leading-tight mb-10 !text-ink !font-normal !tracking-normal" style={{ fontFamily: SERIF }}>{fill(c.panelsHeading, x.name)}</h2>
             <ServicePanels panels={panels} hint={c.panelHint} />
           </div>
         </section>
@@ -89,14 +90,14 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
       {rail.length > 0 && (
         <section className="bg-[#F7F5F2] px-6 py-20 lg:py-28">
           <div className="max-w-[1400px] mx-auto">
-            <h2 className="text-[clamp(32px,4.6vw,60px)] leading-tight mb-10 !text-ink !font-normal !tracking-normal" style={{ fontFamily: 'var(--font-serif, "Playfair Display", Georgia, serif)' }}>{fill(c.projectsHeading, x.name)}</h2>
+            <h2 className="text-[clamp(32px,4.6vw,60px)] leading-tight mb-10 !text-ink !font-normal !tracking-normal" style={{ fontFamily: SERIF }}>{fill(c.projectsHeading, x.name)}</h2>
             <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory -mx-6 px-6 pb-4 [scrollbar-width:none]">
               {rail.map((p) => (
                 <Link key={p.slug} href={`/portfolio/${p.slug}/`} className="group snap-start shrink-0 w-[74vw] sm:w-[40vw] lg:w-[24vw]">
                   <div className="relative aspect-[4/5] overflow-hidden bg-ink">
-                    <Image src={p.hero!.url} alt={p.hero!.alt} fill sizes="(max-width: 1024px) 74vw, 24vw" className="object-cover transition-transform duration-[1200ms] group-hover:scale-[1.05]" />
+                    <Image src={p.hero!.url} alt={p.hero!.alt} fill sizes={SIZE_RAIL} className="object-cover transition-transform duration-[1200ms] group-hover:scale-[1.05]" />
                   </div>
-                  <h3 className="text-[26px] mt-4 leading-tight !text-ink !font-normal !tracking-normal" style={{ fontFamily: 'var(--font-serif, "Playfair Display", Georgia, serif)' }}>{p.title}</h3>
+                  <h3 className="text-[26px] mt-4 leading-tight !text-ink !font-normal !tracking-normal" style={{ fontFamily: SERIF }}>{p.title}</h3>
                   <p className="text-[15px] tracking-[0.18em] uppercase text-muted mt-1">{p.location.replace(/,\s*mn$/i, "")}</p>
                 </Link>
               ))}
@@ -110,9 +111,9 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
           <h2 className="text-[20px] !font-semibold !tracking-[0.3em] uppercase !text-brand mb-6">{c.nearbyHeading}</h2>
           <ul className="flex flex-wrap gap-x-8 gap-y-3">
             {sameRegion.slice(0, 12).map((k) => (
-              <li key={k.slug}><Link href={`/service-areas/${k.slug}/`} className="text-[clamp(24px,3vw,38px)] text-ink hover:text-brand transition-colors" style={{ fontFamily: 'var(--font-serif, "Playfair Display", Georgia, serif)' }}>{k.name}</Link></li>
+              <li key={k.slug}><Link href={`/service-areas/${k.slug}/`} className="text-[clamp(24px,3vw,38px)] text-ink hover:text-brand transition-colors" style={{ fontFamily: SERIF }}>{k.name}</Link></li>
             ))}
-            <li><Link href="/service-areas/#all" className="text-[clamp(24px,3vw,38px)] text-brand italic" style={{ fontFamily: 'var(--font-serif, "Playfair Display", Georgia, serif)' }}>{c.moreLabel} →</Link></li>
+            <li><Link href="/service-areas/#all" className="text-[clamp(24px,3vw,38px)] text-brand italic" style={{ fontFamily: SERIF }}>{c.moreLabel} →</Link></li>
           </ul>
         </div>
       </section>
