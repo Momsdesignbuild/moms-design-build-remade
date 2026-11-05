@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import type { Photo } from '@/sanity/lib/areas'
 import { SERIF } from "@/components/areas/fonts";
+import { SIZE_HALF } from "@/components/areas/fonts";
 
 export type Panel = { label: string; text: string; photo: Photo }
 
@@ -27,7 +28,7 @@ export default function ServicePanels({ panels, hint }: { panels: Panel[]; hint:
               className={`relative overflow-hidden text-left text-white bg-ink transition-[flex-grow,height] duration-700 ease-[cubic-bezier(.2,.7,.2,1)]
                 ${on ? 'h-[56vh] lg:h-auto lg:flex-[4]' : 'h-[16vh] lg:h-auto lg:flex-[1]'}`}
             >
-              <Image src={p.photo.url} alt={p.photo.alt} fill sizes="(max-width: 1024px) 100vw, 50vw" className={`object-cover transition-transform duration-[1400ms] ${on ? 'scale-100' : 'scale-110'}`} />
+              <Image src={p.photo.url} alt={p.photo.alt} fill sizes={SIZE_HALF} className={`object-cover transition-transform duration-[1400ms] ${on ? 'scale-100' : 'scale-110'}`} />
               <div className={`absolute inset-0 transition-opacity duration-500 ${on ? 'bg-gradient-to-t from-black/70 via-transparent to-transparent' : 'bg-black/35'}`} aria-hidden="true" />
               <div className="absolute inset-x-0 bottom-0 p-6 lg:p-8">
                 <h3 className={`text-[26px] lg:text-[34px] leading-tight !text-white !font-normal !tracking-normal transition-all duration-500 ${on ? '' : 'lg:[writing-mode:vertical-rl] lg:rotate-180 lg:text-[26px]'}`} style={{ fontFamily: SERIF }}>{p.label}</h3>

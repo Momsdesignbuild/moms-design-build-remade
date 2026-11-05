@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import GuideForm, { type GuideCopy } from '@/components/guide/GuideForm'
+import { SERIF, SIZE_BOOK_SM } from "@/components/areas/fonts";
 
 /**
  * Side-tab lead magnet on every page of the main site (Josh 11/5; first built 8/11,
@@ -67,12 +68,12 @@ export default function GuideCTA({ c }: { c: GuideCopy }) {
             </button>
 
             <div className="relative bg-[#F7F5F2] flex items-center justify-center p-8 md:p-10">
-              <Image src={c.image.url} alt={c.image.alt ?? ''} width={1445} height={1870} className="w-[130px] md:w-full h-auto shadow-[0_24px_44px_-20px_rgba(28,28,26,0.55)]" sizes="(max-width: 768px) 200px, 300px" />
+              <Image src={c.image.url} alt={c.image.alt ?? ''} width={1445} height={1870} className="w-[130px] md:w-full h-auto shadow-[0_24px_44px_-20px_rgba(28,28,26,0.55)]" sizes={SIZE_BOOK_SM} />
             </div>
 
             <div className="p-8 lg:p-12 flex flex-col justify-center text-center">
               <p className="text-[16px] font-semibold tracking-[0.3em] uppercase text-brand mb-3">{c.kicker}</p>
-              <h2 className="text-[28px] lg:text-[34px] leading-tight text-ink mb-4" style={{ fontFamily: 'var(--font-serif, "Playfair Display", Georgia, serif)' }}>
+              <h2 className="text-[28px] lg:text-[34px] leading-tight text-ink mb-4" style={{ fontFamily: SERIF }}>
                 {c.heading}
               </h2>
               <p className="text-[18px] font-[300] leading-relaxed text-muted mb-7">{c.body}</p>
