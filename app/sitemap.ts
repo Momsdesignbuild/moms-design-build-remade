@@ -1,5 +1,6 @@
 import { MetadataRoute } from "next";
 import { client } from "@/sanity/lib/client";
+import { COPY } from "@/sanity/copy/defaults";
 
 const BASE_URL = "https://momsdesignbuild.com";
 
@@ -51,6 +52,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     entry("/team", now, "monthly", 0.5),
     entry("/commercial-spaces", now, "monthly", 0.6),
     entry("/homeowner-portal", now, "monthly", 0.5),
+    entry("/service-areas", now, "weekly", 0.8),
+    ...COPY.areas.cities.map((c) => entry(`/service-areas/${c.slug}`, now, "monthly", c.featured ? 0.8 : 0.6)),
   ];
 
   return [
