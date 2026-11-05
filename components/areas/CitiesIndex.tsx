@@ -64,12 +64,12 @@ export default function CitiesIndex({ cities, regions, allRegions, placeholder, 
                 {/* the row grows downward into a strip of mini photos */}
                 <div className={`max-md:hidden [@media(hover:none)]:hidden grid transition-[grid-template-rows] duration-[650ms] ease-[cubic-bezier(.2,.7,.2,1)] ${open === c.slug ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
                   <div className="overflow-hidden">
-                    <div className="flex gap-2 overflow-x-auto pb-5 pt-1 [scrollbar-width:none]">
+                    <div className="flex gap-2 pb-5 pt-1 lg:pr-16">
                       {c.photos.map((ph, k) => (
                         <span
                           key={ph.url}
-                          className={`relative shrink-0 h-[108px] lg:h-[160px] overflow-hidden bg-ink transition-all duration-[700ms] ease-[cubic-bezier(.2,.7,.2,1)] ${open === c.slug ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-3 scale-95'}`}
-                          style={{ aspectRatio: ph.ratio, transitionDelay: open === c.slug ? `${120 + k * 70}ms` : '0ms' }}
+                          className={`relative min-w-0 h-[108px] lg:h-[160px] overflow-hidden bg-ink transition-all duration-[700ms] ease-[cubic-bezier(.2,.7,.2,1)] ${open === c.slug ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-3 scale-95'}`}
+                          style={{ flex: `${ph.ratio} 1 0%`, transitionDelay: open === c.slug ? `${120 + k * 70}ms` : '0ms' }}
                         >
                           <Image src={ph.url} alt={ph.alt} fill sizes="320px" className="object-cover" />
                         </span>

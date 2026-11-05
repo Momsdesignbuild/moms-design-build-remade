@@ -28,7 +28,7 @@ export default async function ServiceAreasPage() {
   const index = c.cities.map((x) => ({
     slug: x.slug, name: x.name, region: x.region,
     count: projectsIn(projects, x.name).length,
-    photos: cityPhotos(projects, x.name, c.cities.filter((k) => k.region === x.region && k.slug !== x.slug).map((k) => k.name), 6).map((ph) => ({ url: ph.url + "?h=480&auto=format&q=80", alt: ph.alt, ratio: Math.min(2.2, Math.max(0.7, ph.w / ph.h)) })),
+    photos: cityPhotos(projects, x.name, c.cities.filter((k) => k.region === x.region && k.slug !== x.slug).map((k) => k.name), 5).map((ph) => ({ url: ph.url + "?h=480&auto=format&q=80", alt: ph.alt, ratio: Math.min(2.2, Math.max(0.7, ph.w / ph.h)) })),
   }));
   return (
     <>
