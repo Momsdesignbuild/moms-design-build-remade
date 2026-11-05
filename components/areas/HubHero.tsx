@@ -8,21 +8,21 @@ import { SERIF } from "@/components/areas/fonts";
 
 /** Headline cut out of a pool photo: the photo drifts inside the letters as the page scrolls. */
 export function MaskedHeading({ lines, photo }: { lines: string[]; photo: string }) {
-  const ref = useRef<HTMLDivElement>(null)
+  const ref = useRef<HTMLHeadingElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
   const y = useTransform(scrollYProgress, [0, 1], ['30%', '80%'])
   return (
-    <div ref={ref}>
-      {lines.map((l, i) => (
-        <motion.h1
-          key={l}
-          style={{ backgroundImage: `url(${photo})`, backgroundSize: 'cover', backgroundPositionX: i ? '30%' : '70%', backgroundPositionY: y, fontWeight: 900 }}
-          className={`${serifBlack.className} text-[clamp(38px,10.6vw,230px)] md:text-[clamp(60px,14vw,230px)] leading-[0.92] uppercase !tracking-[-0.01em] text-transparent bg-clip-text bg-[#1c1c1c]`}
-        >
+    <motion.h1
+      ref={ref}
+      style={{ backgroundImage: `url(${photo})`, backgroundSize: 'cover', backgroundPositionX: '60%', backgroundPositionY: y, fontWeight: 900 }}
+      className={`${serifBlack.className} text-[clamp(30px,13vw,230px)] md:text-[clamp(60px,14vw,230px)] leading-[0.92] uppercase !tracking-[-0.01em] text-transparent bg-clip-text bg-[#1c1c1c]`}
+    >
+      {lines.map((l) => (
+        <span key={l} className="block whitespace-nowrap">
           {l}
-        </motion.h1>
+        </span>
       ))}
-    </div>
+    </motion.h1>
   )
 }
 
