@@ -15,7 +15,7 @@ export function MaskedHeading({ lines, photo }: { lines: string[]; photo: string
     <motion.h1
       ref={ref}
       style={{ backgroundImage: `url(${photo})`, backgroundSize: 'cover', backgroundPositionX: '60%', backgroundPositionY: y, fontWeight: 900 }}
-      className={`${serifBlack.className} text-[clamp(30px,13vw,230px)] md:text-[clamp(60px,14vw,230px)] leading-[0.92] uppercase !tracking-[-0.01em] text-transparent bg-clip-text bg-[#1c1c1c]`}
+      className={`${serifBlack.className} text-[clamp(30px,13vw,208px)] md:text-[clamp(60px,14vw,208px)] pr-[0.06em] leading-[0.92] uppercase !tracking-[-0.01em] text-transparent bg-clip-text bg-[#1c1c1c]`}
     >
       {lines.map((l) => (
         <span key={l} className="block whitespace-nowrap">
