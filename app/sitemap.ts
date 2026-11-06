@@ -1,8 +1,11 @@
 import { MetadataRoute } from "next";
 import { client } from "@/sanity/lib/client";
 import { COPY } from "@/sanity/copy/defaults";
+import { sitemapImagesFor } from "@/sanity/lib/sitemap-images";
 
 const BASE_URL = "https://momsdesignbuild.com";
+const PROJECT_ID = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!;
+const DATASET = process.env.NEXT_PUBLIC_SANITY_DATASET!;
 
 // junk WP utility pages that exist as docs but must not be advertised
 const EXCLUDE = new Set(["test", "thank-you", "contact-thanks-original", "contact/thanks"]);
@@ -14,29 +17,30 @@ const CATEGORY_SLUGS = [
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [projects, posts, services, careers, team, pages] = await Promise.all([
-    client.fetch<Array<{ slug: { current: string }; _updatedAt: string }>>(
-      `*[_type == "portfolioProject"] { slug, _updatedAt }`),
-    client.fetch<Array<{ slug: { current: string }; _updatedAt: string }>>(
-      `*[_type == "post"] { slug, _updatedAt }`),
-    client.fetch<Array<{ slug: { current: string }; _updatedAt: string }>>(
-      `*[_type == "servicePage"] { slug, _updatedAt }`),
+    client.fetch<Array<{ slug: { current: string }; _updatedAt: string; doc: unknown }>>(
+      `*[_type == "portfolioProject"] { slug, _updatedAt, "doc": @ }`),
+    client.fetch<Array<{ slug: { current: string }; _updatedAt: string; doc: unknown }>>(
+      `*[_type == "post"] { slug, _updatedAt, "doc": @ }`),
+    client.fetch<Array<{ slug: { current: string }; _updatedAt: string; doc: unknown }>>(
+      `*[_type == "servicePage"] { slug, _updatedAt, "doc": @ }`),
     client.fetch<Array<{ slug: { current: string }; _updatedAt: string }>>(
       `*[_type == "careerPage" && defined(slug.current) && slug.current != "__hub" && published != false] { slug, _updatedAt }`),
     client.fetch<Array<{ slug: { current: string }; _updatedAt: string }>>(
       `*[_type == "teamMember"] { slug, _updatedAt }`),
-    client.fetch<Array<{ slug: { current: string }; _updatedAt: string }>>(
-      `*[_type == "page"] { slug, _updatedAt }`),
+    client.fetch<Array<{ slug: { current: string }; _updatedAt: string; doc: unknown }>>(
+      `*[_type == "page"] { slug, _updatedAt, "doc": @ }`),
   ]);
 
   const entry = (
     path: string,
     lastModified: Date,
     changeFrequency: "weekly" | "monthly",
-    priority: number
+    priority: number,
+    images?: string[]
     // trailing slash matches every page's canonical (copied from WP) — GSC
     // treats /x and /x/ as distinct URLs, so the sitemap must advertise the
     // canonical form
-  ) => ({ url: BASE_URL + (path.endsWith("/") ? path : path + "/"), lastModified, changeFrequency, priority });
+  ) => ({ url: BASE_URL + (path.endsWith("/") ? path : path + "/"), lastModified, changeFrequency, priority, ...(images?.length ? { images } : {}) });
 
   const now = new Date();
   const statics: MetadataRoute.Sitemap = [
@@ -62,17 +66,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // pages (homeowner-portal, commercial-spaces) are already in statics
     ...services
       .filter((s) => s.slug.current.includes("/") || ["landscape-architecture", "interior-design-and-remodeling", "garden-management"].includes(s.slug.current))
-      .map((s) => entry(`/services/${s.slug.current}`, new Date(s._updatedAt), "monthly", 0.8)),
-    ...projects.map((p) => entry(`/portfolio/${p.slug.current}`, new Date(p._updatedAt), "monthly", 0.7)),
+      .map((s) => entry(`/services/${s.slug.current}`, new Date(s._updatedAt), "monthly", 0.8, sitemapImagesFor(s.doc, PROJECT_ID, DATASET))),
+    ...projects.map((p) => entry(`/portfolio/${p.slug.current}`, new Date(p._updatedAt), "monthly", 0.7, sitemapImagesFor(p.doc, PROJECT_ID, DATASET))),
     // posts live at ROOT paths (their WP structure), never /blog/<slug>
     ...posts
       .filter((p) => !EXCLUDE.has(p.slug.current))
-      .map((p) => entry(`/${p.slug.current}`, new Date(p._updatedAt), "monthly", 0.6)),
+      .map((p) => entry(`/${p.slug.current}`, new Date(p._updatedAt), "monthly", 0.6, sitemapImagesFor(p.doc, PROJECT_ID, DATASET))),
     ...CATEGORY_SLUGS.map((c) => entry(`/category/${c}`, now, "weekly", 0.4)),
     ...careers.map((c) => entry(`/careers/${c.slug.current}`, new Date(c._updatedAt), "monthly", 0.5)),
     ...team.map((t) => entry(`/team/${t.slug.current}`, new Date(t._updatedAt), "monthly", 0.4)),
     ...pages
       .filter((p) => !EXCLUDE.has(p.slug.current))
-      .map((p) => entry(`/${p.slug.current}`, new Date(p._updatedAt), "monthly", 0.4)),
+      .map((p) => entry(`/${p.slug.current}`, new Date(p._updatedAt), "monthly", 0.4, sitemapImagesFor(p.doc, PROJECT_ID, DATASET))),
   ];
 }
