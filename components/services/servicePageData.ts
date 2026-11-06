@@ -34,6 +34,8 @@ export async function getServicePage(slug: string): Promise<ServicePageDoc | nul
       }
     }`,
     params: { slug },
+    // preview server only (SANITY_PREVIEW=1): show the unpublished draft; production never sets it
+    ...(process.env.SANITY_PREVIEW === "1" ? { perspective: "drafts" as const } : {}),
   });
   return data as ServicePageDoc | null;
 }
