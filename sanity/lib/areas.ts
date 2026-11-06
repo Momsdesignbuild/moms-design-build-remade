@@ -1,12 +1,12 @@
 import { sanityFetch } from './live'
 
-export type Photo = { url: string; alt: string; w: number; h: number }
+export type Photo = { url: string; alt: string; caption?: string; w: number; h: number }
 export type Project = { title: string; slug: string; location: string; hero?: Photo; gallery: Photo[] }
 
 // Drawings, plans, renders and before shots are never shown on the service-area pages, only real finished photos.
-const NOT_A_PHOTO = /render|before|sketch|concept|\b3d\b|\b2d\b|\bplans?\b|layout|drawing|elevation|diagram|blueprint|schematic|labeled|illustrat|survey|existing|as built/i // ui-label: filter, not shown
+const NOT_A_PHOTO = /render|before|sketch|concept|\b3d\b|\b2d\b|\bplans?\b|layout|drawing|elevation|diagram|blueprint|schematic|labeled|illustrat|survey|existing|as built|under construction|construction|framing|scaffold|in progress|img_\d/i // ui-label: filter, not shown
 
-const IMG = `{ alt, "url": asset->url, "w": asset->metadata.dimensions.width, "h": asset->metadata.dimensions.height }`
+const IMG = `{ alt, caption, "url": asset->url, "w": asset->metadata.dimensions.width, "h": asset->metadata.dimensions.height }`
 
 export async function getProjects(): Promise<Project[]> {
   const { data } = await sanityFetch({
@@ -17,8 +17,8 @@ export async function getProjects(): Promise<Project[]> {
     }`,
   })
   return (data as Project[]).map((p) => {
-    const gallery = (p.gallery ?? []).filter((g) => g?.url && !NOT_A_PHOTO.test(g.alt ?? ''))
-    const hero = p.hero?.url && !NOT_A_PHOTO.test(p.hero.alt ?? '') ? p.hero : gallery[0]
+    const gallery = (p.gallery ?? []).filter((g) => g?.url && !NOT_A_PHOTO.test(`${g.alt ?? ''} ${g.caption ?? ''}`))
+    const hero = p.hero?.url && !NOT_A_PHOTO.test(`${p.hero.alt ?? ''} ${p.hero.caption ?? ''}`) ? p.hero : gallery[0]
     return { ...p, hero, gallery }
   })
 }

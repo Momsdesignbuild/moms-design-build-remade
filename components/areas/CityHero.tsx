@@ -27,7 +27,7 @@ export default function CityHero({ city, kicker, tagline, primary, secondary, ph
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-black/25" aria-hidden="true" />
       <div className="door-l absolute inset-y-0 left-0 w-1/2 bg-ink z-10" aria-hidden="true" />
       <div className="door-r absolute inset-y-0 right-0 w-1/2 bg-ink z-10" aria-hidden="true" />
-      <div className="relative z-20 h-full max-w-[1400px] mx-auto px-6 flex flex-col justify-end pb-16 lg:pb-24">
+      <div className="relative z-20 h-full max-w-[1400px] mx-auto px-6 flex flex-col justify-center pt-16 pb-8">
         <p className="hero-up text-[18px] font-semibold tracking-[0.34em] uppercase text-white/85 mb-4">{kicker}</p>
         <h1 className="hero-up text-[clamp(56px,11vw,168px)] leading-[0.92] mb-5 !text-white !font-normal !tracking-normal" style={{ fontFamily: SERIF }}>
           {city}
