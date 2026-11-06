@@ -23,7 +23,8 @@ export function sanityImageUrl(ref: string, projectId: string, dataset: string):
 
 /** The on-site address Next serves for an image at its widest standard size. */
 export function siteImageUrl(cdnUrl: string): string {
-  return `${BASE_URL}/_next/image/?url=${encodeURIComponent(cdnUrl)}&w=1920&q=75`
+  // "&" must be "&amp;" in XML. Next writes image addresses into sitemap.xml unescaped, which made Google reject the file (line 390, 2026-11-06).
+  return `${BASE_URL}/_next/image/?url=${encodeURIComponent(cdnUrl)}&amp;w=1920&amp;q=75`
 }
 
 /** Every image asset reference inside a document, in the order they appear, without repeats. */
