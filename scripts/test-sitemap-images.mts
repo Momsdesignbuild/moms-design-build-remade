@@ -24,8 +24,8 @@ assert.deepEqual(imageRefsIn("text"), [])
 const out = sitemapImagesFor(doc, "proj", "production")
 assert.equal(out.length, 2)
 assert.ok(out[0].startsWith("https://momsdesignbuild.com/_next/image/?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fproj%2Fproduction%2F0041433e"))
-assert.ok(out[0].endsWith("&w=1920&q=75"))
-assert.equal(siteImageUrl("https://cdn.sanity.io/images/p/d/h-1x1.jpg"), "https://momsdesignbuild.com/_next/image/?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fp%2Fd%2Fh-1x1.jpg&w=1920&q=75")
+assert.ok(out[0].endsWith("&amp;w=1920&amp;q=75"))
+assert.equal(siteImageUrl("https://cdn.sanity.io/images/p/d/h-1x1.jpg"), "https://momsdesignbuild.com/_next/image/?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fp%2Fd%2Fh-1x1.jpg&amp;w=1920&amp;q=75")
 
 // capped, and a hostile document never throws
 const many = { items: Array.from({ length: 500 }, (_, i) => ({ asset: { _ref: `image-${"a".repeat(38)}${String(i).padStart(2, "0")}-10x10-jpg` } })) }
