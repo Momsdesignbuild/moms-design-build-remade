@@ -44,7 +44,7 @@ export default function CityHero({ headline, facts, primary, secondary, slides }
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" aria-hidden="true" />
 
       <motion.div style={{ y: lift }} className="relative z-20 h-full max-w-[1100px] mx-auto px-6 flex flex-col items-center justify-center text-center pt-16 pb-10">
-        <h1 className="mb-10 max-w-[980px] text-[clamp(38px,6.2vw,88px)] leading-[1.06] !text-white !font-normal !tracking-normal" style={{ fontFamily: SERIF }}>
+        <h1 className="mb-10 max-w-[1000px] text-[clamp(34px,4.8vw,70px)] leading-[1.06] !text-white !font-normal !tracking-normal" style={{ fontFamily: SERIF }}>
           {headline.split(' ').map((w, k) => (
             <span key={k}>
               <motion.span initial={{ opacity: 0.2, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 + k * 0.07, ease: [0.2, 0.7, 0.2, 1] }} className="inline-block">{w}</motion.span>{' '}
