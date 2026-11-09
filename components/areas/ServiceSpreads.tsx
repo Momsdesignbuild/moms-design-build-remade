@@ -11,14 +11,14 @@ export type Spread = { title: string; text: string; photos: Photo[] }
 const OUTLINE = '[-webkit-text-stroke:1.5px_rgba(28,28,28,0.2)] text-transparent' // ui-label: css
 
 /** One photo that wipes open from the bottom as it scrolls in, with the picture drifting inside the frame. */
-function Frame({ photo, p, reveal, drift, sizes, className }: { photo: Photo; p: ReturnType<typeof useScroll>['scrollYProgress']; reveal: ReturnType<typeof useScroll>['scrollYProgress']; drift: [number, number]; sizes: string; className: string }) {
+function Frame({ photo, p, reveal, drift, sizes, className, edge }: { photo: Photo; p: ReturnType<typeof useScroll>['scrollYProgress']; reveal: ReturnType<typeof useScroll>['scrollYProgress']; drift: [number, number]; sizes: string; className: string; edge?: boolean }) {
   const rm = useReducedMotion()
   const clip = useTransform(reveal, [0, 1], rm ? ['inset(0% 0% 0% 0%)', 'inset(0% 0% 0% 0%)'] : ['inset(22% 0% 0% 0%)', 'inset(0% 0% 0% 0%)'])
   const y = useTransform(p, [0, 1], rm ? [0, 0] : drift)
   const scale = useTransform(p, [0, 0.5, 1], rm ? [1, 1, 1] : [1.16, 1.06, 1])
   return (
-    <motion.div style={{ clipPath: clip, y }} className={`relative overflow-hidden bg-ink ${className}`}>
-      <motion.div style={{ scale }} className="absolute inset-0">
+    <motion.div style={{ clipPath: clip, y }} className={`relative overflow-hidden ${edge ? 'bg-white' : 'bg-ink'} ${className}`}>
+      <motion.div style={{ scale }} className={`absolute ${edge ? 'inset-[6px] overflow-hidden' : 'inset-0'}`}>
         <Image src={photo.url} alt={photo.alt} fill sizes={sizes} className="object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(.2,.7,.2,1)] hover:scale-[1.04]" />
       </motion.div>
     </motion.div>
@@ -44,8 +44,8 @@ function Row({ s, i }: { s: Spread; i: number }) {
         <div className={`relative lg:col-span-7 ${flip ? 'lg:order-2' : ''}`}>
           {a && <Frame photo={a} p={p} reveal={reveal} drift={[50, -50]} sizes={SIZE_HALF} className="aspect-[4/3] w-full lg:w-[86%]" />}
           <div className="grid grid-cols-2 gap-3 mt-3 lg:mt-0 lg:block">
-            {b && <div className={`lg:absolute lg:w-[38%] lg:-bottom-12 ${flip ? 'lg:left-[-6%]' : 'lg:right-0'} lg:shadow-[0_24px_60px_rgba(0,0,0,0.25)]`}><Frame photo={b} p={p} reveal={reveal} drift={[-30, 70]} sizes={SIZE_RAIL} className="aspect-[4/5] w-full" /></div>}
-            {c && <div className={`lg:absolute lg:w-[30%] lg:-top-10 ${flip ? 'lg:right-[4%]' : 'lg:left-[-5%]'} lg:shadow-[0_24px_60px_rgba(0,0,0,0.25)]`}><Frame photo={c} p={p} reveal={reveal} drift={[80, -20]} sizes={SIZE_RAIL} className="aspect-square w-full" /></div>}
+            {b && <div className={`lg:absolute lg:w-[38%] lg:-bottom-12 ${flip ? 'lg:left-[-6%]' : 'lg:right-0'}`}><Frame edge photo={b} p={p} reveal={reveal} drift={[-30, 70]} sizes={SIZE_RAIL} className="aspect-[4/5] w-full" /></div>}
+            {c && <div className={`lg:absolute lg:w-[30%] lg:-top-10 ${flip ? 'lg:right-[4%]' : 'lg:left-[-5%]'}`}><Frame edge photo={c} p={p} reveal={reveal} drift={[80, -20]} sizes={SIZE_RAIL} className="aspect-square w-full" /></div>}
           </div>
         </div>
         {/* words */}
