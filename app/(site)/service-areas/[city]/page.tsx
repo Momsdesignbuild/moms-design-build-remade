@@ -3,15 +3,20 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getCopy } from "@/sanity/lib/copy";
-import { fill, fillAll, getProjects, pick, projectsIn, type Photo } from "@/sanity/lib/areas";
+import { fill, fillAll, getProjects, namesWhere, pick, projectsIn, type Cat, type Photo } from "@/sanity/lib/areas";
 import { JsonLd } from "@/components/PortableBody";
 import CityHero from "@/components/areas/CityHero";
 import WordReveal from "@/components/areas/WordReveal";
 import ServicePanels from "@/components/areas/ServicePanels";
+import ServiceSpreads from "@/components/areas/ServiceSpreads";
 import Topo from "@/components/areas/Topo";
 import CityCta from "@/components/areas/CityCta";
 import { COPY } from "@/sanity/copy/defaults";
 import { SERIF, SIZE_RAIL } from "@/components/areas/fonts";
+
+// the 20 cities that also have a landscape design-build page under /services/landscape-architecture/
+const DESIGN_BUILD_PAGES = new Set(["chanhassen", "chaska", "deephaven", "eden-prairie", "edina", "excelsior", "lake-minnetonka-area", "long-lake", "maple-grove", "medicine-lake", "minnetonka", "minnetrista", "mound", "orono", "prior-lake", "shorewood", "tonka-bay", "victoria", "wayzata", "woodland"]);
+const POOL_RE = /pool/i, DECK_RE = /deck|patio|terrace/i, KITCHEN_RE = /outdoor kitchen|grill|fireplace|fire pit|fire bowl|pergola/i, INTERIOR_RE = /interior|bathroom|powder room|vanity|basement|living room|bedroom/i;
 
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -20,10 +25,14 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ city: string }> }): Promise<Metadata> {
   const { city } = await params;
-  const c = await getCopy("areas");
+  const [c, projects] = await Promise.all([getCopy("areas"), getProjects()]);
   const x = c.cities.find((k) => k.slug === city);
   if (!x) return {};
-  const title = fill(c.cityMetaTitle, x.name), description = fill(c.cityMetaDescription, x.name);
+  const here = projectsIn(projects, x.name);
+  const title = fill(c.cityMetaTitle, x.name);
+  const description = here.length
+    ? fill(c.cityMetaDescriptionLocal, x.name).replace("{count}", String(here.length)).replace("{noun}", here.length === 1 ? c.projectsOne : c.projectsMany).replace("{title}", here[0].title)
+    : fill(c.cityMetaDescription, x.name);
   return {
     title: { absolute: title }, description,
     alternates: { canonical: `https://momsdesignbuild.com/service-areas/${x.slug}/` },
@@ -62,7 +71,17 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
     ? `We have completed ${mine.length} ${mine.length === 1 ? c.projectsOne : c.projectsMany} in ${x.name}, including ${mine[0].title}.`
     : `We serve ${x.name} and design for the lots and homes we find there.`;
   const tok = { city: x.name, region: x.region, near, work };
-  const faqLd = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: c.faqs.map((f) => ({ "@type": "Question", name: fillAll(f.q, tok), acceptedAnswer: { "@type": "Answer", text: fillAll(f.a, tok) } })) }; // ui-label: JSON-LD, not page words
+  const note = (tpl: string, re: RegExp) => { const names = namesWhere(local, re); return names ? fill(tpl, x.name).replace("{names}", names) : ""; };
+  const notes = [note(c.poolNote, POOL_RE), null, note(c.deckNote, DECK_RE), note(c.kitchenNote, KITCHEN_RE), note(c.interiorNote, INTERIOR_RE), null];
+  const spreadCats: Cat[] = ["pool", "landscape", "deck", "living", "interior", "kitchen"];
+  const spreads = c.serviceBlocks.map((b, i) => ({ title: fillAll(b.title, tok), text: `${fillAll(b.text, tok)}${notes[i] ? ` ${notes[i]}` : ""}`, photos: pick(local, projects, spreadCats[i] ?? "landscape", 3, used, false, 1200) }));
+  const nearTitles = nearbyProjects.slice(0, 4).map((p) => p.title);
+  const listNames = (t: string[]) => (t.length > 1 ? `${t.slice(0, -1).join(", ")} and ${t[t.length - 1]}` : t[0] ?? "");
+  const builtLine = mine.length
+    ? fill(c.projectsLineLocal, x.name).replace("{count}", String(mine.length)).replace("{noun}", mine.length === 1 ? c.projectsOne : c.projectsMany).replace("{names}", listNames(mine.slice(0, 4).map((p) => p.title)))
+    : nearTitles.length ? fill(c.projectsLineNear, x.name).replace("{names}", listNames(nearTitles)) : "";
+  const faqs = [...(builtLine ? [{ q: c.projectsFaqQ, a: builtLine }] : []), ...c.faqs];
+  const faqLd = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((f) => ({ "@type": "Question", name: fillAll(f.q, tok), acceptedAnswer: { "@type": "Answer", text: fillAll(f.a, tok) } })) }; // ui-label: JSON-LD, not page words
   const ld = {
     "@context": "https://schema.org", "@type": "Service", // ui-label: JSON-LD, not page words
     name: `Pool, landscape and interior design-build in ${x.name}, MN`,
@@ -87,19 +106,11 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
       </section>
 
 
-      <section className="bg-white px-6 py-20 lg:py-28">
-        <div className="max-w-[1400px] mx-auto">
-          <h2 className="text-[clamp(32px,4.6vw,60px)] leading-tight mb-12 !text-ink !font-normal !tracking-normal" style={{ fontFamily: SERIF }}>{fill(c.servicesKicker, x.name)}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
-            {c.serviceBlocks.map((b) => (
-              <div key={b.title}>
-                <h3 className="text-[28px] leading-tight mb-3 !text-ink !font-normal !tracking-normal" style={{ fontFamily: SERIF }}>{fillAll(b.title, tok)}</h3>
-                <p className="text-[19px] font-[300] leading-relaxed text-muted">{fillAll(b.text, tok)}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ServiceSpreads
+        heading={fill(c.servicesKicker, x.name)}
+        spreads={spreads}
+        foot={DESIGN_BUILD_PAGES.has(x.slug) ? <p className="text-[20px] font-[300] text-muted">{c.designBuildLead} <Link href={`/services/landscape-architecture/${x.slug}/`} className="text-brand border-b border-brand/40 hover:border-brand">{fill(c.designBuildLink, x.name)}</Link></p> : undefined}
+      />
 
       {panels.length > 0 && (
         <section className="bg-white px-6 py-20 lg:py-28">
@@ -134,7 +145,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
         <div className="max-w-[900px] mx-auto">
           <h2 className="text-[clamp(32px,4.6vw,60px)] leading-tight mb-10 !text-ink !font-normal !tracking-normal" style={{ fontFamily: SERIF }}>{fill(c.faqHeading, x.name)}</h2>
           <div>
-            {c.faqs.map((f) => (
+            {faqs.map((f) => (
               <details key={f.q} className="group border-b border-ink/15 py-5">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-6 text-[22px] lg:text-[26px] leading-snug text-ink" style={{ fontFamily: SERIF }}>
                   {fillAll(f.q, tok)}

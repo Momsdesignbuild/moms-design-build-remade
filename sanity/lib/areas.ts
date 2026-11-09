@@ -34,6 +34,8 @@ const CATS = {
   deck: /deck|patio|paver|terrace|porch|walkway|stoop/i,
   living: /outdoor kitchen|kitchen exterior|fireplace|fire pit|fire feature|pergola|pavilion|outdoor living|grill/i,
   interior: /interior|remodel|bath|basement|bedroom|living room|kitchen design|cabinet/i,
+  landscape: /garden|planting|perennial|lawn|retaining wall|stone wall|boulder|landscap|walkway|staircase|steps/i,
+  kitchen: /kitchen|island|cabinet|range hood|countertop|pantry/i,
 } as const
 export type Cat = keyof typeof CATS
 
@@ -51,6 +53,8 @@ export function pick(cityProjects: Project[], everyProject: Project[], cat: Cat,
       if (wide && ph.w < ph.h * 1.3) continue
       if (ph.w < floor) continue
       if (cat === 'living' && /interior/i.test(ph.alt ?? '')) continue
+      if (cat === 'landscape' && /interior|pool/i.test(ph.alt ?? '')) continue
+      if (cat === 'kitchen' && /outdoor|grill|patio|pool|exterior|deck/i.test(ph.alt ?? '')) continue
       used.add(ph.url); out.push(ph)
     }
   }
@@ -94,3 +98,9 @@ export function bestPhoto(everyProject: Project[], city: string, nearby: string[
 export type Tokens = { city: string; region: string; near: string; work: string }
 export const fillAll = (s: string, t: Tokens) =>
   s.replaceAll('{city}', t.city).replaceAll('{region}', t.region).replaceAll('{near}', t.near).replaceAll('{work}', t.work)
+
+/** "A, B and C" for up to n projects whose finished photos mention something matching `re` (photo text only). */
+export function namesWhere(list: Project[], re: RegExp, n = 3): string {
+  const t = list.filter((p) => [p.hero, ...p.gallery].some((g) => g && re.test(g.alt ?? ''))).slice(0, n).map((p) => p.title)
+  return t.length > 1 ? `${t.slice(0, -1).join(', ')} and ${t[t.length - 1]}` : t[0] ?? ''
+}
