@@ -10,13 +10,13 @@ import { SERIF } from '@/components/areas/fonts'
 export type HeroSlide = { photo: Photo; title?: string; place?: string; href?: string }
 
 /**
- * City page opener, centered like the home page hero. The city name and the search line carry the page;
+ * City page opener, centered like the home page hero. One headline (what we build and where) carries the page;
  * photos from this city's work crossfade slowly. Desktop adds a quiet proof line;
  * phones keep only the headline and the two buttons.
  */
-export default function CityHero({ city, kicker, tagline, facts, primary, secondary, slides, tail }: {
-  city: string; kicker: string; tagline: string; facts: string[]; primary: string; secondary: string
-  slides: HeroSlide[]; tail: string
+export default function CityHero({ headline, facts, primary, secondary, slides }: {
+  headline: string; facts: string[]; primary: string; secondary: string
+  slides: HeroSlide[]
 }) {
   const rm = useReducedMotion()
   const [i, setI] = useState(0)
@@ -44,22 +44,14 @@ export default function CityHero({ city, kicker, tagline, facts, primary, second
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" aria-hidden="true" />
 
       <motion.div style={{ y: lift }} className="relative z-20 h-full max-w-[1100px] mx-auto px-6 flex flex-col items-center justify-center text-center pt-16 pb-10">
-        <motion.p initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }} className="text-[16px] lg:text-[18px] font-semibold tracking-[0.34em] uppercase text-white/90 mb-5">{kicker}</motion.p>
-        <h1 className="mb-5 !text-white !font-normal !tracking-normal">
-          <span className="block text-[clamp(64px,13vw,176px)] leading-[0.92]" style={{ fontFamily: SERIF }}>
-            {city.split(' ').map((word, wi, arr) => (
-              <span key={wi} className="inline-block whitespace-nowrap">
-                {word.split('').map((ch, k) => (
-                  <motion.span key={k} initial={{ opacity: 0.2, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.15 + (k + wi * 5) * 0.045, ease: [0.2, 0.7, 0.2, 1] }} className="inline-block">{ch}</motion.span>
-                ))}
-                {wi < arr.length - 1 ? <span className="inline-block w-[0.28em]" aria-hidden="true" /> : null}
-              </span>
-            ))}
-          </span>{' '}
-          <span className="block mt-4 text-[15px] sm:text-[18px] lg:text-[22px] font-[400] tracking-[0.28em] uppercase text-white/90">{tail}</span>
+        <h1 className="mb-10 max-w-[1000px] text-[clamp(34px,4.8vw,70px)] leading-[1.06] !text-white !font-normal !tracking-normal" style={{ fontFamily: SERIF }}>
+          {headline.split(' ').map((w, k) => (
+            <span key={k}>
+              <motion.span initial={{ opacity: 0.2, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 + k * 0.07, ease: [0.2, 0.7, 0.2, 1] }} className="inline-block">{w}</motion.span>{' '}
+            </span>
+          ))}
         </h1>
-        <motion.p initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.45 }} className="text-[19px] lg:text-[24px] font-[300] tracking-[0.02em] max-w-[620px] text-white/95 mb-9">{tagline}</motion.p>
-        <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.6 }} className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto">
+        <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.7 }} className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto">
           <Link href="/contact" className="w-full sm:w-auto text-center bg-brand text-white text-[17px] font-[600] tracking-[0.22em] uppercase px-8 py-4 hover:bg-brand-dark transition-colors">{primary}</Link>
           <Link href="/portfolio" className="w-full sm:w-auto text-center border border-white/70 text-white text-[17px] font-[600] tracking-[0.22em] uppercase px-8 py-4 hover:bg-white hover:text-ink transition-colors">{secondary}</Link>
         </motion.div>
