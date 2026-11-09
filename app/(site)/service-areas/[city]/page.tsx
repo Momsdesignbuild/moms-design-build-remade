@@ -95,7 +95,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
       <JsonLd raw={JSON.stringify(ld)} />
       <JsonLd raw={JSON.stringify(faqLd)} />
       <JsonLd raw={JSON.stringify(crumbs)} />
-      {slides.length > 0 && <CityHero city={x.name} kicker={c.cityKicker} tagline={fill(c.cityTagline, x.name)} intro={c.heroIntro} facts={[c.heroFactSince, c.heroFactAwards, mine.length ? fill(c.heroFactLocal, x.name).replace("{count}", String(mine.length)).replace("{noun}", mine.length === 1 ? c.projectsOne : c.projectsMany) : fill(c.heroFactNear, x.name)]} primary={c.primaryCta} secondary={c.secondaryCta} call={c.callLabel} phone={nav.phone} phoneHref={nav.phoneHref} slides={slides} chipLabel={c.heroChip} tail={c.heroH1Tail} />}
+      {slides.length > 0 && <CityHero city={x.name} kicker={c.cityKicker} tagline={fill(c.cityTagline, x.name)} facts={[c.heroFactSince, c.heroFactAwards, mine.length ? fill(c.heroFactLocal, x.name).replace("{count}", String(mine.length)).replace("{noun}", mine.length === 1 ? c.projectsOne : c.projectsMany) : fill(c.heroFactNear, x.name)]} primary={c.primaryCta} secondary={c.secondaryCta} slides={slides} tail={c.heroH1Tail} />}
       <div className="bg-[#F7F5F2] pt-16 lg:pt-20"><AwardsStrip content={home.awards} /></div>
 
       <section className="relative overflow-hidden bg-[#F7F5F2] px-6 py-24 lg:py-36">

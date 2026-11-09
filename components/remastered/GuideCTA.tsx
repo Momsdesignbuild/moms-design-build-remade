@@ -65,7 +65,7 @@ export default function GuideCTA({ c }: { c: GuideCopy }) {
       {open && (
         <div className={`fixed inset-0 z-50 flex items-center justify-center px-4 transition-colors duration-[450ms] ${shown ? 'bg-ink/60 backdrop-blur-[2px]' : 'bg-ink/0'}`} onClick={hide}>
           <div
-            className={`relative w-full max-w-[780px] max-h-[92vh] overflow-y-auto grid grid-cols-1 md:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] bg-white shadow-2xl transition-transform duration-[450ms] ease-[cubic-bezier(.2,.7,.2,1)] ${shown ? 'translate-x-0' : '-translate-x-[120vw]'}`}
+            className={`relative w-full max-w-[780px] max-h-[92vh] max-md:[zoom:0.9] overflow-y-auto grid grid-cols-1 md:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] bg-white shadow-2xl transition-transform duration-[450ms] ease-[cubic-bezier(.2,.7,.2,1)] ${shown ? 'translate-x-0' : '-translate-x-[120vw]'}`}
             onClick={(e) => e.stopPropagation()}
           >
             <button
