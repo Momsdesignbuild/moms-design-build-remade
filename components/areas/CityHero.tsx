@@ -65,8 +65,8 @@ export default function CityHero({ city, kicker, tagline, facts, primary, second
         </motion.div>
 
         {/* desktop only: one quiet proof line, hairlines above and below like the home hero */}
-        <motion.ul initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.9, delay: 0.9 }} className="hidden lg:flex items-center justify-between gap-10 w-full max-w-[760px] mt-14 py-3 border-y border-white/40 text-[14px] tracking-[0.24em] uppercase text-white/90">
-          {facts.map((f) => <li key={f}>{f}</li>)}
+        <motion.ul initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.9, delay: 0.9 }} className="hidden lg:flex items-center justify-between gap-8 w-full max-w-[920px] mt-14 py-3 border-y border-white/40 text-[13px] xl:text-[14px] tracking-[0.2em] uppercase text-white/90">
+          {facts.map((f) => <li key={f} className="whitespace-nowrap">{f}</li>)}
         </motion.ul>
       </motion.div>
 
