@@ -7,7 +7,9 @@ import { fill, fillAll, getProjects, namesWhere, pick, projectsIn, type Cat, typ
 import { JsonLd } from "@/components/PortableBody";
 import CityHero from "@/components/areas/CityHero";
 import WordReveal from "@/components/areas/WordReveal";
-import ServicePanels from "@/components/areas/ServicePanels";
+import TransformationSlider from "@/components/remastered/TransformationSlider";
+import Anatomy from "@/components/remastered/Anatomy";
+import { getHomeContent } from "@/sanity/lib/homePage";
 import ServiceSpreads from "@/components/areas/ServiceSpreads";
 import Topo from "@/components/areas/Topo";
 import CityCta from "@/components/areas/CityCta";
@@ -42,7 +44,7 @@ export async function generateMetadata({ params }: { params: Promise<{ city: str
 
 export default async function CityPage({ params }: { params: Promise<{ city: string }> }) {
   const { city } = await params;
-  const [c, nav, projects] = await Promise.all([getCopy("areas"), getCopy("nav"), getProjects()]);
+  const [c, nav, projects, home] = await Promise.all([getCopy("areas"), getCopy("nav"), getProjects(), getHomeContent()]);
   const x = c.cities.find((k) => k.slug === city);
   if (!x) notFound();
 
@@ -53,14 +55,6 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
 
   const used = new Set<string>();
   const heroPhoto = pick(local, projects, "pool", 1, used, true, 2000)[0];
-  const one = (cat: "pool" | "deck" | "living" | "interior") => pick(local, projects, cat, 1, used, false, 1500)[0];
-  const panels = ([
-    [c.poolsLabel, c.poolsText, one("pool")],
-    [c.decksLabel, c.decksText, one("deck")],
-    [c.livingLabel, c.livingText, one("living")],
-    [c.interiorsLabel, c.interiorsText, one("interior")],
-  ] as [string, string, Photo | undefined][]).filter((p): p is [string, string, Photo] => !!p[2]).map(([label, text, photo]) => ({ label, text, photo }));
-
   const rail = local.filter((p) => p.hero).slice(0, 8);
   const countLine = mine.length
     ? fill(c.countLine, x.name).replace("{count}", String(mine.length)).replace("{noun}", mine.length === 1 ? c.projectsOne : c.projectsMany)
@@ -112,14 +106,8 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
         foot={DESIGN_BUILD_PAGES.has(x.slug) ? <p className="text-[20px] font-[300] text-muted">{c.designBuildLead} <Link href={`/services/landscape-architecture/${x.slug}/`} className="text-brand border-b border-brand/40 hover:border-brand">{fill(c.designBuildLink, x.name)}</Link></p> : undefined}
       />
 
-      {panels.length > 0 && (
-        <section className="bg-white px-6 py-20 lg:py-28">
-          <div className="max-w-[1400px] mx-auto">
-            <h2 className="text-[clamp(32px,4.6vw,60px)] leading-tight mb-10 !text-ink !font-normal !tracking-normal" style={{ fontFamily: SERIF }}>{fill(c.panelsHeading, x.name)}</h2>
-            <ServicePanels panels={panels} hint={c.panelHint} />
-          </div>
-        </section>
-      )}
+      <TransformationSlider content={home.transformation} />
+      <Anatomy content={home.anatomy} />
 
       {rail.length > 0 && (
         <section className="bg-[#F7F5F2] px-6 py-20 lg:py-28">
