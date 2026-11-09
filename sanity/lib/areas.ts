@@ -4,7 +4,7 @@ export type Photo = { url: string; alt: string; caption?: string; w: number; h: 
 export type Project = { title: string; slug: string; location: string; hero?: Photo; gallery: Photo[] }
 
 // Drawings, plans, renders and before shots are never shown on the service-area pages, only real finished photos.
-const NOT_A_PHOTO = /render|before|sketch|concept|\b3d\b|\b2d\b|\bplans?\b|layout|drawing|elevation|diagram|blueprint|schematic|labeled|illustrat|survey|existing|as built|under construction|construction|framing|scaffold|in progress|img_\d/i // ui-label: filter, not shown
+const NOT_A_PHOTO = /render|before|sketch|concept|\b3d\b|\b2d\b|\bplans?\b|layout|drawing|elevation|diagram|blueprint|schematic|labeled|illustrat|survey|existing|as built|under construction|construction|framing|scaffold|in progress|unfinished|\bduring\b|img_\d/i // ui-label: filter, not shown
 
 const IMG = `{ alt, caption, "url": asset->url, "w": asset->metadata.dimensions.width, "h": asset->metadata.dimensions.height }`
 
@@ -54,6 +54,7 @@ export function pick(cityProjects: Project[], everyProject: Project[], cat: Cat,
       if (ph.w < floor) continue
       if (cat === 'living' && /interior/i.test(ph.alt ?? '')) continue
       if (cat === 'landscape' && /interior|pool/i.test(ph.alt ?? '')) continue
+      if (cat === 'interior' && /outdoor|porch|patio|exterior|pergola/i.test(ph.alt ?? '')) continue
       if (cat === 'kitchen' && /outdoor|grill|patio|pool|exterior|deck/i.test(ph.alt ?? '')) continue
       used.add(ph.url); out.push(ph)
     }
