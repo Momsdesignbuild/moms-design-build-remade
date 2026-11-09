@@ -46,7 +46,9 @@ export default function CityHero({ headline, facts, primary, secondary, slides }
       <motion.div style={{ y: lift }} className="relative z-20 h-full max-w-[1100px] mx-auto px-6 flex flex-col items-center justify-center text-center pt-16 pb-10">
         <h1 className="mb-10 max-w-[980px] text-[clamp(38px,6.2vw,88px)] leading-[1.06] !text-white !font-normal !tracking-normal" style={{ fontFamily: SERIF }}>
           {headline.split(' ').map((w, k) => (
-            <motion.span key={k} initial={{ opacity: 0.2, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 + k * 0.07, ease: [0.2, 0.7, 0.2, 1] }} className="inline-block mr-[0.26em]">{w}</motion.span>
+            <span key={k}>
+              <motion.span initial={{ opacity: 0.2, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 + k * 0.07, ease: [0.2, 0.7, 0.2, 1] }} className="inline-block">{w}</motion.span>{' '}
+            </span>
           ))}
         </h1>
         <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.7 }} className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto">
