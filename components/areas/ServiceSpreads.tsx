@@ -2,11 +2,12 @@
 
 import { useRef } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
 import type { Photo } from '@/sanity/lib/areas'
 import { SERIF, SIZE_HALF, SIZE_RAIL } from '@/components/areas/fonts'
 
-export type Spread = { title: string; text: string; photos: Photo[] }
+export type Spread = { title: string; text: string; photos: Photo[]; href?: string; linkLabel?: string }
 
 const OUTLINE = '[-webkit-text-stroke:1.5px_rgba(28,28,28,0.2)] text-transparent' // ui-label: css
 
@@ -56,6 +57,7 @@ function Row({ s, i }: { s: Spread; i: number }) {
             ))}
           </h3>
           <motion.p initial={rm ? false : { opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-10% 0px' }} transition={{ duration: 0.8, delay: 0.25, ease: [0.2, 0.7, 0.2, 1] }} className="text-[19px] lg:text-[21px] font-[300] leading-relaxed text-muted">{s.text}</motion.p>
+          {s.href && s.linkLabel && <Link href={s.href} className="inline-block mt-5 text-[18px] tracking-[0.12em] text-brand border-b border-brand/40 hover:border-brand">{s.linkLabel} →</Link>}
         </div>
       </div>
     </div>

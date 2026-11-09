@@ -5,7 +5,8 @@ import { notFound } from "next/navigation";
 import { getCopy } from "@/sanity/lib/copy";
 import { fill, fillAll, getProjects, namesWhere, pick, projectsIn, type Cat, type Photo } from "@/sanity/lib/areas";
 import { JsonLd } from "@/components/PortableBody";
-import CityHero from "@/components/areas/CityHero";
+import CityHero, { type HeroSlide } from "@/components/areas/CityHero";
+import AwardsStrip from "@/components/remastered/AwardsStrip";
 import WordReveal from "@/components/areas/WordReveal";
 import TransformationSlider from "@/components/remastered/TransformationSlider";
 import Anatomy from "@/components/remastered/Anatomy";
@@ -18,6 +19,7 @@ import { SERIF, SIZE_RAIL } from "@/components/areas/fonts";
 
 // the 20 cities that also have a landscape design-build page under /services/landscape-architecture/
 const DESIGN_BUILD_PAGES = new Set(["chanhassen", "chaska", "deephaven", "eden-prairie", "edina", "excelsior", "lake-minnetonka-area", "long-lake", "maple-grove", "medicine-lake", "minnetonka", "minnetrista", "mound", "orono", "prior-lake", "shorewood", "tonka-bay", "victoria", "wayzata", "woodland"]);
+const SERVICE_HREFS = ["/services/landscape-architecture/pools/", "/services/landscape-architecture/", "/services/landscape-architecture/custom-decks/", "/services/landscape-architecture/outdoor-kitchens/", "/services/interior-design-and-remodeling/", "/services/landscape-architecture/kitchen-interior-remodeling/"];
 const POOL_RE = /pool/i, DECK_RE = /deck|patio|terrace/i, KITCHEN_RE = /outdoor kitchen|grill|fireplace|fire pit|fire bowl|pergola/i, INTERIOR_RE = /interior|bathroom|powder room|vanity|basement|living room|bedroom/i;
 
 export const dynamicParams = false;
@@ -31,7 +33,8 @@ export async function generateMetadata({ params }: { params: Promise<{ city: str
   const x = c.cities.find((k) => k.slug === city);
   if (!x) return {};
   const here = projectsIn(projects, x.name);
-  const title = fill(c.cityMetaTitle, x.name);
+  const full = fill(c.cityMetaTitle, x.name);
+  const title = full.length > 65 ? fill(c.cityMetaTitleShort, x.name) : full;
   const description = here.length
     ? fill(c.cityMetaDescriptionLocal, x.name).replace("{count}", String(here.length)).replace("{noun}", here.length === 1 ? c.projectsOne : c.projectsMany).replace("{title}", here[0].title)
     : fill(c.cityMetaDescription, x.name);
@@ -55,6 +58,8 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
 
   const used = new Set<string>();
   const heroPhoto = pick(local, projects, "pool", 1, used, true, 2000)[0];
+  const slides: HeroSlide[] = local.filter((p) => p.hero && p.hero.w >= 1800 && p.hero.w >= p.hero.h * 1.3).slice(0, 3).map((p) => ({ photo: p.hero!, title: p.title, place: p.location.replace(/,\s*mn$/i, ""), href: `/portfolio/${p.slug}/` }));
+  if (heroPhoto && !slides.some((sl) => sl.photo.url === heroPhoto.url)) slides.unshift({ photo: heroPhoto });
   const rail = local.filter((p) => p.hero).slice(0, 8);
   const countLine = mine.length
     ? fill(c.countLine, x.name).replace("{count}", String(mine.length)).replace("{noun}", mine.length === 1 ? c.projectsOne : c.projectsMany)
@@ -68,7 +73,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
   const note = (tpl: string, re: RegExp) => { const names = namesWhere(local, re); return names ? fill(tpl, x.name).replace("{names}", names) : ""; };
   const notes = [note(c.poolNote, POOL_RE), null, note(c.deckNote, DECK_RE), note(c.kitchenNote, KITCHEN_RE), note(c.interiorNote, INTERIOR_RE), null];
   const spreadCats: Cat[] = ["pool", "landscape", "deck", "living", "interior", "kitchen"];
-  const spreads = c.serviceBlocks.map((b, i) => ({ title: fillAll(b.title, tok), text: `${fillAll(b.text, tok)}${notes[i] ? ` ${notes[i]}` : ""}`, photos: pick(local, projects, spreadCats[i] ?? "landscape", 3, used, false, 1200) }));
+  const spreads = c.serviceBlocks.map((b, i) => ({ title: fillAll(b.title, tok), text: `${fillAll(b.text, tok)}${notes[i] ? ` ${notes[i]}` : ""}`, photos: pick(local, projects, spreadCats[i] ?? "landscape", 3, used, false, 1200), href: SERVICE_HREFS[i], linkLabel: c.serviceLinks[i] }));
   const nearTitles = nearbyProjects.slice(0, 4).map((p) => p.title);
   const listNames = (t: string[]) => (t.length > 1 ? `${t.slice(0, -1).join(", ")} and ${t[t.length - 1]}` : t[0] ?? "");
   const builtLine = mine.length
@@ -76,6 +81,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
     : nearTitles.length ? fill(c.projectsLineNear, x.name).replace("{names}", listNames(nearTitles)) : "";
   const faqs = [...(builtLine ? [{ q: c.projectsFaqQ, a: builtLine }] : []), ...c.faqs];
   const faqLd = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((f) => ({ "@type": "Question", name: fillAll(f.q, tok), acceptedAnswer: { "@type": "Answer", text: fillAll(f.a, tok) } })) }; // ui-label: JSON-LD, not page words
+  const crumbs = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://momsdesignbuild.com/" }, { "@type": "ListItem", position: 2, name: c.hubKicker, item: "https://momsdesignbuild.com/service-areas/" }, { "@type": "ListItem", position: 3, name: x.name, item: `https://momsdesignbuild.com/service-areas/${x.slug}/` }] };
   const ld = {
     "@context": "https://schema.org", "@type": "Service", // ui-label: JSON-LD, not page words
     name: `Pool, landscape and interior design-build in ${x.name}, MN`,
@@ -88,7 +94,9 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
     <>
       <JsonLd raw={JSON.stringify(ld)} />
       <JsonLd raw={JSON.stringify(faqLd)} />
-      {heroPhoto && <CityHero city={x.name} kicker={c.cityKicker} tagline={fill(c.cityTagline, x.name)} primary={c.primaryCta} secondary={c.secondaryCta} photo={heroPhoto} />}
+      <JsonLd raw={JSON.stringify(crumbs)} />
+      {slides.length > 0 && <CityHero city={x.name} kicker={c.cityKicker} tagline={fill(c.cityTagline, x.name)} intro={c.heroIntro} facts={[c.heroFactSince, c.heroFactAwards, mine.length ? fill(c.heroFactLocal, x.name).replace("{count}", String(mine.length)).replace("{noun}", mine.length === 1 ? c.projectsOne : c.projectsMany) : fill(c.heroFactNear, x.name)]} primary={c.primaryCta} secondary={c.secondaryCta} call={c.callLabel} phone={nav.phone} phoneHref={nav.phoneHref} slides={slides} chipLabel={c.heroChip} tail={c.heroH1Tail} />}
+      <div className="bg-[#F7F5F2] pt-16 lg:pt-20"><AwardsStrip content={home.awards} /></div>
 
       <section className="relative overflow-hidden bg-[#F7F5F2] px-6 py-24 lg:py-36">
         <Topo className="absolute inset-0 w-full h-full" />
