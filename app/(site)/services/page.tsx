@@ -30,6 +30,7 @@ export default async function ServicesPage() {
   return (
     <>
       <JsonLd raw={PAGE_JSONLD} />
+      <JsonLd raw={JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: c.faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) })} /> {/* ui-label: JSON-LD, not page words */}
       <h1 className="sr-only">{c.hiddenHeading}</h1>
       <section className="px-5 pt-14 md:pt-16 pb-20 bg-white">
         <div className="max-w-[1080px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-5">
@@ -58,6 +59,36 @@ export default async function ServicesPage() {
               </Link>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className="px-5 pb-16 bg-white">
+        <div className="max-w-[1080px] mx-auto">
+          <h2 className="font-bold [font-synthesis:weight] text-[26px] md:text-[30.6px] leading-[1.2] tracking-[1.836px] uppercase text-brand-mid text-center mb-5">{c.introHeading}</h2>
+          <p className="font-sans text-[18px] font-[300] leading-[1.8] text-brand-mid text-center max-w-[820px] mx-auto mb-14">{c.introText}</p>
+          <h2 className="font-sans text-[20px] font-[600] tracking-[0.2em] uppercase text-brand mb-8 text-center">{c.listHeading}</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
+            {[[c.landscapeHeading, c.landscapeLinks], [c.interiorHeading, c.interiorLinks]].map(([heading, links]) => (
+              <div key={heading as string}>
+                <h3 className="font-sans text-[20px] font-[600] tracking-[0.12em] uppercase text-brand-mid mb-4">{heading as string}</h3>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2">
+                  {(links as { label: string; href: string }[]).map((l) => (
+                    <li key={l.href}><Link href={l.href} className="font-sans text-[18px] font-[300] text-brand hover:underline">{l.label}</Link></li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          <h2 className="font-bold [font-synthesis:weight] text-[26px] md:text-[30.6px] leading-[1.2] tracking-[1.836px] uppercase text-brand-mid text-center mt-16 mb-6">{c.faqHeading}</h2>
+          <div className="max-w-[820px] mx-auto">
+            {c.faqs.map((f) => (
+              <details key={f.q} className="border-b border-brand-mid/20 py-4">
+                <summary className="cursor-pointer font-sans text-[19px] font-[600] text-brand-mid">{f.q}</summary>
+                <p className="font-sans text-[18px] font-[300] leading-[1.8] text-brand-mid mt-3">{f.a}</p>
+              </details>
+            ))}
+          </div>
+          <p className="font-sans text-[18px] font-[300] text-brand-mid text-center mt-10">{c.areasLead} <Link href="/service-areas/" className="text-brand hover:underline">{c.areasLink}</Link></p>
         </div>
       </section>
     </>
