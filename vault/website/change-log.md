@@ -9,6 +9,10 @@ Every site change, dated, newest first. What changed, why, and the result
 when it's known. This is how a conversation three weeks from now knows what
 already happened.
 
+## 2026-11-13
+
+- 2026-11-13 Summer: new blog post "Bi-Folding Doors: Seamlessly Blending Indoor and Outdoor Living in Minnesota Ft. Heather Sweeney" (Landscape Design) at /bi-folding-doors-indoor-outdoor-living-minnesota/, from Summer's PDF and photos, with one photo row, blog.
+
 ## 2026-11-05
 
 - 2026-11-05 Summer: blog posts can now have a row of 2-3 photos side by side (new "Photo row" in the post editor; only used on the new winter post), and bold text in blog posts now shows as truly bold (affects all posts), blog.
