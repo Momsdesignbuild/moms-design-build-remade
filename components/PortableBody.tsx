@@ -11,6 +11,7 @@ export type BodyBlock = {
   _key: string;
   style?: string;
   listItem?: string;
+  anchor?: string;
   markDefs?: Array<{ _key: string; _type: string; href?: string }>;
   children?: Array<{ _key?: string; text: string; marks?: string[] }>;
   alt?: string;
@@ -153,7 +154,7 @@ export default function PortableBody({ body, editorial = false, sectionLabels = 
                 </div>
               );
             }
-            return <H key={block._key} className={cls}>{renderSpans(block)}</H>;
+            return <H key={block._key} id={block.anchor} className={cls + (block.anchor ? " scroll-mt-28" : "")}>{renderSpans(block)}</H>;
           }
           if (sectionLabels) {
             const text = block.children.map((c) => c.text).join("");
@@ -172,7 +173,7 @@ export default function PortableBody({ body, editorial = false, sectionLabels = 
           // paragraphs typed as "1." / "2." lists indent like real lists
           // (universal rule, Josh 8/19); plain() strips stega chars first
           const numbered = /^\d+\s*[.)]\s/.test(plain(block));
-          return <p key={block._key} className={numbered ? "ml-5 pl-6 -indent-6" : undefined}>{renderSpans(block)}</p>;
+          return <p key={block._key} id={block.anchor} className={numbered ? "ml-5 pl-6 -indent-6" : undefined}>{renderSpans(block)}</p>;
         }
         // a row of 2-3 photos side by side: same matted-print look, smaller
         if (block._type === "photoRow" && block.images?.length) {
