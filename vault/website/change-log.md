@@ -13,6 +13,7 @@ already happened.
 
 - 2026-11-18 Summer: added the NARI Remodeler of the Year 2026 Gold badge (Minnesota, Residential Landscape Design/Outdoor Living, $100,000 to $250,000) to the award badges on Enchanted Entry, /portfolio/enchanted-entry/, portfolio.
 - 2026-11-18 Summer: added the NARI Remodeler of the Year 2026 Silver badge (Minnesota, Residential Addition, $250,000 to $500,000) to the award badges on The Canopy Porch, /portfolio/the-canopy-porch/, portfolio.
+- 2026-11-18 Summer: added the NARI Remodeler of the Year 2026 Silver badge (Minnesota, Residential Landscape Design/Outdoor Living, Over $250,000) to the award badges on Shoreline Terrace, /portfolio/shoreline-terrace/, portfolio.
 
 ## 2026-11-13
 
