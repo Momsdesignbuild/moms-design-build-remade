@@ -19,6 +19,7 @@ export default function OverlayTile({
   sizes,
   aspect = 'aspect-[4/3]',
   eager = false,
+  compact = false,
 }: {
   href: string
   img: string | null
@@ -28,6 +29,8 @@ export default function OverlayTile({
   sizes?: string
   aspect?: string
   eager?: boolean
+  /** phones only: tighter padding/spacing so a name fits a half-width tile (two across) */
+  compact?: boolean
 }) {
   return (
     <motion.div
@@ -50,8 +53,8 @@ export default function OverlayTile({
             sizes={sizes || '(max-width: 1024px) 100vw, 50vw'}
           />
         )}
-        <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center transition-opacity duration-300 group-hover:opacity-0">
-          <p className="text-white text-[22px] md:text-[26px] font-[300] tracking-[0.2em] uppercase [text-shadow:0_1px_10px_rgba(0,0,0,0.45)]">
+        <div className={`absolute inset-0 flex flex-col items-center justify-center p-6 text-center transition-opacity duration-300 group-hover:opacity-0 ${compact ? 'max-sm:p-1' : ''}`}>
+          <p className={`text-white text-[22px] md:text-[26px] font-[300] tracking-[0.2em] uppercase [text-shadow:0_1px_10px_rgba(0,0,0,0.45)] ${compact ? 'min-[351px]:max-sm:text-[20px] max-[350px]:text-[16px] max-sm:tracking-normal [overflow-wrap:anywhere]' : ''}`}>
             {title}
           </p>
           {subtitle && (
