@@ -85,7 +85,7 @@ export default async function PortfolioPage() {
               aspect="aspect-[4/5]"
               compact
               eager={i < 8}
-              sizes="(max-width: 1024px) 50vw, 25vw"
+              sizes="(max-width: 1024px) 50vw, 25vw" // ui-label: image size hint for the browser, not words
             />
           ))}
         </div>
