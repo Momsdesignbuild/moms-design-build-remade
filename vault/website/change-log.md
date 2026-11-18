@@ -9,6 +9,10 @@ Every site change, dated, newest first. What changed, why, and the result
 when it's known. This is how a conversation three weeks from now knows what
 already happened.
 
+## 2026-11-18
+
+- 2026-11-18 Summer: added the NARI Remodeler of the Year 2026 Gold badge (Minnesota, Residential Landscape Design/Outdoor Living, $100,000 to $250,000) to the award badges on Enchanted Entry, /portfolio/enchanted-entry/, portfolio.
+
 ## 2026-11-13
 
 - 2026-11-13 Summer: new blog post "Bi-Folding Doors: Seamlessly Blending Indoor and Outdoor Living in Minnesota Ft. Heather Sweeney" (Landscape Design) at /bi-folding-doors-indoor-outdoor-living-minnesota/, from Summer's PDF and photos, with one photo row, blog.
